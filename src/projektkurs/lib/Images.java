@@ -50,7 +50,6 @@ public class Images {
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
-		System.out.println(img.toString());
 		charakter = img;
 
 	}
