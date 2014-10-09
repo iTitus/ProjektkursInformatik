@@ -12,21 +12,7 @@ import projektkurs.world.raster.extra.ExtraInformationKiste;
  * Ein Raster mit einer Kiste
  *
  */
-public class KistenRaster extends Raster {
-
-	private static final KistenRaster INSTANCE = new KistenRaster();
-
-	/**
-	 * Die Instanz
-	 * 
-	 * @return
-	 */
-	public static KistenRaster getInstance() {
-		return INSTANCE;
-	}
-
-	private KistenRaster() {
-	}
+public class KistenRaster extends AbstractRaster {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {

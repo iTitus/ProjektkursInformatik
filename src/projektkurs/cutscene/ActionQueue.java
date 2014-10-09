@@ -11,6 +11,69 @@ import projektkurs.cutscene.action.Action;
 public class ActionQueue {
 
 	/**
+	 * Hilfsklasse für die Schlange
+	 * 
+	 */
+	public static class ActionNode {
+
+		/**
+		 * Interne Referenz zur Action
+		 */
+		private final Action action;
+		/**
+		 * Interne Referenz zur vorherigen ActionNode
+		 */
+		private ActionNode prev;
+
+		/**
+		 * Konstruktor für ActionNodes
+		 * 
+		 * @param _action
+		 *            ist die Action
+		 * @param _prev
+		 *            ist die vorherige ActionNode
+		 */
+		public ActionNode(Action _action, ActionNode _prev) {
+			action = _action;
+			prev = _prev;
+		}
+
+		/**
+		 * Die mit dieser ActionNode verbundene Action
+		 * 
+		 * @return
+		 */
+		public Action getAction() {
+			return action;
+		}
+
+		/**
+		 * Die vorherige ActionNode
+		 * 
+		 * @return
+		 */
+		public ActionNode getPrevious() {
+			return prev;
+		}
+
+		/**
+		 * Setzt die vorherige ActionNode
+		 * 
+		 * @param _prev
+		 *            ist die neue vorherige ActionNode
+		 */
+		public void setPrevious(ActionNode _prev) {
+			prev = _prev;
+		}
+
+		@Override
+		public String toString() {
+			return "[" + action.toString() + "]";
+		}
+
+	}
+
+	/**
 	 * Interne Referenzen zum Kopf und Schwanz der Schlange
 	 */
 	private ActionNode head, tail;
@@ -23,19 +86,20 @@ public class ActionQueue {
 	}
 
 	/**
+	 * Löst die oberste Action von der Schlange
+	 */
+	public void deQueue() {
+		if (!empty())
+			head = head.getPrevious();
+	}
+
+	/**
 	 * Prüft ob die Schlange leer ist
 	 * 
 	 * @return
 	 */
 	public boolean empty() {
 		return head == null;
-	}
-
-	/**
-	 * Löst die oberste Action von der Schlange
-	 */
-	public void deQueue() {
-		head = head.getPrevious();
 	}
 
 	/**
@@ -76,69 +140,6 @@ public class ActionQueue {
 		}
 
 		return "ActionQueue" + nodes.toString();
-	}
-
-	/**
-	 * Hilfsklasse für die Schlange
-	 * 
-	 */
-	public static class ActionNode {
-
-		/**
-		 * Interne Referenz zur Action
-		 */
-		private final Action action;
-		/**
-		 * Interne Referenz zur vorherigen ActionNode
-		 */
-		private ActionNode prev;
-
-		/**
-		 * Konstruktor für ActionNodes
-		 * 
-		 * @param _action
-		 *            ist die Action
-		 * @param _prev
-		 *            ist die vorherige ActionNode
-		 */
-		public ActionNode(Action _action, ActionNode _prev) {
-			action = _action;
-			prev = _prev;
-		}
-
-		/**
-		 * Die vorherige ActionNode
-		 * 
-		 * @return
-		 */
-		public ActionNode getPrevious() {
-			return prev;
-		}
-
-		/**
-		 * Setzt die vorherige ActionNode
-		 * 
-		 * @param _prev
-		 *            ist die neue vorherige ActionNode
-		 */
-		public void setPrevious(ActionNode _prev) {
-			prev = _prev;
-		}
-
-		/**
-		 * Die mit dieser ActionNode verbundene Action
-		 * 
-		 * @return
-		 */
-		public Action getAction() {
-			return action;
-		}
-
-		@Override
-		public String toString() {
-			return "[" + action.toString() + "]";
-		}
-
 	}
 
 }

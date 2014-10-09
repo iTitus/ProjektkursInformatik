@@ -9,21 +9,7 @@ import projektkurs.lib.Images;
  * Eine Wand
  *
  */
-public class WandRaster extends Raster {
-
-	private static final WandRaster INSTANCE = new WandRaster();
-
-	/**
-	 * Die Instanz
-	 * 
-	 * @return
-	 */
-	public static WandRaster getInstance() {
-		return INSTANCE;
-	}
-
-	private WandRaster() {
-	}
+public class WandRaster extends AbstractRaster {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {

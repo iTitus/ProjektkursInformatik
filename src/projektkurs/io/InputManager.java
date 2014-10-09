@@ -11,17 +11,17 @@ import java.util.HashSet;
 import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
+import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Direction;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Sounds;
-import projektkurs.world.raster.Raster;
+import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Zustaendig fuer den Input (Tasten, Maus)
  * 
  */
-@SuppressWarnings("unused")
 public class InputManager implements KeyListener, MouseInputListener,
 		MouseMotionListener, MouseWheelListener {
 
@@ -119,7 +119,10 @@ public class InputManager implements KeyListener, MouseInputListener,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		Sounds.test.play();
+		if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
+			CutSceneManager.startCutScene(CutSceneManager.TEST());
+		else if (e.getButton() == LEFT_MOUSE_BUTTON)
+			Sounds.test.play();
 
 		float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
 		if (rasterX < 0)
@@ -127,8 +130,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 		float rasterY = (((e.getY() + (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_Y) / (float) (Integers.RASTER_SIZE));
 		if (rasterY < 0)
 			rasterY--;
-		Raster r = Main.getSpielfeld()
-				.getRasterAt((int) rasterX, (int) rasterY);
+		AbstractRaster r = Main.getSpielfeld().getRasterAt((int) rasterX,
+				(int) rasterY);
 		if (r != null) {
 			r.onClick((int) rasterX, (int) rasterY, e.getButton());
 		}

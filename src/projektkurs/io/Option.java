@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -32,7 +33,9 @@ import projektkurs.lib.Strings;
  */
 public class Option extends JPanel implements ActionListener, ChangeListener {
 
+	private static JFrame frame;
 	private static boolean isFinished = false;
+
 	private static final long serialVersionUID = 1L;
 
 	public static void createAndShowGUI() {
@@ -89,7 +92,6 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 	}
 
 	private JLabel charakterBild;
-	private static JFrame frame;
 
 	private final JSlider sliderSightX, sliderSightY;
 
@@ -138,8 +140,8 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 		JPanel sightSettings = new JPanel(new GridLayout(0, 1));
 
-		sliderSightX = new JSlider(JSlider.HORIZONTAL, 3, 53, 19);
-		sliderSightY = new JSlider(JSlider.HORIZONTAL, 3, 53, 19);
+		sliderSightX = new JSlider(SwingConstants.HORIZONTAL, 3, 53, 19);
+		sliderSightY = new JSlider(SwingConstants.HORIZONTAL, 3, 53, 19);
 
 		sliderSightX.addChangeListener(this);
 		sliderSightX.setMajorTickSpacing(10);
@@ -218,14 +220,14 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		}
 	}
 
-	private void setFinished() {
-		isFinished = true;
-	}
-
 	@Override
 	public void stateChanged(ChangeEvent e) {
 
 		Integers.changeSight(sliderSightX.getValue(), sliderSightY.getValue());
 
+	}
+
+	private void setFinished() {
+		isFinished = true;
 	}
 }
