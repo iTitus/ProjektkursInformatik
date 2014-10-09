@@ -2,7 +2,7 @@ package projektkurs.world;
 
 import projektkurs.Main;
 import projektkurs.lib.Direction;
-import projektkurs.world.raster.Raster;
+import projektkurs.world.raster.AbstractRaster;
 
 public class Spielfeld {
 
@@ -67,7 +67,7 @@ public class Spielfeld {
 		return 0;
 	}
 
-	public Raster getRasterAt(int i, int j) {
+	public AbstractRaster getRasterAt(int i, int j) {
 		return null;
 	}
 

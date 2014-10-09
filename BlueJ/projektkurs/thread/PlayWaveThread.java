@@ -14,16 +14,17 @@ import projektkurs.lib.Sounds.Sound;
  */
 public class PlayWaveThread extends Thread {
 
-	private final Sound sound;
-
 	private static final int BUFFER_SIZE = 2097152; // 2MB
+
 	private static int NUM_THREADS = 0;
+	private final Sound sound;
 
 	public PlayWaveThread(Sound _sound) {
 		super("Sound - " + NUM_THREADS++);
 		sound = _sound;
 	}
 
+	@Override
 	public void run() {
 
 		SourceDataLine line = null;

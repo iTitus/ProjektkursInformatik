@@ -8,21 +8,7 @@ import projektkurs.lib.Images;
  * Ein Stück Rasen
  *
  */
-public class RasenRaster extends Raster {
-
-	private static final RasenRaster INSTANCE = new RasenRaster();
-
-	/**
-	 * Die Instanz
-	 * 
-	 * @return
-	 */
-	public static RasenRaster getInstance() {
-		return INSTANCE;
-	}
-
-	private RasenRaster() {
-	}
+public class RasenRaster extends AbstractRaster {
 
 	@Override
 	public BufferedImage getImage(int x, int y) {

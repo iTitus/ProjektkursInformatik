@@ -12,9 +12,9 @@ import projektkurs.Main;
  */
 public class Images {
 
-	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste;
-
 	public static BufferedImage charakter;
+
+	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste;
 
 	/**
 	 * Laedt alle Bilder
@@ -25,6 +25,11 @@ public class Images {
 		wand = loadImage("wand.png");
 		baum = loadImage("baum.png");
 		kiste = loadImage("kiste.png");
+
+	}
+
+	public static void setCharakterImage(BufferedImage img) {
+		charakter = img;
 
 	}
 
@@ -47,10 +52,5 @@ public class Images {
 					+ name);
 		}
 		return img;
-	}
-
-	public static void setCharakterImage(BufferedImage img) {
-		charakter = img;
-
 	}
 }

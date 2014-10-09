@@ -9,21 +9,7 @@ import projektkurs.lib.Images;
  * Ein Baum
  * 
  */
-public class BaumRaster extends Raster {
-
-	private static final BaumRaster INSTANCE = new BaumRaster();
-
-	/**
-	 * Die Instanz
-	 * 
-	 * @return
-	 */
-	public static BaumRaster getInstance() {
-		return INSTANCE;
-	}
-
-	private BaumRaster() {
-	}
+public class BaumRaster extends AbstractRaster {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {

@@ -1,4 +1,4 @@
-package projektkurs; 
+package projektkurs;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -140,6 +140,30 @@ public final class Main {
 	}
 
 	/**
+	 * Pausiert das Spiel
+	 */
+	public static void pause() {
+		if (moveThread != null)
+			moveThread.pause(true);
+		if (renderThread != null)
+			renderThread.pause(true);
+		if (simulationThread != null)
+			simulationThread.pause(true);
+	}
+
+	/**
+	 * Lässt das Spiel weiter laufen
+	 */
+	public static void resume() {
+		if (moveThread != null)
+			moveThread.pause(false);
+		if (renderThread != null)
+			renderThread.pause(false);
+		if (simulationThread != null)
+			simulationThread.pause(false);
+	}
+
+	/**
 	 * Interne Methode um alle Felder(Variablen) zu initialisieren
 	 */
 	private static void initFields() {
@@ -176,7 +200,6 @@ public final class Main {
 		Images.init();
 		Sounds.init();
 		I18n.init();
-		// TODO: OPTIONS!
 		Option.createAndShowGUI();
 
 		while (!Option.isFinished()) {

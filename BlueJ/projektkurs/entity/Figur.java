@@ -21,12 +21,12 @@ public class Figur {
 		inventar = new Inventory(Integers.INVENTARGROESSE);
 	}
 
-	/**
-	 * Wird überprüft, ob man mit einem Gegenstand interagieren kann
-	 * 
-	 * @param intermoeglichkeit
-	 *            aus der Klasse Welt
-	 */
+	// /**
+	// * Wird überprüft, ob man mit einem Gegenstand interagieren kann
+	// *
+	// * @param intermoeglichkeit
+	// * aus der Klasse Welt
+	// */
 	// private void interaktion(boolean intermoeglichkeit) {
 	// if (intermoeglichkeit == true) {
 	// }

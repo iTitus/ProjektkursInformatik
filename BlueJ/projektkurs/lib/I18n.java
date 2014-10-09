@@ -42,8 +42,8 @@ public final class I18n {
 	public static void init() {
 
 		try {
-			RESOURCE_BUNDLE = ResourceBundle.getBundle("projektkurs.resources.lang.lang",
-					currentLocale);
+			RESOURCE_BUNDLE = ResourceBundle.getBundle(
+					"projektkurs.resources.lang.lang", currentLocale);
 		} catch (Exception e) {
 			System.err.println("Unable to load resources for Locale "
 					+ currentLocale + "!");

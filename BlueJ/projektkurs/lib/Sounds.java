@@ -12,17 +12,6 @@ import projektkurs.thread.PlayWaveThread;
  */
 public final class Sounds {
 
-	public static Sound test;
-
-	/**
-	 * Initialisiert alle Sounds
-	 */
-	public static void init() {
-
-		test = new Sound("Test.wav");
-
-	}
-
 	/**
 	 * Die Klasse für ein Sound-Objekt
 	 *
@@ -63,6 +52,17 @@ public final class Sounds {
 			new PlayWaveThread(this).start();
 			// clip.play();
 		}
+
+	}
+
+	public static Sound test;
+
+	/**
+	 * Initialisiert alle Sounds
+	 */
+	public static void init() {
+
+		test = new Sound("Test.wav");
 
 	}
 

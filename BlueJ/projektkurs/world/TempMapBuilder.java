@@ -6,11 +6,8 @@ import projektkurs.Main;
 import projektkurs.item.Item;
 import projektkurs.lib.Direction;
 import projektkurs.lib.Integers;
-import projektkurs.world.raster.BaumRaster;
-import projektkurs.world.raster.KistenRaster;
-import projektkurs.world.raster.RasenRaster;
+import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
-import projektkurs.world.raster.WandRaster;
 import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationKiste;
 
@@ -26,13 +23,13 @@ public class TempMapBuilder {
 	private static final Random rand = new Random();
 
 	private ExtraInformation[][] extras;
-	private Raster[][] map;
+	private AbstractRaster[][] map;
 
 	private int SpielerpositionX;
 	private int SpielerpositionY;
 
 	public TempMapBuilder() {
-		map = new Raster[MAP_SIZE_X][MAP_SIZE_Y];
+		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 
 		generateMap();
@@ -64,13 +61,13 @@ public class TempMapBuilder {
 		return SpielerpositionY;
 	}
 
-	public Raster getRasterAt(int x, int y) {
+	public AbstractRaster getRasterAt(int x, int y) {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return null;
 		return map[x][y];
 	}
 
-	public void setRasterAt(int x, int y, Raster r) {
+	public void setRasterAt(int x, int y, AbstractRaster r) {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
 		map[x][y] = r;
@@ -111,31 +108,31 @@ public class TempMapBuilder {
 		// RASEN!
 		for (int x = 0; x < map.length; x++) {
 			for (int y = 0; y < map[x].length; y++)
-				setRasterAt(x, y, RasenRaster.getInstance());
+				setRasterAt(x, y, Raster.RASEN);
 
 		}
 
 		// BÄUME!
 		for (int i = 0; i < rand.nextInt(51) + 25; i++) {
 			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					BaumRaster.getInstance());
+					Raster.BAUM);
 		}
 
 		// KISTEN!
 		for (int i = 0; i < rand.nextInt(7) + 3; i++) {
 			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					KistenRaster.getInstance());
+					Raster.KISTE);
 
 		}
 
 		// WÄNDE!
 		for (int x = 0; x < map.length; x++) {
-			setRasterAt(x, 0, WandRaster.getInstance());
-			setRasterAt(x, MAP_SIZE_Y - 1, WandRaster.getInstance());
+			setRasterAt(x, 0, Raster.WAND);
+			setRasterAt(x, MAP_SIZE_Y - 1, Raster.WAND);
 		}
 		for (int y = 0; y < map.length; y++) {
-			setRasterAt(0, y, WandRaster.getInstance());
-			setRasterAt(MAP_SIZE_X - 1, y, WandRaster.getInstance());
+			setRasterAt(0, y, Raster.WAND);
+			setRasterAt(MAP_SIZE_X - 1, y, Raster.WAND);
 		}
 
 		// KISTENINHALTE!

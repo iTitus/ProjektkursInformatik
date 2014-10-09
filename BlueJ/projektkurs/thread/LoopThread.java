@@ -9,7 +9,7 @@ package projektkurs.thread;
 public abstract class LoopThread extends Thread {
 
 	private final long loopTime;
-	private boolean running;
+	private boolean running, pausing;
 
 	/**
 	 * Konstruktor fuer einen LoopThread
@@ -25,12 +25,23 @@ public abstract class LoopThread extends Thread {
 	}
 
 	/**
-	 * Wird nach dem Starten einmal ausgefuehrt
+	 * Verändert den Pausenstatus
+	 * 
+	 * @param b
+	 *            true, wenn er pausieren soll; false, wenn er laufen soll
+	 */
+	public synchronized void pause(boolean b) {
+		pausing = b;
+	}
+
+	/**
+	 * Wird nach dem Starten einmal ausgeführt
 	 */
 	@Override
 	public void run() {
 		while (running) {
-			runLoop();
+			if (!pausing)
+				runLoop();
 			try {
 				Thread.sleep(loopTime);
 			} catch (InterruptedException e) {
@@ -40,7 +51,7 @@ public abstract class LoopThread extends Thread {
 	}
 
 	/**
-	 * Starten den Thread
+	 * Startet den Thread
 	 */
 	@Override
 	public synchronized void start() {
