@@ -10,6 +10,7 @@ public abstract class LoopThread extends Thread {
 
 	private final long loopTime;
 	private boolean running, pausing;
+	private long time;
 
 	/**
 	 * Konstruktor fuer einen LoopThread
@@ -22,6 +23,7 @@ public abstract class LoopThread extends Thread {
 	public LoopThread(String name, long loopTime) {
 		super(name);
 		this.loopTime = loopTime;
+		time = 0L;
 	}
 
 	/**
@@ -40,13 +42,11 @@ public abstract class LoopThread extends Thread {
 	@Override
 	public void run() {
 		while (running) {
-			if (!pausing)
+			if (!pausing && System.currentTimeMillis() - time >= loopTime) {
+				time = System.currentTimeMillis();
 				runLoop();
-			try {
-				Thread.sleep(loopTime);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
+
 		}
 	}
 
@@ -57,6 +57,7 @@ public abstract class LoopThread extends Thread {
 	public synchronized void start() {
 		super.start();
 		running = true;
+		pausing = false;
 	}
 
 	/**

@@ -3,6 +3,8 @@ package projektkurs.lib;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import projektkurs.lib.Init.State;
+
 /**
  * Internationalisierung
  * 
@@ -39,6 +41,7 @@ public final class I18n {
 	/**
 	 * Initialisiert die gesetze Sprache und lädt die Lokalisierung
 	 */
+	@Init(state = State.PRE)
 	public static void init() {
 
 		try {

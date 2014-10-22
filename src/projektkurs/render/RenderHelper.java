@@ -1,8 +1,12 @@
 package projektkurs.render;
 
 import java.awt.image.BufferedImage;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Vector;
 
 import projektkurs.Main;
+import projektkurs.entity.Entity;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 
@@ -11,8 +15,13 @@ import projektkurs.lib.Integers;
  * 
  */
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class RenderHelper {
+
+	/**
+	 * 
+	 */
+	private Collection<Entity> entitiesInSight;
 
 	/**
 	 * Muss die Map nächsten Tick geupdated
@@ -21,16 +30,17 @@ public class RenderHelper {
 	/**
 	 * Sichtfeld
 	 */
-	private BufferedImage[][] Sight;
+	private BufferedImage[][] sight;
+
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
 	 */
 	private int sightX;
-
 	/**
 	 * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
 	 */
 	private int sightY;
+
 	/**
 	 * Temporäre Variable
 	 */
@@ -45,12 +55,15 @@ public class RenderHelper {
 	 * Temporäre Kartengröße in y-Richtung
 	 */
 	private int tempMapSizeY;
+
 	/**
-	 * Gesamte Map
+	 * Gesamte Map<br>
+	 * <br>
+	 * 1D: X-Koordinate<br>
+	 * 2D: Y-Koordinate<br>
+	 * 
 	 */
 	private BufferedImage[][] toRender;
-
-	// private int playerPosIn
 
 	/**
 	 * Muss nur einmal am Anfang aufgerufen werden, erstellt einen neuen
@@ -59,15 +72,48 @@ public class RenderHelper {
 	public RenderHelper() {
 		int _MapLengthX = Main.getSpielfeld().getMapSizeX();
 		int _MapLengthY = Main.getSpielfeld().getMapSizeY();
+
 		toRender = new BufferedImage[_MapLengthX][_MapLengthY];
-		Sight = new BufferedImage[Integers.SIGHT_X][Integers.SIGHT_Y];
+
+		sight = new BufferedImage[Integers.SIGHT_X][Integers.SIGHT_Y];
+
+		entitiesInSight = Collections
+				.synchronizedCollection(new Vector<Entity>());
+
 		for (int i = 0; i < _MapLengthX; i++) {
 			for (int j = 0; j < _MapLengthY; j++) {
 				toRender[i][j] = Main.getSpielfeld().getRasterAt(i, j)
 						.getImage(i, j);
+				// if (Main.getSpielfeld().getItemAt(i, j) != null
+				// && Main.getSpielfeld().getItemAt(i, j).getImage() != null)
+				// toRenderItems[i][j] = Main.getSpielfeld().getItemAt(i, j)
+				// .getImage();
+				// if (Main.getSpielfeld().getNPCAt(i, j) != null
+				// && Main.getSpielfeld().getNPCAt(i, j)
+				// .getBufferedImage() != null)
+				// toRenderNPCs[i][j] = Main.getSpielfeld().getNPCAt(i, j)
+				// .getBufferedImage();
 			}
 		}
 		setSight(0, 0);
+	}
+
+	// public BufferedImage[][] getSightItems() {
+	// return SightItems;
+	// }
+	//
+	// public BufferedImage[][] getSightNPCs() {
+	// return SightNPCs;
+	// }
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Collection<Entity> getEntitiesInSight() {
+		synchronized (entitiesInSight) {
+			return Collections.unmodifiableCollection(entitiesInSight);
+		}
 	}
 
 	/**
@@ -76,7 +122,7 @@ public class RenderHelper {
 	 * @return aktuelle Sicht
 	 */
 	public BufferedImage[][] getSight() {
-		return Sight;
+		return sight;
 	}
 
 	/**
@@ -122,6 +168,16 @@ public class RenderHelper {
 		shouldUpdate = update;
 	}
 
+	// public void setToRenderItems(int x, int y, BufferedImage bImage) {
+	// toRenderItems[x][y] = bImage;
+	// updateSight();
+	// }
+	//
+	// public void setToRenderNPCs(int x, int y, BufferedImage bImage) {
+	// toRenderNPCs[x][y] = bImage;
+	// updateSight();
+	// }
+
 	/**
 	 * Aktualisiert das Sichtfeld
 	 * 
@@ -130,9 +186,20 @@ public class RenderHelper {
 	 * @param newSightY
 	 *            Y-Koordinate der oberen linken Ecke des Sichtfeldes
 	 */
-	public void setSight(int newSightX, int newSightY) {
-		sightX = newSightX;
-		sightY = newSightY;
+	public void setSight(int sightX, int sightY) {
+		this.sightX = sightX;
+		this.sightY = sightY;
+		updateSight();
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param bImage
+	 */
+	public void setToRenderRasters(int x, int y, BufferedImage bImage) {
+		toRender[x][y] = bImage;
 		updateSight();
 	}
 
@@ -165,6 +232,9 @@ public class RenderHelper {
 	 * Interne Methode, um das Sichtfeld zu aktualisieren
 	 */
 	private void updateSight() {
+
+		// FIXME: Buggt rum bei anderen Fenstergrößen
+
 		for (int x = 0; x < Integers.SIGHT_X; x++) {
 			for (int y = 0; y < Integers.SIGHT_Y; y++) {
 				if ((x + sightX) < 0
@@ -172,9 +242,13 @@ public class RenderHelper {
 						|| (x + sightX) < 0
 						|| (y + sightY) >= Main.getSpielfeld().getMapSizeY()
 						|| (y + sightY < 0)) {
-					Sight[x][y] = Images.baum;
+					sight[x][y] = Images.baum;
+					// SightItems[x][y] = null;
+					// SightNPCs = null;
 				} else {
-					Sight[x][y] = toRender[x + sightX][y + sightY];
+					sight[x][y] = toRender[x + sightX][y + sightY];
+					// SightItems[x][y] = toRenderItems[x + sightX][y + sightY];
+					// SightNPCs[x][y] = toRenderNPCs[x + sightX][y + sightY];
 				}
 			}
 
@@ -182,127 +256,4 @@ public class RenderHelper {
 		}
 	}
 
-	/**
-	 * Zweite Update-Methode
-	 * 
-	 * @return int, der die Richtung dokumentiert, in die das Spielfeld
-	 *         verschoben wird
-	 */
-	private int updateSight2() {
-		tempMapSizeX = Main.getSpielfeld().getMapSizeX();
-		tempMapSizeY = Main.getSpielfeld().getMapSizeY();
-		if (sightX < 0) {
-			temp |= 0b0001;
-			if (sightY < 0) {
-				temp |= 0b0100;
-				for (int x = 0; x < Integers.SIGHT_X; x++) {
-					for (int y = 0; y < Integers.SIGHT_Y; y++) {
-						Sight[x][y] = toRender[x][y];
-					}
-				}
-				System.out.println("sightX < 0 ; sightY < 0");
-			} else if (sightY + Integers.SIGHT_Y < tempMapSizeY) {
-				temp |= 0b1000;
-				for (int x = 0; x < Integers.SIGHT_X; x++) {
-					for (int y = tempMapSizeY - Integers.SIGHT_Y; y < tempMapSizeY; y++) {
-						Sight[x][y - tempMapSizeY + Integers.SIGHT_Y] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightX < 0 ; sightY + Integers.SIGHT_Y < tempMapSizeY");
-			} else {
-				for (int x = 0; x < Integers.SIGHT_X; x++) {
-					for (int y = sightY; y < sightY + Integers.SIGHT_Y; y++) {
-						Sight[x][y - sightY] = toRender[x][y];
-					}
-				}
-				System.out.println("sightX < 0 ; sightY norm");
-			}
-		} else if (sightX + Integers.SIGHT_X < tempMapSizeX) {
-			temp |= 0b0010;
-			if (sightY < 0) {
-				temp |= 0b0100;
-				for (int x = tempMapSizeX - Integers.SIGHT_X; x < tempMapSizeX; x++) {
-					for (int y = 0; y < Integers.SIGHT_Y; y++) {
-						Sight[x - tempMapSizeX + Integers.SIGHT_X][y] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightX + Integers.SIGHT_X < tempMapSizeX ; sightY < 0");
-			} else if (sightY + Integers.SIGHT_Y < tempMapSizeY) {
-				temp |= 0b1000;
-				for (int x = tempMapSizeX - Integers.SIGHT_X; x < tempMapSizeX; x++) {
-					for (int y = tempMapSizeY - Integers.SIGHT_Y; y < tempMapSizeY; y++) {
-						Sight[x - tempMapSizeX + Integers.SIGHT_X][y
-								- tempMapSizeY + Integers.SIGHT_Y] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightX + Integers.SIGHT_X < tempMapSizeX ; sightY + Integers.SIGHT_Y < tempMapSizeY");
-			} else {
-				for (int x = tempMapSizeX - Integers.SIGHT_X; x < tempMapSizeX; x++) {
-					for (int y = sightY; y < sightY + Integers.SIGHT_Y; y++) {
-						Sight[x - tempMapSizeX + Integers.SIGHT_X][y - sightY] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightX + Integers.SIGHT_X < tempMapSizeX ; sightY norm");
-			}
-		} else {
-			if (sightY < 0) {
-				temp |= 0b0100;
-				for (int x = sightX; x < sightX + Integers.SIGHT_X; x++) {
-					for (int y = 0; y < Integers.SIGHT_Y; y++) {
-						Sight[x - sightX][y] = toRender[x][y];
-					}
-				}
-				System.out.println("sightx norm ; sightY < 0");
-			} else if (sightY + Integers.SIGHT_Y < tempMapSizeY) {
-				temp |= 0b1000;
-				for (int x = sightX; x < sightX + Integers.SIGHT_X; x++) {
-					for (int y = tempMapSizeY - Integers.SIGHT_Y; y < tempMapSizeY; y++) {
-						Sight[x - sightX][y - tempMapSizeY + Integers.SIGHT_Y] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightx norm ; sightY + Integers.SIGHT_Y < tempMapSizeY");
-			} else {
-				for (int x = sightX; x < sightX + Integers.SIGHT_X; x++) {
-					for (int y = sightY; y < sightY + Integers.SIGHT_Y; y++) {
-						Sight[x - sightX][y - sightY] = toRender[x][y];
-					}
-				}
-				System.out
-						.println("sightx norm ; sightY + Integers.SIGHT_Y < tempMapSizeY");
-			}
-
-		}
-		setShouldUpdateNextTick(true);
-		return temp;
-	}
-
-	/**
-	 * Dritte Update-Methode
-	 * 
-	 * @return SCHEIßE
-	 */
-	private boolean updateSight3() {
-		if (!(sightX < Integers.SIGHT_X
-				|| sightX > Main.getSpielfeld().getMapSizeX()
-						- Integers.SIGHT_X || sightY < Integers.SIGHT_Y || sightY > Main
-				.getSpielfeld().getMapSizeY() - Integers.SIGHT_Y)) {
-
-			for (int x = 0; x < Integers.SIGHT_X; x++) {
-				for (int y = 0; y < Integers.SIGHT_Y; y++) {
-					Sight[x][y] = toRender[x + sightX][y + sightY];
-				}
-			}
-
-			setShouldUpdateNextTick(true);
-			return true;
-		} else {
-			return false;
-		}
-
-	}
 }

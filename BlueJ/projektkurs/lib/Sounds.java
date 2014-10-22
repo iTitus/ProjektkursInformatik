@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 
 import projektkurs.Main;
+import projektkurs.lib.Init.State;
 import projektkurs.thread.PlayWaveThread;
 
 /**
@@ -60,6 +61,7 @@ public final class Sounds {
 	/**
 	 * Initialisiert alle Sounds
 	 */
+	@Init(state = State.PRE)
 	public static void init() {
 
 		test = new Sound("Test.wav");

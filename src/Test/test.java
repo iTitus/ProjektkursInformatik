@@ -6,9 +6,9 @@ import projektkurs.cutscene.ActionQueue;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
+@SuppressWarnings("all")
 public class test {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		ActionQueue q = new ActionQueue();

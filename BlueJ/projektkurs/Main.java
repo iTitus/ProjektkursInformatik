@@ -1,15 +1,20 @@
 package projektkurs;
 
+import java.io.File;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import projektkurs.entity.Figur;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
-import projektkurs.lib.I18n;
 import projektkurs.lib.Images;
+import projektkurs.lib.Init;
+import projektkurs.lib.Init.State;
 import projektkurs.lib.Integers;
-import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
 import projektkurs.render.GameWindow;
 import projektkurs.render.Render;
@@ -24,6 +29,7 @@ import projektkurs.world.TempMapBuilder;
  * Die Hauptklasse
  * 
  */
+@SuppressWarnings("all")
 public final class Main {
 
 	/**
@@ -67,6 +73,8 @@ public final class Main {
 	private static RenderHelper renderHelper;
 
 	private static LoopThread renderThread, simulationThread, moveThread;
+
+	private static ArrayList<Method> initMethods;
 
 	/**
 	 * Verlaesst das Spiel
@@ -122,9 +130,37 @@ public final class Main {
 	 * 
 	 * @return Spielfeld
 	 */
-	// public static Spielfeld getSpielfeld() {
 	public static TempMapBuilder getSpielfeld() {
 		return map;
+	}
+
+	/**
+	 * Interne Methode um alle Felder(Variablen) zu initialisieren
+	 */
+	@Init
+	public static void initFields() {
+		figur = new Figur(16, 16, Images.charakter);
+		imgr = new InputManager();
+		// map = new Spielfeld();
+		map = new TempMapBuilder();
+		render = new Render(new GameWindow());
+		renderHelper = new RenderHelper();
+	}
+
+	/**
+	 * Interne Methode, um die Threads (Timer für die Ticks) zu starten
+	 */
+	@Init(state = State.POST)
+	public static void initThreads() {
+
+		simulationThread = new SimulationThread();
+		renderThread = new RenderThread();
+		moveThread = new MoveThread();
+
+		simulationThread.start();
+		renderThread.start();
+		moveThread.start();
+
 	}
 
 	/**
@@ -163,32 +199,78 @@ public final class Main {
 			simulationThread.pause(false);
 	}
 
-	/**
-	 * Interne Methode um alle Felder(Variablen) zu initialisieren
-	 */
-	private static void initFields() {
+	private static ArrayList<Class<?>> getClassesInDir(File dir)
+			throws Throwable {
+		ArrayList<Class<?>> ret = new ArrayList<Class<?>>();
+		if (dir.isFile())
+			return ret;
+		else {
+			File[] files = dir.listFiles();
 
-		figur = new Figur();
-		imgr = new InputManager();
-		// map = new Spielfeld();
-		map = new TempMapBuilder();
-		render = new Render(new GameWindow());
-		renderHelper = new RenderHelper();
-
+			for (File file : files) {
+				if (file.isFile()
+						&& file.getName().toLowerCase().endsWith(".class")) {
+					String path = Main.class.getPackage().getName()
+							+ file.getAbsolutePath().split(
+									Main.class.getPackage().getName())[1];
+					path = path.replace(File.separator, ".").replace(".class",
+							"");
+					ret.add(Class.forName(path));
+				} else
+					ret.addAll(getClassesInDir(file));
+			}
+		}
+		return ret;
 	}
 
-	/**
-	 * Interne Methode, um die Threads (Timer für die Ticks) zu starten
-	 */
-	private static void initThreads() {
+	private static void init(State state) {
 
-		simulationThread = new SimulationThread();
-		renderThread = new RenderThread();
-		moveThread = new MoveThread();
+		if (initMethods == null) {
+			try {
+				ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>();
+				allClasses.addAll(getClassesInDir(new File(Main.class
+						.getResource("").toURI())));
 
-		simulationThread.start();
-		renderThread.start();
-		moveThread.start();
+				for (Class<?> cls : allClasses) {
+					for (Method m : cls.getDeclaredMethods()) {
+						if (Modifier.isStatic(m.getModifiers())
+								&& m.getAnnotation(Init.class) != null) {
+							if (initMethods == null)
+								initMethods = new ArrayList<Method>();
+							initMethods.add(m);
+							if (m.getAnnotation(Init.class).state()
+									.equals(state)) {
+								boolean accessible = m.isAccessible();
+								m.setAccessible(true);
+								System.out.println("Invoking @" + state + ": "
+										+ m.toString());
+								m.invoke(null);
+								m.setAccessible(accessible);
+							}
+						}
+					}
+				}
+
+			} catch (Throwable t) {
+				t.printStackTrace();
+			}
+		} else {
+			try {
+				for (Method m : initMethods) {
+					if (m.getAnnotation(Init.class).state().equals(state)) {
+						boolean accessible = m.isAccessible();
+						m.setAccessible(true);
+						System.out.println("Invoking @" + state + ": "
+								+ m.toString());
+						m.invoke(null);
+						m.setAccessible(accessible);
+					}
+
+				}
+			} catch (Throwable t) {
+				t.printStackTrace();
+			}
+		}
 
 	}
 
@@ -197,9 +279,9 @@ public final class Main {
 	 */
 	private static void startGame() {
 
-		Images.init();
-		Sounds.init();
-		I18n.init();
+		// PreInit
+		init(State.PRE);
+
 		Option.createAndShowGUI();
 
 		while (!Option.isFinished()) {
@@ -211,7 +293,8 @@ public final class Main {
 			}
 		}
 
-		initFields();
+		// Init
+		init(State.INIT);
 
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -222,8 +305,8 @@ public final class Main {
 
 		});
 
-		initThreads();
+		// PostInit
+		init(State.POST);
 
 	}
-
 }

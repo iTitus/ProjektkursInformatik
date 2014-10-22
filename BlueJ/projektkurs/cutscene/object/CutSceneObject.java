@@ -80,6 +80,10 @@ public class CutSceneObject {
 				&& ((posX + sizeX) < posX || (posX + sizeX) > object.posX) && ((posY + sizeY) < posY || (posY + sizeY) > object.posY));
 	}
 
+	// TODO: object.posX + object.sizeX) < object.posX is always false because
+	// object.sizeX > 0
+	// ... and so on. Rethink/recode.
+
 	/**
 	 * Bewegt das CutSceneObject
 	 *

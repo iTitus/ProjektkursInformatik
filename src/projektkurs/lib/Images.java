@@ -6,21 +6,25 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import projektkurs.Main;
+import projektkurs.lib.Init.State;
 
 /**
  * Hier alles was mit Bildern zu tun hat
  */
 public class Images {
 
-	public static BufferedImage charakter;
+	public static BufferedImage charakter, test_guy;
 
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste;
 
 	/**
 	 * Laedt alle Bilder
 	 */
+	@Init(state = State.PRE)
 	public static void init() {
 		charakter = defaultCharakter = loadImage("charakter.png");
+		test_guy = loadImage("test.png");
+
 		rasen = loadImage("rasen.png");
 		wand = loadImage("wand.png");
 		baum = loadImage("baum.png");

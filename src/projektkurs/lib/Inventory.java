@@ -1,6 +1,6 @@
 package projektkurs.lib;
 
-import projektkurs.item.Item;
+import projektkurs.item.ItemStack;
 
 /**
  * Ein Inventarobjekt
@@ -8,10 +8,12 @@ import projektkurs.item.Item;
  */
 public class Inventory {
 
-	private Item[] items;
+	// FIXME: Merging of stacks
+
+	private ItemStack[] items;
 
 	public Inventory(int inventargroesse) {
-		items = new Item[inventargroesse];
+		items = new ItemStack[inventargroesse];
 	}
 
 	/**
@@ -21,7 +23,7 @@ public class Inventory {
 	 *            ist der neue Gegenstand
 	 * @return success
 	 */
-	public boolean addItem(Item newItem) {
+	public boolean addItem(ItemStack newItem) {
 
 		for (int i = 0; i < items.length; i++) {
 			if (getItemAt(i) == null) {
@@ -41,7 +43,7 @@ public class Inventory {
 	 * @param index
 	 * @return Item an der Stelle index
 	 */
-	public Item getItemAt(int index) {
+	public ItemStack getItemAt(int index) {
 		if (index < 0 || index >= items.length)
 			return null;
 		return items[index];
@@ -122,7 +124,7 @@ public class Inventory {
 	 *            , welches Item entfernt wird
 	 * @return success
 	 */
-	public boolean removeItem(Item itemType) {
+	public boolean removeItem(ItemStack itemType) {
 
 		for (int i = 0; i < items.length; i++) {
 			if (getItemAt(i) == itemType) {
@@ -142,12 +144,12 @@ public class Inventory {
 
 		if (getSize() > 0) {
 			s += "[";
-			s += getItemAt(0).getName() + "(" + getItemAt(0) + ")";
+			s += getItemAt(0).getName();
 
 			if (getSize() > 1) {
 				for (int i = 1; i < items.length; i++) {
-					s += ", " + getItemAt(i).getName() + "(" + getItemAt(i)
-							+ ")";
+					if (getItemAt(i) != null)
+						s += ", " + getItemAt(i).getName();
 				}
 			}
 
@@ -163,7 +165,7 @@ public class Inventory {
 	 * Entfernt leere Stellen - zur besseren Übersichtlichkeit
 	 */
 	private void sort() {
-		Item[] newItems = new Item[items.length];
+		ItemStack[] newItems = new ItemStack[items.length];
 
 		int j = 0;
 		for (int i = 0; i < items.length; i++) {
