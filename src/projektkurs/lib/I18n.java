@@ -48,8 +48,8 @@ public final class I18n {
 			RESOURCE_BUNDLE = ResourceBundle.getBundle(
 					"projektkurs.resources.lang.lang", currentLocale);
 		} catch (Exception e) {
-			System.err.println("Unable to load resources for Locale "
-					+ currentLocale + "!");
+			Logger.logThrowable("Unable to load resources for Locale "
+					+ currentLocale + "!", e);
 		}
 
 	}

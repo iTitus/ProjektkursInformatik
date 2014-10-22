@@ -77,12 +77,8 @@ public class CutSceneObject {
 			return false;
 		return (((object.posX + object.sizeX) < object.posX || (object.posX + object.sizeX) > posX)
 				&& ((object.posY + object.sizeY) < object.posY || (object.posY + object.sizeY) > posY)
-				&& ((posX + sizeX) < posX || (posX + sizeX) > object.posX) && ((posY + sizeY) < posY || (posY + sizeY) > object.posY));
+				&& (sizeX < posX || sizeX > object.posX) && (sizeY < posY || sizeY > object.posY));
 	}
-
-	// TODO: object.posX + object.sizeX) < object.posX is always false because
-	// object.sizeX > 0
-	// ... and so on. Rethink/recode.
 
 	/**
 	 * Bewegt das CutSceneObject
@@ -122,23 +118,4 @@ public class CutSceneObject {
 		this.posY = posY;
 	}
 
-	@SuppressWarnings("unused")
-	private boolean isInside2(CutSceneObject object) {
-		int tw = sizeX;
-		int th = sizeY;
-		int rw = object.sizeX;
-		int rh = object.sizeY;
-		if (rw <= 0 || rh <= 0 || tw <= 0 || th <= 0)
-			return false;
-		int tx = posX;
-		int ty = posY;
-		int rx = object.posX;
-		int ry = object.posY;
-		rw += rx;
-		rh += ry;
-		tw += tx;
-		th += ty;
-		return ((rw < rx || rw > tx) && (rh < ry || rh > ty)
-				&& (tw < tx || tw > rx) && (th < ty || th > ry));
-	}
 }

@@ -3,7 +3,6 @@ package projektkurs.io;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.HashSet;
@@ -23,7 +22,7 @@ import projektkurs.world.raster.AbstractRaster;
  * 
  */
 public class InputManager implements KeyListener, MouseInputListener,
-		MouseMotionListener, MouseWheelListener {
+		MouseWheelListener {
 
 	/**
 	 * Table for decoding of the int moveDir to the x-offset

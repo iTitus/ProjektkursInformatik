@@ -1,32 +1,31 @@
 package projektkurs.render;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Vector;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.render.entity.RenderEntity;
 
 /**
  * Helperklasse zum Rendern
  * 
  */
-
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public class RenderHelper {
+
+	private boolean shouldUpdateRaster;
+	private boolean shouldUpdateEntities;
 
 	/**
 	 * 
 	 */
-	private Collection<Entity> entitiesInSight;
+	private Collection<RenderEntity> entitiesInSight;
 
-	/**
-	 * Muss die Map nächsten Tick geupdated
-	 */
-	private boolean shouldUpdate;
 	/**
 	 * Sichtfeld
 	 */
@@ -40,11 +39,6 @@ public class RenderHelper {
 	 * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
 	 */
 	private int sightY;
-
-	/**
-	 * Temporäre Variable
-	 */
-	private int temp;
 
 	/**
 	 * Temporäre Kartengröße in x-Richtung
@@ -77,42 +71,31 @@ public class RenderHelper {
 
 		sight = new BufferedImage[Integers.SIGHT_X][Integers.SIGHT_Y];
 
+		sightX = 0;
+		sightY = 0;
+
+		shouldUpdateEntities = true;
+		shouldUpdateRaster = true;
+
 		entitiesInSight = Collections
-				.synchronizedCollection(new Vector<Entity>());
+				.synchronizedCollection(new ArrayList<RenderEntity>());
 
 		for (int i = 0; i < _MapLengthX; i++) {
 			for (int j = 0; j < _MapLengthY; j++) {
 				toRender[i][j] = Main.getSpielfeld().getRasterAt(i, j)
 						.getImage(i, j);
-				// if (Main.getSpielfeld().getItemAt(i, j) != null
-				// && Main.getSpielfeld().getItemAt(i, j).getImage() != null)
-				// toRenderItems[i][j] = Main.getSpielfeld().getItemAt(i, j)
-				// .getImage();
-				// if (Main.getSpielfeld().getNPCAt(i, j) != null
-				// && Main.getSpielfeld().getNPCAt(i, j)
-				// .getBufferedImage() != null)
-				// toRenderNPCs[i][j] = Main.getSpielfeld().getNPCAt(i, j)
-				// .getBufferedImage();
 			}
 		}
 		setSight(0, 0);
 	}
 
-	// public BufferedImage[][] getSightItems() {
-	// return SightItems;
-	// }
-	//
-	// public BufferedImage[][] getSightNPCs() {
-	// return SightNPCs;
-	// }
-
 	/**
 	 * 
 	 * @return
 	 */
-	public Collection<Entity> getEntitiesInSight() {
+	public Collection<RenderEntity> getEntitiesInSight() {
 		synchronized (entitiesInSight) {
-			return Collections.unmodifiableCollection(entitiesInSight);
+			return entitiesInSight;
 		}
 	}
 
@@ -154,29 +137,11 @@ public class RenderHelper {
 	public void moveSight(int dx, int dy) {
 		sightX += dx;
 		sightY += dy;
-		if (!(dx == 0 && dy == 0))
-			updateSight();
+		if (!(dx == 0 && dy == 0)) {
+			updateRaster();
+			updateEntities();
+		}
 	}
-
-	/**
-	 * Setzt das shouldUpdate-Feldd
-	 * 
-	 * @param update
-	 *            ob der Bildschirm nächsten Tick aktualisiert werden soll
-	 */
-	public void setShouldUpdateNextTick(boolean update) {
-		shouldUpdate = update;
-	}
-
-	// public void setToRenderItems(int x, int y, BufferedImage bImage) {
-	// toRenderItems[x][y] = bImage;
-	// updateSight();
-	// }
-	//
-	// public void setToRenderNPCs(int x, int y, BufferedImage bImage) {
-	// toRenderNPCs[x][y] = bImage;
-	// updateSight();
-	// }
 
 	/**
 	 * Aktualisiert das Sichtfeld
@@ -189,7 +154,8 @@ public class RenderHelper {
 	public void setSight(int sightX, int sightY) {
 		this.sightX = sightX;
 		this.sightY = sightY;
-		updateSight();
+		updateRaster();
+		updateEntities();
 	}
 
 	/**
@@ -200,16 +166,7 @@ public class RenderHelper {
 	 */
 	public void setToRenderRasters(int x, int y, BufferedImage bImage) {
 		toRender[x][y] = bImage;
-		updateSight();
-	}
-
-	/**
-	 * Ob es notwendig ist, nächsten Tick den Bildschirm zu aktualisieren
-	 * 
-	 * @return true, wenn es notwendig ist
-	 */
-	public boolean shouldUpdate() {
-		return shouldUpdate;
+		updateRaster();
 	}
 
 	/**
@@ -224,36 +181,64 @@ public class RenderHelper {
 	 */
 	public void updateRender(int x, int y) {
 		toRender[x][y] = Main.getSpielfeld().getRasterAt(x, y).getImage(x, y);
-		updateSight();
+		updateRaster();
 
 	}
 
 	/**
 	 * Interne Methode, um das Sichtfeld zu aktualisieren
 	 */
-	private void updateSight() {
-
-		// FIXME: Buggt rum bei anderen Fenstergrößen
-
-		for (int x = 0; x < Integers.SIGHT_X; x++) {
-			for (int y = 0; y < Integers.SIGHT_Y; y++) {
-				if ((x + sightX) < 0
-						|| (x + sightX) >= Main.getSpielfeld().getMapSizeX()
-						|| (x + sightX) < 0
-						|| (y + sightY) >= Main.getSpielfeld().getMapSizeY()
-						|| (y + sightY < 0)) {
-					sight[x][y] = Images.baum;
-					// SightItems[x][y] = null;
-					// SightNPCs = null;
-				} else {
-					sight[x][y] = toRender[x + sightX][y + sightY];
-					// SightItems[x][y] = toRenderItems[x + sightX][y + sightY];
-					// SightNPCs[x][y] = toRenderNPCs[x + sightX][y + sightY];
+	private void updateRaster() {
+		if (shouldUpdateRaster)
+			for (int x = 0; x < Integers.SIGHT_X; x++) {
+				for (int y = 0; y < Integers.SIGHT_Y; y++) {
+					if ((x + sightX) < 0
+							|| (x + sightX) >= Main.getSpielfeld()
+									.getMapSizeX()
+							|| (x + sightX) < 0
+							|| (y + sightY) >= Main.getSpielfeld()
+									.getMapSizeY() || (y + sightY < 0)) {
+						sight[x][y] = Images.baum;
+					} else {
+						sight[x][y] = toRender[x + sightX][y + sightY];
+					}
 				}
 			}
-
-			setShouldUpdateNextTick(true);
-		}
 	}
 
+	private void updateEntities() {
+		if (shouldUpdateEntities) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.clear();
+				for (Entity e : Main.getSpielfeld().getEntitiesInRec(sightX,
+						sightY, Integers.SIGHT_X * Integers.RASTER_SIZE,
+						Integers.SIGHT_Y * Integers.RASTER_SIZE))
+					entitiesInSight.add(new RenderEntity(e));
+			}
+		}
+
+	}
+
+	public void removeRenderEntity(Entity e) {
+		synchronized (entitiesInSight) {
+			entitiesInSight.remove(new RenderEntity(e));
+		}
+		updateEntities();
+	}
+
+	public boolean shouldUpdateRaster() {
+		return shouldUpdateRaster;
+	}
+
+	public void setShouldUpdateRaster(boolean shouldUpdateRaster) {
+		this.shouldUpdateRaster = shouldUpdateRaster;
+	}
+
+	public boolean shouldUpdateEntities() {
+		return shouldUpdateEntities;
+	}
+
+	public void setShouldUpdateEntities(boolean shouldUpdateEntities) {
+		this.shouldUpdateEntities = shouldUpdateEntities;
+	}
 }

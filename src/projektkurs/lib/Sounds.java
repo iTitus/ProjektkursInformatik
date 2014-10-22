@@ -33,6 +33,8 @@ public final class Sounds {
 			soundFileURL = Main.class.getResource("resources" + File.separator
 					+ "sounds" + File.separator + fileName);
 
+			Logger.info("Successfully loaded sound: " + fileName);
+
 			// clip = Applet.newAudioClip(soundFileURL);
 
 		}

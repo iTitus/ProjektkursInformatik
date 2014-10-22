@@ -15,6 +15,7 @@ import projektkurs.lib.Images;
 import projektkurs.lib.Init;
 import projektkurs.lib.Init.State;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Logger;
 import projektkurs.lib.Strings;
 import projektkurs.render.GameWindow;
 import projektkurs.render.Render;
@@ -29,7 +30,7 @@ import projektkurs.world.TempMapBuilder;
  * Die Hauptklasse
  * 
  */
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public final class Main {
 
 	/**
@@ -66,15 +67,15 @@ public final class Main {
 	public static Figur figur;
 	private static InputManager imgr;
 
-	// private static Spielfeld map;
+	private static ArrayList<Method> initMethods = new ArrayList<Method>();
+
 	private static TempMapBuilder map;
+
 	private static Render render;
 
 	private static RenderHelper renderHelper;
 
 	private static LoopThread renderThread, simulationThread, moveThread;
-
-	private static ArrayList<Method> initMethods;
 
 	/**
 	 * Verlaesst das Spiel
@@ -139,7 +140,7 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
-		figur = new Figur(16, 16, Images.charakter);
+		figur = new Figur(32, 32, Images.charakter);
 		imgr = new InputManager();
 		// map = new Spielfeld();
 		map = new TempMapBuilder();
@@ -199,33 +200,42 @@ public final class Main {
 			simulationThread.pause(false);
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 * @return
+	 * @throws Throwable
+	 */
 	private static ArrayList<Class<?>> getClassesInDir(File dir)
 			throws Throwable {
 		ArrayList<Class<?>> ret = new ArrayList<Class<?>>();
 		if (dir.isFile())
 			return ret;
-		else {
-			File[] files = dir.listFiles();
 
-			for (File file : files) {
-				if (file.isFile()
-						&& file.getName().toLowerCase().endsWith(".class")) {
-					String path = Main.class.getPackage().getName()
-							+ file.getAbsolutePath().split(
-									Main.class.getPackage().getName())[1];
-					path = path.replace(File.separator, ".").replace(".class",
-							"");
-					ret.add(Class.forName(path));
-				} else
-					ret.addAll(getClassesInDir(file));
-			}
+		File[] files = dir.listFiles();
+
+		for (File file : files) {
+			if (file.isFile()
+					&& file.getName().toLowerCase().endsWith(".class")) {
+				String path = Main.class.getPackage().getName()
+						+ file.getAbsolutePath().split(
+								Main.class.getPackage().getName())[1];
+				path = path.replace(File.separator, ".").replace(".class", "");
+				ret.add(Class.forName(path));
+			} else
+				ret.addAll(getClassesInDir(file));
 		}
+
 		return ret;
 	}
 
+	/**
+	 * 
+	 * @param state
+	 */
 	private static void init(State state) {
 
-		if (initMethods == null) {
+		if (initMethods.isEmpty()) {
 			try {
 				ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>();
 				allClasses.addAll(getClassesInDir(new File(Main.class
@@ -235,43 +245,56 @@ public final class Main {
 					for (Method m : cls.getDeclaredMethods()) {
 						if (Modifier.isStatic(m.getModifiers())
 								&& m.getAnnotation(Init.class) != null) {
-							if (initMethods == null)
-								initMethods = new ArrayList<Method>();
 							initMethods.add(m);
-							if (m.getAnnotation(Init.class).state()
-									.equals(state)) {
-								boolean accessible = m.isAccessible();
-								m.setAccessible(true);
-								System.out.println("Invoking @" + state + ": "
-										+ m.toString());
-								m.invoke(null);
-								m.setAccessible(accessible);
-							}
+							invoke(m, state);
 						}
 					}
 				}
 
 			} catch (Throwable t) {
-				t.printStackTrace();
+				Logger.logThrowable("Error while invoking init methods @"
+						+ state + ": ", t);
+				exit();
 			}
 		} else {
 			try {
-				for (Method m : initMethods) {
-					if (m.getAnnotation(Init.class).state().equals(state)) {
-						boolean accessible = m.isAccessible();
-						m.setAccessible(true);
-						System.out.println("Invoking @" + state + ": "
-								+ m.toString());
-						m.invoke(null);
-						m.setAccessible(accessible);
-					}
-
-				}
+				invokeAllMethods(initMethods, state);
 			} catch (Throwable t) {
-				t.printStackTrace();
+				Logger.logThrowable("Error while invoking init methods @"
+						+ state + ": ", t);
+				exit();
 			}
 		}
 
+	}
+
+	/**
+	 * 
+	 * @param m
+	 * @param state
+	 * @throws Throwable
+	 */
+	private static void invoke(Method m, State state) throws Throwable {
+		if (m.getAnnotation(Init.class).state().equals(state)) {
+			boolean accessible = m.isAccessible();
+			m.setAccessible(true);
+			Logger.info("Invoking @" + state + ": " + m.toString());
+			m.invoke(null);
+			m.setAccessible(accessible);
+		}
+	}
+
+	/**
+	 * 
+	 * @param allMethods
+	 * @param state
+	 * @throws Throwable
+	 */
+	private static void invokeAllMethods(ArrayList<Method> allMethods,
+			State state) throws Throwable {
+		for (Method m : allMethods) {
+			invoke(m, state);
+		}
 	}
 
 	/**
@@ -288,8 +311,7 @@ public final class Main {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				System.err
-						.println("[ERROR] Couldn't wait for the options window!");
+				Logger.logThrowable("Couldn't wait for the options window!", e);
 			}
 		}
 

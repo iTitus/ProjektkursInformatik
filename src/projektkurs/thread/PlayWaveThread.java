@@ -6,6 +6,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
+import projektkurs.lib.Logger;
 import projektkurs.lib.Sounds.Sound;
 
 /**
@@ -20,7 +21,7 @@ public class PlayWaveThread extends Thread {
 	private final Sound sound;
 
 	public PlayWaveThread(Sound _sound) {
-		super("Sound - " + NUM_THREADS++);
+		super("Sound - " + ++NUM_THREADS);
 		sound = _sound;
 	}
 
@@ -28,10 +29,10 @@ public class PlayWaveThread extends Thread {
 	public void run() {
 
 		SourceDataLine line = null;
+		AudioInputStream stream = null;
 
 		try {
-			AudioInputStream stream = AudioSystem.getAudioInputStream(sound
-					.getSoundFileURL());
+			stream = AudioSystem.getAudioInputStream(sound.getSoundFileURL());
 			AudioFormat format = stream.getFormat();
 			line = (SourceDataLine) AudioSystem.getLine(new DataLine.Info(
 					SourceDataLine.class, format));
@@ -45,12 +46,13 @@ public class PlayWaveThread extends Thread {
 					line.write(data, 0, bytesRead);
 			}
 		} catch (Exception e) {
-			System.err.println("[ERROR] Playing sound file '"
-					+ sound.getSoundFileURL() + "'");
+			Logger.logThrowable(
+					"Error while playing sound file '" + sound.getSoundFileURL() + "'", e);
 		} finally {
 			try {
 				line.drain();
 				line.close();
+				stream.close();
 			} catch (Exception e) {
 			}
 		}

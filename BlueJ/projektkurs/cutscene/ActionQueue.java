@@ -23,19 +23,17 @@ public class ActionQueue {
 		/**
 		 * Interne Referenz zur vorherigen ActionNode
 		 */
-		private ActionNode prev;
+		private ActionNode next;
 
 		/**
 		 * Konstruktor für ActionNodes
 		 * 
 		 * @param _action
 		 *            ist die Action
-		 * @param _prev
-		 *            ist die vorherige ActionNode
 		 */
-		public ActionNode(Action _action, ActionNode _prev) {
+		public ActionNode(Action _action) {
 			action = _action;
-			prev = _prev;
+			next = null;
 		}
 
 		/**
@@ -52,18 +50,18 @@ public class ActionQueue {
 		 * 
 		 * @return
 		 */
-		public ActionNode getPrevious() {
-			return prev;
+		public ActionNode getNext() {
+			return next;
 		}
 
 		/**
 		 * Setzt die vorherige ActionNode
 		 * 
-		 * @param _prev
+		 * @param _next
 		 *            ist die neue vorherige ActionNode
 		 */
-		public void setPrevious(ActionNode _prev) {
-			prev = _prev;
+		public void setNext(ActionNode _next) {
+			next = _next;
 		}
 
 		@Override
@@ -89,8 +87,11 @@ public class ActionQueue {
 	 * Löst die oberste Action von der Schlange
 	 */
 	public void deQueue() {
-		if (!empty())
-			head = head.getPrevious();
+		if (empty())
+			return;
+		head = head.getNext();
+		if (empty())
+			tail = null;
 	}
 
 	/**
@@ -108,14 +109,12 @@ public class ActionQueue {
 	 * @param toPush
 	 */
 	public void enQueue(Action toPush) {
-		ActionNode node = new ActionNode(toPush, null);
-		if (empty()) {
-			head = tail = node;
-		} else {
-			tail.setPrevious(node);
-			tail = node;
-		}
-
+		ActionNode node = new ActionNode(toPush);
+		if (empty())
+			head = node;
+		else
+			tail.setNext(node);
+		tail = node;
 	}
 
 	/**
@@ -136,7 +135,7 @@ public class ActionQueue {
 		ActionNode currNode = head;
 		while (currNode != null) {
 			nodes.add(currNode);
-			currNode = currNode.getPrevious();
+			currNode = currNode.getNext();
 		}
 
 		return "ActionQueue" + nodes.toString();

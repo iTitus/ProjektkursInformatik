@@ -228,7 +228,7 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 	}
 
-	private void setFinished() {
+	private static void setFinished() {
 		isFinished = true;
 	}
 }

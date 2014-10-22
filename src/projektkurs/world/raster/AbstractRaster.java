@@ -3,11 +3,13 @@ package projektkurs.world.raster;
 import java.awt.image.BufferedImage;
 
 import projektkurs.lib.Direction;
+import projektkurs.lib.Logger;
 import projektkurs.world.raster.extra.ExtraInformation;
 
 /**
  * Woraus die Welt besteht: Das abstrakte Raster
  */
+@SuppressWarnings("unused")
 public abstract class AbstractRaster {
 
 	/**
@@ -66,8 +68,8 @@ public abstract class AbstractRaster {
 	 *            Der Mausknopf
 	 */
 	public void onClick(int x, int y, int button) {
-		System.out.println("Clicked on Raster @{x=" + x + ", y=" + y + "}: "
-				+ this);
+		Logger.info("Clicked on Raster @{x=" + x + ", y=" + y + "}: "
+				+ this.toString());
 	}
 
 	@Override

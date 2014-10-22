@@ -1,5 +1,6 @@
 package projektkurs.world;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -34,12 +35,14 @@ public class TempMapBuilder {
 	private static final Random rand = new Random();
 
 	private Collection<Entity> entities;
-	private ExtraInformation[][] extras;
 
+	private ExtraInformation[][] extras;
 	private AbstractRaster[][] map;
 
 	private int SpielerpositionX;
 	private int SpielerpositionY;
+
+	public boolean isUpdating;
 
 	/**
 	 * 
@@ -48,7 +51,7 @@ public class TempMapBuilder {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 
-		entities = Collections.synchronizedCollection(new Vector<Entity>());
+		entities = Collections.synchronizedCollection(new ArrayList<Entity>());
 
 		generateMap();
 
@@ -65,6 +68,25 @@ public class TempMapBuilder {
 		synchronized (entities) {
 			entities.remove(e);
 		}
+	}
+
+	public Collection<Entity> getEntitiesInRec(int posX, int posY, int sizeX,
+			int sizeY) {
+		Collection<Entity> ret = Collections
+				.synchronizedCollection(new Vector<Entity>());
+
+		synchronized (entities) {
+			Iterator<Entity> i = entities.iterator();
+			Entity e;
+
+			while (i.hasNext()) {
+				e = i.next();
+				if (e.isInside(posX, posY, sizeX, sizeY))
+					ret.add(e);
+			}
+		}
+
+		return ret;
 	}
 
 	/**
@@ -93,7 +115,7 @@ public class TempMapBuilder {
 	 */
 	public Collection<Entity> getEntityList() {
 		synchronized (entities) {
-			return Collections.unmodifiableCollection(entities);
+			return entities;
 		}
 	}
 
@@ -246,9 +268,11 @@ public class TempMapBuilder {
 	 * @param e
 	 */
 	public void spawn(Entity e) {
-		synchronized (entities) {
-			if (!entities.contains(e))
-				entities.add(e);
+		if (e != null) {
+			synchronized (entities) {
+				if (!entities.contains(e))
+					entities.add(e);
+			}
 		}
 	}
 
@@ -256,6 +280,8 @@ public class TempMapBuilder {
 	 * Updated das Spielfeld
 	 */
 	public void update() {
+
+		isUpdating = true;
 
 		Direction d = Main.getInputManager().getNextDirection();
 
@@ -277,24 +303,19 @@ public class TempMapBuilder {
 				Main.getRenderHelper().moveSight(0, d.getOffsetY());
 				SpielerpositionY += d.getOffsetY();
 			}
-			// if ((abstractItem[SpielerpositionX][SpielerpositionY] != null)
-			// || !Main.getFigur().getInventory().isInventoryFull()) {
-			// Main.getFigur()
-			// .getInventory()
-			// .addItem(
-			// abstractItem[SpielerpositionX][SpielerpositionY]);
-			// abstractItem[SpielerpositionX][SpielerpositionY] = null;
-			// System.out.println(Main.getFigur().getInventory().toString());
-			// Main.getRenderHelper().setToRenderItems(SpielerpositionX,
-			// SpielerpositionY, null);
-			// }
-
 		}
 
-		// FIXME: entity update
-		// Hier alle NPCs einfügen; das geht vieeel einfacher. Ich wuuste nicht
-		// genau wie...
-		// testguy.update();
+		synchronized (entities) {
+			Iterator<Entity> i = entities.iterator();
+			while (i.hasNext()) {
+				Entity e = i.next();
+				if (e != null && e.canUpdate())
+					e.update();
+			}
+		}
+
+		isUpdating = false;
+
 	}
 
 	/**
@@ -348,7 +369,7 @@ public class TempMapBuilder {
 
 		// ENTITIES!
 		spawn(Main.getFigur());
-		spawn(new NPC_testguy(32, 32, Images.test_guy));
+		spawn(new NPC_testguy(64, 64, Images.test_guy));
 
 	}
 
@@ -359,7 +380,7 @@ public class TempMapBuilder {
 	 * @return
 	 */
 	private boolean isEntityAtPos(int x, int y) {
-		return getEntityAt(x, y) instanceof Entity;
+		return getEntityAt(x, y) != null;
 	}
 
 	/**

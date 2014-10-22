@@ -1,6 +1,6 @@
 package projektkurs.dialogsystem;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class Dialog {
 
 	private int AnzahlAussagenmöglichkeiten;

@@ -47,13 +47,12 @@ public class Images {
 	private static BufferedImage loadImage(String name) {
 
 		BufferedImage img = null;
-
 		try {
 			img = ImageIO.read(Main.class.getResource("resources"
 					+ File.separator + "images" + File.separator + name));
+			Logger.info("Successfully loaded image: " + name);
 		} catch (Exception e) {
-			System.err.println("[ERROR] Unable to load image with name: "
-					+ name);
+			Logger.logThrowable("Unable to load image with name: " + name, e);
 		}
 		return img;
 	}

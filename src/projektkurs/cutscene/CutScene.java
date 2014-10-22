@@ -15,9 +15,6 @@ public class CutScene {
 
 	private int elapsedTicks;
 
-	/**
-	 * WIR BRAUCHENS NOCH! BÖSES JAVA!
-	 */
 	@SuppressWarnings("unused")
 	private ArrayList<CutSceneObject> objects;
 
@@ -68,8 +65,6 @@ public class CutScene {
 	}
 
 	public void update() {
-
-		System.out.println(elapsedTicks);
 
 		if (elapsedTicks == 0 && !startupQueue.empty()) {
 

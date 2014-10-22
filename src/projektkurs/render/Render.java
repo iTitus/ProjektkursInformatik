@@ -1,7 +1,5 @@
 package projektkurs.render;
 
-import projektkurs.Main;
-
 /**
  * Renderklasse
  * 
@@ -37,9 +35,6 @@ public class Render {
 	 * Updated den Bildschirm
 	 */
 	public void update() {
-		if (Main.getRenderHelper().shouldUpdate()) {
-			gameWindow.repaint();
-			Main.getRenderHelper().setShouldUpdateNextTick(false);
-		}
+		gameWindow.repaint(0, 0, 0, 0);
 	}
 }
