@@ -1,10 +1,12 @@
 package projektkurs.thread;
 
+import projektkurs.lib.Logger;
+
 /**
  * Abstrakter Loopthread
  * 
  * @author Miles
- *
+ * 
  */
 public abstract class LoopThread extends Thread {
 
@@ -58,6 +60,8 @@ public abstract class LoopThread extends Thread {
 		super.start();
 		running = true;
 		pausing = false;
+		Logger.info("Successfully started Thread: "
+				+ getClass().getSimpleName());
 	}
 
 	/**

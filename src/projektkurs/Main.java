@@ -16,6 +16,7 @@ import projektkurs.lib.Init;
 import projektkurs.lib.Init.State;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Logger;
+import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
 import projektkurs.render.GameWindow;
 import projektkurs.render.Render;
@@ -87,6 +88,9 @@ public final class Main {
 			renderThread.terminate();
 		if (simulationThread != null)
 			simulationThread.terminate();
+		// TODO: SAVE
+		Sounds.closeAll();
+		Logger.info("Bye bye");
 		System.exit(0);
 	}
 
@@ -302,7 +306,10 @@ public final class Main {
 	 */
 	private static void startGame() {
 
+		Logger.info("Started loading!");
+
 		// PreInit
+		// TODO: Load from disk
 		init(State.PRE);
 
 		Option.createAndShowGUI();
@@ -329,6 +336,8 @@ public final class Main {
 
 		// PostInit
 		init(State.POST);
+
+		Logger.info("Finished loading!");
 
 	}
 }

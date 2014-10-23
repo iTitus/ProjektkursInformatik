@@ -35,6 +35,6 @@ public class Render {
 	 * Updated den Bildschirm
 	 */
 	public void update() {
-		gameWindow.repaint(0, 0, 0, 0);
+		gameWindow.repaint();
 	}
 }

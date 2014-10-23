@@ -121,7 +121,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 		if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
 			CutSceneManager.startCutScene(CutSceneManager.TEST());
 		else if (e.getButton() == LEFT_MOUSE_BUTTON)
-			Sounds.test.play();
+			Sounds.test.playFromStart();
 
 		float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
 		if (rasterX < 0)

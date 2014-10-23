@@ -92,6 +92,10 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		return isFinished;
 	}
 
+	private static void setFinished() {
+		isFinished = true;
+	}
+
 	private JLabel charakterBild;
 
 	private final JSlider sliderSightX, sliderSightY;
@@ -226,9 +230,5 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 		Integers.changeSight(sliderSightX.getValue(), sliderSightY.getValue());
 
-	}
-
-	private static void setFinished() {
-		isFinished = true;
 	}
 }

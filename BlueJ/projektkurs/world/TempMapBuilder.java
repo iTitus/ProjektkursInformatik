@@ -34,15 +34,15 @@ public class TempMapBuilder {
 
 	private static final Random rand = new Random();
 
-	private Collection<Entity> entities;
-
-	private ExtraInformation[][] extras;
-	private AbstractRaster[][] map;
-
-	private int SpielerpositionX;
-	private int SpielerpositionY;
-
 	public boolean isUpdating;
+
+	private Collection<Entity> entities;
+	private ExtraInformation[][] extras;
+
+	private AbstractRaster[][] map;
+	private int SpielerpositionX;
+
+	private int SpielerpositionY;
 
 	/**
 	 * 

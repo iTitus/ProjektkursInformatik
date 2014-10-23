@@ -19,7 +19,7 @@ public class GameWindow extends JLabel {
 	public void paint(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
-		
+
 		for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
 			for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
 				g2d.drawImage(Main.getRenderHelper().getSight()[x][y], x

@@ -18,13 +18,13 @@ import projektkurs.render.entity.RenderEntity;
 @SuppressWarnings("unused")
 public class RenderHelper {
 
-	private boolean shouldUpdateRaster;
-	private boolean shouldUpdateEntities;
-
 	/**
 	 * 
 	 */
 	private Collection<RenderEntity> entitiesInSight;
+	private boolean shouldUpdateEntities;
+
+	private boolean shouldUpdateRaster;
 
 	/**
 	 * Sichtfeld
@@ -143,6 +143,21 @@ public class RenderHelper {
 		}
 	}
 
+	public void removeRenderEntity(Entity e) {
+		synchronized (entitiesInSight) {
+			entitiesInSight.remove(new RenderEntity(e));
+		}
+		updateEntities();
+	}
+
+	public void setShouldUpdateEntities(boolean shouldUpdateEntities) {
+		this.shouldUpdateEntities = shouldUpdateEntities;
+	}
+
+	public void setShouldUpdateRaster(boolean shouldUpdateRaster) {
+		this.shouldUpdateRaster = shouldUpdateRaster;
+	}
+
 	/**
 	 * Aktualisiert das Sichtfeld
 	 * 
@@ -169,6 +184,14 @@ public class RenderHelper {
 		updateRaster();
 	}
 
+	public boolean shouldUpdateEntities() {
+		return shouldUpdateEntities;
+	}
+
+	public boolean shouldUpdateRaster() {
+		return shouldUpdateRaster;
+	}
+
 	/**
 	 * Ermoeglicht die Veraenderung der Texturen von Rastern
 	 * 
@@ -182,6 +205,19 @@ public class RenderHelper {
 	public void updateRender(int x, int y) {
 		toRender[x][y] = Main.getSpielfeld().getRasterAt(x, y).getImage(x, y);
 		updateRaster();
+
+	}
+
+	private void updateEntities() {
+		if (shouldUpdateEntities) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.clear();
+				for (Entity e : Main.getSpielfeld().getEntitiesInRec(sightX,
+						sightY, Integers.SIGHT_X * Integers.RASTER_SIZE,
+						Integers.SIGHT_Y * Integers.RASTER_SIZE))
+					entitiesInSight.add(new RenderEntity(e));
+			}
+		}
 
 	}
 
@@ -204,41 +240,5 @@ public class RenderHelper {
 					}
 				}
 			}
-	}
-
-	private void updateEntities() {
-		if (shouldUpdateEntities) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.clear();
-				for (Entity e : Main.getSpielfeld().getEntitiesInRec(sightX,
-						sightY, Integers.SIGHT_X * Integers.RASTER_SIZE,
-						Integers.SIGHT_Y * Integers.RASTER_SIZE))
-					entitiesInSight.add(new RenderEntity(e));
-			}
-		}
-
-	}
-
-	public void removeRenderEntity(Entity e) {
-		synchronized (entitiesInSight) {
-			entitiesInSight.remove(new RenderEntity(e));
-		}
-		updateEntities();
-	}
-
-	public boolean shouldUpdateRaster() {
-		return shouldUpdateRaster;
-	}
-
-	public void setShouldUpdateRaster(boolean shouldUpdateRaster) {
-		this.shouldUpdateRaster = shouldUpdateRaster;
-	}
-
-	public boolean shouldUpdateEntities() {
-		return shouldUpdateEntities;
-	}
-
-	public void setShouldUpdateEntities(boolean shouldUpdateEntities) {
-		this.shouldUpdateEntities = shouldUpdateEntities;
 	}
 }

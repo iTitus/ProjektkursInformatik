@@ -8,7 +8,7 @@ import projektkurs.lib.Integers;
 
 /**
  * Managt die aktuell laufende CutScene
- *
+ * 
  */
 public final class CutSceneManager {
 
@@ -22,19 +22,13 @@ public final class CutSceneManager {
 
 		currCutScene = cutScene;
 
-		while (!currCutScene.isFinished()) {
+		time = 0L;
 
-			time = System.currentTimeMillis();
-			ForSchleife: {
-				while (true) {
-					if (System.currentTimeMillis() - time > Integers.TICK_TIME) {
-						currCutScene.update();
-						break ForSchleife;
-					}
-				}
+		while (!currCutScene.isFinished()) {
+			if (System.currentTimeMillis() - time > Integers.TICK_TIME) {
+				time = System.currentTimeMillis();
+				currCutScene.update();
 			}
-			// FIXME: Ineffzient!!!!!!!!!!!!!!!!
-			// some sleepy thing
 
 		}
 

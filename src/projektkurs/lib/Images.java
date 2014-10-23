@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
@@ -13,9 +14,18 @@ import projektkurs.lib.Init.State;
  */
 public class Images {
 
-	public static BufferedImage charakter, test_guy;
+	/**
+	 * Userauswahl
+	 */
+	public static BufferedImage charakter;
 
-	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste;
+	public static final HashMap<String, BufferedImage> MAPPINGS = new HashMap<String, BufferedImage>();
+
+	/**
+	 * Werden aus den Resourcen geladen
+	 */
+	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
+			test_guy;
 
 	/**
 	 * Laedt alle Bilder
@@ -23,13 +33,17 @@ public class Images {
 	@Init(state = State.PRE)
 	public static void init() {
 		charakter = defaultCharakter = loadImage("charakter.png");
+		MAPPINGS.put("defaultCharakter", defaultCharakter);
 		test_guy = loadImage("test.png");
-
+		MAPPINGS.put("test_guy", test_guy);
 		rasen = loadImage("rasen.png");
+		MAPPINGS.put("rasen", rasen);
 		wand = loadImage("wand.png");
+		MAPPINGS.put("wand", wand);
 		baum = loadImage("baum.png");
+		MAPPINGS.put("baum", baum);
 		kiste = loadImage("kiste.png");
-
+		MAPPINGS.put("kiste", kiste);
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
@@ -52,7 +66,7 @@ public class Images {
 					+ File.separator + "images" + File.separator + name));
 			Logger.info("Successfully loaded image: " + name);
 		} catch (Exception e) {
-			Logger.logThrowable("Unable to load image with name: " + name, e);
+			Logger.logThrowable("Unable to load image: " + name, e);
 		}
 		return img;
 	}

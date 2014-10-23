@@ -19,6 +19,16 @@ public class Entity implements ICanUpdate {
 	 * 
 	 * @param posX
 	 * @param posY
+	 * @param image
+	 */
+	public Entity(int posX, int posY, BufferedImage image) {
+		this(posX, posY, 32, 32, image);
+	}
+
+	/**
+	 * 
+	 * @param posX
+	 * @param posY
 	 * @param sizeX
 	 * @param sizeY
 	 * @param image
@@ -29,16 +39,6 @@ public class Entity implements ICanUpdate {
 		this.image = image;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-	}
-
-	/**
-	 * 
-	 * @param posX
-	 * @param posY
-	 * @param image
-	 */
-	public Entity(int posX, int posY, BufferedImage image) {
-		this(posX, posY, 32, 32, image);
 	}
 
 	@Override

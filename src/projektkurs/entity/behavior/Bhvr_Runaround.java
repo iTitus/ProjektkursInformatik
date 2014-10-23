@@ -10,7 +10,7 @@ public class Bhvr_Runaround implements IBehavior {
 
 	@Override
 	public void onTick(Entity e) {
-		if (rand.nextInt(2) > 0) {
+		if (rand.nextInt(100) > 75) {
 			e.moveBy(rand.nextInt(3) - 1, rand.nextInt(3) - 1);
 		}
 

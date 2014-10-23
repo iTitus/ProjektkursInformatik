@@ -3,6 +3,7 @@ package projektkurs.lib;
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -35,8 +36,8 @@ public final class Logger {
 	 * 
 	 * @param msg
 	 */
-	public static void info(String msg) {
-		log(LogLevel.INFO, msg);
+	public static void debug(String msg) {
+		log(LogLevel.DEBUG, msg);
 	}
 
 	/**
@@ -52,8 +53,8 @@ public final class Logger {
 	 * 
 	 * @param msg
 	 */
-	public static void debug(String msg) {
-		log(LogLevel.DEBUG, msg);
+	public static void info(String msg) {
+		log(LogLevel.INFO, msg);
 	}
 
 	/**
@@ -98,8 +99,22 @@ public final class Logger {
 	 * @param t
 	 */
 	public static void logThrowable(String msg, Throwable t) {
-		Object[] str = new String[t.getStackTrace().length];
-		log(LogLevel.WARN, msg + t.getMessage(), str);
+
+		ArrayList<String> stackTrace = new ArrayList<String>();
+
+		stackTrace.add(t.toString());
+		StackTraceElement[] trace = t.getStackTrace();
+		for (StackTraceElement traceElement : trace)
+			stackTrace.add("\tat " + traceElement);
+
+		for (Throwable se : t.getSuppressed())
+			logThrowable("Supressed: " + se.getMessage(), se);
+
+		Throwable cause = t.getCause();
+		if (cause != null)
+			logThrowable("Caused by: " + cause.getMessage(), cause);
+
+		log(LogLevel.WARN, msg + t.getMessage(), stackTrace.toArray());
 	}
 
 	/**

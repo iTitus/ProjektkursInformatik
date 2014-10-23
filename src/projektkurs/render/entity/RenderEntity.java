@@ -16,6 +16,17 @@ public class RenderEntity {
 		this.e = e;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof RenderEntity)
+			return ((RenderEntity) obj).e.equals(e);
+		return super.equals(obj);
+	}
+
+	public Entity getE() {
+		return e;
+	}
+
 	public int getRelX() {
 		return e.getPosX()
 				- (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE);
@@ -26,20 +37,9 @@ public class RenderEntity {
 				- (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE);
 	}
 
-	public Entity getE() {
-		return e;
-	}
-
 	@Override
 	public int hashCode() {
 		return e.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof RenderEntity)
-			return ((RenderEntity) obj).e.equals(e);
-		return super.equals(obj);
 	}
 
 }

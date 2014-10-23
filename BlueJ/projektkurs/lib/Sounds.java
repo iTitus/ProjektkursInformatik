@@ -1,27 +1,27 @@
 package projektkurs.lib;
 
 import java.io.File;
-import java.net.URL;
+import java.util.HashMap;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import projektkurs.Main;
 import projektkurs.lib.Init.State;
-import projektkurs.thread.PlayWaveThread;
 
 /**
  * Zuständig für Sounds
- *
+ * 
  */
 public final class Sounds {
 
 	/**
 	 * Die Klasse für ein Sound-Objekt
-	 *
+	 * 
 	 */
 	public static class Sound {
 
-		private URL soundFileURL;
-
-		// private AudioClip clip;
+		private Clip clip;
 
 		/**
 		 * Kostruktor für einen Sound
@@ -30,35 +30,81 @@ public final class Sounds {
 		 */
 		public Sound(String fileName) {
 
-			soundFileURL = Main.class.getResource("resources" + File.separator
-					+ "sounds" + File.separator + fileName);
-
-			Logger.info("Successfully loaded sound: " + fileName);
-
-			// clip = Applet.newAudioClip(soundFileURL);
+			try {
+				clip = AudioSystem.getClip();
+				clip.open(AudioSystem.getAudioInputStream(Main.class
+						.getResource("resources" + File.separator + "sounds"
+								+ File.separator + fileName)));
+				Logger.info("Successfully loaded sound: " + fileName);
+			} catch (Exception e) {
+				Logger.logThrowable("Error while loading sound: " + fileName, e);
+			}
 
 		}
 
 		/**
-		 * URL (Pfad) zur Sounddatei
-		 * 
-		 * @return
+		 * Befreit die Resourcen
 		 */
-		public URL getSoundFileURL() {
-			return soundFileURL;
+		public void close() {
+			stop();
+			clip.close();
+		}
+
+		public void loop(int count) {
+			clip.loop(count);
+		}
+
+		public void loopContinuosly() {
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
+		}
+
+		/**
+		 * Pausiert den Sound
+		 */
+		public void pause() {
+			clip.stop();
 		}
 
 		/**
 		 * Spielt den Sound ab
 		 */
 		public void play() {
-			new PlayWaveThread(this).start();
-			// clip.play();
+			clip.start();
+		}
+
+		/**
+		 * Spielt einen Sound von Vorne
+		 */
+		public void playFromStart() {
+			reset();
+			play();
+		}
+
+		/**
+		 * Resettet den Sound
+		 */
+		public void reset() {
+			clip.setFramePosition(0);
+		}
+
+		/**
+		 * Stoppt und resettet den Sound
+		 */
+		public void stop() {
+			pause();
+			reset();
 		}
 
 	}
 
+	public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
+
 	public static Sound test;
+
+	public static void closeAll() {
+		for (Sound s : MAPPINGS.values())
+			s.close();
+	}
 
 	/**
 	 * Initialisiert alle Sounds
@@ -67,6 +113,7 @@ public final class Sounds {
 	public static void init() {
 
 		test = new Sound("Test.wav");
+		MAPPINGS.put("test", test);
 
 	}
 
