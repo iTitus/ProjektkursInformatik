@@ -108,7 +108,8 @@ public final class Logger {
 			stackTrace.add("\tat " + traceElement);
 
 		for (Throwable se : t.getSuppressed())
-			logThrowable("Supressed: " + se.getMessage(), se);
+			if (se != null)
+				logThrowable("Supressed: " + se.getMessage(), se);
 
 		Throwable cause = t.getCause();
 		if (cause != null)

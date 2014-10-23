@@ -318,7 +318,7 @@ public final class Main {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				Logger.logThrowable("Couldn't wait for the options window!", e);
+				Logger.logThrowable("Couldn't wait for the options window: ", e);
 			}
 		}
 
