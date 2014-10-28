@@ -37,7 +37,8 @@ public final class Sounds {
 								+ File.separator + fileName)));
 				Logger.info("Successfully loaded sound: " + fileName);
 			} catch (Exception e) {
-				Logger.logThrowable("Error while loading sound: " + fileName, e);
+				Logger.logThrowable("Error while loading sound '" + fileName
+						+ "': ", e);
 			}
 
 		}

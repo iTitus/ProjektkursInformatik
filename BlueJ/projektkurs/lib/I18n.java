@@ -49,7 +49,7 @@ public final class I18n {
 					"projektkurs.resources.lang.lang", currentLocale);
 		} catch (Exception e) {
 			Logger.logThrowable("Unable to load resources for Locale "
-					+ currentLocale + "!", e);
+					+ currentLocale + ": ", e);
 		}
 
 	}

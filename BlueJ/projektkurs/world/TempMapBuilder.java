@@ -37,11 +37,11 @@ public class TempMapBuilder {
 	public boolean isUpdating;
 
 	private Collection<Entity> entities;
+
 	private ExtraInformation[][] extras;
-
 	private AbstractRaster[][] map;
-	private int SpielerpositionX;
 
+	private int SpielerpositionX;
 	private int SpielerpositionY;
 
 	/**
