@@ -3,15 +3,24 @@ package projektkurs.item;
 public class ItemStack {
 
 	private AbstractItem item;
-	private int stackSize;
+	private int stackSize, damage;
 
 	public ItemStack(AbstractItem item) {
 		this(item, 1);
 	}
 
 	public ItemStack(AbstractItem item, int stackSize) {
+		this(item, stackSize, 0);
+	}
+
+	public ItemStack(AbstractItem item, int stackSize, int damage) {
 		this.item = item;
 		this.stackSize = stackSize;
+		this.damage = damage;
+	}
+
+	public void damage(int by) {
+		damage += by;
 	}
 
 	@Override
@@ -25,12 +34,16 @@ public class ItemStack {
 		return super.equals(obj);
 	}
 
+	public int getDamage() {
+		return damage;
+	}
+
 	public AbstractItem getItem() {
 		return item;
 	}
 
 	public String getName() {
-		return String.format("%d x %s", stackSize, item.toString());
+		return String.format("%d x %s:%d", stackSize, item.toString(), damage);
 	}
 
 	public int getStackSize() {
@@ -39,7 +52,8 @@ public class ItemStack {
 
 	@Override
 	public int hashCode() {
-		return stackSize * item.hashCode();
+		return ((Integer) stackSize).hashCode() ^ ((Integer) damage).hashCode()
+				^ item.hashCode();
 	}
 
 	public void setItem(AbstractItem item) {

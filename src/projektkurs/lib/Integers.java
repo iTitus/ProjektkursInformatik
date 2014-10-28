@@ -16,7 +16,7 @@ public final class Integers {
 	public static int SIGHT_X = 19;
 	public static int SIGHT_Y = 19;
 
-	public static final int TICK_TIME = 10;
+	public static final int TICK_TIME = 20;
 
 	public static final int WINDOW_HUD_X = 32;
 	public static final int WINDOW_HUD_Y = 32;
