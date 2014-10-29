@@ -67,6 +67,7 @@ public final class Main {
 	}
 
 	public static Figur figur;
+	
 	private static InputManager imgr;
 
 	private static ArrayList<Method> initMethods = new ArrayList<Method>();

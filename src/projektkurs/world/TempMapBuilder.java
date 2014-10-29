@@ -26,7 +26,6 @@ import projektkurs.world.raster.extra.ExtraInformationKiste;
  * TEMPORÄRE MAP!
  * 
  */
-@SuppressWarnings("unused")
 public class TempMapBuilder {
 
 	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
@@ -223,37 +222,6 @@ public class TempMapBuilder {
 	 * 
 	 * @param x
 	 * @param y
-	 * @param itemToSet
-	 */
-	public void setItemAt(int x, int y, EntityItem itemToSet) {
-		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
-			return;
-		synchronized (entities) {
-			entities.add(itemToSet);
-		}
-
-	}
-
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param npc
-	 */
-	public void setNPCAt(int x, int y, EntityNPC npc) {
-
-		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
-			return;
-		synchronized (entities) {
-			entities.add(npc);
-		}
-
-	}
-
-	/**
-	 * 
-	 * @param x
-	 * @param y
 	 * @param r
 	 */
 	public void setRasterAt(int x, int y, AbstractRaster r) {
@@ -379,7 +347,7 @@ public class TempMapBuilder {
 	 * @param y
 	 * @return
 	 */
-	private boolean isEntityAtPos(int x, int y) {
+	public boolean isEntityAtPos(int x, int y) {
 		return getEntityAt(x, y) != null;
 	}
 
@@ -389,7 +357,7 @@ public class TempMapBuilder {
 	 * @param y
 	 * @return
 	 */
-	private boolean isItemAtPos(int x, int y) {
+	public boolean isItemAtPos(int x, int y) {
 		return getEntityAt(x, y) instanceof EntityItem;
 	}
 
@@ -399,7 +367,7 @@ public class TempMapBuilder {
 	 * @param y
 	 * @return
 	 */
-	private boolean isNPCAtPos(int x, int y) {
+	public boolean isNPCAtPos(int x, int y) {
 		return getEntityAt(x, y) instanceof EntityNPC;
 	}
 }
