@@ -3,26 +3,97 @@ package projektkurs.item;
 public class ItemStack {
 
 	private AbstractItem item;
-	private int stackSize;
+	private int stackSize, damage;
 
+	/**
+	 * 
+	 * @param item
+	 */
 	public ItemStack(AbstractItem item) {
 		this(item, 1);
 	}
 
+	/**
+	 * 
+	 * @param item
+	 * @param stackSize
+	 */
 	public ItemStack(AbstractItem item, int stackSize) {
-		this.item = item;
-		this.stackSize = stackSize;
+		this(item, stackSize, 0);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof ItemStack) {
-			ItemStack stack = (ItemStack) obj;
-			return stack.stackSize == stackSize
-					&& ((stack.item == null && item == null) || (stack.item != null
-							&& item != null && stack.item.equals(item)));
-		}
-		return super.equals(obj);
+	/**
+	 * 
+	 * @param item
+	 * @param stackSize
+	 * @param damage
+	 */
+	public ItemStack(AbstractItem item, int stackSize, int damage) {
+		this.item = item;
+		this.stackSize = stackSize;
+		this.damage = damage;
+	}
+
+	/**
+	 * Beschädigt den Stack um by
+	 * 
+	 * @param by
+	 */
+	public void damage(int by) {
+		damage += by;
+	}
+
+	/**
+	 * Ignoriert stacksize und damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemEquals(ItemStack other) {
+		return (other.item == null && item == null)
+				|| (other.item != null && item != null && other.item
+						.equals(item));
+	}
+
+	/**
+	 * Ignoriert damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndStackSizeEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Ignoriert stacksize
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndDamageEquals(ItemStack other) {
+		return other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Streng
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean stackEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	public int getDamage() {
+		return damage;
 	}
 
 	public AbstractItem getItem() {
@@ -30,16 +101,11 @@ public class ItemStack {
 	}
 
 	public String getName() {
-		return String.format("%d x %s", stackSize, item.toString());
+		return String.format("%d x %s:%d", stackSize, item.toString(), damage);
 	}
 
 	public int getStackSize() {
 		return stackSize;
-	}
-
-	@Override
-	public int hashCode() {
-		return stackSize * item.hashCode();
 	}
 
 	public void setItem(AbstractItem item) {

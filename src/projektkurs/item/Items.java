@@ -17,10 +17,10 @@ public final class Items {
 		MAPPINGS.put("42", ITEM_42);
 
 		NUKE = new BaseItem("nuke", null);
-		MAPPINGS.put("42", NUKE);
+		MAPPINGS.put("nuke", NUKE);
 
 		KEY = new BaseItem("key", null);
-		MAPPINGS.put("42", KEY);
+		MAPPINGS.put("key", KEY);
 	}
 
 	private Items() {

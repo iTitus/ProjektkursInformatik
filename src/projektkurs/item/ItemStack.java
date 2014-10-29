@@ -5,33 +5,91 @@ public class ItemStack {
 	private AbstractItem item;
 	private int stackSize, damage;
 
+	/**
+	 * 
+	 * @param item
+	 */
 	public ItemStack(AbstractItem item) {
 		this(item, 1);
 	}
 
+	/**
+	 * 
+	 * @param item
+	 * @param stackSize
+	 */
 	public ItemStack(AbstractItem item, int stackSize) {
 		this(item, stackSize, 0);
 	}
 
+	/**
+	 * 
+	 * @param item
+	 * @param stackSize
+	 * @param damage
+	 */
 	public ItemStack(AbstractItem item, int stackSize, int damage) {
 		this.item = item;
 		this.stackSize = stackSize;
 		this.damage = damage;
 	}
 
+	/**
+	 * Beschädigt den Stack um by
+	 * 
+	 * @param by
+	 */
 	public void damage(int by) {
 		damage += by;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof ItemStack) {
-			ItemStack stack = (ItemStack) obj;
-			return stack.stackSize == stackSize
-					&& ((stack.item == null && item == null) || (stack.item != null
-							&& item != null && stack.item.equals(item)));
-		}
-		return super.equals(obj);
+	/**
+	 * Ignoriert stacksize und damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemEquals(ItemStack other) {
+		return (other.item == null && item == null)
+				|| (other.item != null && item != null && other.item
+						.equals(item));
+	}
+
+	/**
+	 * Ignoriert damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndStackSizeEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Ignoriert stacksize
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndDamageEquals(ItemStack other) {
+		return other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Streng
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean stackEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
 	}
 
 	public int getDamage() {
@@ -48,12 +106,6 @@ public class ItemStack {
 
 	public int getStackSize() {
 		return stackSize;
-	}
-
-	@Override
-	public int hashCode() {
-		return ((Integer) stackSize).hashCode() ^ ((Integer) damage).hashCode()
-				^ item.hashCode();
 	}
 
 	public void setItem(AbstractItem item) {

@@ -16,6 +16,7 @@ import projektkurs.lib.Init;
 import projektkurs.lib.Init.State;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Logger;
+import projektkurs.lib.MathUtil;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
 import projektkurs.render.GameWindow;
@@ -144,7 +145,8 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
-		figur = new Figur(32, 32, Images.charakter);
+		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2),
+				MathUtil.ceilDiv(Integers.SIGHT_Y, 2), Images.charakter);
 		imgr = new InputManager();
 		// map = new Spielfeld();
 		map = new TempMapBuilder();

@@ -369,7 +369,7 @@ public class TempMapBuilder {
 
 		// ENTITIES!
 		spawn(Main.getFigur());
-		spawn(new NPC_testguy(64, 64, Images.test_guy));
+		spawn(new NPC_testguy(2, 2, Images.test_guy));
 
 	}
 

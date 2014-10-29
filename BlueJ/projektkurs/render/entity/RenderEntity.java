@@ -28,12 +28,12 @@ public class RenderEntity {
 	}
 
 	public int getRelX() {
-		return e.getPosX()
+		return (e.getPosX() * Integers.RASTER_SIZE)
 				- (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE);
 	}
 
 	public int getRelY() {
-		return e.getPosY()
+		return (e.getPosY() * Integers.RASTER_SIZE)
 				- (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE);
 	}
 
