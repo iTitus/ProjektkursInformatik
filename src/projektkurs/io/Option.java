@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +24,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import projektkurs.Main;
+import projektkurs.lib.I18n;
+import projektkurs.lib.I18n.SupportedLocales;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
@@ -78,9 +81,10 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		JComponent contentPane = new Option();
 		frame.setContentPane(contentPane);
 
-		frame.setBounds(10, 10, 512, 512);
+		frame.setBounds(16, 16, 0, 0);
 		frame.setMinimumSize(new Dimension(512, 512));
 		frame.setUndecorated(true);
+		frame.setResizable(false);
 
 		frame.pack();
 
@@ -96,46 +100,49 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		isFinished = true;
 	}
 
-	private JLabel charakterBild;
-
+	private final JLabel charakterBild, nameSightX, nameSightY;
+	private final JRadioButton defaultCharacter, altCharakter;
+	private final JComboBox<SupportedLocales> langBox;
+	private final JButton ok, cancel;
 	private final JSlider sliderSightX, sliderSightY;
 
 	private Option() {
 
 		super(new GridLayout(0, 1));
 
-		JPanel charakterAuswahl = new JPanel();
+		JPanel langChooser = new JPanel(new GridLayout());
 
+		langBox = new JComboBox<SupportedLocales>(I18n.getSupportedLocales());
+		langBox.setSelectedIndex(0);
+		langBox.setActionCommand("lang");
+		langBox.addActionListener(this);
+
+		langChooser.add(langBox);
+
+		langChooser.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+		JPanel charakterAuswahl = new JPanel();
 		JPanel buttons = new JPanel(new GridLayout(0, 1));
 
-		JRadioButton b1 = new JRadioButton("Charakter");
-		JRadioButton b2 = new JRadioButton("Baum");
-		JRadioButton b3 = new JRadioButton("Rasen");
-		JRadioButton b4 = new JRadioButton("Wand");
+		defaultCharacter = new JRadioButton(
+				I18n.getString("button.chooseCharacter.default"));
+		altCharakter = new JRadioButton(
+				I18n.getString("button.chooseCharacter.altCharacter"));
 
-		b1.setActionCommand("charakter");
-		b1.setSelected(true);
-		b2.setActionCommand("baum");
-		b3.setActionCommand("rasen");
-		b4.setActionCommand("wand");
+		defaultCharacter.setActionCommand("charakter");
+		defaultCharacter.addActionListener(this);
+		defaultCharacter.setSelected(true);
+		altCharakter.setActionCommand("altCharakter");
+		altCharakter.addActionListener(this);
 
 		ButtonGroup group = new ButtonGroup();
-		group.add(b1);
-		group.add(b2);
-		group.add(b3);
-		group.add(b4);
+		group.add(defaultCharacter);
+		group.add(altCharakter);
 
-		b1.addActionListener(this);
-		b2.addActionListener(this);
-		b3.addActionListener(this);
-		b4.addActionListener(this);
+		buttons.add(defaultCharacter);
+		buttons.add(altCharakter);
 
 		charakterBild = new JLabel(new ImageIcon(Images.defaultCharakter));
-
-		buttons.add(b1);
-		buttons.add(b2);
-		buttons.add(b3);
-		buttons.add(b4);
 
 		charakterAuswahl.add(buttons);
 		charakterAuswahl.add(charakterBild);
@@ -160,7 +167,14 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		sliderSightY.setPaintTicks(true);
 		sliderSightY.setPaintLabels(true);
 
+		nameSightX = new JLabel(I18n.getString("description.sightX") + ": "
+				+ sliderSightX.getValue());
+		nameSightY = new JLabel(I18n.getString("description.sightY") + ": "
+				+ sliderSightY.getValue());
+
+		sightSettings.add(nameSightX);
 		sightSettings.add(sliderSightX);
+		sightSettings.add(nameSightY);
 		sightSettings.add(sliderSightY);
 
 		sightSettings
@@ -168,8 +182,8 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 		JPanel specialButtons = new JPanel(new GridLayout(1, 0));
 
-		JButton ok = new JButton("Start Game");
-		JButton cancel = new JButton("Cancel");
+		ok = new JButton(I18n.getString("button.start"));
+		cancel = new JButton(I18n.getString("button.cancel"));
 
 		ok.addActionListener(this);
 		ok.setActionCommand("ok");
@@ -180,6 +194,10 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 		specialButtons.add(ok);
 		specialButtons.add(cancel);
 
+		specialButtons.setBorder(BorderFactory
+				.createEmptyBorder(20, 20, 20, 20));
+
+		add(langChooser);
 		add(charakterAuswahl);
 		add(sightSettings);
 		add(specialButtons);
@@ -189,24 +207,19 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-		case "baum": {
-			charakterBild.setIcon(new ImageIcon(Images.baum));
-			Images.setCharakterImage(Images.baum);
-			break;
-		}
-		case "rasen": {
-			charakterBild.setIcon(new ImageIcon(Images.rasen));
-			Images.setCharakterImage(Images.rasen);
-			break;
-		}
-		case "wand": {
-			charakterBild.setIcon(new ImageIcon(Images.wand));
-			Images.setCharakterImage(Images.wand);
+		case "lang": {
+			I18n.changeLocale((SupportedLocales) langBox.getSelectedItem());
+			update();
 			break;
 		}
 		case "charakter": {
 			charakterBild.setIcon(new ImageIcon(Images.defaultCharakter));
 			Images.setCharakterImage(Images.defaultCharakter);
+			break;
+		}
+		case "altCharakter": {
+			charakterBild.setIcon(new ImageIcon(Images.redNPC));
+			Images.setCharakterImage(Images.redNPC);
 			break;
 		}
 		case "ok": {
@@ -229,6 +242,29 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 
 		Integers.changeSight(sliderSightX.getValue(), sliderSightY.getValue());
+		nameSightX.setText(I18n.getString("description.sightX") + ": "
+				+ sliderSightX.getValue());
+		nameSightY.setText(I18n.getString("description.sightY") + ": "
+				+ sliderSightY.getValue());
 
+	}
+
+	/**
+	 * Interne Methode, um den Namen/die Texte der Buttons zu ändern
+	 */
+	private void update() {
+
+		defaultCharacter.setText(I18n
+				.getString("button.chooseCharacter.default"));
+		altCharakter.setText(I18n
+				.getString("button.chooseCharacter.altCharacter"));
+
+		nameSightX.setText(I18n.getString("description.sightX") + ": "
+				+ sliderSightX.getValue());
+		nameSightY.setText(I18n.getString("description.sightY") + ": "
+				+ sliderSightY.getValue());
+
+		ok.setText(I18n.getString("button.start"));
+		cancel.setText(I18n.getString("button.cancel"));
 	}
 }

@@ -48,29 +48,34 @@ public final class Sounds {
 		 */
 		public void close() {
 			stop();
-			clip.close();
+			if (clip != null)
+				clip.close();
 		}
 
 		public void loop(int count) {
-			clip.loop(count);
+			if (clip != null)
+				clip.loop(count);
 		}
 
 		public void loopContinuosly() {
-			clip.loop(Clip.LOOP_CONTINUOUSLY);
+			if (clip != null)
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 
 		/**
 		 * Pausiert den Sound
 		 */
 		public void pause() {
-			clip.stop();
+			if (clip != null)
+				clip.stop();
 		}
 
 		/**
 		 * Spielt den Sound ab
 		 */
 		public void play() {
-			clip.start();
+			if (clip != null)
+				clip.start();
 		}
 
 		/**
@@ -85,7 +90,8 @@ public final class Sounds {
 		 * Resettet den Sound
 		 */
 		public void reset() {
-			clip.setFramePosition(0);
+			if (clip != null)
+				clip.setFramePosition(0);
 		}
 
 		/**

@@ -222,6 +222,36 @@ public class TempMapBuilder {
 	 * 
 	 * @param x
 	 * @param y
+	 * @return
+	 */
+	public boolean isEntityAtPos(int x, int y) {
+		return getEntityAt(x, y) != null;
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean isItemAtPos(int x, int y) {
+		return getEntityAt(x, y) instanceof EntityItem;
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean isNPCAtPos(int x, int y) {
+		return getEntityAt(x, y) instanceof EntityNPC;
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
 	 * @param r
 	 */
 	public void setRasterAt(int x, int y, AbstractRaster r) {
@@ -337,37 +367,7 @@ public class TempMapBuilder {
 
 		// ENTITIES!
 		spawn(Main.getFigur());
-		spawn(new NPC_testguy(2, 2, Images.test_guy));
+		spawn(new NPC_testguy(2, 2, Images.redNPC));
 
-	}
-
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public boolean isEntityAtPos(int x, int y) {
-		return getEntityAt(x, y) != null;
-	}
-
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public boolean isItemAtPos(int x, int y) {
-		return getEntityAt(x, y) instanceof EntityItem;
-	}
-
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public boolean isNPCAtPos(int x, int y) {
-		return getEntityAt(x, y) instanceof EntityNPC;
 	}
 }

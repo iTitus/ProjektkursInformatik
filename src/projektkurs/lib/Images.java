@@ -25,7 +25,7 @@ public class Images {
 	 * Werden aus den Resourcen geladen
 	 */
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
-			test_guy;
+			redNPC;
 
 	/**
 	 * Laedt alle Bilder
@@ -34,8 +34,8 @@ public class Images {
 	public static void init() {
 		charakter = defaultCharakter = loadImage("charakter.png");
 		MAPPINGS.put("defaultCharakter", defaultCharakter);
-		test_guy = loadImage("test.png");
-		MAPPINGS.put("test_guy", test_guy);
+		redNPC = loadImage("redNPC.png");
+		MAPPINGS.put("redNPC", redNPC);
 		rasen = loadImage("rasen.png");
 		MAPPINGS.put("rasen", rasen);
 		wand = loadImage("wand.png");

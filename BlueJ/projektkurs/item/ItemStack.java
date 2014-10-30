@@ -43,55 +43,6 @@ public class ItemStack {
 		damage += by;
 	}
 
-	/**
-	 * Ignoriert stacksize und damage
-	 * 
-	 * @param other
-	 * @return
-	 */
-	public boolean itemEquals(ItemStack other) {
-		return (other.item == null && item == null)
-				|| (other.item != null && item != null && other.item
-						.equals(item));
-	}
-
-	/**
-	 * Ignoriert damage
-	 * 
-	 * @param other
-	 * @return
-	 */
-	public boolean itemAndStackSizeEquals(ItemStack other) {
-		return other.stackSize == stackSize
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
-
-	/**
-	 * Ignoriert stacksize
-	 * 
-	 * @param other
-	 * @return
-	 */
-	public boolean itemAndDamageEquals(ItemStack other) {
-		return other.damage == damage
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
-
-	/**
-	 * Streng
-	 * 
-	 * @param other
-	 * @return
-	 */
-	public boolean stackEquals(ItemStack other) {
-		return other.stackSize == stackSize
-				&& other.damage == damage
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
-
 	public int getDamage() {
 		return damage;
 	}
@@ -108,12 +59,61 @@ public class ItemStack {
 		return stackSize;
 	}
 
+	/**
+	 * Ignoriert stacksize
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndDamageEquals(ItemStack other) {
+		return other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Ignoriert damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemAndStackSizeEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
+	}
+
+	/**
+	 * Ignoriert stacksize und damage
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean itemEquals(ItemStack other) {
+		return (other.item == null && item == null)
+				|| (other.item != null && item != null && other.item
+						.equals(item));
+	}
+
 	public void setItem(AbstractItem item) {
 		this.item = item;
 	}
 
 	public void setStackSize(int stackSize) {
 		this.stackSize = stackSize;
+	}
+
+	/**
+	 * Streng
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public boolean stackEquals(ItemStack other) {
+		return other.stackSize == stackSize
+				&& other.damage == damage
+				&& ((other.item == null && item == null) || (other.item != null
+						&& item != null && other.item.equals(item)));
 	}
 
 	@Override
