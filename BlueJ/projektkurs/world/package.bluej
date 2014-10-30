@@ -1,8 +1,10 @@
 #BlueJ package file
+objectbench.height=100
+objectbench.width=1599
 package.editor.height=856
-package.editor.width=1802
-package.editor.x=11
-package.editor.y=11
+package.editor.width=1796
+package.editor.x=51
+package.editor.y=51
 package.numDependencies=0
 package.numTargets=2
 package.showExtends=true
@@ -22,6 +24,7 @@ target2.name=TempMapBuilder
 target2.naviview.expanded=true
 target2.showInterface=false
 target2.type=ClassTarget
+target2.typeParameters=
 target2.width=120
 target2.x=180
 target2.y=130

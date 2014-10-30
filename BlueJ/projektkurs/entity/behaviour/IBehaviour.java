@@ -1,5 +1,9 @@
 package projektkurs.entity.behaviour;
 
-public class IBehaviour {
+import projektkurs.entity.Entity;
+
+public interface IBehaviour {
+
+	void onTick(Entity e);
 
 }

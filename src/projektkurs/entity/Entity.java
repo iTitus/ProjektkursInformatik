@@ -2,7 +2,7 @@ package projektkurs.entity;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.entity.behavior.Behaviours;
+import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.lib.ICanUpdate;
 
 /**

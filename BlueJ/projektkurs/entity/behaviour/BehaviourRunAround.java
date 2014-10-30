@@ -1,10 +1,10 @@
-package projektkurs.entity.behavior;
+package projektkurs.entity.behaviour;
 
 import java.util.Random;
 
 import projektkurs.entity.Entity;
 
-public class Bhvr_Runaround implements IBehavior {
+public class BehaviourRunAround implements IBehaviour {
 
 	private static Random rand = new Random();
 

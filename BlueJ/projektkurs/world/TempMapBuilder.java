@@ -11,7 +11,7 @@ import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNPC;
-import projektkurs.entity.NPC_testguy;
+import projektkurs.entity.EntityRedNPC;
 import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Direction;
@@ -367,7 +367,7 @@ public class TempMapBuilder {
 
 		// ENTITIES!
 		spawn(Main.getFigur());
-		spawn(new NPC_testguy(2, 2, Images.redNPC));
+		spawn(new EntityRedNPC(2, 2, Images.redNPC));
 
 	}
 }

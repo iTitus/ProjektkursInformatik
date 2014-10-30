@@ -2,11 +2,11 @@ package projektkurs.entity;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.entity.behavior.Behaviours;
+import projektkurs.entity.behaviour.Behaviours;
 
-public class NPC_testguy extends EntityNPC {
+public class EntityRedNPC extends EntityNPC {
 
-	public NPC_testguy(int posX, int posY, BufferedImage image) {
+	public EntityRedNPC(int posX, int posY, BufferedImage image) {
 		super(posX, posY, image, 100);
 	}
 
