@@ -2,8 +2,8 @@ package projektkurs.world.raster;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.lib.Direction;
-import projektkurs.lib.Logger;
+import projektkurs.util.Direction;
+import projektkurs.util.Logger;
 import projektkurs.world.raster.extra.ExtraInformation;
 
 /**

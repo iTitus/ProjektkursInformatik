@@ -1,9 +1,9 @@
 package projektkurs.render;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -15,16 +15,12 @@ import projektkurs.render.entity.RenderEntity;
  * Helperklasse zum Rendern
  * 
  */
-@SuppressWarnings("unused")
 public class RenderHelper {
 
 	/**
 	 * 
 	 */
-	private Collection<RenderEntity> entitiesInSight;
-	private boolean shouldUpdateEntities;
-
-	private boolean shouldUpdateRaster;
+	private Set<RenderEntity> entitiesInSight;
 
 	/**
 	 * Sichtfeld
@@ -41,71 +37,31 @@ public class RenderHelper {
 	private int sightY;
 
 	/**
-	 * Temporäre Kartengröße in x-Richtung
-	 */
-	private int tempMapSizeX;
-
-	/**
-	 * Temporäre Kartengröße in y-Richtung
-	 */
-	private int tempMapSizeY;
-
-	/**
-	 * Gesamte Map<br>
-	 * <br>
-	 * 1D: X-Koordinate<br>
-	 * 2D: Y-Koordinate<br>
-	 * 
-	 */
-	private BufferedImage[][] toRender;
-
-	/**
 	 * Muss nur einmal am Anfang aufgerufen werden, erstellt einen neuen
 	 * Renderhelper
 	 */
 	public RenderHelper() {
-		int _MapLengthX = Main.getSpielfeld().getMapSizeX();
-		int _MapLengthY = Main.getSpielfeld().getMapSizeY();
-
-		toRender = new BufferedImage[_MapLengthX][_MapLengthY];
 
 		sight = new BufferedImage[Integers.SIGHT_X][Integers.SIGHT_Y];
 
 		sightX = 0;
 		sightY = 0;
 
-		shouldUpdateEntities = true;
-		shouldUpdateRaster = true;
-
 		entitiesInSight = Collections
-				.synchronizedCollection(new ArrayList<RenderEntity>());
+				.newSetFromMap(new ConcurrentHashMap<RenderEntity, Boolean>());
 
-		for (int i = 0; i < _MapLengthX; i++) {
-			for (int j = 0; j < _MapLengthY; j++) {
-				toRender[i][j] = Main.getSpielfeld().getRasterAt(i, j)
-						.getImage(i, j);
-			}
-		}
-		setSight(0, 0);
+		updateRaster();
+		updateEntities();
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public Collection<RenderEntity> getEntitiesInSight() {
+	public Set<RenderEntity> getEntitiesInSight() {
 		synchronized (entitiesInSight) {
 			return entitiesInSight;
 		}
-	}
-
-	/**
-	 * Returnt die aktuelle Sicht (zB an die Renderklasse)
-	 * 
-	 * @return aktuelle Sicht
-	 */
-	public BufferedImage[][] getSight() {
-		return sight;
 	}
 
 	/**
@@ -135,27 +91,34 @@ public class RenderHelper {
 	 *            Bewegung in y-Richtung
 	 */
 	public void moveSight(int dx, int dy) {
-		sightX += dx;
-		sightY += dy;
-		if (!(dx == 0 && dy == 0)) {
+		if (dx != 0 || dy != 0) {
+			sightX += dx;
+			sightY += dy;
 			updateRaster();
 			updateEntities();
 		}
 	}
 
-	public void removeRenderEntity(Entity e) {
-		synchronized (entitiesInSight) {
-			entitiesInSight.remove(new RenderEntity(e));
+	public boolean deSpawn(Entity e) {
+		if (e != null) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.remove(new RenderEntity(e));
+			}
+			return true;
 		}
-		updateEntities();
+		return false;
 	}
 
-	public void setShouldUpdateEntities(boolean shouldUpdateEntities) {
-		this.shouldUpdateEntities = shouldUpdateEntities;
-	}
-
-	public void setShouldUpdateRaster(boolean shouldUpdateRaster) {
-		this.shouldUpdateRaster = shouldUpdateRaster;
+	public boolean spawn(Entity e) {
+		if (e != null
+				&& e.isInside(sightX, sightY, sightX + Integers.SIGHT_X, sightY
+						+ Integers.SIGHT_Y)) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.add(new RenderEntity(e));
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -167,78 +130,75 @@ public class RenderHelper {
 	 *            Y-Koordinate der oberen linken Ecke des Sichtfeldes
 	 */
 	public void setSight(int sightX, int sightY) {
-		this.sightX = sightX;
-		this.sightY = sightY;
-		updateRaster();
-		updateEntities();
+		if (sightX != this.sightX || sightY != this.sightY) {
+			this.sightX = sightX;
+			this.sightY = sightY;
+			updateRaster();
+			updateEntities();
+		}
 	}
 
 	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param bImage
+	 * Interne Methode, um die Entities im Sichtfeld zu aktualisieren
 	 */
-	public void setToRenderRasters(int x, int y, BufferedImage bImage) {
-		toRender[x][y] = bImage;
-		updateRaster();
-	}
-
-	public boolean shouldUpdateEntities() {
-		return shouldUpdateEntities;
-	}
-
-	public boolean shouldUpdateRaster() {
-		return shouldUpdateRaster;
-	}
-
-	/**
-	 * Ermoeglicht die Veraenderung der Texturen von Rastern
-	 * 
-	 * @param xCoordinate
-	 *            X-Koordinate des zu aendernden Rasters
-	 * @param yCoordinate
-	 *            Y-Koordinate des zu aendernden Rasters
-	 * @param img
-	 *            Bild neu dahin gesetzt werden soll
-	 */
-	public void updateRender(int x, int y) {
-		toRender[x][y] = Main.getSpielfeld().getRasterAt(x, y).getImage(x, y);
-		updateRaster();
-
-	}
-
 	private void updateEntities() {
-		if (shouldUpdateEntities) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.clear();
-				for (Entity e : Main.getSpielfeld().getEntitiesInRec(sightX,
-						sightY, Integers.SIGHT_X * Integers.RASTER_SIZE,
-						Integers.SIGHT_Y * Integers.RASTER_SIZE))
-					entitiesInSight.add(new RenderEntity(e));
+		synchronized (entitiesInSight) {
+			entitiesInSight.clear();
+			for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX,
+					sightY, sightX + Integers.SIGHT_X,
+					sightY + Integers.SIGHT_Y))
+				spawn(e);
+		}
+
+	}
+
+	/**
+	 * Interne Methode, um die Raster im Sichtfeld zu aktualisieren
+	 */
+	private void updateRaster() {
+
+		for (int x = 0; x < Integers.SIGHT_X; x++) {
+			for (int y = 0; y < Integers.SIGHT_Y; y++) {
+				if ((x + sightX) < 0
+						|| (x + sightX) >= Main.getSpielfeld().getMapSizeX()
+						|| (x + sightX) < 0
+						|| (y + sightY) >= Main.getSpielfeld().getMapSizeY()
+						|| (y + sightY < 0)) {
+					sight[x][y] = Images.baum;
+				} else {
+					if (Main.getSpielfeld().isRasterAt(x + sightX, y + sightY)) {
+						sight[x][y] = Main.getSpielfeld()
+								.getRasterAt(x + sightX, y + sightY)
+								.getImage(x + sightX, y + sightY);
+					} else {
+						sight[x][y] = null;
+					}
+				}
 			}
 		}
 
 	}
 
 	/**
-	 * Interne Methode, um das Sichtfeld zu aktualisieren
+	 * 
+	 * @return die aktuelle Sicht
 	 */
-	private void updateRaster() {
-		if (shouldUpdateRaster)
-			for (int x = 0; x < Integers.SIGHT_X; x++) {
-				for (int y = 0; y < Integers.SIGHT_Y; y++) {
-					if ((x + sightX) < 0
-							|| (x + sightX) >= Main.getSpielfeld()
-									.getMapSizeX()
-							|| (x + sightX) < 0
-							|| (y + sightY) >= Main.getSpielfeld()
-									.getMapSizeY() || (y + sightY < 0)) {
-						sight[x][y] = Images.baum;
-					} else {
-						sight[x][y] = toRender[x + sightX][y + sightY];
-					}
-				}
-			}
+	public BufferedImage[][] getSight() {
+		return sight;
+	}
+
+	/**
+	 * 
+	 * @param e
+	 */
+	public void move(Entity e) {
+		if (e != null) {
+			if (!spawn(e))
+				deSpawn(e);
+		}
+	}
+
+	public boolean isInSight(int x, int y) {
+		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
 	}
 }

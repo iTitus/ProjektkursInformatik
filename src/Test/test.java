@@ -5,8 +5,8 @@ import java.util.Map.Entry;
 import projektkurs.item.AbstractItem;
 import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
-import projektkurs.lib.I18n;
 import projektkurs.lib.Images;
+import projektkurs.util.I18n;
 
 /**
  * Test

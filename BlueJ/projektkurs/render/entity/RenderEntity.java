@@ -23,18 +23,18 @@ public class RenderEntity {
 		return super.equals(obj);
 	}
 
-	public Entity getE() {
+	public Entity getEntity() {
 		return e;
 	}
 
 	public int getRelX() {
-		return (e.getPosX() * Integers.RASTER_SIZE)
-				- (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE);
+		return ((e.getPosX() - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE)
+				+ Integers.WINDOW_HUD_X;
 	}
 
 	public int getRelY() {
-		return (e.getPosY() * Integers.RASTER_SIZE)
-				- (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE);
+		return ((e.getPosY() - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE)
+				+ Integers.WINDOW_HUD_Y;
 	}
 
 	@Override

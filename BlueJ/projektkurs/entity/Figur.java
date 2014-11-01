@@ -3,7 +3,7 @@ package projektkurs.entity;
 import java.awt.image.BufferedImage;
 
 import projektkurs.lib.Integers;
-import projektkurs.lib.Inventory;
+import projektkurs.util.Inventory;
 
 /**
  * Eine Spielerfigur

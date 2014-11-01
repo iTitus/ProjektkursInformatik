@@ -1,9 +1,9 @@
-package projektkurs.lib;
+package projektkurs.util;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import projektkurs.lib.Init.State;
+import projektkurs.util.Init.State;
 
 /**
  * Internationalisierung

@@ -7,7 +7,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 import projektkurs.Main;
-import projektkurs.lib.Init.State;
+import projektkurs.util.Init;
+import projektkurs.util.Logger;
+import projektkurs.util.Init.State;
 
 /**
  * Zuständig für Sounds

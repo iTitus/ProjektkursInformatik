@@ -24,11 +24,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import projektkurs.Main;
-import projektkurs.lib.I18n;
-import projektkurs.lib.I18n.SupportedLocales;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
+import projektkurs.util.I18n;
+import projektkurs.util.I18n.SupportedLocales;
 
 /**
  * Menü, wird beim Starten des Spiels aufgerufen. Z.B. um seinen Charakter zu

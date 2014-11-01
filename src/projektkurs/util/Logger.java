@@ -1,4 +1,4 @@
-package projektkurs.lib;
+package projektkurs.util;
 
 import java.io.PrintStream;
 import java.text.DateFormat;
@@ -109,13 +109,13 @@ public final class Logger {
 
 		for (Throwable se : t.getSuppressed())
 			if (se != null)
-				logThrowable("Supressed: " + se.getMessage(), se);
+				logThrowable("Supressed: ", se);
 
 		Throwable cause = t.getCause();
 		if (cause != null)
-			logThrowable("Caused by: " + cause.getMessage(), cause);
+			logThrowable("Caused by: ", cause);
 
-		log(LogLevel.WARN, msg + t.getMessage(), stackTrace.toArray());
+		log(LogLevel.WARN, msg + t.toString(), stackTrace.toArray());
 	}
 
 	/**

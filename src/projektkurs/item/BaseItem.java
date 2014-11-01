@@ -2,7 +2,7 @@ package projektkurs.item;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.lib.I18n;
+import projektkurs.util.I18n;
 
 public class BaseItem extends AbstractItem {
 

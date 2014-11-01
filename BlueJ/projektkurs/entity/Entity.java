@@ -2,8 +2,10 @@ package projektkurs.entity;
 
 import java.awt.image.BufferedImage;
 
+import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviours;
-import projektkurs.lib.ICanUpdate;
+import projektkurs.util.Direction;
+import projektkurs.util.ICanUpdate;
 
 /**
  * Ein Entity
@@ -109,8 +111,23 @@ public class Entity implements ICanUpdate {
 	 * @param dy
 	 */
 	public void moveBy(int dx, int dy) {
-		posX += dx;
-		posY += dy;
+		if ((dx != 0 || dy != 0) && canMoveTo(posX + dx, posY + dy)) {
+			posX += dx;
+			posY += dy;
+			Main.getRenderHelper().move(this);
+		}
+	}
+
+	public boolean canMoveTo(int x, int y) {
+		return (Main.getSpielfeld().isRasterAt(x, y) ? Main
+				.getSpielfeld()
+				.getRasterAt(x, y)
+				.canWalkOnFromDirection(
+						x,
+						y,
+						Direction.getDirectionForOffset(x - posX, y - posY)
+								.getOpposite()) : true);
+
 	}
 
 	/**
@@ -125,15 +142,12 @@ public class Entity implements ICanUpdate {
 	 * 
 	 * @param posX
 	 */
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-
-	/**
-	 * 
-	 */
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public void setPos(int posX, int posY) {
+		if ((this.posX != posX || this.posY != posY) && canMoveTo(posX, posY)) {
+			this.posX = posX;
+			this.posY = posY;
+			Main.getRenderHelper().move(this);
+		}
 	}
 
 	@Override

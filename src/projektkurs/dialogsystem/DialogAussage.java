@@ -1,6 +1,6 @@
 package projektkurs.dialogsystem;
 
-import projektkurs.lib.I18n;
+import projektkurs.util.I18n;
 
 public class DialogAussage {
 

@@ -9,7 +9,6 @@ public final class Integers {
 	public static final int KISTENGROESSE = 3;
 
 	public static final int RASTER_SIZE = 32;
-	// vielleicht auch: public static final int RASTER_SIZE = 64;
 
 	public static final int REACTION_TIME = 250;
 
@@ -35,7 +34,6 @@ public final class Integers {
 		WINDOW_X = RASTER_SIZE * SIGHT_X + 2 * WINDOW_HUD_X;
 		SIGHT_Y = newSightY;
 		WINDOW_Y = RASTER_SIZE * SIGHT_Y + 2 * WINDOW_HUD_Y;
-
 	}
 
 }

@@ -4,7 +4,7 @@ import projektkurs.Main;
 import projektkurs.lib.Integers;
 
 /**
- * Zustaendig fuer die Renderupdates
+ * Zuständig für die Renderupdates
  * 
  * @author Miles
  *

@@ -1,11 +1,12 @@
 package projektkurs.world;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -14,19 +15,23 @@ import projektkurs.entity.EntityNPC;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
-import projektkurs.lib.Direction;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationKiste;
 
 /**
- * TEMPORÄRE MAP!
+ * Spielfeld
  * 
  */
-public class TempMapBuilder {
+public class Spielfeld {
+
+	private int ups;
+	private int staticUPS;
+	private long lastUPSMeasure;
 
 	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
@@ -35,7 +40,7 @@ public class TempMapBuilder {
 
 	public boolean isUpdating;
 
-	private Collection<Entity> entities;
+	private Set<Entity> entities;
 
 	private ExtraInformation[][] extras;
 	private AbstractRaster[][] map;
@@ -46,17 +51,18 @@ public class TempMapBuilder {
 	/**
 	 * 
 	 */
-	public TempMapBuilder() {
+	public Spielfeld() {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 
-		entities = Collections.synchronizedCollection(new ArrayList<Entity>());
-
-		generateMap();
+		entities = Collections
+				.newSetFromMap(new ConcurrentHashMap<Entity, Boolean>());
 
 		SpielerpositionX = (int) (Integers.SIGHT_X / 2D) + 1;
 		SpielerpositionY = (int) (Integers.SIGHT_Y / 2D) + 1;
 
+		lastUPSMeasure = System.nanoTime();
+		generateAndPopulateMap();
 	}
 
 	/**
@@ -64,12 +70,16 @@ public class TempMapBuilder {
 	 * @param e
 	 */
 	public void deSpawn(Entity e) {
-		synchronized (entities) {
-			entities.remove(e);
+		if (e != null) {
+			synchronized (entities) {
+				entities.remove(e);
+			}
+			if (Main.getRenderHelper() != null)
+				Main.getRenderHelper().deSpawn(e);
 		}
 	}
 
-	public Collection<Entity> getEntitiesInRec(int posX, int posY, int sizeX,
+	public Collection<Entity> getEntitiesInRect(int posX, int posY, int sizeX,
 			int sizeY) {
 		Collection<Entity> ret = Collections
 				.synchronizedCollection(new Vector<Entity>());
@@ -112,7 +122,7 @@ public class TempMapBuilder {
 	/**
 	 * 
 	 */
-	public Collection<Entity> getEntityList() {
+	public Set<Entity> getEntityList() {
 		synchronized (entities) {
 			return entities;
 		}
@@ -224,6 +234,18 @@ public class TempMapBuilder {
 	 * @param y
 	 * @return
 	 */
+	public boolean isRasterAt(int x, int y) {
+		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
+			return false;
+		return map[x][y] != null;
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isEntityAtPos(int x, int y) {
 		return getEntityAt(x, y) != null;
 	}
@@ -271,6 +293,8 @@ public class TempMapBuilder {
 				if (!entities.contains(e))
 					entities.add(e);
 			}
+			if (Main.getRenderHelper() != null)
+				Main.getRenderHelper().spawn(e);
 		}
 	}
 
@@ -314,12 +338,14 @@ public class TempMapBuilder {
 
 		isUpdating = false;
 
+		calcUPS();
+
 	}
 
 	/**
 	 * 
 	 */
-	private void generateMap() {
+	public void generateAndPopulateMap() {
 		// RASEN!
 		for (int x = 0; x < map.length; x++) {
 			for (int y = 0; y < map[x].length; y++)
@@ -369,5 +395,18 @@ public class TempMapBuilder {
 		spawn(Main.getFigur());
 		spawn(new EntityRedNPC(2, 2, Images.redNPC));
 
+	}
+
+	public int getUPS() {
+		return staticUPS;
+	}
+
+	private void calcUPS() {
+		if (System.nanoTime() - lastUPSMeasure > 1000000000) {
+			staticUPS = ups;
+			ups = 0;
+			lastUPSMeasure += 1000000000;
+		}
+		ups++;
 	}
 }

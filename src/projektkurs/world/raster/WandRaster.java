@@ -2,8 +2,8 @@ package projektkurs.world.raster;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.lib.Direction;
 import projektkurs.lib.Images;
+import projektkurs.util.Direction;
 
 /**
  * Eine Wand

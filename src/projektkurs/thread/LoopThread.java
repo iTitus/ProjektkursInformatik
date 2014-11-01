@@ -1,6 +1,6 @@
 package projektkurs.thread;
 
-import projektkurs.lib.Logger;
+import projektkurs.util.Logger;
 
 /**
  * Abstrakter Loopthread

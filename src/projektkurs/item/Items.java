@@ -2,8 +2,8 @@ package projektkurs.item;
 
 import java.util.HashMap;
 
-import projektkurs.lib.Init;
-import projektkurs.lib.Init.State;
+import projektkurs.util.Init;
+import projektkurs.util.Init.State;
 
 public final class Items {
 

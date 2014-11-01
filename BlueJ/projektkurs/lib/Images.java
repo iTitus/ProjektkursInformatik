@@ -7,7 +7,9 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 
 import projektkurs.Main;
-import projektkurs.lib.Init.State;
+import projektkurs.util.Init;
+import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
 
 /**
  * Hier alles was mit Bildern zu tun hat
@@ -69,5 +71,10 @@ public class Images {
 			Logger.logThrowable("Unable to load image '" + name + "': ", e);
 		}
 		return img;
+	}
+
+	public static void flushAll() {
+		for (BufferedImage img : MAPPINGS.values())
+			img.flush();
 	}
 }

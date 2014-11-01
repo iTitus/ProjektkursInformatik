@@ -1,4 +1,4 @@
-package projektkurs.lib;
+package projektkurs.util;
 
 public interface ICanUpdate {
 

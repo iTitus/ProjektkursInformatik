@@ -1,6 +1,9 @@
-package projektkurs.lib;
+package projektkurs.util;
 
-public class MathUtil {
+public final class MathUtil {
+
+	private MathUtil() {
+	}
 
 	public static int ceilAdd(double a, double b) {
 		return (int) ((a + b) + 0.5);

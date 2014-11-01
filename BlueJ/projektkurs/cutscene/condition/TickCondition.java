@@ -10,7 +10,7 @@ import projektkurs.cutscene.action.Action;
 public class TickCondition extends Condition {
 
 	public static enum TickConditionType {
-		EQUALS, GREATER, GREATER_EQUALS, LESSER, LESSER_EQUALS;
+		EQUALS, GREATER, GREATER_EQUALS, LESSER, LESSER_EQUALS, MODULO_0;
 	}
 
 	private int ticks;
@@ -46,6 +46,9 @@ public class TickCondition extends Condition {
 		}
 		case GREATER_EQUALS: {
 			return cutScene.getElapsedTicks() >= ticks;
+		}
+		case MODULO_0: {
+			return cutScene.getElapsedTicks() % ticks == 0;
 		}
 		default: {
 			return false;

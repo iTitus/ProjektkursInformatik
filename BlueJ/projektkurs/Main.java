@@ -1,32 +1,34 @@
 package projektkurs;
 
+import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import projektkurs.entity.Figur;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.lib.Images;
-import projektkurs.lib.Init;
-import projektkurs.lib.Init.State;
 import projektkurs.lib.Integers;
-import projektkurs.lib.Logger;
-import projektkurs.lib.MathUtil;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
-import projektkurs.render.GameWindow;
+import projektkurs.render.GameCanvas;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
 import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
 import projektkurs.thread.RenderThread;
 import projektkurs.thread.SimulationThread;
-import projektkurs.world.TempMapBuilder;
+import projektkurs.util.Init;
+import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
+import projektkurs.util.MathUtil;
+import projektkurs.world.Spielfeld;
 
 /**
  * Die Hauptklasse
@@ -49,41 +51,39 @@ public final class Main {
 		public MainFrame() {
 			super(Strings.NAME);
 
-			addKeyListener(imgr);
-			addMouseListener(imgr);
-			addMouseMotionListener(imgr);
-			addMouseWheelListener(imgr);
+			JPanel panel = (JPanel) getContentPane();
+			panel.setLayout(null);
+			panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
+			panel.add(render.getGameCanvas());
 
-			add(render.getGameWindow());
-
-			setBounds(10, 10, Integers.WINDOW_X, Integers.WINDOW_Y);
-			setResizable(false);
+			// requestFocus();
+			// setBounds(10, 10, Integers.WINDOW_X, Integers.WINDOW_Y);
 			setUndecorated(true);
+			setResizable(false);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			pack();
 			setVisible(true);
+
+			render.initBuffers();
 
 		}
 
 	}
 
 	public static Figur figur;
-
 	private static InputManager imgr;
-
 	private static ArrayList<Method> initMethods = new ArrayList<Method>();
-
-	private static TempMapBuilder map;
-
+	private static Spielfeld map;
 	private static Render render;
-
 	private static RenderHelper renderHelper;
-
+	private static BufferStrategy strategy;
 	private static LoopThread renderThread, simulationThread, moveThread;
 
 	/**
 	 * Verlaesst das Spiel
 	 */
 	public static void exit() {
+		Logger.info("Initialising shutdown routine!");
 		if (moveThread != null)
 			moveThread.terminate();
 		if (renderThread != null)
@@ -92,6 +92,7 @@ public final class Main {
 			simulationThread.terminate();
 		// TODO: SAVE
 		Sounds.closeAll();
+		Images.flushAll();
 		Logger.info("Bye bye");
 		System.exit(0);
 	}
@@ -137,7 +138,7 @@ public final class Main {
 	 * 
 	 * @return Spielfeld
 	 */
-	public static TempMapBuilder getSpielfeld() {
+	public static Spielfeld getSpielfeld() {
 		return map;
 	}
 
@@ -149,10 +150,9 @@ public final class Main {
 		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2),
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2), Images.charakter);
 		imgr = new InputManager();
-		// map = new Spielfeld();
-		map = new TempMapBuilder();
-		render = new Render(new GameWindow());
+		map = new Spielfeld();
 		renderHelper = new RenderHelper();
+		render = new Render(new GameCanvas());
 	}
 
 	/**

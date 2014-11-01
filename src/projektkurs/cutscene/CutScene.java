@@ -1,9 +1,12 @@
 package projektkurs.cutscene;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.util.Queue;
 
 /**
  * Eine CutScene
@@ -11,20 +14,21 @@ import projektkurs.cutscene.object.CutSceneObject;
  */
 public class CutScene {
 
-	private ActionQueue actionQueue, startupQueue, tempQueue;
+	private Queue<Action> actionQueue, startupQueue, tempQueue;
 
 	private int elapsedTicks;
 
-	@SuppressWarnings("unused")
-	private ArrayList<CutSceneObject> objects;
+	private Set<CutSceneObject> objects;
 
 	/**
 	 * Konstruktor für eine CutScene
 	 */
 	public CutScene() {
-		actionQueue = new ActionQueue();
-		startupQueue = new ActionQueue();
-		objects = new ArrayList<CutSceneObject>();
+		actionQueue = new Queue<Action>();
+		startupQueue = new Queue<Action>();
+		tempQueue = new Queue<Action>();
+		objects = Collections
+				.newSetFromMap(new ConcurrentHashMap<CutSceneObject, Boolean>());
 		elapsedTicks = 0;
 	}
 
@@ -78,7 +82,7 @@ public class CutScene {
 		}
 		if (!actionQueue.empty()) {
 
-			tempQueue = new ActionQueue();
+			tempQueue.clear();
 
 			Action currAction = actionQueue.front();
 
@@ -99,5 +103,21 @@ public class CutScene {
 
 		elapsedTicks++;
 
+	}
+
+	public void spawn(CutSceneObject object) {
+		if (object != null) {
+			synchronized (objects) {
+				objects.add(object);
+			}
+		}
+	}
+
+	public void deSpawn(CutSceneObject object) {
+		if (object != null) {
+			synchronized (objects) {
+				objects.add(object);
+			}
+		}
 	}
 }

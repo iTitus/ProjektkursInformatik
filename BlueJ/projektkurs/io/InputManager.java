@@ -11,10 +11,10 @@ import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
-import projektkurs.lib.Direction;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Sounds;
+import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 
 /**
