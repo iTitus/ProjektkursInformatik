@@ -1,6 +1,8 @@
 .settings
 bin
+src/Test
 BlueJ/doc
+BlueJ/Test
 
 *.class
 *.classpath
