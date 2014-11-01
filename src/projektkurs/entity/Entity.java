@@ -24,7 +24,7 @@ public class Entity implements ICanUpdate {
 	 * @param image
 	 */
 	public Entity(int posX, int posY, BufferedImage image) {
-		this(posX, posY, 32, 32, image);
+		this(posX, posY, 1, 1, image);
 	}
 
 	/**
@@ -100,9 +100,9 @@ public class Entity implements ICanUpdate {
 	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
 		if (sizeX <= 0 || sizeY <= 0 || this.sizeX <= 0 || this.sizeY <= 0)
 			return false;
-		return (((posX + sizeX) < posX || (posX + sizeX) > this.posX)
-				&& ((posY + sizeY) < posY || (posY + sizeY) > this.posY)
-				&& (this.sizeX < this.posX || this.sizeX > posX) && (this.sizeY < this.posY || this.sizeY > posY));
+		return (((posX + sizeX) <= posX || (posX + sizeX) >= this.posX)
+				&& ((posY + sizeY) <= posY || (posY + sizeY) >= this.posY)
+				&& (this.sizeX <= this.posX || this.sizeX >= posX) && (this.sizeY <= this.posY || this.sizeY >= posY));
 	}
 
 	/**
@@ -118,15 +118,24 @@ public class Entity implements ICanUpdate {
 		}
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 */
+	public void moveBy(Direction dir) {
+		moveBy(dir.getOffsetX(), dir.getOffsetY());
+	}
+
 	public boolean canMoveTo(int x, int y) {
-		return (Main.getSpielfeld().isRasterAt(x, y) ? Main
-				.getSpielfeld()
-				.getRasterAt(x, y)
-				.canWalkOnFromDirection(
-						x,
-						y,
-						Direction.getDirectionForOffset(x - posX, y - posY)
-								.getOpposite()) : true);
+		return (!Main.getSpielfeld().isEntityAtPos(x, y))
+				&& (Main.getSpielfeld().isRasterAt(x, y) ? Main
+						.getSpielfeld()
+						.getRasterAt(x, y)
+						.canWalkOnFromDirection(
+								x,
+								y,
+								Direction.getDirectionForOffset(x - posX,
+										y - posY).getOpposite()) : true);
 
 	}
 
@@ -143,16 +152,28 @@ public class Entity implements ICanUpdate {
 	 * @param posX
 	 */
 	public void setPos(int posX, int posY) {
-		if ((this.posX != posX || this.posY != posY) && canMoveTo(posX, posY)) {
-			this.posX = posX;
-			this.posY = posY;
-			Main.getRenderHelper().move(this);
-		}
+		moveBy(posX - this.posX, posY - this.posY);
 	}
 
 	@Override
 	public void update() {
 		getBehaviour().getBehaviour().onTick(this);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSizeY() {
+		return sizeY;
 	}
 
 }

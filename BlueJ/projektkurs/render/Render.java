@@ -5,10 +5,8 @@ import java.awt.image.BufferStrategy;
 import java.util.Iterator;
 
 import projektkurs.Main;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.render.entity.RenderEntity;
-import projektkurs.util.MathUtil;
 
 /**
  * Renderklasse
@@ -81,13 +79,11 @@ public class Render {
 				while (i.hasNext()) {
 					e = i.next();
 					g.drawImage(e.getEntity().getImage(), e.getRelX(),
-							e.getRelY(), null);
+							e.getRelY(), e.getEntity().getSizeX()
+									* Integers.RASTER_SIZE, e.getEntity()
+									.getSizeY() * Integers.RASTER_SIZE, null);
 				}
 			}
-
-			g.drawImage(Images.charakter, MathUtil.ceilDiv(Integers.WINDOW_X
-					+ Integers.RASTER_SIZE, 2), MathUtil.ceilDiv(
-					Integers.WINDOW_Y + Integers.RASTER_SIZE, 2), null);
 
 			g.dispose();
 			strategy.show();

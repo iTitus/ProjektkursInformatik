@@ -1,5 +1,7 @@
 package projektkurs.lib;
 
+import java.awt.Toolkit;
+
 /**
  * Sämtliche Zahlenkonstanten...
  */
@@ -12,8 +14,10 @@ public final class Integers {
 
 	public static final int REACTION_TIME = 250;
 
-	public static int SIGHT_X = 19;
-	public static int SIGHT_Y = 19;
+	public static int SIGHT_X = (Toolkit.getDefaultToolkit().getScreenSize().width / Integers.RASTER_SIZE)
+			- ((2 * Integers.WINDOW_HUD_X) / Integers.RASTER_SIZE);
+	public static int SIGHT_Y = (Toolkit.getDefaultToolkit().getScreenSize().height / Integers.RASTER_SIZE)
+			- ((2 * Integers.WINDOW_HUD_Y) / Integers.RASTER_SIZE) - 1;
 
 	public static final int TICK_TIME = 20;
 

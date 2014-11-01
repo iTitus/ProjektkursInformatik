@@ -152,17 +152,19 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 		JPanel sightSettings = new JPanel(new GridLayout(0, 1));
 
-		sliderSightX = new JSlider(SwingConstants.HORIZONTAL, 3, 53, 19);
-		sliderSightY = new JSlider(SwingConstants.HORIZONTAL, 3, 53, 19);
+		sliderSightX = new JSlider(SwingConstants.HORIZONTAL, 3,
+				Integers.SIGHT_X, Integers.SIGHT_X);
+		sliderSightY = new JSlider(SwingConstants.HORIZONTAL, 3,
+				Integers.SIGHT_Y, Integers.SIGHT_Y);
 
 		sliderSightX.addChangeListener(this);
-		sliderSightX.setMajorTickSpacing(10);
+		sliderSightX.setMajorTickSpacing(5);
 		sliderSightX.setMinorTickSpacing(1);
 		sliderSightX.setPaintTicks(true);
 		sliderSightX.setPaintLabels(true);
 
 		sliderSightY.addChangeListener(this);
-		sliderSightY.setMajorTickSpacing(10);
+		sliderSightY.setMajorTickSpacing(5);
 		sliderSightY.setMinorTickSpacing(1);
 		sliderSightY.setPaintTicks(true);
 		sliderSightY.setPaintLabels(true);

@@ -115,6 +115,7 @@ public class RenderHelper {
 						+ Integers.SIGHT_Y)) {
 			synchronized (entitiesInSight) {
 				entitiesInSight.add(new RenderEntity(e));
+
 			}
 			return true;
 		}
@@ -146,8 +147,9 @@ public class RenderHelper {
 			entitiesInSight.clear();
 			for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX,
 					sightY, sightX + Integers.SIGHT_X,
-					sightY + Integers.SIGHT_Y))
+					sightY + Integers.SIGHT_Y)) {
 				spawn(e);
+			}
 		}
 
 	}

@@ -45,9 +45,6 @@ public class Spielfeld {
 	private ExtraInformation[][] extras;
 	private AbstractRaster[][] map;
 
-	private int SpielerpositionX;
-	private int SpielerpositionY;
-
 	/**
 	 * 
 	 */
@@ -57,9 +54,6 @@ public class Spielfeld {
 
 		entities = Collections
 				.newSetFromMap(new ConcurrentHashMap<Entity, Boolean>());
-
-		SpielerpositionX = (int) (Integers.SIGHT_X / 2D) + 1;
-		SpielerpositionY = (int) (Integers.SIGHT_Y / 2D) + 1;
 
 		lastUPSMeasure = System.nanoTime();
 		generateAndPopulateMap();
@@ -200,21 +194,24 @@ public class Spielfeld {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public int getPlayerX() {
-		return SpielerpositionX;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int getPlayerY() {
-		return SpielerpositionY;
-	}
+	//
+	// /**
+	// *
+	// * @return
+	// */
+	// @Deprecated
+	// public int getPlayerX() {
+	// return SpielerpositionX;
+	// }
+	//
+	// /**
+	// *
+	// * @return
+	// */
+	// @Deprecated
+	// public int getPlayerY() {
+	// return SpielerpositionY;
+	// }
 
 	/**
 	 * 
@@ -307,25 +304,18 @@ public class Spielfeld {
 
 		Direction d = Main.getInputManager().getNextDirection();
 
-		if (d != Direction.UNKNOWN
-				&& getRasterAt(SpielerpositionX + d.getOffsetX(),
-						SpielerpositionY + d.getOffsetY())
-						.canWalkOnFromDirection(
-								SpielerpositionX + d.getOffsetX(),
-								SpielerpositionY + d.getOffsetY(),
-								d.getOpposite())) {
+		Main.getFigur().moveBy(d);
 
-			if (!(SpielerpositionX + d.getOffsetX() < 0 || SpielerpositionX
-					+ d.getOffsetX() > MAP_SIZE_X - 1)) {
-				Main.getRenderHelper().moveSight(d.getOffsetX(), 0);
-				SpielerpositionX += d.getOffsetX();
-			}
-			if (!(SpielerpositionY + d.getOffsetY() < 0 || SpielerpositionY
-					+ d.getOffsetY() > MAP_SIZE_Y - 1)) {
-				Main.getRenderHelper().moveSight(0, d.getOffsetY());
-				SpielerpositionY += d.getOffsetY();
-			}
-		}
+		// if (d != Direction.UNKNOWN
+		// && getRasterAt(SpielerpositionX + d.getOffsetX(),
+		// SpielerpositionY + d.getOffsetY())
+		// .canWalkOnFromDirection(
+		// SpielerpositionX + d.getOffsetX(),
+		// SpielerpositionY + d.getOffsetY(),
+		// d.getOpposite())) {
+		//
+
+		// }
 
 		synchronized (entities) {
 			Iterator<Entity> i = entities.iterator();

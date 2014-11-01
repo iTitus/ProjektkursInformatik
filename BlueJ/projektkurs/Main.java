@@ -147,8 +147,8 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
-		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2),
-				MathUtil.ceilDiv(Integers.SIGHT_Y, 2), Images.charakter);
+		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
+				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
