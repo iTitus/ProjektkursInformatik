@@ -14,14 +14,14 @@ import projektkurs.render.entity.RenderEntity;
  */
 public class Render {
 
-	private int fps;
-	private int staticFPS;
-	private long lastFPSMeasure;
-
 	/**
 	 * Das Spiel-Canvas
 	 */
 	private final GameCanvas canvas;
+	private int fps;
+	private long lastFPSMeasure;
+
+	private int staticFPS;
 	private BufferStrategy strategy;
 
 	/**

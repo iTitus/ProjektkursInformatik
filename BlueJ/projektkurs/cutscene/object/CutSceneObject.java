@@ -75,9 +75,9 @@ public class CutSceneObject {
 	public boolean isInside(CutSceneObject object) {
 		if (object.sizeX <= 0 || object.sizeY <= 0 || sizeX <= 0 || sizeY <= 0)
 			return false;
-		return (((object.posX + object.sizeX) < object.posX || (object.posX + object.sizeX) > posX)
-				&& ((object.posY + object.sizeY) < object.posY || (object.posY + object.sizeY) > posY)
-				&& (sizeX < posX || sizeX > object.posX) && (sizeY < posY || sizeY > object.posY));
+		return (((object.posX + object.sizeX) <= object.posX || (object.posX + object.sizeX) >= posX)
+				&& ((object.posY + object.sizeY) <= object.posY || (object.posY + object.sizeY) >= posY)
+				&& (sizeX <= posX || sizeX >= object.posX) && (sizeY <= posY || sizeY >= object.posY));
 	}
 
 	/**

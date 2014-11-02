@@ -8,8 +8,8 @@ import javax.sound.sampled.Clip;
 
 import projektkurs.Main;
 import projektkurs.util.Init;
-import projektkurs.util.Logger;
 import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
 
 /**
  * Zuständig für Sounds

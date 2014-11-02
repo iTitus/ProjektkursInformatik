@@ -21,6 +21,13 @@ public class Queue<T> {
 	}
 
 	/**
+	 * Leert die Queue
+	 */
+	public void clear() {
+		head = tail = null;
+	}
+
+	/**
 	 * Löst das oberste Objekt von der Schlange
 	 */
 	public void deQueue() {
@@ -63,13 +70,6 @@ public class Queue<T> {
 		if (empty())
 			return null;
 		return head.get();
-	}
-
-	/**
-	 * Leert die Queue
-	 */
-	public void clear() {
-		head = tail = null;
 	}
 
 	/**

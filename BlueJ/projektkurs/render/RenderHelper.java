@@ -54,6 +54,16 @@ public class RenderHelper {
 		updateEntities();
 	}
 
+	public boolean deSpawn(Entity e) {
+		if (e != null) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.remove(new RenderEntity(e));
+			}
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -62,6 +72,14 @@ public class RenderHelper {
 		synchronized (entitiesInSight) {
 			return entitiesInSight;
 		}
+	}
+
+	/**
+	 * 
+	 * @return die aktuelle Sicht
+	 */
+	public BufferedImage[][] getSight() {
+		return sight;
 	}
 
 	/**
@@ -82,6 +100,21 @@ public class RenderHelper {
 		return sightY;
 	}
 
+	public boolean isInSight(int x, int y) {
+		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
+	}
+
+	/**
+	 * 
+	 * @param e
+	 */
+	public void move(Entity e) {
+		if (e != null) {
+			if (!spawn(e))
+				deSpawn(e);
+		}
+	}
+
 	/**
 	 * Bewegt das Spielfeld um dx und dy
 	 * 
@@ -97,29 +130,6 @@ public class RenderHelper {
 			updateRaster();
 			updateEntities();
 		}
-	}
-
-	public boolean deSpawn(Entity e) {
-		if (e != null) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.remove(new RenderEntity(e));
-			}
-			return true;
-		}
-		return false;
-	}
-
-	public boolean spawn(Entity e) {
-		if (e != null
-				&& e.isInside(sightX, sightY, sightX + Integers.SIGHT_X, sightY
-						+ Integers.SIGHT_Y)) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.add(new RenderEntity(e));
-
-			}
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -139,6 +149,19 @@ public class RenderHelper {
 		}
 	}
 
+	public boolean spawn(Entity e) {
+		if (e != null
+				&& e.isInside(sightX, sightY, Integers.SIGHT_X,
+						Integers.SIGHT_Y)) {
+			synchronized (entitiesInSight) {
+				entitiesInSight.add(new RenderEntity(e));
+
+			}
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Interne Methode, um die Entities im Sichtfeld zu aktualisieren
 	 */
@@ -146,9 +169,10 @@ public class RenderHelper {
 		synchronized (entitiesInSight) {
 			entitiesInSight.clear();
 			for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX,
-					sightY, sightX + Integers.SIGHT_X,
-					sightY + Integers.SIGHT_Y)) {
-				spawn(e);
+					sightY, Integers.SIGHT_X, Integers.SIGHT_Y)) {
+				synchronized (entitiesInSight) {
+					entitiesInSight.add(new RenderEntity(e));
+				}
 			}
 		}
 
@@ -179,28 +203,5 @@ public class RenderHelper {
 			}
 		}
 
-	}
-
-	/**
-	 * 
-	 * @return die aktuelle Sicht
-	 */
-	public BufferedImage[][] getSight() {
-		return sight;
-	}
-
-	/**
-	 * 
-	 * @param e
-	 */
-	public void move(Entity e) {
-		if (e != null) {
-			if (!spawn(e))
-				deSpawn(e);
-		}
-	}
-
-	public boolean isInSight(int x, int y) {
-		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
 	}
 }

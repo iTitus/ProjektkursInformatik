@@ -2,7 +2,8 @@ package projektkurs.util;
 
 public final class MathUtil {
 
-	private MathUtil() {
+	public static int ceil(double d) {
+		return (int) (d + .5);
 	}
 
 	public static int ceilAdd(double a, double b) {
@@ -21,7 +22,6 @@ public final class MathUtil {
 		return ceil(a - b);
 	}
 
-	public static int ceil(double d) {
-		return (int) (d + .5);
+	private MathUtil() {
 	}
 }

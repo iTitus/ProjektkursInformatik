@@ -1,5 +1,6 @@
 package projektkurs.entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
@@ -43,6 +44,19 @@ public class Entity implements ICanUpdate {
 		this.sizeY = sizeY;
 	}
 
+	public boolean canMoveTo(int x, int y) {
+		return (!Main.getSpielfeld().isEntityAtPos(x, y))
+				&& (Main.getSpielfeld().isRasterAt(x, y) ? Main
+						.getSpielfeld()
+						.getRasterAt(x, y)
+						.canWalkOnFromDirection(
+								x,
+								y,
+								Direction.getDirectionForOffset(x - posX,
+										y - posY).getOpposite()) : true);
+
+	}
+
 	@Override
 	public boolean canUpdate() {
 		return !getBehaviour().equals(Behaviours.NOTHING);
@@ -54,6 +68,10 @@ public class Entity implements ICanUpdate {
 	 */
 	public Behaviours getBehaviour() {
 		return Behaviours.NOTHING;
+	}
+
+	public Rectangle getBounds() {
+		return new Rectangle(posX, posY, sizeX, sizeY);
 	}
 
 	/**
@@ -82,6 +100,22 @@ public class Entity implements ICanUpdate {
 
 	/**
 	 * 
+	 * @return
+	 */
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSizeY() {
+		return sizeY;
+	}
+
+	/**
+	 * 
 	 * @param e
 	 * @return
 	 */
@@ -98,11 +132,20 @@ public class Entity implements ICanUpdate {
 	 * @return
 	 */
 	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
-		if (sizeX <= 0 || sizeY <= 0 || this.sizeX <= 0 || this.sizeY <= 0)
-			return false;
-		return (((posX + sizeX) <= posX || (posX + sizeX) >= this.posX)
-				&& ((posY + sizeY) <= posY || (posY + sizeY) >= this.posY)
-				&& (this.sizeX <= this.posX || this.sizeX >= posX) && (this.sizeY <= this.posY || this.sizeY >= posY));
+		if ((Math.max(posX, this.posX) < Math.min((posX + sizeX),
+				(this.posX + this.sizeX)))
+				&& ((Math.max(posY, this.posY) < Math.min((posY + sizeY),
+						(this.posY + this.sizeY)))))
+			return true;
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param dir
+	 */
+	public void moveBy(Direction dir) {
+		moveBy(dir.getOffsetX(), dir.getOffsetY());
 	}
 
 	/**
@@ -116,27 +159,6 @@ public class Entity implements ICanUpdate {
 			posY += dy;
 			Main.getRenderHelper().move(this);
 		}
-	}
-
-	/**
-	 * 
-	 * @param dir
-	 */
-	public void moveBy(Direction dir) {
-		moveBy(dir.getOffsetX(), dir.getOffsetY());
-	}
-
-	public boolean canMoveTo(int x, int y) {
-		return (!Main.getSpielfeld().isEntityAtPos(x, y))
-				&& (Main.getSpielfeld().isRasterAt(x, y) ? Main
-						.getSpielfeld()
-						.getRasterAt(x, y)
-						.canWalkOnFromDirection(
-								x,
-								y,
-								Direction.getDirectionForOffset(x - posX,
-										y - posY).getOpposite()) : true);
-
 	}
 
 	/**
@@ -158,22 +180,6 @@ public class Entity implements ICanUpdate {
 	@Override
 	public void update() {
 		getBehaviour().getBehaviour().onTick(this);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int getSizeX() {
-		return sizeX;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int getSizeY() {
-		return sizeY;
 	}
 
 }

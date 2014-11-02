@@ -29,6 +29,11 @@ public class Images {
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
 			redNPC;
 
+	public static void flushAll() {
+		for (BufferedImage img : MAPPINGS.values())
+			img.flush();
+	}
+
 	/**
 	 * Laedt alle Bilder
 	 */
@@ -71,10 +76,5 @@ public class Images {
 			Logger.logThrowable("Unable to load image '" + name + "': ", e);
 		}
 		return img;
-	}
-
-	public static void flushAll() {
-		for (BufferedImage img : MAPPINGS.values())
-			img.flush();
 	}
 }

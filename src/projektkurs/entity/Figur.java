@@ -43,7 +43,6 @@ public class Figur extends Entity {
 			posX += dx;
 			posY += dy;
 			Main.getRenderHelper().moveSight(dx, dy);
-			Main.getRenderHelper().move(this);
 		}
 	}
 }

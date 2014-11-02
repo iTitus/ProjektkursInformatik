@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.Main;
@@ -17,7 +16,6 @@ import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
-import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
@@ -29,21 +27,21 @@ import projektkurs.world.raster.extra.ExtraInformationKiste;
  */
 public class Spielfeld {
 
-	private int ups;
-	private int staticUPS;
-	private long lastUPSMeasure;
-
 	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
-
 	private static final Random rand = new Random();
 
 	public boolean isUpdating;
-
 	private Set<Entity> entities;
 
 	private ExtraInformation[][] extras;
+
+	private long lastUPSMeasure;
+
 	private AbstractRaster[][] map;
+
+	private int staticUPS;
+	private int ups;
 
 	/**
 	 * 
@@ -73,10 +71,65 @@ public class Spielfeld {
 		}
 	}
 
+	/**
+	 * 
+	 */
+	public void generateAndPopulateMap() {
+		// RASEN!
+		for (int x = 0; x < map.length; x++) {
+			for (int y = 0; y < map[x].length; y++)
+				setRasterAt(x, y, Raster.RASEN);
+
+		}
+
+		// BÄUME!
+		for (int i = 0; i < rand.nextInt(51) + 25; i++) {
+			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
+					Raster.BAUM);
+		}
+
+		// KISTEN!
+		for (int i = 0; i < rand.nextInt(7) + 3; i++) {
+			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
+					Raster.KISTE);
+
+		}
+
+		// WÄNDE!
+		for (int x = 0; x < map.length; x++) {
+			setRasterAt(x, 0, Raster.WAND);
+			setRasterAt(x, MAP_SIZE_Y - 1, Raster.WAND);
+		}
+		for (int y = 0; y < map.length; y++) {
+			setRasterAt(0, y, Raster.WAND);
+			setRasterAt(MAP_SIZE_X - 1, y, Raster.WAND);
+		}
+
+		// KISTENINHALTE!
+		for (int x = 0; x < extras.length; x++) {
+			for (int y = 0; y < extras[x].length; y++) {
+				if (getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
+					((ExtraInformationKiste) getExtraInformationAt(x, y))
+							.getInventar().addItem(
+									new ItemStack(Items.ITEM_42, 42));
+					((ExtraInformationKiste) getExtraInformationAt(x, y))
+							.getInventar().addItem(new ItemStack(Items.NUKE));
+					((ExtraInformationKiste) getExtraInformationAt(x, y))
+							.getInventar().addItem(new ItemStack(Items.KEY));
+				}
+			}
+		}
+
+		// ENTITIES!
+		spawn(Main.getFigur());
+		spawn(new EntityRedNPC(1, 1, Images.redNPC));
+
+	}
+
 	public Collection<Entity> getEntitiesInRect(int posX, int posY, int sizeX,
 			int sizeY) {
-		Collection<Entity> ret = Collections
-				.synchronizedCollection(new Vector<Entity>());
+		Set<Entity> ret = Collections
+				.newSetFromMap(new ConcurrentHashMap<Entity, Boolean>());
 
 		synchronized (entities) {
 			Iterator<Entity> i = entities.iterator();
@@ -88,7 +141,6 @@ public class Spielfeld {
 					ret.add(e);
 			}
 		}
-
 		return ret;
 	}
 
@@ -194,25 +246,6 @@ public class Spielfeld {
 		return null;
 	}
 
-	//
-	// /**
-	// *
-	// * @return
-	// */
-	// @Deprecated
-	// public int getPlayerX() {
-	// return SpielerpositionX;
-	// }
-	//
-	// /**
-	// *
-	// * @return
-	// */
-	// @Deprecated
-	// public int getPlayerY() {
-	// return SpielerpositionY;
-	// }
-
 	/**
 	 * 
 	 * @param x
@@ -225,16 +258,8 @@ public class Spielfeld {
 		return map[x][y];
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public boolean isRasterAt(int x, int y) {
-		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
-			return false;
-		return map[x][y] != null;
+	public int getUPS() {
+		return staticUPS;
 	}
 
 	/**
@@ -265,6 +290,18 @@ public class Spielfeld {
 	 */
 	public boolean isNPCAtPos(int x, int y) {
 		return getEntityAt(x, y) instanceof EntityNPC;
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean isRasterAt(int x, int y) {
+		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
+			return false;
+		return map[x][y] != null;
 	}
 
 	/**
@@ -302,20 +339,7 @@ public class Spielfeld {
 
 		isUpdating = true;
 
-		Direction d = Main.getInputManager().getNextDirection();
-
-		Main.getFigur().moveBy(d);
-
-		// if (d != Direction.UNKNOWN
-		// && getRasterAt(SpielerpositionX + d.getOffsetX(),
-		// SpielerpositionY + d.getOffsetY())
-		// .canWalkOnFromDirection(
-		// SpielerpositionX + d.getOffsetX(),
-		// SpielerpositionY + d.getOffsetY(),
-		// d.getOpposite())) {
-		//
-
-		// }
+		Main.getFigur().moveBy(Main.getInputManager().getNextDirection());
 
 		synchronized (entities) {
 			Iterator<Entity> i = entities.iterator();
@@ -330,65 +354,6 @@ public class Spielfeld {
 
 		calcUPS();
 
-	}
-
-	/**
-	 * 
-	 */
-	public void generateAndPopulateMap() {
-		// RASEN!
-		for (int x = 0; x < map.length; x++) {
-			for (int y = 0; y < map[x].length; y++)
-				setRasterAt(x, y, Raster.RASEN);
-
-		}
-
-		// BÄUME!
-		for (int i = 0; i < rand.nextInt(51) + 25; i++) {
-			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					Raster.BAUM);
-		}
-
-		// KISTEN!
-		for (int i = 0; i < rand.nextInt(7) + 3; i++) {
-			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					Raster.KISTE);
-
-		}
-
-		// WÄNDE!
-		for (int x = 0; x < map.length; x++) {
-			setRasterAt(x, 0, Raster.WAND);
-			setRasterAt(x, MAP_SIZE_Y - 1, Raster.WAND);
-		}
-		for (int y = 0; y < map.length; y++) {
-			setRasterAt(0, y, Raster.WAND);
-			setRasterAt(MAP_SIZE_X - 1, y, Raster.WAND);
-		}
-
-		// KISTENINHALTE!
-		for (int x = 0; x < extras.length; x++) {
-			for (int y = 0; y < extras[x].length; y++) {
-				if (getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
-					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(
-									new ItemStack(Items.ITEM_42, 42));
-					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.NUKE));
-					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.KEY));
-				}
-			}
-		}
-
-		// ENTITIES!
-		spawn(Main.getFigur());
-		spawn(new EntityRedNPC(2, 2, Images.redNPC));
-
-	}
-
-	public int getUPS() {
-		return staticUPS;
 	}
 
 	private void calcUPS() {

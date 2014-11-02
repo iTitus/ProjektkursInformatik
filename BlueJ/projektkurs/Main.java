@@ -76,8 +76,8 @@ public final class Main {
 	private static Spielfeld map;
 	private static Render render;
 	private static RenderHelper renderHelper;
-	private static BufferStrategy strategy;
 	private static LoopThread renderThread, simulationThread, moveThread;
+	private static BufferStrategy strategy;
 
 	/**
 	 * Verlaesst das Spiel

@@ -32,6 +32,14 @@ public class CutScene {
 		elapsedTicks = 0;
 	}
 
+	public void deSpawn(CutSceneObject object) {
+		if (object != null) {
+			synchronized (objects) {
+				objects.add(object);
+			}
+		}
+	}
+
 	public int getElapsedTicks() {
 		return elapsedTicks;
 	}
@@ -66,6 +74,14 @@ public class CutScene {
 	 */
 	public void setFinished() {
 		actionQueue = null;
+	}
+
+	public void spawn(CutSceneObject object) {
+		if (object != null) {
+			synchronized (objects) {
+				objects.add(object);
+			}
+		}
 	}
 
 	public void update() {
@@ -103,21 +119,5 @@ public class CutScene {
 
 		elapsedTicks++;
 
-	}
-
-	public void spawn(CutSceneObject object) {
-		if (object != null) {
-			synchronized (objects) {
-				objects.add(object);
-			}
-		}
-	}
-
-	public void deSpawn(CutSceneObject object) {
-		if (object != null) {
-			synchronized (objects) {
-				objects.add(object);
-			}
-		}
 	}
 }
