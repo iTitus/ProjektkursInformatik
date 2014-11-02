@@ -90,7 +90,7 @@ public final class Main {
 			renderThread.terminate();
 		if (simulationThread != null)
 			simulationThread.terminate();
-		// TODO: SAVE
+		// TODO: Save to disk
 		Sounds.closeAll();
 		Images.flushAll();
 		Logger.info("Bye bye");

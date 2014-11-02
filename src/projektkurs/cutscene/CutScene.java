@@ -1,8 +1,8 @@
 package projektkurs.cutscene;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
@@ -27,8 +27,7 @@ public class CutScene {
 		actionQueue = new Queue<Action>();
 		startupQueue = new Queue<Action>();
 		tempQueue = new Queue<Action>();
-		objects = Collections
-				.newSetFromMap(new ConcurrentHashMap<CutSceneObject, Boolean>());
+		objects = Collections.synchronizedSet(new HashSet<CutSceneObject>());
 		elapsedTicks = 0;
 	}
 

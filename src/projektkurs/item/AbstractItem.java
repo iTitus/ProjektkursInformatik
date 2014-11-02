@@ -15,6 +15,10 @@ public abstract class AbstractItem {
 	 */
 	public abstract BufferedImage getImage();
 
+	public BufferedImage getImage(ItemStack stack) {
+		return getImage();
+	}
+
 	/**
 	 * Übersetzter Name
 	 * 
@@ -26,5 +30,4 @@ public abstract class AbstractItem {
 	public String toString() {
 		return getName();
 	}
-
 }

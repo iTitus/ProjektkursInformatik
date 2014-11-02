@@ -13,8 +13,7 @@ public class ConditionedTalkAction extends Action {
 
 	@Override
 	public void doAction(CutScene cutScene) {
-		// TODO Auto-generated method stub
-
+		// TODO: Dialoge
 	}
 
 	@Override

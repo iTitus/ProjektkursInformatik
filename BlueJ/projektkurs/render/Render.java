@@ -62,6 +62,9 @@ public class Render {
 
 			g.drawString("FPS: " + staticFPS + " - UPS: "
 					+ Main.getSpielfeld().getUPS(), Integers.WINDOW_HUD_X, 16);
+			g.drawString(
+					"Spieler-" + Main.getFigur().getInventory().toString(),
+					Integers.WINDOW_HUD_X + 128, 16);
 
 			for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
 				for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {

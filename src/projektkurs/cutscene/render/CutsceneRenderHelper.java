@@ -3,8 +3,8 @@ package projektkurs.cutscene.render;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.cutscene.render.object.RenderCutSceneObject;
 import projektkurs.lib.Integers;
@@ -17,7 +17,7 @@ public class CutsceneRenderHelper {
 	public CutsceneRenderHelper(BufferedImage[][] sight) {
 
 		objects = Collections
-				.newSetFromMap(new ConcurrentHashMap<RenderCutSceneObject, Boolean>());
+				.synchronizedSet(new HashSet<RenderCutSceneObject>());
 
 		background = new BufferedImage(Integers.SIGHT_X * Integers.RASTER_SIZE,
 				Integers.SIGHT_Y * Integers.RASTER_SIZE,

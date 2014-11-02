@@ -2,8 +2,8 @@ package projektkurs.render;
 
 import java.awt.image.BufferedImage;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -48,7 +48,7 @@ public class RenderHelper {
 		sightY = 0;
 
 		entitiesInSight = Collections
-				.newSetFromMap(new ConcurrentHashMap<RenderEntity, Boolean>());
+				.synchronizedSet(new HashSet<RenderEntity>());
 
 		updateRaster();
 		updateEntities();

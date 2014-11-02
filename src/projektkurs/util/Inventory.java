@@ -8,8 +8,6 @@ import projektkurs.item.ItemStack;
  */
 public class Inventory {
 
-	// FIXME: Merging of stacks
-
 	private ItemStack[] items;
 
 	public Inventory(int inventargroesse) {
@@ -29,8 +27,67 @@ public class Inventory {
 			if (getItemAt(i) == null) {
 				items[i] = newItem;
 				return true;
+			} else if (items[i].itemAndDamageEquals(newItem)) {
+				items[i].setStackSize(items[i].getStackSize()
+						+ newItem.getStackSize());
+				return true;
 			}
 
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Streng
+	 * 
+	 * @param stack
+	 * @return
+	 */
+	public boolean contains(ItemStack stack) {
+		ItemStack item = null;
+		for (int i = 0; i < items.length; i++) {
+			item = items[i];
+			if (item != null && item.stackEquals(stack))
+				return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Ignoriert StackSize
+	 * 
+	 * @param stack
+	 * @return
+	 */
+	public boolean containsIgnoreStackSize(ItemStack stack) {
+		ItemStack item = null;
+		for (int i = 0; i < items.length; i++) {
+			item = items[i];
+			if (item != null && item.itemAndDamageEquals(stack))
+				return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param index
+	 * @param stackSize
+	 * @return success
+	 */
+	public boolean decrStackSize(int index, int stackSize) {
+
+		ItemStack stack = getItemAt(index);
+
+		if (stack != null) {
+			stack.setStackSize(stack.getStackSize() - stackSize);
+			if (stack.getStackSize() <= 0)
+				removeItem(index);
+			return true;
 		}
 
 		return false;
@@ -50,11 +107,33 @@ public class Inventory {
 	}
 
 	/**
+	 * 
+	 * @return all items
+	 */
+	public ItemStack[] getItems() {
+		return items;
+	}
+
+	/**
 	 * Zahl der Items im Inventar
 	 * 
 	 * @return
 	 */
 	public int getNumberOfItemsInInventory() {
+		int i = 0;
+		for (int j = 0; j < items.length; j++) {
+			if (getItemAt(j) != null)
+				i += getItemAt(i).getStackSize();
+		}
+		return i;
+	}
+
+	/**
+	 * Zahl der ItemStacks im Inventar
+	 * 
+	 * @return
+	 */
+	public int getNumberOfItemStacksInInventory() {
 		int i = 0;
 		for (int j = 0; j < items.length; j++) {
 			if (getItemAt(j) != null)
@@ -73,7 +152,26 @@ public class Inventory {
 	}
 
 	/**
-	 * ist das inventar leer
+	 * 
+	 * @param index
+	 * @param stackSize
+	 * @return success
+	 */
+	public boolean incrStackSize(int index, int stackSize) {
+
+		ItemStack stack = getItemAt(index);
+
+		if (stack != null) {
+			stack.setStackSize(stack.getStackSize() + stackSize);
+			return true;
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Ist das Inventar leer
 	 * 
 	 * @return true, wenn ja
 	 */
@@ -87,7 +185,7 @@ public class Inventory {
 	}
 
 	/**
-	 * ist das inventar voll
+	 * Ist das Inventar voll mit ItemStacks
 	 * 
 	 * @return true, wenn ja
 	 */
@@ -118,16 +216,19 @@ public class Inventory {
 	}
 
 	/**
-	 * Ein Gegenstand wird aus dem Inventar entfernt
+	 * Ein Gegenstand wird aus dem Inventar entfernt - Streng
 	 * 
-	 * @param itemType
-	 *            , welches Item entfernt wird
+	 * @param item
+	 *            Item, das entfernt wird
 	 * @return success
 	 */
-	public boolean removeItem(ItemStack itemType) {
+	public boolean removeItem(ItemStack item) {
+
+		ItemStack stack = null;
 
 		for (int i = 0; i < items.length; i++) {
-			if (getItemAt(i) == itemType) {
+			stack = getItemAt(i);
+			if (stack != null && stack.stackEquals(item)) {
 				items[i] = null;
 				sort();
 				return true;
@@ -137,19 +238,38 @@ public class Inventory {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param index
+	 * @param stack
+	 * @return success
+	 */
+	public boolean setStackInSlot(int index, ItemStack stack) {
+		if (index >= 0 && index < items.length) {
+			items[index] = stack;
+			if (stack == null)
+				sort();
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public String toString() {
 
 		String s = "Inventory";
 
 		if (getSize() > 0) {
+			ItemStack stack = null;
 			s += "[";
-			s += getItemAt(0).getName();
+			stack = getItemAt(0);
+			s += (stack != null ? stack.getName() : "");
 
 			if (getSize() > 1) {
 				for (int i = 1; i < items.length; i++) {
-					if (getItemAt(i) != null)
-						s += ", " + getItemAt(i).getName();
+					stack = getItemAt(i);
+					if (stack != null)
+						s += ", " + stack.getName();
 				}
 			}
 

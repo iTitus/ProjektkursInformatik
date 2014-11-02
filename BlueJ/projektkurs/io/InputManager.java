@@ -38,6 +38,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	private static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
 	private static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
 
+	private int mouseX, mouseY;
+
 	/**
 	 * Speichert alle gerade gedrueckten Tasten
 	 */
@@ -108,7 +110,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-
+		// NO-OP
 	}
 
 	/**
@@ -143,7 +145,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
-
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	/**
@@ -151,7 +154,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	/**
@@ -160,7 +164,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
-
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	/**
@@ -168,7 +173,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
-
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	/**
@@ -176,7 +182,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-
+		// NO-OP
 	}
 
 	/**
@@ -184,7 +190,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
+		// NO-OP
 	}
 
 	/**
@@ -192,7 +198,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-
+		// NO-OP
 	}
 
 	/**
@@ -211,6 +217,22 @@ public class InputManager implements KeyListener, MouseInputListener,
 		if (keysPressed.contains(KeyBindings.KEY_RIGHT))
 			moveDir |= 0b1000;
 
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getMouseX() {
+		return mouseX;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getMouseY() {
+		return mouseY;
 	}
 
 }

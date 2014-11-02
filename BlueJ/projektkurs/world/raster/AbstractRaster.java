@@ -2,6 +2,7 @@ package projektkurs.world.raster;
 
 import java.awt.image.BufferedImage;
 
+import projektkurs.entity.Entity;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
 import projektkurs.world.raster.extra.ExtraInformation;
@@ -9,7 +10,6 @@ import projektkurs.world.raster.extra.ExtraInformation;
 /**
  * Woraus die Welt besteht: Das abstrakte Raster
  */
-@SuppressWarnings("unused")
 public abstract class AbstractRaster {
 
 	/**
@@ -70,6 +70,25 @@ public abstract class AbstractRaster {
 	public void onClick(int x, int y, int button) {
 		Logger.info("Clicked on Raster @{x=" + x + ", y=" + y + "}: "
 				+ this.toString());
+	}
+
+	/**
+	 * 
+	 * @param entity
+	 */
+	public void onCollideWith(int x, int y, Entity entity) {
+		// NO-OP
+	}
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param entity
+	 * @param d
+	 */
+	public void onWalkFromDirection(int x, int y, Entity entity, Direction d) {
+		// NO-OP
 	}
 
 	@Override

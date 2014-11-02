@@ -45,4 +45,15 @@ public class Figur extends Entity {
 			Main.getRenderHelper().moveSight(dx, dy);
 		}
 	}
+
+	@Override
+	public void onCollideWith(Entity e) {
+		super.onCollideWith(e);
+		if (e instanceof EntityItem) {
+			EntityItem item = (EntityItem) e;
+			if (inventar.addItem(item.getStack())) {
+				item.setDead();
+			}
+		}
+	}
 }

@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -46,35 +46,10 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 		frame = new JFrame(Strings.NAME);
 		frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		frame.addWindowListener(new WindowListener() {
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-			}
-
+		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				isFinished = true;
-			}
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-			}
-
-			@Override
-			public void windowOpened(WindowEvent e) {
 			}
 		});
 
@@ -235,7 +210,7 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 			break;
 		}
 		default: {
-
+			// NO-OP
 		}
 		}
 	}

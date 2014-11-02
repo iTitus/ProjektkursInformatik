@@ -27,11 +27,13 @@ public class Images {
 	 * Werden aus den Resourcen geladen
 	 */
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
-			redNPC;
+			redNPC, item_42, nuke, key;
 
 	public static void flushAll() {
-		for (BufferedImage img : MAPPINGS.values())
-			img.flush();
+		for (BufferedImage img : MAPPINGS.values()) {
+			if (img != null)
+				img.flush();
+		}
 	}
 
 	/**
@@ -51,6 +53,12 @@ public class Images {
 		MAPPINGS.put("baum", baum);
 		kiste = loadImage("kiste.png");
 		MAPPINGS.put("kiste", kiste);
+		item_42 = loadImage("item_42.png");
+		MAPPINGS.put("item_42", item_42);
+		nuke = loadImage("nuke.png");
+		MAPPINGS.put("nuke", nuke);
+		key = loadImage("key.png");
+		MAPPINGS.put("key", key);
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
@@ -59,7 +67,7 @@ public class Images {
 	}
 
 	/**
-	 * Laedt ein Bild
+	 * Lädt ein Bild
 	 * 
 	 * @param name
 	 *            Name des Bildes
@@ -72,8 +80,8 @@ public class Images {
 			img = ImageIO.read(Main.class.getResource("resources"
 					+ File.separator + "images" + File.separator + name));
 			Logger.info("Successfully loaded image: " + name);
-		} catch (Exception e) {
-			Logger.logThrowable("Unable to load image '" + name + "': ", e);
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to load image '" + name + "': ", t);
 		}
 		return img;
 	}

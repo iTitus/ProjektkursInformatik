@@ -2,6 +2,7 @@ package projektkurs.cutscene.render;
 
 public class CutsceneRender {
 
+	@SuppressWarnings("unused")
 	private final CutsceneRenderHelper helper;
 
 	public CutsceneRender(CutsceneRenderHelper helper) {
@@ -9,7 +10,7 @@ public class CutsceneRender {
 	}
 
 	public void update() {
-		helper.getClass();
+		// TODO: Render fertig
 	}
 
 }

@@ -7,6 +7,7 @@ import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
+import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Ein Entity
@@ -14,8 +15,9 @@ import projektkurs.util.ICanUpdate;
  */
 public class Entity implements ICanUpdate {
 
-	protected BufferedImage image;
+	private boolean shouldDeSpawn;
 
+	protected BufferedImage image;
 	protected int posX, posY, sizeX, sizeY;
 
 	/**
@@ -42,18 +44,34 @@ public class Entity implements ICanUpdate {
 		this.image = image;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
+		shouldDeSpawn = false;
 	}
 
 	public boolean canMoveTo(int x, int y) {
-		return (!Main.getSpielfeld().isEntityAtPos(x, y))
-				&& (Main.getSpielfeld().isRasterAt(x, y) ? Main
-						.getSpielfeld()
-						.getRasterAt(x, y)
-						.canWalkOnFromDirection(
-								x,
-								y,
-								Direction.getDirectionForOffset(x - posX,
-										y - posY).getOpposite()) : true);
+
+		boolean ret = true;
+
+		Entity e = Main.getSpielfeld().getEntityAt(x, y);
+		if (e != null) {
+			onCollideWith(e);
+			if (e instanceof EntityNPC)
+				ret = false;
+			if (e instanceof EntityItem)
+				ret = true;
+		}
+
+		AbstractRaster r = Main.getSpielfeld().getRasterAt(x, y);
+		if (r != null) {
+			Direction d = Direction.getDirectionForOffset(x - posX, y - posY)
+					.getOpposite();
+			r.onCollideWith(x, y, this);
+			if (r.canWalkOnFromDirection(x, y, d) && ret) {
+				r.onWalkFromDirection(x, y, this, d);
+			} else {
+				ret = false;
+			}
+		}
+		return ret;
 
 	}
 
@@ -162,6 +180,20 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
+	 * Wird aufgerufen wenn dieser Entity einen anderen (e) anstößt
+	 * 
+	 * @param e
+	 *            other entity
+	 */
+	public void onCollideWith(Entity e) {
+		// NO-OP
+	}
+
+	public void setDead() {
+		shouldDeSpawn = true;
+	}
+
+	/**
 	 * 
 	 * @param image
 	 */
@@ -175,6 +207,10 @@ public class Entity implements ICanUpdate {
 	 */
 	public void setPos(int posX, int posY) {
 		moveBy(posX - this.posX, posY - this.posY);
+	}
+
+	public boolean shouldDeSpawn() {
+		return shouldDeSpawn;
 	}
 
 	@Override

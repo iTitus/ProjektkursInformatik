@@ -1,11 +1,12 @@
 package projektkurs.world;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -50,8 +51,7 @@ public class Spielfeld {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 
-		entities = Collections
-				.newSetFromMap(new ConcurrentHashMap<Entity, Boolean>());
+		entities = Collections.synchronizedSet(new HashSet<Entity>());
 
 		lastUPSMeasure = System.nanoTime();
 		generateAndPopulateMap();
@@ -123,13 +123,15 @@ public class Spielfeld {
 		// ENTITIES!
 		spawn(Main.getFigur());
 		spawn(new EntityRedNPC(1, 1, Images.redNPC));
+		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY)));
+		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
+		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
 
 	}
 
 	public Collection<Entity> getEntitiesInRect(int posX, int posY, int sizeX,
 			int sizeY) {
-		Set<Entity> ret = Collections
-				.newSetFromMap(new ConcurrentHashMap<Entity, Boolean>());
+		Set<Entity> ret = Collections.synchronizedSet(new HashSet<Entity>());
 
 		synchronized (entities) {
 			Iterator<Entity> i = entities.iterator();
@@ -341,13 +343,20 @@ public class Spielfeld {
 
 		Main.getFigur().moveBy(Main.getInputManager().getNextDirection());
 
+		ArrayList<Entity> toRemove = new ArrayList<Entity>();
+
 		synchronized (entities) {
 			Iterator<Entity> i = entities.iterator();
 			while (i.hasNext()) {
 				Entity e = i.next();
-				if (e != null && e.canUpdate())
-					e.update();
+				if (e != null) {
+					if (e.canUpdate())
+						e.update();
+					if (e.shouldDeSpawn())
+						toRemove.add(e);
+				}
 			}
+			entities.removeAll(toRemove);
 		}
 
 		isUpdating = false;
