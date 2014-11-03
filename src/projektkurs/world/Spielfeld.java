@@ -17,6 +17,9 @@ import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.story.scripts.Scripts;
+import projektkurs.story.trigger.PosTrigger;
+import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
@@ -126,6 +129,12 @@ public class Spielfeld {
 		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY)));
 		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
 		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
+
+		// STORYMANAGER!
+
+		Main.getStoryManager().addTrigger(
+				new PosTrigger(4, 4, ReflectionUtil.getMethod(Scripts.class,
+						"example")));
 
 	}
 
@@ -358,6 +367,8 @@ public class Spielfeld {
 			}
 			entities.removeAll(toRemove);
 		}
+
+		Main.getStoryManager().update();
 
 		isUpdating = false;
 

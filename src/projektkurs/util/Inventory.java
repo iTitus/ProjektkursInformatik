@@ -9,6 +9,7 @@ import projektkurs.item.ItemStack;
 public class Inventory {
 
 	private ItemStack[] items;
+	private int currItemStack;
 
 	public Inventory(int inventargroesse) {
 		items = new ItemStack[inventargroesse];
@@ -37,6 +38,29 @@ public class Inventory {
 
 		return false;
 
+	}
+
+	/**
+	 * 
+	 * @param index
+	 */
+	public void selectItemStackInInv(int index) {
+		if (index < 0 || index >= items.length)
+			currItemStack = -1;
+		else
+			currItemStack = index;
+	}
+
+	public boolean hasItemStackSelected() {
+		return currItemStack < 0;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public ItemStack getCurrentlySelectedItemStack() {
+		return getItemAt(currItemStack);
 	}
 
 	/**
@@ -208,7 +232,6 @@ public class Inventory {
 	public boolean removeItem(int index) {
 		if (getItemAt(index) != null) {
 			items[index] = null;
-			sort();
 			return true;
 		}
 
@@ -230,7 +253,6 @@ public class Inventory {
 			stack = getItemAt(i);
 			if (stack != null && stack.stackEquals(item)) {
 				items[i] = null;
-				sort();
 				return true;
 			}
 		}
@@ -247,8 +269,6 @@ public class Inventory {
 	public boolean setStackInSlot(int index, ItemStack stack) {
 		if (index >= 0 && index < items.length) {
 			items[index] = stack;
-			if (stack == null)
-				sort();
 			return true;
 		}
 		return false;
@@ -281,20 +301,4 @@ public class Inventory {
 		return s;
 	}
 
-	/**
-	 * Entfernt leere Stellen - zur besseren Übersichtlichkeit
-	 */
-	private void sort() {
-		ItemStack[] newItems = new ItemStack[items.length];
-
-		int j = 0;
-		for (int i = 0; i < items.length; i++) {
-			if (getItemAt(i) != null) {
-				newItems[j] = getItemAt(i);
-				j++;
-			}
-		}
-
-		items = newItems;
-	}
 }

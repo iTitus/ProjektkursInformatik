@@ -87,7 +87,7 @@ public abstract class AbstractRaster {
 	 * @param entity
 	 * @param d
 	 */
-	public void onWalkFromDirection(int x, int y, Entity entity, Direction d) {
+	public void onWalkOnFromDirection(int x, int y, Entity entity, Direction d) {
 		// NO-OP
 	}
 

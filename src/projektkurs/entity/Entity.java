@@ -66,7 +66,7 @@ public class Entity implements ICanUpdate {
 					.getOpposite();
 			r.onCollideWith(x, y, this);
 			if (r.canWalkOnFromDirection(x, y, d) && ret) {
-				r.onWalkFromDirection(x, y, this, d);
+				r.onWalkOnFromDirection(x, y, this, d);
 			} else {
 				ret = false;
 			}

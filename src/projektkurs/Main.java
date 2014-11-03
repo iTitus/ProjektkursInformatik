@@ -1,6 +1,5 @@
 package projektkurs;
 
-import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -20,6 +19,7 @@ import projektkurs.lib.Strings;
 import projektkurs.render.GameCanvas;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
+import projektkurs.story.Storymanager;
 import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
 import projektkurs.thread.RenderThread;
@@ -34,7 +34,6 @@ import projektkurs.world.Spielfeld;
  * Die Hauptklasse
  * 
  */
-@SuppressWarnings("unused")
 public final class Main {
 
 	/**
@@ -76,8 +75,8 @@ public final class Main {
 	private static Spielfeld map;
 	private static Render render;
 	private static RenderHelper renderHelper;
+	private static Storymanager storyManager;
 	private static LoopThread renderThread, simulationThread, moveThread;
-	private static BufferStrategy strategy;
 
 	/**
 	 * Verlaesst das Spiel
@@ -153,6 +152,7 @@ public final class Main {
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
 		render = new Render(new GameCanvas());
+		storyManager = new Storymanager();
 	}
 
 	/**
@@ -320,8 +320,9 @@ public final class Main {
 		while (!Option.isFinished()) {
 			try {
 				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				Logger.logThrowable("Couldn't wait for the options window: ", e);
+			} catch (Throwable t) {
+				Logger.logThrowable("Could not wait for the options window: ",
+						t);
 			}
 		}
 
@@ -330,6 +331,7 @@ public final class Main {
 
 		SwingUtilities.invokeLater(new Runnable() {
 
+			@SuppressWarnings("unused")
 			@Override
 			public void run() {
 				new MainFrame();
@@ -342,5 +344,9 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
+	}
+
+	public static Storymanager getStoryManager() {
+		return storyManager;
 	}
 }
