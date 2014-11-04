@@ -38,12 +38,12 @@ public class InputManager implements KeyListener, MouseInputListener,
 	private static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
 	private static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
 
-	private int mouseX, mouseY;
-
 	/**
 	 * Speichert alle gerade gedrueckten Tasten
 	 */
 	private final HashSet<Integer> keysPressed;
+
+	private int mouseX, mouseY;
 
 	/**
 	 * Zwischenvariable, um die aktuelle Bewgeungsrichtung zu speichern
@@ -56,6 +56,22 @@ public class InputManager implements KeyListener, MouseInputListener,
 	public InputManager() {
 		keysPressed = new HashSet<Integer>(0);
 		moveDir = 0b0000;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getMouseX() {
+		return mouseX;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getMouseY() {
+		return mouseY;
 	}
 
 	/**
@@ -198,7 +214,23 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		// NO-OP
+		if (e.getWheelRotation() > 0) {
+			Main.getFigur()
+					.getInventory()
+					.setSelectedItemStack(
+							Main.getFigur().getInventory().getSelectedIndex() >= Main
+									.getFigur().getInventory().getSize() ? 0
+									: Main.getFigur().getInventory()
+											.getSelectedIndex() + 1);
+		} else if (e.getWheelRotation() < 0) {
+			Main.getFigur()
+					.getInventory()
+					.setSelectedItemStack(
+							(Main.getFigur().getInventory().getSelectedIndex() <= 0 ? Main
+									.getFigur().getInventory().getSize() - 1
+									: Main.getFigur().getInventory()
+											.getSelectedIndex() - 1));
+		}
 	}
 
 	/**
@@ -217,21 +249,5 @@ public class InputManager implements KeyListener, MouseInputListener,
 		if (keysPressed.contains(KeyBindings.KEY_RIGHT))
 			moveDir |= 0b1000;
 
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int getMouseX() {
-		return mouseX;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int getMouseY() {
-		return mouseY;
 	}
 }

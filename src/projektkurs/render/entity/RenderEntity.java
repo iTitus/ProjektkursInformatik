@@ -10,17 +10,10 @@ import projektkurs.lib.Integers;
  */
 public class RenderEntity {
 
-	private Entity e;
+	private final Entity e;
 
 	public RenderEntity(Entity e) {
 		this.e = e;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof RenderEntity)
-			return ((RenderEntity) obj).e.equals(e);
-		return super.equals(obj);
 	}
 
 	public Entity getEntity() {
@@ -35,11 +28,6 @@ public class RenderEntity {
 	public int getRelY() {
 		return ((e.getPosY() - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE)
 				+ Integers.WINDOW_HUD_Y;
-	}
-
-	@Override
-	public int hashCode() {
-		return e.hashCode();
 	}
 
 }

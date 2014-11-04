@@ -18,12 +18,15 @@ import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.story.scripts.Scripts;
+import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.InventoryTrigger;
 import projektkurs.story.trigger.PosTrigger;
+import projektkurs.util.Direction;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
+import projektkurs.world.raster.extra.ExtraInformationDoor;
 import projektkurs.world.raster.extra.ExtraInformationKiste;
 
 /**
@@ -54,9 +57,7 @@ public class Spielfeld {
 	public Spielfeld() {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
-
 		entities = Collections.synchronizedSet(new HashSet<Entity>());
-
 		lastUPSMeasure = System.nanoTime();
 		generateAndPopulateMap();
 	}
@@ -109,6 +110,29 @@ public class Spielfeld {
 			setRasterAt(MAP_SIZE_X - 1, y, Raster.WAND);
 		}
 
+		// TÜREN!
+		setRasterAt(20, 18, Raster.BAUM);
+		setRasterAt(21, 18, Raster.BAUM);
+		setRasterAt(22, 18, Raster.BAUM);
+		setRasterAt(23, 18, Raster.BAUM);
+		setRasterAt(24, 18, Raster.BAUM);
+		setRasterAt(24, 19, Raster.BAUM);
+		setRasterAt(24, 20, Raster.BAUM);
+		setRasterAt(24, 21, Raster.BAUM);
+		setRasterAt(24, 22, Raster.BAUM);
+		setRasterAt(20, 19, Raster.BAUM);
+		setRasterAt(20, 20, Raster.DOOR);
+		setRasterAt(20, 21, Raster.BAUM);
+		setRasterAt(20, 22, Raster.BAUM);
+		setRasterAt(21, 22, Raster.BAUM);
+		setRasterAt(22, 22, Raster.BAUM);
+		setRasterAt(23, 22, Raster.BAUM);
+		setRasterAt(22, 20, Raster.FINISH);
+		((ExtraInformationDoor) getExtraInformationAt(20, 20))
+				.setDirection(Direction.LEFT);
+		((ExtraInformationDoor) getExtraInformationAt(20, 20))
+				.setOpeningKey(1000);
+
 		// KISTENINHALTE!
 		for (int x = 0; x < extras.length; x++) {
 			for (int y = 0; y < extras[x].length; y++) {
@@ -129,7 +153,7 @@ public class Spielfeld {
 		// ENTITIES!
 		spawn(Main.getFigur());
 		spawn(new EntityRedNPC(1, 1, Images.redNPC));
-		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY)));
+		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY, 1, 1000)));
 		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
 		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
 
@@ -140,7 +164,10 @@ public class Spielfeld {
 						"example")));
 		Main.getStoryManager().addTrigger(
 				new InventoryTrigger(ReflectionUtil.getMethod(Scripts.class,
-						"looseGame"), new ItemStack(Items.NUKE, 1)));
+						"looseGame"), new ItemStack(Items.NUKE)));
+		Main.getStoryManager().addTrigger(
+				new AreaTrigger(ReflectionUtil.getMethod(Scripts.class,
+						"treeBomb"), 20, 18, 5, 5));
 
 	}
 

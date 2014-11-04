@@ -1,4 +1,4 @@
-package projektkurs.util;
+package projektkurs.inventory;
 
 import projektkurs.item.ItemStack;
 
@@ -8,12 +8,10 @@ import projektkurs.item.ItemStack;
  */
 public class Inventory {
 
-	private ItemStack[] stacks;
-	private int selectedItemStack;
+	protected ItemStack[] stacks;
 
 	public Inventory(int size) {
 		stacks = new ItemStack[size];
-		selectedItemStack = -1;
 	}
 
 	/**
@@ -37,37 +35,6 @@ public class Inventory {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Wählt den ItemStack im Slot index aus, -1, um keinen ItemStack
-	 * auszuwählen
-	 * 
-	 * @param index
-	 */
-	public void selectItemStackIn(int index) {
-		if (index < 0 || index >= stacks.length)
-			selectedItemStack = -1;
-		else
-			selectedItemStack = index;
-	}
-
-	/**
-	 * Ist ein ItemStack ausgewählt?
-	 * 
-	 * @return
-	 */
-	public boolean hasItemStackSelected() {
-		return selectedItemStack < 0;
-	}
-
-	/**
-	 * Returnt den ausgewählten ItemStack
-	 * 
-	 * @return
-	 */
-	public ItemStack getSelectedItemStack() {
-		return getItemStackAt(selectedItemStack);
 	}
 
 	/**
@@ -131,6 +98,15 @@ public class Inventory {
 	}
 
 	/**
+	 * Return alle ItemStacks im Inventar
+	 * 
+	 * @return alle ItemStacks im Inventar
+	 */
+	public ItemStack[] getItems() {
+		return stacks;
+	}
+
+	/**
 	 * Returnt den ItemStack an der Stelle index
 	 * 
 	 * @param index
@@ -140,15 +116,6 @@ public class Inventory {
 		if (index < 0 || index >= stacks.length)
 			return null;
 		return stacks[index];
-	}
-
-	/**
-	 * Return alle ItemStacks im Inventar
-	 * 
-	 * @return alle ItemStacks im Inventar
-	 */
-	public ItemStack[] getItems() {
-		return stacks;
 	}
 
 	/**

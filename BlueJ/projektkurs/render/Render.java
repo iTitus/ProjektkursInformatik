@@ -1,10 +1,14 @@
 package projektkurs.render;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.util.Iterator;
 
 import projektkurs.Main;
+import projektkurs.inventory.PlayerInventory;
+import projektkurs.item.ItemStack;
+import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.render.entity.RenderEntity;
 
@@ -59,19 +63,19 @@ public class Render {
 			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
 
 			g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+			g.setColor(Color.BLACK);
 
 			g.drawString("FPS: " + staticFPS + " - UPS: "
 					+ Main.getSpielfeld().getUPS(), Integers.WINDOW_HUD_X, 16);
-			g.drawString(
-					"Spieler-" + Main.getFigur().getInventory().toString(),
-					Integers.WINDOW_HUD_X + 128, 16);
 
-			for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
-				for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
-					g.drawImage(Main.getRenderHelper().getSight()[x][y], x
-							* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, y
-							* Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y,
-							null);
+			synchronized (Main.getRenderHelper().getSight()) {
+				for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
+					for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
+						g.drawImage(Main.getRenderHelper().getSight()[x][y], x
+								* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X,
+								y * Integers.RASTER_SIZE
+										+ Integers.WINDOW_HUD_Y, null);
+					}
 				}
 			}
 
@@ -85,6 +89,25 @@ public class Render {
 							e.getRelY(), e.getEntity().getSizeX()
 									* Integers.RASTER_SIZE, e.getEntity()
 									.getSizeY() * Integers.RASTER_SIZE, null);
+				}
+			}
+
+			synchronized (Main.getFigur().getInventory()) {
+				PlayerInventory inv = Main.getFigur().getInventory();
+				ItemStack stack = null;
+				for (int i = 0; i < inv.getSize(); i++) {
+					g.drawImage(
+							(i == inv.getSelectedIndex() ? Images.slot_highlight
+									: Images.slot), i * Integers.SLOT_SIZE
+									+ inv.getRelX(), inv.getRelY(), null);
+					stack = inv.getItemStackAt(i);
+					if (stack != null) {
+						g.drawImage(stack.getImage(), i * Integers.SLOT_SIZE
+								+ inv.getRelX() + 1, inv.getRelY() + 1, null);
+						g.drawString(stack.getStackSize() + "", i
+								* Integers.SLOT_SIZE + inv.getRelX() + 1,
+								inv.getRelY() + 11);
+					}
 				}
 			}
 

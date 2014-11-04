@@ -76,8 +76,8 @@ public final class Main {
 	private static Spielfeld map;
 	private static Render render;
 	private static RenderHelper renderHelper;
-	private static Storymanager storyManager;
 	private static LoopThread renderThread, simulationThread, moveThread;
+	private static Storymanager storyManager;
 
 	/**
 	 * Verlaesst das Spiel
@@ -142,6 +142,10 @@ public final class Main {
 		return map;
 	}
 
+	public static Storymanager getStoryManager() {
+		return storyManager;
+	}
+
 	/**
 	 * Interne Methode um alle Felder(Variablen) zu initialisieren
 	 */
@@ -151,6 +155,10 @@ public final class Main {
 		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
+
+		// Method m = ReflectionUtil.getMethod(Scripts.class,
+		// "generateAndPopulateMap_Test1");
+		// map = new Spielfeld(m);
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
 		render = new Render(new GameCanvas());
@@ -330,7 +338,6 @@ public final class Main {
 
 		SwingUtilities.invokeLater(new Runnable() {
 
-			@SuppressWarnings("unused")
 			@Override
 			public void run() {
 				new MainFrame();
@@ -343,9 +350,5 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
-	}
-
-	public static Storymanager getStoryManager() {
-		return storyManager;
 	}
 }

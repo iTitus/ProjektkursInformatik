@@ -23,6 +23,17 @@ public class Storymanager {
 		this.triggers = new Trigger[0];
 	}
 
+	public void addTrigger(Trigger trigger) {
+		for (int i = 0; i < triggers.length; i++) {
+			if (triggers[i] == null) {
+				triggers[i] = trigger;
+				return;
+			}
+		}
+		increaseCapacity();
+		triggers[triggers.length - 1] = trigger;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -53,25 +64,6 @@ public class Storymanager {
 		}
 	}
 
-	public void addTrigger(Trigger trigger) {
-		for (int i = 0; i < triggers.length; i++) {
-			if (triggers[i] == null) {
-				triggers[i] = trigger;
-				return;
-			}
-		}
-		increaseCapacity();
-		triggers[triggers.length - 1] = trigger;
-	}
-
-	private void increaseCapacity() {
-		Trigger[] temp = new Trigger[triggers.length + 1];
-		for (int i = 0; i < triggers.length; i++) {
-			temp[i] = triggers[i];
-		}
-		triggers = temp;
-	}
-
 	public void update() {
 		ArrayList<Trigger> triggersToRemove = new ArrayList<Trigger>();
 		Trigger t = null;
@@ -85,6 +77,13 @@ public class Storymanager {
 
 		for (Trigger toRemove : triggersToRemove)
 			removeTrigger(toRemove);
+	}
 
+	private void increaseCapacity() {
+		Trigger[] temp = new Trigger[triggers.length + 1];
+		for (int i = 0; i < triggers.length; i++) {
+			temp[i] = triggers[i];
+		}
+		triggers = temp;
 	}
 }

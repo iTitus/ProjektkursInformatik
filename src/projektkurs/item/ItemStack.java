@@ -1,5 +1,7 @@
 package projektkurs.item;
 
+import java.awt.image.BufferedImage;
+
 public class ItemStack {
 
 	private AbstractItem item;
@@ -47,6 +49,14 @@ public class ItemStack {
 		return damage;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public BufferedImage getImage() {
+		return item.getImage(this);
+	}
+
 	public AbstractItem getItem() {
 		return item;
 	}
@@ -84,7 +94,7 @@ public class ItemStack {
 	}
 
 	/**
-	 * Ignoriert stacksize und damage
+	 * Ignore stacksize and damage
 	 * 
 	 * @param other
 	 * @return

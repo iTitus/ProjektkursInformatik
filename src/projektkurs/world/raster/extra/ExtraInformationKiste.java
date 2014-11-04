@@ -1,7 +1,7 @@
 package projektkurs.world.raster.extra;
 
+import projektkurs.inventory.Inventory;
 import projektkurs.lib.Integers;
-import projektkurs.util.Inventory;
 
 /**
  * Das Kisteninventar

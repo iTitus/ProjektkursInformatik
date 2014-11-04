@@ -1,9 +1,8 @@
 package projektkurs.story.trigger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import projektkurs.util.Logger;
+import projektkurs.util.ReflectionUtil;
 
 /**
  * Ein abstrakter Trigger
@@ -11,10 +10,14 @@ import projektkurs.util.Logger;
  */
 public abstract class Trigger {
 
-	protected Method M;
+	protected Method m;
 
-	protected Trigger(Method M) {
-		this.M = M;
+	protected Trigger(Method m) {
+		this.m = m;
+	}
+
+	public void doTrigger() {
+		ReflectionUtil.invokeStatic(m);
 	}
 
 	/**
@@ -22,16 +25,4 @@ public abstract class Trigger {
 	 * @return
 	 */
 	public abstract boolean isTriggerActive();
-
-	@SuppressWarnings("all")
-	public void doTrigger() {
-		try {
-			M.invoke(null, null);
-		} catch (IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			e.printStackTrace();
-			Logger.logThrowable("This went wrong...", e);
-		}
-		
-	}
 }

@@ -3,8 +3,8 @@ package projektkurs.entity;
 import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
+import projektkurs.inventory.PlayerInventory;
 import projektkurs.lib.Integers;
-import projektkurs.util.Inventory;
 
 /**
  * Eine Spielerfigur
@@ -14,7 +14,7 @@ import projektkurs.util.Inventory;
  */
 public class Figur extends Entity {
 
-	private Inventory inventar;
+	private PlayerInventory inventar;
 
 	/**
 	 * Konstruktor für Figuren
@@ -25,7 +25,7 @@ public class Figur extends Entity {
 	 */
 	public Figur(int posX, int posY, BufferedImage image) {
 		super(posX, posY, image);
-		inventar = new Inventory(Integers.INVENTARGROESSE);
+		inventar = new PlayerInventory(Integers.INVENTARGROESSE, 0);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class Figur extends Entity {
 	 * 
 	 * @return
 	 */
-	public Inventory getInventory() {
+	public PlayerInventory getInventory() {
 		return inventar;
 	}
 

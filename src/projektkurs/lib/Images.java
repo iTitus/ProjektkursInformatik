@@ -1,5 +1,7 @@
 package projektkurs.lib;
 
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
@@ -27,7 +29,8 @@ public class Images {
 	 * Werden aus den Resourcen geladen
 	 */
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
-			redNPC, item_42, nuke, key;
+			redNPC, item_42, nuke, key, slot, slot_highlight, door_NS, door_WE,
+			door_open_NS, door_open_WE, finish;
 
 	public static void flushAll() {
 		for (BufferedImage img : MAPPINGS.values()) {
@@ -59,6 +62,20 @@ public class Images {
 		MAPPINGS.put("nuke", nuke);
 		key = loadImage("key.png");
 		MAPPINGS.put("key", key);
+		slot = loadImage("slot.png");
+		MAPPINGS.put("slot", slot);
+		slot_highlight = loadImage("slot_highlight.png");
+		MAPPINGS.put("slot_highlight", slot_highlight);
+		door_NS = loadImage("door.png");
+		MAPPINGS.put("door_NS", door_NS);
+		door_WE = loadImageRotate("door.png", 1);
+		MAPPINGS.put("door_WE", door_WE);
+		door_open_NS = loadImage("door_open.png");
+		MAPPINGS.put("door_open_NS", door_open_NS);
+		door_open_WE = loadImageRotate("door_open.png", 1);
+		MAPPINGS.put("door_open_WE", door_open_WE);
+		finish = loadImage("finish.png");
+		MAPPINGS.put("finish", finish);
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
@@ -82,6 +99,20 @@ public class Images {
 			Logger.info("Successfully loaded image: " + name);
 		} catch (Throwable t) {
 			Logger.logThrowable("Unable to load image '" + name + "': ", t);
+		}
+		return img;
+	}
+
+	private static BufferedImage loadImageRotate(String name, int numquadrants) {
+		BufferedImage img = loadImage(name);
+		if (img != null) {
+			BufferedImage rotated = new BufferedImage(img.getWidth(),
+					img.getHeight(), img.getType());
+			Graphics2D g = (Graphics2D) rotated.getGraphics();
+			g.setTransform(AffineTransform
+					.getQuadrantRotateInstance(numquadrants));
+			g.drawImage(img, 0, -img.getWidth(), null);
+			return rotated;
 		}
 		return img;
 	}
