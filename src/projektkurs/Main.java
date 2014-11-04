@@ -28,6 +28,7 @@ import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
+import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -81,7 +82,7 @@ public final class Main {
 	/**
 	 * Verlaesst das Spiel
 	 */
-	public static void exit() {
+	public static void exit(/* boolean shouldSave */) {
 		Logger.info("Initialising shutdown routine!");
 		if (moveThread != null)
 			moveThread.terminate();
@@ -146,13 +147,14 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
+		storyManager = new Storymanager();
 		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
 		render = new Render(new GameCanvas());
-		storyManager = new Storymanager();
+
 	}
 
 	/**
@@ -283,11 +285,8 @@ public final class Main {
 	 */
 	private static void invoke(Method m, State state) throws Throwable {
 		if (m.getAnnotation(Init.class).state().equals(state)) {
-			boolean accessible = m.isAccessible();
-			m.setAccessible(true);
 			Logger.info("Invoking @" + state + ": " + m.toString());
-			m.invoke(null);
-			m.setAccessible(accessible);
+			ReflectionUtil.invokeStatic(m);
 		}
 	}
 
@@ -309,7 +308,7 @@ public final class Main {
 	 */
 	private static void startGame() {
 
-		Logger.info("Started loading!");
+		Logger.info("Initialising startup routine!");
 
 		// PreInit
 		// TODO: Load from disk

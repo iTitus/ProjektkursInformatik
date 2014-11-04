@@ -1,6 +1,5 @@
 package projektkurs;
 
-import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -20,6 +19,7 @@ import projektkurs.lib.Strings;
 import projektkurs.render.GameCanvas;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
+import projektkurs.story.Storymanager;
 import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
 import projektkurs.thread.RenderThread;
@@ -28,13 +28,13 @@ import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
+import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 
 /**
  * Die Hauptklasse
  * 
  */
-@SuppressWarnings("unused")
 public final class Main {
 
 	/**
@@ -76,13 +76,13 @@ public final class Main {
 	private static Spielfeld map;
 	private static Render render;
 	private static RenderHelper renderHelper;
+	private static Storymanager storyManager;
 	private static LoopThread renderThread, simulationThread, moveThread;
-	private static BufferStrategy strategy;
 
 	/**
 	 * Verlaesst das Spiel
 	 */
-	public static void exit() {
+	public static void exit(/* boolean shouldSave */) {
 		Logger.info("Initialising shutdown routine!");
 		if (moveThread != null)
 			moveThread.terminate();
@@ -147,12 +147,14 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
+		storyManager = new Storymanager();
 		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
 		render = new Render(new GameCanvas());
+
 	}
 
 	/**
@@ -283,11 +285,8 @@ public final class Main {
 	 */
 	private static void invoke(Method m, State state) throws Throwable {
 		if (m.getAnnotation(Init.class).state().equals(state)) {
-			boolean accessible = m.isAccessible();
-			m.setAccessible(true);
 			Logger.info("Invoking @" + state + ": " + m.toString());
-			m.invoke(null);
-			m.setAccessible(accessible);
+			ReflectionUtil.invokeStatic(m);
 		}
 	}
 
@@ -309,7 +308,7 @@ public final class Main {
 	 */
 	private static void startGame() {
 
-		Logger.info("Started loading!");
+		Logger.info("Initialising startup routine!");
 
 		// PreInit
 		// TODO: Load from disk
@@ -320,8 +319,9 @@ public final class Main {
 		while (!Option.isFinished()) {
 			try {
 				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				Logger.logThrowable("Couldn't wait for the options window: ", e);
+			} catch (Throwable t) {
+				Logger.logThrowable("Could not wait for the options window: ",
+						t);
 			}
 		}
 
@@ -330,6 +330,7 @@ public final class Main {
 
 		SwingUtilities.invokeLater(new Runnable() {
 
+			@SuppressWarnings("unused")
 			@Override
 			public void run() {
 				new MainFrame();
@@ -342,5 +343,9 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
+	}
+
+	public static Storymanager getStoryManager() {
+		return storyManager;
 	}
 }

@@ -234,5 +234,4 @@ public class InputManager implements KeyListener, MouseInputListener,
 	public int getMouseY() {
 		return mouseY;
 	}
-
 }

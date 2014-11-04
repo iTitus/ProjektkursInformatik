@@ -17,6 +17,10 @@ import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.story.scripts.Scripts;
+import projektkurs.story.trigger.InventoryTrigger;
+import projektkurs.story.trigger.PosTrigger;
+import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
@@ -110,12 +114,14 @@ public class Spielfeld {
 			for (int y = 0; y < extras[x].length; y++) {
 				if (getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(
+							.getInventar().addItemStack(
 									new ItemStack(Items.ITEM_42, 42));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.NUKE));
+							.getInventar().addItemStack(
+									new ItemStack(Items.NUKE));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.KEY));
+							.getInventar().addItemStack(
+									new ItemStack(Items.KEY));
 				}
 			}
 		}
@@ -126,6 +132,15 @@ public class Spielfeld {
 		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY)));
 		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
 		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
+
+		// STORYMANAGER!
+
+		Main.getStoryManager().addTrigger(
+				new PosTrigger(4, 4, ReflectionUtil.getMethod(Scripts.class,
+						"example")));
+		Main.getStoryManager().addTrigger(
+				new InventoryTrigger(ReflectionUtil.getMethod(Scripts.class,
+						"looseGame"), new ItemStack(Items.NUKE, 1)));
 
 	}
 
@@ -358,6 +373,8 @@ public class Spielfeld {
 			}
 			entities.removeAll(toRemove);
 		}
+
+		Main.getStoryManager().update();
 
 		isUpdating = false;
 

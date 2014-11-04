@@ -51,7 +51,7 @@ public class Figur extends Entity {
 		super.onCollideWith(e);
 		if (e instanceof EntityItem) {
 			EntityItem item = (EntityItem) e;
-			if (inventar.addItem(item.getStack())) {
+			if (inventar.addItemStack(item.getStack())) {
 				item.setDead();
 			}
 		}

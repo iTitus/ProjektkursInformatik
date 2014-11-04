@@ -18,6 +18,7 @@ import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.story.scripts.Scripts;
+import projektkurs.story.trigger.InventoryTrigger;
 import projektkurs.story.trigger.PosTrigger;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
@@ -113,12 +114,14 @@ public class Spielfeld {
 			for (int y = 0; y < extras[x].length; y++) {
 				if (getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(
+							.getInventar().addItemStack(
 									new ItemStack(Items.ITEM_42, 42));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.NUKE));
+							.getInventar().addItemStack(
+									new ItemStack(Items.NUKE));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
-							.getInventar().addItem(new ItemStack(Items.KEY));
+							.getInventar().addItemStack(
+									new ItemStack(Items.KEY));
 				}
 			}
 		}
@@ -135,6 +138,9 @@ public class Spielfeld {
 		Main.getStoryManager().addTrigger(
 				new PosTrigger(4, 4, ReflectionUtil.getMethod(Scripts.class,
 						"example")));
+		Main.getStoryManager().addTrigger(
+				new InventoryTrigger(ReflectionUtil.getMethod(Scripts.class,
+						"looseGame"), new ItemStack(Items.NUKE, 1)));
 
 	}
 
