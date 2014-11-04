@@ -82,7 +82,7 @@ public final class Main {
 	/**
 	 * Verlaesst das Spiel
 	 */
-	public static void exit(/* boolean shouldSave */) {
+	public static void exit() {
 		Logger.info("Initialising shutdown routine!");
 		if (moveThread != null)
 			moveThread.terminate();
