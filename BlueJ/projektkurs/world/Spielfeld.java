@@ -39,17 +39,11 @@ public class Spielfeld {
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
 	private static final Random rand = new Random();
 
-	public boolean isUpdating;
 	private Set<Entity> entities;
 
 	private ExtraInformation[][] extras;
 
-	private long lastUPSMeasure;
-
 	private AbstractRaster[][] map;
-
-	private int staticUPS;
-	private int ups;
 
 	/**
 	 * 
@@ -58,7 +52,6 @@ public class Spielfeld {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 		entities = Collections.synchronizedSet(new HashSet<Entity>());
-		lastUPSMeasure = System.nanoTime();
 		generateAndPopulateMap();
 	}
 
@@ -302,10 +295,6 @@ public class Spielfeld {
 		return map[x][y];
 	}
 
-	public int getUPS() {
-		return staticUPS;
-	}
-
 	/**
 	 * 
 	 * @param x
@@ -381,8 +370,6 @@ public class Spielfeld {
 	 */
 	public void update() {
 
-		isUpdating = true;
-
 		Main.getFigur().moveBy(Main.getInputManager().getNextDirection());
 
 		ArrayList<Entity> toRemove = new ArrayList<Entity>();
@@ -403,18 +390,5 @@ public class Spielfeld {
 
 		Main.getStoryManager().update();
 
-		isUpdating = false;
-
-		calcUPS();
-
-	}
-
-	private void calcUPS() {
-		if (System.nanoTime() - lastUPSMeasure > 1000000000) {
-			staticUPS = ups;
-			ups = 0;
-			lastUPSMeasure += 1000000000;
-		}
-		ups++;
 	}
 }

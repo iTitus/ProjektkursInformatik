@@ -15,7 +15,7 @@ public class SimulationThread extends LoopThread {
 	 * Konstruktor
 	 */
 	public SimulationThread() {
-		super("Simulation", Integers.TICK_TIME);
+		super("Simulation", Integers.UPS);
 	}
 
 	@Override

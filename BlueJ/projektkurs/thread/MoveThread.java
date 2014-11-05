@@ -6,7 +6,7 @@ import projektkurs.lib.Integers;
 public class MoveThread extends LoopThread {
 
 	public MoveThread() {
-		super("Movement", Integers.REACTION_TIME);
+		super("Movement", Integers.RPS);
 	}
 
 	@Override

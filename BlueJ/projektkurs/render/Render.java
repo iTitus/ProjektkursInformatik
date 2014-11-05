@@ -22,10 +22,6 @@ public class Render {
 	 * Das Spiel-Canvas
 	 */
 	private final GameCanvas canvas;
-	private int fps;
-	private long lastFPSMeasure;
-
-	private int staticFPS;
 	private BufferStrategy strategy;
 
 	/**
@@ -36,9 +32,6 @@ public class Render {
 	 */
 	public Render(GameCanvas canvas) {
 		this.canvas = canvas;
-
-		lastFPSMeasure = System.nanoTime();
-
 	}
 
 	/**
@@ -65,8 +58,8 @@ public class Render {
 			g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
 			g.setColor(Color.BLACK);
 
-			g.drawString("FPS: " + staticFPS + " - UPS: "
-					+ Main.getSpielfeld().getUPS(), Integers.WINDOW_HUD_X, 16);
+			g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS(),
+					Integers.WINDOW_HUD_X, 16);
 
 			synchronized (Main.getRenderHelper().getSight()) {
 				for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
@@ -115,15 +108,6 @@ public class Render {
 			strategy.show();
 
 		}
-		calcFPS();
 	}
 
-	private void calcFPS() {
-		if (System.nanoTime() - lastFPSMeasure > 1000000000) {
-			staticFPS = fps;
-			fps = 0;
-			lastFPSMeasure += 1000000000;
-		}
-		fps++;
-	}
 }

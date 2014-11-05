@@ -57,8 +57,10 @@ public class Storymanager {
 	}
 
 	public void removeTrigger(Trigger trigger) {
+		Trigger t = null;
 		for (int i = 0; i < triggers.length; i++) {
-			if (triggers[i].equals(trigger)) {
+			t = triggers[i];
+			if (t != null && t.equals(trigger)) {
 				triggers[i] = null;
 			}
 		}

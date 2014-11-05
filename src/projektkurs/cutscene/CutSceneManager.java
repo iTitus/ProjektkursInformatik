@@ -64,7 +64,7 @@ public final class CutSceneManager {
 			time = 0L;
 
 			while (!currCutScene.isFinished()) {
-				if (System.currentTimeMillis() - time > Integers.TICK_TIME) {
+				if (System.currentTimeMillis() - time > Integers.UPS) {
 					time = System.currentTimeMillis();
 					currCutScene.update();
 					currCutSceneRender.update();

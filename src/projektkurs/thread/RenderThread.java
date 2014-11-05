@@ -15,7 +15,7 @@ public class RenderThread extends LoopThread {
 	 * Konstruktor
 	 */
 	public RenderThread() {
-		super("Render", Integers.TICK_TIME);
+		super("Render", Integers.UPS);
 	}
 
 	@Override

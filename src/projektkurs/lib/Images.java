@@ -68,11 +68,11 @@ public class Images {
 		MAPPINGS.put("slot_highlight", slot_highlight);
 		door_NS = loadImage("door.png");
 		MAPPINGS.put("door_NS", door_NS);
-		door_WE = loadImageRotate("door.png", 1);
+		door_WE = loadImageRotate90("door.png");
 		MAPPINGS.put("door_WE", door_WE);
 		door_open_NS = loadImage("door_open.png");
 		MAPPINGS.put("door_open_NS", door_open_NS);
-		door_open_WE = loadImageRotate("door_open.png", 1);
+		door_open_WE = loadImageRotate90("door_open.png");
 		MAPPINGS.put("door_open_WE", door_open_WE);
 		finish = loadImage("finish.png");
 		MAPPINGS.put("finish", finish);
@@ -103,14 +103,13 @@ public class Images {
 		return img;
 	}
 
-	private static BufferedImage loadImageRotate(String name, int numquadrants) {
+	private static BufferedImage loadImageRotate90(String name) {
 		BufferedImage img = loadImage(name);
 		if (img != null) {
 			BufferedImage rotated = new BufferedImage(img.getWidth(),
 					img.getHeight(), img.getType());
 			Graphics2D g = (Graphics2D) rotated.getGraphics();
-			g.setTransform(AffineTransform
-					.getQuadrantRotateInstance(numquadrants));
+			g.setTransform(AffineTransform.getQuadrantRotateInstance(1));
 			g.drawImage(img, 0, -img.getWidth(), null);
 			return rotated;
 		}

@@ -11,7 +11,6 @@ public final class Integers {
 	public static final int KISTENGROESSE = 3;
 
 	public static final int RASTER_SIZE = 32;
-	public static final int REACTION_TIME = 250;
 
 	public static int SIGHT_X = (Toolkit.getDefaultToolkit().getScreenSize().width / Integers.RASTER_SIZE)
 			- ((2 * Integers.WINDOW_HUD_X) / Integers.RASTER_SIZE);
@@ -20,7 +19,9 @@ public final class Integers {
 			- ((2 * Integers.WINDOW_HUD_Y) / Integers.RASTER_SIZE) - 1;
 	public static final int SLOT_SIZE = Integers.RASTER_SIZE + 2;
 
-	public static final int TICK_TIME = 20;
+	public static final int FPS = 60;
+	public static final int UPS = 60;
+	public static final int RPS = 5;
 
 	public static final int WINDOW_HUD_X = 34;
 	public static final int WINDOW_HUD_Y = 34;

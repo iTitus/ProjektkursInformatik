@@ -338,6 +338,7 @@ public final class Main {
 
 		SwingUtilities.invokeLater(new Runnable() {
 
+			@SuppressWarnings("unused")
 			@Override
 			public void run() {
 				new MainFrame();
@@ -350,5 +351,13 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
+	}
+
+	public static int getFPS() {
+		return (renderThread != null ? renderThread.getLPS() : 0);
+	}
+
+	public static int getUPS() {
+		return (simulationThread != null ? simulationThread.getLPS() : 0);
 	}
 }
