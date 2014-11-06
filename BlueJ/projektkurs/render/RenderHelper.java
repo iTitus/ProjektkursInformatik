@@ -13,19 +13,18 @@ import projektkurs.render.entity.RenderEntity;
 
 /**
  * Helperklasse zum Rendern
- * 
  */
 public class RenderHelper {
 
 	/**
-	 * 
-	 */
-	private Set<RenderEntity> entitiesInSight;
+     *
+     */
+	private final Set<RenderEntity> entitiesInSight;
 
 	/**
 	 * Sichtfeld
 	 */
-	private BufferedImage[][] sight;
+	private final BufferedImage[][] sight;
 
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
@@ -65,7 +64,6 @@ public class RenderHelper {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public Set<RenderEntity> getEntitiesInSight() {
@@ -75,7 +73,6 @@ public class RenderHelper {
 	}
 
 	/**
-	 * 
 	 * @return die aktuelle Sicht
 	 */
 	public BufferedImage[][] getSight() {
@@ -84,7 +81,7 @@ public class RenderHelper {
 
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
-	 * 
+	 *
 	 * @return
 	 */
 	public int getSightX() {
@@ -93,7 +90,7 @@ public class RenderHelper {
 
 	/**
 	 * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
-	 * 
+	 *
 	 * @return
 	 */
 	public int getSightY() {
@@ -105,7 +102,6 @@ public class RenderHelper {
 	}
 
 	/**
-	 * 
 	 * @param e
 	 */
 	public void move(Entity e) {
@@ -117,7 +113,7 @@ public class RenderHelper {
 
 	/**
 	 * Bewegt das Spielfeld um dx und dy
-	 * 
+	 *
 	 * @param dx
 	 *            Bewegung in x-Richtung
 	 * @param dy
@@ -134,7 +130,7 @@ public class RenderHelper {
 
 	/**
 	 * Aktualisiert das Sichtfeld
-	 * 
+	 *
 	 * @param newSightX
 	 *            X-Koordinate der oberen linken Ecke des Sichtfeldes
 	 * @param newSightY

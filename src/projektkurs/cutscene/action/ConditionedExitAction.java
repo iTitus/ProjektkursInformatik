@@ -5,7 +5,7 @@ import projektkurs.cutscene.condition.Condition;
 
 public class ConditionedExitAction extends Action {
 
-	private Condition condition;
+	private final Condition condition;
 
 	public ConditionedExitAction(Condition condition) {
 		this.condition = condition;

@@ -5,7 +5,7 @@ import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
 
 /**
- * 
+ *
  *
  */
 public class RenderEntity {

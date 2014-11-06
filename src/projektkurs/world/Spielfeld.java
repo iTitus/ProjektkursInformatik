@@ -29,7 +29,6 @@ import projektkurs.world.raster.extra.ExtraInformationKiste;
 
 /**
  * Spielfeld
- * 
  */
 public class Spielfeld {
 
@@ -37,15 +36,15 @@ public class Spielfeld {
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
 	private static final Random rand = new Random();
 
-	private Set<Entity> entities;
+	private final Set<Entity> entities;
 
-	private ExtraInformation[][] extras;
+	private final ExtraInformation[][] extras;
 
-	private AbstractRaster[][] map;
+	private final AbstractRaster[][] map;
 
 	/**
-	 * 
-	 */
+     *
+     */
 	public Spielfeld() {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
@@ -54,7 +53,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param e
 	 */
 	public void deSpawn(Entity e) {
@@ -68,8 +66,8 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
-	 */
+     *
+     */
 	public void generateAndPopulateMap() {
 		// RASEN!
 		for (int x = 0; x < map.length; x++) {
@@ -173,7 +171,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -194,8 +191,8 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
-	 */
+     *
+     */
 	public Set<Entity> getEntityList() {
 		synchronized (entities) {
 			return entities;
@@ -203,7 +200,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -215,7 +211,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -237,7 +232,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getMapSizeX() {
@@ -245,7 +239,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getMapSizeY() {
@@ -253,7 +246,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -275,7 +267,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -287,7 +278,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -297,7 +287,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -307,7 +296,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -317,7 +305,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @return
@@ -329,7 +316,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @param r
@@ -342,7 +328,6 @@ public class Spielfeld {
 	}
 
 	/**
-	 * 
 	 * @param e
 	 */
 	public void spawn(Entity e) {

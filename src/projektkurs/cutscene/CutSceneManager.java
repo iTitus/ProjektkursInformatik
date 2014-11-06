@@ -10,7 +10,6 @@ import projektkurs.lib.Integers;
 
 /**
  * Managt die aktuell laufende CutScene
- * 
  */
 public final class CutSceneManager {
 

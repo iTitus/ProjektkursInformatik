@@ -2,7 +2,6 @@ package projektkurs.util;
 
 /**
  * Ein Knoten - zB für eine Schlange
- * 
  */
 public class Node<T> {
 
@@ -17,7 +16,7 @@ public class Node<T> {
 
 	/**
 	 * Konstruktor für ActionNodes
-	 * 
+	 *
 	 * @param _action
 	 *            ist die Action
 	 */
@@ -28,7 +27,7 @@ public class Node<T> {
 
 	/**
 	 * Inhalt der Node
-	 * 
+	 *
 	 * @return
 	 */
 	public T get() {
@@ -37,7 +36,7 @@ public class Node<T> {
 
 	/**
 	 * Die vorherige Node
-	 * 
+	 *
 	 * @return
 	 */
 	public Node<T> getNext() {
@@ -46,7 +45,7 @@ public class Node<T> {
 
 	/**
 	 * Setzt die vorherige Node
-	 * 
+	 *
 	 * @param _next
 	 *            ist die neue vorherige Node
 	 */

@@ -4,12 +4,10 @@ import java.lang.reflect.Method;
 
 /**
  * Helperklasse für Reflection
- *
  */
 public class ReflectionUtil {
 
 	/**
-	 * 
 	 * @param cls
 	 * @param methodName
 	 * @param args
@@ -27,7 +25,6 @@ public class ReflectionUtil {
 	}
 
 	/**
-	 * 
 	 * @param m
 	 * @param args
 	 * @return

@@ -15,7 +15,6 @@ import projektkurs.render.entity.RenderEntity;
 
 /**
  * Renderklasse
- * 
  */
 public class Render {
 
@@ -23,12 +22,12 @@ public class Render {
 	 * Das Spiel-Canvas
 	 */
 	private final GameCanvas canvas;
-	private BufferStrategy strategy;
 	private Graphics2D g;
+	private BufferStrategy strategy;
 
 	/**
 	 * Konstruktor
-	 * 
+	 *
 	 * @param gameWindow
 	 *            Das Spiel-JPanel
 	 */
@@ -40,7 +39,7 @@ public class Render {
 
 	/**
 	 * Gibt das aktuelle Canvas zurück
-	 * 
+	 *
 	 * @return Canvas
 	 */
 	public GameCanvas getGameCanvas() {
@@ -119,14 +118,14 @@ public class Render {
 				Integers.RASTER_SIZE, Integers.RASTER_SIZE);
 	}
 
+	private void drawImage(BufferedImage img, int x, int y) {
+		drawImage(img, x, y, img.getWidth(), img.getHeight());
+	}
+
 	private void drawImage(BufferedImage img, int x, int y, int width,
 			int height) {
 		if (g != null)
 			g.drawImage(img, x, y, width, height, null);
-	}
-
-	private void drawImage(BufferedImage img, int x, int y) {
-		drawImage(img, x, y, img.getWidth(), img.getHeight());
 	}
 
 }

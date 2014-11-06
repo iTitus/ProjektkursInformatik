@@ -10,15 +10,12 @@ import projektkurs.util.Queue;
 
 /**
  * Eine CutScene
- *
  */
 public class CutScene {
 
 	private Queue<Action> actionQueue, startupQueue, tempQueue;
-
 	private int elapsedTicks;
-
-	private Set<CutSceneObject> objects;
+	private final Set<CutSceneObject> objects;
 
 	/**
 	 * Konstruktor für eine CutScene
@@ -44,7 +41,6 @@ public class CutScene {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public boolean isFinished() {
@@ -53,7 +49,7 @@ public class CutScene {
 
 	/**
 	 * Registriert eine einmalige Aktion
-	 * 
+	 *
 	 * @param action
 	 */
 	public void registerStartupAction(Action action) {
@@ -61,7 +57,6 @@ public class CutScene {
 	}
 
 	/**
-	 * 
 	 * @param action
 	 */
 	public void registerTickAction(Action action) {
@@ -69,8 +64,8 @@ public class CutScene {
 	}
 
 	/**
-	 * 
-	 */
+     *
+     */
 	public void setFinished() {
 		actionQueue = null;
 	}
@@ -99,7 +94,7 @@ public class CutScene {
 
 			tempQueue.clear();
 
-			Action currAction = actionQueue.front();
+			Action currAction;
 
 			while (!actionQueue.empty()) {
 				currAction = actionQueue.front();

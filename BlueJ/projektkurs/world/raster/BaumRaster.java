@@ -7,7 +7,6 @@ import projektkurs.util.Direction;
 
 /**
  * Ein Baum
- * 
  */
 public class BaumRaster extends AbstractRaster {
 

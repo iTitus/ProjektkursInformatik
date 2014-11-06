@@ -8,14 +8,13 @@ import java.util.Date;
 
 /**
  * Logger
- *
  */
 public final class Logger {
 
 	public static enum LogLevel {
 		DEBUG(System.out), INFO(System.out), WARN(System.err);
 
-		private PrintStream stream;
+		private final PrintStream stream;
 
 		private LogLevel(PrintStream stream) {
 			this.stream = stream;
@@ -33,7 +32,6 @@ public final class Logger {
 			"HH:mm:ss");
 
 	/**
-	 * 
 	 * @param msg
 	 */
 	public static void debug(String msg) {
@@ -41,7 +39,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 * @param objs
 	 */
@@ -50,7 +47,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 */
 	public static void info(String msg) {
@@ -58,7 +54,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 * @param objs
 	 */
@@ -67,7 +62,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param level
 	 * @param msg
 	 */
@@ -94,7 +88,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 * @param t
 	 */
@@ -119,7 +112,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 */
 	public static void warn(String msg) {
@@ -127,7 +119,6 @@ public final class Logger {
 	}
 
 	/**
-	 * 
 	 * @param msg
 	 * @param objs
 	 */
@@ -136,8 +127,8 @@ public final class Logger {
 	}
 
 	/**
-	 * 
-	 */
+     *
+     */
 	private Logger() {
 	}
 

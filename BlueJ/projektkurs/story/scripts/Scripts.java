@@ -9,7 +9,7 @@ import projektkurs.util.I18n;
 
 public class Scripts {
 
-	public static void looseGame() {
+	public static void loose() {
 		Main.pause();
 		JOptionPane.showOptionDialog(null,
 				I18n.getString("description.meltdown"),

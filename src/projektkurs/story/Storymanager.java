@@ -5,18 +5,17 @@ import java.util.ArrayList;
 import projektkurs.story.trigger.Trigger;
 
 /**
- * 
+ *
  *
  */
 public class Storymanager {
 
 	/**
-	 * 
-	 */
+     *
+     */
 	private Trigger[] triggers;
 
 	/**
-	 * 
 	 * @param triggers
 	 */
 	public Storymanager() {
@@ -35,7 +34,6 @@ public class Storymanager {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public Trigger[] getActiveTriggers() {
@@ -83,9 +81,7 @@ public class Storymanager {
 
 	private void increaseCapacity() {
 		Trigger[] temp = new Trigger[triggers.length + 1];
-		for (int i = 0; i < triggers.length; i++) {
-			temp[i] = triggers[i];
-		}
+		System.arraycopy(triggers, 0, temp, 0, triggers.length);
 		triggers = temp;
 	}
 }

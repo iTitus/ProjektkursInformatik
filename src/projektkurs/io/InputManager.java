@@ -19,7 +19,6 @@ import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Zustaendig fuer den Input (Tasten, Maus)
- * 
  */
 public class InputManager implements KeyListener, MouseInputListener,
 		MouseWheelListener {
@@ -55,11 +54,10 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	public InputManager() {
 		keysPressed = new HashSet<Integer>(0);
-		moveDir = 0b0000;
+		moveDir = 0;
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getMouseX() {
@@ -67,7 +65,6 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getMouseY() {
@@ -77,7 +74,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	/**
 	 * Die nächste Bewegungsrichtung. ACHTUNG: Zwischenspeichern empfohlen,
 	 * resettet sich selber!
-	 * 
+	 *
 	 * @return Direction, die nächste Bewegungsrichtung
 	 */
 	public Direction getNextDirection() {
@@ -88,7 +85,6 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * 
 	 * @param keyCode
 	 *            Ein KeyCode aus KeyEvent
 	 * @return Ob die mit keyCode verbundene Taste im Moment gedrueckt ist

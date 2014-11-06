@@ -6,8 +6,8 @@ import projektkurs.util.I18n;
 
 public class BaseItem extends AbstractItem {
 
-	private BufferedImage image;
-	private String name;
+	private final BufferedImage image;
+	private final String name;
 
 	public BaseItem(String name, BufferedImage image) {
 		this.name = name;

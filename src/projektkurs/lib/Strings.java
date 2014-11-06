@@ -2,7 +2,6 @@ package projektkurs.lib;
 
 /**
  * Sämtliche Stringkonstanten...
- * 
  */
 public final class Strings {
 

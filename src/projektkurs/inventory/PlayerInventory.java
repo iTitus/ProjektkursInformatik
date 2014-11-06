@@ -6,14 +6,12 @@ import projektkurs.util.MathUtil;
 
 /**
  * Das Spielerinventar
- *
  */
 public class PlayerInventory extends Inventory {
 
 	private int selectedItemStack;
 
 	/**
-	 * 
 	 * @param size
 	 */
 	public PlayerInventory(int size) {
@@ -21,7 +19,6 @@ public class PlayerInventory extends Inventory {
 	}
 
 	/**
-	 * 
 	 * @param size
 	 * @param selectedItemStack
 	 */
@@ -31,7 +28,6 @@ public class PlayerInventory extends Inventory {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getRelX() {
@@ -40,7 +36,6 @@ public class PlayerInventory extends Inventory {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getRelY() {
@@ -49,7 +44,7 @@ public class PlayerInventory extends Inventory {
 
 	/**
 	 * Returnt die Stelle des ausgewählten ItemStack
-	 * 
+	 *
 	 * @return
 	 */
 	public int getSelectedIndex() {
@@ -58,7 +53,7 @@ public class PlayerInventory extends Inventory {
 
 	/**
 	 * Returnt den ausgewählten ItemStack
-	 * 
+	 *
 	 * @return
 	 */
 	public ItemStack getSelectedItemStack() {
@@ -67,7 +62,7 @@ public class PlayerInventory extends Inventory {
 
 	/**
 	 * Ist ein ItemStack ausgewählt?
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean hasItemStackSelected() {
@@ -77,7 +72,7 @@ public class PlayerInventory extends Inventory {
 	/**
 	 * Wählt den ItemStack im Slot index aus, -1, um keinen ItemStack
 	 * auszuwählen
-	 * 
+	 *
 	 * @param index
 	 */
 	public void setSelectedItemStack(int index) {

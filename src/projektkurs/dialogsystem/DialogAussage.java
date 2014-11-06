@@ -4,9 +4,9 @@ import projektkurs.util.I18n;
 
 public class DialogAussage {
 
-	private String string;
+	private final String string;
 
-	private int wertung;
+	private final int wertung;
 
 	public DialogAussage(String _string, int _wertung) {
 		string = _string;

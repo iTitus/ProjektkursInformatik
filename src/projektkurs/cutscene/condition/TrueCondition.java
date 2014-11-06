@@ -4,7 +4,7 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
 /**
- * 
+ *
  *
  */
 public class TrueCondition extends Condition {

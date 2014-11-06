@@ -5,9 +5,8 @@ import projektkurs.lib.Integers;
 
 /**
  * Zustaendig fuer die Spielfeldupdates
- * 
- * @author Vella
  *
+ * @author Vella
  */
 public class SimulationThread extends LoopThread {
 

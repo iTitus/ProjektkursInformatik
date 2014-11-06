@@ -8,17 +8,17 @@ import projektkurs.lib.Integers;
 
 /**
  * Eine Spielerfigur
- * 
+ *
  * @author Niklas, Vladimir, Elena, Christopher
  * @version 11.09.2014
  */
 public class Figur extends Entity {
 
-	private PlayerInventory inventar;
+	private final PlayerInventory inventar;
 
 	/**
 	 * Konstruktor für Figuren
-	 * 
+	 *
 	 * @param posX
 	 * @param posY
 	 * @param image
@@ -30,7 +30,7 @@ public class Figur extends Entity {
 
 	/**
 	 * Das Inventar
-	 * 
+	 *
 	 * @return
 	 */
 	public PlayerInventory getInventory() {

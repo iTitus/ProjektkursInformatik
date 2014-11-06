@@ -6,7 +6,6 @@ import projektkurs.lib.Images;
 
 /**
  * Ein Stück Rasen
- *
  */
 public class RasenRaster extends AbstractRaster {
 

@@ -4,13 +4,12 @@ import java.awt.image.BufferedImage;
 
 /**
  * Ein abstraktes Item
- * 
  */
 public abstract class AbstractItem {
 
 	/**
 	 * Das Bild
-	 * 
+	 *
 	 * @return
 	 */
 	public abstract BufferedImage getImage();
@@ -21,7 +20,7 @@ public abstract class AbstractItem {
 
 	/**
 	 * Übersetzter Name
-	 * 
+	 *
 	 * @return
 	 */
 	public abstract String getName();

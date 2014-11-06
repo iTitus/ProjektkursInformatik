@@ -22,9 +22,7 @@ public class Images {
 	 * Userauswahl
 	 */
 	public static BufferedImage charakter;
-
 	public static final HashMap<String, BufferedImage> MAPPINGS = new HashMap<String, BufferedImage>();
-
 	/**
 	 * Werden aus den Resourcen geladen
 	 */
@@ -85,7 +83,7 @@ public class Images {
 
 	/**
 	 * Lädt ein Bild
-	 * 
+	 *
 	 * @param name
 	 *            Name des Bildes
 	 * @return Image das geladene Bild
@@ -113,6 +111,6 @@ public class Images {
 			g.drawImage(img, 0, -img.getWidth(), null);
 			return rotated;
 		}
-		return img;
+		return null;
 	}
 }

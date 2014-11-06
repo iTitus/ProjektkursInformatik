@@ -4,9 +4,8 @@ import java.awt.event.KeyEvent;
 
 /**
  * KeyBindings (Integer-Konstanten)
- * 
+ *
  * @author Miles
- * 
  */
 public class KeyBindings {
 

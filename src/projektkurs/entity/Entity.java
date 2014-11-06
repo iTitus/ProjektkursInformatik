@@ -11,17 +11,15 @@ import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Ein Entity
- *
  */
 public class Entity implements ICanUpdate {
 
 	private boolean shouldDeSpawn;
-
+	private final int sizeX, sizeY;
 	protected BufferedImage image;
-	protected int posX, posY, sizeX, sizeY;
+	protected int posX, posY;
 
 	/**
-	 * 
 	 * @param posX
 	 * @param posY
 	 * @param image
@@ -31,7 +29,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param posX
 	 * @param posY
 	 * @param sizeX
@@ -81,7 +78,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public Behaviours getBehaviour() {
@@ -93,7 +89,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public BufferedImage getImage() {
@@ -101,7 +96,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getPosX() {
@@ -109,7 +103,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getPosY() {
@@ -117,7 +110,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getSizeX() {
@@ -125,7 +117,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getSizeY() {
@@ -133,7 +124,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param e
 	 * @return
 	 */
@@ -142,7 +132,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param posX
 	 * @param posY
 	 * @param sizeX
@@ -150,16 +139,13 @@ public class Entity implements ICanUpdate {
 	 * @return
 	 */
 	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
-		if ((Math.max(posX, this.posX) < Math.min((posX + sizeX),
+		return (Math.max(posX, this.posX) < Math.min((posX + sizeX),
 				(this.posX + this.sizeX)))
 				&& ((Math.max(posY, this.posY) < Math.min((posY + sizeY),
-						(this.posY + this.sizeY)))))
-			return true;
-		return false;
+						(this.posY + this.sizeY))));
 	}
 
 	/**
-	 * 
 	 * @param dir
 	 */
 	public void moveBy(Direction dir) {
@@ -167,7 +153,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param dx
 	 * @param dy
 	 */
@@ -181,7 +166,7 @@ public class Entity implements ICanUpdate {
 
 	/**
 	 * Wird aufgerufen wenn dieser Entity einen anderen (e) anstößt
-	 * 
+	 *
 	 * @param e
 	 *            other entity
 	 */
@@ -194,7 +179,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param image
 	 */
 	public void setImage(BufferedImage image) {
@@ -202,7 +186,6 @@ public class Entity implements ICanUpdate {
 	}
 
 	/**
-	 * 
 	 * @param posX
 	 */
 	public void setPos(int posX, int posY) {

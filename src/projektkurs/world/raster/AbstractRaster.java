@@ -14,7 +14,7 @@ public abstract class AbstractRaster {
 
 	/**
 	 * Kann eine Figur aus der gegebenen Richtung auf dieses Raster laufen?
-	 * 
+	 *
 	 * @param x
 	 *            x-Koordinate des Rasters
 	 * @param y
@@ -30,7 +30,7 @@ public abstract class AbstractRaster {
 	/**
 	 * Gibt die hiermit verbundenen ExtraInformationen zurueck. Nur einmal beim
 	 * Start aufgerufen.
-	 * 
+	 *
 	 * @return die ExtraInformation
 	 */
 	public ExtraInformation getExtraInformation() {
@@ -39,7 +39,7 @@ public abstract class AbstractRaster {
 
 	/**
 	 * Gibt die Textur zurueck
-	 * 
+	 *
 	 * @param x
 	 *            x-Koordinate des Rasters
 	 * @param y
@@ -50,7 +50,7 @@ public abstract class AbstractRaster {
 
 	/**
 	 * Ist dieses Raster interaktiv?
-	 * 
+	 *
 	 * @return true, wenn ja
 	 */
 	public boolean isInteractive() {
@@ -59,7 +59,7 @@ public abstract class AbstractRaster {
 
 	/**
 	 * Wenn mit der Maus auf das Raster geklickt wird
-	 * 
+	 *
 	 * @param x
 	 *            x-Koordinate des Rasters
 	 * @param y
@@ -73,7 +73,6 @@ public abstract class AbstractRaster {
 	}
 
 	/**
-	 * 
 	 * @param entity
 	 */
 	public void onCollideWith(int x, int y, Entity entity) {
@@ -81,7 +80,6 @@ public abstract class AbstractRaster {
 	}
 
 	/**
-	 * 
 	 * @param x
 	 * @param y
 	 * @param entity

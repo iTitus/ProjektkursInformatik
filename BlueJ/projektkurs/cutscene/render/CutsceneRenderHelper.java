@@ -12,7 +12,7 @@ import projektkurs.lib.Integers;
 public class CutsceneRenderHelper {
 
 	private BufferedImage background;
-	private Set<RenderCutSceneObject> objects;
+	private final Set<RenderCutSceneObject> objects;
 
 	public CutsceneRenderHelper(BufferedImage[][] sight) {
 

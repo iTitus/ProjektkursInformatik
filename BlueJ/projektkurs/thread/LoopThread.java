@@ -4,24 +4,23 @@ import projektkurs.util.Logger;
 
 /**
  * Abstrakter Loopthread
- * 
+ *
  * @author Miles
- * 
  */
 public abstract class LoopThread extends Thread {
 
-	private final double nsPerLoop;
-	private boolean running, pausing;
 	private double delta;
+	private boolean isLooping;
 	private long lastTime;
 	private long lastTimer;
 	private int loops;
-	private boolean isLooping;
 	private int lps;
+	private final double nsPerLoop;
+	private boolean running, pausing;
 
 	/**
 	 * Konstruktor fuer einen LoopThread
-	 * 
+	 *
 	 * @param name
 	 *            Name des Threads
 	 * @param loopTime
@@ -39,8 +38,26 @@ public abstract class LoopThread extends Thread {
 	}
 
 	/**
+	 * Loops pro Sekunde
+	 *
+	 * @return
+	 */
+	public int getLPS() {
+		return lps;
+	}
+
+	/**
+	 * isLooping
+	 *
+	 * @return
+	 */
+	public boolean isLooping() {
+		return isLooping;
+	}
+
+	/**
 	 * Verändert den Pausenstatus
-	 * 
+	 *
 	 * @param b
 	 *            true, wenn er pausieren soll; false, wenn er laufen soll
 	 */
@@ -96,24 +113,6 @@ public abstract class LoopThread extends Thread {
 	 */
 	public synchronized void terminate() {
 		running = false;
-	}
-
-	/**
-	 * Loops pro Sekunde
-	 * 
-	 * @return
-	 */
-	public int getLPS() {
-		return lps;
-	}
-
-	/**
-	 * isLooping
-	 * 
-	 * @return
-	 */
-	public boolean isLooping() {
-		return isLooping;
 	}
 
 	/**

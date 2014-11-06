@@ -33,13 +33,11 @@ import projektkurs.world.Spielfeld;
 
 /**
  * Die Hauptklasse
- * 
  */
 public final class Main {
 
 	/**
 	 * Das Spielefenster
-	 * 
 	 */
 	public static class MainFrame extends JFrame {
 
@@ -72,11 +70,12 @@ public final class Main {
 
 	public static Figur figur;
 	private static InputManager imgr;
-	private static ArrayList<Method> initMethods = new ArrayList<Method>();
+	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
 	private static Spielfeld map;
 	private static Render render;
 	private static RenderHelper renderHelper;
 	private static LoopThread renderThread, simulationThread, moveThread;
+
 	private static Storymanager storyManager;
 
 	/**
@@ -99,16 +98,20 @@ public final class Main {
 
 	/**
 	 * Gibt die aktuelle Figur aus
-	 * 
+	 *
 	 * @return Figur
 	 */
 	public static Figur getFigur() {
 		return figur;
 	}
 
+	public static int getFPS() {
+		return (renderThread != null ? renderThread.getLPS() : 0);
+	}
+
 	/**
 	 * Gibt den aktuellen InputManager aus
-	 * 
+	 *
 	 * @return InputManager
 	 */
 	public static InputManager getInputManager() {
@@ -117,7 +120,7 @@ public final class Main {
 
 	/**
 	 * Gibt den aktuellen Render aus
-	 * 
+	 *
 	 * @return Render
 	 */
 	public static Render getRender() {
@@ -126,7 +129,7 @@ public final class Main {
 
 	/**
 	 * Gibt den aktuellen Renderhelper aus
-	 * 
+	 *
 	 * @return Renderhelper
 	 */
 	public static RenderHelper getRenderHelper() {
@@ -135,7 +138,7 @@ public final class Main {
 
 	/**
 	 * Gibt das aktuelle Spielfeld aus
-	 * 
+	 *
 	 * @return Spielfeld
 	 */
 	public static Spielfeld getSpielfeld() {
@@ -144,6 +147,10 @@ public final class Main {
 
 	public static Storymanager getStoryManager() {
 		return storyManager;
+	}
+
+	public static int getUPS() {
+		return (simulationThread != null ? simulationThread.getLPS() : 0);
 	}
 
 	/**
@@ -183,7 +190,7 @@ public final class Main {
 
 	/**
 	 * Einstiegspunkt in das Spiel
-	 * 
+	 *
 	 * @param args
 	 *            Konsolenargumente
 	 */
@@ -218,7 +225,6 @@ public final class Main {
 	}
 
 	/**
-	 * 
 	 * @param dir
 	 * @return
 	 * @throws Throwable
@@ -231,7 +237,7 @@ public final class Main {
 
 		File[] files = dir.listFiles();
 
-		for (File file : files) {
+		for (File file : files != null ? files : new File[0]) {
 			if (file.isFile()
 					&& file.getName().toLowerCase().endsWith(".class")) {
 				String path = Main.class.getPackage().getName()
@@ -247,7 +253,6 @@ public final class Main {
 	}
 
 	/**
-	 * 
 	 * @param state
 	 */
 	private static void init(State state) {
@@ -286,12 +291,11 @@ public final class Main {
 	}
 
 	/**
-	 * 
 	 * @param m
 	 * @param state
 	 * @throws Throwable
 	 */
-	private static void invoke(Method m, State state) throws Throwable {
+	private static void invoke(Method m, State state) {
 		if (m.getAnnotation(Init.class).state().equals(state)) {
 			Logger.info("Invoking @" + state + ": " + m.toString());
 			ReflectionUtil.invokeStatic(m);
@@ -299,7 +303,6 @@ public final class Main {
 	}
 
 	/**
-	 * 
 	 * @param allMethods
 	 * @param state
 	 * @throws Throwable
@@ -328,8 +331,7 @@ public final class Main {
 			try {
 				Thread.sleep(100);
 			} catch (Throwable t) {
-				Logger.logThrowable("Could not wait for the options window",
-						t);
+				Logger.logThrowable("Could not wait for the options window", t);
 			}
 		}
 
@@ -351,13 +353,5 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
-	}
-
-	public static int getFPS() {
-		return (renderThread != null ? renderThread.getLPS() : 0);
-	}
-
-	public static int getUPS() {
-		return (simulationThread != null ? simulationThread.getLPS() : 0);
 	}
 }

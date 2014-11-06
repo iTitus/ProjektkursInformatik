@@ -11,7 +11,6 @@ import projektkurs.world.raster.extra.ExtraInformationKiste;
 
 /**
  * Ein Raster mit einer Kiste
- *
  */
 public class KistenRaster extends AbstractRaster {
 

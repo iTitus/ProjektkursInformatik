@@ -13,13 +13,11 @@ import projektkurs.util.Logger;
 
 /**
  * Zuständig für Sounds
- * 
  */
 public final class Sounds {
 
 	/**
 	 * Die Klasse für ein Sound-Objekt
-	 * 
 	 */
 	public static class Sound {
 
@@ -27,7 +25,7 @@ public final class Sounds {
 
 		/**
 		 * Kostruktor für einen Sound
-		 * 
+		 *
 		 * @param fileName
 		 */
 		public Sound(String fileName) {
@@ -39,8 +37,8 @@ public final class Sounds {
 								+ File.separator + fileName)));
 				Logger.info("Successfully loaded sound: " + fileName);
 			} catch (Exception e) {
-				Logger.logThrowable("Unable to load sound '" + fileName
-						+ "'", e);
+				Logger.logThrowable("Unable to load sound '" + fileName + "'",
+						e);
 			}
 
 		}

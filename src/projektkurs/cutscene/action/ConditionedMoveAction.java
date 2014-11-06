@@ -6,9 +6,9 @@ import projektkurs.cutscene.object.CutSceneObject;
 
 public class ConditionedMoveAction extends Action {
 
-	private Condition condition;
-	private int dx, dy;
-	private CutSceneObject object;
+	private final Condition condition;
+	private final int dx, dy;
+	private final CutSceneObject object;
 
 	public ConditionedMoveAction(Condition condition, CutSceneObject object,
 			int dx, int dy) {

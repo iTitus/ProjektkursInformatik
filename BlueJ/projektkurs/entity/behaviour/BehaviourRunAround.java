@@ -6,7 +6,7 @@ import projektkurs.entity.Entity;
 
 public class BehaviourRunAround implements IBehaviour {
 
-	private static Random rand = new Random();
+	private static final Random rand = new Random();
 
 	@Override
 	public void onTick(Entity e) {

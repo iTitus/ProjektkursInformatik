@@ -3,7 +3,7 @@ package projektkurs.dialogsystem;
 @SuppressWarnings("all")
 public class Dialog {
 
-	private int AnzahlAussagenmöglichkeiten;
+	private int AnzahlAussagenmoeglichkeiten;
 	private DialogAussage[] Aussagenarray;
 	private int Dialogdurchläufe;
 	private int Dialognummer;
@@ -12,9 +12,9 @@ public class Dialog {
 
 		Dialognummer = 0;
 		Dialogdurchläufe = 0;
-		AnzahlAussagenmöglichkeiten = 0;
+		AnzahlAussagenmoeglichkeiten = 0;
 
-		Aussagenarray = new DialogAussage[AnzahlAussagenmöglichkeiten];
+		Aussagenarray = new DialogAussage[AnzahlAussagenmoeglichkeiten];
 	}
 
 	public int[] Aussagenbelegung(DialogAussage[] _Aussagenarray) {

@@ -6,7 +6,7 @@ import projektkurs.Main;
 
 public class PosTrigger extends Trigger {
 
-	private int x, y;
+	private final int x, y;
 
 	public PosTrigger(int x, int y, Method M) {
 		super(M);

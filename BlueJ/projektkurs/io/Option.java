@@ -33,13 +33,11 @@ import projektkurs.util.I18n.SupportedLocales;
 /**
  * Menü, wird beim Starten des Spiels aufgerufen. Z.B. um seinen Charakter zu
  * verändern.
- * 
  */
 public class Option extends JPanel implements ActionListener, ChangeListener {
 
 	private static JFrame frame;
 	private static boolean isFinished = false;
-
 	private static final long serialVersionUID = 1L;
 
 	public static void createAndShowGUI() {
@@ -77,8 +75,11 @@ public class Option extends JPanel implements ActionListener, ChangeListener {
 
 	private final JLabel charakterBild, nameSightX, nameSightY;
 	private final JRadioButton defaultCharacter, altCharakter;
+
 	private final JComboBox<SupportedLocales> langBox;
+
 	private final JButton ok, cancel;
+
 	private final JSlider sliderSightX, sliderSightY;
 
 	private Option() {

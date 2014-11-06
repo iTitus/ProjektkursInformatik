@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class EntityNPC extends Entity {
 
 	private int health;
-	private int maxHealth;
+	private final int maxHealth;
 
 	public EntityNPC(int posX, int posY, BufferedImage image, int maxHealth) {
 		super(posX, posY, image);

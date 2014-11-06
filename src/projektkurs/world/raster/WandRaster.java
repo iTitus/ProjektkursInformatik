@@ -7,7 +7,6 @@ import projektkurs.util.Direction;
 
 /**
  * Eine Wand
- *
  */
 public class WandRaster extends AbstractRaster {
 

@@ -6,19 +6,17 @@ import projektkurs.cutscene.condition.TrueCondition;
 
 /**
  * Abstrakte Action
- * 
  */
 public abstract class Action {
 
 	/**
 	 * Tu es einfach!
-	 * 
+	 *
 	 * @param cutScene
 	 */
 	public abstract void doAction(CutScene cutScene);
 
 	/**
-	 * 
 	 * @param condition
 	 */
 	public Condition getCondition() {
@@ -27,7 +25,7 @@ public abstract class Action {
 
 	/**
 	 * Sollst du es diesmal tun?
-	 * 
+	 *
 	 * @param cutScene
 	 * @return
 	 */

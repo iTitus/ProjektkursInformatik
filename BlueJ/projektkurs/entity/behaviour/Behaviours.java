@@ -4,7 +4,7 @@ public enum Behaviours {
 
 	NOTHING(new BehaviourNothing()), RUN_AROUND(new BehaviourRunAround());
 
-	private IBehaviour bhv;
+	private final IBehaviour bhv;
 
 	private Behaviours(IBehaviour bhv) {
 		this.bhv = bhv;

@@ -6,11 +6,10 @@ import projektkurs.util.ReflectionUtil;
 
 /**
  * Ein abstrakter Trigger
- *
  */
 public abstract class Trigger {
 
-	protected Method m;
+	protected final Method m;
 
 	protected Trigger(Method m) {
 		this.m = m;
@@ -21,7 +20,6 @@ public abstract class Trigger {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public abstract boolean isTriggerActive();

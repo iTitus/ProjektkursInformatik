@@ -2,7 +2,6 @@ package projektkurs.util;
 
 /**
  * Alle Richtungen
- *
  */
 public enum Direction {
 

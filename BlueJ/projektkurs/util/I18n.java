@@ -9,7 +9,6 @@ import projektkurs.util.Init.State;
 
 /**
  * Internationalisierung
- * 
  */
 public final class I18n {
 
@@ -20,8 +19,8 @@ public final class I18n {
 
 		public static final SupportedLocales DEFAULT = ENGLISH;
 
-		private Locale locale;
-		private String name;
+		private final Locale locale;
+		private final String name;
 
 		private SupportedLocales(Locale locale, String name) {
 			this.locale = locale;
@@ -56,7 +55,7 @@ public final class I18n {
 
 	/**
 	 * Gibt den übersetzten String zurueck
-	 * 
+	 *
 	 * @param key
 	 *            Der Schlüssel fuer den String (zB. "item.nuke.name")
 	 * @return der passende String in der aktuellen Sprache oder den key falls
@@ -77,7 +76,6 @@ public final class I18n {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public static SupportedLocales[] getSupportedLocales() {

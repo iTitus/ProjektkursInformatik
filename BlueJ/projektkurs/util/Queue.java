@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Eine Schlange
- * 
  */
 public class Queue<T> {
 
@@ -40,7 +39,7 @@ public class Queue<T> {
 
 	/**
 	 * Prüft ob die Schlange leer ist
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean empty() {
@@ -49,7 +48,7 @@ public class Queue<T> {
 
 	/**
 	 * Stellt eine neue Action hinten an
-	 * 
+	 *
 	 * @param toPush
 	 */
 	public void enQueue(T toPush) {
@@ -63,7 +62,7 @@ public class Queue<T> {
 
 	/**
 	 * Vorderstes Objekt
-	 * 
+	 *
 	 * @return
 	 */
 	public T front() {
@@ -74,7 +73,7 @@ public class Queue<T> {
 
 	/**
 	 * Vorderstes Objekt & Lösen des ersten Objektes von der Schlange
-	 * 
+	 *
 	 * @return vorderstes Objekt
 	 */
 	public T frontDeQueue() {

@@ -5,11 +5,10 @@ import projektkurs.lib.Integers;
 
 /**
  * Das Kisteninventar
- * 
  */
 public class ExtraInformationKiste extends ExtraInformation {
 
-	private Inventory inventar;
+	private final Inventory inventar;
 
 	// private boolean used;
 
@@ -22,7 +21,7 @@ public class ExtraInformationKiste extends ExtraInformation {
 
 	/**
 	 * Das Inventar der Kiste
-	 * 
+	 *
 	 * @return
 	 */
 	public Inventory getInventar() {

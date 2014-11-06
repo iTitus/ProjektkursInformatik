@@ -8,7 +8,6 @@ import projektkurs.util.Init;
 public final class Items {
 
 	public static AbstractItem ITEM_42, NUKE, KEY;
-
 	public static final HashMap<String, AbstractItem> MAPPINGS = new HashMap<String, AbstractItem>();
 
 	@Init

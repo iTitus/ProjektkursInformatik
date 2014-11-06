@@ -5,9 +5,8 @@ import projektkurs.lib.Integers;
 
 /**
  * Zuständig für die Renderupdates
- * 
- * @author Miles
  *
+ * @author Miles
  */
 public class RenderThread extends LoopThread {
 

@@ -4,22 +4,22 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
 /**
- * 
+ *
  *
  */
 public class TickCondition extends Condition {
 
 	public static enum TickConditionType {
-		EQUALS, GREATER, GREATER_EQUALS, LESSER, LESSER_EQUALS, MODULO_0;
+		EQUALS, GREATER, GREATER_EQUALS, LESSER, LESSER_EQUALS, MODULO_0
 	}
 
-	private int ticks;
+	private final int ticks;
 
-	private TickConditionType type;
+	private final TickConditionType type;
 
 	/**
 	 * Konstruktor für TickConditions
-	 * 
+	 *
 	 * @param _type
 	 * @param _ticks
 	 */

@@ -5,7 +5,7 @@ import projektkurs.cutscene.condition.Condition;
 
 public class ConditionedTalkAction extends Action {
 
-	private Condition condition;
+	private final Condition condition;
 
 	public ConditionedTalkAction(Condition condition) {
 		this.condition = condition;

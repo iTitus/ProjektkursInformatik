@@ -8,7 +8,6 @@ public class ItemStack {
 	private int stackSize, damage;
 
 	/**
-	 * 
 	 * @param item
 	 */
 	public ItemStack(AbstractItem item) {
@@ -16,7 +15,6 @@ public class ItemStack {
 	}
 
 	/**
-	 * 
 	 * @param item
 	 * @param stackSize
 	 */
@@ -25,7 +23,6 @@ public class ItemStack {
 	}
 
 	/**
-	 * 
 	 * @param item
 	 * @param stackSize
 	 * @param damage
@@ -38,7 +35,7 @@ public class ItemStack {
 
 	/**
 	 * Beschädigt den Stack um by
-	 * 
+	 *
 	 * @param by
 	 */
 	public void damage(int by) {
@@ -50,7 +47,6 @@ public class ItemStack {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public BufferedImage getImage() {
@@ -71,7 +67,7 @@ public class ItemStack {
 
 	/**
 	 * Ignoriert stacksize
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -83,7 +79,7 @@ public class ItemStack {
 
 	/**
 	 * Ignoriert damage
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -95,7 +91,7 @@ public class ItemStack {
 
 	/**
 	 * Ignore stacksize and damage
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -115,7 +111,7 @@ public class ItemStack {
 
 	/**
 	 * Streng
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */

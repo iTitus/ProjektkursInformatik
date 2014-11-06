@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 
 /**
  * Ein Objekt in einer CutScene
- *
  */
 public class CutSceneObject {
 
@@ -14,7 +13,7 @@ public class CutSceneObject {
 
 	/**
 	 * Konstruktor für eine CutScene
-	 * 
+	 *
 	 * @param image
 	 * @param sizeX
 	 * @param sizeY
@@ -28,7 +27,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public BufferedImage getImage() {
@@ -36,7 +34,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getPosX() {
@@ -44,7 +41,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getPosY() {
@@ -52,7 +48,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getSizeX() {
@@ -60,7 +55,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public int getSizeY() {
@@ -68,16 +62,14 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @param object
 	 * @return
 	 */
 	public boolean isInside(CutSceneObject object) {
-		if (object.sizeX <= 0 || object.sizeY <= 0 || sizeX <= 0 || sizeY <= 0)
-			return false;
-		return (((object.posX + object.sizeX) <= object.posX || (object.posX + object.sizeX) >= posX)
-				&& ((object.posY + object.sizeY) <= object.posY || (object.posY + object.sizeY) >= posY)
-				&& (sizeX <= posX || sizeX >= object.posX) && (sizeY <= posY || sizeY >= object.posY));
+		return !(object.sizeX <= 0 || object.sizeY <= 0 || sizeX <= 0 || sizeY <= 0)
+				&& (((object.posX + object.sizeX) <= object.posX || (object.posX + object.sizeX) >= posX)
+						&& ((object.posY + object.sizeY) <= object.posY || (object.posY + object.sizeY) >= posY)
+						&& (sizeX <= posX || sizeX >= object.posX) && (sizeY <= posY || sizeY >= object.posY));
 	}
 
 	/**
@@ -93,7 +85,7 @@ public class CutSceneObject {
 
 	/**
 	 * Setzt das CutSceneObject an eine Position
-	 * 
+	 *
 	 * @param posX
 	 * @param posY
 	 */
@@ -103,7 +95,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @param posX
 	 */
 	public void setPosX(int posX) {
@@ -111,7 +102,6 @@ public class CutSceneObject {
 	}
 
 	/**
-	 * 
 	 * @param posY
 	 */
 	public void setPosY(int posY) {

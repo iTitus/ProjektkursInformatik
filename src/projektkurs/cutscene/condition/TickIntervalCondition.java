@@ -4,15 +4,14 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
 /**
- * 
+ *
  *
  */
 public class TickIntervalCondition extends Condition {
 
-	private int minTick, maxTick;
+	private final int minTick, maxTick;
 
 	/**
-	 * 
 	 * @param minTick
 	 * @param maxTick
 	 */

@@ -5,13 +5,12 @@ import projektkurs.cutscene.action.Action;
 
 /**
  * Abstrakte Condition
- * 
  */
 public abstract class Condition {
 
 	/**
 	 * Ist diese Bedingung jetzt wahr?
-	 * 
+	 *
 	 * @param action
 	 * @param cutScene
 	 * @return

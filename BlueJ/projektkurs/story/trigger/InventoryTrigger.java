@@ -7,7 +7,7 @@ import projektkurs.item.ItemStack;
 
 public class InventoryTrigger extends Trigger {
 
-	private ItemStack item;
+	private final ItemStack item;
 
 	public InventoryTrigger(Method m, ItemStack item) {
 		super(m);
