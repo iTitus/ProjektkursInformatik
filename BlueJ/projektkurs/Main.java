@@ -270,7 +270,7 @@ public final class Main {
 
 			} catch (Throwable t) {
 				Logger.logThrowable("Error while invoking init methods @"
-						+ state + ": ", t);
+						+ state, t);
 				exit();
 			}
 		} else {
@@ -278,7 +278,7 @@ public final class Main {
 				invokeAllMethods(initMethods, state);
 			} catch (Throwable t) {
 				Logger.logThrowable("Error while invoking init methods @"
-						+ state + ": ", t);
+						+ state, t);
 				exit();
 			}
 		}
@@ -328,7 +328,7 @@ public final class Main {
 			try {
 				Thread.sleep(100);
 			} catch (Throwable t) {
-				Logger.logThrowable("Could not wait for the options window: ",
+				Logger.logThrowable("Could not wait for the options window",
 						t);
 			}
 		}

@@ -18,9 +18,7 @@ import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.story.scripts.Scripts;
-import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.InventoryTrigger;
-import projektkurs.story.trigger.PosTrigger;
 import projektkurs.util.Direction;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
@@ -151,16 +149,9 @@ public class Spielfeld {
 		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
 
 		// STORYMANAGER!
-
-		Main.getStoryManager().addTrigger(
-				new PosTrigger(4, 4, ReflectionUtil.getMethod(Scripts.class,
-						"example")));
 		Main.getStoryManager().addTrigger(
 				new InventoryTrigger(ReflectionUtil.getMethod(Scripts.class,
-						"looseGame"), new ItemStack(Items.NUKE)));
-		Main.getStoryManager().addTrigger(
-				new AreaTrigger(ReflectionUtil.getMethod(Scripts.class,
-						"treeBomb"), 20, 18, 5, 5));
+						"loose"), new ItemStack(Items.NUKE)));
 
 	}
 

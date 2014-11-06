@@ -98,7 +98,7 @@ public class Images {
 					+ File.separator + "images" + File.separator + name));
 			Logger.info("Successfully loaded image: " + name);
 		} catch (Throwable t) {
-			Logger.logThrowable("Unable to load image '" + name + "': ", t);
+			Logger.logThrowable("Unable to load image '" + name + "'", t);
 		}
 		return img;
 	}

@@ -21,7 +21,7 @@ public class ReflectionUtil {
 			return cls.getDeclaredMethod(methodName, args);
 		} catch (Throwable t) {
 			Logger.logThrowable("Could not get method '" + cls + "."
-					+ methodName + "': ", t);
+					+ methodName + "'", t);
 			return null;
 		}
 	}
@@ -36,7 +36,7 @@ public class ReflectionUtil {
 		try {
 			return m.invoke(null, args);
 		} catch (Throwable t) {
-			Logger.logThrowable("Could not invoke method '" + m + "': ", t);
+			Logger.logThrowable("Could not invoke method '" + m + "'", t);
 			return null;
 		}
 	}

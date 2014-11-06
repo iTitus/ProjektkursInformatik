@@ -10,10 +10,8 @@ import projektkurs.util.Logger;
  */
 public abstract class LoopThread extends Thread {
 
-	// private final long loopTime;
 	private final double nsPerLoop;
 	private boolean running, pausing;
-	// private long time;
 	private double delta;
 	private long lastTime;
 	private long lastTimer;
@@ -31,9 +29,7 @@ public abstract class LoopThread extends Thread {
 	 */
 	public LoopThread(String name, int lps) {
 		super(name);
-		// this.loopTime = lps;
 		nsPerLoop = 1000000000D / lps;
-		// time = 0L;
 		delta = 0D;
 		lastTime = 0L;
 		lastTimer = 0L;

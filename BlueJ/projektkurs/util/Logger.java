@@ -109,20 +109,20 @@ public final class Logger {
 
 		for (Throwable se : t.getSuppressed())
 			if (se != null)
-				logThrowable("Supressed: ", se);
+				logThrowable("Supressed", se);
 
 		Throwable cause = t.getCause();
 		if (cause != null)
-			logThrowable("Caused by: ", cause);
+			logThrowable("Caused by", cause);
 
-		log(LogLevel.WARN, msg + t.toString(), stackTrace.toArray());
+		warn(msg + ": " + t.toString(), stackTrace.toArray());
 	}
 
 	/**
 	 * 
 	 * @param msg
 	 */
-	public static void warning(String msg) {
+	public static void warn(String msg) {
 		log(LogLevel.WARN, msg);
 	}
 
@@ -131,7 +131,7 @@ public final class Logger {
 	 * @param msg
 	 * @param objs
 	 */
-	public static void warning(String msg, Object... objs) {
+	public static void warn(String msg, Object... objs) {
 		log(LogLevel.WARN, msg, objs);
 	}
 

@@ -3,6 +3,7 @@ package projektkurs.render;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.util.Iterator;
 
 import projektkurs.Main;
@@ -23,6 +24,7 @@ public class Render {
 	 */
 	private final GameCanvas canvas;
 	private BufferStrategy strategy;
+	private Graphics2D g;
 
 	/**
 	 * Konstruktor
@@ -32,6 +34,8 @@ public class Render {
 	 */
 	public Render(GameCanvas canvas) {
 		this.canvas = canvas;
+		strategy = null;
+		g = null;
 	}
 
 	/**
@@ -53,7 +57,7 @@ public class Render {
 	 */
 	public void update() {
 		if (strategy != null) {
-			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+			g = (Graphics2D) strategy.getDrawGraphics();
 
 			g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
 			g.setColor(Color.BLACK);
@@ -64,10 +68,7 @@ public class Render {
 			synchronized (Main.getRenderHelper().getSight()) {
 				for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
 					for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
-						g.drawImage(Main.getRenderHelper().getSight()[x][y], x
-								* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X,
-								y * Integers.RASTER_SIZE
-										+ Integers.WINDOW_HUD_Y, null);
+						drawDefaultRaster(x, y);
 					}
 				}
 			}
@@ -75,13 +76,8 @@ public class Render {
 			synchronized (Main.getRenderHelper().getEntitiesInSight()) {
 				Iterator<RenderEntity> i = Main.getRenderHelper()
 						.getEntitiesInSight().iterator();
-				RenderEntity e;
 				while (i.hasNext()) {
-					e = i.next();
-					g.drawImage(e.getEntity().getImage(), e.getRelX(),
-							e.getRelY(), e.getEntity().getSizeX()
-									* Integers.RASTER_SIZE, e.getEntity()
-									.getSizeY() * Integers.RASTER_SIZE, null);
+					drawDefaultEntity(i.next());
 				}
 			}
 
@@ -89,14 +85,14 @@ public class Render {
 				PlayerInventory inv = Main.getFigur().getInventory();
 				ItemStack stack = null;
 				for (int i = 0; i < inv.getSize(); i++) {
-					g.drawImage(
+					drawImage(
 							(i == inv.getSelectedIndex() ? Images.slot_highlight
 									: Images.slot), i * Integers.SLOT_SIZE
-									+ inv.getRelX(), inv.getRelY(), null);
+									+ inv.getRelX(), inv.getRelY());
 					stack = inv.getItemStackAt(i);
 					if (stack != null) {
-						g.drawImage(stack.getImage(), i * Integers.SLOT_SIZE
-								+ inv.getRelX() + 1, inv.getRelY() + 1, null);
+						drawImage(stack.getImage(), i * Integers.SLOT_SIZE
+								+ inv.getRelX() + 1, inv.getRelY() + 1);
 						g.drawString(stack.getStackSize() + "", i
 								* Integers.SLOT_SIZE + inv.getRelX() + 1,
 								inv.getRelY() + 11);
@@ -108,6 +104,29 @@ public class Render {
 			strategy.show();
 
 		}
+	}
+
+	private void drawDefaultEntity(RenderEntity e) {
+		drawImage(e.getEntity().getImage(), e.getRelX(), e.getRelY(), e
+				.getEntity().getSizeX() * Integers.RASTER_SIZE, e.getEntity()
+				.getSizeY() * Integers.RASTER_SIZE);
+	}
+
+	private void drawDefaultRaster(int x, int y) {
+		drawImage(Main.getRenderHelper().getSight()[x][y], x
+				* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, y
+				* Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y,
+				Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+	}
+
+	private void drawImage(BufferedImage img, int x, int y, int width,
+			int height) {
+		if (g != null)
+			g.drawImage(img, x, y, width, height, null);
+	}
+
+	private void drawImage(BufferedImage img, int x, int y) {
+		drawImage(img, x, y, img.getWidth(), img.getHeight());
 	}
 
 }

@@ -1,5 +1,7 @@
 package projektkurs.util;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -15,6 +17,8 @@ public final class I18n {
 
 		ENGLISH(new Locale("en", "US"), "lang.en_US"), GERMAN(new Locale("de",
 				"DE"), "lang.de_DE");
+
+		public static final SupportedLocales DEFAULT = ENGLISH;
 
 		private Locale locale;
 		private String name;
@@ -40,7 +44,7 @@ public final class I18n {
 
 	private static SupportedLocales currentLocale = SupportedLocales.ENGLISH;
 
-	private static ResourceBundle RESOURCE_BUNDLE;
+	private static ResourceBundle resource, fallback;
 
 	public static void changeLocale(SupportedLocales l) {
 		if (l != null)
@@ -61,9 +65,13 @@ public final class I18n {
 	public static String getString(String key) {
 
 		try {
-			return RESOURCE_BUNDLE.getString(key);
-		} catch (Exception e) {
-			return '!' + key + '!';
+			return resource.getString(key);
+		} catch (Throwable t) {
+			try {
+				return fallback.getString(key);
+			} catch (Throwable t1) {
+				return '!' + key + '!';
+			}
 		}
 
 	}
@@ -82,14 +90,42 @@ public final class I18n {
 	@Init(state = State.PRE)
 	public static void init() {
 
+		ResourceBundle.clearCache();
+
 		try {
-			ResourceBundle.clearCache();
-			RESOURCE_BUNDLE = ResourceBundle.getBundle(
+			fallback = ResourceBundle.getBundle(
+					"projektkurs.resources.lang.lang",
+					SupportedLocales.DEFAULT.getLocale());
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to load fallback resources", t);
+		}
+		try {
+			resource = ResourceBundle.getBundle(
 					"projektkurs.resources.lang.lang",
 					currentLocale.getLocale());
-		} catch (Exception e) {
-			Logger.logThrowable("Unable to load resources for Locale "
-					+ currentLocale + ": ", e);
+			Logger.info("Successfully loaded resources for locale '"
+					+ currentLocale.getLocale() + "'");
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to load resources for locale "
+					+ currentLocale, t);
+		}
+
+		ArrayList<String> missingResources = null;
+		Enumeration<String> fallbackKeys = fallback.getKeys();
+		String currKey;
+		while (fallbackKeys.hasMoreElements()) {
+			currKey = fallbackKeys.nextElement();
+			try {
+				resource.getString(currKey);
+			} catch (Throwable t) {
+				if (missingResources == null)
+					missingResources = new ArrayList<String>();
+				missingResources.add(currKey);
+			}
+		}
+		if (missingResources != null) {
+			Logger.warn("Resources for Locale '" + currentLocale.getLocale()
+					+ "' are incomplete. Missing keys are:", missingResources);
 		}
 
 	}
