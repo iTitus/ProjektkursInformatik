@@ -20,10 +20,9 @@ import projektkurs.render.GameCanvas;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
 import projektkurs.story.Storymanager;
+import projektkurs.thread.GameThread;
 import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
-import projektkurs.thread.RenderThread;
-import projektkurs.thread.SimulationThread;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
@@ -60,21 +59,19 @@ public final class Main {
 			setResizable(false);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			pack();
-			setVisible(true);
-
-			render.initBuffers();
 
 		}
 
 	}
 
 	public static Figur figur;
+	private static GameThread gameThread;
 	private static InputManager imgr;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
 	private static Spielfeld map;
+	private static LoopThread /* renderThread, simulationThread, */moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
-	private static LoopThread renderThread, simulationThread, moveThread;
 
 	private static Storymanager storyManager;
 
@@ -83,12 +80,10 @@ public final class Main {
 	 */
 	public static void exit() {
 		Logger.info("Initialising shutdown routine!");
+		if (gameThread != null)
+			gameThread.terminate();
 		if (moveThread != null)
 			moveThread.terminate();
-		if (renderThread != null)
-			renderThread.terminate();
-		if (simulationThread != null)
-			simulationThread.terminate();
 		// TODO: Save to disk
 		Sounds.closeAll();
 		Images.flushAll();
@@ -106,7 +101,7 @@ public final class Main {
 	}
 
 	public static int getFPS() {
-		return (renderThread != null ? renderThread.getLPS() : 0);
+		return (gameThread != null ? gameThread.getFPS() : 0);
 	}
 
 	/**
@@ -150,7 +145,7 @@ public final class Main {
 	}
 
 	public static int getUPS() {
-		return (simulationThread != null ? simulationThread.getLPS() : 0);
+		return (gameThread != null ? gameThread.getUPS() : 0);
 	}
 
 	/**
@@ -162,10 +157,6 @@ public final class Main {
 		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
-
-		// Method m = ReflectionUtil.getMethod(Scripts.class,
-		// "generateAndPopulateMap_Test1");
-		// map = new Spielfeld(m);
 		map = new Spielfeld();
 		renderHelper = new RenderHelper();
 		render = new Render(new GameCanvas());
@@ -177,13 +168,10 @@ public final class Main {
 	 */
 	@Init(state = State.POST)
 	public static void initThreads() {
-
-		simulationThread = new SimulationThread();
-		renderThread = new RenderThread();
+		gameThread = new GameThread();
 		moveThread = new MoveThread();
 
-		simulationThread.start();
-		renderThread.start();
+		gameThread.start();
 		moveThread.start();
 
 	}
@@ -206,10 +194,8 @@ public final class Main {
 	public static void pause() {
 		if (moveThread != null)
 			moveThread.pause(true);
-		if (renderThread != null)
-			renderThread.pause(true);
-		if (simulationThread != null)
-			simulationThread.pause(true);
+		if (gameThread != null)
+			gameThread.pause(true);
 	}
 
 	/**
@@ -218,10 +204,8 @@ public final class Main {
 	public static void resume() {
 		if (moveThread != null)
 			moveThread.pause(false);
-		if (renderThread != null)
-			renderThread.pause(false);
-		if (simulationThread != null)
-			simulationThread.pause(false);
+		if (gameThread != null)
+			gameThread.pause(true);
 	}
 
 	/**
@@ -340,10 +324,11 @@ public final class Main {
 
 		SwingUtilities.invokeLater(new Runnable() {
 
-			@SuppressWarnings("unused")
 			@Override
 			public void run() {
-				new MainFrame();
+				JFrame f = new MainFrame();
+				f.setVisible(true);
+				render.initBuffers();
 			}
 
 		});

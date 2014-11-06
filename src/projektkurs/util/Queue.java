@@ -47,7 +47,7 @@ public class Queue<T> {
 	}
 
 	/**
-	 * Stellt eine neue Action hinten an
+	 * Stellt ein neues Objekt hinten an
 	 *
 	 * @param toPush
 	 */

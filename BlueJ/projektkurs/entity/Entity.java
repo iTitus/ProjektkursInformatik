@@ -51,10 +51,7 @@ public class Entity implements ICanUpdate {
 		Entity e = Main.getSpielfeld().getEntityAt(x, y);
 		if (e != null) {
 			onCollideWith(e);
-			if (e instanceof EntityNPC)
-				ret = false;
-			if (e instanceof EntityItem)
-				ret = true;
+			ret = false;
 		}
 
 		AbstractRaster r = Main.getSpielfeld().getRasterAt(x, y);

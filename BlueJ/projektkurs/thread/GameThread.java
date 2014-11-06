@@ -1,38 +1,28 @@
 package projektkurs.thread;
 
+import projektkurs.Main;
+import projektkurs.lib.Integers;
 import projektkurs.util.Logger;
 
 /**
- * Abstrakter Loopthread
  *
- * @author Miles
  */
-public abstract class LoopThread extends Thread {
+public class GameThread extends Thread {
 
 	private double delta;
-	private boolean isLooping;
-	private int lps;
 	private final double nsPerLoop;
 	private boolean running, pausing;
+	private int ups, fps;
 
-	/**
-	 * Konstruktor fuer einen LoopThread
-	 *
-	 * @param name
-	 *            Name des Threads
-	 * @param loopTime
-	 *            Ticktime in ms
-	 */
-	public LoopThread(String name, int lps) {
-		super(name);
-		nsPerLoop = 1000000000D / lps;
+	public GameThread() {
+		super("Game-Thread");
+		nsPerLoop = 1000000000D / Integers.UPS;
 		delta = 0D;
-		this.lps = lps;
-		isLooping = false;
+		fps = 0;
+		ups = Integers.UPS;
 	}
 
 	/**
-	 * Delta dieses Threads
 	 * 
 	 * @return
 	 */
@@ -41,40 +31,35 @@ public abstract class LoopThread extends Thread {
 	}
 
 	/**
-	 * Loops pro Sekunde
-	 *
+	 * 
 	 * @return
 	 */
-	public int getLPS() {
-		return lps;
+	public int getFPS() {
+		return fps;
 	}
 
 	/**
-	 * isLooping
-	 *
+	 * 
 	 * @return
 	 */
-	public boolean isLooping() {
-		return isLooping;
+	public int getUPS() {
+		return ups;
 	}
 
 	/**
-	 * Verändert den Pausenstatus
-	 *
-	 * @param b
-	 *            true, wenn er pausieren soll; false, wenn er laufen soll
+	 * 
+	 * @param pause
 	 */
-	public void pause(boolean b) {
-		pausing = b;
+	public void pause(boolean pause) {
+		pausing = pause;
 	}
 
-	/**
-	 * Wird nach dem Starten einmal ausgeführt
-	 */
 	@Override
 	public void run() {
 
 		int loops = 0;
+		int frames = 0;
+		boolean shouldRender = true;
 		long lastTime = System.nanoTime();
 		long lastTimer = System.nanoTime();
 
@@ -84,16 +69,28 @@ public abstract class LoopThread extends Thread {
 			lastTime = time;
 
 			while (!pausing && delta >= 1) {
-				isLooping = true;
 				loops++;
-				runLoop();
+				Main.getSpielfeld().update();
 				delta--;
+				shouldRender = true;
 			}
-			isLooping = false;
+
+			try {
+				Thread.sleep(2);
+			} catch (Throwable t) {
+				Logger.logThrowable("Could not sleep during Update", t);
+			}
+
+			if (!pausing && shouldRender) {
+				frames++;
+				Main.getRender().update();
+				shouldRender = false;
+			}
 
 			if (System.nanoTime() - lastTimer >= 1000000000) {
 				lastTimer += 1000000000;
-				lps = loops;
+				ups = loops;
+				fps = frames;
 				loops = 0;
 			}
 
@@ -118,10 +115,5 @@ public abstract class LoopThread extends Thread {
 	public void terminate() {
 		running = false;
 	}
-
-	/**
-	 * Wird von der Schleife aufgerufen
-	 */
-	protected abstract void runLoop();
 
 }

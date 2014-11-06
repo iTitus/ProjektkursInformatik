@@ -15,6 +15,7 @@ public class CutScene {
 
 	private Queue<Action> actionQueue, startupQueue, tempQueue;
 	private int elapsedTicks;
+	private boolean isFinished;
 	private final Set<CutSceneObject> objects;
 
 	/**
@@ -26,6 +27,7 @@ public class CutScene {
 		tempQueue = new Queue<Action>();
 		objects = Collections.synchronizedSet(new HashSet<CutSceneObject>());
 		elapsedTicks = 0;
+		isFinished = false;
 	}
 
 	public void deSpawn(CutSceneObject object) {
@@ -44,7 +46,7 @@ public class CutScene {
 	 * @return
 	 */
 	public boolean isFinished() {
-		return actionQueue == null || actionQueue.empty();
+		return isFinished;
 	}
 
 	/**
@@ -67,7 +69,7 @@ public class CutScene {
      *
      */
 	public void setFinished() {
-		actionQueue = null;
+		isFinished = true;
 	}
 
 	public void spawn(CutSceneObject object) {
@@ -80,35 +82,33 @@ public class CutScene {
 
 	public void update() {
 
-		if (elapsedTicks == 0 && !startupQueue.empty()) {
+		if (elapsedTicks == 0 && startupQueue != null && !startupQueue.empty()) {
 
+			Action currAction;
 			while (!startupQueue.empty()) {
-				startupQueue.front().doAction(this);
-				startupQueue.deQueue();
+				currAction = startupQueue.frontDeQueue();
+				if (currAction != null)
+					currAction.doAction(this);
 			}
 
 			startupQueue = null;
 
 		}
-		if (!actionQueue.empty()) {
+		if (actionQueue != null && !actionQueue.empty()) {
 
-			tempQueue.clear();
+			tempQueue = new Queue<Action>();
 
 			Action currAction;
-
 			while (!actionQueue.empty()) {
-				currAction = actionQueue.front();
-				actionQueue.deQueue();
+				currAction = actionQueue.frontDeQueue();
 
 				if (currAction != null && currAction.shouldDoAction(this))
 					currAction.doAction(this);
-
-				if (actionQueue == null)
-					return;
-
 				tempQueue.enQueue(currAction);
 			}
 			actionQueue = tempQueue;
+		} else {
+			isFinished = true;
 		}
 
 		elapsedTicks++;

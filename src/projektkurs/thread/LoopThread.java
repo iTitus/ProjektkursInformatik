@@ -11,9 +11,6 @@ public abstract class LoopThread extends Thread {
 
 	private double delta;
 	private boolean isLooping;
-	private long lastTime;
-	private long lastTimer;
-	private int loops;
 	private int lps;
 	private final double nsPerLoop;
 	private boolean running, pausing;
@@ -30,11 +27,17 @@ public abstract class LoopThread extends Thread {
 		super(name);
 		nsPerLoop = 1000000000D / lps;
 		delta = 0D;
-		lastTime = 0L;
-		lastTimer = 0L;
-		loops = 0;
 		this.lps = lps;
 		isLooping = false;
+	}
+
+	/**
+	 * Delta dieses Threads
+	 * 
+	 * @return
+	 */
+	public double getDelta() {
+		return delta;
 	}
 
 	/**
@@ -61,7 +64,7 @@ public abstract class LoopThread extends Thread {
 	 * @param b
 	 *            true, wenn er pausieren soll; false, wenn er laufen soll
 	 */
-	public synchronized void pause(boolean b) {
+	public void pause(boolean b) {
 		pausing = b;
 	}
 
@@ -71,8 +74,9 @@ public abstract class LoopThread extends Thread {
 	@Override
 	public void run() {
 
-		lastTime = System.nanoTime();
-		lastTimer = System.nanoTime();
+		int loops = 0;
+		long lastTime = System.nanoTime();
+		long lastTimer = System.nanoTime();
 
 		while (running) {
 			long time = System.nanoTime();
@@ -111,7 +115,7 @@ public abstract class LoopThread extends Thread {
 	/**
 	 * Beendet den Thread
 	 */
-	public synchronized void terminate() {
+	public void terminate() {
 		running = false;
 	}
 

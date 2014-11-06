@@ -7,9 +7,7 @@ import java.awt.Toolkit;
  */
 public final class Integers {
 
-	public static final int FPS = 60;
 	public static final int INVENTARGROESSE = 7;
-
 	public static final int KISTENGROESSE = 3;
 	public static final int RASTER_SIZE = 32;
 	public static final int RPS = 5;
