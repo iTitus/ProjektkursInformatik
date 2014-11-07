@@ -65,7 +65,6 @@ public final class CutSceneManager {
 			ups = Integers.UPS;
 			int loops = 0, frames = 0;
 			delta = 0D;
-			boolean shouldRender = true;
 			long lastTime = System.nanoTime();
 			long lastTimer = System.nanoTime();
 
@@ -78,20 +77,10 @@ public final class CutSceneManager {
 					loops++;
 					currCutScene.update();
 					delta--;
-					shouldRender = true;
 				}
 
-				try {
-					Thread.sleep(2);
-				} catch (Throwable t) {
-					Logger.logThrowable("Could not sleep during CutScene", t);
-				}
-
-				if (shouldRender) {
-					frames++;
-					currCutSceneRender.update();
-					shouldRender = false;
-				}
+				frames++;
+				currCutSceneRender.update();
 
 				if (System.nanoTime() - lastTimer >= 1000000000) {
 					lastTimer += 1000000000;

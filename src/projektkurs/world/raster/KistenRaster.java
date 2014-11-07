@@ -27,7 +27,7 @@ public class KistenRaster extends AbstractRaster {
 	}
 
 	@Override
-	public ExtraInformation getExtraInformation() {
+	public ExtraInformation getExtraInformation(int x, int y) {
 		return new ExtraInformationKiste();
 	}
 

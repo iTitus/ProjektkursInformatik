@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviours;
+import projektkurs.lib.Integers;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
 import projektkurs.world.raster.AbstractRaster;
@@ -106,6 +107,16 @@ public class Entity implements ICanUpdate {
 		return posY;
 	}
 
+	public int getRenderX() {
+		return ((posX - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE)
+				+ Integers.WINDOW_HUD_X;
+	}
+
+	public int getRenderY() {
+		return ((posY - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE)
+				+ Integers.WINDOW_HUD_Y;
+	}
+
 	/**
 	 * @return
 	 */
@@ -157,7 +168,7 @@ public class Entity implements ICanUpdate {
 		if ((dx != 0 || dy != 0) && canMoveTo(posX + dx, posY + dy)) {
 			posX += dx;
 			posY += dy;
-			Main.getRenderHelper().move(this);
+			// Main.getRenderHelper().move(this);
 		}
 	}
 

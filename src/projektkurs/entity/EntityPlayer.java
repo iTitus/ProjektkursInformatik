@@ -7,12 +7,9 @@ import projektkurs.inventory.PlayerInventory;
 import projektkurs.lib.Integers;
 
 /**
- * Eine Spielerfigur
- *
- * @author Niklas, Vladimir, Elena, Christopher
- * @version 11.09.2014
+ * Der Spieler
  */
-public class Figur extends Entity {
+public class EntityPlayer extends Entity {
 
 	private final PlayerInventory inventar;
 
@@ -23,7 +20,7 @@ public class Figur extends Entity {
 	 * @param posY
 	 * @param image
 	 */
-	public Figur(int posX, int posY, BufferedImage image) {
+	public EntityPlayer(int posX, int posY, BufferedImage image) {
 		super(posX, posY, image);
 		inventar = new PlayerInventory(Integers.INVENTARGROESSE, 0);
 	}

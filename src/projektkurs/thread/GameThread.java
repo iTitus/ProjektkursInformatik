@@ -59,7 +59,6 @@ public class GameThread extends Thread {
 
 		int loops = 0;
 		int frames = 0;
-		boolean shouldRender = true;
 		long lastTime = System.nanoTime();
 		long lastTimer = System.nanoTime();
 
@@ -72,19 +71,11 @@ public class GameThread extends Thread {
 				loops++;
 				Main.getSpielfeld().update();
 				delta--;
-				shouldRender = true;
 			}
 
-			try {
-				Thread.sleep(2);
-			} catch (Throwable t) {
-				Logger.logThrowable("Could not sleep during Update", t);
-			}
-
-			if (!pausing && shouldRender) {
+			if (!pausing) {
 				frames++;
 				Main.getRender().update();
-				shouldRender = false;
 			}
 
 			if (System.nanoTime() - lastTimer >= 1000000000) {
@@ -92,6 +83,7 @@ public class GameThread extends Thread {
 				ups = loops;
 				fps = frames;
 				loops = 0;
+				frames = 0;
 			}
 
 		}

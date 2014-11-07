@@ -33,7 +33,7 @@ public abstract class AbstractRaster {
 	 *
 	 * @return die ExtraInformation
 	 */
-	public ExtraInformation getExtraInformation() {
+	public ExtraInformation getExtraInformation(int x, int y) {
 		return null;
 	}
 

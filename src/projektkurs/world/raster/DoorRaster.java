@@ -12,13 +12,13 @@ public class DoorRaster extends AbstractRaster {
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
 		((ExtraInformationDoor) Main.getSpielfeld().getExtraInformationAt(x, y))
-				.tryOpen(Main.getFigur().getInventory().getSelectedItemStack());
+				.tryOpen(Main.getPlayer().getInventory().getSelectedItemStack());
 		return ((ExtraInformationDoor) Main.getSpielfeld()
 				.getExtraInformationAt(x, y)).getIsOpen(dir);
 	}
 
 	@Override
-	public ExtraInformation getExtraInformation() {
+	public ExtraInformation getExtraInformation(int x, int y) {
 		return new ExtraInformationDoor();
 	}
 

@@ -4,14 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.util.Iterator;
 
 import projektkurs.Main;
+import projektkurs.entity.Entity;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
-import projektkurs.render.entity.RenderEntity;
 
 /**
  * Renderklasse
@@ -64,38 +63,40 @@ public class Render {
 			g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS(),
 					Integers.WINDOW_HUD_X, 16);
 
-			synchronized (Main.getRenderHelper().getSight()) {
-				for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
-					for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
-						drawDefaultRaster(x, y);
-					}
+			for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
+				for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
+					drawDefaultRaster(x, y);
 				}
 			}
 
-			synchronized (Main.getRenderHelper().getEntitiesInSight()) {
-				Iterator<RenderEntity> i = Main.getRenderHelper()
-						.getEntitiesInSight().iterator();
-				while (i.hasNext()) {
-					drawDefaultEntity(i.next());
-				}
+			// Iterator<Entity> i = Main.getRenderHelper().getEntitiesInSight()
+			// .iterator();
+			// while (i.hasNext()) {
+			// drawDefaultEntity(i.next());
+			// }
+
+			for (Entity e : Main.getSpielfeld().getEntityList()) {
+				if (!e.shouldDeSpawn()
+						&& e.isInside(Main.getRenderHelper().getSightX(), Main
+								.getRenderHelper().getSightY(),
+								Integers.SIGHT_X, Integers.SIGHT_Y))
+					drawDefaultEntity(e);
 			}
 
-			synchronized (Main.getFigur().getInventory()) {
-				PlayerInventory inv = Main.getFigur().getInventory();
-				ItemStack stack = null;
-				for (int i = 0; i < inv.getSize(); i++) {
-					drawImage(
-							(i == inv.getSelectedIndex() ? Images.slot_highlight
-									: Images.slot), i * Integers.SLOT_SIZE
-									+ inv.getRelX(), inv.getRelY());
-					stack = inv.getItemStackAt(i);
-					if (stack != null) {
-						drawImage(stack.getImage(), i * Integers.SLOT_SIZE
-								+ inv.getRelX() + 1, inv.getRelY() + 1);
-						g.drawString(stack.getStackSize() + "", i
-								* Integers.SLOT_SIZE + inv.getRelX() + 1,
-								inv.getRelY() + 11);
-					}
+			PlayerInventory inv = Main.getPlayer().getInventory();
+			ItemStack stack = null;
+			for (int i1 = 0; i1 < inv.getSize(); i1++) {
+				drawImage((i1 == inv.getSelectedIndex() ? Images.slot_highlight
+						: Images.slot),
+						i1 * Integers.SLOT_SIZE + inv.getRelX(), inv.getRelY());
+				stack = inv.getItemStackAt(i1);
+				if (stack != null) {
+					drawImage(stack.getImage(),
+							i1 * Integers.SLOT_SIZE + inv.getRelX() + 1,
+							inv.getRelY() + 1);
+					g.drawString(stack.getStackSize() + "", i1
+							* Integers.SLOT_SIZE + inv.getRelX() + 1,
+							inv.getRelY() + 11);
 				}
 			}
 
@@ -105,10 +106,9 @@ public class Render {
 		}
 	}
 
-	private void drawDefaultEntity(RenderEntity e) {
-		drawImage(e.getEntity().getImage(), e.getRelX(), e.getRelY(), e
-				.getEntity().getSizeX() * Integers.RASTER_SIZE, e.getEntity()
-				.getSizeY() * Integers.RASTER_SIZE);
+	private void drawDefaultEntity(Entity e) {
+		drawImage(e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX()
+				* Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
 	}
 
 	private void drawDefaultRaster(int x, int y) {

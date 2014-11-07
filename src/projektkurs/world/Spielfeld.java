@@ -1,12 +1,7 @@
 package projektkurs.world;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Random;
-import java.util.Set;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -36,7 +31,7 @@ public class Spielfeld {
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
 	private static final Random rand = new Random();
 
-	private final Set<Entity> entities;
+	private final ArrayList<Entity> entities;
 
 	private final ExtraInformation[][] extras;
 
@@ -48,7 +43,7 @@ public class Spielfeld {
 	public Spielfeld() {
 		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
-		entities = Collections.synchronizedSet(new HashSet<Entity>());
+		entities = new ArrayList<Entity>();
 		generateAndPopulateMap();
 	}
 
@@ -57,11 +52,9 @@ public class Spielfeld {
 	 */
 	public void deSpawn(Entity e) {
 		if (e != null) {
-			synchronized (entities) {
-				entities.remove(e);
-			}
-			if (Main.getRenderHelper() != null)
-				Main.getRenderHelper().deSpawn(e);
+			getEntityList().remove(e);
+			// if (Main.getRenderHelper() != null)
+			// Main.getRenderHelper().deSpawn(e);
 		}
 	}
 
@@ -140,7 +133,7 @@ public class Spielfeld {
 		}
 
 		// ENTITIES!
-		spawn(Main.getFigur());
+		spawn(Main.getPlayer());
 		spawn(new EntityRedNPC(1, 1, Images.redNPC));
 		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY, 1, 1000)));
 		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
@@ -153,20 +146,15 @@ public class Spielfeld {
 
 	}
 
-	public Collection<Entity> getEntitiesInRect(int posX, int posY, int sizeX,
+	public ArrayList<Entity> getEntitiesInRect(int posX, int posY, int sizeX,
 			int sizeY) {
-		Set<Entity> ret = Collections.synchronizedSet(new HashSet<Entity>());
+		ArrayList<Entity> ret = new ArrayList<Entity>();
 
-		synchronized (entities) {
-			Iterator<Entity> i = entities.iterator();
-			Entity e;
-
-			while (i.hasNext()) {
-				e = i.next();
-				if (e.isInside(posX, posY, sizeX, sizeY))
-					ret.add(e);
-			}
+		for (Entity e : getEntityList()) {
+			if (e.isInside(posX, posY, sizeX, sizeY))
+				ret.add(e);
 		}
+
 		return ret;
 	}
 
@@ -179,13 +167,9 @@ public class Spielfeld {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return null;
 
-		synchronized (entities) {
-			Iterator<Entity> i = entities.iterator();
-			while (i.hasNext()) {
-				Entity e = i.next();
-				if (e.getPosX() == x && e.getPosY() == y)
-					return e;
-			}
+		for (Entity e : getEntityList()) {
+			if (e.getPosX() == x && e.getPosY() == y)
+				return e;
 		}
 		return null;
 	}
@@ -193,10 +177,8 @@ public class Spielfeld {
 	/**
      *
      */
-	public Set<Entity> getEntityList() {
-		synchronized (entities) {
-			return entities;
-		}
+	public synchronized ArrayList<Entity> getEntityList() {
+		return entities;
 	}
 
 	/**
@@ -219,15 +201,11 @@ public class Spielfeld {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return null;
 
-		synchronized (entities) {
-			Iterator<Entity> i = entities.iterator();
-			while (i.hasNext()) {
-				Entity e = i.next();
-				if (e.getPosX() == x && e.getPosY() == y
-						&& e instanceof EntityItem)
-					return (EntityItem) e;
-			}
+		for (Entity e : getEntityList()) {
+			if (e.getPosX() == x && e.getPosY() == y && e instanceof EntityItem)
+				return (EntityItem) e;
 		}
+
 		return null;
 	}
 
@@ -254,15 +232,11 @@ public class Spielfeld {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return null;
 
-		synchronized (entities) {
-			Iterator<Entity> i = entities.iterator();
-			while (i.hasNext()) {
-				Entity e = i.next();
-				if (e.getPosX() == x && e.getPosY() == y
-						&& e instanceof EntityNPC)
-					return (EntityNPC) e;
-			}
+		for (Entity e : getEntityList()) {
+			if (e.getPosX() == x && e.getPosY() == y && e instanceof EntityNPC)
+				return (EntityNPC) e;
 		}
+
 		return null;
 	}
 
@@ -324,7 +298,7 @@ public class Spielfeld {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
 		map[x][y] = r;
-		extras[x][y] = r.getExtraInformation();
+		extras[x][y] = r.getExtraInformation(x, y);
 	}
 
 	/**
@@ -332,12 +306,9 @@ public class Spielfeld {
 	 */
 	public void spawn(Entity e) {
 		if (e != null) {
-			synchronized (entities) {
-				if (!entities.contains(e))
-					entities.add(e);
-			}
-			if (Main.getRenderHelper() != null)
-				Main.getRenderHelper().spawn(e);
+			getEntityList().add(e);
+			// if (Main.getRenderHelper() != null)
+			// Main.getRenderHelper().spawn(e);
 		}
 	}
 
@@ -346,23 +317,19 @@ public class Spielfeld {
 	 */
 	public void update() {
 
-		Main.getFigur().moveBy(Main.getInputManager().getNextDirection());
+		Main.getPlayer().moveBy(Main.getInputManager().getNextDirection());
 
 		ArrayList<Entity> toRemove = new ArrayList<Entity>();
 
-		synchronized (entities) {
-			Iterator<Entity> i = entities.iterator();
-			while (i.hasNext()) {
-				Entity e = i.next();
-				if (e != null) {
-					if (e.canUpdate())
-						e.update();
-					if (e.shouldDeSpawn())
-						toRemove.add(e);
-				}
+		for (Entity e : getEntityList()) {
+			if (e != null) {
+				if (e.canUpdate())
+					e.update();
+				if (e.shouldDeSpawn())
+					toRemove.add(e);
 			}
-			entities.removeAll(toRemove);
 		}
+		getEntityList().removeAll(toRemove);
 
 		Main.getStoryManager().update();
 

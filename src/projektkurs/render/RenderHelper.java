@@ -1,25 +1,17 @@
 package projektkurs.render;
 
 import java.awt.image.BufferedImage;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 import projektkurs.Main;
-import projektkurs.entity.Entity;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
-import projektkurs.render.entity.RenderEntity;
 
 /**
  * Helperklasse zum Rendern
  */
 public class RenderHelper {
 
-	/**
-     *
-     */
-	private final Set<RenderEntity> entitiesInSight;
+	// private final ArrayList<Entity> entitiesInSight;
 
 	/**
 	 * Sichtfeld
@@ -46,31 +38,23 @@ public class RenderHelper {
 		sightX = 0;
 		sightY = 0;
 
-		entitiesInSight = Collections
-				.synchronizedSet(new HashSet<RenderEntity>());
+		// entitiesInSight = new ArrayList<Entity>();
 
 		updateRaster();
-		updateEntities();
+		// updateEntities();
 	}
 
-	public boolean deSpawn(Entity e) {
-		if (e != null) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.remove(new RenderEntity(e));
-			}
-			return true;
-		}
-		return false;
-	}
+	// public boolean deSpawn(Entity e) {
+	// if (e != null) {
+	// entitiesInSight.remove(e);
+	// return true;
+	// }
+	// return false;
+	// }
 
-	/**
-	 * @return
-	 */
-	public Set<RenderEntity> getEntitiesInSight() {
-		synchronized (entitiesInSight) {
-			return entitiesInSight;
-		}
-	}
+	// public ArrayList<Entity> getEntitiesInSight() {
+	// return entitiesInSight;
+	// }
 
 	/**
 	 * @return die aktuelle Sicht
@@ -101,15 +85,12 @@ public class RenderHelper {
 		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
 	}
 
-	/**
-	 * @param e
-	 */
-	public void move(Entity e) {
-		if (e != null) {
-			if (!spawn(e))
-				deSpawn(e);
-		}
-	}
+	// public void move(Entity e) {
+	// if (e != null) {
+	// if (!spawn(e))
+	// deSpawn(e);
+	// }
+	// }
 
 	/**
 	 * Bewegt das Spielfeld um dx und dy
@@ -124,7 +105,7 @@ public class RenderHelper {
 			sightX += dx;
 			sightY += dy;
 			updateRaster();
-			updateEntities();
+			// updateEntities();
 		}
 	}
 
@@ -141,38 +122,28 @@ public class RenderHelper {
 			this.sightX = sightX;
 			this.sightY = sightY;
 			updateRaster();
-			updateEntities();
+			// updateEntities();
 		}
 	}
 
-	public boolean spawn(Entity e) {
-		if (e != null
-				&& e.isInside(sightX, sightY, Integers.SIGHT_X,
-						Integers.SIGHT_Y)) {
-			synchronized (entitiesInSight) {
-				entitiesInSight.add(new RenderEntity(e));
+	// public boolean spawn(Entity e) {
+	// if (e != null
+	// && e.isInside(sightX, sightY, Integers.SIGHT_X,
+	// Integers.SIGHT_Y)) {
+	// entitiesInSight.add(e);
+	// return true;
+	// }
+	// return false;
+	// }
 
-			}
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Interne Methode, um die Entities im Sichtfeld zu aktualisieren
-	 */
-	private void updateEntities() {
-		synchronized (entitiesInSight) {
-			entitiesInSight.clear();
-			for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX,
-					sightY, Integers.SIGHT_X, Integers.SIGHT_Y)) {
-				synchronized (entitiesInSight) {
-					entitiesInSight.add(new RenderEntity(e));
-				}
-			}
-		}
-
-	}
+	// private void updateEntities() {
+	// entitiesInSight.clear();
+	// for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX, sightY,
+	// Integers.SIGHT_X, Integers.SIGHT_Y)) {
+	// entitiesInSight.add(e);
+	// }
+	//
+	// }
 
 	/**
 	 * Interne Methode, um die Raster im Sichtfeld zu aktualisieren

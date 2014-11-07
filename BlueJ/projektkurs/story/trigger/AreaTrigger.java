@@ -18,6 +18,6 @@ public class AreaTrigger extends Trigger {
 
 	@Override
 	public boolean isTriggerActive() {
-		return Main.getFigur().isInside(posX, posY, sizeX, sizeY);
+		return Main.getPlayer().isInside(posX, posY, sizeX, sizeY);
 	}
 }

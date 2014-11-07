@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import projektkurs.entity.Figur;
+import projektkurs.entity.EntityPlayer;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.lib.Images;
@@ -64,7 +64,7 @@ public final class Main {
 
 	}
 
-	public static Figur figur;
+	public static EntityPlayer player;
 	private static GameThread gameThread;
 	private static InputManager imgr;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
@@ -91,15 +91,6 @@ public final class Main {
 		System.exit(0);
 	}
 
-	/**
-	 * Gibt die aktuelle Figur aus
-	 *
-	 * @return Figur
-	 */
-	public static Figur getFigur() {
-		return figur;
-	}
-
 	public static int getFPS() {
 		return (gameThread != null ? gameThread.getFPS() : 0);
 	}
@@ -111,6 +102,15 @@ public final class Main {
 	 */
 	public static InputManager getInputManager() {
 		return imgr;
+	}
+
+	/**
+	 * Gibt die aktuelle Figur aus
+	 *
+	 * @return Figur
+	 */
+	public static EntityPlayer getPlayer() {
+		return player;
 	}
 
 	/**
@@ -154,7 +154,7 @@ public final class Main {
 	@Init
 	public static void initFields() {
 		storyManager = new Storymanager();
-		figur = new Figur(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
+		player = new EntityPlayer(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		imgr = new InputManager();
 		map = new Spielfeld();

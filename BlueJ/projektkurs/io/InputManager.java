@@ -211,20 +211,20 @@ public class InputManager implements KeyListener, MouseInputListener,
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (e.getWheelRotation() > 0) {
-			Main.getFigur()
+			Main.getPlayer()
 					.getInventory()
 					.setSelectedItemStack(
-							Main.getFigur().getInventory().getSelectedIndex() >= Main
-									.getFigur().getInventory().getSize() ? 0
-									: Main.getFigur().getInventory()
+							Main.getPlayer().getInventory().getSelectedIndex() >= Main
+									.getPlayer().getInventory().getSize() ? 0
+									: Main.getPlayer().getInventory()
 											.getSelectedIndex() + 1);
 		} else if (e.getWheelRotation() < 0) {
-			Main.getFigur()
+			Main.getPlayer()
 					.getInventory()
 					.setSelectedItemStack(
-							(Main.getFigur().getInventory().getSelectedIndex() <= 0 ? Main
-									.getFigur().getInventory().getSize() - 1
-									: Main.getFigur().getInventory()
+							(Main.getPlayer().getInventory().getSelectedIndex() <= 0 ? Main
+									.getPlayer().getInventory().getSize() - 1
+									: Main.getPlayer().getInventory()
 											.getSelectedIndex() - 1));
 		}
 	}

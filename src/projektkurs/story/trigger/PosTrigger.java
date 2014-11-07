@@ -16,8 +16,8 @@ public class PosTrigger extends Trigger {
 
 	@Override
 	public boolean isTriggerActive() {
-		return (Main.getFigur().getPosX() == x)
-				&& (Main.getFigur().getPosY() == y);
+		return (Main.getPlayer().getPosX() == x)
+				&& (Main.getPlayer().getPosY() == y);
 	}
 
 }

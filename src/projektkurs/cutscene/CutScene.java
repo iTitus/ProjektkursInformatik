@@ -1,8 +1,6 @@
 package projektkurs.cutscene;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
@@ -16,7 +14,7 @@ public class CutScene {
 	private Queue<Action> actionQueue, startupQueue, tempQueue;
 	private int elapsedTicks;
 	private boolean isFinished;
-	private final Set<CutSceneObject> objects;
+	private final ArrayList<CutSceneObject> objects;
 
 	/**
 	 * Konstruktor für eine CutScene
@@ -25,16 +23,14 @@ public class CutScene {
 		actionQueue = new Queue<Action>();
 		startupQueue = new Queue<Action>();
 		tempQueue = new Queue<Action>();
-		objects = Collections.synchronizedSet(new HashSet<CutSceneObject>());
+		objects = new ArrayList<CutSceneObject>();
 		elapsedTicks = 0;
 		isFinished = false;
 	}
 
 	public void deSpawn(CutSceneObject object) {
 		if (object != null) {
-			synchronized (objects) {
-				objects.add(object);
-			}
+			objects.remove(object);
 		}
 	}
 
@@ -74,9 +70,7 @@ public class CutScene {
 
 	public void spawn(CutSceneObject object) {
 		if (object != null) {
-			synchronized (objects) {
-				objects.add(object);
-			}
+			objects.add(object);
 		}
 	}
 

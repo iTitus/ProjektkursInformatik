@@ -16,7 +16,7 @@ public class InventoryTrigger extends Trigger {
 
 	@Override
 	public boolean isTriggerActive() {
-		return Main.getFigur().getInventory().containsIgnoreStackSize(item);
+		return Main.getPlayer().getInventory().containsIgnoreStackSize(item);
 	}
 
 }
