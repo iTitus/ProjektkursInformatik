@@ -25,8 +25,9 @@ public final class Logger {
 		}
 	}
 
-	// private static final DateFormat extendedDate = new SimpleDateFormat(
-	// "dd.MM.yyyy_HH:mm:ss");
+	@SuppressWarnings("unused")
+	private static final DateFormat extendedDate = new SimpleDateFormat(
+			"dd.MM.yyyy_HH:mm:ss");
 
 	private static final DateFormat simpleDate = new SimpleDateFormat(
 			"HH:mm:ss");

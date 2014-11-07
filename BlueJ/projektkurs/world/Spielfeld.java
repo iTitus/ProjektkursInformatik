@@ -53,8 +53,6 @@ public class Spielfeld {
 	public void deSpawn(Entity e) {
 		if (e != null) {
 			getEntityList().remove(e);
-			// if (Main.getRenderHelper() != null)
-			// Main.getRenderHelper().deSpawn(e);
 		}
 	}
 
@@ -307,8 +305,6 @@ public class Spielfeld {
 	public void spawn(Entity e) {
 		if (e != null) {
 			getEntityList().add(e);
-			// if (Main.getRenderHelper() != null)
-			// Main.getRenderHelper().spawn(e);
 		}
 	}
 

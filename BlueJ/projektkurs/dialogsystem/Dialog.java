@@ -18,7 +18,6 @@ public class Dialog {
 	}
 
 	public int[] Aussagenbelegung(DialogAussage[] _Aussagenarray) {
-		// Ich habe keine Ahnung was diese Methode tut
 		return null;
 
 	}

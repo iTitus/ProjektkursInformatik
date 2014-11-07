@@ -69,12 +69,6 @@ public class Render {
 				}
 			}
 
-			// Iterator<Entity> i = Main.getRenderHelper().getEntitiesInSight()
-			// .iterator();
-			// while (i.hasNext()) {
-			// drawDefaultEntity(i.next());
-			// }
-
 			for (Entity e : Main.getSpielfeld().getEntityList()) {
 				if (!e.shouldDeSpawn()
 						&& e.isInside(Main.getRenderHelper().getSightX(), Main

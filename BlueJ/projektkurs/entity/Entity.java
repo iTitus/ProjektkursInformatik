@@ -168,7 +168,6 @@ public class Entity implements ICanUpdate {
 		if ((dx != 0 || dy != 0) && canMoveTo(posX + dx, posY + dy)) {
 			posX += dx;
 			posY += dy;
-			// Main.getRenderHelper().move(this);
 		}
 	}
 

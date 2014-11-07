@@ -24,7 +24,6 @@ public class KeyBindings {
 	/**
 	 * Taste, um nach rechts zu gehen
 	 */
-	// ne, echt?!?
 	public static final int KEY_RIGHT = KeyEvent.VK_D;
 	/**
 	 * Taste, um nach oben zu gehen

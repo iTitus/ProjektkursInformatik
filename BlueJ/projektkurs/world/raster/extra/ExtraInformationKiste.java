@@ -10,8 +10,6 @@ public class ExtraInformationKiste extends ExtraInformation {
 
 	private final Inventory inventar;
 
-	// private boolean used;
-
 	/**
 	 * Konstruktor
 	 */
@@ -27,13 +25,5 @@ public class ExtraInformationKiste extends ExtraInformation {
 	public Inventory getInventar() {
 		return inventar;
 	}
-
-	// public boolean isUsed() {
-	// return used;
-	// }
-	//
-	// public void setUsed(boolean used) {
-	// this.used = used;
-	// }
 
 }

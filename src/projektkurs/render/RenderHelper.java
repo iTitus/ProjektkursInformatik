@@ -11,8 +11,6 @@ import projektkurs.lib.Integers;
  */
 public class RenderHelper {
 
-	// private final ArrayList<Entity> entitiesInSight;
-
 	/**
 	 * Sichtfeld
 	 */
@@ -38,23 +36,8 @@ public class RenderHelper {
 		sightX = 0;
 		sightY = 0;
 
-		// entitiesInSight = new ArrayList<Entity>();
-
 		updateRaster();
-		// updateEntities();
 	}
-
-	// public boolean deSpawn(Entity e) {
-	// if (e != null) {
-	// entitiesInSight.remove(e);
-	// return true;
-	// }
-	// return false;
-	// }
-
-	// public ArrayList<Entity> getEntitiesInSight() {
-	// return entitiesInSight;
-	// }
 
 	/**
 	 * @return die aktuelle Sicht
@@ -85,13 +68,6 @@ public class RenderHelper {
 		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
 	}
 
-	// public void move(Entity e) {
-	// if (e != null) {
-	// if (!spawn(e))
-	// deSpawn(e);
-	// }
-	// }
-
 	/**
 	 * Bewegt das Spielfeld um dx und dy
 	 *
@@ -105,7 +81,6 @@ public class RenderHelper {
 			sightX += dx;
 			sightY += dy;
 			updateRaster();
-			// updateEntities();
 		}
 	}
 
@@ -122,28 +97,8 @@ public class RenderHelper {
 			this.sightX = sightX;
 			this.sightY = sightY;
 			updateRaster();
-			// updateEntities();
 		}
 	}
-
-	// public boolean spawn(Entity e) {
-	// if (e != null
-	// && e.isInside(sightX, sightY, Integers.SIGHT_X,
-	// Integers.SIGHT_Y)) {
-	// entitiesInSight.add(e);
-	// return true;
-	// }
-	// return false;
-	// }
-
-	// private void updateEntities() {
-	// entitiesInSight.clear();
-	// for (Entity e : Main.getSpielfeld().getEntitiesInRect(sightX, sightY,
-	// Integers.SIGHT_X, Integers.SIGHT_Y)) {
-	// entitiesInSight.add(e);
-	// }
-	//
-	// }
 
 	/**
 	 * Interne Methode, um die Raster im Sichtfeld zu aktualisieren
