@@ -19,7 +19,7 @@ public class ExtraInformationDoor extends ExtraInformation {
 		openingKey = 0;
 	}
 
-	public BufferedImage getBufferedImage() {
+	public BufferedImage getImage() {
 
 		switch (direction) {
 		case LEFT:

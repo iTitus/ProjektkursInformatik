@@ -21,6 +21,7 @@ import projektkurs.world.raster.Raster;
 import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationDoor;
 import projektkurs.world.raster.extra.ExtraInformationKiste;
+import projektkurs.world.raster.extra.IHasExtraInformation;
 
 /**
  * Spielfeld
@@ -63,51 +64,51 @@ public class Spielfeld {
 		// RASEN!
 		for (int x = 0; x < map.length; x++) {
 			for (int y = 0; y < map[x].length; y++)
-				setRasterAt(x, y, Raster.RASEN);
+				setRasterAt(x, y, Raster.rasen);
 
 		}
 
 		// BÄUME!
 		for (int i = 0; i < rand.nextInt(51) + 25; i++) {
 			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					Raster.BAUM);
+					Raster.baum);
 		}
 
 		// KISTEN!
 		for (int i = 0; i < rand.nextInt(7) + 3; i++) {
 			setRasterAt(rand.nextInt(MAP_SIZE_X), rand.nextInt(MAP_SIZE_Y),
-					Raster.KISTE);
+					Raster.kiste);
 
 		}
 
 		// WÄNDE!
 		for (int x = 0; x < map.length; x++) {
-			setRasterAt(x, 0, Raster.WAND);
-			setRasterAt(x, MAP_SIZE_Y - 1, Raster.WAND);
+			setRasterAt(x, 0, Raster.wand);
+			setRasterAt(x, MAP_SIZE_Y - 1, Raster.wand);
 		}
 		for (int y = 0; y < map.length; y++) {
-			setRasterAt(0, y, Raster.WAND);
-			setRasterAt(MAP_SIZE_X - 1, y, Raster.WAND);
+			setRasterAt(0, y, Raster.wand);
+			setRasterAt(MAP_SIZE_X - 1, y, Raster.wand);
 		}
 
 		// TÜREN!
-		setRasterAt(20, 18, Raster.BAUM);
-		setRasterAt(21, 18, Raster.BAUM);
-		setRasterAt(22, 18, Raster.BAUM);
-		setRasterAt(23, 18, Raster.BAUM);
-		setRasterAt(24, 18, Raster.BAUM);
-		setRasterAt(24, 19, Raster.BAUM);
-		setRasterAt(24, 20, Raster.BAUM);
-		setRasterAt(24, 21, Raster.BAUM);
-		setRasterAt(24, 22, Raster.BAUM);
-		setRasterAt(20, 19, Raster.BAUM);
-		setRasterAt(20, 20, Raster.DOOR);
-		setRasterAt(20, 21, Raster.BAUM);
-		setRasterAt(20, 22, Raster.BAUM);
-		setRasterAt(21, 22, Raster.BAUM);
-		setRasterAt(22, 22, Raster.BAUM);
-		setRasterAt(23, 22, Raster.BAUM);
-		setRasterAt(22, 20, Raster.FINISH);
+		setRasterAt(20, 18, Raster.baum);
+		setRasterAt(21, 18, Raster.baum);
+		setRasterAt(22, 18, Raster.baum);
+		setRasterAt(23, 18, Raster.baum);
+		setRasterAt(24, 18, Raster.baum);
+		setRasterAt(24, 19, Raster.baum);
+		setRasterAt(24, 20, Raster.baum);
+		setRasterAt(24, 21, Raster.baum);
+		setRasterAt(24, 22, Raster.baum);
+		setRasterAt(20, 19, Raster.baum);
+		setRasterAt(20, 20, Raster.door);
+		setRasterAt(20, 21, Raster.baum);
+		setRasterAt(20, 22, Raster.baum);
+		setRasterAt(21, 22, Raster.baum);
+		setRasterAt(22, 22, Raster.baum);
+		setRasterAt(23, 22, Raster.baum);
+		setRasterAt(22, 20, Raster.finish);
 		((ExtraInformationDoor) getExtraInformationAt(20, 20))
 				.setDirection(Direction.LEFT);
 		((ExtraInformationDoor) getExtraInformationAt(20, 20))
@@ -296,7 +297,8 @@ public class Spielfeld {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
 		map[x][y] = r;
-		extras[x][y] = r.getExtraInformation(x, y);
+		if (r instanceof IHasExtraInformation)
+			extras[x][y] = ((IHasExtraInformation) r).getExtraInformation(x, y);
 	}
 
 	/**

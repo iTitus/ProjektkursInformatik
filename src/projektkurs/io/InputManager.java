@@ -18,7 +18,7 @@ import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 
 /**
- * Zustaendig fuer den Input (Tasten, Maus)
+ * Zuständig für den Input (Tasten, Maus)
  */
 public class InputManager implements KeyListener, MouseInputListener,
 		MouseWheelListener {
@@ -38,14 +38,14 @@ public class InputManager implements KeyListener, MouseInputListener,
 	private static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
 
 	/**
-	 * Speichert alle gerade gedrueckten Tasten
+	 * Speichert alle gerade gedrückten Tasten
 	 */
 	private final HashSet<Integer> keysPressed;
 
 	private int mouseX, mouseY;
 
 	/**
-	 * Zwischenvariable, um die aktuelle Bewgeungsrichtung zu speichern
+	 * Zwischenvariable, um die aktülle Bewgeungsrichtung zu speichern
 	 */
 	private volatile int moveDir;
 
@@ -87,14 +87,14 @@ public class InputManager implements KeyListener, MouseInputListener,
 	/**
 	 * @param keyCode
 	 *            Ein KeyCode aus KeyEvent
-	 * @return Ob die mit keyCode verbundene Taste im Moment gedrueckt ist
+	 * @return Ob die mit keyCode verbundene Taste im Moment gedrückt ist
 	 */
 	public boolean isKeyPressed(int keyCode) {
 		return keysPressed.contains(keyCode);
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Taste heruntergedrueckt wird/ist
+	 * Wird von Java ausgeführt, wenn eine Taste heruntergedrückt wird/ist
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -107,7 +107,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Taste losgelassen wird
+	 * Wird von Java ausgeführt, wenn eine Taste losgelassen wird
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -117,8 +117,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Taste gedrueckt und wieder
-	 * losgelassen wird
+	 * Wird von Java ausgeführt, wenn eine Taste gedrückt und wieder losgelassen
+	 * wird
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -126,8 +126,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Maustaste heruntergedrueckt und
-	 * wieder losgelassen wird
+	 * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt und wieder
+	 * losgelassen wird
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -152,7 +152,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn die Maus mit gedrueckter Maustaste bewegt
+	 * Wird von Java ausgeführt, wenn die Maus mit gedrückter Maustaste bewegt
 	 * wird
 	 */
 	@Override
@@ -162,7 +162,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn die Maus in das Fenster eingefuehrt wird
+	 * Wird von Java ausgeführt, wenn die Maus in das Fenster eingeführt wird
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
@@ -171,7 +171,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn die Maus aus dem Fenster herausgeschoben
+	 * Wird von Java ausgeführt, wenn die Maus aus dem Fenster herausgeschoben
 	 * wird
 	 */
 	@Override
@@ -181,7 +181,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn die Maus bewegt wird
+	 * Wird von Java ausgeführt, wenn die Maus bewegt wird
 	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
@@ -190,7 +190,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Maustaste heruntergedrueckt wird/ist
+	 * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt wird/ist
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -198,7 +198,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn eine Maustaste losgelassen wird
+	 * Wird von Java ausgeführt, wenn eine Maustaste losgelassen wird
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -206,7 +206,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Wird von Java ausgefuehrt, wenn das Mausrad gedreht wird
+	 * Wird von Java ausgeführt, wenn das Mausrad gedreht wird
 	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
@@ -230,7 +230,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	}
 
 	/**
-	 * Methode um moveDir zu veraendern
+	 * Methode um moveDir zu verändern
 	 */
 	public void updateMoveDir() {
 

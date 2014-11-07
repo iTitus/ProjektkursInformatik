@@ -1,22 +1,20 @@
 package projektkurs.world.raster;
 
-import java.awt.image.BufferedImage;
-
+import projektkurs.entity.Entity;
 import projektkurs.lib.Images;
 import projektkurs.story.scripts.Scripts;
 import projektkurs.util.Direction;
 
-public class FinishRaster extends AbstractRaster {
+public class FinishRaster extends SimpleRaster {
 
-	@Override
-	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
-		Scripts.win();
-		return super.canWalkOnFromDirection(x, y, dir);
+	public FinishRaster() {
+		super(Images.finish);
 	}
 
 	@Override
-	public BufferedImage getImage(int x, int y) {
-		return Images.finish;
+	public void onWalkOnFromDirection(int x, int y, Entity entity, Direction d) {
+		Scripts.win();
+		super.onWalkOnFromDirection(x, y, entity, d);
 	}
 
 }

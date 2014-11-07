@@ -1,11 +1,10 @@
 package projektkurs.world.raster;
 
-import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
 import projektkurs.entity.Entity;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
-import projektkurs.world.raster.extra.ExtraInformation;
 
 /**
  * Woraus die Welt besteht: Das abstrakte Raster
@@ -28,36 +27,6 @@ public abstract class AbstractRaster {
 	}
 
 	/**
-	 * Gibt die hiermit verbundenen ExtraInformationen zurueck. Nur einmal beim
-	 * Start aufgerufen.
-	 *
-	 * @return die ExtraInformation
-	 */
-	public ExtraInformation getExtraInformation(int x, int y) {
-		return null;
-	}
-
-	/**
-	 * Gibt die Textur zurueck
-	 *
-	 * @param x
-	 *            x-Koordinate des Rasters
-	 * @param y
-	 *            y-Koordinate des Rasters
-	 * @return die Textur
-	 */
-	public abstract BufferedImage getImage(int x, int y);
-
-	/**
-	 * Ist dieses Raster interaktiv?
-	 *
-	 * @return true, wenn ja
-	 */
-	public boolean isInteractive() {
-		return false;
-	}
-
-	/**
 	 * Wenn mit der Maus auf das Raster geklickt wird
 	 *
 	 * @param x
@@ -68,8 +37,7 @@ public abstract class AbstractRaster {
 	 *            Der Mausknopf
 	 */
 	public void onClick(int x, int y, int button) {
-		Logger.info("Clicked on Raster @{x=" + x + ", y=" + y + "}: "
-				+ this.toString());
+		Logger.info("Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
 	}
 
 	/**
@@ -88,6 +56,15 @@ public abstract class AbstractRaster {
 	public void onWalkOnFromDirection(int x, int y, Entity entity, Direction d) {
 		// NO-OP
 	}
+
+	/**
+	 * Rendert das Raster
+	 * 
+	 * @param g
+	 * @param x
+	 * @param y
+	 */
+	public abstract void render(Graphics2D g, int x, int y);
 
 	@Override
 	public String toString() {

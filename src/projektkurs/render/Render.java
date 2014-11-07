@@ -3,7 +3,6 @@ package projektkurs.render;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -11,6 +10,7 @@ import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.util.RenderUtil;
 
 /**
  * Renderklasse
@@ -63,9 +63,16 @@ public class Render {
 			g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS(),
 					Integers.WINDOW_HUD_X, 16);
 
-			for (int x = 0; x < Main.getRenderHelper().getSight().length; x++) {
-				for (int y = 0; y < Main.getRenderHelper().getSight()[x].length; y++) {
-					drawDefaultRaster(x, y);
+			for (int x = 0; x < Integers.SIGHT_X; x++) {
+				for (int y = 0; y < Integers.SIGHT_Y; y++) {
+					int sX = x + Main.getRenderHelper().getSightX();
+					int sY = y + Main.getRenderHelper().getSightY();
+					if (Main.getSpielfeld().isRasterAt(sX, sY)) {
+						Main.getSpielfeld().getRasterAt(sX, sY)
+								.render(g, sX, sY);
+					} else {
+						RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
+					}
 				}
 			}
 
@@ -74,19 +81,20 @@ public class Render {
 						&& e.isInside(Main.getRenderHelper().getSightX(), Main
 								.getRenderHelper().getSightY(),
 								Integers.SIGHT_X, Integers.SIGHT_Y))
-					drawDefaultEntity(e);
+					RenderUtil.drawDefaultEntity(g, e);
 			}
 
 			PlayerInventory inv = Main.getPlayer().getInventory();
 			ItemStack stack = null;
 			for (int i1 = 0; i1 < inv.getSize(); i1++) {
-				drawImage((i1 == inv.getSelectedIndex() ? Images.slot_highlight
-						: Images.slot),
+				RenderUtil.drawImage(g,
+						(i1 == inv.getSelectedIndex() ? Images.slot_highlight
+								: Images.slot),
 						i1 * Integers.SLOT_SIZE + inv.getRelX(), inv.getRelY());
 				stack = inv.getItemStackAt(i1);
 				if (stack != null) {
-					drawImage(stack.getImage(),
-							i1 * Integers.SLOT_SIZE + inv.getRelX() + 1,
+					RenderUtil.drawImage(g, stack.getImage(), i1
+							* Integers.SLOT_SIZE + inv.getRelX() + 1,
 							inv.getRelY() + 1);
 					g.drawString(stack.getStackSize() + "", i1
 							* Integers.SLOT_SIZE + inv.getRelX() + 1,
@@ -99,27 +107,4 @@ public class Render {
 
 		}
 	}
-
-	private void drawDefaultEntity(Entity e) {
-		drawImage(e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX()
-				* Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
-	}
-
-	private void drawDefaultRaster(int x, int y) {
-		drawImage(Main.getRenderHelper().getSight()[x][y], x
-				* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, y
-				* Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y,
-				Integers.RASTER_SIZE, Integers.RASTER_SIZE);
-	}
-
-	private void drawImage(BufferedImage img, int x, int y) {
-		drawImage(img, x, y, img.getWidth(), img.getHeight());
-	}
-
-	private void drawImage(BufferedImage img, int x, int y, int width,
-			int height) {
-		if (g != null)
-			g.drawImage(img, x, y, width, height, null);
-	}
-
 }

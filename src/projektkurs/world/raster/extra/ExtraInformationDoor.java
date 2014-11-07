@@ -19,7 +19,11 @@ public class ExtraInformationDoor extends ExtraInformation {
 		openingKey = 0;
 	}
 
-	public BufferedImage getBufferedImage() {
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public BufferedImage getImage() {
 
 		switch (direction) {
 		case LEFT:
@@ -28,10 +32,6 @@ public class ExtraInformationDoor extends ExtraInformation {
 		default:
 			return (isOpen ? Images.door_open_NS : Images.door_NS);
 		}
-	}
-
-	public Direction getDirection() {
-		return direction;
 	}
 
 	public boolean getIsOpen(Direction dir) {

@@ -56,8 +56,7 @@ public final class CutSceneManager {
 			Main.pause();
 
 			currCutScene = cutScene;
-			currCutSceneRenderHelper = new CutsceneRenderHelper(Main
-					.getRenderHelper().getSight());
+			currCutSceneRenderHelper = new CutsceneRenderHelper();
 			currCutSceneRender = new CutsceneRender(currCutSceneRenderHelper);
 
 			final double nsPerTick = 1000000000D / Integers.UPS;

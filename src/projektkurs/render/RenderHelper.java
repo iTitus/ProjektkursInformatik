@@ -1,20 +1,11 @@
 package projektkurs.render;
 
-import java.awt.image.BufferedImage;
-
-import projektkurs.Main;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 
 /**
  * Helperklasse zum Rendern
  */
 public class RenderHelper {
-
-	/**
-	 * Sichtfeld
-	 */
-	private final BufferedImage[][] sight;
 
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
@@ -24,27 +15,6 @@ public class RenderHelper {
 	 * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
 	 */
 	private int sightY;
-
-	/**
-	 * Muss nur einmal am Anfang aufgerufen werden, erstellt einen neuen
-	 * Renderhelper
-	 */
-	public RenderHelper() {
-
-		sight = new BufferedImage[Integers.SIGHT_X][Integers.SIGHT_Y];
-
-		sightX = 0;
-		sightY = 0;
-
-		updateRaster();
-	}
-
-	/**
-	 * @return die aktuelle Sicht
-	 */
-	public BufferedImage[][] getSight() {
-		return sight;
-	}
 
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
@@ -64,6 +34,13 @@ public class RenderHelper {
 		return sightY;
 	}
 
+	/**
+	 * Ist der gegebene Punk im Sichtfeld
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isInSight(int x, int y) {
 		return (x >= sightX && y >= sightY && x < (sightX + Integers.SIGHT_X) && y < (sightY + Integers.SIGHT_Y));
 	}
@@ -80,7 +57,6 @@ public class RenderHelper {
 		if (dx != 0 || dy != 0) {
 			sightX += dx;
 			sightY += dy;
-			updateRaster();
 		}
 	}
 
@@ -96,34 +72,6 @@ public class RenderHelper {
 		if (sightX != this.sightX || sightY != this.sightY) {
 			this.sightX = sightX;
 			this.sightY = sightY;
-			updateRaster();
 		}
-	}
-
-	/**
-	 * Interne Methode, um die Raster im Sichtfeld zu aktualisieren
-	 */
-	private void updateRaster() {
-
-		for (int x = 0; x < Integers.SIGHT_X; x++) {
-			for (int y = 0; y < Integers.SIGHT_Y; y++) {
-				if ((x + sightX) < 0
-						|| (x + sightX) >= Main.getSpielfeld().getMapSizeX()
-						|| (x + sightX) < 0
-						|| (y + sightY) >= Main.getSpielfeld().getMapSizeY()
-						|| (y + sightY < 0)) {
-					sight[x][y] = Images.baum;
-				} else {
-					if (Main.getSpielfeld().isRasterAt(x + sightX, y + sightY)) {
-						sight[x][y] = Main.getSpielfeld()
-								.getRasterAt(x + sightX, y + sightY)
-								.getImage(x + sightX, y + sightY);
-					} else {
-						sight[x][y] = null;
-					}
-				}
-			}
-		}
-
 	}
 }

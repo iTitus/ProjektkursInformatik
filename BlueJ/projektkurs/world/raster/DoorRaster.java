@@ -1,13 +1,15 @@
 package projektkurs.world.raster;
 
-import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
 import projektkurs.Main;
 import projektkurs.util.Direction;
+import projektkurs.util.RenderUtil;
 import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationDoor;
+import projektkurs.world.raster.extra.IHasExtraInformation;
 
-public class DoorRaster extends AbstractRaster {
+public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
@@ -23,8 +25,8 @@ public class DoorRaster extends AbstractRaster {
 	}
 
 	@Override
-	public BufferedImage getImage(int x, int y) {
-		return ((ExtraInformationDoor) Main.getSpielfeld()
-				.getExtraInformationAt(x, y)).getBufferedImage();
+	public void render(Graphics2D g, int x, int y) {
+		RenderUtil.drawDefaultRaster(g, ((ExtraInformationDoor) Main
+				.getSpielfeld().getExtraInformationAt(x, y)).getImage(), x, y);
 	}
 }
