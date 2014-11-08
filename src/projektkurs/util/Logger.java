@@ -127,7 +127,7 @@ public final class Logger {
 				Files.write(new File("log_" + extendedDate.format(new Date())
 						+ ".txt").toPath(), log, Charset.defaultCharset());
 			} catch (Throwable t) {
-				t.printStackTrace();
+				Logger.logThrowable("Unable to save log", t);
 			}
 		}
 	}
