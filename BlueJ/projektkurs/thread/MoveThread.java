@@ -2,6 +2,7 @@ package projektkurs.thread;
 
 import projektkurs.Main;
 import projektkurs.lib.Integers;
+import projektkurs.util.Logger;
 
 public class MoveThread extends LoopThread {
 
@@ -11,7 +12,11 @@ public class MoveThread extends LoopThread {
 
 	@Override
 	protected void runLoop() {
-		Main.getInputManager().updateMoveDir();
+		try {
+			Main.getInputManager().updateMoveDir();
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to update move direction", t);
+		}
 	}
 
 }

@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import projektkurs.lib.Strings;
+
 /**
  * Logger
  */
@@ -35,6 +37,10 @@ public final class Logger {
 
 	private static final DateFormat simpleDate = new SimpleDateFormat(
 			"HH:mm:ss");
+
+	static {
+		log.add("Log of " + Strings.NAME + " v" + Strings.VERSION);
+	}
 
 	/**
 	 * @param msg
@@ -77,6 +83,7 @@ public final class Logger {
 						simpleDate.format(new Date()), level.toString(), msg);
 				log.add(out1);
 				level.getPrintStream().println(out1);
+				level.getPrintStream().flush();
 				if (objs != null && objs.length > 0) {
 					int i = 1;
 					for (Object o : objs) {
@@ -86,6 +93,7 @@ public final class Logger {
 									level.toString(), i++, o);
 							log.add(out2);
 							level.getPrintStream().println(out2);
+							level.getPrintStream().flush();
 						}
 					}
 				}
