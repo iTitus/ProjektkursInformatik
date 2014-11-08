@@ -1,6 +1,5 @@
 package projektkurs;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -79,15 +78,6 @@ public final class Main {
 	 * Verlaesst das Spiel
 	 */
 	public static void exit() {
-		Logger.info("Initialising shutdown routine!");
-		if (gameThread != null)
-			gameThread.terminate();
-		if (moveThread != null)
-			moveThread.terminate();
-		// TODO: Save to disk
-		Sounds.closeAll();
-		Images.flushAll();
-		Logger.info("Bye bye");
 		System.exit(0);
 	}
 
@@ -209,93 +199,23 @@ public final class Main {
 	}
 
 	/**
-	 * @param dir
-	 * @return
-	 * @throws Throwable
-	 */
-	private static ArrayList<Class<?>> getClassesInDir(File dir)
-			throws Throwable {
-		ArrayList<Class<?>> ret = new ArrayList<Class<?>>();
-		if (dir.isFile())
-			return ret;
-
-		File[] files = dir.listFiles();
-
-		for (File file : files != null ? files : new File[0]) {
-			if (file.isFile()
-					&& file.getName().toLowerCase().endsWith(".class")) {
-				String path = Main.class.getPackage().getName()
-						+ file.getAbsolutePath().split(
-								Main.class.getPackage().getName())[1];
-				path = path.replace(File.separator, ".").replace(".class", "");
-				ret.add(Class.forName(path));
-			} else
-				ret.addAll(getClassesInDir(file));
-		}
-
-		return ret;
-	}
-
-	/**
 	 * @param state
 	 */
 	private static void init(State state) {
 
 		if (initMethods.isEmpty()) {
-			try {
-				ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>();
-				allClasses.addAll(getClassesInDir(new File(Main.class
-						.getResource("").toURI())));
-
-				for (Class<?> cls : allClasses) {
-					for (Method m : cls.getDeclaredMethods()) {
-						if (Modifier.isStatic(m.getModifiers())
-								&& m.getAnnotation(Init.class) != null) {
-							initMethods.add(m);
-							invoke(m, state);
-						}
-					}
-				}
-
-			} catch (Throwable t) {
-				Logger.logThrowable("Error while invoking init methods @"
-						+ state, t);
-				exit();
-			}
-		} else {
-			try {
-				invokeAllMethods(initMethods, state);
-			} catch (Throwable t) {
-				Logger.logThrowable("Error while invoking init methods @"
-						+ state, t);
-				exit();
+			initMethods.addAll(ReflectionUtil
+					.getAllMethodsInClassesWithAnnotation(ReflectionUtil
+							.getClasses(Main.class.getPackage().getName()),
+							Init.class, Modifier.PUBLIC, Modifier.STATIC));
+		}
+		for (Method m : initMethods) {
+			if (m.getAnnotation(Init.class).state().equals(state)) {
+				Logger.info("Invoking @" + state + ": " + m.toString());
+				ReflectionUtil.invokeStatic(m);
 			}
 		}
 
-	}
-
-	/**
-	 * @param m
-	 * @param state
-	 * @throws Throwable
-	 */
-	private static void invoke(Method m, State state) {
-		if (m.getAnnotation(Init.class).state().equals(state)) {
-			Logger.info("Invoking @" + state + ": " + m.toString());
-			ReflectionUtil.invokeStatic(m);
-		}
-	}
-
-	/**
-	 * @param allMethods
-	 * @param state
-	 * @throws Throwable
-	 */
-	private static void invokeAllMethods(ArrayList<Method> allMethods,
-			State state) throws Throwable {
-		for (Method m : allMethods) {
-			invoke(m, state);
-		}
 	}
 
 	/**
@@ -305,6 +225,23 @@ public final class Main {
 
 		Logger.info("Initialising startup routine!");
 
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Logger.info("Initialising shutdown routine!");
+				if (gameThread != null)
+					gameThread.terminate();
+				if (moveThread != null)
+					moveThread.terminate();
+				// TODO: Save to disk
+				Sounds.closeAll();
+				Images.flushAll();
+				Logger.info("Bye bye");
+				Logger.saveLog();
+			}
+		}, "Shutdown-Hook"));
+
+		init(State.RESOURCES);
 		// PreInit
 		// TODO: Load from disk
 		init(State.PRE);

@@ -2,6 +2,8 @@
 /BlueJ/doc
 /BlueJ/Test
 
+log*.txt
+
 # BlueJ
 /*.class
 /*.ctxt

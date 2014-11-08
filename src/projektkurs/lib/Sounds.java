@@ -1,6 +1,5 @@
 package projektkurs.lib;
 
-import java.io.File;
 import java.util.HashMap;
 
 import javax.sound.sampled.AudioSystem;
@@ -33,12 +32,18 @@ public final class Sounds {
 			try {
 				clip = AudioSystem.getClip();
 				clip.open(AudioSystem.getAudioInputStream(Main.class
-						.getResource("resources" + File.separator + "sounds"
-								+ File.separator + fileName)));
+						.getResource("resources/sounds/" + fileName)));
 				Logger.info("Successfully loaded sound: " + fileName);
-			} catch (Exception e) {
-				Logger.logThrowable("Unable to load sound '" + fileName + "'",
-						e);
+			} catch (Throwable t1) {
+				try {
+					clip = AudioSystem.getClip();
+					clip.open(AudioSystem.getAudioInputStream(Main.class
+							.getResourceAsStream("resources/sounds/" + fileName)));
+					Logger.info("Successfully loaded sound: " + fileName);
+				} catch (Throwable t2) {
+					Logger.logThrowable("Unable to load sound '" + fileName
+							+ "'", t2);
+				}
 			}
 
 		}
@@ -116,7 +121,7 @@ public final class Sounds {
 	/**
 	 * Initialisiert alle Sounds
 	 */
-	@Init(state = State.PRE)
+	@Init(state = State.RESOURCES)
 	public static void init() {
 
 		test = new Sound("Test.wav");

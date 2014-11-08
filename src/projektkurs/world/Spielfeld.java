@@ -120,13 +120,13 @@ public class Spielfeld {
 				if (getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
 							.getInventar().addItemStack(
-									new ItemStack(Items.ITEM_42, 42));
+									new ItemStack(Items.item_42, 42));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
 							.getInventar().addItemStack(
-									new ItemStack(Items.NUKE));
+									new ItemStack(Items.nuke));
 					((ExtraInformationKiste) getExtraInformationAt(x, y))
 							.getInventar().addItemStack(
-									new ItemStack(Items.KEY));
+									new ItemStack(Items.key));
 				}
 			}
 		}
@@ -134,14 +134,14 @@ public class Spielfeld {
 		// ENTITIES!
 		spawn(Main.getPlayer());
 		spawn(new EntityRedNPC(1, 1, Images.redNPC));
-		spawn(new EntityItem(5, 5, new ItemStack(Items.KEY, 1, 1000)));
-		spawn(new EntityItem(5, 6, new ItemStack(Items.ITEM_42, 42)));
-		spawn(new EntityItem(5, 7, new ItemStack(Items.NUKE)));
+		spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
+		spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
+		spawn(new EntityItem(5, 7, new ItemStack(Items.nuke)));
 
 		// STORYMANAGER!
 		Main.getStoryManager().addTrigger(
 				new InventoryTrigger(ReflectionUtil.getMethod(Scripts.class,
-						"loose"), new ItemStack(Items.NUKE)));
+						"loose"), new ItemStack(Items.nuke)));
 
 	}
 
@@ -176,7 +176,7 @@ public class Spielfeld {
 	/**
      *
      */
-	public synchronized ArrayList<Entity> getEntityList() {
+	public ArrayList<Entity> getEntityList() {
 		return entities;
 	}
 

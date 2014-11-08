@@ -1,6 +1,9 @@
 package projektkurs.util;
 
+import java.io.File;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,9 +28,10 @@ public final class Logger {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private static final DateFormat extendedDate = new SimpleDateFormat(
-			"dd.MM.yyyy_HH:mm:ss");
+			"dd.MM.yyyy_HH.mm.ss");
+
+	private static final ArrayList<String> log = new ArrayList<String>();
 
 	private static final DateFormat simpleDate = new SimpleDateFormat(
 			"HH:mm:ss");
@@ -69,18 +73,19 @@ public final class Logger {
 	public static void log(LogLevel level, String msg, Object... objs) {
 		if (level != null && msg != null && !msg.equalsIgnoreCase("")) {
 			synchronized (simpleDate) {
-				level.getPrintStream().println(
-						String.format("[%s] [%s]: %s",
-								simpleDate.format(new Date()),
-								level.toString(), msg));
+				String out1 = String.format("[%s] [%s]: %s",
+						simpleDate.format(new Date()), level.toString(), msg);
+				log.add(out1);
+				level.getPrintStream().println(out1);
 				if (objs != null && objs.length > 0) {
 					int i = 1;
 					for (Object o : objs) {
 						if (o != null) {
-							level.getPrintStream().println(
-									String.format("[%s] [%s]: %d) %s",
-											simpleDate.format(new Date()),
-											level.toString(), i++, o));
+							String out2 = String.format("[%s] [%s]: %d) %s",
+									simpleDate.format(new Date()),
+									level.toString(), i++, o);
+							log.add(out2);
+							level.getPrintStream().println(out2);
 						}
 					}
 				}
@@ -93,23 +98,38 @@ public final class Logger {
 	 * @param t
 	 */
 	public static void logThrowable(String msg, Throwable t) {
+		if (t != null) {
 
-		ArrayList<String> stackTrace = new ArrayList<String>();
+			ArrayList<String> stackTrace = new ArrayList<String>();
 
-		stackTrace.add(t.toString());
-		StackTraceElement[] trace = t.getStackTrace();
-		for (StackTraceElement traceElement : trace)
-			stackTrace.add("\tat " + traceElement);
+			stackTrace.add(t.toString());
+			StackTraceElement[] trace = t.getStackTrace();
+			for (StackTraceElement traceElement : trace)
+				stackTrace.add("\tat " + traceElement);
 
-		for (Throwable se : t.getSuppressed())
-			if (se != null)
-				logThrowable("Supressed", se);
+			for (Throwable se : t.getSuppressed())
+				if (se != null)
+					logThrowable("Supressed", se);
 
-		Throwable cause = t.getCause();
-		if (cause != null)
-			logThrowable("Caused by", cause);
+			Throwable cause = t.getCause();
+			if (cause != null)
+				logThrowable("Caused by", cause);
 
-		warn(msg + ": " + t.toString(), stackTrace.toArray());
+			warn(msg + ": " + t.toString(), stackTrace.toArray());
+		} else {
+			warn(msg + ": " + t);
+		}
+	}
+
+	public static void saveLog() {
+		synchronized (extendedDate) {
+			try {
+				Files.write(new File("log_" + extendedDate.format(new Date())
+						+ ".txt").toPath(), log, Charset.defaultCharset());
+			} catch (Throwable t) {
+				t.printStackTrace();
+			}
+		}
 	}
 
 	/**

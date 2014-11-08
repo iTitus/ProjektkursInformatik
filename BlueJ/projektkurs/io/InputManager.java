@@ -45,7 +45,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	private int mouseX, mouseY;
 
 	/**
-	 * Zwischenvariable, um die aktülle Bewgeungsrichtung zu speichern
+	 * Zwischenvariable, um die aktuelle Bewegungsrichtung zu speichern
 	 */
 	private volatile int moveDir;
 

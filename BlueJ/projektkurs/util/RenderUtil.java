@@ -13,7 +13,9 @@ import projektkurs.lib.Integers;
  */
 public final class RenderUtil {
 
-	private RenderUtil() {
+	public static void drawDefaultEntity(Graphics2D g, Entity e) {
+		drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX()
+				* Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
 	}
 
 	public static void drawDefaultRaster(Graphics2D g, BufferedImage img,
@@ -26,18 +28,16 @@ public final class RenderUtil {
 				Integers.RASTER_SIZE);
 	}
 
+	public static void drawImage(Graphics2D g, BufferedImage img, int x, int y) {
+		drawImage(g, img, x, y, img.getWidth(), img.getHeight());
+	}
+
 	public static void drawImage(Graphics2D g, BufferedImage img, int x, int y,
 			int width, int height) {
 		g.drawImage(img, x, y, width, height, null);
 	}
 
-	public static void drawImage(Graphics2D g, BufferedImage img, int x, int y) {
-		drawImage(g, img, x, y, img.getWidth(), img.getHeight());
-	}
-
-	public static void drawDefaultEntity(Graphics2D g, Entity e) {
-		drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX()
-				* Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
+	private RenderUtil() {
 	}
 
 }

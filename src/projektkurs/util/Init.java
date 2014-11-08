@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 public @interface Init {
 
 	public static enum State {
-		INIT, POST, PRE
+		INIT, POST, PRE, RESOURCES
 	}
 
 	State state() default State.INIT;

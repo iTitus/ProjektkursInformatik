@@ -1,5 +1,6 @@
 package projektkurs.entity;
 
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -8,6 +9,7 @@ import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.lib.Integers;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
+import projektkurs.util.RenderUtil;
 import projektkurs.world.raster.AbstractRaster;
 
 /**
@@ -179,6 +181,15 @@ public class Entity implements ICanUpdate {
 	 */
 	public void onCollideWith(Entity e) {
 		// NO-OP
+	}
+
+	/**
+	 * Rendert den Entity
+	 * 
+	 * @param g
+	 */
+	public void render(Graphics2D g) {
+		RenderUtil.drawDefaultEntity(g, this);
 	}
 
 	public void setDead() {

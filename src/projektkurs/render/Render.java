@@ -81,7 +81,7 @@ public class Render {
 						&& e.isInside(Main.getRenderHelper().getSightX(), Main
 								.getRenderHelper().getSightY(),
 								Integers.SIGHT_X, Integers.SIGHT_Y))
-					RenderUtil.drawDefaultEntity(g, e);
+					e.render(g);
 			}
 
 			PlayerInventory inv = Main.getPlayer().getInventory();

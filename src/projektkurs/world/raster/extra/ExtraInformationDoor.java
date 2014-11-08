@@ -51,7 +51,7 @@ public class ExtraInformationDoor extends ExtraInformation {
 	}
 
 	public void tryOpen(ItemStack key) {
-		if (key != null && key.itemEquals(new ItemStack(Items.KEY))
+		if (key != null && key.itemEquals(new ItemStack(Items.key))
 				&& key.getDamage() == openingKey) {
 			isOpen = true;
 		}

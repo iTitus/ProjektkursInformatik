@@ -69,13 +69,21 @@ public class GameThread extends Thread {
 
 			while (!pausing && delta >= 1) {
 				loops++;
-				Main.getSpielfeld().update();
+				try {
+					Main.getSpielfeld().update();
+				} catch (Throwable t) {
+					Logger.logThrowable("Unable to update the game", t);
+				}
 				delta--;
 			}
 
 			if (!pausing) {
 				frames++;
-				Main.getRender().update();
+				try {
+					Main.getRender().update();
+				} catch (Throwable t) {
+					Logger.logThrowable("Unable to render the game", t);
+				}
 			}
 
 			if (System.nanoTime() - lastTimer >= 1000000000) {

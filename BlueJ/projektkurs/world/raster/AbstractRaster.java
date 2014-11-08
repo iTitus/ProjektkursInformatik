@@ -57,11 +57,6 @@ public abstract class AbstractRaster {
 		// NO-OP
 	}
 
-	@Override
-	public String toString() {
-		return getClass().getSimpleName();
-	}
-
 	/**
 	 * Rendert das Raster
 	 * 
@@ -70,5 +65,10 @@ public abstract class AbstractRaster {
 	 * @param y
 	 */
 	public abstract void render(Graphics2D g, int x, int y);
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName();
+	}
 
 }

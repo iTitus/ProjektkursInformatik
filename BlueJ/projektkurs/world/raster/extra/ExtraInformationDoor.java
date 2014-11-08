@@ -19,6 +19,10 @@ public class ExtraInformationDoor extends ExtraInformation {
 		openingKey = 0;
 	}
 
+	public Direction getDirection() {
+		return direction;
+	}
+
 	public BufferedImage getImage() {
 
 		switch (direction) {
@@ -28,10 +32,6 @@ public class ExtraInformationDoor extends ExtraInformation {
 		default:
 			return (isOpen ? Images.door_open_NS : Images.door_NS);
 		}
-	}
-
-	public Direction getDirection() {
-		return direction;
 	}
 
 	public boolean getIsOpen(Direction dir) {
@@ -51,7 +51,7 @@ public class ExtraInformationDoor extends ExtraInformation {
 	}
 
 	public void tryOpen(ItemStack key) {
-		if (key != null && key.itemEquals(new ItemStack(Items.KEY))
+		if (key != null && key.itemEquals(new ItemStack(Items.key))
 				&& key.getDamage() == openingKey) {
 			isOpen = true;
 		}

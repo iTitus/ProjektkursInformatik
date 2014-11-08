@@ -3,7 +3,7 @@ package projektkurs.lib;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -40,7 +40,7 @@ public class Images {
 	/**
 	 * Laedt alle Bilder
 	 */
-	@Init(state = State.PRE)
+	@Init(state = State.RESOURCES)
 	public static void init() {
 		charakter = defaultCharakter = loadImage("charakter.png");
 		MAPPINGS.put("defaultCharakter", defaultCharakter);
@@ -90,13 +90,19 @@ public class Images {
 	 */
 	private static BufferedImage loadImage(String name) {
 
+		String path = "resources/images/" + name;
+
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(Main.class.getResource("resources"
-					+ File.separator + "images" + File.separator + name));
-			Logger.info("Successfully loaded image: " + name);
-		} catch (Throwable t) {
-			Logger.logThrowable("Unable to load image '" + name + "'", t);
+			img = ImageIO.read(Main.class.getResource(path));
+			Logger.info("Successfully loaded image '" + name + "'");
+		} catch (Throwable t1) {
+			try (InputStream stream = Main.class.getResourceAsStream(path)) {
+				img = ImageIO.read(stream);
+				Logger.info("Successfully loaded image '" + name + "'");
+			} catch (Throwable t2) {
+				Logger.logThrowable("Unable to load image '" + name + "'", t2);
+			}
 		}
 		return img;
 	}
