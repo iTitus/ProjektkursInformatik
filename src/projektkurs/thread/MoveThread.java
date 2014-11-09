@@ -16,6 +16,7 @@ public class MoveThread extends LoopThread {
 			Main.getInputManager().updateMoveDir();
 		} catch (Throwable t) {
 			Logger.logThrowable("Unable to update move direction", t);
+			Main.exit();
 		}
 	}
 

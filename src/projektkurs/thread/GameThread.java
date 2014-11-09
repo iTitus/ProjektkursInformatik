@@ -73,6 +73,7 @@ public class GameThread extends Thread {
 					Main.getSpielfeld().update();
 				} catch (Throwable t) {
 					Logger.logThrowable("Unable to update the game", t);
+					Main.exit();
 				}
 				delta--;
 			}
@@ -83,6 +84,7 @@ public class GameThread extends Thread {
 					Main.getRender().update();
 				} catch (Throwable t) {
 					Logger.logThrowable("Unable to render the game", t);
+					Main.exit();
 				}
 			}
 

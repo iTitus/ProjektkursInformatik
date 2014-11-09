@@ -174,7 +174,12 @@ public final class Main {
 	 */
 	public static void main(String[] args) {
 
-		startGame();
+		try {
+			startGame();
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to start the game", t);
+			exit();
+		}
 
 	}
 
