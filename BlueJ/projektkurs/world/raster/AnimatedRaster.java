@@ -6,22 +6,24 @@ import projektkurs.Main;
 import projektkurs.render.AnimationFrame;
 import projektkurs.util.RenderUtil;
 
+/**
+ * Ein einfaches animiertes Raster
+ */
 public class AnimatedRaster extends SimpleRaster {
 
 	private final AnimationFrame[] animationFrames;
-
-	// private final BufferedImage[] images;
-	// private final int animationSize;
 	private final int animationLength;
 
-	// private final int[] animationLengths;
-
-	public AnimatedRaster(AnimationFrame... animations) {
+	/**
+	 * 
+	 * @param animationFrames
+	 */
+	public AnimatedRaster(AnimationFrame... animationFrames) {
 		super(null);
-		this.animationFrames = animations;
+		this.animationFrames = animationFrames;
 		int animationLength = 0;
-		for (int i = 0; i < animations.length; i++) {
-			animationLength += animations[i].getAnimationTime();
+		for (int i = 0; i < animationFrames.length; i++) {
+			animationLength += animationFrames[i].getAnimationTime();
 		}
 		this.animationLength = animationLength;
 	}
@@ -35,7 +37,7 @@ public class AnimatedRaster extends SimpleRaster {
 			for (int i = 0; i < animationFrames.length; i++) {
 				if (currentAnimationTime >= totalAnimationTime) {
 					totalAnimationTime += animationFrames[i].getAnimationTime();
-					if (currentAnimationTime <= totalAnimationTime) {
+					if (currentAnimationTime < totalAnimationTime) {
 						RenderUtil.drawDefaultRaster(g,
 								animationFrames[i].getImage(), x, y);
 						break;

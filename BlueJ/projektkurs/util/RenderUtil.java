@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
+import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Renderhilfen
@@ -40,4 +41,12 @@ public final class RenderUtil {
 	private RenderUtil() {
 	}
 
+	public static BufferedImage getImage(AbstractRaster raster, int x, int y) {
+		BufferedImage image = new BufferedImage(Integers.RASTER_SIZE,
+				Integers.RASTER_SIZE, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = image.createGraphics();
+		raster.render(g, x, y);
+		g.dispose();
+		return image;
+	}
 }

@@ -10,10 +10,10 @@ import java.util.HashSet;
 import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
-import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Sounds;
+import projektkurs.story.scripts.Scripts;
 import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 
@@ -133,7 +133,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	public void mouseClicked(MouseEvent e) {
 
 		if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
-			CutSceneManager.startCutScene(CutSceneManager.TEST());
+			Scripts.testCutScene();
 		else if (e.getButton() == LEFT_MOUSE_BUTTON)
 			Sounds.test.playFromStart();
 

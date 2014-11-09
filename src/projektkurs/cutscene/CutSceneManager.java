@@ -1,13 +1,13 @@
 package projektkurs.cutscene;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import projektkurs.Main;
-import projektkurs.cutscene.action.ConditionedExitAction;
-import projektkurs.cutscene.action.DebugAction;
-import projektkurs.cutscene.condition.TickCondition;
-import projektkurs.cutscene.condition.TickCondition.TickConditionType;
 import projektkurs.cutscene.render.CutsceneRender;
 import projektkurs.cutscene.render.CutsceneRenderHelper;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Strings;
 import projektkurs.util.Logger;
 
 /**
@@ -15,6 +15,7 @@ import projektkurs.util.Logger;
  */
 public final class CutSceneManager {
 
+	private static JFrame cutSceneFrame;
 	private static CutScene currCutScene;
 	private static CutsceneRender currCutSceneRender;
 	private static CutsceneRenderHelper currCutSceneRenderHelper;
@@ -49,15 +50,45 @@ public final class CutSceneManager {
 		return currCutScene != null;
 	}
 
+	public static class CutSceneFrame extends JFrame {
+		private static final long serialVersionUID = 1L;
+
+		/**
+		 * Hauptkonstruktor
+		 */
+		public CutSceneFrame() {
+			super(Strings.NAME + " - CutScene");
+
+			JPanel panel = (JPanel) getContentPane();
+			panel.setLayout(null);
+			panel.setPreferredSize(currCutSceneRender.getCutSceneCanvas()
+					.getPreferredSize());
+			panel.add(currCutSceneRender.getCutSceneCanvas());
+
+			// requestFocus();
+			setUndecorated(true);
+			setResizable(false);
+			setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+			pack();
+
+		}
+	}
+
 	public static void startCutScene(CutScene cutScene) {
 
 		if (!isRunning()) {
 			Logger.info("Starting CutScene");
 			Main.pause();
+			Main.hide();
 
 			currCutScene = cutScene;
 			currCutSceneRenderHelper = new CutsceneRenderHelper();
-			currCutSceneRender = new CutsceneRender(currCutSceneRenderHelper);
+			currCutSceneRender = new CutsceneRender();
+
+			cutSceneFrame = new CutSceneFrame();
+			cutSceneFrame.setVisible(true);
+
+			currCutSceneRender.initBuffers();
 
 			final double nsPerTick = 1000000000D / Integers.UPS;
 			fps = 0;
@@ -91,19 +122,13 @@ public final class CutSceneManager {
 
 			}
 
+			cutSceneFrame.dispose();
 			currCutScene = null;
+			Main.show();
 			Main.resume();
 			Logger.info("Finished CutScene");
 		}
 
-	}
-
-	public static CutScene TEST() {
-		CutScene ret = new CutScene();
-		ret.registerTickAction(new DebugAction());
-		ret.registerTickAction(new ConditionedExitAction(new TickCondition(
-				TickConditionType.GREATER, 600)));
-		return ret;
 	}
 
 	private CutSceneManager() {

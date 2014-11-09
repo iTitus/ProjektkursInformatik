@@ -1,9 +1,8 @@
 package projektkurs.cutscene;
 
-import java.util.ArrayList;
-
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.cutscene.render.CutSceneMap;
 import projektkurs.util.Queue;
 
 /**
@@ -11,26 +10,26 @@ import projektkurs.util.Queue;
  */
 public class CutScene {
 
+	private CutSceneMap cutSceneMap;
 	private Queue<Action> actionQueue, startupQueue, tempQueue;
 	private int elapsedTicks;
 	private boolean isFinished;
-	private final ArrayList<CutSceneObject> objects;
 
 	/**
 	 * Konstruktor für eine CutScene
 	 */
-	public CutScene() {
+	public CutScene(int sizeX, int sizeY) {
 		actionQueue = new Queue<Action>();
 		startupQueue = new Queue<Action>();
 		tempQueue = new Queue<Action>();
-		objects = new ArrayList<CutSceneObject>();
 		elapsedTicks = 0;
 		isFinished = false;
+		cutSceneMap = new CutSceneMap(sizeX, sizeY);
 	}
 
 	public void deSpawn(CutSceneObject object) {
 		if (object != null) {
-			objects.remove(object);
+			cutSceneMap.getCutSceneObjectList().remove(object);
 		}
 	}
 
@@ -70,7 +69,7 @@ public class CutScene {
 
 	public void spawn(CutSceneObject object) {
 		if (object != null) {
-			objects.add(object);
+			cutSceneMap.getCutSceneObjectList().add(object);
 		}
 	}
 
@@ -108,4 +107,9 @@ public class CutScene {
 		elapsedTicks++;
 
 	}
+
+	public CutSceneMap getCutSceneMap() {
+		return cutSceneMap;
+	}
+
 }

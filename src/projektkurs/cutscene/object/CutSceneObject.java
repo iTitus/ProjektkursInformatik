@@ -1,6 +1,10 @@
 package projektkurs.cutscene.object;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import projektkurs.Main;
+import projektkurs.lib.Integers;
 
 /**
  * Ein Objekt in einer CutScene
@@ -108,4 +112,32 @@ public class CutSceneObject {
 		this.posY = posY;
 	}
 
+	/**
+	 * @param posX
+	 * @param posY
+	 * @param sizeX
+	 * @param sizeY
+	 * @return
+	 */
+	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
+		return (Math.max(posX, this.posX) < Math.min((posX + sizeX),
+				(this.posX + this.sizeX)))
+				&& ((Math.max(posY, this.posY) < Math.min((posY + sizeY),
+						(this.posY + this.sizeY))));
+	}
+
+	public void render(Graphics2D g) {
+		g.drawImage(image, getRenderX(), getRenderY(), sizeX
+				* Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE, null);
+	}
+
+	private int getRenderY() {
+		return (posX - Main.getRenderHelper().getSightX())
+				* Integers.RASTER_SIZE;
+	}
+
+	private int getRenderX() {
+		return (posY - Main.getRenderHelper().getSightY())
+				* Integers.RASTER_SIZE;
+	}
 }

@@ -170,7 +170,7 @@ public class ReflectionUtil {
 					classes.add(clazz);
 				} catch (Throwable t) {
 					Logger.logThrowable("Unable to get class '" + classFile
-							+ "' from jar", t);
+							+ "'", t);
 				}
 			}
 		}

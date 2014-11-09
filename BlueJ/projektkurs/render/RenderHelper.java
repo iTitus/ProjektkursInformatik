@@ -8,13 +8,9 @@ import projektkurs.lib.Integers;
 public class RenderHelper {
 
 	/**
-	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
+	 * Koordinaten der oberen linken Ecke des Sichtfeldes in der Map
 	 */
-	private int sightX;
-	/**
-	 * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
-	 */
-	private int sightY;
+	private int sightX, sightY;
 
 	private int renderTicks;
 

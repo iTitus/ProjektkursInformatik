@@ -108,4 +108,8 @@ public class Render {
 
 		}
 	}
+
+	public BufferStrategy getBufferStrategy() {
+		return strategy;
+	}
 }

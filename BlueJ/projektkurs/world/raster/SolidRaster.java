@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.util.Direction;
 
+/**
+ * Solides Raster
+ */
 public class SolidRaster extends SimpleRaster {
 
 	public SolidRaster(BufferedImage image) {

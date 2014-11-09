@@ -65,13 +65,13 @@ public final class Main {
 
 	public static EntityPlayer player;
 	private static GameThread gameThread;
+	private static MainFrame mainFrame;
 	private static InputManager imgr;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
 	private static Spielfeld map;
 	private static LoopThread /* renderThread, simulationThread, */moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
-
 	private static Storymanager storyManager;
 
 	/**
@@ -200,7 +200,7 @@ public final class Main {
 		if (moveThread != null)
 			moveThread.pause(false);
 		if (gameThread != null)
-			gameThread.pause(true);
+			gameThread.pause(false);
 	}
 
 	/**
@@ -268,8 +268,8 @@ public final class Main {
 
 			@Override
 			public void run() {
-				JFrame f = new MainFrame();
-				f.setVisible(true);
+				mainFrame = new MainFrame();
+				mainFrame.setVisible(true);
 				render.initBuffers();
 			}
 
@@ -280,5 +280,19 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
+	}
+
+	/**
+	 * 
+	 */
+	public static void hide() {
+		mainFrame.setVisible(false);
+	}
+
+	/**
+	 * 
+	 */
+	public static void show() {
+		mainFrame.setVisible(true);
 	}
 }

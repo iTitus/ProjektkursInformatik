@@ -109,11 +109,19 @@ public class Entity implements ICanUpdate {
 		return posY;
 	}
 
+	/**
+	 * 
+	 * @return int
+	 */
 	public int getRenderX() {
 		return ((posX - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE)
 				+ Integers.WINDOW_HUD_X;
 	}
 
+	/**
+	 * 
+	 * @return int
+	 */
 	public int getRenderY() {
 		return ((posY - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE)
 				+ Integers.WINDOW_HUD_Y;

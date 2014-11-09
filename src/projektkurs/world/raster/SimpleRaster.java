@@ -17,5 +17,4 @@ public class SimpleRaster extends AbstractRaster {
 	public void render(Graphics2D g, int x, int y) {
 		RenderUtil.drawDefaultRaster(g, image, x, y);
 	}
-
 }
