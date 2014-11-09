@@ -55,6 +55,7 @@ public class Render {
 	 */
 	public void update() {
 		if (strategy != null) {
+
 			g = (Graphics2D) strategy.getDrawGraphics();
 
 			g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);

@@ -8,7 +8,8 @@ import projektkurs.util.Init.State;
 
 public final class Raster {
 
-	public static AbstractRaster baum, door, finish, kiste, rasen, wand;
+	public static AbstractRaster baum, door, finish, kiste, rasen, wand,
+			testAnimation;
 	public static final HashMap<String, AbstractRaster> MAPPINGS = new HashMap<String, AbstractRaster>();
 
 	@Init(state = State.PRE)
@@ -30,6 +31,10 @@ public final class Raster {
 
 		finish = new FinishRaster();
 		MAPPINGS.put("finish", finish);
+
+		testAnimation = new AnimatedRaster(Images.door_NS, Images.door_WE,
+				Images.door_open_WE, Images.door_open_NS);
+		MAPPINGS.put("testAnimation", testAnimation);
 
 	}
 

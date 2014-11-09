@@ -91,6 +91,9 @@ public class Spielfeld {
 			setRasterAt(MAP_SIZE_X - 1, y, Raster.wand);
 		}
 
+		// Animation Test
+		setRasterAt(1, 1, Raster.testAnimation);
+
 		// TÜREN!
 		setRasterAt(20, 18, Raster.baum);
 		setRasterAt(21, 18, Raster.baum);

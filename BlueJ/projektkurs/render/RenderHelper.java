@@ -16,6 +16,8 @@ public class RenderHelper {
 	 */
 	private int sightY;
 
+	private int renderTicks;
+
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
 	 *
@@ -73,5 +75,13 @@ public class RenderHelper {
 			this.sightX = sightX;
 			this.sightY = sightY;
 		}
+	}
+
+	public void addRenderTick() {
+		renderTicks++;
+	}
+
+	public int getRenderTicks() {
+		return renderTicks;
 	}
 }

@@ -71,6 +71,7 @@ public class GameThread extends Thread {
 				loops++;
 				try {
 					Main.getSpielfeld().update();
+					Main.getRenderHelper().addRenderTick();
 				} catch (Throwable t) {
 					Logger.logThrowable("Unable to update the game", t);
 					Main.exit();
