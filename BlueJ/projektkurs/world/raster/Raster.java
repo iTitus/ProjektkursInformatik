@@ -3,6 +3,7 @@ package projektkurs.world.raster;
 import java.util.HashMap;
 
 import projektkurs.lib.Images;
+import projektkurs.render.AnimationFrame;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 
@@ -32,8 +33,10 @@ public final class Raster {
 		finish = new FinishRaster();
 		MAPPINGS.put("finish", finish);
 
-		testAnimation = new AnimatedRaster(Images.door_NS, Images.door_WE,
-				Images.door_open_WE, Images.door_open_NS);
+		testAnimation = new AnimatedRaster(new AnimationFrame(Images.door_NS,
+				10), new AnimationFrame(Images.door_WE, 15),
+				new AnimationFrame(Images.door_open_WE, 20),
+				new AnimationFrame(Images.door_open_NS, 15));
 		MAPPINGS.put("testAnimation", testAnimation);
 
 	}

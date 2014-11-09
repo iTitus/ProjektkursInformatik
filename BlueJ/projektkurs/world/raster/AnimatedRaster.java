@@ -1,45 +1,43 @@
 package projektkurs.world.raster;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.Arrays;
 
 import projektkurs.Main;
-import projektkurs.util.MathUtil;
+import projektkurs.render.AnimationFrame;
 import projektkurs.util.RenderUtil;
 
 public class AnimatedRaster extends SimpleRaster {
 
-	private final BufferedImage[] images;
-	private final int animationSize;
-	private int animationLength;
-	private final int[] animationLengths;
+	private final AnimationFrame[] animationFrames;
 
-	public AnimatedRaster(BufferedImage... images) {
+	// private final BufferedImage[] images;
+	// private final int animationSize;
+	private final int animationLength;
+
+	// private final int[] animationLengths;
+
+	public AnimatedRaster(AnimationFrame... animations) {
 		super(null);
-		this.images = images;
-		animationSize = (images != null ? images.length : 0);
-		animationLengths = new int[animationSize];
-		for (int i = 0; i < animationLengths.length; i++) {
-			// TODO: Maybe an AnimationData Object for this?
-			animationLengths[i] = MathUtil.ceilMul(Math.random(), 21) + 10;
-			animationLength += animationLengths[i];
+		this.animationFrames = animations;
+		int animationLength = 0;
+		for (int i = 0; i < animations.length; i++) {
+			animationLength += animations[i].getAnimationTime();
 		}
-		System.out.println(animationSize + " - "
-				+ Arrays.asList(animationLengths));
+		this.animationLength = animationLength;
 	}
 
 	@Override
 	public void render(Graphics2D g, int x, int y) {
-		if (animationLength > 0) {
+		if (animationFrames != null) {
 			int currentAnimationTime = Main.getRenderHelper().getRenderTicks()
 					% animationLength;
 			int totalAnimationTime = 0;
-			for (int i = 0; i < animationLengths.length; i++) {
+			for (int i = 0; i < animationFrames.length; i++) {
 				if (currentAnimationTime >= totalAnimationTime) {
-					totalAnimationTime += animationLengths[i];
+					totalAnimationTime += animationFrames[i].getAnimationTime();
 					if (currentAnimationTime <= totalAnimationTime) {
-						RenderUtil.drawDefaultRaster(g, images[i], x, y);
+						RenderUtil.drawDefaultRaster(g,
+								animationFrames[i].getImage(), x, y);
 						break;
 					}
 				}
