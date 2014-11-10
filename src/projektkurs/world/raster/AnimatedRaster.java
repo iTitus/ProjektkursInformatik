@@ -46,4 +46,23 @@ public class AnimatedRaster extends SimpleRaster {
 			}
 		}
 	}
+
+	@Override
+	public void renderCutScene(Graphics2D g, int x, int y) {
+		if (animationFrames != null) {
+			int currentAnimationTime = Main.getRenderHelper().getRenderTicks()
+					% animationLength;
+			int totalAnimationTime = 0;
+			for (int i = 0; i < animationFrames.length; i++) {
+				if (currentAnimationTime >= totalAnimationTime) {
+					totalAnimationTime += animationFrames[i].getAnimationTime();
+					if (currentAnimationTime < totalAnimationTime) {
+						RenderUtil.drawCutSceneRaster(g,
+								animationFrames[i].getImage(), x, y);
+						break;
+					}
+				}
+			}
+		}
+	}
 }

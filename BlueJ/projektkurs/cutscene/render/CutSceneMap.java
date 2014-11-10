@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import projektkurs.cutscene.object.CutSceneObject;
 
 /**
+ * Määh!
  * 
+ * @SurpressWarnings("used")
  */
 public class CutSceneMap {
 
-	private final int sizeX, sizeY;
 	private final BufferedImage[][] images;
 	private final ArrayList<CutSceneObject> objects;
+	private final int sizeX, sizeY;
 
 	/**
 	 * 
@@ -24,6 +26,10 @@ public class CutSceneMap {
 		this.sizeY = sizeY;
 		images = new BufferedImage[sizeX][sizeY];
 		objects = new ArrayList<CutSceneObject>();
+	}
+
+	public ArrayList<CutSceneObject> getCutSceneObjectList() {
+		return objects;
 	}
 
 	/**
@@ -38,6 +44,18 @@ public class CutSceneMap {
 		return images[x][y];
 	}
 
+	public int getMapSizeX() {
+		return sizeX;
+	}
+
+	public int getMapSizeY() {
+		return sizeY;
+	}
+
+	public boolean isImageAt(int x, int y) {
+		return getImageAt(x, y) != null;
+	}
+
 	/**
 	 * 
 	 * @param x
@@ -48,21 +66,5 @@ public class CutSceneMap {
 		if (x < 0 || x >= images.length || y < 0 || y >= images[x].length)
 			return;
 		images[x][y] = image;
-	}
-
-	public boolean isImageAt(int x, int y) {
-		return getImageAt(x, y) != null;
-	}
-
-	public ArrayList<CutSceneObject> getCutSceneObjectList() {
-		return objects;
-	}
-
-	public int getMapSizeX() {
-		return sizeX;
-	}
-
-	public int getMapSizeY() {
-		return sizeY;
 	}
 }

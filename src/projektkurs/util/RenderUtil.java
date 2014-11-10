@@ -4,15 +4,27 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
+import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
-import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Renderhilfen
  *
  */
 public final class RenderUtil {
+
+	public static void drawCutSceneRaster(Graphics2D g, BufferedImage image,
+			int x, int y) {
+		drawImage(g, image, (x - CutSceneManager
+				.getCurrentCutSceneRenderHelper().getSightX())
+				* Integers.RASTER_SIZE + Integers.WINDOW_HUD_X,
+				(y - CutSceneManager.getCurrentCutSceneRenderHelper()
+						.getSightY())
+						* Integers.RASTER_SIZE
+						+ Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE,
+				Integers.RASTER_SIZE);
+	}
 
 	public static void drawDefaultEntity(Graphics2D g, Entity e) {
 		drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX()
@@ -39,14 +51,5 @@ public final class RenderUtil {
 	}
 
 	private RenderUtil() {
-	}
-
-	public static BufferedImage getImage(AbstractRaster raster, int x, int y) {
-		BufferedImage image = new BufferedImage(Integers.RASTER_SIZE,
-				Integers.RASTER_SIZE, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g = image.createGraphics();
-		raster.render(g, x, y);
-		g.dispose();
-		return image;
 	}
 }

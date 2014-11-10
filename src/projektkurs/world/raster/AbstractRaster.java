@@ -66,6 +66,15 @@ public abstract class AbstractRaster {
 	 */
 	public abstract void render(Graphics2D g, int x, int y);
 
+	/**
+	 * Rendert das Raster in CutScenes
+	 * 
+	 * @param g
+	 * @param x
+	 * @param y
+	 */
+	public abstract void renderCutScene(Graphics2D g, int mapX, int mapY);
+
 	@Override
 	public String toString() {
 		return getClass().getSimpleName();

@@ -133,7 +133,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	public void mouseClicked(MouseEvent e) {
 
 		if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
-			Scripts.testCutScene();
+			Scripts.cutSceneOne();
 		else if (e.getButton() == LEFT_MOUSE_BUTTON)
 			Sounds.test.playFromStart();
 

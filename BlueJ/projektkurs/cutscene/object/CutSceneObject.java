@@ -3,7 +3,7 @@ package projektkurs.cutscene.object;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import projektkurs.Main;
+import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Integers;
 
 /**
@@ -77,6 +77,20 @@ public class CutSceneObject {
 	}
 
 	/**
+	 * @param posX
+	 * @param posY
+	 * @param sizeX
+	 * @param sizeY
+	 * @return
+	 */
+	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
+		return (Math.max(posX, this.posX) < Math.min((posX + sizeX),
+				(this.posX + this.sizeX)))
+				&& ((Math.max(posY, this.posY) < Math.min((posY + sizeY),
+						(this.posY + this.sizeY))));
+	}
+
+	/**
 	 * Bewegt das CutSceneObject
 	 *
 	 * @param deltaX
@@ -85,6 +99,11 @@ public class CutSceneObject {
 	public void moveBy(int deltaX, int deltaY) {
 		posX += deltaX;
 		posY += deltaY;
+	}
+
+	public void render(Graphics2D g) {
+		g.drawImage(image, getRenderX(), getRenderY(), sizeX
+				* Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE, null);
 	}
 
 	/**
@@ -112,32 +131,13 @@ public class CutSceneObject {
 		this.posY = posY;
 	}
 
-	/**
-	 * @param posX
-	 * @param posY
-	 * @param sizeX
-	 * @param sizeY
-	 * @return
-	 */
-	public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
-		return (Math.max(posX, this.posX) < Math.min((posX + sizeX),
-				(this.posX + this.sizeX)))
-				&& ((Math.max(posY, this.posY) < Math.min((posY + sizeY),
-						(this.posY + this.sizeY))));
-	}
-
-	public void render(Graphics2D g) {
-		g.drawImage(image, getRenderX(), getRenderY(), sizeX
-				* Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE, null);
+	private int getRenderX() {
+		return ((posY - CutSceneManager.getCurrentCutSceneRenderHelper()
+				.getSightY()) * Integers.RASTER_SIZE) + Integers.WINDOW_HUD_Y;
 	}
 
 	private int getRenderY() {
-		return (posX - Main.getRenderHelper().getSightX())
-				* Integers.RASTER_SIZE;
-	}
-
-	private int getRenderX() {
-		return (posY - Main.getRenderHelper().getSightY())
-				* Integers.RASTER_SIZE;
+		return ((posX - CutSceneManager.getCurrentCutSceneRenderHelper()
+				.getSightX()) * Integers.RASTER_SIZE) + Integers.WINDOW_HUD_X;
 	}
 }

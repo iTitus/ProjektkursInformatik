@@ -52,8 +52,6 @@ public final class Main {
 			panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
 			panel.add(render.getGameCanvas());
 
-			// requestFocus();
-			// setBounds(10, 10, Integers.WINDOW_X, Integers.WINDOW_Y);
 			setUndecorated(true);
 			setResizable(false);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -65,9 +63,9 @@ public final class Main {
 
 	public static EntityPlayer player;
 	private static GameThread gameThread;
-	private static MainFrame mainFrame;
 	private static InputManager imgr;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
+	private static MainFrame mainFrame;
 	private static Spielfeld map;
 	private static LoopThread /* renderThread, simulationThread, */moveThread;
 	private static Render render;
@@ -139,6 +137,13 @@ public final class Main {
 	}
 
 	/**
+	 * 
+	 */
+	public static void hide() {
+		mainFrame.setVisible(false);
+	}
+
+	/**
 	 * Interne Methode um alle Felder(Variablen) zu initialisieren
 	 */
 	@Init
@@ -204,6 +209,13 @@ public final class Main {
 	}
 
 	/**
+	 * 
+	 */
+	public static void show() {
+		mainFrame.setVisible(true);
+	}
+
+	/**
 	 * @param state
 	 */
 	private static void init(State state) {
@@ -246,7 +258,9 @@ public final class Main {
 			}
 		}, "Shutdown-Hook"));
 
+		// Resources
 		init(State.RESOURCES);
+
 		// PreInit
 		// TODO: Load from disk
 		init(State.PRE);
@@ -280,19 +294,5 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
-	}
-
-	/**
-	 * 
-	 */
-	public static void hide() {
-		mainFrame.setVisible(false);
-	}
-
-	/**
-	 * 
-	 */
-	public static void show() {
-		mainFrame.setVisible(true);
 	}
 }

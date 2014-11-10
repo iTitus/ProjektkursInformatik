@@ -7,12 +7,20 @@ import projektkurs.lib.Integers;
  */
 public class RenderHelper {
 
+	private int renderTicks;
+
 	/**
 	 * Koordinaten der oberen linken Ecke des Sichtfeldes in der Map
 	 */
 	private int sightX, sightY;
 
-	private int renderTicks;
+	public void addRenderTick() {
+		renderTicks++;
+	}
+
+	public int getRenderTicks() {
+		return renderTicks;
+	}
 
 	/**
 	 * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
@@ -71,13 +79,5 @@ public class RenderHelper {
 			this.sightX = sightX;
 			this.sightY = sightY;
 		}
-	}
-
-	public void addRenderTick() {
-		renderTicks++;
-	}
-
-	public int getRenderTicks() {
-		return renderTicks;
 	}
 }

@@ -17,4 +17,9 @@ public class SimpleRaster extends AbstractRaster {
 	public void render(Graphics2D g, int x, int y) {
 		RenderUtil.drawDefaultRaster(g, image, x, y);
 	}
+
+	@Override
+	public void renderCutScene(Graphics2D g, int x, int y) {
+		RenderUtil.drawCutSceneRaster(g, image, x, y);
+	}
 }

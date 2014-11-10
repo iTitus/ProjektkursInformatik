@@ -1,8 +1,10 @@
 package projektkurs.cutscene;
 
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
-import projektkurs.cutscene.render.CutSceneMap;
 import projektkurs.util.Queue;
 
 /**
@@ -10,27 +12,55 @@ import projektkurs.util.Queue;
  */
 public class CutScene {
 
-	private CutSceneMap cutSceneMap;
 	private Queue<Action> actionQueue, startupQueue, tempQueue;
+	private BufferedImage background;
 	private int elapsedTicks;
 	private boolean isFinished;
+	private final ArrayList<CutSceneObject> objects;
+	private final boolean rasterBackground;
 
 	/**
 	 * Konstruktor für eine CutScene
 	 */
-	public CutScene(int sizeX, int sizeY) {
+	public CutScene() {
 		actionQueue = new Queue<Action>();
 		startupQueue = new Queue<Action>();
 		tempQueue = new Queue<Action>();
 		elapsedTicks = 0;
 		isFinished = false;
-		cutSceneMap = new CutSceneMap(sizeX, sizeY);
+		rasterBackground = true;
+		background = null;
+		objects = new ArrayList<CutSceneObject>();
+	}
+
+	/**
+	 * CutScene mit Custom Background
+	 * 
+	 * @param background
+	 */
+	public CutScene(BufferedImage background) {
+		actionQueue = new Queue<Action>();
+		startupQueue = new Queue<Action>();
+		tempQueue = new Queue<Action>();
+		elapsedTicks = 0;
+		isFinished = false;
+		rasterBackground = false;
+		this.background = background;
+		objects = new ArrayList<CutSceneObject>();
 	}
 
 	public void deSpawn(CutSceneObject object) {
 		if (object != null) {
-			cutSceneMap.getCutSceneObjectList().remove(object);
+			getCutSceneObjectList().remove(object);
 		}
+	}
+
+	public BufferedImage getBackground() {
+		return background;
+	}
+
+	public ArrayList<CutSceneObject> getCutSceneObjectList() {
+		return objects;
 	}
 
 	public int getElapsedTicks() {
@@ -42,6 +72,10 @@ public class CutScene {
 	 */
 	public boolean isFinished() {
 		return isFinished;
+	}
+
+	public boolean needsRasterBackground() {
+		return rasterBackground;
 	}
 
 	/**
@@ -60,6 +94,10 @@ public class CutScene {
 		actionQueue.enQueue(action);
 	}
 
+	public void setBackground(BufferedImage background) {
+		this.background = background;
+	}
+
 	/**
      *
      */
@@ -69,7 +107,7 @@ public class CutScene {
 
 	public void spawn(CutSceneObject object) {
 		if (object != null) {
-			cutSceneMap.getCutSceneObjectList().add(object);
+			getCutSceneObjectList().add(object);
 		}
 	}
 
@@ -106,10 +144,6 @@ public class CutScene {
 
 		elapsedTicks++;
 
-	}
-
-	public CutSceneMap getCutSceneMap() {
-		return cutSceneMap;
 	}
 
 }

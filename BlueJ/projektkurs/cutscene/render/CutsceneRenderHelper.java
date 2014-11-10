@@ -8,6 +8,6 @@ import projektkurs.render.RenderHelper;
  */
 public class CutsceneRenderHelper extends RenderHelper {
 
-	// Cause I can!
+	// 'Cause I can!
 
 }

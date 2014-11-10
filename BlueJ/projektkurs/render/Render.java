@@ -36,6 +36,10 @@ public class Render {
 		g = null;
 	}
 
+	public BufferStrategy getBufferStrategy() {
+		return strategy;
+	}
+
 	/**
 	 * Gibt das aktuelle Canvas zurück
 	 *
@@ -107,9 +111,5 @@ public class Render {
 			strategy.show();
 
 		}
-	}
-
-	public BufferStrategy getBufferStrategy() {
-		return strategy;
 	}
 }

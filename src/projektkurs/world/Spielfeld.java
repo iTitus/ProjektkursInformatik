@@ -15,6 +15,7 @@ import projektkurs.lib.Integers;
 import projektkurs.story.scripts.Scripts;
 import projektkurs.story.trigger.InventoryTrigger;
 import projektkurs.util.Direction;
+import projektkurs.util.Logger;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.Raster;
@@ -26,7 +27,7 @@ import projektkurs.world.raster.extra.IHasExtraInformation;
 /**
  * Spielfeld
  */
-public class Spielfeld {
+public class Spielfeld implements Cloneable {
 
 	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
 	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
@@ -46,6 +47,15 @@ public class Spielfeld {
 		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
 		entities = new ArrayList<Entity>();
 		generateAndPopulateMap();
+	}
+
+	public Spielfeld copy() {
+		try {
+			return (Spielfeld) clone();
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to clone the map", t);
+			return null;
+		}
 	}
 
 	/**
@@ -334,5 +344,10 @@ public class Spielfeld {
 
 		Main.getStoryManager().update();
 
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 }

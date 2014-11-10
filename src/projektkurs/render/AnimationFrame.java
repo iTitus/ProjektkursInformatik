@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
  */
 public class AnimationFrame {
 
-	private final BufferedImage image;
 	private final int animationTime;
+	private final BufferedImage image;
 
 	/**
 	 * 
@@ -24,16 +24,16 @@ public class AnimationFrame {
 	 * 
 	 * @return
 	 */
-	public BufferedImage getImage() {
-		return image;
+	public int getAnimationTime() {
+		return animationTime;
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public int getAnimationTime() {
-		return animationTime;
+	public BufferedImage getImage() {
+		return image;
 	}
 
 }

@@ -9,17 +9,43 @@ import projektkurs.cutscene.render.CutsceneRenderHelper;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.util.Logger;
+import projektkurs.world.Spielfeld;
 
 /**
  * Managt die aktuell laufende CutScene
  */
 public final class CutSceneManager {
 
-	private static JFrame cutSceneFrame;
+	public static class CutSceneFrame extends JFrame {
+		private static final long serialVersionUID = 1L;
+
+		/**
+		 * Hauptkonstruktor
+		 */
+		public CutSceneFrame() {
+			super(Strings.NAME + " - CutScene");
+
+			JPanel panel = (JPanel) getContentPane();
+			panel.setLayout(null);
+			panel.setPreferredSize(currCutSceneRender.getCutSceneCanvas()
+					.getPreferredSize());
+			panel.add(currCutSceneRender.getCutSceneCanvas());
+
+			setUndecorated(true);
+			setResizable(false);
+			setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+			pack();
+
+		}
+	}
+
 	private static CutScene currCutScene;
 	private static CutsceneRender currCutSceneRender;
 	private static CutsceneRenderHelper currCutSceneRenderHelper;
+	private static Spielfeld currSpielfeld;
+	private static JFrame cutSceneFrame;
 	private static double delta;
+
 	private static int fps, ups;
 
 	public static CutScene getCurrentCutScene() {
@@ -32,6 +58,10 @@ public final class CutSceneManager {
 
 	public static CutsceneRenderHelper getCurrentCutSceneRenderHelper() {
 		return currCutSceneRenderHelper;
+	}
+
+	public static Spielfeld getCurrSpielfeld() {
+		return currSpielfeld;
 	}
 
 	public static double getDelta() {
@@ -50,30 +80,6 @@ public final class CutSceneManager {
 		return currCutScene != null;
 	}
 
-	public static class CutSceneFrame extends JFrame {
-		private static final long serialVersionUID = 1L;
-
-		/**
-		 * Hauptkonstruktor
-		 */
-		public CutSceneFrame() {
-			super(Strings.NAME + " - CutScene");
-
-			JPanel panel = (JPanel) getContentPane();
-			panel.setLayout(null);
-			panel.setPreferredSize(currCutSceneRender.getCutSceneCanvas()
-					.getPreferredSize());
-			panel.add(currCutSceneRender.getCutSceneCanvas());
-
-			// requestFocus();
-			setUndecorated(true);
-			setResizable(false);
-			setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-			pack();
-
-		}
-	}
-
 	public static void startCutScene(CutScene cutScene) {
 
 		if (!isRunning()) {
@@ -84,6 +90,7 @@ public final class CutSceneManager {
 			currCutScene = cutScene;
 			currCutSceneRenderHelper = new CutsceneRenderHelper();
 			currCutSceneRender = new CutsceneRender();
+			currSpielfeld = Main.getSpielfeld().copy();
 
 			cutSceneFrame = new CutSceneFrame();
 			cutSceneFrame.setVisible(true);
@@ -106,6 +113,7 @@ public final class CutSceneManager {
 				while (delta >= 1) {
 					loops++;
 					currCutScene.update();
+					Main.getRenderHelper().addRenderTick();
 					delta--;
 				}
 
@@ -133,4 +141,5 @@ public final class CutSceneManager {
 
 	private CutSceneManager() {
 	}
+
 }

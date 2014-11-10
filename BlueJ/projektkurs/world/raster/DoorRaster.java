@@ -29,4 +29,10 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 		RenderUtil.drawDefaultRaster(g, ((ExtraInformationDoor) Main
 				.getSpielfeld().getExtraInformationAt(x, y)).getImage(), x, y);
 	}
+
+	@Override
+	public void renderCutScene(Graphics2D g, int x, int y) {
+		RenderUtil.drawCutSceneRaster(g, ((ExtraInformationDoor) Main
+				.getSpielfeld().getExtraInformationAt(x, y)).getImage(), x, y);
+	}
 }
