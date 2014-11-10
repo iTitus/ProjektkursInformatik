@@ -67,13 +67,13 @@ public final class Main {
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
 	private static MainFrame mainFrame;
 	private static Spielfeld map;
-	private static LoopThread /* renderThread, simulationThread, */moveThread;
+	private static LoopThread moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
 	private static Storymanager storyManager;
 
 	/**
-	 * Verlaesst das Spiel
+	 * Verlässt das Spiel
 	 */
 	public static void exit() {
 		System.exit(0);
