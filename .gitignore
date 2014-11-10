@@ -5,8 +5,8 @@
 log*.txt
 
 # BlueJ
-/*.class
-/*.ctxt
+*.class
+*.ctxt
 
 # Eclipse
 /eclipse
@@ -19,7 +19,7 @@ log*.txt
 # IntelliJ
 /out
 /.idea
-/*.iml
-/*.ipr
-/*.iws
+*.iml
+*.ipr
+*.iws
 /atlassian-ide-plugin.xml

@@ -27,6 +27,7 @@ import projektkurs.world.raster.extra.IHasExtraInformation;
 /**
  * Spielfeld
  */
+//Rest In Pieces, TempMapBuilder!
 public class Spielfeld implements Cloneable {
 
 	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
