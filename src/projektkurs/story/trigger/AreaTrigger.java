@@ -8,8 +8,9 @@ public class AreaTrigger extends Trigger {
 
 	private final int posX, posY, sizeX, sizeY;
 
-	public AreaTrigger(Method m, int posX, int posY, int sizeX, int sizeY) {
-		super(m);
+	public AreaTrigger(Method m, int posX, int posY, int sizeX, int sizeY,
+			Object... objects) {
+		super(m, objects);
 		this.posX = posX;
 		this.posY = posY;
 		this.sizeX = sizeX;

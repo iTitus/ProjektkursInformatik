@@ -102,12 +102,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 
 		keysPressed.add(e.getKeyCode());
 
-		if (keysPressed.contains(KeyBindings.KEY_EXIT)) {
-			if (Main.getGui() instanceof GuiIngame)
-				Main.exit();
-			else
-				Main.closeGui();
-		}
+		Main.getGui().onKeyPressed(e.getKeyCode());
 
 	}
 
@@ -137,26 +132,33 @@ public class InputManager implements KeyListener, MouseInputListener,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
-			Scripts.cutSceneOne();
-		else if (e.getButton() == LEFT_MOUSE_BUTTON)
-			Sounds.test.playFromStart();
+		if (e.getButton() == LEFT_MOUSE_BUTTON)
+			Main.getGui().onLeftClick(e.getX(), e.getY());
+		if (e.getButton() == RIGHT_MOUSE_BUTTON)
+			Main.getGui().onRightClick(e.getX(), e.getY());
 
-		float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
-		if (rasterX < 0)
-			rasterX--;
-		float rasterY = (((e.getY() + (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_Y) / (float) (Integers.RASTER_SIZE));
-		if (rasterY < 0)
-			rasterY--;
-		AbstractRaster r = Main.getLevel().getCurrMap()
-				.getRasterAt((int) rasterX, (int) rasterY);
-		if (r != null
-				&& Main.getRenderHelper().isInSight((int) rasterX,
-						(int) rasterY)) {
-			if (e.getButton() == RIGHT_MOUSE_BUTTON)
-				r.onRightClick((int) rasterX, (int) rasterY);
-			if (e.getButton() == LEFT_MOUSE_BUTTON)
-				r.onLeftClick((int) rasterX, (int) rasterY);
+		if (Main.getGui() instanceof GuiIngame) {
+			if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
+				Scripts.cutSceneOne();
+			else if (e.getButton() == LEFT_MOUSE_BUTTON)
+				Sounds.test.playFromStart();
+
+			float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
+			if (rasterX < 0)
+				rasterX--;
+			float rasterY = (((e.getY() + (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_Y) / (float) (Integers.RASTER_SIZE));
+			if (rasterY < 0)
+				rasterY--;
+			AbstractRaster r = Main.getLevel().getCurrMap()
+					.getRasterAt((int) rasterX, (int) rasterY);
+			if (r != null
+					&& Main.getRenderHelper().isInSight((int) rasterX,
+							(int) rasterY)) {
+				if (e.getButton() == RIGHT_MOUSE_BUTTON)
+					r.onRightClick((int) rasterX, (int) rasterY);
+				if (e.getButton() == LEFT_MOUSE_BUTTON)
+					r.onLeftClick((int) rasterX, (int) rasterY);
+			}
 		}
 
 	}

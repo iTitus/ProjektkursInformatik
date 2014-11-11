@@ -6,8 +6,8 @@ public class CombinedOrTrigger extends Trigger {
 
 	private Trigger[] triggers;
 
-	public CombinedOrTrigger(Method m, Trigger... triggers) {
-		super(m);
+	public CombinedOrTrigger(Method m, Trigger[] triggers, Object... objects) {
+		super(m, objects);
 		this.triggers = triggers;
 	}
 

@@ -8,11 +8,13 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Images;
 import projektkurs.story.cutscene.CutSceneOne;
 import projektkurs.util.I18n;
+import projektkurs.util.MathUtil;
 
 public class Scripts {
 
 	public static void cutSceneOne() {
 		CutSceneManager.startCutScene(CutSceneOne.cutSceneOne());
+		switchMap(1);
 	}
 
 	public static void loose() {
@@ -32,5 +34,14 @@ public class Scripts {
 				JOptionPane.ERROR_MESSAGE, new ImageIcon(Images.finish),
 				new Object[] { I18n.getString("button.exit") }, null);
 		Main.exit();
+	}
+
+	public static void switchMap(Integer i) {
+		Main.getLevel().setMap(i);
+		Main.getPlayer()
+				.setPos(MathUtil.ceilDiv(Main.getLevel().getCurrMap()
+						.getMapSizeX(), 2),
+						MathUtil.ceilDiv(Main.getLevel().getCurrMap()
+								.getMapSizeY(), 2));
 	}
 }

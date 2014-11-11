@@ -8,9 +8,15 @@ import projektkurs.entity.EntityRedNPC;
 import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Images;
+import projektkurs.lib.Integers;
 import projektkurs.story.scripts.Scripts;
+import projektkurs.story.trigger.AreaTrigger;
+import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryTrigger;
+import projektkurs.story.trigger.PosTrigger;
+import projektkurs.story.trigger.Trigger;
 import projektkurs.util.Direction;
+import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.raster.Raster;
@@ -41,6 +47,9 @@ public class MapBuilder {
 					rand.nextInt(map.getMapSizeY()), Raster.kiste);
 
 		}
+
+		map.setRasterAt(MathUtil.ceilDiv(Integers.SIGHT_X, 2),
+				MathUtil.ceilDiv(Integers.SIGHT_Y, 2), Raster.kiste);
 
 		// WÄNDE!
 		for (int x = 0; x < map.getMapSizeX(); x++) {
@@ -102,15 +111,41 @@ public class MapBuilder {
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
 		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke)));
 
-		// STORYMANAGER!
-		Main.getLevel()
-				.getCurrMap()
-				.getStorymanager()
-				.addTrigger(
-						new InventoryTrigger(ReflectionUtil.getMethod(
-								Scripts.class, "loose"), new ItemStack(
-								Items.nuke)));
+		// STORYMAGER!
+		map.getStorymanager().addTrigger(
+				new CombinedAndTrigger(ReflectionUtil.getMethod(Scripts.class,
+						"switchMap", Integer.class),
+						new Trigger[] {
+								new AreaTrigger(null, 50, 50, 10, 10),
+								new InventoryTrigger(null, new ItemStack(
+										Items.nuke)) }, 1));
 
 	}
 
+	public static void Level1generateAndPopulateMap1(Spielfeld map) {
+
+		// ANIMATIONS!
+		for (int x = 0; x < map.getMapSizeX(); x++) {
+			for (int y = 0; y < map.getMapSizeY(); y++)
+				map.setRasterAt(x, y, Raster.testAnimation);
+		}
+
+		// WÄNDE!
+		for (int x = 0; x < map.getMapSizeX(); x++) {
+			map.setRasterAt(x, 0, Raster.wand);
+			map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+		}
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+			map.setRasterAt(0, y, Raster.wand);
+			map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+		}
+
+		// ENTITIES!
+		map.spawn(Main.getPlayer());
+
+		// STORYMANAGER!
+		map.getStorymanager().addTrigger(
+				new PosTrigger(ReflectionUtil.getMethod(Scripts.class,
+						"switchMap", Integer.class), 8, 8, 0));
+	}
 }

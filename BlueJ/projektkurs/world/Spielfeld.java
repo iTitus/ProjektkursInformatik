@@ -7,7 +7,6 @@ import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNPC;
-import projektkurs.lib.Integers;
 import projektkurs.story.Storymanager;
 import projektkurs.util.Logger;
 import projektkurs.util.ReflectionUtil;
@@ -20,8 +19,8 @@ import projektkurs.world.raster.extra.IHasExtraInformation;
  */
 public class Spielfeld implements Cloneable {
 
-	private static final int MAP_SIZE_X = Integers.SIGHT_X * 2;
-	private static final int MAP_SIZE_Y = Integers.SIGHT_Y * 2;
+	private final int sizeX;
+	private final int sizeY;
 
 	private final ArrayList<Entity> entities;
 
@@ -34,9 +33,11 @@ public class Spielfeld implements Cloneable {
 	/**
      *
      */
-	public Spielfeld() {
-		map = new AbstractRaster[MAP_SIZE_X][MAP_SIZE_Y];
-		extras = new ExtraInformation[MAP_SIZE_X][MAP_SIZE_Y];
+	public Spielfeld(int sizeX, int sizeY) {
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+		map = new AbstractRaster[sizeX][sizeY];
+		extras = new ExtraInformation[sizeX][sizeY];
 		entities = new ArrayList<Entity>();
 		storymanager = new Storymanager();
 		// generateAndPopulateMap();
@@ -135,14 +136,14 @@ public class Spielfeld implements Cloneable {
 	 * @return
 	 */
 	public int getMapSizeX() {
-		return MAP_SIZE_X;
+		return sizeX;
 	}
 
 	/**
 	 * @return
 	 */
 	public int getMapSizeY() {
-		return MAP_SIZE_Y;
+		return sizeY;
 	}
 
 	/**

@@ -8,8 +8,8 @@ public class PosTrigger extends Trigger {
 
 	private final int x, y;
 
-	public PosTrigger(int x, int y, Method M) {
-		super(M);
+	public PosTrigger(Method m, int x, int y, Object... objects) {
+		super(m, objects);
 		this.x = x;
 		this.y = y;
 	}

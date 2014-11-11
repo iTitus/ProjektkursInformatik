@@ -117,7 +117,8 @@ public final class Main {
 		imgr = new InputManager();
 		player = new EntityPlayer(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
-		level = new Level("Level1", new Spielfeld());
+		level = new Level("Level1", new Spielfeld(100, 100), new Spielfeld(10,
+				10));
 		level.GAPallMaps();
 		render = new Render();
 		renderHelper = new RenderHelper();

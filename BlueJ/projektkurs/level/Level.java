@@ -1,5 +1,6 @@
 package projektkurs.level;
 
+import projektkurs.util.Logger;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.builder.MapBuilder;
@@ -48,7 +49,7 @@ public class Level {
 	 */
 	public Spielfeld getMapAt(int i) {
 		if (i < 0 || i >= maps.length)
-			throw new IllegalArgumentException();
+			Logger.warn("Unable to get map");
 		return maps[i];
 	}
 
@@ -58,7 +59,7 @@ public class Level {
 	 */
 	public void setMap(int i) {
 		if (i < 0 || i >= maps.length)
-			throw new IllegalArgumentException();
+			Logger.warn("Unable to set map");
 		currMap = maps[i];
 	}
 }

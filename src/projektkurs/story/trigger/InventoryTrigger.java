@@ -9,8 +9,8 @@ public class InventoryTrigger extends Trigger {
 
 	private final ItemStack item;
 
-	public InventoryTrigger(Method m, ItemStack item) {
-		super(m);
+	public InventoryTrigger(Method m, ItemStack item, Object... objects) {
+		super(m, objects);
 		this.item = item;
 	}
 
