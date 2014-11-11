@@ -143,8 +143,8 @@ public class InputManager implements KeyListener, MouseInputListener,
 		float rasterY = (((e.getY() + (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_Y) / (float) (Integers.RASTER_SIZE));
 		if (rasterY < 0)
 			rasterY--;
-		AbstractRaster r = Main.getSpielfeld().getRasterAt((int) rasterX,
-				(int) rasterY);
+		AbstractRaster r = Main.getLevel().getCurrMap()
+				.getRasterAt((int) rasterX, (int) rasterY);
 		if (r != null) {
 			r.onClick((int) rasterX, (int) rasterY, e.getButton());
 		}

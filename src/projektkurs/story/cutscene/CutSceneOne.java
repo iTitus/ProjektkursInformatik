@@ -22,6 +22,9 @@ public class CutSceneOne {
 		CutSceneObject auto = new CutSceneObject(Images.item_42, 0, 0, 1, 1);
 		ret.spawn(auto);
 
+		CutSceneObject auto2 = new CutSceneObject(Images.item_42, 10, 10, 1, 1);
+		ret.spawn(auto2);
+
 		Actions: {
 			ret.registerTickAction(new ConditionedMoveAction(new TickCondition(
 					TickConditionType.MODULO_0, 20), auto, 1, 1));
@@ -30,6 +33,8 @@ public class CutSceneOne {
 			ret.registerTickAction(new DebugAction());
 			ret.registerTickAction(new ConditionedExitAction(new TickCondition(
 					TickConditionType.GREATER, 600)));
+			ret.registerTickAction(new ConditionedMoveAction(new TickCondition(
+					TickConditionType.MODULO_0, 10), auto2, 1, 1));
 		}
 		return ret;
 	}

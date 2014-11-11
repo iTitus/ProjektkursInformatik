@@ -70,7 +70,7 @@ public class GameThread extends Thread {
 			while (!pausing && delta >= 1) {
 				loops++;
 				try {
-					Main.getSpielfeld().update();
+					Main.getLevel().getCurrMap().update();
 					Main.getRenderHelper().addRenderTick();
 				} catch (Throwable t) {
 					Logger.logThrowable("Unable to update the game", t);

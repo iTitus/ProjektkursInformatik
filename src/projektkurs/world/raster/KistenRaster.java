@@ -19,8 +19,8 @@ public class KistenRaster extends SolidRaster implements IHasExtraInformation {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
-		ExtraInformationKiste kiste = (ExtraInformationKiste) Main
-				.getSpielfeld().getExtraInformationAt(x, y);
+		ExtraInformationKiste kiste = (ExtraInformationKiste) Main.getLevel()
+				.getCurrMap().getExtraInformationAt(x, y);
 		Logger.info("[Kiste @{x=" + x + ", y=" + y + "}] "
 				+ kiste.getInventar().toString());
 		return super.canWalkOnFromDirection(x, y, dir);

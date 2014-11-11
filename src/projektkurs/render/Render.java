@@ -1,5 +1,6 @@
 package projektkurs.render;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
@@ -20,18 +21,25 @@ public class Render {
 	/**
 	 * Das Spiel-Canvas
 	 */
-	private final GameCanvas canvas;
+	private final Canvas canvas;
 	private Graphics2D g;
 	private BufferStrategy strategy;
 
 	/**
 	 * Konstruktor
 	 *
-	 * @param gameWindow
-	 *            Das Spiel-JPanel
 	 */
-	public Render(GameCanvas canvas) {
-		this.canvas = canvas;
+	public Render() {
+		this.canvas = new Canvas();
+		canvas.setIgnoreRepaint(true);
+		canvas.setBounds(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+		canvas.addKeyListener(Main.getInputManager());
+		canvas.addMouseListener(Main.getInputManager());
+		canvas.addMouseMotionListener(Main.getInputManager());
+		canvas.addMouseWheelListener(Main.getInputManager());
+		canvas.setFocusable(true);
+		canvas.requestFocus();
+		canvas.requestFocusInWindow();
 		strategy = null;
 		g = null;
 	}
@@ -45,7 +53,7 @@ public class Render {
 	 *
 	 * @return Canvas
 	 */
-	public GameCanvas getGameCanvas() {
+	public Canvas getGameCanvas() {
 		return canvas;
 	}
 
@@ -72,8 +80,8 @@ public class Render {
 				for (int y = 0; y < Integers.SIGHT_Y; y++) {
 					int sX = x + Main.getRenderHelper().getSightX();
 					int sY = y + Main.getRenderHelper().getSightY();
-					if (Main.getSpielfeld().isRasterAt(sX, sY)) {
-						Main.getSpielfeld().getRasterAt(sX, sY)
+					if (Main.getLevel().getCurrMap().isRasterAt(sX, sY)) {
+						Main.getLevel().getCurrMap().getRasterAt(sX, sY)
 								.render(g, sX, sY);
 					} else {
 						RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
@@ -81,7 +89,7 @@ public class Render {
 				}
 			}
 
-			for (Entity e : Main.getSpielfeld().getEntityList()) {
+			for (Entity e : Main.getLevel().getCurrMap().getEntityList()) {
 				if (!e.shouldDeSpawn()
 						&& e.isInside(Main.getRenderHelper().getSightX(), Main
 								.getRenderHelper().getSightY(),

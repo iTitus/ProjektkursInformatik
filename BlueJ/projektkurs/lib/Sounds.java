@@ -113,6 +113,9 @@ public final class Sounds {
 
 	public static Sound test;
 
+	/**
+	 * Befreit alle Sounds
+	 */
 	public static void closeAll() {
 		for (Sound s : MAPPINGS.values())
 			s.close();
@@ -127,6 +130,23 @@ public final class Sounds {
 		test = new Sound("Test.wav");
 		MAPPINGS.put("test", test);
 
+	}
+
+	/**
+	 * Setzt den Pausenstatus jedes Sounds
+	 * 
+	 * @param b
+	 */
+	public static void pause(boolean b) {
+		for (Sound s : MAPPINGS.values()) {
+			if (b)
+				s.pause();
+			else
+				s.play();
+		}
+	}
+
+	private Sounds() {
 	}
 
 }

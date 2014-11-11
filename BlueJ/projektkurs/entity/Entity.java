@@ -51,13 +51,13 @@ public class Entity implements ICanUpdate {
 
 		boolean ret = true;
 
-		Entity e = Main.getSpielfeld().getEntityAt(x, y);
+		Entity e = Main.getLevel().getCurrMap().getEntityAt(x, y);
 		if (e != null) {
 			onCollideWith(e);
 			ret = false;
 		}
 
-		AbstractRaster r = Main.getSpielfeld().getRasterAt(x, y);
+		AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(x, y);
 		if (r != null) {
 			Direction d = Direction.getDirectionForOffset(x - posX, y - posY)
 					.getOpposite();

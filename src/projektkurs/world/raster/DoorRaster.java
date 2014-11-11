@@ -13,9 +13,10 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
-		((ExtraInformationDoor) Main.getSpielfeld().getExtraInformationAt(x, y))
-				.tryOpen(Main.getPlayer().getInventory().getSelectedItemStack());
-		return ((ExtraInformationDoor) Main.getSpielfeld()
+		((ExtraInformationDoor) Main.getLevel().getCurrMap()
+				.getExtraInformationAt(x, y)).tryOpen(Main.getPlayer()
+				.getInventory().getSelectedItemStack());
+		return ((ExtraInformationDoor) Main.getLevel().getCurrMap()
 				.getExtraInformationAt(x, y)).getIsOpen(dir);
 	}
 
@@ -26,13 +27,14 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
 	@Override
 	public void render(Graphics2D g, int x, int y) {
-		RenderUtil.drawDefaultRaster(g, ((ExtraInformationDoor) Main
-				.getSpielfeld().getExtraInformationAt(x, y)).getImage(), x, y);
+		RenderUtil.drawDefaultRaster(g, ((ExtraInformationDoor) Main.getLevel()
+				.getCurrMap().getExtraInformationAt(x, y)).getImage(), x, y);
 	}
 
 	@Override
 	public void renderCutScene(Graphics2D g, int x, int y) {
-		RenderUtil.drawCutSceneRaster(g, ((ExtraInformationDoor) Main
-				.getSpielfeld().getExtraInformationAt(x, y)).getImage(), x, y);
+		RenderUtil.drawCutSceneRaster(g,
+				((ExtraInformationDoor) Main.getLevel().getCurrMap()
+						.getExtraInformationAt(x, y)).getImage(), x, y);
 	}
 }

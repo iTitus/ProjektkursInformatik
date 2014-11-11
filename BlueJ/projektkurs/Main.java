@@ -11,14 +11,13 @@ import javax.swing.SwingUtilities;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
+import projektkurs.level.Level;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
-import projektkurs.render.GameCanvas;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
-import projektkurs.story.Storymanager;
 import projektkurs.thread.GameThread;
 import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
@@ -34,43 +33,15 @@ import projektkurs.world.Spielfeld;
  */
 public final class Main {
 
-	/**
-	 * Das Spielefenster
-	 */
-	public static class MainFrame extends JFrame {
-
-		private static final long serialVersionUID = 1L;
-
-		/**
-		 * Hauptkonstruktor
-		 */
-		public MainFrame() {
-			super(Strings.NAME);
-
-			JPanel panel = (JPanel) getContentPane();
-			panel.setLayout(null);
-			panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
-			panel.add(render.getGameCanvas());
-
-			setUndecorated(true);
-			setResizable(false);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			pack();
-
-		}
-
-	}
-
 	public static EntityPlayer player;
 	private static GameThread gameThread;
 	private static InputManager imgr;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
-	private static MainFrame mainFrame;
-	private static Spielfeld map;
+	private static Level level;
+	private static JFrame mainFrame;
 	private static LoopThread moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
-	private static Storymanager storyManager;
 
 	/**
 	 * Verlässt das Spiel
@@ -90,6 +61,10 @@ public final class Main {
 	 */
 	public static InputManager getInputManager() {
 		return imgr;
+	}
+
+	public static Level getLevel() {
+		return level;
 	}
 
 	/**
@@ -119,19 +94,6 @@ public final class Main {
 		return renderHelper;
 	}
 
-	/**
-	 * Gibt das aktuelle Spielfeld aus
-	 *
-	 * @return Spielfeld
-	 */
-	public static Spielfeld getSpielfeld() {
-		return map;
-	}
-
-	public static Storymanager getStoryManager() {
-		return storyManager;
-	}
-
 	public static int getUPS() {
 		return (gameThread != null ? gameThread.getUPS() : 0);
 	}
@@ -148,13 +110,13 @@ public final class Main {
 	 */
 	@Init
 	public static void initFields() {
-		storyManager = new Storymanager();
+		imgr = new InputManager();
 		player = new EntityPlayer(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
-		imgr = new InputManager();
-		map = new Spielfeld();
+		level = new Level("Level1", new Spielfeld());
+		level.GAPallMaps();
+		render = new Render();
 		renderHelper = new RenderHelper();
-		render = new Render(new GameCanvas());
 
 	}
 
@@ -196,6 +158,7 @@ public final class Main {
 			moveThread.pause(true);
 		if (gameThread != null)
 			gameThread.pause(true);
+		Sounds.pause(true);
 	}
 
 	/**
@@ -206,6 +169,7 @@ public final class Main {
 			moveThread.pause(false);
 		if (gameThread != null)
 			gameThread.pause(false);
+		Sounds.pause(false);
 	}
 
 	/**
@@ -282,7 +246,19 @@ public final class Main {
 
 			@Override
 			public void run() {
-				mainFrame = new MainFrame();
+				mainFrame = new JFrame(Strings.NAME + " v" + Strings.VERSION);
+
+				JPanel panel = (JPanel) mainFrame.getContentPane();
+				panel.setLayout(null);
+				panel.setPreferredSize(render.getGameCanvas()
+						.getPreferredSize());
+				panel.add(render.getGameCanvas());
+
+				mainFrame.setUndecorated(true);
+				mainFrame.setResizable(false);
+				mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				mainFrame.pack();
+
 				mainFrame.setVisible(true);
 				render.initBuffers();
 			}

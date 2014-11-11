@@ -90,7 +90,7 @@ public final class CutSceneManager {
 			currCutScene = cutScene;
 			currCutSceneRenderHelper = new CutsceneRenderHelper();
 			currCutSceneRender = new CutsceneRender();
-			currSpielfeld = Main.getSpielfeld().copy();
+			currSpielfeld = Main.getLevel().getCurrMap().copy();
 
 			cutSceneFrame = new CutSceneFrame();
 			cutSceneFrame.setVisible(true);
