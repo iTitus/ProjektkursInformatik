@@ -27,20 +27,6 @@ public abstract class AbstractRaster {
 	}
 
 	/**
-	 * Wenn mit der Maus auf das Raster geklickt wird
-	 *
-	 * @param x
-	 *            x-Koordinate des Rasters
-	 * @param y
-	 *            y-Koordinate des Rasters
-	 * @param button
-	 *            Der Mausknopf
-	 */
-	public void onClick(int x, int y, int button) {
-		Logger.info("Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
-	}
-
-	/**
 	 * @param entity
 	 */
 	public void onCollideWith(int x, int y, Entity entity) {
@@ -78,6 +64,28 @@ public abstract class AbstractRaster {
 	@Override
 	public String toString() {
 		return getClass().getSimpleName();
+	}
+
+	/**
+	 * Rechtsklick
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void onRightClick(int x, int y) {
+		Logger.info("Right-Clicked on Raster @{x=" + x + ", y=" + y + "}: "
+				+ this);
+	}
+
+	/**
+	 * Linksklick
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void onLeftClick(int x, int y) {
+		Logger.info("Left-Clicked on Raster @{x=" + x + ", y=" + y + "}: "
+				+ this);
 	}
 
 }

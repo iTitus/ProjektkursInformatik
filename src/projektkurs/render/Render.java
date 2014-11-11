@@ -115,6 +115,8 @@ public class Render {
 				}
 			}
 
+			Main.getGui().render(g);
+
 			g.dispose();
 			strategy.show();
 

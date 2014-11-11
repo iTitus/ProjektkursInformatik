@@ -13,7 +13,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 	private boolean isOpen;
 	private int openingKey;
 
-	public ExtraInformationDoor() {
+	public ExtraInformationDoor(int x, int y) {
+		super(x, y);
 		isOpen = false;
 		direction = Direction.UNKNOWN;
 		openingKey = 0;

@@ -13,7 +13,8 @@ public class ExtraInformationKiste extends ExtraInformation {
 	/**
 	 * Konstruktor
 	 */
-	public ExtraInformationKiste() {
+	public ExtraInformationKiste(int x, int y) {
+		super(x, y);
 		inventar = new Inventory(Integers.KISTENGROESSE);
 	}
 

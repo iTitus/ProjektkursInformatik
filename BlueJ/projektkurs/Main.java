@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import projektkurs.entity.EntityPlayer;
+import projektkurs.gui.Gui;
+import projektkurs.gui.GuiIngame;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.level.Level;
@@ -42,6 +44,8 @@ public final class Main {
 	private static LoopThread moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
+	private static Gui gui;
+	private static GuiIngame ingameGui;
 
 	/**
 	 * Verlässt das Spiel
@@ -117,7 +121,7 @@ public final class Main {
 		level.GAPallMaps();
 		render = new Render();
 		renderHelper = new RenderHelper();
-
+		gui = ingameGui = new GuiIngame();
 	}
 
 	/**
@@ -270,5 +274,27 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
+	}
+
+	/**
+	 * @return the gui
+	 */
+	public static Gui getGui() {
+		return gui;
+	}
+
+	/**
+	 * @param gui
+	 *            the gui to open
+	 */
+	public static void openGui(Gui gui) {
+		if (gui != null)
+			Main.gui = gui;
+		else
+			closeGui();
+	}
+
+	public static void closeGui() {
+		Main.gui = ingameGui;
 	}
 }

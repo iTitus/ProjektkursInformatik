@@ -10,6 +10,7 @@ import java.util.HashSet;
 import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
+import projektkurs.gui.GuiIngame;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Sounds;
@@ -101,8 +102,12 @@ public class InputManager implements KeyListener, MouseInputListener,
 
 		keysPressed.add(e.getKeyCode());
 
-		if (keysPressed.contains(KeyBindings.KEY_EXIT))
-			Main.exit();
+		if (keysPressed.contains(KeyBindings.KEY_EXIT)) {
+			if (Main.getGui() instanceof GuiIngame)
+				Main.exit();
+			else
+				Main.closeGui();
+		}
 
 	}
 
@@ -145,8 +150,13 @@ public class InputManager implements KeyListener, MouseInputListener,
 			rasterY--;
 		AbstractRaster r = Main.getLevel().getCurrMap()
 				.getRasterAt((int) rasterX, (int) rasterY);
-		if (r != null) {
-			r.onClick((int) rasterX, (int) rasterY, e.getButton());
+		if (r != null
+				&& Main.getRenderHelper().isInSight((int) rasterX,
+						(int) rasterY)) {
+			if (e.getButton() == RIGHT_MOUSE_BUTTON)
+				r.onRightClick((int) rasterX, (int) rasterY);
+			if (e.getButton() == LEFT_MOUSE_BUTTON)
+				r.onLeftClick((int) rasterX, (int) rasterY);
 		}
 
 	}
@@ -210,22 +220,26 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if (e.getWheelRotation() > 0) {
-			Main.getPlayer()
-					.getInventory()
-					.setSelectedItemStack(
-							Main.getPlayer().getInventory().getSelectedIndex() >= Main
-									.getPlayer().getInventory().getSize() ? 0
-									: Main.getPlayer().getInventory()
-											.getSelectedIndex() + 1);
-		} else if (e.getWheelRotation() < 0) {
-			Main.getPlayer()
-					.getInventory()
-					.setSelectedItemStack(
-							(Main.getPlayer().getInventory().getSelectedIndex() <= 0 ? Main
-									.getPlayer().getInventory().getSize() - 1
-									: Main.getPlayer().getInventory()
-											.getSelectedIndex() - 1));
+		if (Main.getGui() instanceof GuiIngame) {
+			if (e.getWheelRotation() > 0) {
+				Main.getPlayer()
+						.getInventory()
+						.setSelectedItemStack(
+								Main.getPlayer().getInventory()
+										.getSelectedIndex() >= Main.getPlayer()
+										.getInventory().getSize() ? 0 : Main
+										.getPlayer().getInventory()
+										.getSelectedIndex() + 1);
+			} else if (e.getWheelRotation() < 0) {
+				Main.getPlayer()
+						.getInventory()
+						.setSelectedItemStack(
+								(Main.getPlayer().getInventory()
+										.getSelectedIndex() <= 0 ? Main
+										.getPlayer().getInventory().getSize() - 1
+										: Main.getPlayer().getInventory()
+												.getSelectedIndex() - 1));
+			}
 		}
 	}
 
@@ -236,14 +250,16 @@ public class InputManager implements KeyListener, MouseInputListener,
 
 		moveDir = 0b0000;
 
-		if (keysPressed.contains(KeyBindings.KEY_UP))
-			moveDir |= 0b0001;
-		if (keysPressed.contains(KeyBindings.KEY_DOWN))
-			moveDir |= 0b0010;
-		if (keysPressed.contains(KeyBindings.KEY_LEFT))
-			moveDir |= 0b0100;
-		if (keysPressed.contains(KeyBindings.KEY_RIGHT))
-			moveDir |= 0b1000;
+		if (Main.getGui() instanceof GuiIngame) {
+			if (keysPressed.contains(KeyBindings.KEY_UP))
+				moveDir |= 0b0001;
+			if (keysPressed.contains(KeyBindings.KEY_DOWN))
+				moveDir |= 0b0010;
+			if (keysPressed.contains(KeyBindings.KEY_LEFT))
+				moveDir |= 0b0100;
+			if (keysPressed.contains(KeyBindings.KEY_RIGHT))
+				moveDir |= 0b1000;
+		}
 
 	}
 }

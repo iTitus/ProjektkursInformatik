@@ -22,7 +22,7 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
 	@Override
 	public ExtraInformation getExtraInformation(int x, int y) {
-		return new ExtraInformationDoor();
+		return new ExtraInformationDoor(x, y);
 	}
 
 	@Override
