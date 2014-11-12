@@ -15,8 +15,9 @@ public abstract class Gui {
 
 	private static final Color backgroundColor = new Color(127, 127, 127, 156);
 
-	public void render(Graphics2D g) {
-		// NO-OP
+	public void onKeyPressed(int key) {
+		if (key == KeyBindings.KEY_EXIT)
+			Main.closeGui();
 	}
 
 	public void onLeftClick(int x, int y) {
@@ -27,15 +28,16 @@ public abstract class Gui {
 		// NO-OP
 	}
 
-	public void onKeyPressed(int key) {
-		if (key == KeyBindings.KEY_EXIT)
-			Main.closeGui();
+	public void render(Graphics2D g) {
+		// NO-OP
 	}
 
 	protected void drawDefaultBackground(Graphics2D g) {
+		Color oldColor = g.getColor();
 		g.setColor(backgroundColor);
 		g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y,
 				Integers.SIGHT_X * Integers.RASTER_SIZE, Integers.SIGHT_Y
 						* Integers.RASTER_SIZE);
+		g.setColor(oldColor);
 	}
 }

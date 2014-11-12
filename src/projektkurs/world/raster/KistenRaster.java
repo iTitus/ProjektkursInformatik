@@ -1,7 +1,7 @@
 package projektkurs.world.raster;
 
 import projektkurs.Main;
-import projektkurs.gui.GuiKiste;
+import projektkurs.gui.GuiInventory;
 import projektkurs.lib.Images;
 import projektkurs.util.Direction;
 import projektkurs.world.raster.extra.ExtraInformation;
@@ -19,8 +19,8 @@ public class KistenRaster extends SolidRaster implements IHasExtraInformation {
 
 	@Override
 	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
-		Main.openGui(new GuiKiste((ExtraInformationKiste) Main.getLevel()
-				.getCurrMap().getExtraInformationAt(x, y)));
+		Main.openGui(new GuiInventory(((ExtraInformationKiste) Main.getLevel()
+				.getCurrMap().getExtraInformationAt(x, y)).getInventar()));
 		return super.canWalkOnFromDirection(x, y, dir);
 	}
 

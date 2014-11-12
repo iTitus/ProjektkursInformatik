@@ -37,15 +37,19 @@ public final class Main {
 
 	public static EntityPlayer player;
 	private static GameThread gameThread;
+	private static Gui gui;
 	private static InputManager imgr;
+	private static GuiIngame ingameGui;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
 	private static Level level;
 	private static JFrame mainFrame;
 	private static LoopThread moveThread;
 	private static Render render;
 	private static RenderHelper renderHelper;
-	private static Gui gui;
-	private static GuiIngame ingameGui;
+
+	public static void closeGui() {
+		Main.gui = ingameGui;
+	}
 
 	/**
 	 * Verlässt das Spiel
@@ -56,6 +60,13 @@ public final class Main {
 
 	public static int getFPS() {
 		return (gameThread != null ? gameThread.getFPS() : 0);
+	}
+
+	/**
+	 * @return the gui
+	 */
+	public static Gui getGui() {
+		return gui;
 	}
 
 	/**
@@ -119,7 +130,7 @@ public final class Main {
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		level = new Level("Level1", new Spielfeld(100, 100), new Spielfeld(10,
 				10));
-		level.GAPallMaps();
+		level.generateAndPopulateAll();
 		render = new Render();
 		renderHelper = new RenderHelper();
 		gui = ingameGui = new GuiIngame();
@@ -153,6 +164,17 @@ public final class Main {
 			exit();
 		}
 
+	}
+
+	/**
+	 * @param gui
+	 *            the gui to open
+	 */
+	public static void openGui(Gui gui) {
+		if (gui != null)
+			Main.gui = gui;
+		else
+			closeGui();
 	}
 
 	/**
@@ -275,27 +297,5 @@ public final class Main {
 
 		Logger.info("Finished loading!");
 
-	}
-
-	/**
-	 * @return the gui
-	 */
-	public static Gui getGui() {
-		return gui;
-	}
-
-	/**
-	 * @param gui
-	 *            the gui to open
-	 */
-	public static void openGui(Gui gui) {
-		if (gui != null)
-			Main.gui = gui;
-		else
-			closeGui();
-	}
-
-	public static void closeGui() {
-		Main.gui = ingameGui;
 	}
 }

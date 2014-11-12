@@ -12,7 +12,7 @@ public abstract class Trigger {
 	protected final Method m;
 	protected final Object[] objects;
 
-	protected Trigger(Method m, Object...objects) {
+	protected Trigger(Method m, Object... objects) {
 		this.m = m;
 		this.objects = objects;
 	}

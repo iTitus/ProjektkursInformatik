@@ -10,6 +10,9 @@ import projektkurs.story.cutscene.CutSceneOne;
 import projektkurs.util.I18n;
 import projektkurs.util.MathUtil;
 
+/**
+ * Diverse Skripte
+ */
 public class Scripts {
 
 	public static void cutSceneOne() {
@@ -27,15 +30,6 @@ public class Scripts {
 		Main.exit();
 	}
 
-	public static void win() {
-		Main.pause();
-		JOptionPane.showOptionDialog(null, I18n.getString("description.win"),
-				I18n.getString("description.win"), 0,
-				JOptionPane.ERROR_MESSAGE, new ImageIcon(Images.finish),
-				new Object[] { I18n.getString("button.exit") }, null);
-		Main.exit();
-	}
-
 	public static void switchMap(Integer i) {
 		Main.getLevel().setMap(i);
 		Main.getPlayer()
@@ -43,5 +37,14 @@ public class Scripts {
 						.getMapSizeX(), 2),
 						MathUtil.ceilDiv(Main.getLevel().getCurrMap()
 								.getMapSizeY(), 2));
+	}
+
+	public static void win() {
+		Main.pause();
+		JOptionPane.showOptionDialog(null, I18n.getString("description.win"),
+				I18n.getString("description.win"), 0,
+				JOptionPane.ERROR_MESSAGE, new ImageIcon(Images.finish),
+				new Object[] { I18n.getString("button.exit") }, null);
+		Main.exit();
 	}
 }

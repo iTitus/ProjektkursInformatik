@@ -1,6 +1,5 @@
 package projektkurs.world;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import projektkurs.Main;
@@ -9,7 +8,6 @@ import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNPC;
 import projektkurs.story.Storymanager;
 import projektkurs.util.Logger;
-import projektkurs.util.ReflectionUtil;
 import projektkurs.world.raster.AbstractRaster;
 import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.IHasExtraInformation;
@@ -19,16 +17,14 @@ import projektkurs.world.raster.extra.IHasExtraInformation;
  */
 public class Spielfeld implements Cloneable {
 
-	private final int sizeX;
-	private final int sizeY;
-
 	private final ArrayList<Entity> entities;
 
 	private final ExtraInformation[][] extras;
-
 	private final AbstractRaster[][] map;
 
-	private Storymanager storymanager;
+	private final int sizeX, sizeY;
+
+	private final Storymanager storymanager;
 
 	/**
      *
@@ -40,7 +36,6 @@ public class Spielfeld implements Cloneable {
 		extras = new ExtraInformation[sizeX][sizeY];
 		entities = new ArrayList<Entity>();
 		storymanager = new Storymanager();
-		// generateAndPopulateMap();
 	}
 
 	public Spielfeld copy() {
@@ -59,10 +54,6 @@ public class Spielfeld implements Cloneable {
 		if (e != null) {
 			getEntityList().remove(e);
 		}
-	}
-
-	public void generateAndPopulateMap(Method m) {
-		ReflectionUtil.invokeStatic(m, this);
 	}
 
 	/**

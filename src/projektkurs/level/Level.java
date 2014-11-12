@@ -5,12 +5,14 @@ import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.builder.MapBuilder;
 
+/**
+ * Ein Level
+ */
 public class Level {
 
 	private Spielfeld currMap;
-	private Spielfeld[] maps;
-
-	private String name;
+	private final Spielfeld[] maps;
+	private final String name;
 
 	/**
 	 * 
@@ -23,14 +25,14 @@ public class Level {
 		this.name = name;
 	}
 
-	public void GAPallMaps() {
-		String temp;
+	public void generateAndPopulateAll() {
+		String methodName;
 		for (int i = 0; i < maps.length; i++) {
-			temp = name;
-			temp += "generateAndPopulateMap";
-			temp += i;
-			maps[i].generateAndPopulateMap(ReflectionUtil.getMethod(
-					MapBuilder.class, temp, Spielfeld.class));
+			methodName = name;
+			methodName += "generateAndPopulateMap";
+			methodName += i;
+			ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(
+					MapBuilder.class, methodName, Spielfeld.class), maps[i]);
 		}
 	}
 
@@ -48,8 +50,10 @@ public class Level {
 	 * @return Map at i
 	 */
 	public Spielfeld getMapAt(int i) {
-		if (i < 0 || i >= maps.length)
+		if (i < 0 || i >= maps.length) {
 			Logger.warn("Unable to get map");
+			return null;
+		}
 		return maps[i];
 	}
 
@@ -58,8 +62,10 @@ public class Level {
 	 * @param i
 	 */
 	public void setMap(int i) {
-		if (i < 0 || i >= maps.length)
+		if (i < 0 || i >= maps.length) {
 			Logger.warn("Unable to set map");
+			return;
+		}
 		currMap = maps[i];
 	}
 }
