@@ -36,4 +36,13 @@ public class AnimationFrame {
 		return image;
 	}
 
+	public static AnimationFrame[] getSynchronousAnimation(
+			BufferedImage[] images, int frameTime) {
+		AnimationFrame[] frames = new AnimationFrame[images.length];
+		for (int i = 0; i < frames.length; i++) {
+			frames[i] = new AnimationFrame(images[i], frameTime);
+		}
+		return frames;
+	}
+
 }

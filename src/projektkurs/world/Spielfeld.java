@@ -213,12 +213,8 @@ public class Spielfeld implements Cloneable {
 	 * @param r
 	 */
 	public void setRasterAt(int x, int y, AbstractRaster r) {
-		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-			Logger.logThrowable("Failed to set Raster",
-					new ArrayIndexOutOfBoundsException(x + " or " + y
-							+ " are outside the map's border"));
+		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
-		}
 		map[x][y] = r;
 		if (r instanceof IHasExtraInformation)
 			extras[x][y] = ((IHasExtraInformation) r).getExtraInformation(x, y);

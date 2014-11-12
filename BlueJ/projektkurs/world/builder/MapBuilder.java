@@ -62,7 +62,7 @@ public class MapBuilder {
 		}
 
 		// Animation Test
-		map.setRasterAt(1, 1, Raster.testAnimation);
+		map.setRasterAt(1, 1, Raster.fire);
 
 		// TÜREN!
 		map.setRasterAt(20, 18, Raster.baum);
@@ -113,7 +113,7 @@ public class MapBuilder {
 		}
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
-		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke)));
+		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 42)));
 
 		// STORYMAGER!
 		map.getStorymanager().addTrigger(
@@ -131,7 +131,7 @@ public class MapBuilder {
 		// ANIMATIONS!
 		for (int x = 0; x < map.getMapSizeX(); x++) {
 			for (int y = 0; y < map.getMapSizeY(); y++)
-				map.setRasterAt(x, y, Raster.testAnimation);
+				map.setRasterAt(x, y, Raster.fire);
 		}
 
 		// WÄNDE!

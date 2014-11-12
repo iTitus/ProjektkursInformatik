@@ -49,6 +49,10 @@ public abstract class Entity implements ICanUpdate {
 
 	public boolean canMoveTo(int x, int y) {
 
+		if (x < 0 || x >= Main.getLevel().getCurrMap().getMapSizeX() || y < 0
+				|| y >= Main.getLevel().getCurrMap().getMapSizeY())
+			return false;
+
 		boolean ret = true;
 
 		Entity e = Main.getLevel().getCurrMap().getEntityAt(x, y);

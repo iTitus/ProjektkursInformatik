@@ -3,14 +3,13 @@ package projektkurs.world.raster;
 import java.util.HashMap;
 
 import projektkurs.lib.Images;
-import projektkurs.render.AnimationFrame;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 
 public final class Raster {
 
 	public static AbstractRaster baum, door, finish, kiste, rasen, wand,
-			testAnimation;
+			destroyedRaster, fire;
 	public static final HashMap<String, AbstractRaster> MAPPINGS = new HashMap<String, AbstractRaster>();
 
 	@Init(state = State.PRE)
@@ -33,11 +32,11 @@ public final class Raster {
 		finish = new FinishRaster();
 		MAPPINGS.put("finish", finish);
 
-		testAnimation = new AnimatedRaster(new AnimationFrame(Images.door_NS,
-				10), new AnimationFrame(Images.door_WE, 15),
-				new AnimationFrame(Images.door_open_WE, 20),
-				new AnimationFrame(Images.door_open_NS, 15));
-		MAPPINGS.put("testAnimation", testAnimation);
+		destroyedRaster = new SimpleRaster(Images.destroyedRaster);
+		MAPPINGS.put("destroyedRaster", destroyedRaster);
+
+		fire = new FireRaster();
+		MAPPINGS.put("fire", fire);
 
 	}
 
