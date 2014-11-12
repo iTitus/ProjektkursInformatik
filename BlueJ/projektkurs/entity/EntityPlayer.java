@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
 import projektkurs.inventory.PlayerInventory;
+import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 
 /**
@@ -53,4 +54,23 @@ public class EntityPlayer extends EntityLiving {
 			}
 		}
 	}
+
+	public void onLeftClick(int x, int y) {
+		ItemStack stack = inventar.getSelectedItemStack();
+		if (stack != null) {
+			stack.getItem().onLeftClick(this, stack);
+			if (stack.getStackSize() <= 0)
+				inventar.removeItemStack(inventar.getSelectedIndex());
+		}
+	}
+
+	public void onRightClick(int x, int y) {
+		ItemStack stack = inventar.getSelectedItemStack();
+		if (stack != null) {
+			stack.getItem().onRightClick(this, stack);
+			if (stack.getStackSize() <= 0)
+				inventar.removeItemStack(inventar.getSelectedIndex());
+		}
+	}
+
 }

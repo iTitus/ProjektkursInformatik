@@ -16,7 +16,7 @@ public final class Items {
 		item_42 = new BaseItem("42", Images.item_42);
 		MAPPINGS.put("42", item_42);
 
-		nuke = new BaseItem("nuke", Images.nuke);
+		nuke = new ItemNuke();
 		MAPPINGS.put("nuke", nuke);
 
 		key = new BaseItem("key", Images.key);

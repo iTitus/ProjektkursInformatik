@@ -36,12 +36,12 @@ import projektkurs.util.ReflectionUtil;
 public final class Main {
 
 	public static EntityPlayer player;
+	private static Level currLevel;
 	private static GameThread gameThread;
 	private static Gui gui;
 	private static InputManager imgr;
 	private static GuiIngame ingameGui;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
-	private static Level currLevel;
 	private static JFrame mainFrame;
 	private static LoopThread moveThread;
 	private static Render render;

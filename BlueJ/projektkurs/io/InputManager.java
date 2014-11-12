@@ -13,7 +13,6 @@ import projektkurs.Main;
 import projektkurs.gui.GuiIngame;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
-import projektkurs.lib.Sounds;
 import projektkurs.story.script.Scripts;
 import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
@@ -140,8 +139,6 @@ public class InputManager implements KeyListener, MouseInputListener,
 		if (Main.getGui() instanceof GuiIngame) {
 			if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
 				Scripts.cutSceneOne();
-			else if (e.getButton() == LEFT_MOUSE_BUTTON)
-				Sounds.test.playFromStart();
 
 			float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
 			if (rasterX < 0)
@@ -154,10 +151,14 @@ public class InputManager implements KeyListener, MouseInputListener,
 			if (r != null
 					&& Main.getRenderHelper().isInSight((int) rasterX,
 							(int) rasterY)) {
-				if (e.getButton() == RIGHT_MOUSE_BUTTON)
+				if (e.getButton() == RIGHT_MOUSE_BUTTON) {
+					Main.getPlayer().onRightClick((int) rasterX, (int) rasterY);
 					r.onRightClick((int) rasterX, (int) rasterY);
-				if (e.getButton() == LEFT_MOUSE_BUTTON)
+				}
+				if (e.getButton() == LEFT_MOUSE_BUTTON) {
+					Main.getPlayer().onLeftClick((int) rasterX, (int) rasterY);
 					r.onLeftClick((int) rasterX, (int) rasterY);
+				}
 			}
 		}
 

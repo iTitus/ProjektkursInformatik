@@ -8,7 +8,7 @@ public abstract class EntityLiving extends Entity {
 	private final int maxHealth;
 
 	public EntityLiving(int posX, int posY, BufferedImage image, int maxHealth) {
-		this(posX, posY, image.getWidth(), image.getHeight(), image, maxHealth);
+		this(posX, posY, 1, 1, image, maxHealth);
 	}
 
 	public EntityLiving(int posX, int posY, int sizeX, int sizeY,
@@ -17,22 +17,22 @@ public abstract class EntityLiving extends Entity {
 		this.maxHealth = health = maxHealth;
 	}
 
-	public int getHealth() {
-		return health;
-	}
-
-	public int getMaxHealth() {
-		return maxHealth;
-	}
-
 	public void damage(int by) {
-		health += by;
+		health -= by;
 		if (health > maxHealth)
 			health = maxHealth;
 		if (health < 0) {
 			health = 0;
 			setDead();
 		}
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
 	}
 
 }

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public abstract class EntityNPC extends EntityLiving {
 
 	public EntityNPC(int posX, int posY, BufferedImage image, int maxHealth) {
-		this(posX, posY, image.getWidth(), image.getHeight(), image, maxHealth);
+		this(posX, posY, 1, 1, image, maxHealth);
 	}
 
 	public EntityNPC(int posX, int posY, int sizeX, int sizeY,
