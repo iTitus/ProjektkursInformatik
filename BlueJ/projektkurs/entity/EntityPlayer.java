@@ -73,6 +73,7 @@ public class EntityPlayer extends EntityLiving {
 				inventar.removeItemStack(inventar.getSelectedIndex());
 		}
 	}
+
 	@Override
 	public void setDead() {
 		super.setDead();

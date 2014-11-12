@@ -15,6 +15,7 @@ public class AnimationFrame {
 		}
 		return frames;
 	}
+
 	private final int animationTime;
 
 	private final BufferedImage image;

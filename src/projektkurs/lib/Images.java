@@ -28,7 +28,8 @@ public class Images {
 	 */
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
 			redNPC, item_42, nuke, key, slot, slot_highlight, door_NS, door_WE,
-			door_open_NS, door_open_WE, finish, destroyedRaster, fire[], healthpotion;
+			door_open_NS, door_open_WE, finish, destroyedRaster, fire[],
+			healthpotion;
 
 	public static void flushAll() {
 		for (BufferedImage img : MAPPINGS.values()) {

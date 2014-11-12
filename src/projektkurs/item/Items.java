@@ -21,7 +21,7 @@ public final class Items {
 
 		key = new BaseItem("key", Images.key);
 		MAPPINGS.put("key", key);
-		
+
 		healthpotion = new ItemHealthPotion(100);
 		MAPPINGS.put("healthpotion", healthpotion);
 	}
