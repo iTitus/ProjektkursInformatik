@@ -8,7 +8,7 @@ import projektkurs.util.Init.State;
 
 public final class Items {
 
-	public static AbstractItem item_42, nuke, key;
+	public static AbstractItem item_42, nuke, key, healthpotion;
 	public static final HashMap<String, AbstractItem> MAPPINGS = new HashMap<String, AbstractItem>();
 
 	@Init(state = State.PRE)
@@ -21,6 +21,9 @@ public final class Items {
 
 		key = new BaseItem("key", Images.key);
 		MAPPINGS.put("key", key);
+		
+		healthpotion = new ItemHealthPotion(100);
+		MAPPINGS.put("healthpotion", healthpotion);
 	}
 
 	private Items() {

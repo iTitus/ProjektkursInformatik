@@ -28,7 +28,7 @@ public class Images {
 	 */
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
 			redNPC, item_42, nuke, key, slot, slot_highlight, door_NS, door_WE,
-			door_open_NS, door_open_WE, finish, destroyedRaster, fire[];
+			door_open_NS, door_open_WE, finish, destroyedRaster, fire[], healthpotion;
 
 	public static void flushAll() {
 		for (BufferedImage img : MAPPINGS.values()) {
@@ -80,14 +80,8 @@ public class Images {
 		for (int i = 0; i < fire.length; i++) {
 			MAPPINGS.put("fire_" + i, fire[i]);
 		}
-	}
-
-	private static BufferedImage[] loadImageArray(String name, int length) {
-		BufferedImage[] images = new BufferedImage[length];
-		for (int i = 0; i < images.length; i++) {
-			images[i] = loadImage(String.format(name, i));
-		}
-		return images;
+		healthpotion = loadImage("healthpotion.png");
+		MAPPINGS.put("healthpotion", healthpotion);
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
@@ -119,6 +113,14 @@ public class Images {
 			}
 		}
 		return img;
+	}
+
+	private static BufferedImage[] loadImageArray(String name, int length) {
+		BufferedImage[] images = new BufferedImage[length];
+		for (int i = 0; i < images.length; i++) {
+			images[i] = loadImage(String.format(name, i));
+		}
+		return images;
 	}
 
 	private static BufferedImage loadImageRotate90(String name) {

@@ -9,6 +9,7 @@ public final class Integers {
 
 	public static final int INVENTARGROESSE = 7;
 	public static final int KISTENGROESSE = 3;
+	public static final int NUKE_RADIUS = 2;
 	public static final int RASTER_SIZE = 32;
 	public static final int RPS = 5;
 	public static int SIGHT_X = (Toolkit.getDefaultToolkit().getScreenSize().width / Integers.RASTER_SIZE)
@@ -19,7 +20,6 @@ public final class Integers {
 	public static final int UPS = 60;
 	public static final int WINDOW_HUD_X = 34;
 	public static final int WINDOW_HUD_Y = 34;
-	public static final int NUKE_RADIUS = 2;
 	public static int WINDOW_X = RASTER_SIZE * SIGHT_X + 2 * WINDOW_HUD_X;
 	public static int WINDOW_Y = RASTER_SIZE * SIGHT_Y + 2 * WINDOW_HUD_Y;
 

@@ -21,7 +21,7 @@ public class Render {
 	/**
 	 * Das Spiel-Canvas
 	 */
-	private final Canvas canvas;
+	private Canvas canvas;
 	private Graphics2D g;
 	private BufferStrategy strategy;
 
@@ -30,16 +30,7 @@ public class Render {
 	 *
 	 */
 	public Render() {
-		this.canvas = new Canvas();
-		canvas.setIgnoreRepaint(true);
-		canvas.setBounds(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
-		canvas.addKeyListener(Main.getInputManager());
-		canvas.addMouseListener(Main.getInputManager());
-		canvas.addMouseMotionListener(Main.getInputManager());
-		canvas.addMouseWheelListener(Main.getInputManager());
-		canvas.setFocusable(true);
-		canvas.requestFocus();
-		canvas.requestFocusInWindow();
+		canvas = null;
 		strategy = null;
 		g = null;
 	}
@@ -54,6 +45,19 @@ public class Render {
 	 * @return Canvas
 	 */
 	public Canvas getGameCanvas() {
+		if (canvas != null) {
+			return canvas;
+		}
+		canvas = new Canvas();
+		canvas.setIgnoreRepaint(true);
+		canvas.setBounds(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+		canvas.addKeyListener(Main.getInputManager());
+		canvas.addMouseListener(Main.getInputManager());
+		canvas.addMouseMotionListener(Main.getInputManager());
+		canvas.addMouseWheelListener(Main.getInputManager());
+		canvas.setFocusable(true);
+		canvas.requestFocus();
+		canvas.requestFocusInWindow();
 		return canvas;
 	}
 
@@ -75,7 +79,8 @@ public class Render {
 
 			g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS()
 					+ " | x: " + Main.getPlayer().getPosX() + " - y: "
-					+ Main.getPlayer().getPosY(), Integers.WINDOW_HUD_X, 16);
+					+ Main.getPlayer().getPosY() + " | Health: "
+					+ Main.getPlayer().getHealth(), Integers.WINDOW_HUD_X, 16);
 
 			for (int x = 0; x < Integers.SIGHT_X; x++) {
 				for (int y = 0; y < Integers.SIGHT_Y; y++) {

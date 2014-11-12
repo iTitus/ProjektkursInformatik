@@ -62,12 +62,6 @@ public final class Sounds {
 				clip.loop(count);
 		}
 
-		public void play(int frames) {
-			if (clip != null)
-				clip.setFramePosition(frames);
-			play();
-		}
-
 		public void loopContinuosly() {
 			if (clip != null)
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -87,6 +81,12 @@ public final class Sounds {
 		public void play() {
 			if (clip != null)
 				clip.start();
+		}
+
+		public void play(int frames) {
+			if (clip != null)
+				clip.setFramePosition(frames);
+			play();
 		}
 
 		/**
@@ -115,9 +115,9 @@ public final class Sounds {
 
 	}
 
-	public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
+	public static Sound boom;
 
-	public static Sound test, boom;
+	public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
 
 	/**
 	 * Befreit alle Sounds
@@ -132,9 +132,6 @@ public final class Sounds {
 	 */
 	@Init(state = State.RESOURCES)
 	public static void init() {
-
-		test = new Sound("Test.wav");
-		MAPPINGS.put("test", test);
 
 		boom = new Sound("boom.wav");
 		MAPPINGS.put("boom", boom);

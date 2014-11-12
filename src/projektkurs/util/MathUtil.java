@@ -22,6 +22,14 @@ public final class MathUtil {
 		return ceil(a - b);
 	}
 
+	public static int signum(int i) {
+		if (i > 0)
+			return 1;
+		if (i < 0)
+			return -1;
+		return 0;
+	}
+
 	private MathUtil() {
 	}
 }

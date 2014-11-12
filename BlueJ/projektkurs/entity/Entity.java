@@ -9,6 +9,7 @@ import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.lib.Integers;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
+import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.world.raster.AbstractRaster;
 
@@ -17,9 +18,11 @@ import projektkurs.world.raster.AbstractRaster;
  */
 public abstract class Entity implements ICanUpdate {
 
+	private Direction facing;
 	private boolean shouldDeSpawn;
 	private final int sizeX, sizeY;
 	protected BufferedImage image;
+
 	protected int posX, posY;
 
 	/**
@@ -45,9 +48,13 @@ public abstract class Entity implements ICanUpdate {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		shouldDeSpawn = false;
+		facing = Direction.UNKNOWN;
 	}
 
 	public boolean canMoveTo(int x, int y) {
+
+		facing = Direction.getDirectionForOffset(MathUtil.signum(x - posX),
+				MathUtil.signum(y - posY));
 
 		if (x < 0 || x >= Main.getLevel().getCurrMap().getMapSizeX() || y < 0
 				|| y >= Main.getLevel().getCurrMap().getMapSizeY())
@@ -63,7 +70,8 @@ public abstract class Entity implements ICanUpdate {
 
 		AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(x, y);
 		if (r != null) {
-			Direction d = Direction.getDirectionForOffset(x - posX, y - posY)
+			Direction d = Direction.getDirectionForOffset(
+					MathUtil.signum(x - posX), MathUtil.signum(y - posY))
 					.getOpposite();
 			r.onCollideWith(x, y, this);
 			if (r.canWalkOnFromDirection(x, y, this, d) && ret) {
@@ -90,6 +98,10 @@ public abstract class Entity implements ICanUpdate {
 
 	public Rectangle getBounds() {
 		return new Rectangle(posX, posY, sizeX, sizeY);
+	}
+
+	public Direction getFacing() {
+		return facing;
 	}
 
 	/**

@@ -1,9 +1,11 @@
 package projektkurs.world.raster.extra;
 
+import projektkurs.util.ICanUpdate;
+
 /**
  * Tolle ExtraInformationen
  */
-public class ExtraInformation {
+public class ExtraInformation implements ICanUpdate {
 
 	protected final int x, y;
 
@@ -15,12 +17,22 @@ public class ExtraInformation {
 		this.y = y;
 	}
 
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
+
 	public int getX() {
 		return x;
 	}
 
 	public int getY() {
 		return y;
+	}
+
+	@Override
+	public void update() {
+		// NO-OP
 	}
 
 }

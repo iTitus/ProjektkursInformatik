@@ -6,6 +6,7 @@ import projektkurs.Main;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
+import projektkurs.story.script.Scripts;
 
 /**
  * Der Spieler
@@ -22,7 +23,7 @@ public class EntityPlayer extends EntityLiving {
 	 * @param image
 	 */
 	public EntityPlayer(int posX, int posY, BufferedImage image) {
-		super(posX, posY, image, 42);
+		super(posX, posY, image, 500);
 		inventar = new PlayerInventory(Integers.INVENTARGROESSE, 0);
 	}
 
@@ -71,6 +72,11 @@ public class EntityPlayer extends EntityLiving {
 			if (stack.getStackSize() <= 0)
 				inventar.removeItemStack(inventar.getSelectedIndex());
 		}
+	}
+	@Override
+	public void setDead() {
+		super.setDead();
+		Scripts.loose();
 	}
 
 }

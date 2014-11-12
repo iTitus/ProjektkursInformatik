@@ -27,8 +27,7 @@ public class Inventory {
 					stacks[i] = newStack;
 					return true;
 				} else if (stacks[i].itemAndDamageEquals(newStack)) {
-					stacks[i].setStackSize(stacks[i].getStackSize()
-							+ newStack.getStackSize());
+					stacks[i].changeStackSize(newStack.getStackSize());
 					return true;
 				}
 			}
@@ -86,7 +85,7 @@ public class Inventory {
 		ItemStack stack = getItemStackAt(index);
 
 		if (stack != null) {
-			stack.setStackSize(stack.getStackSize() - stackSize);
+			stack.changeStackSize(-stackSize);
 			if (stack.getStackSize() <= 0)
 				removeItemStack(index);
 			return true;
@@ -167,7 +166,7 @@ public class Inventory {
 		ItemStack stack = getItemStackAt(index);
 
 		if (stack != null) {
-			stack.setStackSize(stack.getStackSize() + stackSize);
+			stack.changeStackSize(stackSize);
 			return true;
 		}
 

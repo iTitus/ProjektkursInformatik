@@ -33,6 +33,10 @@ public class ItemStack {
 		this.damage = damage;
 	}
 
+	public void changeStackSize(int by) {
+		stackSize += by;
+	}
+
 	/**
 	 * Beschädigt den Stack um by
 	 *

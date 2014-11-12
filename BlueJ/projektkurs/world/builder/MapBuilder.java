@@ -114,6 +114,7 @@ public class MapBuilder {
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
 		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 42)));
+		map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthpotion, 42)));
 
 		// STORYMAGER!
 		map.getStorymanager().addTrigger(

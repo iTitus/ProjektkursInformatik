@@ -18,8 +18,8 @@ import projektkurs.world.raster.extra.IHasExtraInformation;
 public class Spielfeld implements Cloneable {
 
 	private final ArrayList<Entity> entities;
+	private final ArrayList<ExtraInformation> extras;
 
-	private final ExtraInformation[][] extras;
 	private final AbstractRaster[][] map;
 
 	private final int sizeX, sizeY;
@@ -33,7 +33,7 @@ public class Spielfeld implements Cloneable {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		map = new AbstractRaster[sizeX][sizeY];
-		extras = new ExtraInformation[sizeX][sizeY];
+		extras = new ArrayList<ExtraInformation>();
 		entities = new ArrayList<Entity>();
 		storymanager = new Storymanager();
 	}
@@ -91,7 +91,7 @@ public class Spielfeld implements Cloneable {
 	/**
      *
      */
-	public ArrayList<Entity> getEntityList() {
+	public synchronized ArrayList<Entity> getEntityList() {
 		return entities;
 	}
 
@@ -101,9 +101,17 @@ public class Spielfeld implements Cloneable {
 	 * @return
 	 */
 	public ExtraInformation getExtraInformationAt(int x, int y) {
-		if (x < 0 || x >= extras.length || y < 0 || y >= extras[x].length)
+		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return null;
-		return extras[x][y];
+		for (ExtraInformation extra : getExtraInformationList()) {
+			if (extra.getX() == x && extra.getY() == y)
+				return extra;
+		}
+		return null;
+	}
+
+	public synchronized ArrayList<ExtraInformation> getExtraInformationList() {
+		return extras;
 	}
 
 	/**
@@ -207,6 +215,10 @@ public class Spielfeld implements Cloneable {
 		return map[x][y] != null;
 	}
 
+	public void removeExtraInformation(ExtraInformation extra) {
+		getExtraInformationList().remove(extra);
+	}
+
 	/**
 	 * @param x
 	 * @param y
@@ -215,9 +227,13 @@ public class Spielfeld implements Cloneable {
 	public void setRasterAt(int x, int y, AbstractRaster r) {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
+		ExtraInformation extra = getExtraInformationAt(x, y);
+		if (extra != null)
+			removeExtraInformation(extra);
 		map[x][y] = r;
 		if (r instanceof IHasExtraInformation)
-			extras[x][y] = ((IHasExtraInformation) r).getExtraInformation(x, y);
+			getExtraInformationList().add(
+					((IHasExtraInformation) r).getExtraInformation(x, y));
 	}
 
 	/**
@@ -236,8 +252,12 @@ public class Spielfeld implements Cloneable {
 
 		Main.getPlayer().moveBy(Main.getInputManager().getNextDirection());
 
-		ArrayList<Entity> toRemove = new ArrayList<Entity>();
+		for (ExtraInformation extra : getExtraInformationList()) {
+			if (extra.canUpdate())
+				extra.update();
+		}
 
+		ArrayList<Entity> toRemove = new ArrayList<Entity>();
 		for (Entity e : getEntityList()) {
 			if (e != null) {
 				if (e.canUpdate())

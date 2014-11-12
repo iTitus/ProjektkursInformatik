@@ -250,19 +250,19 @@ public final class Main {
 		// Resources
 		init(State.RESOURCES);
 
-		// PreInit
-		// TODO: Load from disk
-		init(State.PRE);
-
 		Option.createAndShowGUI();
 
 		while (!Option.isFinished()) {
 			try {
 				Thread.sleep(100);
 			} catch (Throwable t) {
-				Logger.logThrowable("Could not wait for the options window", t);
+				Logger.logThrowable("Unable to wait for the options window", t);
 			}
 		}
+
+		// PreInit
+		// TODO: Load from disk
+		init(State.PRE);
 
 		// Init
 		init(State.INIT);
