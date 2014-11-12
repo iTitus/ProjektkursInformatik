@@ -15,7 +15,7 @@ import projektkurs.world.raster.AbstractRaster;
 /**
  * Ein Entity
  */
-public class Entity implements ICanUpdate {
+public abstract class Entity implements ICanUpdate {
 
 	private boolean shouldDeSpawn;
 	private final int sizeX, sizeY;
@@ -62,7 +62,7 @@ public class Entity implements ICanUpdate {
 			Direction d = Direction.getDirectionForOffset(x - posX, y - posY)
 					.getOpposite();
 			r.onCollideWith(x, y, this);
-			if (r.canWalkOnFromDirection(x, y, d) && ret) {
+			if (r.canWalkOnFromDirection(x, y, this, d) && ret) {
 				r.onWalkOnFromDirection(x, y, this, d);
 			} else {
 				ret = false;

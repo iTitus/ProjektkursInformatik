@@ -9,7 +9,7 @@ import projektkurs.lib.Integers;
 /**
  * Der Spieler
  */
-public class EntityPlayer extends Entity {
+public class EntityPlayer extends EntityLiving {
 
 	private final PlayerInventory inventar;
 
@@ -21,7 +21,7 @@ public class EntityPlayer extends Entity {
 	 * @param image
 	 */
 	public EntityPlayer(int posX, int posY, BufferedImage image) {
-		super(posX, posY, image);
+		super(posX, posY, image, 42);
 		inventar = new PlayerInventory(Integers.INVENTARGROESSE, 0);
 	}
 

@@ -74,7 +74,7 @@ public class Render {
 			g.setColor(Color.BLACK);
 
 			g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS()
-					+ " - x: " + Main.getPlayer().getPosX() + " - z: "
+					+ " | x: " + Main.getPlayer().getPosX() + " - y: "
 					+ Main.getPlayer().getPosY(), Integers.WINDOW_HUD_X, 16);
 
 			for (int x = 0; x < Integers.SIGHT_X; x++) {

@@ -9,7 +9,7 @@ import projektkurs.item.ItemStack;
 import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
-import projektkurs.story.scripts.Scripts;
+import projektkurs.story.script.Scripts;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryTrigger;
@@ -106,7 +106,11 @@ public class MapBuilder {
 
 		// ENTITIES!
 		map.spawn(Main.getPlayer());
-		map.spawn(new EntityRedNPC(1, 1, Images.redNPC));
+		for (int x = 0; x < 3; x++) {
+			map.spawn(new EntityRedNPC(
+					MathUtil.ceilMul(Math.random(), 20) + 10, MathUtil.ceilMul(
+							Math.random(), 20) + 10, Images.redNPC));
+		}
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
 		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke)));
@@ -147,5 +151,26 @@ public class MapBuilder {
 		map.getStorymanager().addTrigger(
 				new PosTrigger(ReflectionUtil.getMethod(Scripts.class,
 						"switchMap", Integer.class), 8, 8, 0));
+	}
+
+	public static void Level2generateAndPopulateMap0(Spielfeld map) {
+
+		for (int x = 0; x < map.getMapSizeX(); x++) {
+			for (int y = 0; y < map.getMapSizeY(); y++)
+				map.setRasterAt(x, y, Raster.rasen);
+		}
+
+		// WÄNDE!
+		for (int x = 0; x < map.getMapSizeX(); x++) {
+			map.setRasterAt(x, 0, Raster.wand);
+			map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+		}
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+			map.setRasterAt(0, y, Raster.wand);
+			map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+		}
+
+		// ENTITIES!
+		map.spawn(Main.getPlayer());
 	}
 }

@@ -14,7 +14,7 @@ import projektkurs.gui.GuiIngame;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Sounds;
-import projektkurs.story.scripts.Scripts;
+import projektkurs.story.script.Scripts;
 import projektkurs.util.Direction;
 import projektkurs.world.raster.AbstractRaster;
 

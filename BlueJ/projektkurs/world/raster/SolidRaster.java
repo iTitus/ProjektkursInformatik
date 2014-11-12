@@ -2,6 +2,7 @@ package projektkurs.world.raster;
 
 import java.awt.image.BufferedImage;
 
+import projektkurs.entity.Entity;
 import projektkurs.util.Direction;
 
 /**
@@ -14,7 +15,8 @@ public class SolidRaster extends SimpleRaster {
 	}
 
 	@Override
-	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
+	public boolean canWalkOnFromDirection(int x, int y, Entity entity,
+			Direction dir) {
 		return false;
 	}
 

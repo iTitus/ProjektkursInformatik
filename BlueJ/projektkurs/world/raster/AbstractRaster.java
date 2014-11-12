@@ -18,11 +18,14 @@ public abstract class AbstractRaster {
 	 *            x-Koordinate des Rasters
 	 * @param y
 	 *            xy-Koordinate des Rasters
+	 * @param entity
+	 *            Entity
 	 * @param dir
 	 *            Richtung, aus der das 'Etwas' kommt
 	 * @return true, wenn ja
 	 */
-	public boolean canWalkOnFromDirection(int x, int y, Direction dir) {
+	public boolean canWalkOnFromDirection(int x, int y, Entity entity,
+			Direction dir) {
 		return true;
 	}
 

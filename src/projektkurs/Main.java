@@ -14,6 +14,7 @@ import projektkurs.gui.GuiIngame;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.level.Level;
+import projektkurs.level.Levels;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sounds;
@@ -28,7 +29,6 @@ import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
-import projektkurs.world.Spielfeld;
 
 /**
  * Die Hauptklasse
@@ -36,12 +36,12 @@ import projektkurs.world.Spielfeld;
 public final class Main {
 
 	public static EntityPlayer player;
+	private static Level currLevel;
 	private static GameThread gameThread;
 	private static Gui gui;
 	private static InputManager imgr;
 	private static GuiIngame ingameGui;
 	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
-	private static Level level;
 	private static JFrame mainFrame;
 	private static LoopThread moveThread;
 	private static Render render;
@@ -79,7 +79,7 @@ public final class Main {
 	}
 
 	public static Level getLevel() {
-		return level;
+		return currLevel;
 	}
 
 	/**
@@ -123,14 +123,12 @@ public final class Main {
 	/**
 	 * Interne Methode um alle Felder(Variablen) zu initialisieren
 	 */
-	@Init
+	@Init(state = State.PRE)
 	public static void initFields() {
 		imgr = new InputManager();
 		player = new EntityPlayer(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
 				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
-		level = new Level("Level1", new Spielfeld(100, 100), new Spielfeld(10,
-				10));
-		level.generateAndPopulateAll();
+		currLevel = Levels.level1;
 		render = new Render();
 		renderHelper = new RenderHelper();
 		gui = ingameGui = new GuiIngame();

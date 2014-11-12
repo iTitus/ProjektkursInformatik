@@ -1,4 +1,4 @@
-package projektkurs.story.scripts;
+package projektkurs.story.script;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
