@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviours;
+import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.util.Direction;
@@ -21,12 +22,15 @@ import projektkurs.world.raster.AbstractRaster;
 public abstract class Entity implements ICanUpdate {
 
 	private Direction facing;
+	private BufferedImage image;
 	private boolean shouldDeSpawn;
 	private int sizeX;
 	private int sizeY;
-	protected BufferedImage image;
 
 	protected int posX, posY;
+
+	public Entity() {
+	}
 
 	/**
 	 * @param posX
@@ -187,6 +191,9 @@ public abstract class Entity implements ICanUpdate {
 		posY = data.getInteger(Strings.ENTITY_Y);
 		sizeX = data.getInteger(Strings.ENTITY_SIZE_X);
 		sizeY = data.getInteger(Strings.ENTITY_SIZE_Y);
+		shouldDeSpawn = data.getBoolean(Strings.ENTITY_DESPAWN);
+		facing = Direction.values()[data.getInteger(Strings.ENTITY_FACING)];
+		image = Images.MAPPINGS.get(data.getString(Strings.ENTITY_IMAGE));
 	}
 
 	/**
@@ -258,6 +265,9 @@ public abstract class Entity implements ICanUpdate {
 		data.set(Strings.ENTITY_Y, posY);
 		data.set(Strings.ENTITY_SIZE_X, sizeX);
 		data.set(Strings.ENTITY_SIZE_Y, sizeY);
+		data.set(Strings.ENTITY_DESPAWN, shouldDeSpawn);
+		data.set(Strings.ENTITY_FACING, facing.ordinal());
+		data.set(Strings.ENTITY_IMAGE, Images.BACK_MAPPINGS.get(image));
 	}
 
 }

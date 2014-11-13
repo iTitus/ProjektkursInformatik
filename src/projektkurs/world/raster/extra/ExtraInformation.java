@@ -5,7 +5,7 @@ import projektkurs.util.ICanUpdate;
 import projektkurs.util.SaveData;
 
 /**
- * Tolle ExtraInformationen
+ * ExtraInformationen
  */
 public class ExtraInformation implements ICanUpdate {
 

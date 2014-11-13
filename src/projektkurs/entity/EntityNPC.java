@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 
 public abstract class EntityNPC extends EntityLiving {
 
+	public EntityNPC() {
+		super();
+	}
+
 	public EntityNPC(int posX, int posY, BufferedImage image, int maxHealth) {
 		this(posX, posY, 1, 1, image, maxHealth);
 	}

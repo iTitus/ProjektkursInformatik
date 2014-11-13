@@ -2,10 +2,17 @@ package projektkurs.entity;
 
 import java.awt.image.BufferedImage;
 
+import projektkurs.lib.Strings;
+import projektkurs.util.SaveData;
+
 public abstract class EntityLiving extends Entity {
 
 	private int health;
-	private final int maxHealth;
+	private int maxHealth;
+
+	public EntityLiving() {
+		super();
+	}
 
 	public EntityLiving(int posX, int posY, BufferedImage image, int maxHealth) {
 		this(posX, posY, 1, 1, image, maxHealth);
@@ -33,6 +40,20 @@ public abstract class EntityLiving extends Entity {
 
 	public int getMaxHealth() {
 		return maxHealth;
+	}
+
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		health = data.getInteger(Strings.ENTITY_HEALTH);
+		maxHealth = data.getInteger(Strings.ENTITY_MAX_HEALTH);
+	}
+
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set(Strings.ENTITY_HEALTH, health);
+		data.set(Strings.ENTITY_MAX_HEALTH, health);
 	}
 
 }
