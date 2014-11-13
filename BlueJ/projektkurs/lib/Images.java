@@ -18,6 +18,7 @@ import projektkurs.util.Logger;
  */
 public class Images {
 
+	public static final HashMap<BufferedImage, String> BACK_MAPPINGS = new HashMap<BufferedImage, String>();
 	/**
 	 * Userauswahl
 	 */
@@ -44,50 +45,66 @@ public class Images {
 	@Init(state = State.RESOURCES)
 	public static void init() {
 		charakter = defaultCharakter = loadImage("charakter.png");
-		MAPPINGS.put("defaultCharakter", defaultCharakter);
+		registerImage("defaultCharakter", defaultCharakter);
+
 		redNPC = loadImage("redNPC.png");
-		MAPPINGS.put("redNPC", redNPC);
+		registerImage("redNPC", redNPC);
+
 		rasen = loadImage("rasen.png");
-		MAPPINGS.put("rasen", rasen);
+		registerImage("rasen", rasen);
+
 		wand = loadImage("wand.png");
-		MAPPINGS.put("wand", wand);
+		registerImage("wand", wand);
+
 		baum = loadImage("baum.png");
-		MAPPINGS.put("baum", baum);
+		registerImage("baum", baum);
+
 		kiste = loadImage("kiste.png");
-		MAPPINGS.put("kiste", kiste);
+		registerImage("kiste", kiste);
+
 		item_42 = loadImage("item_42.png");
-		MAPPINGS.put("item_42", item_42);
+		registerImage("item_42", item_42);
+
 		nuke = loadImage("nuke.png");
-		MAPPINGS.put("nuke", nuke);
+		registerImage("nuke", nuke);
+
 		key = loadImage("key.png");
-		MAPPINGS.put("key", key);
+		registerImage("key", key);
+
 		slot = loadImage("slot.png");
-		MAPPINGS.put("slot", slot);
+		registerImage("slot", slot);
+
 		slot_highlight = loadImage("slot_highlight.png");
-		MAPPINGS.put("slot_highlight", slot_highlight);
+		registerImage("slot_highlight", slot_highlight);
+
 		door_NS = loadImage("door.png");
-		MAPPINGS.put("door_NS", door_NS);
+		registerImage("door_NS", door_NS);
+
 		door_WE = loadImageRotate90("door.png");
-		MAPPINGS.put("door_WE", door_WE);
+		registerImage("door_WE", door_WE);
+
 		door_open_NS = loadImage("door_open.png");
-		MAPPINGS.put("door_open_NS", door_open_NS);
+		registerImage("door_open_NS", door_open_NS);
+
 		door_open_WE = loadImageRotate90("door_open.png");
-		MAPPINGS.put("door_open_WE", door_open_WE);
+		registerImage("door_open_WE", door_open_WE);
+
 		finish = loadImage("finish.png");
-		MAPPINGS.put("finish", finish);
+		registerImage("finish", finish);
+
 		destroyedRaster = loadImage("destroyed.png");
-		MAPPINGS.put("destroyedRaster", destroyedRaster);
+		registerImage("destroyedRaster", destroyedRaster);
+
 		fire = loadImageArray("fire_%d.png", 4);
-		for (int i = 0; i < fire.length; i++) {
-			MAPPINGS.put("fire_" + i, fire[i]);
-		}
+		for (int i = 0; i < fire.length; i++)
+			registerImage("fire_" + i, fire[i]);
+
 		healthpotion = loadImage("healthpotion.png");
-		MAPPINGS.put("healthpotion", healthpotion);
+		registerImage("healthpotion", healthpotion);
 	}
 
 	public static void setCharakterImage(BufferedImage img) {
 		charakter = img;
-
 	}
 
 	/**
@@ -135,5 +152,10 @@ public class Images {
 			return rotated;
 		}
 		return null;
+	}
+
+	private static void registerImage(String name, BufferedImage image) {
+		MAPPINGS.put(name, image);
+		BACK_MAPPINGS.put(image, name);
 	}
 }

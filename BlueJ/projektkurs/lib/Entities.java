@@ -28,17 +28,17 @@ public final class Entities {
 		Entity e = ReflectionUtil.newInstance(MAPPINGS.get(data
 				.getString(Strings.ENTITY_ID)));
 
-		if (e != null) {
+		try {
 			e.load(data);
-		} else {
-			Logger.warn("Unable to load Entity");
+		} catch (Throwable t) {
+			Logger.warn("Unable to load Entity from " + data, t);
 		}
 		return e;
 	}
 
 	public static SaveData writeEntity(Entity e) {
 		SaveData data = new SaveData();
-		data.set("id", BACK_MAPPINGS.get(e.getClass()));
+		data.set(Strings.ENTITY_ID, BACK_MAPPINGS.get(e.getClass()));
 		e.write(data);
 		return data;
 	}

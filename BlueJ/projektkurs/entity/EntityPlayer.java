@@ -6,17 +6,23 @@ import projektkurs.Main;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Strings;
 import projektkurs.story.script.Scripts;
+import projektkurs.util.SaveData;
 
 /**
  * Der Spieler
  */
 public class EntityPlayer extends EntityLiving {
 
-	private final PlayerInventory inventar;
+	private PlayerInventory inventar;
+
+	public EntityPlayer() {
+		super();
+	}
 
 	/**
-	 * Konstruktor für Figuren
+	 * Konstruktor für einen Spieler
 	 *
 	 * @param posX
 	 * @param posY
@@ -34,6 +40,12 @@ public class EntityPlayer extends EntityLiving {
 	 */
 	public PlayerInventory getInventory() {
 		return inventar;
+	}
+
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		inventar = PlayerInventory.load(data.getSaveData(Strings.ENTITY_INV));
 	}
 
 	@Override
@@ -78,6 +90,12 @@ public class EntityPlayer extends EntityLiving {
 	public void setDead() {
 		super.setDead();
 		Scripts.loose();
+	}
+
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set(Strings.ENTITY_INV, inventar.write());
 	}
 
 }

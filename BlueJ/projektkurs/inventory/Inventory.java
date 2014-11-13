@@ -28,7 +28,7 @@ public class Inventory {
 		stacks = new ItemStack[size];
 	}
 
-	private Inventory() {
+	protected Inventory() {
 	}
 
 	/**

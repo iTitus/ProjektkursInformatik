@@ -2,12 +2,29 @@ package projektkurs.inventory;
 
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Strings;
 import projektkurs.util.MathUtil;
+import projektkurs.util.SaveData;
 
 /**
  * Das Spielerinventar
  */
 public class PlayerInventory extends Inventory {
+
+	public static PlayerInventory load(SaveData data) {
+		PlayerInventory inv = new PlayerInventory();
+
+		inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
+
+		for (int i = 0; i < inv.stacks.length; i++) {
+			inv.setItemStackInSlot(i,
+					ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
+		}
+
+		inv.setSelectedItemStack(data.getInteger(Strings.INV_SELECTED));
+
+		return inv;
+	}
 
 	private int selectedItemStack;
 
@@ -25,6 +42,10 @@ public class PlayerInventory extends Inventory {
 	public PlayerInventory(int size, int selectedItemStack) {
 		super(size);
 		this.selectedItemStack = selectedItemStack;
+	}
+
+	private PlayerInventory() {
+		super();
 	}
 
 	/**
@@ -82,4 +103,10 @@ public class PlayerInventory extends Inventory {
 			selectedItemStack = index;
 	}
 
+	@Override
+	public SaveData write() {
+		SaveData data = super.write();
+		data.set(Strings.INV_SELECTED, selectedItemStack);
+		return data;
+	}
 }
