@@ -17,7 +17,7 @@ public final class Integers {
 	public static int SIGHT_Y = (Toolkit.getDefaultToolkit().getScreenSize().height / Integers.RASTER_SIZE)
 			- ((2 * Integers.WINDOW_HUD_Y) / Integers.RASTER_SIZE) - 1;
 	public static final int SLOT_SIZE = Integers.RASTER_SIZE + 2;
-	public static final int UPS = 60;
+	public static final int UPS = 20;
 	public static final int WINDOW_HUD_X = 34;
 	public static final int WINDOW_HUD_Y = 34;
 	public static int WINDOW_X = RASTER_SIZE * SIGHT_X + 2 * WINDOW_HUD_X;

@@ -5,10 +5,12 @@ import java.util.Random;
 import projektkurs.Main;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.item.Items;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Items;
+import projektkurs.lib.Raster;
 import projektkurs.story.script.Scripts;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
@@ -19,7 +21,7 @@ import projektkurs.util.Direction;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
-import projektkurs.world.raster.Raster;
+import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationDoor;
 import projektkurs.world.raster.extra.ExtraInformationKiste;
 
@@ -75,31 +77,30 @@ public class MapBuilder {
 		map.setRasterAt(24, 21, Raster.baum);
 		map.setRasterAt(24, 22, Raster.baum);
 		map.setRasterAt(20, 19, Raster.baum);
-		map.setRasterAt(20, 20, Raster.door);
 		map.setRasterAt(20, 21, Raster.baum);
 		map.setRasterAt(20, 22, Raster.baum);
 		map.setRasterAt(21, 22, Raster.baum);
 		map.setRasterAt(22, 22, Raster.baum);
 		map.setRasterAt(23, 22, Raster.baum);
 		map.setRasterAt(22, 20, Raster.finish);
-		((ExtraInformationDoor) map.getExtraInformationAt(20, 20))
-				.setDirection(Direction.LEFT);
-		((ExtraInformationDoor) map.getExtraInformationAt(20, 20))
-				.setOpeningKey(1000);
+		map.setRasterAt(20, 20, Raster.door);
+		ExtraInformationDoor door = (ExtraInformationDoor) map
+				.getExtraInformationAt(20, 20);
+		door.setDirection(Direction.LEFT);
+		door.setOpeningKey(1000);
 
 		// KISTENINHALTE!
+		Inventory inv = new Inventory(Integers.KISTENGROESSE);
+		inv.addItemStack(new ItemStack(Items.item_42, 42));
+		inv.addItemStack(new ItemStack(Items.nuke));
+		inv.addItemStack(new ItemStack(Items.key));
+
+		ExtraInformation extra;
 		for (int x = 0; x < map.getMapSizeX(); x++) {
 			for (int y = 0; y < map.getMapSizeY(); y++) {
-				if (map.getExtraInformationAt(x, y) instanceof ExtraInformationKiste) {
-					((ExtraInformationKiste) map.getExtraInformationAt(x, y))
-							.getInventar().addItemStack(
-									new ItemStack(Items.item_42, 42));
-					((ExtraInformationKiste) map.getExtraInformationAt(x, y))
-							.getInventar().addItemStack(
-									new ItemStack(Items.nuke));
-					((ExtraInformationKiste) map.getExtraInformationAt(x, y))
-							.getInventar().addItemStack(
-									new ItemStack(Items.key));
+				extra = map.getExtraInformationAt(x, y);
+				if (extra instanceof ExtraInformationKiste) {
+					((ExtraInformationKiste) extra).setInventar(inv);
 				}
 			}
 		}
@@ -114,7 +115,7 @@ public class MapBuilder {
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
 		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 42)));
-		map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthpotion, 42)));
+		map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 42)));
 
 		// STORYMAGER!
 		map.getStorymanager().addTrigger(

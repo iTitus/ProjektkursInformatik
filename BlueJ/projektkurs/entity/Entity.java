@@ -7,10 +7,12 @@ import java.awt.image.BufferedImage;
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Strings;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
+import projektkurs.util.SaveData;
 import projektkurs.world.raster.AbstractRaster;
 
 /**
@@ -20,7 +22,8 @@ public abstract class Entity implements ICanUpdate {
 
 	private Direction facing;
 	private boolean shouldDeSpawn;
-	private final int sizeX, sizeY;
+	private int sizeX;
+	private int sizeY;
 	protected BufferedImage image;
 
 	protected int posX, posY;
@@ -179,6 +182,13 @@ public abstract class Entity implements ICanUpdate {
 						(this.posY + this.sizeY))));
 	}
 
+	public void load(SaveData data) {
+		posX = data.getInteger(Strings.ENTITY_X);
+		posY = data.getInteger(Strings.ENTITY_Y);
+		sizeX = data.getInteger(Strings.ENTITY_SIZE_X);
+		sizeY = data.getInteger(Strings.ENTITY_SIZE_Y);
+	}
+
 	/**
 	 * @param dir
 	 */
@@ -241,6 +251,13 @@ public abstract class Entity implements ICanUpdate {
 	@Override
 	public void update() {
 		getBehaviour().getBehaviour().onTick(this);
+	}
+
+	public void write(SaveData data) {
+		data.set(Strings.ENTITY_X, posX);
+		data.set(Strings.ENTITY_Y, posY);
+		data.set(Strings.ENTITY_SIZE_X, sizeX);
+		data.set(Strings.ENTITY_SIZE_Y, sizeY);
 	}
 
 }

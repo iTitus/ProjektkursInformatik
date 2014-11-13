@@ -8,8 +8,8 @@ import projektkurs.entity.EntityLiving;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
-import projektkurs.world.raster.Raster;
 
 public class ItemNuke extends BaseItem {
 

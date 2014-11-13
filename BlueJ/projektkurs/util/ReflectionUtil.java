@@ -14,6 +14,13 @@ import java.util.zip.ZipFile;
  */
 public class ReflectionUtil {
 
+	/**
+	 * 
+	 * @param classes
+	 * @param annotationClass
+	 * @param modifiers
+	 * @return
+	 */
 	public static ArrayList<Method> getAllMethodsInClassesWithAnnotation(
 			ArrayList<Class<?>> classes,
 			Class<? extends Annotation> annotationClass, int... modifiers) {
@@ -25,6 +32,11 @@ public class ReflectionUtil {
 		return methods;
 	}
 
+	/**
+	 * 
+	 * @param packageName
+	 * @return
+	 */
 	public static ArrayList<Class<?>> getClasses(String packageName) {
 		ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
 		for (String path : getPathesFromClasspath()) {
@@ -39,6 +51,12 @@ public class ReflectionUtil {
 		return classes;
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 * @param packageName
+	 * @return
+	 */
 	public static ArrayList<Class<?>> getClassesFromDir(File dir,
 			String packageName) {
 		if (packageName == null)
@@ -52,6 +70,12 @@ public class ReflectionUtil {
 		return classes;
 	}
 
+	/**
+	 * 
+	 * @param jarFile
+	 * @param packageName
+	 * @return
+	 */
 	public static ArrayList<Class<?>> getClassesFromJar(File jarFile,
 			String packageName) {
 		if (packageName == null)
@@ -101,6 +125,13 @@ public class ReflectionUtil {
 		}
 	}
 
+	/**
+	 * 
+	 * @param cls
+	 * @param annotationClass
+	 * @param modifiers
+	 * @return
+	 */
 	public static ArrayList<Method> getMethodsInClassWithAnnotation(
 			Class<?> cls, Class<? extends Annotation> annotationClass,
 			int... modifiers) {
@@ -114,6 +145,10 @@ public class ReflectionUtil {
 		return methods;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<String> getPathesFromClasspath() {
 		String classpath = System.getProperty("java.class.path");
 		String pathseparator = System.getProperty("path.separator");
@@ -126,6 +161,12 @@ public class ReflectionUtil {
 		return pathes;
 	}
 
+	/**
+	 * 
+	 * @param m
+	 * @param modifiers
+	 * @return
+	 */
 	public static boolean hasAllModifiers(Method m, int... modifiers) {
 		boolean ret = true;
 		for (int mod : modifiers) {
@@ -136,11 +177,38 @@ public class ReflectionUtil {
 	}
 
 	/**
+	 * 
+	 * @param o
+	 * @param m
+	 * @param args
+	 */
+	public static void invoke(Object o, Method m, Object... args) {
+		try {
+			m.invoke(o, args);
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to invoke method '" + m + "'", t);
+		}
+	}
+
+	/**
+	 * @param m
+	 * @param args
+	 */
+	public static void invokeStatic(Method m, Object... args) {
+		try {
+			m.invoke(null, args);
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to invoke method '" + m + "'", t);
+		}
+	}
+
+	/**
+	 * 
 	 * @param m
 	 * @param args
 	 * @return
 	 */
-	public static Object invokeStatic(Method m, Object... args) {
+	public static Object invokeStaticWithReturn(Method m, Object... args) {
 		try {
 			return m.invoke(null, args);
 		} catch (Throwable t) {
@@ -149,6 +217,43 @@ public class ReflectionUtil {
 		}
 	}
 
+	/**
+	 * 
+	 * @param o
+	 * @param m
+	 * @param args
+	 * @return
+	 */
+	public static Object invokeWithReturn(Object o, Method m, Object... args) {
+		try {
+			return m.invoke(o, args);
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to invoke method '" + m + "'", t);
+			return null;
+		}
+	}
+
+	/**
+	 * 
+	 * @param cls
+	 * @return
+	 */
+	public static <T> T newInstance(Class<T> cls) {
+		try {
+			return cls.newInstance();
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to instantiate class '" + cls + "'", t);
+			return null;
+		}
+	}
+
+	/**
+	 * 
+	 * @param first
+	 * @param fileOrDir
+	 * @param packageName
+	 * @param classes
+	 */
 	private static void getClassesFromFileOrDirIntern(boolean first,
 			File fileOrDir, String packageName, ArrayList<Class<?>> classes) {
 		if (fileOrDir.isDirectory()) {

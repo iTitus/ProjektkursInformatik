@@ -3,9 +3,11 @@ package projektkurs.world.raster.extra;
 import java.awt.image.BufferedImage;
 
 import projektkurs.item.ItemStack;
-import projektkurs.item.Items;
 import projektkurs.lib.Images;
+import projektkurs.lib.Items;
+import projektkurs.lib.Strings;
 import projektkurs.util.Direction;
+import projektkurs.util.SaveData;
 
 public class ExtraInformationDoor extends ExtraInformation {
 
@@ -13,11 +15,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 	private boolean isOpen;
 	private int openingKey;
 
-	public ExtraInformationDoor(int x, int y) {
-		super(x, y);
-		isOpen = false;
+	public ExtraInformationDoor() {
 		direction = Direction.UNKNOWN;
-		openingKey = 0;
 	}
 
 	public Direction getDirection() {
@@ -43,6 +42,14 @@ public class ExtraInformationDoor extends ExtraInformation {
 		return openingKey;
 	}
 
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		direction = Direction.values()[data.getInteger(Strings.EXTRA_DIR)];
+		isOpen = data.getBoolean(Strings.EXTRA_OPEN);
+		openingKey = data.getInteger(Strings.EXTRA_KEY);
+	}
+
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
@@ -56,5 +63,13 @@ public class ExtraInformationDoor extends ExtraInformation {
 				&& key.getDamage() == openingKey) {
 			isOpen = true;
 		}
+	}
+
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set(Strings.EXTRA_DIR, direction.ordinal());
+		data.set(Strings.EXTRA_OPEN, isOpen);
+		data.set(Strings.EXTRA_KEY, openingKey);
 	}
 }

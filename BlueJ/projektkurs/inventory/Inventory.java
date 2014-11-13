@@ -1,16 +1,34 @@
 package projektkurs.inventory;
 
 import projektkurs.item.ItemStack;
+import projektkurs.lib.Strings;
+import projektkurs.util.SaveData;
 
 /**
  * Ein Inventarobjekt
  */
 public class Inventory {
 
-	protected final ItemStack[] stacks;
+	public static Inventory load(SaveData data) {
+		Inventory inv = new Inventory();
+
+		inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
+
+		for (int i = 0; i < inv.stacks.length; i++) {
+			inv.setItemStackInSlot(i,
+					ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
+		}
+
+		return inv;
+	}
+
+	protected ItemStack[] stacks;
 
 	public Inventory(int size) {
 		stacks = new ItemStack[size];
+	}
+
+	private Inventory() {
 	}
 
 	/**
@@ -299,6 +317,21 @@ public class Inventory {
 		}
 
 		return s;
+	}
+
+	public SaveData write() {
+		SaveData data = new SaveData();
+
+		data.set(Strings.INV_SIZE, getSize());
+
+		ItemStack stack;
+		for (int i = 0; i < stacks.length; i++) {
+			stack = getItemStackAt(i);
+			if (stack != null)
+				data.set(Strings.INV_SLOT + i, stack.write());
+		}
+
+		return data;
 	}
 
 }

@@ -16,8 +16,8 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
 	}
 
 	@Override
-	public ExtraInformation getExtraInformation(int x, int y) {
-		return new ExtraInformationFire(x, y);
+	public ExtraInformation createExtraInformation() {
+		return new ExtraInformationFire();
 	}
 
 	@Override

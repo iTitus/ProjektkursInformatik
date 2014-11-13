@@ -227,13 +227,18 @@ public class Spielfeld implements Cloneable {
 	public void setRasterAt(int x, int y, AbstractRaster r) {
 		if (x < 0 || x >= map.length || y < 0 || y >= map[x].length)
 			return;
-		ExtraInformation extra = getExtraInformationAt(x, y);
-		if (extra != null)
-			removeExtraInformation(extra);
+		ExtraInformation oldExtra = getExtraInformationAt(x, y);
+		if (oldExtra != null)
+			removeExtraInformation(oldExtra);
 		map[x][y] = r;
-		if (r instanceof IHasExtraInformation)
-			getExtraInformationList().add(
-					((IHasExtraInformation) r).getExtraInformation(x, y));
+		if (r instanceof IHasExtraInformation) {
+			ExtraInformation newExtra = ((IHasExtraInformation) r)
+					.createExtraInformation();
+			newExtra.setX(x);
+			newExtra.setY(y);
+			getExtraInformationList().add(newExtra);
+
+		}
 	}
 
 	/**

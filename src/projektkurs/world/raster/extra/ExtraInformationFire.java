@@ -3,15 +3,16 @@ package projektkurs.world.raster.extra;
 import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
+import projektkurs.lib.Raster;
+import projektkurs.lib.Strings;
+import projektkurs.util.SaveData;
 import projektkurs.world.raster.AbstractRaster;
-import projektkurs.world.raster.Raster;
 
 public class ExtraInformationFire extends ExtraInformation {
 
 	private AbstractRaster background;
 
-	public ExtraInformationFire(int x, int y) {
-		super(x, y);
+	public ExtraInformationFire() {
 		background = Raster.destroyedRaster;
 	}
 
@@ -24,6 +25,12 @@ public class ExtraInformationFire extends ExtraInformation {
 		return background;
 	}
 
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		background = Raster.MAPPINGS.get(data.getString(Strings.EXTRA_RASTER));
+	}
+
 	public void setBackground(AbstractRaster background) {
 		this.background = background;
 	}
@@ -34,4 +41,11 @@ public class ExtraInformationFire extends ExtraInformation {
 		if (e != null && e instanceof EntityLiving)
 			((EntityLiving) e).damage(1);
 	}
+
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set(Strings.EXTRA_RASTER, Raster.BACK_MAPPINGS.get(background));
+	}
+
 }

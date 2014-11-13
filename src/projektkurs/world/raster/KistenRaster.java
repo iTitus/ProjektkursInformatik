@@ -30,8 +30,8 @@ public class KistenRaster extends SolidRaster implements IHasExtraInformation {
 	}
 
 	@Override
-	public ExtraInformation getExtraInformation(int x, int y) {
-		return new ExtraInformationKiste(x, y);
+	public ExtraInformation createExtraInformation() {
+		return new ExtraInformationKiste();
 	}
 
 }
