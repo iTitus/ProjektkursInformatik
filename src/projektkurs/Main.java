@@ -126,8 +126,8 @@ public final class Main {
 	@Init(state = State.PRE)
 	public static void initFields() {
 		imgr = new InputManager();
-		player = new EntityPlayer(MathUtil.ceilDiv(Integers.SIGHT_X, 2) - 1,
-				MathUtil.ceilDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
+		player = new EntityPlayer(MathUtil.roundDiv(Integers.SIGHT_X, 2) - 1,
+				MathUtil.roundDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
 		currLevel = Levels.level1;
 		render = new Render();
 		renderHelper = new RenderHelper();

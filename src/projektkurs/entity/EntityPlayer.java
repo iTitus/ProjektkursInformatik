@@ -68,19 +68,19 @@ public class EntityPlayer extends EntityLiving {
 		}
 	}
 
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int screenX, int screenY) {
 		ItemStack stack = inventar.getSelectedItemStack();
 		if (stack != null) {
-			stack.getItem().onLeftClick(this, stack);
+			stack.getItem().onLeftClick(this, stack, screenX, screenY);
 			if (stack.getStackSize() <= 0)
 				inventar.removeItemStack(inventar.getSelectedIndex());
 		}
 	}
 
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int screenX, int screenY) {
 		ItemStack stack = inventar.getSelectedItemStack();
 		if (stack != null) {
-			stack.getItem().onRightClick(this, stack);
+			stack.getItem().onRightClick(this, stack, screenX, screenY);
 			if (stack.getStackSize() <= 0)
 				inventar.removeItemStack(inventar.getSelectedIndex());
 		}

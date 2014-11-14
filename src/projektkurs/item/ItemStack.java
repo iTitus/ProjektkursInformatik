@@ -48,10 +48,6 @@ public class ItemStack {
 		this.damage = damage;
 	}
 
-	public void changeStackSize(int by) {
-		stackSize += by;
-	}
-
 	/**
 	 * Beschädigt den Stack um by
 	 *
@@ -59,6 +55,10 @@ public class ItemStack {
 	 */
 	public void damage(int by) {
 		damage += by;
+	}
+
+	public void decrStackSize(int by) {
+		stackSize -= by;
 	}
 
 	public int getDamage() {
@@ -82,6 +82,10 @@ public class ItemStack {
 
 	public int getStackSize() {
 		return stackSize;
+	}
+
+	public void incrStackSize(int by) {
+		stackSize += by;
 	}
 
 	/**

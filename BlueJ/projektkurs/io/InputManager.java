@@ -15,6 +15,7 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.story.script.Scripts;
 import projektkurs.util.Direction;
+import projektkurs.util.MathUtil;
 import projektkurs.world.raster.AbstractRaster;
 
 /**
@@ -140,25 +141,17 @@ public class InputManager implements KeyListener, MouseInputListener,
 			if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
 				Scripts.cutSceneOne();
 
-			float rasterX = (((e.getX() + (Main.getRenderHelper().getSightX() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_X) / (float) (Integers.RASTER_SIZE));
-			if (rasterX < 0)
-				rasterX--;
-			float rasterY = (((e.getY() + (Main.getRenderHelper().getSightY() * Integers.RASTER_SIZE)) - Integers.WINDOW_HUD_Y) / (float) (Integers.RASTER_SIZE));
-			if (rasterY < 0)
-				rasterY--;
-			AbstractRaster r = Main.getLevel().getCurrMap()
-					.getRasterAt((int) rasterX, (int) rasterY);
-			if (r != null
-					&& Main.getRenderHelper().isInSight((int) rasterX,
-							(int) rasterY)) {
-				if (e.getButton() == RIGHT_MOUSE_BUTTON) {
-					Main.getPlayer().onRightClick((int) rasterX, (int) rasterY);
-					r.onRightClick((int) rasterX, (int) rasterY);
-				}
-				if (e.getButton() == LEFT_MOUSE_BUTTON) {
-					Main.getPlayer().onLeftClick((int) rasterX, (int) rasterY);
-					r.onLeftClick((int) rasterX, (int) rasterY);
-				}
+			int rX = MathUtil.floorDiv(e.getX() - Integers.WINDOW_HUD_X,
+					Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
+			int rY = MathUtil.floorDiv(e.getY() - Integers.WINDOW_HUD_Y,
+					Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
+
+			AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
+			if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
+				if (e.getButton() == RIGHT_MOUSE_BUTTON)
+					r.onRightClick(rX, rY);
+				if (e.getButton() == LEFT_MOUSE_BUTTON)
+					r.onLeftClick(rX, rY);
 			}
 		}
 

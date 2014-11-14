@@ -52,8 +52,8 @@ public class PlayerInventory extends Inventory {
 	 * @return
 	 */
 	public int getRelX() {
-		return MathUtil.ceilDiv(Integers.WINDOW_X, 2)
-				- MathUtil.ceilDiv(Integers.SLOT_SIZE * getSize(), 2);
+		return MathUtil.roundDiv(Integers.WINDOW_X, 2)
+				- MathUtil.roundDiv(Integers.SLOT_SIZE * getSize(), 2);
 	}
 
 	/**

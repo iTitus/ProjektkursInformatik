@@ -21,6 +21,7 @@ public final class Sounds {
 	public static class Sound {
 
 		private Clip clip;
+		private boolean pausing;
 
 		/**
 		 * Kostruktor für einen Sound
@@ -29,6 +30,7 @@ public final class Sounds {
 		 */
 		public Sound(String fileName) {
 
+			pausing = false;
 			try {
 				clip = AudioSystem.getClip();
 				clip.open(AudioSystem.getAudioInputStream(Main.class
@@ -57,13 +59,17 @@ public final class Sounds {
 				clip.close();
 		}
 
+		public boolean isPausing() {
+			return pausing;
+		}
+
 		public void loop(int count) {
-			if (clip != null)
+			if (clip != null && !isMuted())
 				clip.loop(count);
 		}
 
 		public void loopContinuosly() {
-			if (clip != null)
+			if (clip != null && !isMuted())
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 
@@ -71,20 +77,23 @@ public final class Sounds {
 		 * Pausiert den Sound
 		 */
 		public void pause() {
-			if (clip != null)
+			if (clip != null) {
+				if (clip.isRunning())
+					pausing = true;
 				clip.stop();
+			}
 		}
 
 		/**
 		 * Spielt den Sound ab
 		 */
 		public void play() {
-			if (clip != null)
+			if (clip != null && !isMuted())
 				clip.start();
 		}
 
 		public void play(int frames) {
-			if (clip != null)
+			if (clip != null && !isMuted())
 				clip.setFramePosition(frames);
 			play();
 		}
@@ -103,6 +112,7 @@ public final class Sounds {
 		public void reset() {
 			if (clip != null)
 				clip.setFramePosition(0);
+			pausing = false;
 		}
 
 		/**
@@ -115,9 +125,11 @@ public final class Sounds {
 
 	}
 
+	public static final HashMap<Sound, String> BACK_MAPPINGS = new HashMap<Sound, String>();
 	public static Sound boom;
 
 	public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
+	private static boolean mute = false;
 
 	/**
 	 * Befreit alle Sounds
@@ -134,8 +146,22 @@ public final class Sounds {
 	public static void init() {
 
 		boom = new Sound("boom.wav");
-		MAPPINGS.put("boom", boom);
+		registerSound("boom", boom);
 
+	}
+
+	/**
+	 * @return is muted
+	 */
+	public static boolean isMuted() {
+		return mute;
+	}
+
+	/**
+	 * @param mute
+	 */
+	public static void mute(boolean mute) {
+		Sounds.mute = mute;
 	}
 
 	/**
@@ -147,9 +173,14 @@ public final class Sounds {
 		for (Sound s : MAPPINGS.values()) {
 			if (b)
 				s.pause();
-			else
+			else if (s.isPausing())
 				s.play();
 		}
+	}
+
+	private static void registerSound(String name, Sound s) {
+		MAPPINGS.put(name, s);
+		BACK_MAPPINGS.put(s, name);
 	}
 
 	private Sounds() {

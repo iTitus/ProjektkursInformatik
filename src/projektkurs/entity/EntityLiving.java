@@ -42,6 +42,10 @@ public abstract class EntityLiving extends Entity {
 		return maxHealth;
 	}
 
+	public void heal(int by) {
+		damage(-by);
+	}
+
 	@Override
 	public void load(SaveData data) {
 		super.load(data);

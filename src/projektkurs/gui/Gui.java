@@ -20,11 +20,11 @@ public abstract class Gui {
 			Main.closeGui();
 	}
 
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int screenX, int screenY) {
 		// NO-OP
 	}
 
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int screenX, int screenY) {
 		// NO-OP
 	}
 

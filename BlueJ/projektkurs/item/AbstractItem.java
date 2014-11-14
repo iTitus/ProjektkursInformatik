@@ -27,11 +27,11 @@ public abstract class AbstractItem {
 	 */
 	public abstract String getName();
 
-	public void onLeftClick(Entity e, ItemStack stack) {
+	public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY) {
 		// NO-OP
 	}
 
-	public void onRightClick(Entity e, ItemStack stack) {
+	public void onRightClick(Entity e, ItemStack stack, int screenX, int screenY) {
 		// NO-OP
 	}
 

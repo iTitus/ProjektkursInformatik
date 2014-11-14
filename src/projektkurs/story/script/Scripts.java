@@ -8,7 +8,6 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Images;
 import projektkurs.story.cutscene.CutSceneOne;
 import projektkurs.util.I18n;
-import projektkurs.util.MathUtil;
 
 /**
  * Diverse Skripte
@@ -32,11 +31,7 @@ public class Scripts {
 
 	public static void switchMap(Integer i) {
 		Main.getLevel().setMap(i);
-		Main.getPlayer()
-				.setPos(MathUtil.ceilDiv(Main.getLevel().getCurrMap()
-						.getMapSizeX(), 2),
-						MathUtil.ceilDiv(Main.getLevel().getCurrMap()
-								.getMapSizeY(), 2));
+		Main.getPlayer().setPos(1, 1);
 	}
 
 	public static void win() {

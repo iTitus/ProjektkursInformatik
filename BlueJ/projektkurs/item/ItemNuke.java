@@ -18,16 +18,23 @@ public class ItemNuke extends BaseItem {
 	}
 
 	@Override
-	public void onLeftClick(Entity e, ItemStack stack) {
+	public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY) {
 		if (stack.getStackSize() > 0) {
 			Random rand = new Random();
 			Sounds.boom.playFromStart();
 
+			stack.decrStackSize(1);
+
+			int centerX = (e.getFacing().getOffsetX() * Integers.NUKE_RADIUS)
+					+ e.getPosX() + e.getFacing().getOffsetX();
+			int centerY = (e.getFacing().getOffsetY() * Integers.NUKE_RADIUS)
+					+ e.getPosY() + e.getFacing().getOffsetY();
+
 			for (Entity toKill : Main
 					.getLevel()
 					.getCurrMap()
-					.getEntitiesInRect(e.getPosX() - Integers.NUKE_RADIUS,
-							e.getPosY() - Integers.NUKE_RADIUS,
+					.getEntitiesInRect(centerX - Integers.NUKE_RADIUS,
+							centerY - Integers.NUKE_RADIUS,
 							2 * Integers.NUKE_RADIUS + 1,
 							2 * Integers.NUKE_RADIUS + 1)) {
 				if (!(toKill instanceof EntityPlayer)) {
@@ -38,12 +45,6 @@ public class ItemNuke extends BaseItem {
 						toKill.setDead();
 				}
 			}
-			stack.changeStackSize(-1);
-
-			int centerX = (e.getFacing().getOffsetX() * Integers.NUKE_RADIUS)
-					+ e.getPosX() + e.getFacing().getOffsetX();
-			int centerY = (e.getFacing().getOffsetY() * Integers.NUKE_RADIUS)
-					+ e.getPosY() + e.getFacing().getOffsetY();
 
 			for (int x = centerX - Integers.NUKE_RADIUS; x <= centerX
 					+ Integers.NUKE_RADIUS; x++) {

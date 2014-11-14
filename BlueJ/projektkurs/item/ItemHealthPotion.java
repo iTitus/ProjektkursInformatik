@@ -14,8 +14,13 @@ public class ItemHealthPotion extends BaseItem {
 	}
 
 	@Override
-	public void onLeftClick(Entity e, ItemStack stack) {
-		((EntityLiving) e).damage(-health);
-		stack.changeStackSize(-1);
+	public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY) {
+		if (e instanceof EntityLiving) {
+			EntityLiving l = (EntityLiving) e;
+			if (l.getHealth() < l.getMaxHealth()) {
+				l.heal(health);
+				stack.decrStackSize(1);
+			}
+		}
 	}
 }

@@ -3,6 +3,7 @@ package projektkurs.world.raster;
 import java.awt.Graphics2D;
 
 import projektkurs.entity.Entity;
+import projektkurs.lib.Raster;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
 
@@ -88,7 +89,7 @@ public abstract class AbstractRaster {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName();
+		return Raster.BACK_MAPPINGS.get(this);
 	}
 
 }

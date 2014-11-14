@@ -50,8 +50,8 @@ public class MapBuilder {
 
 		}
 
-		map.setRasterAt(MathUtil.ceilDiv(Integers.SIGHT_X, 2),
-				MathUtil.ceilDiv(Integers.SIGHT_Y, 2), Raster.kiste);
+		map.setRasterAt(MathUtil.roundDiv(Integers.SIGHT_X, 2),
+				MathUtil.roundDiv(Integers.SIGHT_Y, 2), Raster.kiste);
 
 		// WÄNDE!
 		for (int x = 0; x < map.getMapSizeX(); x++) {
@@ -109,8 +109,8 @@ public class MapBuilder {
 		map.spawn(Main.getPlayer());
 		for (int x = 0; x < 3; x++) {
 			map.spawn(new EntityRedNPC(
-					MathUtil.ceilMul(Math.random(), 20) + 10, MathUtil.ceilMul(
-							Math.random(), 20) + 10, Images.redNPC));
+					MathUtil.roundMul(Math.random(), 20) + 10, MathUtil
+							.roundMul(Math.random(), 20) + 10, Images.redNPC));
 		}
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
 		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
@@ -133,7 +133,7 @@ public class MapBuilder {
 		// ANIMATIONS!
 		for (int x = 0; x < map.getMapSizeX(); x++) {
 			for (int y = 0; y < map.getMapSizeY(); y++)
-				map.setRasterAt(x, y, Raster.fire);
+				map.setRasterAt(x, y, Raster.destroyedRaster);
 		}
 
 		// WÄNDE!
