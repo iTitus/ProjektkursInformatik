@@ -132,6 +132,10 @@ public final class CutSceneManager {
 
 			cutSceneFrame.dispose();
 			currCutScene = null;
+			cutSceneFrame = null;
+			currCutSceneRenderHelper = null;
+			currCutSceneRender = null;
+			currSpielfeld = null;
 			Main.show();
 			Main.resume();
 			Logger.info("Finished CutScene");
