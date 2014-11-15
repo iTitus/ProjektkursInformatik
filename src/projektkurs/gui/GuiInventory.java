@@ -20,6 +20,7 @@ public class GuiInventory extends Gui {
 
 	@Override
 	public void onLeftClick(int screenX, int screenY) {
+		super.onLeftClick(screenX, screenY);
 		if (screenX >= (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
 				.roundDiv(Integers.SLOT_SIZE * inv.getSize(), 2))
 				&& screenX < inv.getSize()
@@ -95,5 +96,7 @@ public class GuiInventory extends Gui {
 								.roundDiv(Integers.SLOT_SIZE, 2)) + 11);
 			}
 		}
+
+		super.render(g);
 	}
 }

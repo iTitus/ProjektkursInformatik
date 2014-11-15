@@ -30,7 +30,7 @@ public class Images {
 	public static BufferedImage rasen, wand, defaultCharakter, baum, kiste,
 			redNPC, item_42, nuke, key, slot, slot_highlight, door_NS, door_WE,
 			door_open_NS, door_open_WE, finish, destroyedRaster, fire[],
-			healthpotion;
+			healthpotion, button, button_highlight, button_disabled;
 
 	public static void flushAll() {
 		for (BufferedImage img : MAPPINGS.values()) {
@@ -101,6 +101,16 @@ public class Images {
 
 		healthpotion = loadImage("healthpotion.png");
 		registerImage("healthpotion", healthpotion);
+
+		button = loadImage("button.png");
+		registerImage("button", button);
+
+		button_highlight = loadImage("button_highlight.png");
+		registerImage("button_highlight", button_highlight);
+
+		button_disabled = loadImage("button_disabled.png");
+		registerImage("button_disabled", button_disabled);
+
 	}
 
 	public static void setCharakterImage(BufferedImage img) {

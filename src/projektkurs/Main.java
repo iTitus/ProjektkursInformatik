@@ -49,6 +49,7 @@ public final class Main {
 
 	public static void closeGui() {
 		Main.gui = ingameGui;
+		Main.gui.initGui();
 	}
 
 	/**
@@ -169,10 +170,12 @@ public final class Main {
 	 *            the gui to open
 	 */
 	public static void openGui(Gui gui) {
-		if (gui != null)
+		if (gui != null) {
 			Main.gui = gui;
-		else
+			Main.gui.initGui();
+		} else {
 			closeGui();
+		}
 	}
 
 	/**

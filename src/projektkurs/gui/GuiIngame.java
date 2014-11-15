@@ -7,18 +7,20 @@ public class GuiIngame extends Gui {
 
 	@Override
 	public void onKeyPressed(int key) {
-		if (key == KeyBindings.KEY_EXIT) {
-			Main.exit();
+		if (key == KeyBindings.KEY_OPTION) {
+			Main.openGui(new GuiOption());
 		}
 	}
 
 	@Override
 	public void onLeftClick(int screenX, int screenY) {
+		super.onLeftClick(screenX, screenY);
 		Main.getPlayer().onLeftClick(screenX, screenY);
 	}
 
 	@Override
 	public void onRightClick(int screenX, int screenY) {
+		super.onRightClick(screenX, screenY);
 		Main.getPlayer().onRightClick(screenX, screenY);
 	}
 }

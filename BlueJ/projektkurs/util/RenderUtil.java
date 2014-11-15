@@ -1,5 +1,6 @@
 package projektkurs.util;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -7,12 +8,40 @@ import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Strings;
 
 /**
  * Renderhilfen
  *
  */
 public final class RenderUtil {
+
+	public static void drawCenteredButtonString(Graphics2D g, String s,
+			int posX, int posY, int sizeX, int sizeY) {
+		Font oldfont = g.getFont();
+		g.setFont(new Font(Strings.NAME, Font.PLAIN, 20));
+		drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY
+				+ MathUtil.roundDiv(sizeY, 2));
+		g.setFont(oldfont);
+	}
+
+	public static void drawCenteredString(Graphics2D g, String s, int centerX,
+			int centerY) {
+		g.drawString(
+				s,
+				centerX
+						- MathUtil.floorDiv(g.getFontMetrics().stringWidth(s),
+								2),
+				centerY + MathUtil.ceilDiv(g.getFontMetrics().getHeight(), 4));
+	}
+
+	public static void drawCenteredString(Graphics2D g, String s, int centerX,
+			int centerY, int size) {
+		Font oldfont = g.getFont();
+		g.setFont(new Font(Strings.NAME, Font.PLAIN, size));
+		drawCenteredString(g, s, centerX, centerY);
+		g.setFont(oldfont);
+	}
 
 	public static void drawCutSceneRaster(Graphics2D g, BufferedImage image,
 			int x, int y) {
@@ -50,6 +79,12 @@ public final class RenderUtil {
 		g.drawImage(img, x, y, width, height, null);
 	}
 
+	public static void drawString(Graphics2D g, String string, int posX,
+			int posY) {
+		g.drawString(string, posX, posY);
+	}
+
 	private RenderUtil() {
 	}
+
 }
