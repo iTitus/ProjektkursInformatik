@@ -28,7 +28,11 @@ public abstract class Gui {
 		// NO-OP
 	}
 
-	public void onButtonClick(Button button) {
+	public void onButtonLeftClick(Button button) {
+		// NO-OP
+	}
+
+	public void onButtonRightClick(Button button) {
 		// NO-OP
 	}
 

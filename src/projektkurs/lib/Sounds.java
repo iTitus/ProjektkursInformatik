@@ -162,6 +162,7 @@ public final class Sounds {
 	 */
 	public static void mute(boolean mute) {
 		Sounds.mute = mute;
+		pause(Sounds.mute);
 	}
 
 	/**

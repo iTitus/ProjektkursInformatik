@@ -10,6 +10,7 @@ import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
+import projektkurs.world.raster.FireRaster;
 
 public class ItemNuke extends BaseItem {
 
@@ -54,8 +55,9 @@ public class ItemNuke extends BaseItem {
 						Main.getLevel().getCurrMap()
 								.setRasterAt(x, y, Raster.fire);
 					} else {
-						Main.getLevel().getCurrMap()
-								.setRasterAt(x, y, Raster.destroyedRaster);
+						if (!(Main.getLevel().getCurrMap().getRasterAt(x, y) instanceof FireRaster))
+							Main.getLevel().getCurrMap()
+									.setRasterAt(x, y, Raster.destroyedRaster);
 					}
 
 				}

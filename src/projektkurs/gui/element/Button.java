@@ -19,6 +19,10 @@ public class Button extends Element {
 		enabled = true;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public boolean isHovered() {
 		return hovered;
 	}
@@ -26,7 +30,14 @@ public class Button extends Element {
 	@Override
 	public void onLeftClick(int x, int y) {
 		if (isInside(x, y)) {
-			Main.getGui().onButtonClick(this);
+			Main.getGui().onButtonLeftClick(this);
+		}
+	}
+
+	@Override
+	public void onRightClick(int x, int y) {
+		if (isInside(x, y)) {
+			Main.getGui().onButtonRightClick(this);
 		}
 	}
 
