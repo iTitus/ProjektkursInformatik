@@ -9,13 +9,15 @@ import projektkurs.util.RenderUtil;
 
 public class Button extends Element {
 
-	protected boolean hovered, enabled;
+	protected boolean enabled;
+	protected IButtonListener gui;
 	protected String name;
 
-	public Button(int posX, int posY, int sizeX, int sizeY, int id, String name) {
+	public Button(int posX, int posY, int sizeX, int sizeY, int id,
+			IButtonListener gui, String name) {
 		super(posX, posY, sizeX, sizeY, id);
 		this.name = name;
-		hovered = false;
+		this.gui = gui;
 		enabled = true;
 	}
 
@@ -23,30 +25,25 @@ public class Button extends Element {
 		return name;
 	}
 
-	public boolean isHovered() {
-		return hovered;
-	}
-
 	@Override
 	public void onLeftClick(int x, int y) {
 		if (isInside(x, y)) {
-			Main.getGui().onButtonLeftClick(this);
+			gui.onButtonLeftClick(this);
 		}
 	}
 
 	@Override
 	public void onRightClick(int x, int y) {
 		if (isInside(x, y)) {
-			Main.getGui().onButtonRightClick(this);
+			gui.onButtonRightClick(this);
 		}
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		hovered = isInside(Main.getInputManager().getMouseX(), Main
-				.getInputManager().getMouseY());
 		if (enabled) {
-			if (hovered)
+			if (isInside(Main.getInputManager().getMouseX(), Main
+					.getInputManager().getMouseY()))
 				RenderUtil.drawImage(g, Images.button_highlight, posX, posY,
 						sizeX, sizeY);
 			else

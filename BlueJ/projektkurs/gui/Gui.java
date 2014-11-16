@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import projektkurs.Main;
-import projektkurs.gui.element.Button;
 import projektkurs.gui.element.Element;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
@@ -25,14 +24,6 @@ public abstract class Gui {
 	}
 
 	public void initGui() {
-		// NO-OP
-	}
-
-	public void onButtonLeftClick(Button button) {
-		// NO-OP
-	}
-
-	public void onButtonRightClick(Button button) {
 		// NO-OP
 	}
 

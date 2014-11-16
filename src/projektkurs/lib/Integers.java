@@ -7,6 +7,8 @@ import java.awt.Toolkit;
  */
 public final class Integers {
 
+	public static final int DEFAULT_BUTTON_HEIGHT = 64;
+	public static final int DEFAULT_BUTTON_WIDTH = 256;
 	public static final int INVENTARGROESSE = 7;
 	public static final int KISTENGROESSE = 3;
 	public static final int NUKE_RADIUS = 2;

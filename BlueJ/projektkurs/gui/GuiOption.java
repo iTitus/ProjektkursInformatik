@@ -4,22 +4,28 @@ import java.awt.Graphics2D;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
+import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.ToggleButton;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sounds;
 import projektkurs.util.MathUtil;
 
-public class GuiOption extends Gui {
+public class GuiOption extends Gui implements IButtonListener {
 
 	@Override
 	public void initGui() {
 		guiElements.add(new Button(MathUtil.ceilDiv(Integers.WINDOW_X, 2)
-				- MathUtil.ceilDiv(256, 2), Integers.WINDOW_Y
-				- Integers.WINDOW_HUD_Y - 64, 256, 64, 0, "button.exit"));
+				- MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2),
+				Integers.WINDOW_Y - Integers.WINDOW_HUD_Y - 64,
+				Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT,
+				0, this, "button.exit"));
 		ToggleButton soundButton = new ToggleButton(MathUtil.ceilDiv(
-				Integers.WINDOW_X, 2) - MathUtil.ceilDiv(256, 2),
-				Integers.WINDOW_Y - Integers.WINDOW_HUD_Y - (64 * 2), 256, 64,
-				1, "button.sound.on", "button.sound.off");
+				Integers.WINDOW_X, 2)
+				- MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2),
+				Integers.WINDOW_Y - Integers.WINDOW_HUD_Y
+						- (Integers.DEFAULT_BUTTON_HEIGHT * 2),
+				Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT,
+				1, this, "button.sound.on", "button.sound.off");
 		soundButton.setIndex(Sounds.isMuted() ? 1 : 0);
 		guiElements.add(soundButton);
 	}
