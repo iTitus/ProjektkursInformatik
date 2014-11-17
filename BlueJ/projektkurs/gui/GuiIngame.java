@@ -6,8 +6,8 @@ import projektkurs.lib.KeyBindings;
 public class GuiIngame extends Gui {
 
 	@Override
-	public void onKeyPressed(int key) {
-		if (key == KeyBindings.KEY_OPTION) {
+	public void onKeyTyped(char keyChar, int modifiers) {
+		if (keyChar == KeyBindings.KEY_OPTION) {
 			Main.openGui(new GuiOption());
 		}
 	}

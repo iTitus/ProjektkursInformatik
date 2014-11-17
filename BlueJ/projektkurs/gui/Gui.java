@@ -27,11 +27,11 @@ public abstract class Gui {
 		// NO-OP
 	}
 
-	public void onKeyPressed(int key) {
+	public void onKeyTyped(char keyChar, int modifiers) {
 		for (Element e : guiElements) {
-			e.onKeyPressed(key);
+			e.onKeyTyped(keyChar, modifiers);
 		}
-		if (key == KeyBindings.KEY_OPTION)
+		if (keyChar == KeyBindings.KEY_OPTION)
 			Main.closeGui();
 	}
 
@@ -61,4 +61,5 @@ public abstract class Gui {
 						* Integers.RASTER_SIZE);
 		g.setColor(oldColor);
 	}
+
 }

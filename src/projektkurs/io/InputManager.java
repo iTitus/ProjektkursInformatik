@@ -102,8 +102,6 @@ public class InputManager implements KeyListener, MouseInputListener,
 
 		keysPressed.add(e.getKeyCode());
 
-		Main.getGui().onKeyPressed(e.getKeyCode());
-
 	}
 
 	/**
@@ -122,7 +120,9 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// NO-OP
+
+		Main.getGui().onKeyTyped(e.getKeyChar(), e.getModifiers());
+
 	}
 
 	/**

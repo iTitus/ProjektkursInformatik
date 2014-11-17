@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
  */
 public class KeyBindings {
 
+	public static final int BACK_SPACE = '\b';
 	/**
 	 * Taste, um runter zu gehen
 	 */
@@ -25,6 +26,7 @@ public class KeyBindings {
 	 * Taste, um nach rechts zu gehen
 	 */
 	public static final int KEY_RIGHT = KeyEvent.VK_D;
+
 	/**
 	 * Taste, um nach oben zu gehen
 	 */

@@ -5,12 +5,15 @@ import java.awt.Graphics2D;
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
+import projektkurs.gui.element.ITextFieldListener;
+import projektkurs.gui.element.TextField;
 import projektkurs.gui.element.ToggleButton;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sounds;
 import projektkurs.util.MathUtil;
 
-public class GuiOption extends Gui implements IButtonListener {
+public class GuiOption extends Gui implements IButtonListener,
+		ITextFieldListener {
 
 	@Override
 	public void initGui() {
@@ -28,6 +31,8 @@ public class GuiOption extends Gui implements IButtonListener {
 				1, this, "button.sound.on", "button.sound.off");
 		soundButton.setIndex(Sounds.isMuted() ? 1 : 0);
 		guiElements.add(soundButton);
+
+		guiElements.add(new TextField(32, 32, 256, 64, 2, this, "Test1234"));
 	}
 
 	@Override

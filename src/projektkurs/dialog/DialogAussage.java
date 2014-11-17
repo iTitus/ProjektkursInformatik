@@ -1,4 +1,4 @@
-package projektkurs.dialogsystem;
+package projektkurs.dialog;
 
 import projektkurs.util.I18n;
 

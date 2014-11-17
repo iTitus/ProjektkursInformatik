@@ -33,7 +33,7 @@ public abstract class Element {
 						(this.posY + this.sizeY))));
 	}
 
-	public void onKeyPressed(int key) {
+	public void onKeyTyped(char keyChar, int modifiers) {
 		// NO-OP
 	}
 
