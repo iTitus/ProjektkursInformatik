@@ -16,15 +16,6 @@ import projektkurs.lib.Strings;
  */
 public final class RenderUtil {
 
-	public static void drawCenteredButtonString(Graphics2D g, String s,
-			int posX, int posY, int sizeX, int sizeY) {
-		Font oldfont = g.getFont();
-		g.setFont(new Font(Strings.NAME, Font.PLAIN, 20));
-		drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY
-				+ MathUtil.roundDiv(sizeY, 2));
-		g.setFont(oldfont);
-	}
-
 	public static void drawCenteredString(Graphics2D g, String s, int centerX,
 			int centerY) {
 		g.drawString(
@@ -40,6 +31,15 @@ public final class RenderUtil {
 		Font oldfont = g.getFont();
 		g.setFont(new Font(Strings.NAME, Font.PLAIN, size));
 		drawCenteredString(g, s, centerX, centerY);
+		g.setFont(oldfont);
+	}
+
+	public static void drawCenteredStringInRect(Graphics2D g, String s,
+			int posX, int posY, int sizeX, int sizeY) {
+		Font oldfont = g.getFont();
+		g.setFont(new Font(Strings.NAME, Font.PLAIN, 20));
+		drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY
+				+ MathUtil.roundDiv(sizeY, 2));
 		g.setFont(oldfont);
 	}
 

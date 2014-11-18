@@ -26,10 +26,12 @@ public class KeyBindings {
 	 * Taste, um nach rechts zu gehen
 	 */
 	public static final int KEY_RIGHT = KeyEvent.VK_D;
-
 	/**
 	 * Taste, um nach oben zu gehen
 	 */
 	public static final int KEY_UP = KeyEvent.VK_W;
+	public static final int LINE_BREAK = '\n';
+	public static final int PASTE_KEY = 22;
+	public static final int TABULATOR = '\t';
 
 }

@@ -53,7 +53,7 @@ public class Button extends Element {
 			RenderUtil.drawImage(g, Images.button_disabled, posX, posY, sizeX,
 					sizeY);
 
-		RenderUtil.drawCenteredButtonString(g, I18n.getString(name), posX,
+		RenderUtil.drawCenteredStringInRect(g, I18n.getString(name), posX,
 				posY, sizeX, sizeY);
 	}
 
