@@ -21,26 +21,26 @@ import projektkurs.util.Queue;
 public class InputManager implements KeyListener, MouseInputListener,
 		MouseWheelListener {
 
+	public static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
 	/**
 	 * Table for decoding of the int moveDir to the x-offset
 	 */
 	public static final int[] ofX = { 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, 1, 1,
 			0, 0, 0, 0 };
+
 	/**
 	 * Table for decoding of the int moveDir to the y-offset
 	 */
 	public static final int[] ofY = { 0, -1, 1, 0, 0, -1, 1, 0, 0, -1, 1, 0, 0,
 			-1, 1, 0 };
-
-	public static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
 	public static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
+
+	private final Queue<KeyEvent> keyEvents;
 
 	/**
 	 * Speichert alle gerade gedrückten Tasten
 	 */
 	private final HashSet<Integer> keysPressed;
-
-	private final Queue<KeyEvent> keyEvents;
 	private final Queue<MouseEvent> mouseEvents;
 	private final Queue<MouseWheelEvent> mouseWheelEvents;
 
@@ -87,6 +87,30 @@ public class InputManager implements KeyListener, MouseInputListener,
 				ofY[moveDir]);
 		moveDir = 0b0000;
 		return dir;
+	}
+
+	public KeyEvent getNextKeyEvent() {
+		return keyEvents.frontDeQueue();
+	}
+
+	public MouseEvent getNextMouseEvent() {
+		return mouseEvents.frontDeQueue();
+	}
+
+	public MouseWheelEvent getNextMouseWheelEvent() {
+		return mouseWheelEvents.frontDeQueue();
+	}
+
+	public boolean hasKeyEvents() {
+		return !keyEvents.empty();
+	}
+
+	public boolean hasMouseEvents() {
+		return !mouseEvents.empty();
+	}
+
+	public boolean hasMouseWheelEvents() {
+		return !mouseWheelEvents.empty();
 	}
 
 	/**
@@ -222,29 +246,5 @@ public class InputManager implements KeyListener, MouseInputListener,
 				moveDir |= 0b1000;
 		}
 
-	}
-
-	public KeyEvent getNextKeyEvent() {
-		return keyEvents.frontDeQueue();
-	}
-
-	public MouseEvent getNextMouseEvent() {
-		return mouseEvents.frontDeQueue();
-	}
-
-	public MouseWheelEvent getNextMouseWheelEvent() {
-		return mouseWheelEvents.frontDeQueue();
-	}
-
-	public boolean hasKeyEvents() {
-		return !keyEvents.empty();
-	}
-
-	public boolean hasMouseEvents() {
-		return !mouseEvents.empty();
-	}
-
-	public boolean hasMouseWheelEvents() {
-		return !mouseWheelEvents.empty();
 	}
 }

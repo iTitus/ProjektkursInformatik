@@ -38,26 +38,6 @@ public class GuiIngame extends Gui {
 	}
 
 	@Override
-	public void onRightClick(int screenX, int screenY, MouseEvent e) {
-		super.onRightClick(screenX, screenY, e);
-
-		int rX = MathUtil.floorDiv(screenY - Integers.WINDOW_HUD_X,
-				Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
-		int rY = MathUtil.floorDiv(screenX - Integers.WINDOW_HUD_Y,
-				Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
-
-		AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
-		if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
-			r.onRightClick(rX, rY, e);
-		}
-
-		Main.getPlayer().onRightClick(screenX, screenY, e);
-
-		if (e.isShiftDown())
-			Scripts.cutSceneOne();
-	}
-
-	@Override
 	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
 		if (by > 0) {
 			Main.getPlayer()
@@ -76,5 +56,25 @@ public class GuiIngame extends Gui {
 									: Main.getPlayer().getInventory()
 											.getSelectedIndex() - 1));
 		}
+	}
+
+	@Override
+	public void onRightClick(int screenX, int screenY, MouseEvent e) {
+		super.onRightClick(screenX, screenY, e);
+
+		int rX = MathUtil.floorDiv(screenY - Integers.WINDOW_HUD_X,
+				Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
+		int rY = MathUtil.floorDiv(screenX - Integers.WINDOW_HUD_Y,
+				Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
+
+		AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
+		if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
+			r.onRightClick(rX, rY, e);
+		}
+
+		Main.getPlayer().onRightClick(screenX, screenY, e);
+
+		if (e.isShiftDown())
+			Scripts.cutSceneOne();
 	}
 }

@@ -44,11 +44,11 @@ public abstract class Element {
 		// NO-OP
 	}
 
-	public void onRightClick(int x, int y, MouseEvent e) {
+	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
 		// NO-OP
 	}
 
-	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
+	public void onRightClick(int x, int y, MouseEvent e) {
 		// NO-OP
 	}
 

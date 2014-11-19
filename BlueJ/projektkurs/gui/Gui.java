@@ -40,13 +40,17 @@ public abstract class Gui {
 
 	public void onLeftClick(int screenX, int screenY, MouseEvent e) {
 		for (Element el : guiElements) {
-			el.onLeftClick(screenX, screenY,e);
+			el.onLeftClick(screenX, screenY, e);
 		}
+	}
+
+	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
+		// NO-OP
 	}
 
 	public void onRightClick(int screenX, int screenY, MouseEvent e) {
 		for (Element el : guiElements) {
-			el.onRightClick(screenX, screenY,e);
+			el.onRightClick(screenX, screenY, e);
 		}
 	}
 
@@ -63,10 +67,6 @@ public abstract class Gui {
 				Integers.SIGHT_X * Integers.RASTER_SIZE, Integers.SIGHT_Y
 						* Integers.RASTER_SIZE);
 		g.setColor(oldColor);
-	}
-
-	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
-		// NO-OP
 	}
 
 }

@@ -41,16 +41,19 @@ public class TextField extends Element {
 			} else if (keyChar == KeyBindings.LINE_BREAK) {
 				focussed = false;
 				gui.onFocusLost(this);
-			} else if (e.isControlDown() && keyChar == KeyBindings.PASTE_KEY) {
-				try {
-					text += Toolkit.getDefaultToolkit().getSystemClipboard()
-							.getContents(null)
-							.getTransferData(DataFlavor.stringFlavor);
-					gui.onTextChanged(this);
-				} catch (Throwable t) {
-					Logger.logThrowable("Unable to paste clipboard contents", t);
+			} else if (e.isControlDown()) {
+				if (keyChar == KeyBindings.PASTE_KEY) {
+					try {
+						text += Toolkit.getDefaultToolkit()
+								.getSystemClipboard().getContents(null)
+								.getTransferData(DataFlavor.stringFlavor);
+						gui.onTextChanged(this);
+					} catch (Throwable t) {
+						Logger.logThrowable(
+								"Unable to paste clipboard contents", t);
+					}
 				}
-			} else {
+			} else if (!e.isAltDown() && !e.isAltGraphDown() && !e.isMetaDown()) {
 				text += keyChar;
 				gui.onTextChanged(this);
 			}
