@@ -1,11 +1,15 @@
 package projektkurs.world;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNPC;
+import projektkurs.io.InputManager;
 import projektkurs.story.Storymanager;
 import projektkurs.util.Logger;
 import projektkurs.world.raster.AbstractRaster;
@@ -256,6 +260,27 @@ public class Spielfeld implements Cloneable {
 	public void update() {
 
 		Main.getPlayer().moveBy(Main.getInputManager().getNextDirection());
+
+		KeyEvent kE;
+		while (Main.getInputManager().hasKeyEvents()) {
+			kE = Main.getInputManager().getNextKeyEvent();
+			Main.getGui().onKeyTyped(kE.getKeyChar(), kE);
+		}
+
+		MouseEvent mE;
+		while (Main.getInputManager().hasMouseEvents()) {
+			mE = Main.getInputManager().getNextMouseEvent();
+			if (mE.getButton() == InputManager.LEFT_MOUSE_BUTTON)
+				Main.getGui().onLeftClick(mE.getX(), mE.getY(), mE);
+			if (mE.getButton() == InputManager.RIGHT_MOUSE_BUTTON)
+				Main.getGui().onRightClick(mE.getX(), mE.getY(), mE);
+		}
+
+		MouseWheelEvent wE;
+		while (Main.getInputManager().hasMouseWheelEvents()) {
+			wE = Main.getInputManager().getNextMouseWheelEvent();
+			Main.getGui().onMouseWheelMoved(wE.getWheelRotation(), wE);
+		}
 
 		for (ExtraInformation extra : getExtraInformationList()) {
 			if (extra.canUpdate())

@@ -1,6 +1,9 @@
 package projektkurs.gui.element;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 public abstract class Element {
 
@@ -33,15 +36,19 @@ public abstract class Element {
 						(this.posY + this.sizeY))));
 	}
 
-	public void onKeyTyped(char keyChar, int modifiers) {
+	public void onKeyTyped(char keyChar, KeyEvent e) {
 		// NO-OP
 	}
 
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int x, int y, MouseEvent e) {
 		// NO-OP
 	}
 
-	public void onRightClick(int x, int y) {
+	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
+		// NO-OP
+	}
+
+	public void onRightClick(int x, int y, MouseEvent e) {
 		// NO-OP
 	}
 

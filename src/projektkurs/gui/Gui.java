@@ -2,6 +2,9 @@ package projektkurs.gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 
 import projektkurs.Main;
@@ -27,29 +30,33 @@ public abstract class Gui {
 		// NO-OP
 	}
 
-	public void onKeyTyped(char keyChar, int modifiers) {
-		for (Element e : guiElements) {
-			e.onKeyTyped(keyChar, modifiers);
+	public void onKeyTyped(char keyChar, KeyEvent e) {
+		for (Element el : guiElements) {
+			el.onKeyTyped(keyChar, e);
 		}
 		if (keyChar == KeyBindings.KEY_OPTION)
 			Main.closeGui();
 	}
 
-	public void onLeftClick(int screenX, int screenY) {
-		for (Element e : guiElements) {
-			e.onLeftClick(screenX, screenY);
+	public void onLeftClick(int screenX, int screenY, MouseEvent e) {
+		for (Element el : guiElements) {
+			el.onLeftClick(screenX, screenY, e);
 		}
 	}
 
-	public void onRightClick(int screenX, int screenY) {
-		for (Element e : guiElements) {
-			e.onRightClick(screenX, screenY);
+	public void onMouseWheelMoved(int by, MouseWheelEvent e) {
+		// NO-OP
+	}
+
+	public void onRightClick(int screenX, int screenY, MouseEvent e) {
+		for (Element el : guiElements) {
+			el.onRightClick(screenX, screenY, e);
 		}
 	}
 
 	public void render(Graphics2D g) {
-		for (Element e : guiElements) {
-			e.render(g);
+		for (Element el : guiElements) {
+			el.render(g);
 		}
 	}
 

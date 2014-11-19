@@ -11,12 +11,9 @@ import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
 import projektkurs.gui.GuiIngame;
-import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
-import projektkurs.story.script.Scripts;
 import projektkurs.util.Direction;
-import projektkurs.util.MathUtil;
-import projektkurs.world.raster.AbstractRaster;
+import projektkurs.util.Queue;
 
 /**
  * Zuständig für den Input (Tasten, Maus)
@@ -35,13 +32,17 @@ public class InputManager implements KeyListener, MouseInputListener,
 	public static final int[] ofY = { 0, -1, 1, 0, 0, -1, 1, 0, 0, -1, 1, 0, 0,
 			-1, 1, 0 };
 
-	private static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
-	private static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
+	public static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
+	public static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
 
 	/**
 	 * Speichert alle gerade gedrückten Tasten
 	 */
 	private final HashSet<Integer> keysPressed;
+
+	private final Queue<KeyEvent> keyEvents;
+	private final Queue<MouseEvent> mouseEvents;
+	private final Queue<MouseWheelEvent> mouseWheelEvents;
 
 	private int mouseX, mouseY;
 
@@ -54,7 +55,10 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 * Konstruktor um den InputManger zu initialisieren
 	 */
 	public InputManager() {
-		keysPressed = new HashSet<Integer>(0);
+		keysPressed = new HashSet<Integer>();
+		keyEvents = new Queue<KeyEvent>();
+		mouseEvents = new Queue<MouseEvent>();
+		mouseWheelEvents = new Queue<MouseWheelEvent>();
 		moveDir = 0;
 	}
 
@@ -121,7 +125,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	@Override
 	public void keyTyped(KeyEvent e) {
 
-		Main.getGui().onKeyTyped(e.getKeyChar(), e.getModifiers());
+		keyEvents.enQueue(e);
 
 	}
 
@@ -132,28 +136,7 @@ public class InputManager implements KeyListener, MouseInputListener,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		if (e.getButton() == LEFT_MOUSE_BUTTON)
-			Main.getGui().onLeftClick(e.getX(), e.getY());
-		if (e.getButton() == RIGHT_MOUSE_BUTTON)
-			Main.getGui().onRightClick(e.getX(), e.getY());
-
-		if (Main.getGui() instanceof GuiIngame) {
-			if (e.getButton() == RIGHT_MOUSE_BUTTON && e.isShiftDown())
-				Scripts.cutSceneOne();
-
-			int rX = MathUtil.floorDiv(e.getX() - Integers.WINDOW_HUD_X,
-					Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
-			int rY = MathUtil.floorDiv(e.getY() - Integers.WINDOW_HUD_Y,
-					Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
-
-			AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
-			if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
-				if (e.getButton() == RIGHT_MOUSE_BUTTON)
-					r.onRightClick(rX, rY);
-				if (e.getButton() == LEFT_MOUSE_BUTTON)
-					r.onLeftClick(rX, rY);
-			}
-		}
+		mouseEvents.enQueue(e);
 
 	}
 
@@ -216,27 +199,9 @@ public class InputManager implements KeyListener, MouseInputListener,
 	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if (Main.getGui() instanceof GuiIngame) {
-			if (e.getWheelRotation() > 0) {
-				Main.getPlayer()
-						.getInventory()
-						.setSelectedItemStack(
-								Main.getPlayer().getInventory()
-										.getSelectedIndex() >= Main.getPlayer()
-										.getInventory().getSize() ? 0 : Main
-										.getPlayer().getInventory()
-										.getSelectedIndex() + 1);
-			} else if (e.getWheelRotation() < 0) {
-				Main.getPlayer()
-						.getInventory()
-						.setSelectedItemStack(
-								(Main.getPlayer().getInventory()
-										.getSelectedIndex() <= 0 ? Main
-										.getPlayer().getInventory().getSize() - 1
-										: Main.getPlayer().getInventory()
-												.getSelectedIndex() - 1));
-			}
-		}
+
+		mouseWheelEvents.enQueue(e);
+
 	}
 
 	/**
@@ -257,5 +222,29 @@ public class InputManager implements KeyListener, MouseInputListener,
 				moveDir |= 0b1000;
 		}
 
+	}
+
+	public KeyEvent getNextKeyEvent() {
+		return keyEvents.frontDeQueue();
+	}
+
+	public MouseEvent getNextMouseEvent() {
+		return mouseEvents.frontDeQueue();
+	}
+
+	public MouseWheelEvent getNextMouseWheelEvent() {
+		return mouseWheelEvents.frontDeQueue();
+	}
+
+	public boolean hasKeyEvents() {
+		return !keyEvents.empty();
+	}
+
+	public boolean hasMouseEvents() {
+		return !mouseEvents.empty();
+	}
+
+	public boolean hasMouseWheelEvents() {
+		return !mouseWheelEvents.empty();
 	}
 }

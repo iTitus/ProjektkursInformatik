@@ -1,5 +1,7 @@
 package projektkurs.gui.element;
 
+import java.awt.event.MouseEvent;
+
 public class ToggleButton extends Button {
 
 	private int index;
@@ -17,7 +19,7 @@ public class ToggleButton extends Button {
 	}
 
 	@Override
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			setIndex(index + 1);
 			gui.onButtonLeftClick(this);
@@ -25,7 +27,7 @@ public class ToggleButton extends Button {
 	}
 
 	@Override
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			setIndex(index - 1);
 			gui.onButtonRightClick(this);

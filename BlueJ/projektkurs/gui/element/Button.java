@@ -1,6 +1,7 @@
 package projektkurs.gui.element;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.lib.Images;
@@ -26,14 +27,14 @@ public class Button extends Element {
 	}
 
 	@Override
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			gui.onButtonLeftClick(this);
 		}
 	}
 
 	@Override
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			gui.onButtonRightClick(this);
 		}

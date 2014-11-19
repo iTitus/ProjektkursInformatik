@@ -1,6 +1,7 @@
 package projektkurs.gui;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.inventory.Inventory;
@@ -19,8 +20,8 @@ public class GuiInventory extends Gui {
 	}
 
 	@Override
-	public void onLeftClick(int screenX, int screenY) {
-		super.onLeftClick(screenX, screenY);
+	public void onLeftClick(int screenX, int screenY, MouseEvent e) {
+		super.onLeftClick(screenX, screenY, e);
 		if (screenX >= (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
 				.roundDiv(Integers.SLOT_SIZE * inv.getSize(), 2))
 				&& screenX < inv.getSize()

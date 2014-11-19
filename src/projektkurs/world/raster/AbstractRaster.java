@@ -1,6 +1,7 @@
 package projektkurs.world.raster;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import projektkurs.entity.Entity;
 import projektkurs.lib.Raster;
@@ -43,7 +44,7 @@ public abstract class AbstractRaster {
 	 * @param x
 	 * @param y
 	 */
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int x, int y, MouseEvent e) {
 		Logger.info("Left-Clicked on Raster @{x=" + x + ", y=" + y + "}: "
 				+ this);
 	}
@@ -54,7 +55,7 @@ public abstract class AbstractRaster {
 	 * @param x
 	 * @param y
 	 */
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int x, int y, MouseEvent e) {
 		Logger.info("Right-Clicked on Raster @{x=" + x + ", y=" + y + "}: "
 				+ this);
 	}

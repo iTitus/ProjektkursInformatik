@@ -1,5 +1,6 @@
 package projektkurs.entity;
 
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
@@ -68,7 +69,7 @@ public class EntityPlayer extends EntityLiving {
 		}
 	}
 
-	public void onLeftClick(int screenX, int screenY) {
+	public void onLeftClick(int screenX, int screenY, MouseEvent e) {
 		ItemStack stack = inventar.getSelectedItemStack();
 		if (stack != null) {
 			stack.getItem().onLeftClick(this, stack, screenX, screenY);
@@ -77,7 +78,7 @@ public class EntityPlayer extends EntityLiving {
 		}
 	}
 
-	public void onRightClick(int screenX, int screenY) {
+	public void onRightClick(int screenX, int screenY, MouseEvent e) {
 		ItemStack stack = inventar.getSelectedItemStack();
 		if (stack != null) {
 			stack.getItem().onRightClick(this, stack, screenX, screenY);

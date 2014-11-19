@@ -3,7 +3,8 @@ package projektkurs.gui.element;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.lib.Integers;
@@ -31,7 +32,7 @@ public class TextField extends Element {
 	}
 
 	@Override
-	public void onKeyTyped(char keyChar, int modifiers) {
+	public void onKeyTyped(char keyChar, KeyEvent e) {
 		if (focussed) {
 			if (keyChar == KeyBindings.BACK_SPACE) {
 				if (text.length() > 0)
@@ -40,17 +41,15 @@ public class TextField extends Element {
 			} else if (keyChar == KeyBindings.LINE_BREAK) {
 				focussed = false;
 				gui.onFocusLost(this);
-			} else if ((modifiers & (InputEvent.CTRL_MASK | InputEvent.ALT_MASK)) != 0) {
-				if (keyChar == KeyBindings.PASTE_KEY)
-					try {
-						text += Toolkit.getDefaultToolkit()
-								.getSystemClipboard().getContents(null)
-								.getTransferData(DataFlavor.stringFlavor);
-						gui.onTextChanged(this);
-					} catch (Throwable t) {
-						Logger.logThrowable(
-								"Unable to paste clipboard contents", t);
-					}
+			} else if (e.isControlDown() && keyChar == KeyBindings.PASTE_KEY) {
+				try {
+					text += Toolkit.getDefaultToolkit().getSystemClipboard()
+							.getContents(null)
+							.getTransferData(DataFlavor.stringFlavor);
+					gui.onTextChanged(this);
+				} catch (Throwable t) {
+					Logger.logThrowable("Unable to paste clipboard contents", t);
+				}
 			} else {
 				text += keyChar;
 				gui.onTextChanged(this);
@@ -59,7 +58,7 @@ public class TextField extends Element {
 	}
 
 	@Override
-	public void onLeftClick(int x, int y) {
+	public void onLeftClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			focussed = true;
 			gui.onFocusGained(this);
@@ -70,7 +69,7 @@ public class TextField extends Element {
 	}
 
 	@Override
-	public void onRightClick(int x, int y) {
+	public void onRightClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			if (focussed) {
 				text = "";
