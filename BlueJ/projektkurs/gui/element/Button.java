@@ -26,17 +26,21 @@ public class Button extends Element {
 		return name;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
 	@Override
 	public void onLeftClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
-			gui.onButtonLeftClick(this);
+			gui.onButtonLeftClick(this, e);
 		}
 	}
 
 	@Override
 	public void onRightClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
-			gui.onButtonRightClick(this);
+			gui.onButtonRightClick(this, e);
 		}
 	}
 
@@ -60,5 +64,9 @@ public class Button extends Element {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -1,6 +1,7 @@
 package projektkurs.gui;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
@@ -17,6 +18,7 @@ public class GuiOption extends Gui implements IButtonListener,
 
 	@Override
 	public void initGui() {
+		super.initGui();
 		guiElements.add(new Button(MathUtil.ceilDiv(Integers.WINDOW_X, 2)
 				- MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2),
 				Integers.WINDOW_Y - Integers.WINDOW_HUD_Y - 64,
@@ -36,7 +38,7 @@ public class GuiOption extends Gui implements IButtonListener,
 	}
 
 	@Override
-	public void onButtonLeftClick(Button button) {
+	public void onButtonLeftClick(Button button, MouseEvent e) {
 		switch (button.getID()) {
 		case 0:
 			Main.exit();
@@ -50,7 +52,7 @@ public class GuiOption extends Gui implements IButtonListener,
 	}
 
 	@Override
-	public void onButtonRightClick(Button button) {
+	public void onButtonRightClick(Button button, MouseEvent e) {
 		switch (button.getID()) {
 		case 1:
 			Sounds.mute(((ToggleButton) button).getIndex() != 0);

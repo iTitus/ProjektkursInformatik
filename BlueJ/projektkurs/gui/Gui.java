@@ -27,7 +27,7 @@ public abstract class Gui {
 	}
 
 	public void initGui() {
-		// NO-OP
+		guiElements.clear();
 	}
 
 	public void onKeyTyped(char keyChar, KeyEvent e) {

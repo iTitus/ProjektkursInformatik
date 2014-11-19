@@ -4,14 +4,14 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
+import projektkurs.gui.element.IInventoryElementListener;
+import projektkurs.gui.element.InventoryElement;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.util.MathUtil;
-import projektkurs.util.RenderUtil;
 
-public class GuiInventory extends Gui {
+public class GuiInventory extends Gui implements IInventoryElementListener {
 
 	private Inventory inv;
 
@@ -20,84 +20,57 @@ public class GuiInventory extends Gui {
 	}
 
 	@Override
+	public void initGui() {
+		super.initGui();
+		guiElements.add(new InventoryElement(0, this, inv));
+		guiElements.add(new InventoryElement(MathUtil.floorDiv(
+				Integers.WINDOW_X, 2), Integers.WINDOW_Y
+				- MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 1, this, Main
+				.getPlayer().getInventory()));
+	}
+
+	@Override
 	public void onLeftClick(int screenX, int screenY, MouseEvent e) {
 		super.onLeftClick(screenX, screenY, e);
-		if (screenX >= (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
-				.roundDiv(Integers.SLOT_SIZE * inv.getSize(), 2))
-				&& screenX < inv.getSize()
-						* Integers.SLOT_SIZE
-						+ (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
-								.roundDiv(Integers.SLOT_SIZE * inv.getSize(), 2))
-				&& screenY >= (MathUtil.roundDiv(Integers.WINDOW_Y, 2) - MathUtil
-						.roundDiv(Integers.SLOT_SIZE, 2))
-				&& screenY < (MathUtil.roundDiv(Integers.WINDOW_Y, 2) - MathUtil
-						.roundDiv(Integers.SLOT_SIZE, 2)) + Integers.SLOT_SIZE) {
-			int index = ((screenX - (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
-					.roundDiv(Integers.SLOT_SIZE * inv.getSize(), 2))) / Integers.SLOT_SIZE);
+	}
+
+	@Override
+	public void onSlotLeftClick(int slotIndex, InventoryElement invE,
+			MouseEvent e) {
+		if (invE.getId() == 0) {
 			if (Main.getPlayer().getInventory()
-					.addItemStack(inv.getItemStackAt(index)))
-				inv.removeItemStack(index);
-		} else if (screenX >= Main.getPlayer().getInventory().getRelX()
-				&& screenX < Main.getPlayer().getInventory().getSize()
-						* Integers.SLOT_SIZE
-						+ Main.getPlayer().getInventory().getRelX()
-				&& screenY >= Main.getPlayer().getInventory().getRelY()
-				&& screenY < Main.getPlayer().getInventory().getRelY()
-						+ Integers.SLOT_SIZE) {
-			int index = ((screenX - Main.getPlayer().getInventory().getRelX()) / Integers.SLOT_SIZE);
+					.addItemStack(inv.getItemStackAt(slotIndex))) {
+				inv.removeItemStack(slotIndex);
+			}
+		} else if (invE.getId() == 1) {
 			if (inv.addItemStack(Main.getPlayer().getInventory()
-					.getItemStackAt(index)))
-				Main.getPlayer().getInventory().removeItemStack(index);
+					.getItemStackAt(slotIndex))) {
+				Main.getPlayer().getInventory().removeItemStack(slotIndex);
+			}
+		}
+	}
+
+	@Override
+	public void onSlotRightClick(int slotIndex, InventoryElement invE,
+			MouseEvent e) {
+		if (invE.getId() == 0) {
+			ItemStack stack = inv.getItemStackAt(slotIndex);
+			if (stack != null
+					&& Main.getPlayer().getInventory()
+							.addItemStack(stack.split(1))) {
+				inv.decrStackSize(slotIndex, 1);
+			}
+		} else if (invE.getId() == 1) {
+			if (inv.addItemStack(Main.getPlayer().getInventory()
+					.getItemStackAt(slotIndex).split(1))) {
+				Main.getPlayer().getInventory().decrStackSize(slotIndex, 1);
+			}
 		}
 	}
 
 	@Override
 	public void render(Graphics2D g) {
 		drawDefaultBackground(g);
-
-		ItemStack stack;
-		for (int i = 0; i < inv.getSize(); i++) {
-			RenderUtil
-					.drawImage(
-							g,
-							Images.slot,
-							i
-									* Integers.SLOT_SIZE
-									+ (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
-											.roundDiv(
-													Integers.SLOT_SIZE
-															* inv.getSize(), 2)),
-							(MathUtil.roundDiv(Integers.WINDOW_Y, 2) - MathUtil
-									.roundDiv(Integers.SLOT_SIZE, 2)));
-			stack = inv.getItemStackAt(i);
-			if (stack != null) {
-				RenderUtil
-						.drawImage(
-								g,
-								stack.getImage(),
-								i
-										* Integers.SLOT_SIZE
-										+ (MathUtil.roundDiv(Integers.WINDOW_X,
-												2) - MathUtil.roundDiv(
-												Integers.SLOT_SIZE
-														* inv.getSize(), 2))
-										+ 1, (MathUtil.roundDiv(
-										Integers.WINDOW_Y, 2) - MathUtil
-										.roundDiv(Integers.SLOT_SIZE, 2)) + 1);
-				g.drawString(
-						stack.getStackSize() + "",
-						i
-								* Integers.SLOT_SIZE
-								+ (MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil
-										.roundDiv(
-												Integers.SLOT_SIZE
-														* inv.getSize(), 2))
-								+ 1,
-						(MathUtil.roundDiv(Integers.WINDOW_Y, 2) - MathUtil
-								.roundDiv(Integers.SLOT_SIZE, 2)) + 11);
-			}
-		}
-
 		super.render(g);
 	}
 }

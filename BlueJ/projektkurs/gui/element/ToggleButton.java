@@ -18,11 +18,15 @@ public class ToggleButton extends Button {
 		return index;
 	}
 
+	public String[] getNames() {
+		return names;
+	}
+
 	@Override
 	public void onLeftClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			setIndex(index + 1);
-			gui.onButtonLeftClick(this);
+			gui.onButtonLeftClick(this, e);
 		}
 	}
 
@@ -30,7 +34,7 @@ public class ToggleButton extends Button {
 	public void onRightClick(int x, int y, MouseEvent e) {
 		if (isInside(x, y)) {
 			setIndex(index - 1);
-			gui.onButtonRightClick(this);
+			gui.onButtonRightClick(this, e);
 		}
 	}
 
@@ -41,6 +45,11 @@ public class ToggleButton extends Button {
 		if (this.index >= names.length)
 			this.index = 0;
 		name = names[this.index];
+	}
+
+	public void setNames(String[] names) {
+		this.names = names;
+		setIndex(index);
 	}
 
 }

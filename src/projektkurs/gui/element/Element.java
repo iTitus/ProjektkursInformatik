@@ -7,7 +7,9 @@ import java.awt.event.MouseWheelEvent;
 
 public abstract class Element {
 
-	protected int posX, posY, sizeX, sizeY, id;
+	protected final int id;
+
+	protected int posX, posY, sizeX, sizeY;
 
 	public Element(int posX, int posY, int sizeX, int sizeY, int id) {
 		this.posX = posX;
@@ -17,8 +19,28 @@ public abstract class Element {
 		this.id = id;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public int getID() {
 		return id;
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
 	}
 
 	public boolean isInside(Element e) {
@@ -53,5 +75,21 @@ public abstract class Element {
 	}
 
 	public abstract void render(Graphics2D g);
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
 
 }

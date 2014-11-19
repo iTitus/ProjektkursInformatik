@@ -7,8 +7,6 @@ import java.awt.image.BufferStrategy;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
-import projektkurs.inventory.PlayerInventory;
-import projektkurs.item.ItemStack;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.util.RenderUtil;
@@ -101,24 +99,6 @@ public class Render {
 								.getRenderHelper().getSightY(),
 								Integers.SIGHT_X, Integers.SIGHT_Y))
 					e.render(g);
-			}
-
-			PlayerInventory inv = Main.getPlayer().getInventory();
-			ItemStack stack = null;
-			for (int i1 = 0; i1 < inv.getSize(); i1++) {
-				RenderUtil.drawImage(g,
-						(i1 == inv.getSelectedIndex() ? Images.slot_highlight
-								: Images.slot),
-						i1 * Integers.SLOT_SIZE + inv.getRelX(), inv.getRelY());
-				stack = inv.getItemStackAt(i1);
-				if (stack != null) {
-					RenderUtil.drawImage(g, stack.getImage(), i1
-							* Integers.SLOT_SIZE + inv.getRelX() + 1,
-							inv.getRelY() + 1);
-					g.drawString(stack.getStackSize() + "", i1
-							* Integers.SLOT_SIZE + inv.getRelX() + 1,
-							inv.getRelY() + 11);
-				}
 			}
 
 			Main.getGui().render(g);

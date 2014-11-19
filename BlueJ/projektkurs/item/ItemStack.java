@@ -43,9 +43,15 @@ public class ItemStack {
 	 * @param damage
 	 */
 	public ItemStack(AbstractItem item, int stackSize, int damage) {
+		if (stackSize < 0)
+			throw new IllegalArgumentException("StackSize must not be negative");
 		this.item = item;
 		this.stackSize = stackSize;
 		this.damage = damage;
+	}
+
+	public ItemStack copy() {
+		return new ItemStack(item, stackSize, damage);
 	}
 
 	/**
@@ -139,6 +145,12 @@ public class ItemStack {
 
 	public void setStackSize(int stackSize) {
 		this.stackSize = stackSize;
+	}
+
+	public ItemStack split(int stackSize) {
+		ItemStack stack = copy();
+		stack.setStackSize(stackSize);
+		return stack;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 package projektkurs.dialog;
 
-public class Dialog {
+public class DialogManager {
 	// TODO
 }

@@ -90,14 +90,14 @@ public class MapBuilder {
 		door.setOpeningKey(1000);
 
 		// KISTENINHALTE!
-		Inventory inv = new Inventory(Integers.KISTENGROESSE);
-		inv.addItemStack(new ItemStack(Items.item_42, 42));
-		inv.addItemStack(new ItemStack(Items.nuke));
-		inv.addItemStack(new ItemStack(Items.key));
-
+		Inventory inv;
 		ExtraInformation extra;
 		for (int x = 0; x < map.getMapSizeX(); x++) {
 			for (int y = 0; y < map.getMapSizeY(); y++) {
+				inv = new Inventory(Integers.KISTENGROESSE);
+				inv.addItemStack(new ItemStack(Items.item_42, 42));
+				inv.addItemStack(new ItemStack(Items.nuke));
+				inv.addItemStack(new ItemStack(Items.key));
 				extra = map.getExtraInformationAt(x, y);
 				if (extra instanceof ExtraInformationKiste) {
 					((ExtraInformationKiste) extra).setInventar(inv);
@@ -112,9 +112,11 @@ public class MapBuilder {
 					MathUtil.roundMul(Math.random(), 20) + 10, MathUtil
 							.roundMul(Math.random(), 20) + 10, Images.redNPC));
 		}
+
+		// ITEMS
 		map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
-		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 42)));
-		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 42)));
+		map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 0)));
+		map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 1234)));
 		map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 42)));
 
 		// STORYMAGER!

@@ -15,7 +15,7 @@ import projektkurs.util.RenderUtil;
 
 public class TextField extends Element {
 
-	protected boolean focussed;
+	protected boolean focussed, enabled;
 	protected ITextFieldListener gui;
 	protected String text;
 
@@ -29,11 +29,25 @@ public class TextField extends Element {
 		super(posX, posY, sizeX, sizeY, id);
 		this.gui = gui;
 		this.text = text;
+		focussed = false;
+		enabled = true;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public boolean isFocussed() {
+		return focussed;
 	}
 
 	@Override
 	public void onKeyTyped(char keyChar, KeyEvent e) {
-		if (focussed) {
+		if (enabled && focussed) {
 			if (keyChar == KeyBindings.BACK_SPACE) {
 				if (text.length() > 0)
 					text = text.substring(0, text.length() - 1);
@@ -62,28 +76,32 @@ public class TextField extends Element {
 
 	@Override
 	public void onLeftClick(int x, int y, MouseEvent e) {
-		if (isInside(x, y)) {
-			focussed = true;
-			gui.onFocusGained(this);
-		} else {
-			focussed = false;
-			gui.onFocusLost(this);
+		if (enabled) {
+			if (isInside(x, y)) {
+				focussed = true;
+				gui.onFocusGained(this);
+			} else {
+				focussed = false;
+				gui.onFocusLost(this);
+			}
 		}
 	}
 
 	@Override
 	public void onRightClick(int x, int y, MouseEvent e) {
-		if (isInside(x, y)) {
-			if (focussed) {
-				text = "";
-				gui.onTextChanged(this);
+		if (enabled) {
+			if (isInside(x, y)) {
+				if (focussed) {
+					text = "";
+					gui.onTextChanged(this);
+				} else {
+					focussed = true;
+					gui.onFocusGained(this);
+				}
 			} else {
-				focussed = true;
-				gui.onFocusGained(this);
+				focussed = false;
+				gui.onFocusLost(this);
 			}
-		} else {
-			focussed = false;
-			gui.onFocusLost(this);
 		}
 	}
 
@@ -100,6 +118,30 @@ public class TextField extends Element {
 													Integers.CURSOR_BLINK_TIME,
 													2) ? "|" : ""), posX, posY,
 				sizeX, sizeY);
+	}
+
+	public void setEnabled(boolean enabled) {
+		if (this.enabled != enabled) {
+			this.enabled = enabled;
+			if (!this.enabled) {
+				focussed = false;
+				gui.onFocusLost(this);
+			}
+		}
+	}
+
+	public void setFocused(boolean focussed) {
+		if (enabled && this.focussed != focussed) {
+			this.focussed = focussed;
+			if (this.focussed)
+				gui.onFocusGained(this);
+			else
+				gui.onFocusLost(this);
+		}
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }

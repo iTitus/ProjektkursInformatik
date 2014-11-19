@@ -53,7 +53,7 @@ public class SaveData implements Serializable {
 		if (key != null && o != null && o != this)
 			dataMap.put(key, o);
 		else
-			Logger.warn("Unable to write " + key + " and " + o);
+			Logger.warn("Unable to set '" + key + "' -> '" + o + "'");
 	}
 
 	@Override
