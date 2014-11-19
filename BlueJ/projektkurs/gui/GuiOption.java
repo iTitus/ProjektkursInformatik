@@ -61,6 +61,26 @@ public class GuiOption extends Gui implements IButtonListener,
 	}
 
 	@Override
+	public void onFocusGained(TextField field) {
+		// NO-OP
+	}
+
+	@Override
+	public void onFocusLost(TextField field) {
+		// NO-OP
+	}
+
+	@Override
+	public void onTextChanged(TextField field) {
+		switch (field.getID()) {
+		case 2:
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
 	public void render(Graphics2D g) {
 		drawDefaultBackground(g);
 		super.render(g);

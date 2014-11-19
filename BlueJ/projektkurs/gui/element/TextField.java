@@ -36,20 +36,24 @@ public class TextField extends Element {
 			if (keyChar == KeyBindings.BACK_SPACE) {
 				if (text.length() > 0)
 					text = text.substring(0, text.length() - 1);
+				gui.onTextChanged(this);
 			} else if (keyChar == KeyBindings.LINE_BREAK) {
 				focussed = false;
+				gui.onFocusLost(this);
 			} else if ((modifiers & (InputEvent.CTRL_MASK | InputEvent.ALT_MASK)) != 0) {
 				if (keyChar == KeyBindings.PASTE_KEY)
 					try {
 						text += Toolkit.getDefaultToolkit()
 								.getSystemClipboard().getContents(null)
 								.getTransferData(DataFlavor.stringFlavor);
+						gui.onTextChanged(this);
 					} catch (Throwable t) {
 						Logger.logThrowable(
 								"Unable to paste clipboard contents", t);
 					}
 			} else {
 				text += keyChar;
+				gui.onTextChanged(this);
 			}
 		}
 	}
@@ -58,17 +62,26 @@ public class TextField extends Element {
 	public void onLeftClick(int x, int y) {
 		if (isInside(x, y)) {
 			focussed = true;
+			gui.onFocusGained(this);
 		} else {
 			focussed = false;
+			gui.onFocusLost(this);
 		}
 	}
 
 	@Override
 	public void onRightClick(int x, int y) {
-		if (isInside(x, y) && focussed) {
-			text = "";
+		if (isInside(x, y)) {
+			if (focussed) {
+				text = "";
+				gui.onTextChanged(this);
+			} else {
+				focussed = true;
+				gui.onFocusGained(this);
+			}
 		} else {
 			focussed = false;
+			gui.onFocusLost(this);
 		}
 	}
 
