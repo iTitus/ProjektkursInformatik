@@ -1,0 +1,4 @@
+/**
+ * Dialoge.
+ */
+package projektkurs.dialog;

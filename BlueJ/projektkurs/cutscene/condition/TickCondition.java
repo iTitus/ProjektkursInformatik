@@ -4,56 +4,82 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
 /**
- *
- *
+ * Eine Condition, die auf den vegangenen Ticks beruht.
  */
 public class TickCondition extends Condition {
 
-	public static enum TickConditionType {
-		EQUALS, GREATER, GREATER_EQUALS, LESSER, LESSER_EQUALS, MODULO_0
-	}
+    /**
+     * Verschiedene Typen von Vergleichen der vegangenen Ticks.
+     */
+    public static enum TickConditionType {
+        /**
+         * Die vergangenen Ticks stimmen mit der gegebenen Tickzahl überein.
+         */
+        EQUALS,
+        /**
+         * Die vergangenen Ticks sind größer als die gegebene Tickzahl.
+         */
+        GREATER,
+        /**
+         * Die vergangenen Ticks sind größer als die gegebene Tickzahl oder stimmen mit ihr überein.
+         */
+        GREATER_EQUALS,
+        /**
+         * Die vergangenen Ticks sind kleiner als die gegebene Tickzahl.
+         */
+        LESSER,
+        /**
+         * Die vergangenen Ticks sind kleiner als die gegebene Tickzahl oder stimmen mit ihr überein.
+         */
+        LESSER_EQUALS,
+        /**
+         * Die vergangenen Ticks 'modulo' die gegebene Tickzahl ist 0.
+         */
+        MODULO_0
+    }
 
-	private final int ticks;
+    /**
+     * Die gegebene Tickzahl.
+     */
+    private final int               ticks;
 
-	private final TickConditionType type;
+    /**
+     * Der TickConditionType, mit dem verglichen werden soll.
+     */
+    private final TickConditionType type;
 
-	/**
-	 * Konstruktor für TickConditions
-	 *
-	 * @param _type
-	 * @param _ticks
-	 */
-	public TickCondition(TickConditionType _type, int _ticks) {
-		type = _type;
-		ticks = _ticks;
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param type
+     *            Der TickConditionType, mit dem verglichen werden soll
+     * @param ticks
+     *            Die gegebene Tickzahl
+     */
+    public TickCondition(TickConditionType type, int ticks) {
+        this.type = type;
+        this.ticks = ticks;
+    }
 
-	@Override
-	public boolean isTrue(Action action, CutScene cutScene) {
+    @Override
+    public boolean isTrue(Action action, CutScene cutScene) {
 
-		switch (type) {
-		case EQUALS: {
-			return cutScene.getElapsedTicks() == ticks;
-		}
-		case LESSER: {
-			return cutScene.getElapsedTicks() < ticks;
-		}
-		case LESSER_EQUALS: {
-			return cutScene.getElapsedTicks() <= ticks;
-		}
-		case GREATER: {
-			return cutScene.getElapsedTicks() > ticks;
-		}
-		case GREATER_EQUALS: {
-			return cutScene.getElapsedTicks() >= ticks;
-		}
-		case MODULO_0: {
-			return cutScene.getElapsedTicks() % ticks == 0;
-		}
-		default: {
-			return false;
-		}
-		}
+        switch (type) {
+            case EQUALS:
+                return cutScene.getElapsedTicks() == ticks;
+            case LESSER:
+                return cutScene.getElapsedTicks() < ticks;
+            case LESSER_EQUALS:
+                return cutScene.getElapsedTicks() <= ticks;
+            case GREATER:
+                return cutScene.getElapsedTicks() > ticks;
+            case GREATER_EQUALS:
+                return cutScene.getElapsedTicks() >= ticks;
+            case MODULO_0:
+                return cutScene.getElapsedTicks() % ticks == 0;
+            default:
+                return false;
+        }
 
-	}
+    }
 }

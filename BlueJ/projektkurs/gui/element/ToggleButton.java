@@ -2,54 +2,110 @@ package projektkurs.gui.element;
 
 import java.awt.event.MouseEvent;
 
+/**
+ * Ein Knopf, der beim Drücken den Namen wechselt.
+ */
 public class ToggleButton extends Button {
 
-	private int index;
-	private String[] names;
+    /**
+     * Aktueller Namensindex.
+     */
+    private int      index;
+    /**
+     * Alle Namen.
+     */
+    private String[] names;
 
-	public ToggleButton(int posX, int posY, int sizeX, int sizeY, int id,
-			IButtonListener gui, String... names) {
-		super(posX, posY, sizeX, sizeY, id, gui, names[0]);
-		this.names = names;
-		index = 0;
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
+     * @param id
+     *            Nummer
+     * @param gui
+     *            Gui/Listener
+     * @param names
+     *            alle Namen
+     */
+    public ToggleButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener gui, String... names) {
+        super(posX, posY, sizeX, sizeY, id, gui, names[0]);
+        this.names = names;
+        index = 0;
+    }
 
-	public int getIndex() {
-		return index;
-	}
+    /**
+     * Der aktuelle Namensindex.
+     *
+     * @return Namensindex
+     */
+    public int getIndex() {
+        return index;
+    }
 
-	public String[] getNames() {
-		return names;
-	}
+    /**
+     * Alle Namen.
+     *
+     * @return Namen.
+     */
+    public String[] getNames() {
+        return names;
+    }
 
-	@Override
-	public void onLeftClick(int x, int y, MouseEvent e) {
-		if (isInside(x, y)) {
-			setIndex(index + 1);
-			gui.onButtonLeftClick(this, e);
-		}
-	}
+    @Override
+    public void onLeftClick(int x, int y, MouseEvent e) {
+        if (isInside(x, y)) {
+            if (e.isShiftDown()) {
+                setIndex(index + 10);
+            }
+            setIndex(index + 1);
+            gui.onButtonLeftClick(this, e);
+        }
+    }
 
-	@Override
-	public void onRightClick(int x, int y, MouseEvent e) {
-		if (isInside(x, y)) {
-			setIndex(index - 1);
-			gui.onButtonRightClick(this, e);
-		}
-	}
+    @Override
+    public void onRightClick(int x, int y, MouseEvent e) {
+        if (isInside(x, y)) {
+            if (e.isShiftDown()) {
+                setIndex(index - 10);
+            }
+            setIndex(index - 1);
+            gui.onButtonRightClick(this, e);
+        }
+    }
 
-	public void setIndex(int index) {
-		this.index = index;
-		if (this.index < 0)
-			this.index = names.length - 1;
-		if (this.index >= names.length)
-			this.index = 0;
-		name = names[this.index];
-	}
+    /**
+     * Setzt den Namensindex fest.
+     *
+     * @param index
+     *            Namensindex
+     */
+    public void setIndex(int index) {
+        this.index = index;
+        if (this.index < 0) {
+            this.index = names.length - 1;
+        }
+        if (this.index >= names.length) {
+            this.index = 0;
+        }
+        name = names[this.index];
+    }
 
-	public void setNames(String[] names) {
-		this.names = names;
-		setIndex(index);
-	}
+    /**
+     * Setzt alle Namen fest.
+     *
+     * @param names
+     *            Namen.
+     */
+    public void setNames(String[] names) {
+        this.names = names;
+        setIndex(index);
+    }
 
 }

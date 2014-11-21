@@ -1,9 +1,24 @@
 package projektkurs.level.editor;
 
-public class LevelEditor {
+/**
+ * Der Leveleditor.
+ */
+public final class LevelEditor {
 
-	public static void main(String[] args) {
-		// NO-OP
-	}
+    /**
+     * Die main-Methode.
+     *
+     * @param args
+     *            Konsolenargumente
+     */
+    public static void main(String[] args) {
+        // NO-OP
+    }
+
+    /**
+     * Konstruktor.
+     */
+    private LevelEditor() {
+    }
 
 }

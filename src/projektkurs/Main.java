@@ -31,272 +31,340 @@ import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 
 /**
- * Die Hauptklasse
+ * Die Hauptklasse.
  */
 public final class Main {
 
-	public static EntityPlayer player;
-	private static Level currLevel;
-	private static GameThread gameThread;
-	private static Gui gui;
-	private static InputManager imgr;
-	private static GuiIngame ingameGui;
-	private static final ArrayList<Method> initMethods = new ArrayList<Method>();
-	private static JFrame mainFrame;
-	private static LoopThread moveThread;
-	private static Render render;
-	private static RenderHelper renderHelper;
+    /**
+     * Das aktuelle Level.
+     */
+    private static Level             currLevel;
 
-	public static void closeGui() {
-		Main.gui = ingameGui;
-		Main.gui.initGui();
-	}
+    /**
+     * Der GameThread.
+     */
+    private static GameThread        gameThread;
+    /**
+     * Das aktuell geöffnete GUI.
+     */
+    private static Gui               gui;
+    /**
+     * Der InputManager.
+     */
+    private static InputManager      imgr;
+    /**
+     * Das Ingame-GUI (das normale Spiel).
+     */
+    private static GuiIngame         ingameGui;
+    /**
+     * Eine Liste mit allen Methoden, die eine @Init-Annotation haben.
+     */
+    private static ArrayList<Method> initMethods;
+    /**
+     * Das Hauptfenster.
+     */
+    private static JFrame            mainFrame;
+    /**
+     * Der Bewegungs-Thread.
+     */
+    private static LoopThread        moveThread;
+    /**
+     * Der Spieler.
+     */
+    private static EntityPlayer      player;
+    /**
+     * Der Render..
+     */
+    private static Render            render;
+    /**
+     * Der RenderHelper.
+     */
+    private static RenderHelper      renderHelper;
 
-	/**
-	 * Verlässt das Spiel
-	 */
-	public static void exit() {
-		System.exit(0);
-	}
+    /**
+     * Schließt das gerade geöffnete GUI und öffnet das Ingame-GUI.
+     */
+    public static void closeGui() {
+        Main.gui = ingameGui;
+        Main.gui.initGui();
+    }
 
-	public static int getFPS() {
-		return (gameThread != null ? gameThread.getFPS() : 0);
-	}
+    /**
+     * Verlässt das Spiel.
+     */
+    public static void exit() {
+        System.exit(0);
+    }
 
-	/**
-	 * @return the gui
-	 */
-	public static Gui getGui() {
-		return gui;
-	}
+    /**
+     * Die aktuelle FPS (frames per second).
+     *
+     * @return FPS
+     */
+    public static int getFPS() {
+        return gameThread != null ? gameThread.getFPS() : 0;
+    }
 
-	/**
-	 * Gibt den aktuellen InputManager aus
-	 *
-	 * @return InputManager
-	 */
-	public static InputManager getInputManager() {
-		return imgr;
-	}
+    /**
+     * @return the gui
+     */
+    public static Gui getGui() {
+        return gui;
+    }
 
-	public static Level getLevel() {
-		return currLevel;
-	}
+    /**
+     * Gibt den aktuellen InputManager aus.
+     *
+     * @return InputManager
+     */
+    public static InputManager getInputManager() {
+        return imgr;
+    }
 
-	/**
-	 * Gibt die aktuelle Figur aus
-	 *
-	 * @return Figur
-	 */
-	public static EntityPlayer getPlayer() {
-		return player;
-	}
+    /**
+     * Das aktuelle Level.
+     *
+     * @return Level
+     */
+    public static Level getLevel() {
+        return currLevel;
+    }
 
-	/**
-	 * Gibt den aktuellen Render aus
-	 *
-	 * @return Render
-	 */
-	public static Render getRender() {
-		return render;
-	}
+    /**
+     * Gibt die aktuelle Figur zurück.
+     *
+     * @return Figur
+     */
+    public static EntityPlayer getPlayer() {
+        return player;
+    }
 
-	/**
-	 * Gibt den aktuellen Renderhelper aus
-	 *
-	 * @return Renderhelper
-	 */
-	public static RenderHelper getRenderHelper() {
-		return renderHelper;
-	}
+    /**
+     * Gibt den aktuellen Render zurück.
+     *
+     * @return Render
+     */
+    public static Render getRender() {
+        return render;
+    }
 
-	public static int getUPS() {
-		return (gameThread != null ? gameThread.getUPS() : 0);
-	}
+    /**
+     * Gibt den aktuellen Renderhelper zurück.
+     *
+     * @return Renderhelper
+     */
+    public static RenderHelper getRenderHelper() {
+        return renderHelper;
+    }
 
-	/**
-	 * 
-	 */
-	public static void hide() {
-		mainFrame.setVisible(false);
-	}
+    /**
+     * Die aktuelle UPS (updates per second).
+     *
+     * @return UPS
+     */
+    public static int getUPS() {
+        return gameThread != null ? gameThread.getUPS() : 0;
+    }
 
-	/**
-	 * Interne Methode um alle Felder(Variablen) zu initialisieren
-	 */
-	@Init(state = State.PRE)
-	public static void initFields() {
-		imgr = new InputManager();
-		player = new EntityPlayer(MathUtil.roundDiv(Integers.SIGHT_X, 2) - 1,
-				MathUtil.roundDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
-		currLevel = Levels.level1;
-		render = new Render();
-		renderHelper = new RenderHelper();
-		gui = ingameGui = new GuiIngame();
-	}
+    /**
+     * Versteckt das Spielfenster.
+     */
+    public static void hide() {
+        mainFrame.setVisible(false);
+    }
 
-	/**
-	 * Interne Methode, um die Threads (Timer für die Ticks) zu starten
-	 */
-	@Init(state = State.POST)
-	public static void initThreads() {
-		gameThread = new GameThread();
-		moveThread = new MoveThread();
+    /**
+     * Interne Methode um alle Felder(Variablen) zu initialisieren.
+     */
+    @Init(state = State.PRE)
+    public static void initFields() {
+        imgr = new InputManager();
+        player = new EntityPlayer(MathUtil.roundDiv(Integers.SIGHT_X, 2) - 1, MathUtil.roundDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
+        currLevel = Levels.level1;
+        render = new Render();
+        renderHelper = new RenderHelper();
+        ingameGui = new GuiIngame();
+        openGui(null);
+    }
 
-		gameThread.start();
-		moveThread.start();
+    /**
+     * Interne Methode, um die Threads (Timer für die Ticks) zu starten.
+     */
+    @Init(state = State.POST)
+    public static void initThreads() {
+        gameThread = new GameThread();
+        moveThread = new MoveThread();
 
-	}
+        gameThread.start();
+        moveThread.start();
 
-	/**
-	 * Einstiegspunkt in das Spiel
-	 *
-	 * @param args
-	 *            Konsolenargumente
-	 */
-	public static void main(String[] args) {
+    }
 
-		try {
-			startGame();
-		} catch (Throwable t) {
-			Logger.logThrowable("Unable to start the game", t);
-			exit();
-		}
+    /**
+     * Einstiegspunkt in das Spiel.
+     *
+     * @param args
+     *            Konsolenargumente
+     */
+    public static void main(String[] args) {
 
-	}
+        try {
+            startGame();
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to start the game", t);
+            exit();
+        }
 
-	/**
-	 * @param gui
-	 *            the gui to open
-	 */
-	public static void openGui(Gui gui) {
-		if (gui != null) {
-			Main.gui = gui;
-			Main.gui.initGui();
-		} else {
-			closeGui();
-		}
-	}
+    }
 
-	/**
-	 * Pausiert das Spiel
-	 */
-	public static void pause() {
-		if (moveThread != null)
-			moveThread.pause(true);
-		if (gameThread != null)
-			gameThread.pause(true);
-		Sounds.pause(true);
-	}
+    /**
+     * @param gui
+     *            the gui to open
+     */
+    public static void openGui(Gui gui) {
+        if (gui != null) {
+            Main.gui = gui;
+            Main.gui.initGui();
+        } else {
+            closeGui();
+        }
+    }
 
-	/**
-	 * Lässt das Spiel weiter laufen
-	 */
-	public static void resume() {
-		if (moveThread != null)
-			moveThread.pause(false);
-		if (gameThread != null)
-			gameThread.pause(false);
-		Sounds.pause(false);
-	}
+    /**
+     * Pausiert das Spiel.
+     */
+    public static void pause() {
+        if (moveThread != null) {
+            moveThread.pause(true);
+        }
+        if (gameThread != null) {
+            gameThread.pause(true);
+        }
+        Sounds.pause(true);
+    }
 
-	/**
-	 * 
-	 */
-	public static void show() {
-		mainFrame.setVisible(true);
-	}
+    /**
+     * Lässt das Spiel weiter laufen.
+     */
+    public static void resume() {
+        if (moveThread != null) {
+            moveThread.pause(false);
+        }
+        if (gameThread != null) {
+            gameThread.pause(false);
+        }
+        Sounds.pause(false);
+    }
 
-	/**
-	 * @param state
-	 */
-	private static void init(State state) {
+    /**
+     *
+     */
+    public static void show() {
+        mainFrame.setVisible(true);
+    }
 
-		if (initMethods.isEmpty()) {
-			initMethods.addAll(ReflectionUtil
-					.getAllMethodsInClassesWithAnnotation(ReflectionUtil
-							.getClasses(Main.class.getPackage().getName()),
-							Init.class, Modifier.PUBLIC, Modifier.STATIC));
-		}
-		for (Method m : initMethods) {
-			if (m.getAnnotation(Init.class).state().equals(state)) {
-				Logger.info("Invoking @" + state + ": " + m.toString());
-				ReflectionUtil.invokeStatic(m);
-			}
-		}
+    /**
+     * Führt alle init-Methoden aus, die im gegebenen State ausgeführt werden sollen.
+     *
+     * @param state
+     *            der State
+     */
+    private static void init(State state) {
 
-	}
+        if (initMethods == null) {
+            initMethods = new ArrayList<Method>();
+        }
 
-	/**
-	 * Interne Methode um das Spiel zu starten
-	 */
-	private static void startGame() {
+        if (initMethods.isEmpty()) {
+            initMethods.addAll(ReflectionUtil.getAllMethodsInClassesWithAnnotation(ReflectionUtil.getClasses(Main.class.getPackage().getName()), Init.class,
+                    Modifier.PUBLIC, Modifier.STATIC));
+        }
+        for (Method m : initMethods) {
+            if (m.getAnnotation(Init.class).state().equals(state)) {
+                Logger.info("Invoking @" + state + ": " + m.toString());
+                ReflectionUtil.invokeStatic(m);
+            }
+        }
 
-		Logger.info("Initialising startup routine!");
+    }
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			@Override
-			public void run() {
-				Logger.info("Initialising shutdown routine!");
-				if (gameThread != null)
-					gameThread.terminate();
-				if (moveThread != null)
-					moveThread.terminate();
-				// TODO: Save to disk
-				Sounds.closeAll();
-				Images.flushAll();
-				Logger.info("Bye bye");
-				Logger.saveLog();
-			}
-		}, "Shutdown-Hook"));
+    /**
+     * Interne Methode um das Spiel zu starten.
+     */
+    private static void startGame() {
 
-		// Resources
-		init(State.RESOURCES);
+        Logger.info("Initialising startup routine!");
 
-		Option.createAndShowGUI();
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Logger.info("Initialising shutdown routine!");
+                if (gameThread != null) {
+                    gameThread.terminate();
+                }
+                if (moveThread != null) {
+                    moveThread.terminate();
+                }
+                // Save to disk
+                Sounds.closeAll();
+                Images.flushAll();
+                Logger.info("Bye bye");
+                Logger.saveLog();
+            }
+        }, "Shutdown-Hook"));
 
-		while (!Option.isFinished()) {
-			try {
-				Thread.sleep(100);
-			} catch (Throwable t) {
-				Logger.logThrowable("Unable to wait for the options window", t);
-			}
-		}
+        // Resources
+        init(State.RESOURCES);
 
-		// PreInit
-		// TODO: Load from disk
-		init(State.PRE);
+        Option.createAndShowGUI();
 
-		// Init
-		init(State.INIT);
+        while (!Option.isFinished()) {
+            try {
+                Thread.sleep(1);
+            } catch (Throwable t) {
+                Logger.logThrowable("Unable to wait for the options window", t);
+            }
+        }
 
-		SwingUtilities.invokeLater(new Runnable() {
+        // PreInit
+        // Load from disk
+        init(State.PRE);
 
-			@Override
-			public void run() {
-				mainFrame = new JFrame(Strings.NAME + " v" + Strings.VERSION);
+        // Init
+        init(State.INIT);
 
-				JPanel panel = (JPanel) mainFrame.getContentPane();
-				panel.setLayout(null);
-				panel.setPreferredSize(render.getGameCanvas()
-						.getPreferredSize());
-				panel.add(render.getGameCanvas());
+        SwingUtilities.invokeLater(new Runnable() {
 
-				mainFrame.setUndecorated(true);
-				mainFrame.setResizable(false);
-				mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				mainFrame.pack();
+            @Override
+            public void run() {
+                mainFrame = new JFrame(Strings.NAME + " " + Strings.VERSION);
 
-				mainFrame.setVisible(true);
-				render.initBuffers();
-			}
+                JPanel panel = (JPanel) mainFrame.getContentPane();
+                panel.setLayout(null);
+                panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
+                panel.add(render.getGameCanvas());
 
-		});
+                mainFrame.setUndecorated(true);
+                mainFrame.setResizable(false);
+                mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                mainFrame.pack();
 
-		// PostInit
-		init(State.POST);
+                mainFrame.setVisible(true);
+                render.initBuffers();
+            }
 
-		Logger.info("Finished loading!");
+        });
 
-	}
+        // PostInit
+        init(State.POST);
+
+        Logger.info("Finished loading!");
+
+    }
+
+    /**
+     * Nicht instanziierbar.
+     */
+    private Main() {
+    }
 }

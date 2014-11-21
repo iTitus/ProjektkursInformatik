@@ -10,35 +10,35 @@ import projektkurs.util.SaveData;
  */
 public class ExtraInformationKiste extends ExtraInformation {
 
-	private Inventory inventar;
+    private Inventory inventar;
 
-	public ExtraInformationKiste() {
-		inventar = new Inventory(Integers.KISTENGROESSE);
-	}
+    public ExtraInformationKiste() {
+        inventar = new Inventory(Integers.KISTENGROESSE);
+    }
 
-	/**
-	 * Das Inventar der Kiste
-	 *
-	 * @return
-	 */
-	public Inventory getInventar() {
-		return inventar;
-	}
+    /**
+     * Das Inventar der Kiste
+     *
+     * @return
+     */
+    public Inventory getInventar() {
+        return inventar;
+    }
 
-	@Override
-	public void load(SaveData data) {
-		super.load(data);
-		inventar = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
-	}
+    @Override
+    public void load(SaveData data) {
+        super.load(data);
+        inventar = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
+    }
 
-	public void setInventar(Inventory inventar) {
-		this.inventar = inventar;
-	}
+    public void setInventar(Inventory inventar) {
+        this.inventar = inventar;
+    }
 
-	@Override
-	public void write(SaveData data) {
-		super.write(data);
-		data.set(Strings.EXTRA_INV, inventar.write());
-	}
+    @Override
+    public void write(SaveData data) {
+        super.write(data);
+        data.set(Strings.EXTRA_INV, inventar.write());
+    }
 
 }

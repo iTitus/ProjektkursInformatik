@@ -1,14 +1,37 @@
 package projektkurs.dialog;
 
-public class DialogManager {
+/**
+ * Managt den aktuell laufenden Dialog.
+ */
+public final class DialogManager {
 
-	private static int currValue;
+    /**
+     * Der aktuelle Wert des Dialogs.
+     */
+    private static int currValue;
 
-	public static void changeValueBy(int dValue) {
-		currValue += dValue;
-	}
+    /**
+     * Ändert den Wert des Dialogs.
+     *
+     * @param value
+     *            Änderung
+     */
+    public static void changeValueBy(int value) {
+        currValue += value;
+    }
 
-	public static int getCurrValue() {
-		return currValue;
-	}
+    /**
+     * Der Wert des aktuellen Dialogs.
+     *
+     * @return Wert
+     */
+    public static int getCurrValue() {
+        return currValue;
+    }
+
+    /**
+     * Konstruktor.
+     */
+    private DialogManager() {
+    }
 }

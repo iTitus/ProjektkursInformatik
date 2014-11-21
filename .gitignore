@@ -4,6 +4,9 @@
 
 log*.txt
 
+*.ser
+*.checkstyle
+
 # BlueJ
 *.class
 *.ctxt

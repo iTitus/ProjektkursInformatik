@@ -2,14 +2,14 @@ package projektkurs.util;
 
 public interface ICanUpdate {
 
-	/**
-	 * @return
-	 */
-	boolean canUpdate();
+    /**
+     * @return
+     */
+    boolean canUpdate();
 
-	/**
+    /**
      *
      */
-	void update();
+    void update();
 
 }

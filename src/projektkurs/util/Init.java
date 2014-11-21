@@ -6,16 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Jede öffentlich statische Methode ohne Parameter mit dieser Annotation wird
- * automatisch geladen
+ * Jede öffentlich statische Methode ohne Parameter mit dieser Annotation wird automatisch geladen
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Init {
 
-	public static enum State {
-		INIT, POST, PRE, RESOURCES
-	}
+    public static enum State {
+        INIT, POST, PRE, RESOURCES
+    }
 
-	State state() default State.INIT;
+    State state() default State.INIT;
 }

@@ -6,177 +6,260 @@ import projektkurs.lib.Items;
 import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
 
+/**
+ * Ein Itemhaufen.
+ */
 public class ItemStack {
 
-	public static ItemStack load(SaveData data) {
-		if (data == null)
-			return null;
-		ItemStack stack = new ItemStack(Items.MAPPINGS.get(data
-				.getString(Strings.STACK_ITEM)));
-		stack.setStackSize(data.getInteger(Strings.STACK_SIZE));
-		stack.setDamage(data.getInteger(Strings.STACK_DAMAGE));
-		return stack;
-	}
+    /**
+     * Lädt einen ItemStack aus der gegebenen SaveData.
+     *
+     * @param data
+     *            SaveData
+     * @return ItemStack
+     */
+    public static ItemStack load(SaveData data) {
+        if (data == null) {
+            return null;
+        }
+        ItemStack stack = new ItemStack(Items.MAPPINGS.get(data.getString(Strings.STACK_ITEM)));
+        stack.setStackSize(data.getInteger(Strings.STACK_SIZE));
+        stack.setDamage(data.getInteger(Strings.STACK_DAMAGE));
+        return stack;
+    }
 
-	private AbstractItem item;
+    /**
+     * Schaden dieses ItemStacks.
+     */
+    private int                damage;
+    /**
+     * Itemtyp dieses ItemStacks.
+     */
+    private final AbstractItem item;
+    /**
+     * Größe dieses ItemStacks.
+     */
+    private int                stackSize;
 
-	private int stackSize, damage;
+    /**
+     * Konstruktor.
+     *
+     * @param item
+     *            Itemtyp
+     */
+    public ItemStack(AbstractItem item) {
+        this(item, 1);
+    }
 
-	/**
-	 * @param item
-	 */
-	public ItemStack(AbstractItem item) {
-		this(item, 1);
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param item
+     *            Itemtyp
+     * @param stackSize
+     *            Größe
+     */
+    public ItemStack(AbstractItem item, int stackSize) {
+        this(item, stackSize, 0);
+    }
 
-	/**
-	 * @param item
-	 * @param stackSize
-	 */
-	public ItemStack(AbstractItem item, int stackSize) {
-		this(item, stackSize, 0);
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param item
+     *            Itemtyp
+     * @param stackSize
+     *            Größe
+     * @param damage
+     *            Schaden
+     */
+    public ItemStack(AbstractItem item, int stackSize, int damage) {
+        if (stackSize < 0) {
+            throw new IllegalArgumentException("StackSize must not be negative");
+        }
+        this.item = item;
+        this.stackSize = stackSize;
+        this.damage = damage;
+    }
 
-	/**
-	 * @param item
-	 * @param stackSize
-	 * @param damage
-	 */
-	public ItemStack(AbstractItem item, int stackSize, int damage) {
-		if (stackSize < 0)
-			throw new IllegalArgumentException("StackSize must not be negative");
-		this.item = item;
-		this.stackSize = stackSize;
-		this.damage = damage;
-	}
+    /**
+     * Kopiert den ItemStack.
+     *
+     * @return neuer ItemStack mit gleichen Feldern
+     */
+    public ItemStack copy() {
+        return new ItemStack(item, stackSize, damage);
+    }
 
-	public ItemStack copy() {
-		return new ItemStack(item, stackSize, damage);
-	}
+    /**
+     * Beschädigt dieses ItemStack um den gegebenen Wert.
+     *
+     * @param by
+     *            Wert
+     */
+    public void damage(int by) {
+        damage += by;
+    }
 
-	/**
-	 * Beschädigt den Stack um by
-	 *
-	 * @param by
-	 */
-	public void damage(int by) {
-		damage += by;
-	}
+    /**
+     * Verringert die Größe dieses ItemStack um den gegebenen Wert.
+     *
+     * @param by
+     *            Wert
+     */
+    public void decrStackSize(int by) {
+        stackSize -= by;
+    }
 
-	public void decrStackSize(int by) {
-		stackSize -= by;
-	}
+    /**
+     * Der Schaden dieses ItemStacks.
+     *
+     * @return Schaden
+     */
+    public int getDamage() {
+        return damage;
+    }
 
-	public int getDamage() {
-		return damage;
-	}
+    /**
+     * Das Bild dieses ItemStacks.
+     *
+     * @return Bild
+     */
+    public BufferedImage getImage() {
+        return item.getImage(this);
+    }
 
-	/**
-	 * @return
-	 */
-	public BufferedImage getImage() {
-		return item.getImage(this);
-	}
+    /**
+     * Der Itemtyp dieses ItemStacks.
+     *
+     * @return Itemtyp
+     */
+    public AbstractItem getItem() {
+        return item;
+    }
 
-	public AbstractItem getItem() {
-		return item;
-	}
+    /**
+     * Der Name dieses ItemStacks.
+     *
+     * @return Name
+     */
+    public String getName() {
+        return String.format("%d x %s:%d", stackSize, item.toString(), damage);
+    }
 
-	public String getName() {
-		return String.format("%d x %s:%d", stackSize, item.toString(), damage);
-	}
+    /**
+     * Die Größe dieses ItemStacks.
+     *
+     * @return Größe
+     */
+    public int getStackSize() {
+        return stackSize;
+    }
 
-	public int getStackSize() {
-		return stackSize;
-	}
+    /**
+     * Erhöht die Größe dieses ItemStacks um den gegebenen Wert.
+     *
+     * @param by
+     *            Wert
+     */
+    public void incrStackSize(int by) {
+        stackSize += by;
+    }
 
-	public void incrStackSize(int by) {
-		stackSize += by;
-	}
+    /**
+     * Ist der Itemtyp und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Größe des ItemStacks
+     *
+     * @param other
+     *            ItemStack
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean itemAndDamageEquals(ItemStack other) {
+        return other.damage == damage && (other.item == null && item == null || other.item != null && item != null && other.item.equals(item));
+    }
 
-	/**
-	 * Ignoriert stacksize
-	 *
-	 * @param other
-	 * @return
-	 */
-	public boolean itemAndDamageEquals(ItemStack other) {
-		return other.damage == damage
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
+    /**
+     * Ist der Itemtyp und die Größe des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert den Schaden des ItemStacks
+     *
+     * @param other
+     *            ItemStack
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean itemAndStackSizeEquals(ItemStack other) {
+        return other.stackSize == stackSize && (other.item == null && item == null || other.item != null && item != null && other.item.equals(item));
+    }
 
-	/**
-	 * Ignoriert damage
-	 *
-	 * @param other
-	 * @return
-	 */
-	public boolean itemAndStackSizeEquals(ItemStack other) {
-		return other.stackSize == stackSize
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
+    /**
+     * Ist der Itemtyp des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Größe und den Schaden des ItemStacks
+     *
+     * @param other
+     *            ItemStack
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean itemEquals(ItemStack other) {
+        return other.item == null && item == null || other.item != null && item != null && other.item.equals(item);
+    }
 
-	/**
-	 * Ignore stacksize and damage
-	 *
-	 * @param other
-	 * @return
-	 */
-	public boolean itemEquals(ItemStack other) {
-		return (other.item == null && item == null)
-				|| (other.item != null && item != null && other.item
-						.equals(item));
-	}
+    /**
+     * Setzt den Schaden.
+     *
+     * @param damage
+     *            Schaden
+     */
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-	/**
-	 * Setzt den Damage
-	 * 
-	 * @param damage
-	 */
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
+    /**
+     * Setzt die Größe dieses ItemStacks.
+     *
+     * @param stackSize
+     *            Größe
+     */
+    public void setStackSize(int stackSize) {
+        this.stackSize = stackSize;
+    }
 
-	public void setItem(AbstractItem item) {
-		this.item = item;
-	}
+    /**
+     * Erstellt einen neuen ItemStack mit dem Itemtyp und dem dem Schaden dieses ItemStacks, aber mit der gegebenen Größe.
+     *
+     * @param stackSize
+     *            Größe
+     * @return ItemStack
+     */
+    public ItemStack split(int stackSize) {
+        ItemStack stack = copy();
+        stack.setStackSize(stackSize);
+        return stack;
+    }
 
-	public void setStackSize(int stackSize) {
-		this.stackSize = stackSize;
-	}
+    /**
+     * Ist der Itemtyp und die Größe und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack.
+     *
+     * @param other
+     *            ItemStack
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean stackEquals(ItemStack other) {
+        return other.stackSize == stackSize && other.damage == damage
+                && (other.item == null && item == null || other.item != null && item != null && other.item.equals(item));
+    }
 
-	public ItemStack split(int stackSize) {
-		ItemStack stack = copy();
-		stack.setStackSize(stackSize);
-		return stack;
-	}
+    @Override
+    public String toString() {
+        return String.format("ItemStack {%s}", getName());
+    }
 
-	/**
-	 * Streng
-	 *
-	 * @param other
-	 * @return
-	 */
-	public boolean stackEquals(ItemStack other) {
-		return other.stackSize == stackSize
-				&& other.damage == damage
-				&& ((other.item == null && item == null) || (other.item != null
-						&& item != null && other.item.equals(item)));
-	}
-
-	@Override
-	public String toString() {
-		return String.format("ItemStack {%s}", getName());
-	}
-
-	public SaveData write() {
-		SaveData data = new SaveData();
-		data.set(Strings.STACK_ITEM, Items.BACK_MAPPINGS.get(item));
-		data.set(Strings.STACK_SIZE, stackSize);
-		data.set(Strings.STACK_DAMAGE, damage);
-		return data;
-	}
+    /**
+     * Speichert diesen ItemStack in einem SaveData-Objekt.
+     *
+     * @return SaveData
+     */
+    public SaveData write() {
+        SaveData data = new SaveData();
+        data.set(Strings.STACK_ITEM, Items.BACK_MAPPINGS.get(item));
+        data.set(Strings.STACK_SIZE, stackSize);
+        data.set(Strings.STACK_DAMAGE, damage);
+        return data;
+    }
 
 }

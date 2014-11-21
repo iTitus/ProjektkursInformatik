@@ -3,20 +3,28 @@ package projektkurs.cutscene.condition;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
-public class CombinedAndCondition extends Condition {
+/**
+ * Condition, die mehrere Conditions mit UND verbindet.
+ */
+public class CombinedAndCondition extends CombinedCondition {
 
-	private Condition[] conditions;
+    /**
+     * Konstruktor.
+     *
+     * @param conditions
+     *            Zu prüfende Conditions.
+     */
+    public CombinedAndCondition(Condition... conditions) {
+        super(conditions);
+    }
 
-	public CombinedAndCondition(Condition... conditions) {
-		this.conditions = conditions;
-	}
-
-	@Override
-	public boolean isTrue(Action action, CutScene cutScene) {
-		for (int i = 0; i < conditions.length; i++) {
-			if (!conditions[i].isTrue(action, cutScene))
-				return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean isTrue(Action action, CutScene cutScene) {
+        for (int i = 0; i < conditions.length; i++) {
+            if (!conditions[i].isTrue(action, cutScene)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

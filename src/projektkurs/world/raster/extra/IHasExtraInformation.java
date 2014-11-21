@@ -5,6 +5,6 @@ package projektkurs.world.raster.extra;
  */
 public interface IHasExtraInformation {
 
-	public ExtraInformation createExtraInformation();
+    public ExtraInformation createExtraInformation();
 
 }

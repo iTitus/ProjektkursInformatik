@@ -4,17 +4,19 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
 /**
- * Abstrakte Condition
+ * Abstrakte Condition.
  */
 public abstract class Condition {
 
-	/**
-	 * Ist diese Bedingung jetzt wahr?
-	 *
-	 * @param action
-	 * @param cutScene
-	 * @return
-	 */
-	public abstract boolean isTrue(Action action, CutScene cutScene);
+    /**
+     * Ist diese Condition jetzt true.
+     *
+     * @param action
+     *            Die aktuelle Action
+     * @param cutScene
+     *            Aktuelle CutScene
+     * @return true, wenn ja; false, wenn nein
+     */
+    public abstract boolean isTrue(Action action, CutScene cutScene);
 
 }

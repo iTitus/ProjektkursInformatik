@@ -4,20 +4,21 @@ import java.lang.reflect.Method;
 
 public class CombinedAndTrigger extends Trigger {
 
-	private Trigger[] triggers;
+    private final Trigger[] triggers;
 
-	public CombinedAndTrigger(Method m, Trigger[] triggers, Object... objects) {
-		super(m, objects);
-		this.triggers = triggers;
-	}
+    public CombinedAndTrigger(Method m, Trigger[] triggers, Object... objects) {
+        super(m, objects);
+        this.triggers = triggers;
+    }
 
-	@Override
-	public boolean isTriggerActive() {
-		for (int i = 0; i < triggers.length; i++) {
-			if (!triggers[i].isTriggerActive())
-				return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean isTriggerActive() {
+        for (int i = 0; i < triggers.length; i++) {
+            if (!triggers[i].isTriggerActive()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

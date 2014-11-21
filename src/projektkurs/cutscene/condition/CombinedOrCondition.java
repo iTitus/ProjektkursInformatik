@@ -3,21 +3,29 @@ package projektkurs.cutscene.condition;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
 
-public class CombinedOrCondition extends Condition {
+/**
+ * Condition, die mehrere Conditions mit ODER verbindet.
+ */
+public class CombinedOrCondition extends CombinedCondition {
 
-	private Condition[] conditions;
+    /**
+     * Konstruktor.
+     *
+     * @param conditions
+     *            Zu prüfende Conditions.
+     */
+    public CombinedOrCondition(Condition... conditions) {
+        super(conditions);
+    }
 
-	public CombinedOrCondition(Condition... conditions) {
-		this.conditions = conditions;
-	}
-
-	@Override
-	public boolean isTrue(Action action, CutScene cutScene) {
-		for (int i = 0; i < conditions.length; i++) {
-			if (conditions[i].isTrue(action, cutScene))
-				return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isTrue(Action action, CutScene cutScene) {
+        for (Condition condition : conditions) {
+            if (condition.isTrue(action, cutScene)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

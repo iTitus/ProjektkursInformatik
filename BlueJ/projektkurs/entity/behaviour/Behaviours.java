@@ -1,17 +1,41 @@
 package projektkurs.entity.behaviour;
 
+/**
+ * Alle Beahviours.
+ */
 public enum Behaviours {
 
-	NOTHING(new BehaviourNothing()), RUN_AROUND(new BehaviourRunAround());
+    /**
+     * Der Entity tut nichts.
+     */
+    NOTHING(new BehaviourNothing()),
+    /**
+     * Der Entity läuft herum.
+     */
+    RUN_AROUND(new BehaviourRunAround());
 
-	private final IBehaviour bhv;
+    /**
+     * Die Behaviour.
+     */
+    private final IBehaviour bhv;
 
-	private Behaviours(IBehaviour bhv) {
-		this.bhv = bhv;
-	}
+    /**
+     * Kostruktor.
+     *
+     * @param bhv
+     *            Behaviour
+     */
+    private Behaviours(IBehaviour bhv) {
+        this.bhv = bhv;
+    }
 
-	public IBehaviour getBehaviour() {
-		return bhv;
-	}
+    /**
+     * Die Behaviour.
+     *
+     * @return Behaviour
+     */
+    public IBehaviour getBehaviour() {
+        return bhv;
+    }
 
 }

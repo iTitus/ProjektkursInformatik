@@ -3,22 +3,24 @@ package projektkurs.cutscene.action;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.condition.Condition;
 
+/**
+ * Eine Action, die die CutScene beendet.
+ */
 public class ConditionedExitAction extends Action {
 
-	private final Condition condition;
+    /**
+     * Konstruktor.
+     *
+     * @param condition
+     *            Ausführbedingung
+     */
+    public ConditionedExitAction(Condition condition) {
+        super(condition);
+    }
 
-	public ConditionedExitAction(Condition condition) {
-		this.condition = condition;
-	}
-
-	@Override
-	public void doAction(CutScene cutScene) {
-		cutScene.setFinished();
-	}
-
-	@Override
-	public Condition getCondition() {
-		return condition;
-	}
+    @Override
+    public void doAction(CutScene cutScene) {
+        cutScene.setFinished();
+    }
 
 }

@@ -1,0 +1,5 @@
+/**
+ * Haupt-Package.
+ */
+package projektkurs;
+

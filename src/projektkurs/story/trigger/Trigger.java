@@ -9,20 +9,20 @@ import projektkurs.util.ReflectionUtil;
  */
 public abstract class Trigger {
 
-	protected final Method m;
-	protected final Object[] objects;
+    protected final Method   m;
+    protected final Object[] objects;
 
-	protected Trigger(Method m, Object... objects) {
-		this.m = m;
-		this.objects = objects;
-	}
+    protected Trigger(Method m, Object... objects) {
+        this.m = m;
+        this.objects = objects;
+    }
 
-	public void doTrigger() {
-		ReflectionUtil.invokeStatic(m, objects);
-	}
+    public void doTrigger() {
+        ReflectionUtil.invokeStatic(m, objects);
+    }
 
-	/**
-	 * @return
-	 */
-	public abstract boolean isTriggerActive();
+    /**
+     * @return
+     */
+    public abstract boolean isTriggerActive();
 }

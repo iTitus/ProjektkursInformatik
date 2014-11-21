@@ -10,46 +10,79 @@ import projektkurs.world.raster.extra.ExtraInformation;
 import projektkurs.world.raster.extra.ExtraInformationDoor;
 import projektkurs.world.raster.extra.ExtraInformationFire;
 
+/**
+ * Alle ExtraInformationstypen.
+ */
 public final class ExtraInformationen {
 
-	public static final HashMap<Class<? extends ExtraInformation>, String> BACK_MAPPINGS = new HashMap<Class<? extends ExtraInformation>, String>();
-	public static final HashMap<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
+    /**
+     * Zurück-Mappings.
+     */
+    public static final HashMap<Class<? extends ExtraInformation>, String> BACK_MAPPINGS = new HashMap<Class<? extends ExtraInformation>, String>();
+    /**
+     * Mappings.
+     */
+    public static final HashMap<String, Class<? extends ExtraInformation>> MAPPINGS      = new HashMap<String, Class<? extends ExtraInformation>>();
 
-	@Init
-	public static void init() {
-		registerExtraInformation("door", ExtraInformationDoor.class);
-		registerExtraInformation("fire", ExtraInformationFire.class);
-		registerExtraInformation("kiste", ExtraInformationFire.class);
-	}
+    /**
+     * Initialisiert alle ExtraInformationstypen.
+     */
+    @Init
+    public static void init() {
+        registerExtraInformation("door", ExtraInformationDoor.class);
+        registerExtraInformation("fire", ExtraInformationFire.class);
+        registerExtraInformation("kiste", ExtraInformationFire.class);
+    }
 
-	public static ExtraInformation loadExtraInformation(SaveData data) {
+    /**
+     * Lädt einen ExtraInformation aus einem SaveData-Objekt.
+     *
+     * @param data
+     *            SaveData
+     * @return ExtraInformation
+     */
+    public static ExtraInformation loadExtraInformation(SaveData data) {
 
-		ExtraInformation extra = ReflectionUtil.newInstance(MAPPINGS.get(data
-				.getString(Strings.EXTRA_ID)));
+        ExtraInformation extra = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.EXTRA_ID)));
 
-		try {
-			extra.load(data);
-		} catch (Throwable t) {
-			Logger.logThrowable("Unable to load ExtraInformation from " + data,
-					t);
-		}
-		return extra;
-	}
+        try {
+            extra.load(data);
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to load ExtraInformation from " + data, t);
+        }
+        return extra;
+    }
 
-	public static SaveData writeExtraInformation(ExtraInformation extra) {
-		SaveData data = new SaveData();
-		data.set(Strings.EXTRA_ID,
-				ExtraInformationen.BACK_MAPPINGS.get(extra.getClass()));
-		extra.write(data);
-		return data;
-	}
+    /**
+     * Speichert eine ExtraInformation in einer SaveData.
+     *
+     * @param extra
+     *            ExtraInformation
+     * @return SaveData
+     */
+    public static SaveData writeExtraInformation(ExtraInformation extra) {
+        SaveData data = new SaveData();
+        data.set(Strings.EXTRA_ID, ExtraInformationen.BACK_MAPPINGS.get(extra.getClass()));
+        extra.write(data);
+        return data;
+    }
 
-	private static void registerExtraInformation(String name,
-			Class<? extends ExtraInformation> cls) {
-		MAPPINGS.put(name, cls);
-		BACK_MAPPINGS.put(cls, name);
-	}
+    /**
+     * Registriert ein Mapping.
+     *
+     * @param name
+     *            Name
+     * @param cls
+     *            Entity-Klasse
+     */
+    private static void registerExtraInformation(String name, Class<? extends ExtraInformation> cls) {
+        MAPPINGS.put(name, cls);
+        BACK_MAPPINGS.put(cls, name);
+    }
 
-	private ExtraInformationen() {
-	}
+    /**
+     * Nicht instanziierbar.
+     */
+    private ExtraInformationen() {
+    }
 }

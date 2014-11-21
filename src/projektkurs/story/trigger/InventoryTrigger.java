@@ -7,16 +7,16 @@ import projektkurs.item.ItemStack;
 
 public class InventoryTrigger extends Trigger {
 
-	private final ItemStack item;
+    private final ItemStack item;
 
-	public InventoryTrigger(Method m, ItemStack item, Object... objects) {
-		super(m, objects);
-		this.item = item;
-	}
+    public InventoryTrigger(Method m, ItemStack item, Object... objects) {
+        super(m, objects);
+        this.item = item;
+    }
 
-	@Override
-	public boolean isTriggerActive() {
-		return Main.getPlayer().getInventory().containsIgnoreStackSize(item);
-	}
+    @Override
+    public boolean isTriggerActive() {
+        return Main.getPlayer().getInventory().containsIgnoreStackSize(item);
+    }
 
 }

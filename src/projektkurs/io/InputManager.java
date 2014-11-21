@@ -16,235 +16,309 @@ import projektkurs.util.Direction;
 import projektkurs.util.Queue;
 
 /**
- * Zuständig für den Input (Tasten, Maus)
+ * Zuständig für den Input (Tastatur, Maus).
  */
-public class InputManager implements KeyListener, MouseInputListener,
-		MouseWheelListener {
+public class InputManager implements KeyListener, MouseInputListener, MouseWheelListener {
 
-	public static final int LEFT_MOUSE_BUTTON = MouseEvent.BUTTON1;
-	/**
-	 * Table for decoding of the int moveDir to the x-offset
-	 */
-	public static final int[] ofX = { 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, 1, 1,
-			0, 0, 0, 0 };
+    /**
+     * Linker Mausknopf.
+     */
+    public static final int              LEFT_MOUSE_BUTTON  = MouseEvent.BUTTON1;
+    /**
+     * Tabelle um die moveDir in den X-Offset zu dekodieren.
+     */
+    public static final int[]            OFFSET_X           = { 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, 1, 1, 0, 0, 0, 0 };
 
-	/**
-	 * Table for decoding of the int moveDir to the y-offset
-	 */
-	public static final int[] ofY = { 0, -1, 1, 0, 0, -1, 1, 0, 0, -1, 1, 0, 0,
-			-1, 1, 0 };
-	public static final int RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
+    /**
+     * Tabelle um die moveDir in den Y-Offset zu dekodieren.
+     */
+    public static final int[]            OFFSET_Y           = { 0, -1, 1, 0, 0, -1, 1, 0, 0, -1, 1, 0, 0, -1, 1, 0 };
+    /**
+     * Rechter Mausknopf.
+     */
+    public static final int              RIGHT_MOUSE_BUTTON = MouseEvent.BUTTON3;
+    /**
+     * Zu verarbeitende KeyEvents.
+     */
+    private final Queue<KeyEvent>        keyEvents;
+    /**
+     * Speichert alle gerade gedrückten Tasten.
+     */
+    private final HashSet<Integer>       keysPressed;
+    /**
+     * Zu verarbeitende MouseEvents.
+     */
+    private final Queue<MouseEvent>      mouseEvents;
+    /**
+     * Zu verarbeitende MouseWheelEvents.
+     */
+    private final Queue<MouseWheelEvent> mouseWheelEvents;
+    /**
+     * X-Koordinate der Maus.
+     */
+    private int                          mouseX;
+    /**
+     * Y-Koordinate der Maus.
+     */
+    private int                          mouseY;
 
-	private final Queue<KeyEvent> keyEvents;
+    /**
+     * Zwischenvariable, um die aktuelle Bewegungsrichtung zu speichern.
+     */
+    private int                          moveDir;
 
-	/**
-	 * Speichert alle gerade gedrückten Tasten
-	 */
-	private final HashSet<Integer> keysPressed;
-	private final Queue<MouseEvent> mouseEvents;
-	private final Queue<MouseWheelEvent> mouseWheelEvents;
+    /**
+     * Konstruktor.
+     */
+    public InputManager() {
+        keysPressed = new HashSet<Integer>();
+        keyEvents = new Queue<KeyEvent>();
+        mouseEvents = new Queue<MouseEvent>();
+        mouseWheelEvents = new Queue<MouseWheelEvent>();
+        moveDir = 0;
+    }
 
-	private int mouseX, mouseY;
+    /**
+     * X-Koordinate der Maus.
+     *
+     * @return X-Koordinate
+     */
+    public int getMouseX() {
+        return mouseX;
+    }
 
-	/**
-	 * Zwischenvariable, um die aktuelle Bewegungsrichtung zu speichern
-	 */
-	private volatile int moveDir;
+    /**
+     * Y-Koordinate der Maus.
+     *
+     * @return Y-Koordinate
+     */
+    public int getMouseY() {
+        return mouseY;
+    }
 
-	/**
-	 * Konstruktor um den InputManger zu initialisieren
-	 */
-	public InputManager() {
-		keysPressed = new HashSet<Integer>();
-		keyEvents = new Queue<KeyEvent>();
-		mouseEvents = new Queue<MouseEvent>();
-		mouseWheelEvents = new Queue<MouseWheelEvent>();
-		moveDir = 0;
-	}
+    /**
+     * Die nächste Bewegungsrichtung. ACHTUNG: Zwischenspeichern empfohlen, resettet sich selber!
+     *
+     * @return Direction, die nächste Bewegungsrichtung
+     */
+    public Direction getNextDirection() {
+        Direction dir = Direction.getDirectionForOffset(OFFSET_X[moveDir], OFFSET_Y[moveDir]);
+        moveDir = 0b0000;
+        return dir;
+    }
 
-	/**
-	 * @return
-	 */
-	public int getMouseX() {
-		return mouseX;
-	}
+    /**
+     * Das nächste zu verarbeitende KeyEvent.
+     *
+     * @return KeyEvent
+     */
+    public KeyEvent getNextKeyEvent() {
+        return keyEvents.frontDeQueue();
+    }
 
-	/**
-	 * @return
-	 */
-	public int getMouseY() {
-		return mouseY;
-	}
+    /**
+     * Das nächste zu verarbeitende MouseEvent.
+     *
+     * @return MouseEvent
+     */
+    public MouseEvent getNextMouseEvent() {
+        return mouseEvents.frontDeQueue();
+    }
 
-	/**
-	 * Die nächste Bewegungsrichtung. ACHTUNG: Zwischenspeichern empfohlen,
-	 * resettet sich selber!
-	 *
-	 * @return Direction, die nächste Bewegungsrichtung
-	 */
-	public Direction getNextDirection() {
-		Direction dir = Direction.getDirectionForOffset(ofX[moveDir],
-				ofY[moveDir]);
-		moveDir = 0b0000;
-		return dir;
-	}
+    /**
+     * Das nächste zu verarbeitende MouseWheelEvent.
+     *
+     * @return MouseWheelEvent
+     */
+    public MouseWheelEvent getNextMouseWheelEvent() {
+        return mouseWheelEvents.frontDeQueue();
+    }
 
-	public KeyEvent getNextKeyEvent() {
-		return keyEvents.frontDeQueue();
-	}
+    /**
+     * Sind KeyEvents zu verarbeiten.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean hasKeyEvents() {
+        return !keyEvents.empty();
+    }
 
-	public MouseEvent getNextMouseEvent() {
-		return mouseEvents.frontDeQueue();
-	}
+    /**
+     * Sind MouseEvents zu verarbeiten.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean hasMouseEvents() {
+        return !mouseEvents.empty();
+    }
 
-	public MouseWheelEvent getNextMouseWheelEvent() {
-		return mouseWheelEvents.frontDeQueue();
-	}
+    /**
+     * Sind MouseWheelEvents zu verarbeiten.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean hasMouseWheelEvents() {
+        return !mouseWheelEvents.empty();
+    }
 
-	public boolean hasKeyEvents() {
-		return !keyEvents.empty();
-	}
+    /**
+     * Ist die mit gegebene Taste im Moment gedrückt.
+     *
+     * @param keyCode
+     *            Ein KeyCode aus der KeyEvent-Klasse
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean isKeyPressed(int keyCode) {
+        return keysPressed.contains(keyCode);
+    }
 
-	public boolean hasMouseEvents() {
-		return !mouseEvents.empty();
-	}
+    /**
+     * Wird von Java ausgeführt, wenn eine Taste heruntergedrückt wird/ist.
+     *
+     * @param e
+     *            KeyEvent
+     */
+    @Override
+    public void keyPressed(KeyEvent e) {
 
-	public boolean hasMouseWheelEvents() {
-		return !mouseWheelEvents.empty();
-	}
+        keysPressed.add(e.getKeyCode());
 
-	/**
-	 * @param keyCode
-	 *            Ein KeyCode aus KeyEvent
-	 * @return Ob die mit keyCode verbundene Taste im Moment gedrückt ist
-	 */
-	public boolean isKeyPressed(int keyCode) {
-		return keysPressed.contains(keyCode);
-	}
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Taste heruntergedrückt wird/ist
-	 */
-	@Override
-	public void keyPressed(KeyEvent e) {
+    /**
+     * Wird von Java ausgeführt, wenn eine Taste losgelassen wird. *
+     *
+     * @param e
+     *            KeyEvent
+     */
+    @Override
+    public void keyReleased(KeyEvent e) {
 
-		keysPressed.add(e.getKeyCode());
+        keysPressed.remove(e.getKeyCode());
 
-	}
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Taste losgelassen wird
-	 */
-	@Override
-	public void keyReleased(KeyEvent e) {
+    /**
+     * Wird von Java ausgeführt, wenn ein Unicode-Buchstabe eingegeben wird. *
+     *
+     * @param e
+     *            KeyEvent
+     */
+    @Override
+    public void keyTyped(KeyEvent e) {
 
-		keysPressed.remove(e.getKeyCode());
+        keyEvents.enQueue(e);
 
-	}
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Taste gedrückt und wieder losgelassen
-	 * wird
-	 */
-	@Override
-	public void keyTyped(KeyEvent e) {
+    /**
+     * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt und wieder losgelassen wird.
+     *
+     * @param e
+     *            MouseEvent
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
-		keyEvents.enQueue(e);
+        mouseEvents.enQueue(e);
 
-	}
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt und wieder
-	 * losgelassen wird
-	 */
-	@Override
-	public void mouseClicked(MouseEvent e) {
+    /**
+     * Wird von Java ausgeführt, wenn die Maus mit gedrückter Maustaste bewegt wird.
+     *
+     * @param e
+     *            MouseEvent
+     */
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
 
-		mouseEvents.enQueue(e);
+    /**
+     * Wird von Java ausgeführt, wenn die Maus in das Fenster eingeführt wird. * @param e MouseEvent
+     */
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
 
-	}
+    /**
+     * Wird von Java ausgeführt, wenn die Maus aus dem Fenster herausgeschoben wird. * @param e MouseEvent
+     */
+    @Override
+    public void mouseExited(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn die Maus mit gedrückter Maustaste bewegt
-	 * wird
-	 */
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
-	}
+    /**
+     * Wird von Java ausgeführt, wenn die Maus bewegt wird. * @param e MouseEvent
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn die Maus in das Fenster eingeführt wird
-	 */
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
-	}
+    /**
+     * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt wird/ist.
+     *
+     * @param e
+     *            MouseEvent
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // NO-OP
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn die Maus aus dem Fenster herausgeschoben
-	 * wird
-	 */
-	@Override
-	public void mouseExited(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
-	}
+    /**
+     * Wird von Java ausgeführt, wenn eine Maustaste losgelassen wird.
+     *
+     * @param e
+     *            MouseEvent
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // NO-OP
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn die Maus bewegt wird
-	 */
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		mouseX = e.getX();
-		mouseY = e.getY();
-	}
+    /**
+     * Wird von Java ausgeführt, wenn das Mausrad gedreht wird.
+     *
+     * @param e
+     *            MouseWheelEvent
+     */
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt wird/ist
-	 */
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// NO-OP
-	}
+        mouseWheelEvents.enQueue(e);
 
-	/**
-	 * Wird von Java ausgeführt, wenn eine Maustaste losgelassen wird
-	 */
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// NO-OP
-	}
+    }
 
-	/**
-	 * Wird von Java ausgeführt, wenn das Mausrad gedreht wird
-	 */
-	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
+    /**
+     * Methode um moveDir zu aktualisieren.
+     */
+    public void updateMoveDir() {
 
-		mouseWheelEvents.enQueue(e);
+        moveDir = 0b0000;
 
-	}
+        if (Main.getGui() instanceof GuiIngame) {
+            if (keysPressed.contains(KeyBindings.KEY_UP)) {
+                moveDir |= 0b0001;
+            }
+            if (keysPressed.contains(KeyBindings.KEY_DOWN)) {
+                moveDir |= 0b0010;
+            }
+            if (keysPressed.contains(KeyBindings.KEY_LEFT)) {
+                moveDir |= 0b0100;
+            }
+            if (keysPressed.contains(KeyBindings.KEY_RIGHT)) {
+                moveDir |= 0b1000;
+            }
+        }
 
-	/**
-	 * Methode um moveDir zu verändern
-	 */
-	public void updateMoveDir() {
-
-		moveDir = 0b0000;
-
-		if (Main.getGui() instanceof GuiIngame) {
-			if (keysPressed.contains(KeyBindings.KEY_UP))
-				moveDir |= 0b0001;
-			if (keysPressed.contains(KeyBindings.KEY_DOWN))
-				moveDir |= 0b0010;
-			if (keysPressed.contains(KeyBindings.KEY_LEFT))
-				moveDir |= 0b0100;
-			if (keysPressed.contains(KeyBindings.KEY_RIGHT))
-				moveDir |= 0b1000;
-		}
-
-	}
+    }
 }

@@ -5,333 +5,373 @@ import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
 
 /**
- * Ein Inventarobjekt
+ * Ein Inventar.
  */
 public class Inventory {
 
-	public static Inventory load(SaveData data) {
-		Inventory inv = new Inventory();
+    /**
+     * Lädt ein Inventory aus der gegebenen SaveData.
+     *
+     * @param data
+     *            SaveData
+     * @return Inventory
+     */
+    public static Inventory load(SaveData data) {
+        Inventory inv = new Inventory();
 
-		inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
+        inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
 
-		for (int i = 0; i < inv.stacks.length; i++) {
-			inv.setItemStackInSlot(i,
-					ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
-		}
+        for (int i = 0; i < inv.stacks.length; i++) {
+            inv.setItemStackInSlot(i, ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
+        }
 
-		return inv;
-	}
+        return inv;
+    }
 
-	protected ItemStack[] stacks;
+    /**
+     * Alle ItemStack in diesem Inventory.
+     */
+    protected ItemStack[] stacks;
 
-	public Inventory(int size) {
-		stacks = new ItemStack[size];
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param size
+     *            Größe
+     */
+    public Inventory(int size) {
+        stacks = new ItemStack[size];
+    }
 
-	protected Inventory() {
-	}
+    /**
+     * Konstruktor.
+     */
+    protected Inventory() {
+    }
 
-	/**
-	 * Ein neuer ItemStack wird dem Inventar hinzugefügt
-	 *
-	 * @param newStack
-	 *            ist der neue ItemStack
-	 * @return success
-	 */
-	public boolean addItemStack(ItemStack newStack) {
-		if (newStack != null) {
-			for (int i = 0; i < stacks.length; i++) {
-				if (getItemStackAt(i) == null) {
-					stacks[i] = newStack;
-					return true;
-				} else if (stacks[i].itemAndDamageEquals(newStack)) {
-					stacks[i].incrStackSize(newStack.getStackSize());
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    /**
+     * Fügt diesem Inventory einen neuen ItemStack hinzu.
+     *
+     * @param newStack
+     *            ist der neue ItemStack
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean addItemStack(ItemStack newStack) {
+        if (newStack != null) {
+            for (int i = 0; i < stacks.length; i++) {
+                if (getItemStackAt(i) == null) {
+                    stacks[i] = newStack;
+                    return true;
+                } else if (stacks[i].itemAndDamageEquals(newStack)) {
+                    stacks[i].incrStackSize(newStack.getStackSize());
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * Ist der gegebene ItemStack im Inventar enthalten? - Streng
-	 *
-	 * @param stack
-	 * @return true, wenn ja; false, wenn nicht
-	 */
-	public boolean contains(ItemStack stack) {
-		if (stack != null) {
-			ItemStack item;
-			for (int i = 0; i < stacks.length; i++) {
-				item = stacks[i];
-				if (item != null && item.stackEquals(stack))
-					return true;
-			}
-		}
-		return false;
-	}
+    /**
+     * Ist der gegebene ItemStack im Inventar enthalten? - Streng.
+     *
+     * @param stack
+     *            zu suchender ItemStack
+     * @return true, wenn ja; false, wenn nicht
+     */
+    public boolean contains(ItemStack stack) {
+        if (stack != null) {
+            ItemStack item;
+            for (ItemStack stack2 : stacks) {
+                item = stack2;
+                if (item != null && item.stackEquals(stack)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * Ist der gegebene ItemStack im Inventar enthalten? - Ignoriert die
-	 * StackSize
-	 *
-	 * @param stack
-	 * @return true, wenn ja; false, wenn nicht
-	 */
-	public boolean containsIgnoreStackSize(ItemStack stack) {
-		if (stack != null) {
-			ItemStack item;
-			for (int i = 0; i < stacks.length; i++) {
-				item = stacks[i];
-				if (item != null && item.itemAndDamageEquals(stack))
-					return true;
-			}
-		}
-		return false;
-	}
+    /**
+     * Ist der gegebene ItemStack im Inventar enthalten? - Ignoriert die StackSize.
+     *
+     * @param stack
+     *            zu suchender ItemStack
+     * @return true, wenn ja; false, wenn nicht
+     */
+    public boolean containsIgnoreStackSize(ItemStack stack) {
+        if (stack != null) {
+            ItemStack item;
+            for (ItemStack stack2 : stacks) {
+                item = stack2;
+                if (item != null && item.itemAndDamageEquals(stack)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * Verringert die StackSize eines ItemStacks an der gegebenen Stelle um die
-	 * gegebene Anzahl und entfernt ihn, wenn die StackSize dann negativ ist
-	 *
-	 * @param index
-	 * @param stackSize
-	 * @return success
-	 */
-	public boolean decrStackSize(int index, int stackSize) {
+    /**
+     * Verringert die StackSize eines ItemStacks an der gegebenen Stelle um die gegebene Anzahl und entfernt ihn, wenn die StackSize dann negativ ist.
+     *
+     * @param index
+     *            Index, an dem verringert werden soll
+     * @param stackSize
+     *            StackSize, um die verringert werden soll.
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean decrStackSize(int index, int stackSize) {
 
-		ItemStack stack = getItemStackAt(index);
+        ItemStack stack = getItemStackAt(index);
 
-		if (stack != null) {
-			stack.decrStackSize(stackSize);
-			if (stack.getStackSize() <= 0)
-				removeItemStack(index);
-			return true;
-		}
+        if (stack != null) {
+            stack.decrStackSize(stackSize);
+            if (stack.getStackSize() <= 0) {
+                removeItemStack(index);
+            }
+            return true;
+        }
 
-		return false;
+        return false;
 
-	}
+    }
 
-	/**
-	 * Return alle ItemStacks im Inventar
-	 *
-	 * @return alle ItemStacks im Inventar
-	 */
-	public ItemStack[] getItems() {
-		return stacks;
-	}
+    /**
+     * Alle ItemStacks in diesem Inventar.
+     *
+     * @return ItemStacks
+     */
+    public ItemStack[] getItems() {
+        return stacks;
+    }
 
-	/**
-	 * Returnt den ItemStack an der Stelle index
-	 *
-	 * @param index
-	 * @return ItemStack an der Stelle index
-	 */
-	public ItemStack getItemStackAt(int index) {
-		if (index < 0 || index >= stacks.length)
-			return null;
-		return stacks[index];
-	}
+    /**
+     * Returnt den ItemStack am gegebenen Index.
+     *
+     * @param index
+     *            Index
+     * @return ItemStack an der Stelle Index
+     */
+    public ItemStack getItemStackAt(int index) {
+        if (index < 0 || index >= stacks.length) {
+            return null;
+        }
+        return stacks[index];
+    }
 
-	/**
-	 * Zahl der Items im Inventar
-	 *
-	 * @return
-	 */
-	public int getNumberOfItemsInInventory() {
-		int i = 0;
-		for (int j = 0; j < stacks.length; j++) {
-			if (getItemStackAt(j) != null)
-				i += getItemStackAt(i).getStackSize();
-		}
-		return i;
-	}
+    /**
+     * Zahl aller Items im Inventar.
+     *
+     * @return Zahl.
+     */
+    public int getNumberOfItemsInInventory() {
+        int i = 0;
+        for (int j = 0; j < stacks.length; j++) {
+            if (getItemStackAt(j) != null) {
+                i += getItemStackAt(i).getStackSize();
+            }
+        }
+        return i;
+    }
 
-	/**
-	 * Zahl der ItemStacks im Inventar
-	 *
-	 * @return
-	 */
-	public int getNumberOfItemStacksInInventory() {
-		int i = 0;
-		for (int j = 0; j < stacks.length; j++) {
-			if (getItemStackAt(j) != null)
-				i++;
-		}
-		return i;
-	}
+    /**
+     * Zahl aller ItemStacks im Inventar.
+     *
+     * @return Zahl.
+     */
+    public int getNumberOfItemStacksInInventory() {
+        int i = 0;
+        for (int j = 0; j < stacks.length; j++) {
+            if (getItemStackAt(j) != null) {
+                i++;
+            }
+        }
+        return i;
+    }
 
-	/**
-	 * Größe des Inventars
-	 *
-	 * @return
-	 */
-	public int getSize() {
-		return stacks.length;
-	}
+    /**
+     * Größe dieses Inventars.
+     *
+     * @return Größe
+     */
+    public int getSize() {
+        return stacks.length;
+    }
 
-	/**
-	 * Erhöht die StackSize eines ItemStacks an der gegebenen Stelle um die
-	 * gegebene Anzahl
-	 *
-	 * @param index
-	 * @param stackSize
-	 * @return success
-	 */
-	public boolean incrStackSize(int index, int stackSize) {
+    /**
+     * Erhöht die StackSize eines ItemStacks am gegebenen Index um die gegebene Anzahl.
+     *
+     * @param index
+     *            Index, an dem erhöht werden soll
+     * @param stackSize
+     *            StackSize, um die erhöht werden soll
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean incrStackSize(int index, int stackSize) {
 
-		ItemStack stack = getItemStackAt(index);
+        ItemStack stack = getItemStackAt(index);
 
-		if (stack != null) {
-			stack.incrStackSize(stackSize);
-			return true;
-		}
+        if (stack != null) {
+            stack.incrStackSize(stackSize);
+            return true;
+        }
 
-		return false;
+        return false;
 
-	}
+    }
 
-	/**
-	 * Ist das Inventar leer
-	 *
-	 * @return true, wenn ja
-	 */
-	public boolean isInventoryEmpty() {
-		for (int i = 0; i < stacks.length; i++) {
-			if (getItemStackAt(i) != null)
-				return false;
-		}
-		return true;
+    /**
+     * Ist das Inventar leer.
+     *
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean isInventoryEmpty() {
+        for (int i = 0; i < stacks.length; i++) {
+            if (getItemStackAt(i) != null) {
+                return false;
+            }
+        }
+        return true;
 
-	}
+    }
 
-	/**
-	 * Ist das Inventar voll mit ItemStacks
-	 *
-	 * @return true, wenn ja
-	 */
-	public boolean isInventoryFull() {
-		for (int i = 0; i < stacks.length; i++) {
-			if (getItemStackAt(i) == null)
-				return false;
-		}
-		return true;
+    /**
+     * Ist das Inventar voll mit ItemStacks.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean isInventoryFull() {
+        for (int i = 0; i < stacks.length; i++) {
+            if (getItemStackAt(i) == null) {
+                return false;
+            }
+        }
+        return true;
 
-	}
+    }
 
-	/**
-	 * Entfernt einen ItemStack an der gegebenen Stelle aus dem Inventar
-	 *
-	 * @param index
-	 * @return success
-	 */
-	public boolean removeItemStack(int index) {
-		if (getItemStackAt(index) != null) {
-			stacks[index] = null;
-			return true;
-		}
+    /**
+     * Entfernt einen ItemStack am gegebenen Index aus dem Inventar.
+     *
+     * @param index
+     *            Index
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean removeItemStack(int index) {
+        if (getItemStackAt(index) != null) {
+            stacks[index] = null;
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht -
-	 * Streng
-	 *
-	 * @param stack
-	 * @return success
-	 */
-	public boolean removeItemStack(ItemStack stackToRemove) {
-		if (stackToRemove != null) {
-			ItemStack stack;
-			for (int i = 0; i < stacks.length; i++) {
-				stack = getItemStackAt(i);
-				if (stack != null && stack.stackEquals(stackToRemove)) {
-					stacks[i] = null;
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    /**
+     * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht - Streng.
+     *
+     * @param stackToRemove
+     *            zu entfernender ItemStack
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean removeItemStack(ItemStack stackToRemove) {
+        if (stackToRemove != null) {
+            ItemStack stack;
+            for (int i = 0; i < stacks.length; i++) {
+                stack = getItemStackAt(i);
+                if (stack != null && stack.stackEquals(stackToRemove)) {
+                    stacks[i] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht -
-	 * Ignoriert StackSize
-	 *
-	 * @param stack
-	 * @return success
-	 */
-	public boolean removeItemStackIgnoreStackSize(ItemStack stackToRemove) {
-		if (stackToRemove != null) {
-			ItemStack stack;
-			for (int i = 0; i < stacks.length; i++) {
-				stack = getItemStackAt(i);
-				if (stack != null && stack.itemAndDamageEquals(stackToRemove)) {
-					stacks[i] = null;
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    /**
+     * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht - Ignoriert StackSize.
+     *
+     * @param stackToRemove
+     *            zu entfernender ItemStack.
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean removeItemStackIgnoreStackSize(ItemStack stackToRemove) {
+        if (stackToRemove != null) {
+            ItemStack stack;
+            for (int i = 0; i < stacks.length; i++) {
+                stack = getItemStackAt(i);
+                if (stack != null && stack.itemAndDamageEquals(stackToRemove)) {
+                    stacks[i] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * Setzt den gegebenen ItemStack an die gegebene Stelle im Inventar
-	 *
-	 * @param index
-	 * @param stack
-	 * @return success
-	 */
-	public boolean setItemStackInSlot(int index, ItemStack stack) {
-		if (index >= 0 && index < stacks.length) {
-			stacks[index] = stack;
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Setzt den gegebenen ItemStack am gegebenen Index in dieses Inventar.
+     *
+     * @param index
+     *            Index
+     * @param stack
+     *            ItemStack
+     * @return true, wenn es geklappt hat; false, wenn nicht.
+     */
+    public boolean setItemStackInSlot(int index, ItemStack stack) {
+        if (index >= 0 && index < stacks.length) {
+            stacks[index] = stack;
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
 
-		String s = "Inventory";
+        String s = "Inventory";
 
-		if (getSize() > 0) {
-			ItemStack stack;
-			s += "[";
-			stack = getItemStackAt(0);
-			s += (stack != null ? stack.getName() : "");
+        if (getSize() > 0) {
+            ItemStack stack;
+            s += "[";
+            stack = getItemStackAt(0);
+            s += stack != null ? stack.getName() : "";
 
-			if (getSize() > 1) {
-				for (int i = 1; i < stacks.length; i++) {
-					stack = getItemStackAt(i);
-					if (stack != null)
-						s += ", " + stack.getName();
-				}
-			}
+            if (getSize() > 1) {
+                for (int i = 1; i < stacks.length; i++) {
+                    stack = getItemStackAt(i);
+                    if (stack != null) {
+                        s += ", " + stack.getName();
+                    }
+                }
+            }
 
-			s += "]";
-		} else {
-			s += " - EMPTY";
-		}
+            s += "]";
+        } else {
+            s += " - EMPTY";
+        }
 
-		return s;
-	}
+        return s;
+    }
 
-	public SaveData write() {
-		SaveData data = new SaveData();
+    /**
+     * Speichert dieses Inventar.
+     *
+     * @return SaveData
+     */
+    public SaveData write() {
+        SaveData data = new SaveData();
 
-		data.set(Strings.INV_SIZE, getSize());
+        data.set(Strings.INV_SIZE, getSize());
 
-		ItemStack stack;
-		for (int i = 0; i < stacks.length; i++) {
-			stack = getItemStackAt(i);
-			if (stack != null)
-				data.set(Strings.INV_SLOT + i, stack.write());
-		}
+        ItemStack stack;
+        for (int i = 0; i < stacks.length; i++) {
+            stack = getItemStackAt(i);
+            if (stack != null) {
+                data.set(Strings.INV_SLOT + i, stack.write());
+            }
+        }
 
-		return data;
-	}
+        return data;
+    }
 
 }

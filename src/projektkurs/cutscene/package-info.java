@@ -1,0 +1,4 @@
+/**
+ * CutScenes.
+ */
+package projektkurs.cutscene;
