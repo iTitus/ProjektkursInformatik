@@ -9,11 +9,34 @@ import projektkurs.util.Logger;
  */
 public class GameThread extends Thread {
 
+    /**
+     * Delta.
+     */
     private double       delta;
+    /**
+     * Frames pro Sekunde.
+     */
+    private int          fps;
+    /**
+     * Nanosekunden pro Schleifendurchlauf.
+     */
     private final double nsPerLoop;
-    private boolean      running, pausing;
-    private int          ups, fps;
+    /**
+     * Pausiert der thread.
+     */
+    private boolean      pausing;
+    /**
+     * Läuft der Thread.
+     */
+    private boolean      running;
+    /**
+     * Updates pro Sekunde.
+     */
+    private int          ups;
 
+    /**
+     * Konstruktor.
+     */
     public GameThread() {
         super("Game-Thread");
         nsPerLoop = 1000000000D / Integers.UPS;
@@ -23,28 +46,37 @@ public class GameThread extends Thread {
     }
 
     /**
-     * @return
+     * Delta dieses Threads.
+     *
+     * @return Delta
      */
     public double getDelta() {
         return delta;
     }
 
     /**
-     * @return
+     * Frames pro Sekunde dieses Threads.
+     *
+     * @return FPS
      */
     public int getFPS() {
         return fps;
     }
 
     /**
-     * @return
+     * Updates pro Sekunde dieses Threads.
+     *
+     * @return UPS
      */
     public int getUPS() {
         return ups;
     }
 
     /**
+     * Verändert den Pausenstatus.
+     *
      * @param pause
+     *            true, wenn er pausieren soll; false, wenn er laufen soll
      */
     public void pause(boolean pause) {
         pausing = pause;
@@ -97,7 +129,7 @@ public class GameThread extends Thread {
     }
 
     /**
-     * Startet den Thread
+     * Startet den Thread.
      */
     @Override
     public synchronized void start() {
@@ -108,7 +140,7 @@ public class GameThread extends Thread {
     }
 
     /**
-     * Beendet den Thread
+     * Beendet den Thread.
      */
     public void terminate() {
         running = false;

@@ -3,56 +3,73 @@ package projektkurs.render;
 import projektkurs.lib.Integers;
 
 /**
- * Helperklasse zum Rendern
+ * Helperklasse zum Rendern.
  */
 public class RenderHelper {
 
+    /**
+     * Vergangene Renderticks.
+     */
     private int renderTicks;
 
     /**
-     * Koordinaten der oberen linken Ecke des Sichtfeldes in der Map
+     * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
      */
-    private int sightX, sightY;
+    private int sightX;
+    /**
+     * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
+     */
+    private int sightY;
 
+    /**
+     * Fügt einen Rendertick hinzu.
+     */
     public void addRenderTick() {
         renderTicks++;
     }
 
+    /**
+     * Die vergangenen Renderticks.
+     *
+     * @return Renderticks
+     */
     public int getRenderTicks() {
         return renderTicks;
     }
 
     /**
-     * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
+     * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
      *
-     * @return
+     * @return X-Koordinate
      */
     public int getSightX() {
         return sightX;
     }
 
     /**
-     * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map
+     * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
      *
-     * @return
+     * @return Y-Koordinate
      */
     public int getSightY() {
         return sightY;
     }
 
     /**
-     * Ist der gegebene Punk im Sichtfeld
+     * Ist der gegebene Punk im Sichtfeld.
      *
      * @param x
+     *            x
      * @param y
-     * @return
+     *            y
+     * @return true, wenn ja; false, wenn nein
      */
     public boolean isInSight(int x, int y) {
-        return x >= sightX && y >= sightY && x < sightX + Integers.SIGHT_X && y < sightY + Integers.SIGHT_Y;
+        return x >= sightX && y >= sightY && x < sightX + Integers.sightX && y < sightY + Integers.sightY;
     }
 
     /**
-     * Bewegt das Spielfeld um dx und dy
+     * Bewegt das Spielfeld um dx und dy.
      *
      * @param dx
      *            Bewegung in x-Richtung
@@ -67,11 +84,11 @@ public class RenderHelper {
     }
 
     /**
-     * Aktualisiert das Sichtfeld
+     * Aktualisiert das Sichtfeld.
      *
-     * @param newSightX
+     * @param sightX
      *            X-Koordinate der oberen linken Ecke des Sichtfeldes
-     * @param newSightY
+     * @param sightY
      *            Y-Koordinate der oberen linken Ecke des Sichtfeldes
      */
     public void setSight(int sightX, int sightY) {

@@ -2,13 +2,13 @@ package projektkurs.lib;
 
 import java.util.HashMap;
 
+import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.ExtraInformationDoor;
+import projektkurs.raster.extra.ExtraInformationFire;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.util.SaveData;
-import projektkurs.world.raster.extra.ExtraInformation;
-import projektkurs.world.raster.extra.ExtraInformationDoor;
-import projektkurs.world.raster.extra.ExtraInformationFire;
 
 /**
  * Alle ExtraInformationstypen.

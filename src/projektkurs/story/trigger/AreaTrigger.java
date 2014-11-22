@@ -1,15 +1,42 @@
 package projektkurs.story.trigger;
 
-import java.lang.reflect.Method;
-
 import projektkurs.Main;
 
-public class AreaTrigger extends Trigger {
+/**
+ * Prüft, ob sich der Spieler in einem gegebenen Rechteck befindet.
+ */
+public class AreaTrigger implements ITrigger {
 
-    private final int posX, posY, sizeX, sizeY;
+    /**
+     * X-Koordinate.
+     */
+    private final int posX;
+    /**
+     * Y-Koordinate.
+     */
+    private final int posY;
+    /**
+     * Breite.
+     */
+    private final int sizeX;
+    /**
+     * Höhe.
+     */
+    private final int sizeY;
 
-    public AreaTrigger(Method m, int posX, int posY, int sizeX, int sizeY, Object... objects) {
-        super(m, objects);
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
+     */
+    public AreaTrigger(int posX, int posY, int sizeX, int sizeY) {
         this.posX = posX;
         this.posY = posY;
         this.sizeX = sizeX;

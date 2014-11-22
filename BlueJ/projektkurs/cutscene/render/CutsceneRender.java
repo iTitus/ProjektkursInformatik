@@ -19,7 +19,7 @@ public class CutsceneRender {
     /**
      * Das Canvas, auf dem die CutScene gemalt wird.
      */
-    private final Canvas   canvas;
+    private Canvas         canvas;
     /**
      * Das Graphics2D Objekt der aktuellen CutScene.
      */
@@ -33,18 +33,23 @@ public class CutsceneRender {
      * Konstruktor.
      */
     public CutsceneRender() {
-        canvas = new Canvas();
-        canvas.requestFocus();
-        canvas.setIgnoreRepaint(true);
-        canvas.setBounds(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+        canvas = null;
+        g = null;
+        strategy = null;
     }
 
     /**
      * Das Canvas der aktuellen CutScene.
      *
-     * @return Cavas der aktuellen CutScene
+     * @return Canvas der aktuellen CutScene
      */
     public Canvas getCutSceneCanvas() {
+        if (canvas == null) {
+            canvas = new Canvas();
+            canvas.requestFocus();
+            canvas.setIgnoreRepaint(true);
+            canvas.setBounds(0, 0, Integers.windowX, Integers.windowY);
+        }
         return canvas;
     }
 
@@ -63,14 +68,14 @@ public class CutsceneRender {
         if (strategy != null) {
             g = (Graphics2D) strategy.getDrawGraphics();
 
-            g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+            g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
             g.setColor(Color.BLACK);
             g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
 
             if (CutSceneManager.getCurrentCutScene().needsRasterBackground()) {
-                for (int x = 0; x < Integers.SIGHT_X; x++) {
-                    for (int y = 0; y < Integers.SIGHT_Y; y++) {
+                for (int x = 0; x < Integers.sightX; x++) {
+                    for (int y = 0; y < Integers.sightY; y++) {
                         int rX = x + CutSceneManager.getCurrentCutSceneRenderHelper().getSightX();
                         int rY = y + CutSceneManager.getCurrentCutSceneRenderHelper().getSightY();
                         if (CutSceneManager.getCurrSpielfeld().isRasterAt(rX, rY)) {
@@ -81,13 +86,13 @@ public class CutsceneRender {
                     }
                 }
             } else {
-                RenderUtil.drawImage(g, CutSceneManager.getCurrentCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.SIGHT_X,
-                        Integers.SIGHT_Y);
+                RenderUtil.drawImage(g, CutSceneManager.getCurrentCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX,
+                        Integers.sightY);
             }
 
             for (CutSceneObject obj : CutSceneManager.getCurrentCutScene().getCutSceneObjectList()) {
                 if (obj.isInside(CutSceneManager.getCurrentCutSceneRenderHelper().getSightX(), CutSceneManager.getCurrentCutSceneRenderHelper().getSightY(),
-                        Integers.SIGHT_X, Integers.SIGHT_Y)) {
+                        Integers.sightX, Integers.sightY)) {
                     obj.render(g);
                 }
             }

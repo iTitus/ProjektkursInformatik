@@ -12,19 +12,25 @@ import projektkurs.lib.Integers;
 import projektkurs.util.RenderUtil;
 
 /**
- * Renderklasse
+ * Renderklasse.
  */
 public class Render {
 
     /**
-     * Das Spiel-Canvas
+     * Das Spiel-Canvas.
      */
     private Canvas         canvas;
+    /**
+     * Das aktuelle Graphics2D-Objekt.
+     */
     private Graphics2D     g;
+    /**
+     * Die aktuelle BufferStrategy.
+     */
     private BufferStrategy strategy;
 
     /**
-     * Konstruktor
+     * Konstruktor.
      */
     public Render() {
         canvas = null;
@@ -32,32 +38,39 @@ public class Render {
         g = null;
     }
 
+    /**
+     * Die aktuelle BufferStrategy.
+     *
+     * @return BufferStrategy
+     */
     public BufferStrategy getBufferStrategy() {
         return strategy;
     }
 
     /**
-     * Gibt das aktuelle Canvas zurück
+     * Gibt das aktuelle Canvas zurück.
      *
      * @return Canvas
      */
     public Canvas getGameCanvas() {
-        if (canvas != null) {
-            return canvas;
+        if (canvas == null) {
+            canvas = new Canvas();
+            canvas.setIgnoreRepaint(true);
+            canvas.setBounds(0, 0, Integers.windowX, Integers.windowY);
+            canvas.addKeyListener(Main.getInputManager());
+            canvas.addMouseListener(Main.getInputManager());
+            canvas.addMouseMotionListener(Main.getInputManager());
+            canvas.addMouseWheelListener(Main.getInputManager());
+            canvas.setFocusable(true);
+            canvas.requestFocus();
+            canvas.requestFocusInWindow();
         }
-        canvas = new Canvas();
-        canvas.setIgnoreRepaint(true);
-        canvas.setBounds(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
-        canvas.addKeyListener(Main.getInputManager());
-        canvas.addMouseListener(Main.getInputManager());
-        canvas.addMouseMotionListener(Main.getInputManager());
-        canvas.addMouseWheelListener(Main.getInputManager());
-        canvas.setFocusable(true);
-        canvas.requestFocus();
-        canvas.requestFocusInWindow();
         return canvas;
     }
 
+    /**
+     * Initialisiert die BufferStrategy.
+     */
     public void initBuffers() {
         canvas.createBufferStrategy(2);
         strategy = canvas.getBufferStrategy();
@@ -71,14 +84,14 @@ public class Render {
 
             g = (Graphics2D) strategy.getDrawGraphics();
 
-            g.clearRect(0, 0, Integers.WINDOW_X, Integers.WINDOW_Y);
+            g.clearRect(0, 0, Integers.windowX, Integers.windowY);
             g.setColor(Color.BLACK);
 
             g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY()
                     + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth(), Integers.INFO_X, Integers.INFO_Y);
 
-            for (int x = 0; x < Integers.SIGHT_X; x++) {
-                for (int y = 0; y < Integers.SIGHT_Y; y++) {
+            for (int x = 0; x < Integers.sightX; x++) {
+                for (int y = 0; y < Integers.sightY; y++) {
                     int sX = x + Main.getRenderHelper().getSightX();
                     int sY = y + Main.getRenderHelper().getSightY();
                     if (Main.getLevel().getCurrMap().isRasterAt(sX, sY)) {
@@ -90,8 +103,7 @@ public class Render {
             }
 
             for (Entity e : Main.getLevel().getCurrMap().getEntityList()) {
-                if (!e.shouldDeSpawn()
-                        && e.isInside(Main.getRenderHelper().getSightX(), Main.getRenderHelper().getSightY(), Integers.SIGHT_X, Integers.SIGHT_Y)) {
+                if (!e.shouldDeSpawn() && e.isInside(Main.getRenderHelper().getSightX(), Main.getRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
                     e.render(g);
                 }
             }

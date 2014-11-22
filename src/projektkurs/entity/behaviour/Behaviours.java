@@ -20,7 +20,7 @@ public enum Behaviours {
     private final IBehaviour bhv;
 
     /**
-     * Kostruktor.
+     * Konstruktor.
      *
      * @param bhv
      *            Behaviour

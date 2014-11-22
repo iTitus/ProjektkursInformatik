@@ -189,6 +189,17 @@ public class ItemStack {
     }
 
     /**
+     * Ist der gegebene Itemtyp identisch mit diesem Itemstack. Ignoriert die Größe und den Schaden des ItemStacks
+     *
+     * @param other
+     *            AbstractItem
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean itemEquals(AbstractItem other) {
+        return other == null && item == null || other != null && item != null && other.equals(item);
+    }
+
+    /**
      * Ist der Itemtyp des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Größe und den Schaden des ItemStacks
      *
      * @param other

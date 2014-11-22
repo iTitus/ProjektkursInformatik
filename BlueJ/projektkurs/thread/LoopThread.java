@@ -1,65 +1,69 @@
 package projektkurs.thread;
 
+import projektkurs.lib.Integers;
 import projektkurs.util.Logger;
 
 /**
- * Abstrakter Loopthread
- *
- * @author Miles
+ * Abstrakter Loopthread.
  */
 public abstract class LoopThread extends Thread {
 
+    /**
+     * Delta.
+     */
     private double       delta;
-    private boolean      isLooping;
+    /**
+     * Schleifendurchläufe pro Sekunde.
+     */
     private int          lps;
+    /**
+     * Nanosekunden pro Schleifendurchlauf.
+     */
     private final double nsPerLoop;
-    private boolean      running, pausing;
+    /**
+     * Pausiert der Thread.
+     */
+    private boolean      pausing;
+    /**
+     * Läuft der Thread.
+     */
+    private boolean      running;
 
     /**
-     * Konstruktor fuer einen LoopThread
+     * Konstruktor fuer einen LoopThread.
      *
      * @param name
      *            Name des Threads
-     * @param loopTime
-     *            Ticktime in ms
+     * @param lps
+     *            Ticks pro Sekunde
      */
     public LoopThread(String name, int lps) {
         super(name);
-        nsPerLoop = 1000000000D / lps;
+        nsPerLoop = Integers.NS_PER_SECOND / (double) lps;
         delta = 0D;
         this.lps = lps;
-        isLooping = false;
     }
 
     /**
-     * Delta dieses Threads
+     * Delta dieses Threads.
      *
-     * @return
+     * @return Delta
      */
     public double getDelta() {
         return delta;
     }
 
     /**
-     * Loops pro Sekunde
+     * Schleifendurläufe pro Sekunde.
      *
-     * @return
+     * @return LPS
      */
     public int getLPS() {
         return lps;
     }
 
     /**
-     * isLooping
-     *
-     * @return
-     */
-    public boolean isLooping() {
-        return isLooping;
-    }
-
-    /**
-     * Verändert den Pausenstatus
+     * Verändert den Pausenstatus.
      *
      * @param b
      *            true, wenn er pausieren soll; false, wenn er laufen soll
@@ -69,7 +73,7 @@ public abstract class LoopThread extends Thread {
     }
 
     /**
-     * Wird nach dem Starten einmal ausgeführt
+     * Wird nach dem Starten einmal ausgeführt.
      */
     @Override
     public void run() {
@@ -84,12 +88,10 @@ public abstract class LoopThread extends Thread {
             lastTime = time;
 
             while (!pausing && delta >= 1) {
-                isLooping = true;
                 loops++;
                 runLoop();
                 delta--;
             }
-            isLooping = false;
 
             if (System.nanoTime() - lastTimer >= 1000000000) {
                 lastTimer += 1000000000;
@@ -101,7 +103,7 @@ public abstract class LoopThread extends Thread {
     }
 
     /**
-     * Startet den Thread
+     * Startet den Thread.
      */
     @Override
     public synchronized void start() {
@@ -112,14 +114,14 @@ public abstract class LoopThread extends Thread {
     }
 
     /**
-     * Beendet den Thread
+     * Beendet den Thread.
      */
     public void terminate() {
         running = false;
     }
 
     /**
-     * Wird von der Schleife aufgerufen
+     * Wird von der Schleife aufgerufen.
      */
     protected abstract void runLoop();
 

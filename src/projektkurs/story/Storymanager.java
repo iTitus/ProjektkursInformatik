@@ -1,89 +1,76 @@
 package projektkurs.story;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
-import projektkurs.story.trigger.Trigger;
+import projektkurs.story.trigger.ITrigger;
+import projektkurs.util.Logger;
+import projektkurs.util.MethodInvoker;
 
 /**
- *
- *
+ * Der Storymanager.
  */
-public class Storymanager {
+public class StoryManager {
 
     /**
+     * Alle Trigger.
+     */
+    private final HashMap<ITrigger, MethodInvoker> triggerMap;
+
+    /**
+     * Konstruktor.
+     */
+    public StoryManager() {
+        triggerMap = new HashMap<ITrigger, MethodInvoker>();
+    }
+
+    /**
+     * Registriert einen neuen Trigger hinzu.
      *
+     * @param trigger
+     *            hinzuzufügender Trigger
+     * @param m
+     *            auszuführende Methode
+     * @param objects
+     *            eventuelle Parameter
      */
-    private Trigger[] triggers;
-
-    /**
-     * @param triggers
-     */
-    public Storymanager() {
-        triggers = new Trigger[0];
-    }
-
-    public void addTrigger(Trigger trigger) {
-        for (int i = 0; i < triggers.length; i++) {
-            if (triggers[i] == null) {
-                triggers[i] = trigger;
-                return;
-            }
+    public void registerTrigger(ITrigger trigger, Method m, Object... objects) {
+        if (triggerMap.containsKey(trigger)) {
+            Logger.logThrowable("Unable to register Trigger '" + trigger.getClass() + "'", new IllegalArgumentException("'" + trigger.getClass()
+                    + "' is already registered"));
+        } else {
+            triggerMap.put(trigger, new MethodInvoker(m, objects));
         }
-        increaseCapacity();
-        triggers[triggers.length - 1] = trigger;
     }
 
     /**
-     * @return
+     * Entfernt einen Trigger.
+     *
+     * @param trigger
+     *            zu entfernender Trigger.
      */
-    public Trigger[] getActiveTriggers() {
-        ArrayList<Trigger> trArrayList = new ArrayList<Trigger>();
-        for (Trigger trigger : triggers) {
-            if (trigger != null && trigger.isTriggerActive()) {
-                trArrayList.add(trigger);
-            }
-        }
-        return trArrayList.toArray(new Trigger[trArrayList.size()]);
+    public void removeTrigger(ITrigger trigger) {
+        triggerMap.remove(trigger);
     }
 
-    public boolean isTriggerActive() {
-        for (Trigger trigger : triggers) {
-            if (trigger != null && trigger.isTriggerActive()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void removeTrigger(Trigger trigger) {
-        Trigger t = null;
-        for (int i = 0; i < triggers.length; i++) {
-            t = triggers[i];
-            if (t != null && t.equals(trigger)) {
-                triggers[i] = null;
-            }
-        }
-    }
-
+    /**
+     * Updated alle Trigger.
+     */
     public void update() {
-        ArrayList<Trigger> triggersToRemove = new ArrayList<Trigger>();
-        Trigger t = null;
-        for (Trigger trigger : triggers) {
-            t = trigger;
-            if (t != null && t.isTriggerActive()) {
-                t.doTrigger();
-                triggersToRemove.add(t);
+        ArrayList<ITrigger> triggerToRemove = new ArrayList<ITrigger>();
+        for (Entry<ITrigger, MethodInvoker> entry : triggerMap.entrySet()) {
+            if (entry.getKey().isTriggerActive()) {
+                entry.getValue().invoke();
+                triggerToRemove.add(entry.getKey());
             }
         }
 
-        for (Trigger toRemove : triggersToRemove) {
+        for (ITrigger toRemove : triggerToRemove) {
             removeTrigger(toRemove);
         }
+
     }
 
-    private void increaseCapacity() {
-        Trigger[] temp = new Trigger[triggers.length + 1];
-        System.arraycopy(triggers, 0, temp, 0, triggers.length);
-        triggers = temp;
-    }
 }

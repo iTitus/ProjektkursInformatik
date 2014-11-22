@@ -3,31 +3,39 @@ package projektkurs.util;
 import java.util.ArrayList;
 
 /**
- * Eine Schlange
+ * Eine Queue.
+ *
+ * @param <T>
+ *            Inhaltstyp
  */
 public class Queue<T> {
 
     /**
-     * Interne Referenzen zum Kopf und Schwanz der Schlange
+     * Kopf der Queue.
      */
-    private Node<T> head, tail;
+    private Node<T> head;
+    /**
+     * Schwanz der Queue.
+     */
+    private Node<T> tail;
 
     /**
-     * Konstruktor für eine Queue
+     * Konstruktor.
      */
     public Queue() {
-        head = tail = null;
+        clear();
     }
 
     /**
-     * Leert die Queue
+     * Leert die Queue.
      */
     public void clear() {
-        head = tail = null;
+        head = null;
+        tail = null;
     }
 
     /**
-     * Löst das oberste Objekt von der Schlange
+     * Löst das oberste Objekt von der Queue.
      */
     public void deQueue() {
         if (empty()) {
@@ -40,21 +48,22 @@ public class Queue<T> {
     }
 
     /**
-     * Prüft ob die Schlange leer ist
+     * Ist die Queue leer.
      *
-     * @return
+     * @return true, wenn ja; false, wenn nein
      */
     public boolean empty() {
         return head == null;
     }
 
     /**
-     * Stellt ein neues Objekt hinten an
+     * Stellt ein neues Objekt hinten an.
      *
-     * @param toPush
+     * @param toEnq
+     *            neues Objekt
      */
-    public void enQueue(T toPush) {
-        Node<T> node = new Node<T>(toPush);
+    public void enQueue(T toEnq) {
+        Node<T> node = new Node<T>(toEnq);
         if (empty()) {
             head = node;
         } else {
@@ -64,9 +73,9 @@ public class Queue<T> {
     }
 
     /**
-     * Vorderstes Objekt
+     * Vorderstes Objekt.
      *
-     * @return
+     * @return vorderstes Objekt.
      */
     public T front() {
         if (empty()) {
@@ -76,7 +85,7 @@ public class Queue<T> {
     }
 
     /**
-     * Vorderstes Objekt & Lösen des ersten Objektes von der Schlange
+     * Vorderstes Objekt & Lösen des ersten Objektes von der Queue.
      *
      * @return vorderstes Objekt
      */

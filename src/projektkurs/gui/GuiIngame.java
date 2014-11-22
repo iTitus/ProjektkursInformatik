@@ -11,10 +11,10 @@ import projektkurs.item.ItemStack;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
-import projektkurs.story.script.Scripts;
+import projektkurs.lib.Scripts;
+import projektkurs.raster.AbstractRaster;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
-import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Das Ingame-GUI.

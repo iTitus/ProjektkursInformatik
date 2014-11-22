@@ -9,84 +9,133 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import projektkurs.lib.Strings;
-
 /**
- * Logger
+ * Logger.
  */
 public final class Logger {
 
+    /**
+     * Veschiedene LogLevel - beeinflussen den Präfix.
+     */
     public static enum LogLevel {
-        DEBUG(System.out), INFO(System.out), WARN(System.err);
+        /**
+         * Debug.
+         */
+        DEBUG(System.out),
+        /**
+         * Information.
+         */
+        INFO(System.out),
+        /**
+         * Warnungen.
+         */
+        WARN(System.err);
 
+        /**
+         * Der PrintStream.
+         */
         private final PrintStream stream;
 
+        /**
+         * Privater Konstruktor.
+         *
+         * @param stream
+         *            der zu benutzende PrintStream.
+         */
         private LogLevel(PrintStream stream) {
             this.stream = stream;
         }
 
+        /**
+         * Der PrintStream.
+         *
+         * @return PrintStream
+         */
         public PrintStream getPrintStream() {
             return stream;
         }
     }
 
-    private static final DateFormat        extendedDate = new SimpleDateFormat("dd.MM.yyyy_HH.mm.ss");
-
-    private static final ArrayList<String> log          = new ArrayList<String>();
-
-    private static final DateFormat        simpleDate   = new SimpleDateFormat("HH:mm:ss");
-
-    static {
-        log.add("Log of " + Strings.NAME + " v" + Strings.VERSION);
-    }
+    /**
+     * Erweitertes Datumsformat.
+     */
+    private static final DateFormat        EXTENDED_DATE = new SimpleDateFormat("dd.MM.yyyy_HH.mm.ss");
+    /**
+     * Alle Log-Zeilen.
+     */
+    private static final ArrayList<String> LOG           = new ArrayList<String>();
+    /**
+     * Einfaches Datumsformat.
+     */
+    private static final DateFormat        SIMPLE_DATE   = new SimpleDateFormat("HH:mm:ss");
 
     /**
+     * Loggt auf DEBUG.
+     *
      * @param msg
+     *            Nachricht
      */
     public static void debug(String msg) {
         log(LogLevel.DEBUG, msg);
     }
 
     /**
+     * Loggt auf DEBUG.
+     *
      * @param msg
+     *            Nachricht
      * @param objs
+     *            eventuelle zusätzliche Objekte
      */
     public static void debug(String msg, Object... objs) {
         log(LogLevel.DEBUG, msg, objs);
     }
 
     /**
+     * Loggt auf INFO.
+     *
      * @param msg
+     *            Nachricht
      */
     public static void info(String msg) {
         log(LogLevel.INFO, msg);
     }
 
     /**
+     * Loggt auf INFO.
+     *
      * @param msg
+     *            Nachricht
      * @param objs
+     *            eventuelle zusätzliche Objekte
      */
     public static void info(String msg, Object... objs) {
         log(LogLevel.INFO, msg, objs);
     }
 
     /**
+     * Loggt eine Nachricht auf einem Level.
+     *
      * @param level
+     *            LogLevel
      * @param msg
+     *            Nachricht
+     * @param objs
+     *            eventuelle zusätzliche Objekte
      */
     public static void log(LogLevel level, String msg, Object... objs) {
         if (level != null && msg != null && !msg.equalsIgnoreCase("")) {
-            synchronized (simpleDate) {
-                String out1 = String.format("[%s] [%s]: %s", simpleDate.format(new Date()), level.toString(), msg);
-                log.add(out1);
+            synchronized (SIMPLE_DATE) {
+                String out1 = String.format("[%s] [%s]: %s", SIMPLE_DATE.format(new Date()), level.toString(), msg);
+                LOG.add(out1);
                 level.getPrintStream().println(out1);
                 level.getPrintStream().flush();
                 if (objs != null && objs.length > 0) {
                     int i = 1;
                     for (Object o : objs) {
                         if (o != null) {
-                            String out2 = String.format("[%s] [%s]: %d) %s", simpleDate.format(new Date()), level.toString(), i++, o);
-                            log.add(out2);
+                            String out2 = String.format("[%s] [%s]: %d) %s", SIMPLE_DATE.format(new Date()), level.toString(), i++, o);
+                            LOG.add(out2);
                             level.getPrintStream().println(out2);
                             level.getPrintStream().flush();
                         }
@@ -97,8 +146,12 @@ public final class Logger {
     }
 
     /**
+     * Loggt ein Throwable.
+     *
      * @param msg
+     *            Nachricht
      * @param t
+     *            Throwable
      */
     public static void logThrowable(String msg, Throwable t) {
         if (t != null) {
@@ -128,10 +181,13 @@ public final class Logger {
         }
     }
 
+    /**
+     * Speichert den Log in einer Datei.
+     */
     public static void saveLog() {
-        synchronized (extendedDate) {
+        synchronized (EXTENDED_DATE) {
             try {
-                Files.write(new File("log_" + extendedDate.format(new Date()) + ".txt").toPath(), log, Charset.defaultCharset());
+                Files.write(new File("log_" + EXTENDED_DATE.format(new Date()) + ".txt").toPath(), LOG, Charset.defaultCharset());
             } catch (Throwable t) {
                 Logger.logThrowable("Unable to save log", t);
             }
@@ -139,22 +195,29 @@ public final class Logger {
     }
 
     /**
+     * Loggt auf WARN.
+     *
      * @param msg
+     *            Nachricht
      */
     public static void warn(String msg) {
         log(LogLevel.WARN, msg);
     }
 
     /**
+     * Loggt auf WARN.
+     *
      * @param msg
+     *            Nachricht
      * @param objs
+     *            eventuelle zusätzliche Objekte
      */
     public static void warn(String msg, Object... objs) {
         log(LogLevel.WARN, msg, objs);
     }
 
     /**
-     *
+     * Nicht instanziierbar.
      */
     private Logger() {
     }

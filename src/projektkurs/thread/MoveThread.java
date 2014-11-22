@@ -4,8 +4,14 @@ import projektkurs.Main;
 import projektkurs.lib.Integers;
 import projektkurs.util.Logger;
 
+/**
+ * Thread, der für die Spielerbewegung zuständig ist.
+ */
 public class MoveThread extends LoopThread {
 
+    /**
+     * Konstruktor.
+     */
     public MoveThread() {
         super("Movement", Integers.RPS);
     }

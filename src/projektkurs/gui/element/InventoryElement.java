@@ -35,7 +35,7 @@ public class InventoryElement extends Element {
      *            zu repräsentierendes Inventory
      */
     public InventoryElement(int id, IInventoryElementListener gui, Inventory inv) {
-        this(MathUtil.floorDiv(Integers.WINDOW_X, 2), MathUtil.floorDiv(Integers.WINDOW_Y, 2), id, gui, inv);
+        this(MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2), id, gui, inv);
     }
 
     /**

@@ -7,8 +7,8 @@ import projektkurs.Main;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Scripts;
 import projektkurs.lib.Strings;
-import projektkurs.story.script.Scripts;
 import projektkurs.util.SaveData;
 
 /**

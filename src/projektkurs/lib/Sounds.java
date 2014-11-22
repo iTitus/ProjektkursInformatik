@@ -11,22 +11,29 @@ import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
 
 /**
- * Zuständig für Sounds
+ * Alle Sounds.
  */
 public final class Sounds {
 
     /**
-     * Die Klasse für ein Sound-Objekt
+     * Die Klasse für ein Sound-Objekt.
      */
     public static class Sound {
 
+        /**
+         * Der Audio-Clip.
+         */
         private Clip    clip;
+        /**
+         * Pausiert dieser Sound gerade.
+         */
         private boolean pausing;
 
         /**
-         * Kostruktor für einen Sound
+         * Konstruktor.
          *
          * @param fileName
+         *            Dateiname
          */
         public Sound(String fileName) {
 
@@ -48,7 +55,7 @@ public final class Sounds {
         }
 
         /**
-         * Befreit die Resourcen
+         * Befreit die Resourcen.
          */
         public void close() {
             stop();
@@ -57,16 +64,30 @@ public final class Sounds {
             }
         }
 
+        /**
+         * Ist der Sound am pausieren.
+         *
+         * @return true, wenn ja; false, wenn nein
+         */
         public boolean isPausing() {
             return pausing;
         }
 
+        /**
+         * Spielt den Sound sooft ab wie angegeben.
+         *
+         * @param count
+         *            Wiederholungszahl
+         */
         public void loop(int count) {
             if (clip != null && !isMuted()) {
                 clip.loop(count);
             }
         }
 
+        /**
+         * Spielt den Sound in einer Endlosschleife ab.
+         */
         public void loopContinuosly() {
             if (clip != null && !isMuted()) {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -74,7 +95,7 @@ public final class Sounds {
         }
 
         /**
-         * Pausiert den Sound
+         * Pausiert den Sound.
          */
         public void pause() {
             if (clip != null) {
@@ -86,7 +107,7 @@ public final class Sounds {
         }
 
         /**
-         * Spielt den Sound ab
+         * Spielt den Sound ab.
          */
         public void play() {
             if (clip != null && !isMuted()) {
@@ -94,6 +115,12 @@ public final class Sounds {
             }
         }
 
+        /**
+         * Spielt den Sound von einer gegebenen Frame-Zahl ab.
+         *
+         * @param frames
+         *            Frame-Zahl
+         */
         public void play(int frames) {
             if (clip != null && !isMuted()) {
                 clip.setFramePosition(frames);
@@ -102,7 +129,7 @@ public final class Sounds {
         }
 
         /**
-         * Spielt einen Sound von Vorne
+         * Spielt einen Sound von vorne.
          */
         public void playFromStart() {
             reset();
@@ -110,7 +137,7 @@ public final class Sounds {
         }
 
         /**
-         * Resettet den Sound
+         * Resettet den Sound.
          */
         public void reset() {
             if (clip != null) {
@@ -120,7 +147,7 @@ public final class Sounds {
         }
 
         /**
-         * Stoppt und resettet den Sound
+         * Stoppt und resettet den Sound.
          */
         public void stop() {
             pause();
@@ -129,14 +156,25 @@ public final class Sounds {
 
     }
 
+    /**
+     * Zurück-Mappings.
+     */
     public static final HashMap<Sound, String> BACK_MAPPINGS = new HashMap<Sound, String>();
-    public static Sound                        boom;
-
+    /**
+     * Explosionsgeräusch.
+     */
+    public static Sound                        explosion;
+    /**
+     * Mappings.
+     */
     public static final HashMap<String, Sound> MAPPINGS      = new HashMap<String, Sound>();
+    /**
+     * Sind alle Sounds gemutet.
+     */
     private static boolean                     mute          = false;
 
     /**
-     * Befreit alle Sounds
+     * Befreit alle Sounds.
      */
     public static void closeAll() {
         for (Sound s : MAPPINGS.values()) {
@@ -145,25 +183,30 @@ public final class Sounds {
     }
 
     /**
-     * Initialisiert alle Sounds
+     * Initialisiert alle Sounds.
      */
     @Init(state = State.RESOURCES)
     public static void init() {
 
-        boom = new Sound("boom.wav");
-        registerSound("boom", boom);
+        explosion = new Sound("boom.wav");
+        registerSound("boom", explosion);
 
     }
 
     /**
-     * @return is muted
+     * Sind alle Sounds gemuted.
+     *
+     * @return true, wenm ja; false, wenn nein
      */
     public static boolean isMuted() {
         return mute;
     }
 
     /**
+     * Muted alle Sounds.
+     *
      * @param mute
+     *            true, wenn sie gemuted werden sollen; false wenn nicht
      */
     public static void mute(boolean mute) {
         Sounds.mute = mute;
@@ -171,13 +214,14 @@ public final class Sounds {
     }
 
     /**
-     * Setzt den Pausenstatus jedes Sounds
+     * Setzt den Pausenstatus jedes Sounds.
      *
-     * @param b
+     * @param pause
+     *            true, wenn pausiert werden soll; false, wenn nicht.
      */
-    public static void pause(boolean b) {
+    public static void pause(boolean pause) {
         for (Sound s : MAPPINGS.values()) {
-            if (b) {
+            if (pause) {
                 s.pause();
             } else if (s.isPausing()) {
                 s.play();
@@ -185,11 +229,22 @@ public final class Sounds {
         }
     }
 
-    private static void registerSound(String name, Sound s) {
-        MAPPINGS.put(name, s);
-        BACK_MAPPINGS.put(s, name);
+    /**
+     * Registriert ein Mapping.
+     *
+     * @param name
+     *            Name
+     * @param sound
+     *            Sound
+     */
+    private static void registerSound(String name, Sound sound) {
+        MAPPINGS.put(name, sound);
+        BACK_MAPPINGS.put(sound, name);
     }
 
+    /**
+     * Nicht instanziierbar.
+     */
     private Sounds() {
     }
 

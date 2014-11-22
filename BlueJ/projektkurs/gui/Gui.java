@@ -123,7 +123,7 @@ public abstract class Gui {
     protected void drawDefaultBackground(Graphics2D g) {
         Color oldColor = g.getColor();
         g.setColor(DEFAULT_BACKGROUND_COLOR);
-        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.SIGHT_X * Integers.RASTER_SIZE, Integers.SIGHT_Y * Integers.RASTER_SIZE);
+        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
         g.setColor(oldColor);
     }
 

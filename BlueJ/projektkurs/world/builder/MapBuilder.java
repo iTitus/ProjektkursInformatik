@@ -11,23 +11,31 @@ import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
-import projektkurs.story.script.Scripts;
+import projektkurs.lib.Scripts;
+import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.ExtraInformationDoor;
+import projektkurs.raster.extra.ExtraInformationKiste;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryTrigger;
 import projektkurs.story.trigger.PosTrigger;
-import projektkurs.story.trigger.Trigger;
 import projektkurs.util.Direction;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
-import projektkurs.world.raster.extra.ExtraInformation;
-import projektkurs.world.raster.extra.ExtraInformationDoor;
-import projektkurs.world.raster.extra.ExtraInformationKiste;
 
-public class MapBuilder {
+/**
+ * Spielfeld-Generierung.
+ */
+public final class MapBuilder {
 
-    public static void Level1generateAndPopulateMap0(Spielfeld map) {
+    /**
+     * Level 0 - Spielfeld 0.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel0Map0(Spielfeld map) {
         Random rand = new Random();
 
         // RASEN!
@@ -49,7 +57,7 @@ public class MapBuilder {
 
         }
 
-        map.setRasterAt(MathUtil.roundDiv(Integers.SIGHT_X, 2), MathUtil.roundDiv(Integers.SIGHT_Y, 2), Raster.kiste);
+        map.setRasterAt(MathUtil.roundDiv(Integers.sightX, 2), MathUtil.roundDiv(Integers.sightY, 2), Raster.kiste);
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
@@ -92,7 +100,7 @@ public class MapBuilder {
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {
                 inv = new Inventory(Integers.KISTENGROESSE);
-                inv.addItemStack(new ItemStack(Items.item_42, 42));
+                inv.addItemStack(new ItemStack(Items.item42, 42));
                 inv.addItemStack(new ItemStack(Items.nuke));
                 inv.addItemStack(new ItemStack(Items.key));
                 extra = map.getExtraInformationAt(x, y);
@@ -110,18 +118,23 @@ public class MapBuilder {
 
         // ITEMS
         map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
-        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item_42, 0)));
+        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 0)));
         map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 1234)));
         map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 42)));
 
         // STORYMAGER!
-        map.getStorymanager().addTrigger(
-                new CombinedAndTrigger(ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), new Trigger[] {
-                        new AreaTrigger(null, 50, 50, 10, 10), new InventoryTrigger(null, new ItemStack(Items.nuke)) }, 1));
+        map.getStorymanager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryTrigger(new ItemStack(Items.nuke))),
+                ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);
 
     }
 
-    public static void Level1generateAndPopulateMap1(Spielfeld map) {
+    /**
+     * Level 0 - Spielfeld 1.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel0Map1(Spielfeld map) {
 
         // ANIMATIONS!
         for (int x = 0; x < map.getMapSizeX(); x++) {
@@ -144,10 +157,16 @@ public class MapBuilder {
         map.spawn(Main.getPlayer());
 
         // STORYMANAGER!
-        map.getStorymanager().addTrigger(new PosTrigger(ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 8, 8, 0));
+        map.getStorymanager().registerTrigger(new PosTrigger(8, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
 
-    public static void Level2generateAndPopulateMap0(Spielfeld map) {
+    /**
+     * Level 1 - Spielfeld 0.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {
@@ -167,5 +186,11 @@ public class MapBuilder {
 
         // ENTITIES!
         map.spawn(Main.getPlayer());
+    }
+
+    /**
+     * Nicht instanziierbar.
+     */
+    private MapBuilder() {
     }
 }

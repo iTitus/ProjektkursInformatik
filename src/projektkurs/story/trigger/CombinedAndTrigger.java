@@ -1,20 +1,24 @@
 package projektkurs.story.trigger;
 
-import java.lang.reflect.Method;
+/**
+ * Trigger, der mehrere Trigger mit UND verbindet.
+ */
+public class CombinedAndTrigger extends CombinedTrigger {
 
-public class CombinedAndTrigger extends Trigger {
-
-    private final Trigger[] triggers;
-
-    public CombinedAndTrigger(Method m, Trigger[] triggers, Object... objects) {
-        super(m, objects);
-        this.triggers = triggers;
+    /**
+     * Konstruktor.
+     *
+     * @param trigger
+     *            die Trigger
+     */
+    public CombinedAndTrigger(ITrigger... trigger) {
+        super(trigger);
     }
 
     @Override
     public boolean isTriggerActive() {
-        for (int i = 0; i < triggers.length; i++) {
-            if (!triggers[i].isTriggerActive()) {
+        for (int i = 0; i < trigger.length; i++) {
+            if (!trigger[i].isTriggerActive()) {
                 return false;
             }
         }

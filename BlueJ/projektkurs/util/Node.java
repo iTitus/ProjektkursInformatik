@@ -1,56 +1,59 @@
 package projektkurs.util;
 
 /**
- * Ein Knoten - zB für eine Schlange
+ * Eine Node.
+ *
+ * @param <T>
+ *            Inhaltstyp
  */
 public class Node<T> {
 
     /**
-     * Interne Referenz zur Action
+     * Inhalt.
      */
     private final T content;
     /**
-     * Interne Referenz zur vorherigen ActionNode
+     * Nächste Node.
      */
     private Node<T> next;
 
     /**
-     * Konstruktor für ActionNodes
+     * Konstruktor.
      *
-     * @param _action
-     *            ist die Action
+     * @param content
+     *            ist der Inhalt
      */
-    public Node(T _content) {
-        content = _content;
+    public Node(T content) {
+        this.content = content;
         next = null;
     }
 
     /**
-     * Inhalt der Node
+     * Inhalt der Node.
      *
-     * @return
+     * @return Inhalt
      */
     public T get() {
         return content;
     }
 
     /**
-     * Die vorherige Node
+     * Die nächste Node.
      *
-     * @return
+     * @return nächste Node
      */
     public Node<T> getNext() {
         return next;
     }
 
     /**
-     * Setzt die vorherige Node
+     * Setzt die nächste Node.
      *
-     * @param _next
-     *            ist die neue vorherige Node
+     * @param next
+     *            ist die neue nächste Node
      */
-    public void setNext(Node<T> _next) {
-        next = _next;
+    public void setNext(Node<T> next) {
+        this.next = next;
     }
 
     @Override

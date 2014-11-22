@@ -9,13 +9,13 @@ import projektkurs.entity.behaviour.Behaviours;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
+import projektkurs.raster.AbstractRaster;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
 import projektkurs.util.ISaveable;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.SaveData;
-import projektkurs.world.raster.AbstractRaster;
 
 /**
  * Ein Entity.

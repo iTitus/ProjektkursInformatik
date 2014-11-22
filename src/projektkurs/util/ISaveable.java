@@ -5,8 +5,20 @@ package projektkurs.util;
  */
 public interface ISaveable {
 
-    public void load(SaveData data);
+    /**
+     * Lädt alle Felder des Objektes aus der gegebenen SaveData.
+     *
+     * @param data
+     *            SaveData
+     */
+    void load(SaveData data);
 
-    public void write(SaveData data);
+    /**
+     * Speichert ale Felder in der gegebenen SaveData.
+     *
+     * @param data
+     *            SaveData
+     */
+    void write(SaveData data);
 
 }

@@ -10,28 +10,49 @@ import projektkurs.entity.Entity;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNPC;
 import projektkurs.io.InputManager;
-import projektkurs.story.Storymanager;
+import projektkurs.raster.AbstractRaster;
+import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.IHasExtraInformation;
+import projektkurs.story.StoryManager;
 import projektkurs.util.Logger;
-import projektkurs.world.raster.AbstractRaster;
-import projektkurs.world.raster.extra.ExtraInformation;
-import projektkurs.world.raster.extra.IHasExtraInformation;
 
 /**
- * Spielfeld
+ * Ein Spielfeld.
  */
 public class Spielfeld implements Cloneable {
 
+    /**
+     * Alle Entities.
+     */
     private final ArrayList<Entity>           entities;
+    /**
+     * Alle ExtraInformationen.
+     */
     private final ArrayList<ExtraInformation> extras;
-
+    /**
+     * Alle Raster.
+     */
     private final AbstractRaster[][]          map;
-
-    private final int                         sizeX, sizeY;
-
-    private final Storymanager                storymanager;
+    /**
+     * Spielfeldbreite.
+     */
+    private final int                         sizeX;
+    /**
+     * Spielfeldhöhe.
+     */
+    private final int                         sizeY;
+    /**
+     * Der Storymanger.
+     */
+    private final StoryManager                storyManager;
 
     /**
+     * Konstrukor.
      *
+     * @param sizeX
+     *            Spielfeldbreite
+     * @param sizeY
+     *            Spielfeldhöhe
      */
     public Spielfeld(int sizeX, int sizeY) {
         this.sizeX = sizeX;
@@ -39,9 +60,14 @@ public class Spielfeld implements Cloneable {
         map = new AbstractRaster[sizeX][sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
-        storymanager = new Storymanager();
+        storyManager = new StoryManager();
     }
 
+    /**
+     * Kopiert das Spielfeld.
+     *
+     * @return Spielfeld
+     */
     public Spielfeld copy() {
         try {
             return (Spielfeld) clone();
@@ -52,7 +78,10 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Entfernt einen Entity.
+     *
      * @param e
+     *            Entity
      */
     public void deSpawn(Entity e) {
         if (e != null) {
@@ -61,9 +90,12 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
-     *
+     * @param posX
+     * @param posY
+     * @param sizeX
+     * @param sizeY
+     * @return
      */
-
     public ArrayList<Entity> getEntitiesInRect(int posX, int posY, int sizeX, int sizeY) {
         ArrayList<Entity> ret = new ArrayList<Entity>();
 
@@ -97,7 +129,7 @@ public class Spielfeld implements Cloneable {
     /**
      *
      */
-    public synchronized ArrayList<Entity> getEntityList() {
+    public ArrayList<Entity> getEntityList() {
         return entities;
     }
 
@@ -118,7 +150,7 @@ public class Spielfeld implements Cloneable {
         return null;
     }
 
-    public synchronized ArrayList<ExtraInformation> getExtraInformationList() {
+    public ArrayList<ExtraInformation> getExtraInformationList() {
         return extras;
     }
 
@@ -186,8 +218,8 @@ public class Spielfeld implements Cloneable {
         return map[x][y];
     }
 
-    public Storymanager getStorymanager() {
-        return storymanager;
+    public StoryManager getStorymanager() {
+        return storyManager;
     }
 
     /**
@@ -249,8 +281,7 @@ public class Spielfeld implements Cloneable {
         map[x][y] = r;
         if (r instanceof IHasExtraInformation) {
             ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
-            newExtra.setX(x);
-            newExtra.setY(y);
+            newExtra.setPosition(x, y);
             getExtraInformationList().add(newExtra);
 
         }
@@ -314,7 +345,7 @@ public class Spielfeld implements Cloneable {
         }
         getEntityList().removeAll(toRemove);
 
-        storymanager.update();
+        storyManager.update();
 
     }
 

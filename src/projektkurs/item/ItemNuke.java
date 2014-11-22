@@ -11,7 +11,7 @@ import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
-import projektkurs.world.raster.FireRaster;
+import projektkurs.raster.FireRaster;
 
 /**
  * Ein Atombomben-Item.
@@ -29,7 +29,7 @@ public class ItemNuke extends BaseItem {
     public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
         if (stack.getStackSize() > 0) {
             Random rand = new Random();
-            Sounds.boom.playFromStart();
+            Sounds.explosion.playFromStart();
 
             stack.decrStackSize(1);
 

@@ -1,22 +1,31 @@
 package projektkurs.story.trigger;
 
-import java.lang.reflect.Method;
-
 import projektkurs.Main;
 import projektkurs.item.ItemStack;
 
-public class InventoryTrigger extends Trigger {
+/**
+ * Prüft, ob sich ein bestimmter ItemStack im Spielerinventar befindet.
+ */
+public class InventoryTrigger implements ITrigger {
 
-    private final ItemStack item;
+    /**
+     * Der ItemStack.
+     */
+    private final ItemStack stack;
 
-    public InventoryTrigger(Method m, ItemStack item, Object... objects) {
-        super(m, objects);
-        this.item = item;
+    /**
+     * Konstruktor.
+     *
+     * @param stack
+     *            zu prüfender ItemStack.
+     */
+    public InventoryTrigger(ItemStack stack) {
+        this.stack = stack;
     }
 
     @Override
     public boolean isTriggerActive() {
-        return Main.getPlayer().getInventory().containsIgnoreStackSize(item);
+        return Main.getPlayer().getInventory().containsIgnoreStackSize(stack);
     }
 
 }

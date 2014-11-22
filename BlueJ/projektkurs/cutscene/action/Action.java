@@ -15,7 +15,7 @@ public abstract class Action {
     private final Condition condition;
 
     /**
-     * Kostruktor mit der Ausführbedingung 'TrueCondition'.
+     * Konstruktor mit der Ausführbedingung 'TrueCondition'.
      */
     public Action() {
         this(new TrueCondition());

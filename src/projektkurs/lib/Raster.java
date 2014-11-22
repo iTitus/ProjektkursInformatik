@@ -2,22 +2,65 @@ package projektkurs.lib;
 
 import java.util.HashMap;
 
+import projektkurs.raster.AbstractRaster;
+import projektkurs.raster.DoorRaster;
+import projektkurs.raster.FinishRaster;
+import projektkurs.raster.FireRaster;
+import projektkurs.raster.KistenRaster;
+import projektkurs.raster.SimpleRaster;
+import projektkurs.raster.SolidRaster;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
-import projektkurs.world.raster.AbstractRaster;
-import projektkurs.world.raster.DoorRaster;
-import projektkurs.world.raster.FinishRaster;
-import projektkurs.world.raster.FireRaster;
-import projektkurs.world.raster.KistenRaster;
-import projektkurs.world.raster.SimpleRaster;
-import projektkurs.world.raster.SolidRaster;
 
+/**
+ * Alle Raster.
+ */
 public final class Raster {
 
+    /**
+     * Zurück-Mappings.
+     */
     public static final HashMap<AbstractRaster, String> BACK_MAPPINGS = new HashMap<AbstractRaster, String>();
-    public static AbstractRaster                        baum, door, finish, kiste, rasen, wand, destroyedRaster, fire;
+    /**
+     * Baum.
+     */
+    public static AbstractRaster                        baum;
+    /**
+     * Zerstörter Boden.
+     */
+    public static AbstractRaster                        destroyedRaster;
+    /**
+     * Tür.
+     */
+    public static AbstractRaster                        door;
+    /**
+     * Ziel.
+     */
+    public static AbstractRaster                        finish;
+    /**
+     * Feuer.
+     */
+    public static AbstractRaster                        fire;
+    /**
+     * Kiste.
+     */
+    public static AbstractRaster                        kiste;
+    /**
+     * Mappings.
+     */
     public static final HashMap<String, AbstractRaster> MAPPINGS      = new HashMap<String, AbstractRaster>();
+    /**
+     * Rasen.
+     */
+    public static AbstractRaster                        rasen;
+    /**
+     * Wand.
+     */
+    public static AbstractRaster                        wand;
 
+    /**
+     * Initialisiert alle Items.
+     */
     @Init(state = State.PRE)
     public static void init() {
         wand = new SolidRaster(Images.wand);
@@ -46,11 +89,22 @@ public final class Raster {
 
     }
 
-    private static void registerRaster(String name, AbstractRaster r) {
-        MAPPINGS.put(name, r);
-        BACK_MAPPINGS.put(r, name);
+    /**
+     * Registriert ein Mapping.
+     *
+     * @param name
+     *            Name
+     * @param raster
+     *            Raster
+     */
+    private static void registerRaster(String name, AbstractRaster raster) {
+        MAPPINGS.put(name, raster);
+        BACK_MAPPINGS.put(raster, name);
     }
 
+    /**
+     * Konstruktor.
+     */
     private Raster() {
     }
 

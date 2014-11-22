@@ -73,7 +73,7 @@ public class PlayerInventory extends Inventory {
      * @return X-Koordinate auf dem Bildschirm
      */
     public int getRenderX() {
-        return MathUtil.roundDiv(Integers.WINDOW_X, 2) - MathUtil.roundDiv(Integers.SLOT_SIZE * getSize(), 2);
+        return MathUtil.roundDiv(Integers.windowX, 2) - MathUtil.roundDiv(Integers.SLOT_SIZE * getSize(), 2);
     }
 
     /**
@@ -82,7 +82,7 @@ public class PlayerInventory extends Inventory {
      * @return Y-Koordinate auf dem Bildschirm
      */
     public int getRenderY() {
-        return Integers.WINDOW_Y - Integers.WINDOW_HUD_Y;
+        return Integers.windowY - Integers.WINDOW_HUD_Y;
     }
 
     /**

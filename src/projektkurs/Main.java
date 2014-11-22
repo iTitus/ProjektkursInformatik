@@ -14,9 +14,9 @@ import projektkurs.gui.GuiIngame;
 import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.level.Level;
-import projektkurs.level.Levels;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Levels;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
 import projektkurs.render.Render;
@@ -179,7 +179,7 @@ public final class Main {
     @Init(state = State.PRE)
     public static void initFields() {
         imgr = new InputManager();
-        player = new EntityPlayer(MathUtil.roundDiv(Integers.SIGHT_X, 2) - 1, MathUtil.roundDiv(Integers.SIGHT_Y, 2) - 1, Images.charakter);
+        player = new EntityPlayer(MathUtil.roundDiv(Integers.sightX, 2) - 1, MathUtil.roundDiv(Integers.sightY, 2) - 1, Images.charakter);
         currLevel = Levels.level1;
         render = new Render();
         renderHelper = new RenderHelper();
@@ -276,7 +276,7 @@ public final class Main {
         }
 
         if (initMethods.isEmpty()) {
-            initMethods.addAll(ReflectionUtil.getAllMethodsInClassesWithAnnotation(ReflectionUtil.getClasses(Main.class.getPackage().getName()), Init.class,
+            initMethods.addAll(ReflectionUtil.getMethodsInClassesWithAnnotation(ReflectionUtil.getClasses(Main.class.getPackage().getName()), Init.class,
                     Modifier.PUBLIC, Modifier.STATIC));
         }
         for (Method m : initMethods) {
@@ -293,6 +293,7 @@ public final class Main {
      */
     private static void startGame() {
 
+        Logger.info("Starting " + Strings.NAME + " " + Strings.VERSION);
         Logger.info("Initialising startup routine!");
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {

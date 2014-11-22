@@ -9,16 +9,43 @@ import projektkurs.item.ItemNuke;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 
+/**
+ * Alle Items.
+ */
 public final class Items {
 
+    /**
+     * Zurück-Mappings.
+     */
     public static final HashMap<AbstractItem, String> BACK_MAPPINGS = new HashMap<AbstractItem, String>();
-    public static AbstractItem                        item_42, nuke, key, healthPotion;
+    /**
+     * Gesundheitstrank.
+     */
+    public static AbstractItem                        healthPotion;
+    /**
+     * Item No. 42.
+     */
+    public static AbstractItem                        item42;
+    /**
+     * Schlüssel.
+     */
+    public static AbstractItem                        key;
+    /**
+     * Mappings.
+     */
     public static final HashMap<String, AbstractItem> MAPPINGS      = new HashMap<String, AbstractItem>();
+    /**
+     * Atombombe.
+     */
+    public static AbstractItem                        nuke;
 
+    /**
+     * Initialisiert alle Items.
+     */
     @Init(state = State.PRE)
     public static void init() {
-        item_42 = new BaseItem("42", Images.item42);
-        registerItem("42", item_42);
+        item42 = new BaseItem("42", Images.item42);
+        registerItem("42", item42);
 
         nuke = new ItemNuke();
         registerItem("nuke", nuke);
@@ -30,11 +57,22 @@ public final class Items {
         registerItem("potion.health", healthPotion);
     }
 
-    private static void registerItem(String name, AbstractItem i) {
-        MAPPINGS.put(name, i);
-        BACK_MAPPINGS.put(i, name);
+    /**
+     * Registriert ein Mapping.
+     *
+     * @param name
+     *            Name
+     * @param item
+     *            Item
+     */
+    private static void registerItem(String name, AbstractItem item) {
+        MAPPINGS.put(name, item);
+        BACK_MAPPINGS.put(item, name);
     }
 
+    /**
+     * Nicht instanziierbar.
+     */
     private Items() {
     }
 

@@ -10,28 +10,16 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 /**
- * Helperklasse für Reflection
+ * Helperklasse für Reflection.
  */
-public class ReflectionUtil {
+public final class ReflectionUtil {
 
     /**
-     * @param classes
-     * @param annotationClass
-     * @param modifiers
-     * @return
-     */
-    public static ArrayList<Method> getAllMethodsInClassesWithAnnotation(ArrayList<Class<?>> classes, Class<? extends Annotation> annotationClass,
-            int... modifiers) {
-        ArrayList<Method> methods = new ArrayList<Method>();
-        for (Class<?> cls : classes) {
-            methods.addAll(getMethodsInClassWithAnnotation(cls, annotationClass, modifiers));
-        }
-        return methods;
-    }
-
-    /**
+     * Gibt alle Klassen im Classpath zurück, die im gegebenen Package sind.
+     *
      * @param packageName
-     * @return
+     *            Name des Packages
+     * @return alle Klassen
      */
     public static ArrayList<Class<?>> getClasses(String packageName) {
         ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
@@ -40,17 +28,24 @@ public class ReflectionUtil {
             if (fileOrDir.isDirectory()) {
                 classes.addAll(getClassesFromDir(fileOrDir, packageName));
             }
-            if (fileOrDir.isFile() && (fileOrDir.getName().toLowerCase().endsWith(".jar") || fileOrDir.getName().toLowerCase().endsWith(".zip"))) {
-                classes.addAll(getClassesFromJar(fileOrDir, packageName));
+            if (fileOrDir.isFile()) {
+                String name = fileOrDir.getName().toLowerCase();
+                if (name.endsWith(".jar") || name.endsWith(".zip")) {
+                    classes.addAll(getClassesFromJarOrZip(fileOrDir, packageName));
+                }
             }
         }
         return classes;
     }
 
     /**
+     * Gibt alle Klassen aus einem Ordner zurück, die im gegebenen Package sind.
+     *
      * @param dir
+     *            zu durchsuchender Ordner
      * @param packageName
-     * @return
+     *            Name des Packages
+     * @return alle Klassen
      */
     public static ArrayList<Class<?>> getClassesFromDir(File dir, String packageName) {
         if (packageName == null) {
@@ -65,17 +60,21 @@ public class ReflectionUtil {
     }
 
     /**
-     * @param jarFile
+     * Liest eine kompressierte Datei (ZIP oder JAR) und findet alle Klassen im gegebenen Package.
+     *
+     * @param jarOrZipFile
+     *            JAR oder ZIP Datei
      * @param packageName
-     * @return
+     *            Name des Packages
+     * @return alle Klassen
      */
-    public static ArrayList<Class<?>> getClassesFromJar(File jarFile, String packageName) {
+    public static ArrayList<Class<?>> getClassesFromJarOrZip(File jarOrZipFile, String packageName) {
         if (packageName == null) {
             packageName = "";
         }
         ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
         String dirSearched = packageName.replace(".", "/");
-        try (ZipFile zipFile = new ZipFile(jarFile)) {
+        try (ZipFile zipFile = new ZipFile(jarOrZipFile)) {
 
             for (Enumeration<? extends ZipEntry> zipEntries = zipFile.entries(); zipEntries.hasMoreElements();) {
                 String entryName = zipEntries.nextElement().getName();
@@ -88,21 +87,26 @@ public class ReflectionUtil {
                     Class<?> clazz = Class.forName(entryName);
                     classes.add(clazz);
                 } catch (Throwable t) {
-                    Logger.logThrowable("Unable to get class '" + entryName + "' from jar", t);
+                    Logger.logThrowable("Unable to get class '" + entryName + "' from zip or jar '" + jarOrZipFile + "'", t);
                 }
             }
         } catch (Throwable t) {
-            Logger.logThrowable("Unable to read ZIP-File '" + jarFile + "'", t);
+            Logger.logThrowable("Unable to read from jar or zip '" + jarOrZipFile + "'", t);
         }
         return classes;
 
     }
 
     /**
+     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen und den gegebenen Argumenten zurück.
+     *
      * @param cls
+     *            Klasse
      * @param methodName
+     *            Name der Methode
      * @param args
-     * @return
+     *            Argumente
+     * @return Methode
      */
     public static Method getMethod(Class<?> cls, String methodName, Class<?>... args) {
         try {
@@ -114,12 +118,17 @@ public class ReflectionUtil {
     }
 
     /**
+     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen, den gegebenen Argumenten zurück und den gegebenenen Modifiern zurück.
+     *
      * @param cls
+     *            Klasse
      * @param annotationClass
+     *            Annotations-Klasse
      * @param modifiers
-     * @return
+     *            Modifier
+     * @return Methode
      */
-    public static ArrayList<Method> getMethodsInClassWithAnnotation(Class<?> cls, Class<? extends Annotation> annotationClass, int... modifiers) {
+    public static ArrayList<Method> getMethodInClassWithAnnotation(Class<?> cls, Class<? extends Annotation> annotationClass, int... modifiers) {
         ArrayList<Method> methods = new ArrayList<Method>();
         for (Method m : cls.getDeclaredMethods()) {
             if (m.isAnnotationPresent(annotationClass) && hasAllModifiers(m, modifiers)) {
@@ -130,12 +139,32 @@ public class ReflectionUtil {
     }
 
     /**
-     * @return
+     * Gibt alle Methoden aus den gegebenen Klassen zurück, die die gegebenen Annotationen besitzen und alle gegebenen Modifier haben.
+     *
+     * @param classes
+     *            zu durchsuchende Klassen
+     * @param annotationClass
+     *            Annotations-Klasse
+     * @param modifiers
+     *            alle Modifiers
+     * @return Methoden
+     */
+    public static ArrayList<Method> getMethodsInClassesWithAnnotation(ArrayList<Class<?>> classes, Class<? extends Annotation> annotationClass,
+            int... modifiers) {
+        ArrayList<Method> methods = new ArrayList<Method>();
+        for (Class<?> cls : classes) {
+            methods.addAll(getMethodInClassWithAnnotation(cls, annotationClass, modifiers));
+        }
+        return methods;
+    }
+
+    /**
+     * Gibt alle Pfade zurück, die im Classpath stehen.
+     *
+     * @return alle Pfade
      */
     public static ArrayList<String> getPathesFromClasspath() {
-        String classpath = System.getProperty("java.class.path");
-        String pathseparator = System.getProperty("path.separator");
-        StringTokenizer tokenizer = new StringTokenizer(classpath, pathseparator);
+        StringTokenizer tokenizer = new StringTokenizer(System.getProperty("java.class.path"), System.getProperty("path.separator"));
         ArrayList<String> pathes = new ArrayList<String>();
         while (tokenizer.hasMoreElements()) {
             pathes.add(tokenizer.nextToken());
@@ -144,9 +173,13 @@ public class ReflectionUtil {
     }
 
     /**
+     * Sind alle gegebenen Modifier an der gegebenen Methode präsent.
+     *
      * @param m
+     *            Methode
      * @param modifiers
-     * @return
+     *            Modifier
+     * @return true, wenn ja; false, wenn nein
      */
     public static boolean hasAllModifiers(Method m, int... modifiers) {
         boolean ret = true;
@@ -159,38 +192,48 @@ public class ReflectionUtil {
     }
 
     /**
+     * Führt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus. Ignoriert de Rückgabewert.
+     *
      * @param o
+     *            Objekt
      * @param m
+     *            Methode
      * @param args
+     *            Parameter
+     * @return Void
      */
-    public static void invoke(Object o, Method m, Object... args) {
-        try {
-            m.invoke(o, args);
-        } catch (Throwable t) {
-            Logger.logThrowable("Unable to invoke method '" + m + "'", t);
-        }
+    public static Void invoke(Object o, Method m, Object... args) {
+        return invokeWithReturn(o, m, args);
     }
 
     /**
+     * Führt die gegebene statische Methode mit den gegegebenen Parametern aus. Ignoriert de Rückgabewert.
+     *
      * @param m
+     *            Methode
      * @param args
+     *            Parameter
+     * @return Void
      */
-    public static void invokeStatic(Method m, Object... args) {
-        try {
-            m.invoke(null, args);
-        } catch (Throwable t) {
-            Logger.logThrowable("Unable to invoke method '" + m + "'", t);
-        }
+    public static Void invokeStatic(Method m, Object... args) {
+        return invokeStaticWithReturn(m, args);
     }
 
     /**
+     * Führt die gegebene statische Methode mit den gegegebenen Parametern aus.
+     *
+     * @param <T>
+     *            der erwartete Rückgabetyp
      * @param m
+     *            Methode
      * @param args
-     * @return
+     *            Parameter
+     * @return Rückgabewert
      */
-    public static Object invokeStaticWithReturn(Method m, Object... args) {
+    @SuppressWarnings("unchecked")
+    public static <T> T invokeStaticWithReturn(Method m, Object... args) {
         try {
-            return m.invoke(null, args);
+            return (T) m.invoke(null, args);
         } catch (Throwable t) {
             Logger.logThrowable("Unable to invoke method '" + m + "'", t);
             return null;
@@ -198,14 +241,22 @@ public class ReflectionUtil {
     }
 
     /**
+     * Führt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus.
+     *
+     * @param <T>
+     *            der erwartete Rückgabetyp
      * @param o
+     *            Objekt
      * @param m
+     *            Methode
      * @param args
-     * @return
+     *            Parameter
+     * @return Rückgabewert
      */
-    public static Object invokeWithReturn(Object o, Method m, Object... args) {
+    @SuppressWarnings("unchecked")
+    public static <T> T invokeWithReturn(Object o, Method m, Object... args) {
         try {
-            return m.invoke(o, args);
+            return (T) m.invoke(o, args);
         } catch (Throwable t) {
             Logger.logThrowable("Unable to invoke method '" + m + "'", t);
             return null;
@@ -213,8 +264,13 @@ public class ReflectionUtil {
     }
 
     /**
+     * Legt eine neue Instanz der gegebenen Klasse an.
+     *
+     * @param <T>
+     *            Typ der Klasse
      * @param cls
-     * @return
+     *            Klasse
+     * @return Instanz
      */
     public static <T> T newInstance(Class<T> cls) {
         try {
@@ -226,10 +282,16 @@ public class ReflectionUtil {
     }
 
     /**
+     * Füllt die gegebene Liste mit allen Klassen im gegebenem Ordner aus dem gegebenen Package.
+     *
      * @param first
+     *            ob dies der erste Methoden-Aufruf ist - sollte true sein
      * @param fileOrDir
+     *            zu duchsuchender Ordner oder Datei
      * @param packageName
+     *            Name des Packages
      * @param classes
+     *            alle Klassen
      */
     private static void getClassesFromFileOrDirIntern(boolean first, File fileOrDir, String packageName, ArrayList<Class<?>> classes) {
         if (fileOrDir.isDirectory()) {
@@ -251,5 +313,11 @@ public class ReflectionUtil {
                 }
             }
         }
+    }
+
+    /**
+     * Nicht instanziierbar.
+     */
+    private ReflectionUtil() {
     }
 }

@@ -43,8 +43,9 @@ public class Level {
     public void generateAndPopulateAll() {
         String methodName;
         for (int i = 0; i < maps.length; i++) {
-            methodName = name;
-            methodName += "generateAndPopulateMap";
+            methodName = "generateAndPopulate";
+            methodName += name;
+            methodName += "Map";
             methodName += i;
             ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps[i]);
         }

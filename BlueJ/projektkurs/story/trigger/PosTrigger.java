@@ -1,22 +1,20 @@
 package projektkurs.story.trigger;
 
-import java.lang.reflect.Method;
+/**
+ * Prüft, ob sich der Spieler an einer gegebenen Position befindet.
+ */
+public class PosTrigger extends AreaTrigger {
 
-import projektkurs.Main;
-
-public class PosTrigger extends Trigger {
-
-    private final int x, y;
-
-    public PosTrigger(Method m, int x, int y, Object... objects) {
-        super(m, objects);
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public boolean isTriggerActive() {
-        return Main.getPlayer().getPosX() == x && Main.getPlayer().getPosY() == y;
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            y-Koordinate
+     */
+    public PosTrigger(int posX, int posY) {
+        super(posX, posY, 1, 1);
     }
 
 }

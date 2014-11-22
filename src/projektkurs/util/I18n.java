@@ -8,28 +8,65 @@ import java.util.ResourceBundle;
 import projektkurs.util.Init.State;
 
 /**
- * Internationalisierung
+ * Internationalisierung.
  */
 public final class I18n {
 
+    /**
+     * Unterstützte Sprachen.
+     */
     public static enum SupportedLocales {
 
-        ENGLISH(new Locale("en", "US"), "lang.en_US"), GERMAN(new Locale("de", "DE"), "lang.de_DE");
+        /**
+         * Amerikanisches Englisch.
+         */
+        ENGLISH(new Locale("en", "US"), "lang.en_US"),
+        /**
+         * Deutsch.
+         */
+        GERMAN(new Locale("de", "DE"), "lang.de_DE");
 
+        /**
+         * Die Standardsprache.
+         */
         public static final SupportedLocales DEFAULT = ENGLISH;
 
+        /**
+         * Die Java-Sprache.
+         */
         private final Locale                 locale;
+        /**
+         * Der Name der Sprache.
+         */
         private final String                 name;
 
+        /**
+         * Konstruktor.
+         *
+         * @param locale
+         *            die Java-Sprache
+         * @param name
+         *            der Name
+         */
         private SupportedLocales(Locale locale, String name) {
             this.locale = locale;
             this.name = name;
         }
 
+        /**
+         * Die Standard-Java-Sprache.
+         *
+         * @return die Standard-Java-Sprache
+         */
         public Locale getLocale() {
             return locale;
         }
 
+        /**
+         * Der Name der Sprache.
+         *
+         * @return der Name
+         */
         public String getName() {
             return getString(name);
         }
@@ -40,25 +77,41 @@ public final class I18n {
         }
     }
 
+    /**
+     * Die aktuelle Sprache.
+     */
     private static SupportedLocales currentLocale = SupportedLocales.ENGLISH;
 
-    private static ResourceBundle   resource, fallback;
+    /**
+     * Die Standard-Lokalisierung.
+     */
+    private static ResourceBundle   fallback;
+    /**
+     * Aktuelle Lokalisation.
+     */
+    private static ResourceBundle   resource;
 
-    public static void changeLocale(SupportedLocales l) {
-        if (l != null) {
-            currentLocale = l;
+    /**
+     * Ändert die Sprache.
+     *
+     * @param locale
+     *            neue Sprache
+     */
+    public static void changeLocale(SupportedLocales locale) {
+        if (locale != null) {
+            currentLocale = locale;
         } else {
-            currentLocale = SupportedLocales.ENGLISH;
+            currentLocale = SupportedLocales.DEFAULT;
         }
         init();
     }
 
     /**
-     * Gibt den übersetzten String zurueck
+     * Gibt den übersetzten String zurück.
      *
      * @param key
-     *            Der Schlüssel fuer den String (zB. "item.nuke.name")
-     * @return der passende String in der aktuellen Sprache oder den key falls es keine Übersetzung gibt
+     *            Der Schlüssel für den String (zB. "item.nuke.name")
+     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Übersetzung gibt
      */
     public static String getString(String key) {
 
@@ -75,14 +128,16 @@ public final class I18n {
     }
 
     /**
-     * @return
+     * Alle unterstützten Sprachen.
+     *
+     * @return alle unterstützten Sprachen
      */
     public static SupportedLocales[] getSupportedLocales() {
         return SupportedLocales.values();
     }
 
     /**
-     * Initialisiert die gesetze Sprache und lädt die Lokalisierung
+     * Initialisiert die gesetze Sprache und lädt die Lokalisierung.
      */
     @Init(state = State.RESOURCES)
     public static void init() {
@@ -119,6 +174,12 @@ public final class I18n {
             Logger.warn("Resources for Locale '" + currentLocale.getLocale() + "' are incomplete. Missing keys are:", missingResources);
         }
 
+    }
+
+    /**
+     * Nicht instanziierbar.
+     */
+    private I18n() {
     }
 
 }
