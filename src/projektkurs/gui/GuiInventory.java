@@ -10,6 +10,7 @@ import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 import projektkurs.util.MathUtil;
+import projektkurs.util.RenderUtil;
 
 /**
  * Das Invetar-GUI.
@@ -73,7 +74,7 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
 
     @Override
     public void render(Graphics2D g) {
-        drawDefaultBackground(g);
+        RenderUtil.drawDefaultBackground(g);
         super.render(g);
     }
 

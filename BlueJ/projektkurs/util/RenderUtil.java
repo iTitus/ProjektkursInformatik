@@ -19,7 +19,11 @@ public final class RenderUtil {
     /**
      * Tooltip-Farbe.
      */
-    public static final Color TOOLTIP_COLOR = new Color(0xB0, 0x20, 0x20);
+    public static final Color  TOOLTIP_COLOR            = new Color(0x94, 0x3F, 0x3F);
+    /**
+     * Die Standard-Hintergrundfarbe.
+     */
+    private static final Color DEFAULT_BACKGROUND_COLOR = new Color(127, 127, 127, 156);
 
     /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
@@ -34,7 +38,8 @@ public final class RenderUtil {
      *            Y-Koordinate des Mittelpunktes
      */
     public static void drawCenteredString(Graphics2D g, String s, int centerX, int centerY) {
-        g.drawString(s, centerX - MathUtil.floorDiv(g.getFontMetrics().stringWidth(s), 2), centerY + MathUtil.ceilDiv(g.getFontMetrics().getHeight(), 4));
+        g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), s), centerX - MathUtil.floorDiv(g.getFontMetrics().stringWidth(s), 2),
+                centerY + MathUtil.ceilDiv(g.getFontMetrics().getHeight(), 4));
     }
 
     /**
@@ -97,6 +102,19 @@ public final class RenderUtil {
         drawImage(g, image, (x - CutSceneManager.getCurrentCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X,
                 (y - CutSceneManager.getCurrentCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE,
                 Integers.RASTER_SIZE);
+    }
+
+    /**
+     * Rendert den Standardhintergrund.
+     *
+     * @param g
+     *            Graphics2D Objekt
+     */
+    public static void drawDefaultBackground(Graphics2D g) {
+        Color oldColor = g.getColor();
+        g.setColor(DEFAULT_BACKGROUND_COLOR);
+        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
+        g.setColor(oldColor);
     }
 
     /**
@@ -177,7 +195,7 @@ public final class RenderUtil {
      *            Y-Koordinate
      */
     public static void drawString(Graphics2D g, String string, int posX, int posY) {
-        g.drawString(string, posX, posY);
+        g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
     }
 
     /**

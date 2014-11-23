@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -9,18 +8,12 @@ import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Element;
-import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 
 /**
  * Ein Graphical User Interface (GUI).
  */
 public abstract class Gui {
-
-    /**
-     * Die Standard-Hintergrundfarbe.
-     */
-    private static final Color   DEFAULT_BACKGROUND_COLOR = new Color(127, 127, 127, 156);
 
     /**
      * Alle Elements in diesem Gui.
@@ -121,19 +114,6 @@ public abstract class Gui {
         if (hovered != null) {
             hovered.renderTooltip(g);
         }
-    }
-
-    /**
-     * Rendert den Standardhintergrund.
-     *
-     * @param g
-     *            Graphics2D Objekt
-     */
-    protected void drawDefaultBackground(Graphics2D g) {
-        Color oldColor = g.getColor();
-        g.setColor(DEFAULT_BACKGROUND_COLOR);
-        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
-        g.setColor(oldColor);
     }
 
 }
