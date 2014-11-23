@@ -144,7 +144,7 @@ public class ItemStack {
      * @return Name
      */
     public String getName() {
-        return String.format("%d x %s:%d", stackSize, item.toString(), damage);
+        return String.format("%d x %s:%d", stackSize, item.getName(this), damage);
     }
 
     /**

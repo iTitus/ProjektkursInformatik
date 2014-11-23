@@ -83,7 +83,9 @@ public abstract class Gui {
      *            MouseWheelEvent
      */
     public void onMouseWheelMoved(int by, MouseWheelEvent e) {
-        // NO-OP
+        for (Element el : guiElements) {
+            el.onMouseWheelMoved(by, e);
+        }
     }
 
     /**
@@ -109,8 +111,15 @@ public abstract class Gui {
      *            Graphics2D Objekt
      */
     public void render(Graphics2D g) {
+        Element hovered = null;
         for (Element el : guiElements) {
             el.render(g);
+            if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
+                hovered = el;
+            }
+        }
+        if (hovered != null) {
+            hovered.renderTooltip(g);
         }
     }
 

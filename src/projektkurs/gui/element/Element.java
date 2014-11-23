@@ -202,6 +202,16 @@ public abstract class Element {
     public abstract void render(Graphics2D g);
 
     /**
+     * Rendert einen Tooltip.
+     *
+     * @param g
+     *            Graphics2D
+     */
+    public void renderTooltip(Graphics2D g) {
+        // NO-OP
+    }
+
+    /**
      * Setzt die X-Koordinate dieses Elements.
      *
      * @param posX

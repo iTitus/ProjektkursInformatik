@@ -3,6 +3,7 @@ package projektkurs.gui.element;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
+import projektkurs.Main;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Images;
@@ -81,6 +82,15 @@ public class InventoryElement extends Element {
         this.inv = inv;
     }
 
+    /**
+     * Das Inventory.
+     *
+     * @return Inventory
+     */
+    public Inventory getInventory() {
+        return inv;
+    }
+
     @Override
     public void onLeftClick(int x, int y, MouseEvent e) {
         if (isInside(x, y)) {
@@ -105,6 +115,14 @@ public class InventoryElement extends Element {
                 RenderUtil.drawImage(g, stack.getImage(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
                 g.drawString(stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
             }
+        }
+    }
+
+    @Override
+    public void renderTooltip(Graphics2D g) {
+        ItemStack hovered = inv.getItemStackAt(MathUtil.floorDiv(Main.getInputManager().getMouseX() - posX, Integers.SLOT_SIZE));
+        if (hovered != null) {
+            RenderUtil.drawTooltip(g, hovered.getName(), Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
         }
     }
 

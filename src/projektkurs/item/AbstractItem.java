@@ -36,6 +36,17 @@ public abstract class AbstractItem {
     public abstract String getName();
 
     /**
+     * Übersetzter Name - ItemStack sensitiv.
+     *
+     * @param stack
+     *            ItemStack
+     * @return Name
+     */
+    public String getName(ItemStack stack) {
+        return getName();
+    }
+
+    /**
      * Wird ausgeführt, wenn mit der linken Maustaster mit diesem Item auf das Fenster geklickt wird.
      *
      * @param e

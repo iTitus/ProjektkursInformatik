@@ -1,5 +1,6 @@
 package projektkurs.util;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -14,6 +15,11 @@ import projektkurs.lib.Strings;
  * Renderhilfen.
  */
 public final class RenderUtil {
+
+    /**
+     * Tooltip-Farbe.
+     */
+    public static final Color TOOLTIP_COLOR = new Color(0xB0, 0x20, 0x20);
 
     /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
@@ -175,9 +181,32 @@ public final class RenderUtil {
     }
 
     /**
+     * Rendert einen Tooltip an die gegebene Position.
+     *
+     * @param g
+     *            Graphics2D
+     * @param str
+     *            Tooltip
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     */
+    public static void drawTooltip(Graphics2D g, String str, int x, int y) {
+        Color oldColor = g.getColor();
+        int height = g.getFontMetrics().getHeight();
+        int width = g.getFontMetrics().stringWidth(str);
+        g.setColor(TOOLTIP_COLOR);
+        g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+        g.setColor(Color.BLACK);
+        g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+        g.setColor(oldColor);
+        RenderUtil.drawString(g, str, x + 2, y - 3);
+    }
+
+    /**
      * Nicht instanziierbar.
      */
     private RenderUtil() {
     }
-
 }

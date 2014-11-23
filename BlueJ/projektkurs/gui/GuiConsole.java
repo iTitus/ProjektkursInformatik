@@ -91,7 +91,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                                     Main.closeGui();
                                 }
                             } catch (NumberFormatException e) {
-                                field.setText("Wrong syntax!");
+                                // NO-OP
                             }
 
                         } else if (strings.length == 4) {
@@ -107,7 +107,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                                     Main.closeGui();
                                 }
                             } catch (NumberFormatException e) {
-                                field.setText("Wrong syntax!");
+                                // NO-OP
                             }
 
                         }
@@ -123,7 +123,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                                     Main.closeGui();
                                 }
                             } catch (NumberFormatException e) {
-                                field.setText("Wrong syntax!");
+                                // NO-OP
                             }
 
                         } else if (strings.length == 3) {
@@ -136,13 +136,14 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                                     Main.closeGui();
                                 }
                             } catch (NumberFormatException e) {
-                                field.setText("Wrong syntax!");
+                                // NO-OP
                             }
                         }
                         break;
                     default:
                 }
             }
+            field.setText("Wrong syntax!");
         }
     }
 }
