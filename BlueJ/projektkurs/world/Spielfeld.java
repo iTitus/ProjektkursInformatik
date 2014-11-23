@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
-import projektkurs.entity.EntityItem;
-import projektkurs.entity.EntityNPC;
 import projektkurs.io.InputManager;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
@@ -78,7 +76,7 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
-     * Entfernt einen Entity.
+     * Lässt einen Entity verschwinden.
      *
      * @param e
      *            Entity
@@ -90,11 +88,17 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Findet alle Entities in einem gegebenen Rechteck.
+     *
      * @param posX
+     *            X-Koordinate
      * @param posY
+     *            Y-Koordinate
      * @param sizeX
+     *            Breite
      * @param sizeY
-     * @return
+     *            Höhe
+     * @return gefundene Entities
      */
     public ArrayList<Entity> getEntitiesInRect(int posX, int posY, int sizeX, int sizeY) {
         ArrayList<Entity> ret = new ArrayList<Entity>();
@@ -109,9 +113,13 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Findet den Entity an der gegebenen Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
-     * @return
+     *            Y-Koordinate
+     * @return gefundener Entity
      */
     public Entity getEntityAt(int x, int y) {
         if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
@@ -127,16 +135,22 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Alle Entities auf dieser Map.
      *
+     * @return alle Entities
      */
     public ArrayList<Entity> getEntityList() {
         return entities;
     }
 
     /**
+     * Findet die ExtraInformation an der gegebenen Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
-     * @return
+     *            Y-Koordinate
+     * @return gefundene ExtraInformation
      */
     public ExtraInformation getExtraInformationAt(int x, int y) {
         if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
@@ -150,66 +164,41 @@ public class Spielfeld implements Cloneable {
         return null;
     }
 
+    /**
+     * Alle ExtraInformationen auf dieser Map.
+     *
+     * @return alle ExtraInformationen
+     */
     public ArrayList<ExtraInformation> getExtraInformationList() {
         return extras;
     }
 
     /**
-     * @param x
-     * @param y
-     * @return
-     */
-    public EntityItem getItemAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return null;
-        }
-
-        for (Entity e : getEntityList()) {
-            if (e.getPosX() == x && e.getPosY() == y && e instanceof EntityItem) {
-                return (EntityItem) e;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @return
+     * Breite der Map.
+     *
+     * @return Breite
      */
     public int getMapSizeX() {
         return sizeX;
     }
 
     /**
-     * @return
+     * Höhe der Map.
+     *
+     * @return Höhe
      */
     public int getMapSizeY() {
         return sizeY;
     }
 
     /**
+     * Findet das Raster an der gegebenen Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
-     * @return
-     */
-    public EntityNPC getNPCAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return null;
-        }
-
-        for (Entity e : getEntityList()) {
-            if (e.getPosX() == x && e.getPosY() == y && e instanceof EntityNPC) {
-                return (EntityNPC) e;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @param x
-     * @param y
-     * @return
+     *            Y-Koordinate
+     * @return gefundenes Raster
      */
     public AbstractRaster getRasterAt(int x, int y) {
         if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
@@ -218,41 +207,36 @@ public class Spielfeld implements Cloneable {
         return map[x][y];
     }
 
-    public StoryManager getStorymanager() {
+    /**
+     * Der StoryManager dieser Map.
+     *
+     * @return StoryManager
+     */
+    public StoryManager getStoryManager() {
         return storyManager;
     }
 
     /**
+     * Ist ein Entity an der gegebenen Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
-     * @return
+     *            Y-Koordinate
+     * @return true, wenn ja; false, wenn nein
      */
     public boolean isEntityAtPos(int x, int y) {
         return getEntityAt(x, y) != null;
     }
 
     /**
+     * Ist ein Raster an der gegebenen Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
-     * @return
-     */
-    public boolean isItemAtPos(int x, int y) {
-        return getEntityAt(x, y) instanceof EntityItem;
-    }
-
-    /**
-     * @param x
-     * @param y
-     * @return
-     */
-    public boolean isNPCAtPos(int x, int y) {
-        return getEntityAt(x, y) instanceof EntityNPC;
-    }
-
-    /**
-     * @param x
-     * @param y
-     * @return
+     *            Y-Koordinate
+     * @return true, wenn ja; false, wenn nein
      */
     public boolean isRasterAt(int x, int y) {
         if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
@@ -261,14 +245,25 @@ public class Spielfeld implements Cloneable {
         return map[x][y] != null;
     }
 
+    /**
+     * Entfernt eine ExtraInformation von dieser Map.
+     *
+     * @param extra
+     *            die zu entfernende ExtraInformation
+     */
     public void removeExtraInformation(ExtraInformation extra) {
         getExtraInformationList().remove(extra);
     }
 
     /**
+     * Setzt ein Raster und seine ExtraInformation an die gegebene Position.
+     *
      * @param x
+     *            X-Koordinate
      * @param y
+     *            Y-Koordinate
      * @param r
+     *            zu setzendes Raster
      */
     public void setRasterAt(int x, int y, AbstractRaster r) {
         if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
@@ -288,7 +283,10 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Lässt einen Entity erscheinen.
+     *
      * @param e
+     *            Entity
      */
     public void spawn(Entity e) {
         if (e != null) {
@@ -297,7 +295,7 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
-     * Updated das Spielfeld
+     * Updated das Spielfeld.
      */
     public void update() {
 

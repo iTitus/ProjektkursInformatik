@@ -123,7 +123,7 @@ public final class MapBuilder {
         map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 42)));
 
         // STORYMAGER!
-        map.getStorymanager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryTrigger(new ItemStack(Items.nuke))),
+        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryTrigger(new ItemStack(Items.nuke))),
                 ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);
 
     }
@@ -157,7 +157,7 @@ public final class MapBuilder {
         map.spawn(Main.getPlayer());
 
         // STORYMANAGER!
-        map.getStorymanager().registerTrigger(new PosTrigger(8, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
+        map.getStoryManager().registerTrigger(new PosTrigger(8, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
 
     /**
