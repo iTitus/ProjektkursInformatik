@@ -21,7 +21,7 @@ public class AnimatedRaster extends SimpleRaster {
     private final int              animationLength;
 
     /**
-     * Kostruktor.
+     * Konstruktor.
      *
      * @param animationFrames
      *            alle AnimationFrames

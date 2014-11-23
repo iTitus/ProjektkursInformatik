@@ -143,6 +143,30 @@ public final class MathUtil {
     }
 
     /**
+     * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
+     *
+     * @param max
+     *            Zahl
+     * @return Zufallszahl
+     */
+    public static int nextInt(int max) {
+        return randomInt(0, max - 1);
+    }
+
+    /**
+     * Zufällige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
+     *
+     * @param min
+     *            Minimum
+     * @param max
+     *            Maximum
+     * @return Zufallszahl
+     */
+    public static int nextInt(int min, int max) {
+        return randomInt(min, max - 1);
+    }
+
+    /**
      * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
      *
      * @param max

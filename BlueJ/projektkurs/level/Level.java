@@ -76,6 +76,15 @@ public class Level {
     }
 
     /**
+     * Anzahl der Maps.
+     *
+     * @return Anzahl
+     */
+    public int getMapCount() {
+        return maps.length;
+    }
+
+    /**
      * Wählt das Spielfeld am Index aus.
      *
      * @param i

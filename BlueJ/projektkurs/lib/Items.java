@@ -53,7 +53,7 @@ public final class Items {
         key = new BaseItem("key", Images.key);
         registerItem("key", key);
 
-        healthPotion = new ItemHealthPotion(100);
+        healthPotion = new ItemHealthPotion();
         registerItem("potion.health", healthPotion);
     }
 

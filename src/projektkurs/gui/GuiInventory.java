@@ -76,4 +76,5 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
         drawDefaultBackground(g);
         super.render(g);
     }
+
 }

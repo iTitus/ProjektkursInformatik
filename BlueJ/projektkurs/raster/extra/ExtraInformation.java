@@ -58,7 +58,7 @@ public class ExtraInformation implements ICanUpdate, ISaveable {
      */
     public void setPosition(int x, int y) {
         this.x = x;
-        this.x = x;
+        this.y = y;
     }
 
     @Override

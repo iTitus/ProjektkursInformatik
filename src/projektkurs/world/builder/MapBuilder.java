@@ -1,7 +1,5 @@
 package projektkurs.world.builder;
 
-import java.util.Random;
-
 import projektkurs.Main;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
@@ -36,24 +34,22 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel0Map0(Spielfeld map) {
-        Random rand = new Random();
 
         // RASEN!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
-
         }
 
         // BÄUME!
-        for (int i = 0; i < rand.nextInt(51) + 25; i++) {
-            map.setRasterAt(rand.nextInt(map.getMapSizeX()), rand.nextInt(map.getMapSizeY()), Raster.baum);
+        for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.baum);
         }
 
         // KISTEN!
-        for (int i = 0; i < rand.nextInt(7) + 3; i++) {
-            map.setRasterAt(rand.nextInt(map.getMapSizeX()), rand.nextInt(map.getMapSizeY()), Raster.kiste);
+        for (int i = 0; i < MathUtil.randomInt(10, 15); i++) {
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.kiste);
 
         }
 
@@ -70,9 +66,14 @@ public final class MapBuilder {
         }
 
         // Animation Test
-        map.setRasterAt(1, 1, Raster.fire);
+        map.setRasterAt(3, 1, Raster.fire);
 
         // TÜREN!
+        for (int x = 20; x < 25; x++) {
+            for (int y = 18; y < 23; y++) {
+                map.setRasterAt(x, y, Raster.rasen);
+            }
+        }
         map.setRasterAt(20, 18, Raster.baum);
         map.setRasterAt(21, 18, Raster.baum);
         map.setRasterAt(22, 18, Raster.baum);
@@ -118,9 +119,9 @@ public final class MapBuilder {
 
         // ITEMS
         map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
-        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 0)));
+        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 1)));
         map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 1234)));
-        map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 42)));
+        map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
 
         // STORYMAGER!
         map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryTrigger(new ItemStack(Items.nuke))),
@@ -167,6 +168,34 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+
+        for (int x = 0; x < map.getMapSizeX(); x++) {
+            for (int y = 0; y < map.getMapSizeY(); y++) {
+                map.setRasterAt(x, y, Raster.rasen);
+            }
+        }
+
+        // WÄNDE!
+        for (int x = 0; x < map.getMapSizeX(); x++) {
+            map.setRasterAt(x, 0, Raster.wand);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+        }
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            map.setRasterAt(0, y, Raster.wand);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+        }
+
+        // ENTITIES!
+        map.spawn(Main.getPlayer());
+    }
+
+    /**
+     * Level 1 - Spielfeld 1.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
 
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {

@@ -58,12 +58,14 @@ public class Inventory {
      */
     public boolean addItemStack(ItemStack newStack) {
         if (newStack != null) {
+            ItemStack stack;
             for (int i = 0; i < stacks.length; i++) {
-                if (getItemStackAt(i) == null) {
-                    stacks[i] = newStack;
+                stack = getItemStackAt(i);
+                if (stack == null) {
+                    setItemStackInSlot(i, newStack);
                     return true;
-                } else if (stacks[i].itemAndDamageEquals(newStack)) {
-                    stacks[i].incrStackSize(newStack.getStackSize());
+                } else if (stack.itemAndDamageEquals(newStack)) {
+                    incrStackSize(i, newStack.getStackSize());
                     return true;
                 }
             }
@@ -259,7 +261,7 @@ public class Inventory {
      */
     public boolean removeItemStack(int index) {
         if (getItemStackAt(index) != null) {
-            stacks[index] = null;
+            setItemStackInSlot(index, null);
             return true;
         }
 
@@ -279,7 +281,7 @@ public class Inventory {
             for (int i = 0; i < stacks.length; i++) {
                 stack = getItemStackAt(i);
                 if (stack != null && stack.stackEquals(stackToRemove)) {
-                    stacks[i] = null;
+                    setItemStackInSlot(i, null);
                     return true;
                 }
             }
@@ -300,7 +302,7 @@ public class Inventory {
             for (int i = 0; i < stacks.length; i++) {
                 stack = getItemStackAt(i);
                 if (stack != null && stack.itemAndDamageEquals(stackToRemove)) {
-                    stacks[i] = null;
+                    setItemStackInSlot(i, null);
                     return true;
                 }
             }

@@ -25,6 +25,8 @@ public class GuiIngame extends Gui {
     public void onKeyTyped(char keyChar, KeyEvent e) {
         if (keyChar == KeyBindings.KEY_OPTION) {
             Main.openGui(new GuiOption());
+        } else if (keyChar == KeyBindings.KEY_CONSOLE) {
+            Main.openGui(new GuiConsole());
         }
     }
 
@@ -98,5 +100,6 @@ public class GuiIngame extends Gui {
         }
 
         super.render(g);
+
     }
 }

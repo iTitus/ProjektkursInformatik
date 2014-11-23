@@ -180,7 +180,7 @@ public final class Main {
     public static void initFields() {
         imgr = new InputManager();
         player = new EntityPlayer(MathUtil.roundDiv(Integers.sightX, 2) - 1, MathUtil.roundDiv(Integers.sightY, 2) - 1, Images.charakter);
-        currLevel = Levels.level1;
+        currLevel = Levels.level0;
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();
@@ -254,6 +254,18 @@ public final class Main {
             gameThread.pause(false);
         }
         Sounds.pause(false);
+    }
+
+    /**
+     * Setzt das aktuelle Level.
+     *
+     * @param l
+     *            Level
+     */
+    public static void setLevel(Level l) {
+        if (l != null) {
+            currLevel = l;
+        }
     }
 
     /**

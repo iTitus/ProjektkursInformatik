@@ -12,19 +12,10 @@ import projektkurs.lib.Images;
 public class ItemHealthPotion extends BaseItem {
 
     /**
-     * Gesundheit, die regeneriert wird.
+     * Konstruktor.
      */
-    private final int health;
-
-    /**
-     * Kosntruktor.
-     *
-     * @param health
-     *            Gesundheit, die regeneriert wird
-     */
-    public ItemHealthPotion(int health) {
+    public ItemHealthPotion() {
         super("potion.health", Images.healthpotion);
-        this.health = health;
     }
 
     @Override
@@ -32,7 +23,7 @@ public class ItemHealthPotion extends BaseItem {
         if (e instanceof EntityLiving) {
             EntityLiving l = (EntityLiving) e;
             if (l.getHealth() < l.getMaxHealth()) {
-                l.heal(health);
+                l.heal(stack.getDamage());
                 stack.decrStackSize(1);
             }
         }
