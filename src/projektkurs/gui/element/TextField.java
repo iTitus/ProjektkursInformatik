@@ -128,7 +128,7 @@ public class TextField extends Element {
                         Logger.logThrowable("Unable to paste clipboard contents", t);
                     }
                 }
-            } else if (!e.isAltDown() && !e.isAltGraphDown() && !e.isMetaDown()) {
+            } else if (!e.isAltDown() && !e.isMetaDown()) {
                 text += keyChar;
                 gui.onTextChanged(this);
             }
