@@ -5,19 +5,19 @@ package projektkurs.story.trigger;
  */
 public abstract class CombinedTrigger implements ITrigger {
 
-    /**
-     * Die Trigger.
-     */
-    protected final ITrigger[] trigger;
+  /**
+   * Die Trigger.
+   */
+  protected final ITrigger[] trigger;
 
-    /**
-     * Konstruktor.
-     *
-     * @param triggers
-     *            die Trigger
-     */
-    public CombinedTrigger(ITrigger... triggers) {
-        trigger = triggers;
-    }
+  /**
+   * Konstruktor.
+   *
+   * @param triggers
+   *          die Trigger
+   */
+  public CombinedTrigger(ITrigger... triggers) {
+    trigger = triggers;
+  }
 
 }

@@ -35,227 +35,227 @@ import projektkurs.util.I18n.SupportedLocales;
  */
 public final class Option extends JPanel implements ActionListener, ChangeListener {
 
-    /**
-     * Das Menüfenster.
-     */
-    private static JFrame     frame;
-    /**
-     * Wurde das Startmenü geschlossen.
-     */
-    private static boolean    isFinished       = false;
-    /**
-     * Version, wird beim Serialisieren benutzt.
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * Das Menüfenster.
+   */
+  private static JFrame     frame;
+  /**
+   * Wurde das Startmenü geschlossen.
+   */
+  private static boolean    isFinished       = false;
+  /**
+   * Version, wird beim Serialisieren benutzt.
+   */
+  private static final long serialVersionUID = 1L;
 
-    /**
-     * Erstellt und zeigt das Startmenü.
-     */
-    public static void createAndShowGUI() {
+  /**
+   * Erstellt und zeigt das Startmenü.
+   */
+  public static void createAndShowGUI() {
 
-        frame = new JFrame(Strings.NAME);
-        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                isFinished = true;
-            }
-        });
-
-        JComponent contentPane = new Option();
-        frame.setContentPane(contentPane);
-
-        frame.setBounds(16, 16, 0, 0);
-        frame.setMinimumSize(new Dimension(512, 512));
-        frame.setUndecorated(true);
-        frame.setResizable(false);
-
-        frame.pack();
-
-        frame.setVisible(true);
-
-    }
-
-    /**
-     * Wurde das Startmenü beendet.
-     *
-     * @return true, wenn ja; false, wenn nein
-     */
-    public static boolean isFinished() {
-        return isFinished;
-    }
-
-    /**
-     * Markiert das Startmenü als beendet.
-     */
-    private static void setFinished() {
+    frame = new JFrame(Strings.NAME);
+    frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    frame.addWindowListener(new WindowAdapter() {
+      @Override
+      public void windowClosed(WindowEvent e) {
         isFinished = true;
+      }
+    });
+
+    JComponent contentPane = new Option();
+    frame.setContentPane(contentPane);
+
+    frame.setBounds(16, 16, 0, 0);
+    frame.setMinimumSize(new Dimension(512, 512));
+    frame.setUndecorated(true);
+    frame.setResizable(false);
+
+    frame.pack();
+
+    frame.setVisible(true);
+
+  }
+
+  /**
+   * Wurde das Startmenü beendet.
+   *
+   * @return true, wenn ja; false, wenn nein
+   */
+  public static boolean isFinished() {
+    return isFinished;
+  }
+
+  /**
+   * Markiert das Startmenü als beendet.
+   */
+  private static void setFinished() {
+    isFinished = true;
+  }
+
+  /**
+   * Labels.
+   */
+  private final JLabel                      charakterBild, nameSightX, nameSightY;
+  /**
+   * RadioButtons.
+   */
+  private final JRadioButton                defaultCharacter, altCharakter;
+  /**
+   * Sprachauswahlbox.
+   */
+  private final JComboBox<SupportedLocales> langBox;
+  /**
+   * Knöpfe zum Beenden.
+   */
+  private final JButton                     ok, cancel;
+  /**
+   * Schieber.
+   */
+  private final JSlider                     sliderSightX, sliderSightY;
+
+  /**
+   * Konstruktor.
+   */
+  private Option() {
+
+    super(new GridLayout(0, 1));
+
+    JPanel langChooser = new JPanel(new GridLayout());
+
+    langBox = new JComboBox<SupportedLocales>(I18n.getSupportedLocales());
+    langBox.setSelectedIndex(0);
+    langBox.setActionCommand("lang");
+    langBox.addActionListener(this);
+
+    langChooser.add(langBox);
+
+    langChooser.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    JPanel charakterAuswahl = new JPanel();
+    JPanel buttons = new JPanel(new GridLayout(0, 1));
+
+    defaultCharacter = new JRadioButton(I18n.getString("button.chooseCharacter.default"));
+    altCharakter = new JRadioButton(I18n.getString("button.chooseCharacter.altCharacter"));
+
+    defaultCharacter.setActionCommand("charakter");
+    defaultCharacter.addActionListener(this);
+    defaultCharacter.setSelected(true);
+    altCharakter.setActionCommand("altCharakter");
+    altCharakter.addActionListener(this);
+
+    ButtonGroup group = new ButtonGroup();
+    group.add(defaultCharacter);
+    group.add(altCharakter);
+
+    buttons.add(defaultCharacter);
+    buttons.add(altCharakter);
+
+    charakterBild = new JLabel(new ImageIcon(Images.defaultCharakter));
+
+    charakterAuswahl.add(buttons);
+    charakterAuswahl.add(charakterBild);
+
+    charakterAuswahl.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    JPanel sightSettings = new JPanel(new GridLayout(0, 1));
+
+    sliderSightX = new JSlider(SwingConstants.HORIZONTAL, 3, Integers.sightX, Integers.sightX);
+    sliderSightY = new JSlider(SwingConstants.HORIZONTAL, 3, Integers.sightY, Integers.sightY);
+
+    sliderSightX.addChangeListener(this);
+    sliderSightX.setMajorTickSpacing(5);
+    sliderSightX.setMinorTickSpacing(1);
+    sliderSightX.setPaintTicks(true);
+    sliderSightX.setPaintLabels(true);
+
+    sliderSightY.addChangeListener(this);
+    sliderSightY.setMajorTickSpacing(5);
+    sliderSightY.setMinorTickSpacing(1);
+    sliderSightY.setPaintTicks(true);
+    sliderSightY.setPaintLabels(true);
+
+    nameSightX = new JLabel(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
+    nameSightY = new JLabel(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
+
+    sightSettings.add(nameSightX);
+    sightSettings.add(sliderSightX);
+    sightSettings.add(nameSightY);
+    sightSettings.add(sliderSightY);
+
+    sightSettings.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    JPanel specialButtons = new JPanel(new GridLayout(1, 0));
+
+    ok = new JButton(I18n.getString("button.start"));
+    cancel = new JButton(I18n.getString("button.cancel"));
+
+    ok.addActionListener(this);
+    ok.setActionCommand("ok");
+
+    cancel.addActionListener(this);
+    cancel.setActionCommand("cancel");
+
+    specialButtons.add(ok);
+    specialButtons.add(cancel);
+
+    specialButtons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    add(langChooser);
+    add(charakterAuswahl);
+    add(sightSettings);
+    add(specialButtons);
+
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    switch (e.getActionCommand()) {
+      case "lang":
+        I18n.changeLocale((SupportedLocales) langBox.getSelectedItem());
+        update();
+        break;
+      case "charakter":
+        charakterBild.setIcon(new ImageIcon(Images.defaultCharakter));
+        Images.setCharakterImage(Images.defaultCharakter);
+        break;
+      case "altCharakter":
+        charakterBild.setIcon(new ImageIcon(Images.redNPC));
+        Images.setCharakterImage(Images.redNPC);
+        break;
+      case "ok":
+        setFinished();
+        frame.setVisible(false);
+        frame.dispose();
+        break;
+      case "cancel":
+        Main.exit();
+        break;
+      default:
+        break;
     }
+  }
 
-    /**
-     * Labels.
-     */
-    private final JLabel                      charakterBild, nameSightX, nameSightY;
-    /**
-     * RadioButtons.
-     */
-    private final JRadioButton                defaultCharacter, altCharakter;
-    /**
-     * Sprachauswahlbox.
-     */
-    private final JComboBox<SupportedLocales> langBox;
-    /**
-     * Knöpfe zum Beenden.
-     */
-    private final JButton                     ok, cancel;
-    /**
-     * Schieber.
-     */
-    private final JSlider                     sliderSightX, sliderSightY;
+  @Override
+  public void stateChanged(ChangeEvent e) {
 
-    /**
-     * Konstruktor.
-     */
-    private Option() {
+    Integers.changeSight(sliderSightX.getValue(), sliderSightY.getValue());
+    nameSightX.setText(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
+    nameSightY.setText(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
 
-        super(new GridLayout(0, 1));
+  }
 
-        JPanel langChooser = new JPanel(new GridLayout());
+  /**
+   * Interne Methode, um den Namen/die Texte der Buttons zu ändern.
+   */
+  private void update() {
 
-        langBox = new JComboBox<SupportedLocales>(I18n.getSupportedLocales());
-        langBox.setSelectedIndex(0);
-        langBox.setActionCommand("lang");
-        langBox.addActionListener(this);
+    defaultCharacter.setText(I18n.getString("button.chooseCharacter.default"));
+    altCharakter.setText(I18n.getString("button.chooseCharacter.altCharacter"));
 
-        langChooser.add(langBox);
+    nameSightX.setText(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
+    nameSightY.setText(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
 
-        langChooser.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        JPanel charakterAuswahl = new JPanel();
-        JPanel buttons = new JPanel(new GridLayout(0, 1));
-
-        defaultCharacter = new JRadioButton(I18n.getString("button.chooseCharacter.default"));
-        altCharakter = new JRadioButton(I18n.getString("button.chooseCharacter.altCharacter"));
-
-        defaultCharacter.setActionCommand("charakter");
-        defaultCharacter.addActionListener(this);
-        defaultCharacter.setSelected(true);
-        altCharakter.setActionCommand("altCharakter");
-        altCharakter.addActionListener(this);
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(defaultCharacter);
-        group.add(altCharakter);
-
-        buttons.add(defaultCharacter);
-        buttons.add(altCharakter);
-
-        charakterBild = new JLabel(new ImageIcon(Images.defaultCharakter));
-
-        charakterAuswahl.add(buttons);
-        charakterAuswahl.add(charakterBild);
-
-        charakterAuswahl.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        JPanel sightSettings = new JPanel(new GridLayout(0, 1));
-
-        sliderSightX = new JSlider(SwingConstants.HORIZONTAL, 3, Integers.sightX, Integers.sightX);
-        sliderSightY = new JSlider(SwingConstants.HORIZONTAL, 3, Integers.sightY, Integers.sightY);
-
-        sliderSightX.addChangeListener(this);
-        sliderSightX.setMajorTickSpacing(5);
-        sliderSightX.setMinorTickSpacing(1);
-        sliderSightX.setPaintTicks(true);
-        sliderSightX.setPaintLabels(true);
-
-        sliderSightY.addChangeListener(this);
-        sliderSightY.setMajorTickSpacing(5);
-        sliderSightY.setMinorTickSpacing(1);
-        sliderSightY.setPaintTicks(true);
-        sliderSightY.setPaintLabels(true);
-
-        nameSightX = new JLabel(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
-        nameSightY = new JLabel(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
-
-        sightSettings.add(nameSightX);
-        sightSettings.add(sliderSightX);
-        sightSettings.add(nameSightY);
-        sightSettings.add(sliderSightY);
-
-        sightSettings.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        JPanel specialButtons = new JPanel(new GridLayout(1, 0));
-
-        ok = new JButton(I18n.getString("button.start"));
-        cancel = new JButton(I18n.getString("button.cancel"));
-
-        ok.addActionListener(this);
-        ok.setActionCommand("ok");
-
-        cancel.addActionListener(this);
-        cancel.setActionCommand("cancel");
-
-        specialButtons.add(ok);
-        specialButtons.add(cancel);
-
-        specialButtons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        add(langChooser);
-        add(charakterAuswahl);
-        add(sightSettings);
-        add(specialButtons);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case "lang":
-                I18n.changeLocale((SupportedLocales) langBox.getSelectedItem());
-                update();
-                break;
-            case "charakter":
-                charakterBild.setIcon(new ImageIcon(Images.defaultCharakter));
-                Images.setCharakterImage(Images.defaultCharakter);
-                break;
-            case "altCharakter":
-                charakterBild.setIcon(new ImageIcon(Images.redNPC));
-                Images.setCharakterImage(Images.redNPC);
-                break;
-            case "ok":
-                setFinished();
-                frame.setVisible(false);
-                frame.dispose();
-                break;
-            case "cancel":
-                Main.exit();
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-
-        Integers.changeSight(sliderSightX.getValue(), sliderSightY.getValue());
-        nameSightX.setText(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
-        nameSightY.setText(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
-
-    }
-
-    /**
-     * Interne Methode, um den Namen/die Texte der Buttons zu ändern.
-     */
-    private void update() {
-
-        defaultCharacter.setText(I18n.getString("button.chooseCharacter.default"));
-        altCharakter.setText(I18n.getString("button.chooseCharacter.altCharacter"));
-
-        nameSightX.setText(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
-        nameSightY.setText(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());
-
-        ok.setText(I18n.getString("button.start"));
-        cancel.setText(I18n.getString("button.cancel"));
-    }
+    ok.setText(I18n.getString("button.start"));
+    cancel.setText(I18n.getString("button.cancel"));
+  }
 }

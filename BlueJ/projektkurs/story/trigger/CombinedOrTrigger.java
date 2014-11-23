@@ -5,24 +5,24 @@ package projektkurs.story.trigger;
  */
 public class CombinedOrTrigger extends CombinedTrigger {
 
-    /**
-     * Konstruktor.
-     *
-     * @param trigger
-     *            die Trigger
-     */
-    public CombinedOrTrigger(ITrigger... trigger) {
-        super(trigger);
-    }
+  /**
+   * Konstruktor.
+   *
+   * @param trigger
+   *          die Trigger
+   */
+  public CombinedOrTrigger(ITrigger... trigger) {
+    super(trigger);
+  }
 
-    @Override
-    public boolean isTriggerActive() {
-        for (int i = 0; i < trigger.length; i++) {
-            if (!trigger[i].isTriggerActive()) {
-                return true;
-            }
-        }
-        return false;
+  @Override
+  public boolean isTriggerActive() {
+    for (int i = 0; i < trigger.length; i++) {
+      if (!trigger[i].isTriggerActive()) {
+        return true;
+      }
     }
+    return false;
+  }
 
 }

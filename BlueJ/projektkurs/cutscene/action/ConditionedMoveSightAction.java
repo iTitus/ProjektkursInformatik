@@ -9,33 +9,33 @@ import projektkurs.cutscene.condition.Condition;
  */
 public class ConditionedMoveSightAction extends Action {
 
-    /**
-     * Sichtfeldbewegung in x-Richtung.
-     */
-    private final int dx;
-    /**
-     * Sichtfeldbewegung in y-Richtung.
-     */
-    private final int dy;
+  /**
+   * Sichtfeldbewegung in x-Richtung.
+   */
+  private final int dx;
+  /**
+   * Sichtfeldbewegung in y-Richtung.
+   */
+  private final int dy;
 
-    /**
-     * Konstruktor.
-     *
-     * @param condition
-     *            Ausführbedingung
-     * @param dx
-     *            Sichtfeldbewegung in x-Richtung
-     * @param dy
-     *            Sichtfeldbewegung in y-Richtung
-     */
-    public ConditionedMoveSightAction(Condition condition, int dx, int dy) {
-        super(condition);
-        this.dx = dx;
-        this.dy = dy;
-    }
+  /**
+   * Konstruktor.
+   *
+   * @param condition
+   *          Ausführbedingung
+   * @param dx
+   *          Sichtfeldbewegung in x-Richtung
+   * @param dy
+   *          Sichtfeldbewegung in y-Richtung
+   */
+  public ConditionedMoveSightAction(Condition condition, int dx, int dy) {
+    super(condition);
+    this.dx = dx;
+    this.dy = dy;
+  }
 
-    @Override
-    public void doAction(CutScene cutScene) {
-        CutSceneManager.getCurrentCutSceneRenderHelper().moveSight(dx, dy);
-    }
+  @Override
+  public void doAction(CutScene cutScene) {
+    CutSceneManager.getCurrentCutSceneRenderHelper().moveSight(dx, dy);
+  }
 }

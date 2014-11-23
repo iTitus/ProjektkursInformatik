@@ -5,16 +5,16 @@ package projektkurs.story.trigger;
  */
 public class PosTrigger extends AreaTrigger {
 
-    /**
-     * Konstruktor.
-     *
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            y-Koordinate
-     */
-    public PosTrigger(int posX, int posY) {
-        super(posX, posY, 1, 1);
-    }
+  /**
+   * Konstruktor.
+   *
+   * @param posX
+   *          X-Koordinate
+   * @param posY
+   *          y-Koordinate
+   */
+  public PosTrigger(int posX, int posY) {
+    super(posX, posY, 1, 1);
+  }
 
 }

@@ -15,105 +15,105 @@ import projektkurs.lib.KeyBindings;
  */
 public abstract class Gui {
 
-    /**
-     * Alle Elements in diesem Gui.
-     */
-    protected ArrayList<Element> guiElements;
+  /**
+   * Alle Elements in diesem Gui.
+   */
+  protected ArrayList<Element> guiElements;
 
-    /**
-     * Konstruktor.
-     */
-    public Gui() {
-        guiElements = new ArrayList<Element>();
-    }
+  /**
+   * Konstruktor.
+   */
+  public Gui() {
+    guiElements = new ArrayList<Element>();
+  }
 
-    /**
-     * Initialísiert das Gui.
-     */
-    public void initGui() {
-        guiElements.clear();
-    }
+  /**
+   * Initialísiert das Gui.
+   */
+  public void initGui() {
+    guiElements.clear();
+  }
 
-    /**
-     * Wird aufgerufen, wenn eine Taste gedrückt wird.
-     *
-     * @param keyChar
-     *            gedrückter Buchstabe
-     * @param e
-     *            KeyEvent
-     */
-    public void onKeyTyped(char keyChar, KeyEvent e) {
-        for (Element el : guiElements) {
-            el.onKeyTyped(keyChar, e);
-        }
-        if (keyChar == KeyBindings.KEY_OPTION) {
-            Main.closeGui();
-        }
+  /**
+   * Wird aufgerufen, wenn eine Taste gedrückt wird.
+   *
+   * @param keyChar
+   *          gedrückter Buchstabe
+   * @param e
+   *          KeyEvent
+   */
+  public void onKeyTyped(char keyChar, KeyEvent e) {
+    for (Element el : guiElements) {
+      el.onKeyTyped(keyChar, e);
     }
+    if (keyChar == KeyBindings.KEY_OPTION) {
+      Main.closeGui();
+    }
+  }
 
-    /**
-     * Wird ausgeführt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
-     *
-     * @param screenX
-     *            X-Bildschirmkoordinate
-     * @param screenY
-     *            Y-Bildschirmkoordinate
-     * @param e
-     *            MouseEvent
-     */
-    public void onLeftClick(int screenX, int screenY, MouseEvent e) {
-        for (Element el : guiElements) {
-            el.onLeftClick(screenX, screenY, e);
-        }
+  /**
+   * Wird ausgeführt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
+   *
+   * @param screenX
+   *          X-Bildschirmkoordinate
+   * @param screenY
+   *          Y-Bildschirmkoordinate
+   * @param e
+   *          MouseEvent
+   */
+  public void onLeftClick(int screenX, int screenY, MouseEvent e) {
+    for (Element el : guiElements) {
+      el.onLeftClick(screenX, screenY, e);
     }
+  }
 
-    /**
-     * Wird ausgeführt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
-     *
-     * @param by
-     *            Bewegung des Mausrads
-     * @param e
-     *            MouseWheelEvent
-     */
-    public void onMouseWheelMoved(int by, MouseWheelEvent e) {
-        for (Element el : guiElements) {
-            el.onMouseWheelMoved(by, e);
-        }
+  /**
+   * Wird ausgeführt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
+   *
+   * @param by
+   *          Bewegung des Mausrads
+   * @param e
+   *          MouseWheelEvent
+   */
+  public void onMouseWheelMoved(int by, MouseWheelEvent e) {
+    for (Element el : guiElements) {
+      el.onMouseWheelMoved(by, e);
     }
+  }
 
-    /**
-     * Wird ausgeführt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
-     *
-     * @param screenX
-     *            X-Bildschirmkoordinate
-     * @param screenY
-     *            Y-Bildschirmkoordinate
-     * @param e
-     *            MouseEvent
-     */
-    public void onRightClick(int screenX, int screenY, MouseEvent e) {
-        for (Element el : guiElements) {
-            el.onRightClick(screenX, screenY, e);
-        }
+  /**
+   * Wird ausgeführt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
+   *
+   * @param screenX
+   *          X-Bildschirmkoordinate
+   * @param screenY
+   *          Y-Bildschirmkoordinate
+   * @param e
+   *          MouseEvent
+   */
+  public void onRightClick(int screenX, int screenY, MouseEvent e) {
+    for (Element el : guiElements) {
+      el.onRightClick(screenX, screenY, e);
     }
+  }
 
-    /**
-     * Rendert das Gui.
-     *
-     * @param g
-     *            Graphics2D Objekt
-     */
-    public void render(Graphics2D g) {
-        Element hovered = null;
-        for (Element el : guiElements) {
-            el.render(g);
-            if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
-                hovered = el;
-            }
-        }
-        if (hovered != null) {
-            hovered.renderTooltip(g);
-        }
+  /**
+   * Rendert das Gui.
+   *
+   * @param g
+   *          Graphics2D Objekt
+   */
+  public void render(Graphics2D g) {
+    Element hovered = null;
+    for (Element el : guiElements) {
+      el.render(g);
+      if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
+        hovered = el;
+      }
     }
+    if (hovered != null) {
+      hovered.renderTooltip(g);
+    }
+  }
 
 }

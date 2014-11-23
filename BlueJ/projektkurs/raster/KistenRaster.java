@@ -15,24 +15,24 @@ import projektkurs.util.Direction;
  */
 public class KistenRaster extends SolidRaster implements IHasExtraInformation {
 
-    /**
-     * Konstruktor.
-     */
-    public KistenRaster() {
-        super(Images.kiste);
-    }
+  /**
+   * Konstruktor.
+   */
+  public KistenRaster() {
+    super(Images.kiste);
+  }
 
-    @Override
-    public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
-        if (entity instanceof EntityPlayer) {
-            Main.openGui(new GuiInventory(((ExtraInformationKiste) Main.getLevel().getCurrMap().getExtraInformationAt(x, y)).getInventar()));
-        }
-        return super.canWalkOnFromDirection(x, y, entity, dir);
+  @Override
+  public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
+    if (entity instanceof EntityPlayer) {
+      Main.openGui(new GuiInventory(((ExtraInformationKiste) Main.getLevel().getCurrMap().getExtraInformationAt(x, y)).getInventar()));
     }
+    return super.canWalkOnFromDirection(x, y, entity, dir);
+  }
 
-    @Override
-    public ExtraInformation createExtraInformation() {
-        return new ExtraInformationKiste();
-    }
+  @Override
+  public ExtraInformation createExtraInformation() {
+    return new ExtraInformationKiste();
+  }
 
 }

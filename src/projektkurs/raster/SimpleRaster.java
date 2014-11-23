@@ -10,28 +10,28 @@ import projektkurs.util.RenderUtil;
  */
 public class SimpleRaster extends AbstractRaster {
 
-    /**
-     * Das Bild.
-     */
-    private final BufferedImage image;
+  /**
+   * Das Bild.
+   */
+  private final BufferedImage image;
 
-    /**
-     * Konstruktor.
-     *
-     * @param image
-     *            Bild.
-     */
-    public SimpleRaster(BufferedImage image) {
-        this.image = image;
-    }
+  /**
+   * Konstruktor.
+   *
+   * @param image
+   *          Bild.
+   */
+  public SimpleRaster(BufferedImage image) {
+    this.image = image;
+  }
 
-    @Override
-    public void render(Graphics2D g, int x, int y) {
-        RenderUtil.drawDefaultRaster(g, image, x, y);
-    }
+  @Override
+  public void render(Graphics2D g, int x, int y) {
+    RenderUtil.drawDefaultRaster(g, image, x, y);
+  }
 
-    @Override
-    public void renderCutScene(Graphics2D g, int x, int y) {
-        RenderUtil.drawCutSceneRaster(g, image, x, y);
-    }
+  @Override
+  public void renderCutScene(Graphics2D g, int x, int y) {
+    RenderUtil.drawCutSceneRaster(g, image, x, y);
+  }
 }

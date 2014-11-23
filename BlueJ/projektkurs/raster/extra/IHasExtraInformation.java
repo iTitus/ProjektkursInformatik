@@ -5,11 +5,11 @@ package projektkurs.raster.extra;
  */
 public interface IHasExtraInformation {
 
-    /**
-     * Erstellt eine Standard-ExtraInfomation.
-     *
-     * @return ExtraInfomation
-     */
-    ExtraInformation createExtraInformation();
+  /**
+   * Erstellt eine Standard-ExtraInfomation.
+   *
+   * @return ExtraInfomation
+   */
+  ExtraInformation createExtraInformation();
 
 }

@@ -11,21 +11,21 @@ import projektkurs.lib.Images;
  */
 public class ItemHealthPotion extends BaseItem {
 
-    /**
-     * Konstruktor.
-     */
-    public ItemHealthPotion() {
-        super("potion.health", Images.healthpotion);
-    }
+  /**
+   * Konstruktor.
+   */
+  public ItemHealthPotion() {
+    super("potion.health", Images.healthpotion);
+  }
 
-    @Override
-    public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
-        if (e instanceof EntityLiving) {
-            EntityLiving l = (EntityLiving) e;
-            if (l.getHealth() < l.getMaxHealth()) {
-                l.heal(stack.getDamage());
-                stack.decrStackSize(1);
-            }
-        }
+  @Override
+  public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
+    if (e instanceof EntityLiving) {
+      EntityLiving l = (EntityLiving) e;
+      if (l.getHealth() < l.getMaxHealth()) {
+        l.heal(stack.getDamage());
+        stack.decrStackSize(1);
+      }
     }
+  }
 }

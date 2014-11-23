@@ -5,10 +5,10 @@ package projektkurs.story.trigger;
  */
 public interface ITrigger {
 
-    /**
-     * Ist dieser Trigger aktiv.
-     *
-     * @return true, wenn ja; false, wenn nein
-     */
-    boolean isTriggerActive();
+  /**
+   * Ist dieser Trigger aktiv.
+   *
+   * @return true, wenn ja; false, wenn nein
+   */
+  boolean isTriggerActive();
 }

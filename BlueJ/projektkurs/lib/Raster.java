@@ -17,95 +17,95 @@ import projektkurs.util.Init.State;
  */
 public final class Raster {
 
-    /**
-     * Zurück-Mappings.
-     */
-    public static final HashMap<AbstractRaster, String> BACK_MAPPINGS = new HashMap<AbstractRaster, String>();
-    /**
-     * Baum.
-     */
-    public static AbstractRaster                        baum;
-    /**
-     * Zerstörter Boden.
-     */
-    public static AbstractRaster                        destroyedRaster;
-    /**
-     * Tür.
-     */
-    public static AbstractRaster                        door;
-    /**
-     * Ziel.
-     */
-    public static AbstractRaster                        finish;
-    /**
-     * Feuer.
-     */
-    public static AbstractRaster                        fire;
-    /**
-     * Kiste.
-     */
-    public static AbstractRaster                        kiste;
-    /**
-     * Mappings.
-     */
-    public static final HashMap<String, AbstractRaster> MAPPINGS      = new HashMap<String, AbstractRaster>();
-    /**
-     * Rasen.
-     */
-    public static AbstractRaster                        rasen;
-    /**
-     * Wand.
-     */
-    public static AbstractRaster                        wand;
+  /**
+   * Zurück-Mappings.
+   */
+  public static final HashMap<AbstractRaster, String> BACK_MAPPINGS = new HashMap<AbstractRaster, String>();
+  /**
+   * Baum.
+   */
+  public static AbstractRaster                        baum;
+  /**
+   * Zerstörter Boden.
+   */
+  public static AbstractRaster                        destroyedRaster;
+  /**
+   * Tür.
+   */
+  public static AbstractRaster                        door;
+  /**
+   * Ziel.
+   */
+  public static AbstractRaster                        finish;
+  /**
+   * Feuer.
+   */
+  public static AbstractRaster                        fire;
+  /**
+   * Kiste.
+   */
+  public static AbstractRaster                        kiste;
+  /**
+   * Mappings.
+   */
+  public static final HashMap<String, AbstractRaster> MAPPINGS      = new HashMap<String, AbstractRaster>();
+  /**
+   * Rasen.
+   */
+  public static AbstractRaster                        rasen;
+  /**
+   * Wand.
+   */
+  public static AbstractRaster                        wand;
 
-    /**
-     * Initialisiert alle Items.
-     */
-    @Init(state = State.PRE)
-    public static void init() {
-        wand = new SolidRaster(Images.wand);
-        registerRaster("wand", wand);
+  /**
+   * Initialisiert alle Items.
+   */
+  @Init(state = State.PRE)
+  public static void init() {
+    wand = new SolidRaster(Images.wand);
+    registerRaster("wand", wand);
 
-        kiste = new KistenRaster();
-        registerRaster("kiste", kiste);
+    kiste = new KistenRaster();
+    registerRaster("kiste", kiste);
 
-        rasen = new SimpleRaster(Images.rasen);
-        registerRaster("rasen", rasen);
+    rasen = new SimpleRaster(Images.rasen);
+    registerRaster("rasen", rasen);
 
-        baum = new SolidRaster(Images.baum);
-        registerRaster("baum", baum);
+    baum = new SolidRaster(Images.baum);
+    registerRaster("baum", baum);
 
-        door = new DoorRaster();
-        registerRaster("door", door);
+    door = new DoorRaster();
+    registerRaster("door", door);
 
-        finish = new FinishRaster();
-        registerRaster("finish", finish);
+    finish = new FinishRaster();
+    registerRaster("finish", finish);
 
-        destroyedRaster = new SimpleRaster(Images.destroyedRaster);
-        registerRaster("destroyedRaster", destroyedRaster);
+    destroyedRaster = new SimpleRaster(Images.destroyedRaster);
+    registerRaster("destroyedRaster", destroyedRaster);
 
-        fire = new FireRaster();
-        registerRaster("fire", fire);
+    fire = new FireRaster();
+    registerRaster("fire", fire);
 
-    }
+  }
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param name
-     *            Name
-     * @param raster
-     *            Raster
-     */
-    private static void registerRaster(String name, AbstractRaster raster) {
-        MAPPINGS.put(name, raster);
-        BACK_MAPPINGS.put(raster, name);
-    }
+  /**
+   * Registriert ein Mapping.
+   *
+   * @param name
+   *          Name
+   * @param raster
+   *          Raster
+   */
+  private static void registerRaster(String name, AbstractRaster raster) {
+    MAPPINGS.put(name, raster);
+    BACK_MAPPINGS.put(raster, name);
+  }
 
-    /**
-     * Konstruktor.
-     */
-    private Raster() {
-    }
+  /**
+   * Konstruktor.
+   */
+  private Raster() {
+  }
 
 }
