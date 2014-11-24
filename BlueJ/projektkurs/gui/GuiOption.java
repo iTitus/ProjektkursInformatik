@@ -25,6 +25,7 @@ public class GuiOption extends Gui implements IButtonListener {
         "button.sound.off");
     soundButton.setIndex(Sounds.isMuted() ? 1 : 0);
     guiElements.add(soundButton);
+    guiElements.add(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT * 3, Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 2, this, "button.info"));
   }
 
   @Override
@@ -35,6 +36,9 @@ public class GuiOption extends Gui implements IButtonListener {
         break;
       case 1:
         Sounds.mute(((ToggleButton) button).getIndex() != 0);
+        break;
+      case 2:
+        Main.openGui(new GuiInfo(this));
         break;
       default:
         break;
