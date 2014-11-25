@@ -35,8 +35,8 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
   @Override
   public void initGui() {
     super.initGui();
-    guiElements.add(new InventoryElement(0, this, inv));
-    guiElements.add(new InventoryElement(MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 1, this, Main.getPlayer().getInventory()));
+    addElement(new InventoryElement(0, this, inv));
+    addElement(new InventoryElement(MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 1, this, Main.getPlayer().getInventory()));
   }
 
   @Override

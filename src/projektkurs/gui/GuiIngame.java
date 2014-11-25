@@ -22,7 +22,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
   @Override
   public void initGui() {
     super.initGui();
-    guiElements.add(new PlayerInventoryElement(MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 0, this, Main.getPlayer().getInventory()));
+    addElement(new PlayerInventoryElement(MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 0, this, Main.getPlayer().getInventory()));
   }
 
   @Override

@@ -18,7 +18,7 @@ public abstract class Gui {
   /**
    * Alle Elements in diesem Gui.
    */
-  protected ArrayList<Element> guiElements;
+  private final ArrayList<Element> guiElements;
 
   /**
    * Konstruktor.
@@ -114,6 +114,26 @@ public abstract class Gui {
     if (hovered != null) {
       hovered.renderTooltip(g);
     }
+  }
+
+  /**
+   * Fügt dem Gui ein Element hinzu.
+   *
+   * @param e
+   *          Element
+   */
+  protected void addElement(Element e) {
+    guiElements.add(e);
+  }
+
+  /**
+   * Entfernt ein Element aus dem Gui.
+   *
+   * @param e
+   *          Element
+   */
+  protected void removeElement(Element e) {
+    guiElements.remove(e);
   }
 
 }

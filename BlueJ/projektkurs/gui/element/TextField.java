@@ -75,7 +75,27 @@ public class TextField extends Element {
    */
   public TextField(int posX, int posY, int sizeX, int sizeY, int id, ITextFieldListener gui, String text) {
     super(posX, posY, sizeX, sizeY, id);
-    this.gui = gui;
+    if (gui != null) {
+      this.gui = gui;
+    } else {
+      this.gui = new ITextFieldListener() {
+
+        @Override
+        public void onFocusGained(TextField field) {
+          // NO-OP
+        }
+
+        @Override
+        public void onFocusLost(TextField field) {
+          // NO-OP
+        }
+
+        @Override
+        public void onTextChanged(TextField field) {
+          // NO-OP
+        }
+      };
+    }
     this.text = text;
     focussed = false;
     enabled = true;

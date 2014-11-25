@@ -33,7 +33,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
     super.initGui();
     field = new TextField(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, 256, 64, 0, this);
     field.setFocused(true);
-    guiElements.add(field);
+    addElement(field);
   }
 
   @Override
