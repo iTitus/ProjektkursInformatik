@@ -10,117 +10,117 @@ import projektkurs.util.SaveData;
  */
 public abstract class EntityLiving extends Entity {
 
-  /**
-   * Aktuelle Gesundheit.
-   */
-  private int health;
-  /**
-   * Maximale Gesundheit.
-   */
-  private int maxHealth;
+    /**
+     * Aktuelle Gesundheit.
+     */
+    private int health;
+    /**
+     * Maximale Gesundheit.
+     */
+    private int maxHealth;
 
-  /**
-   * Konstruktor.
-   */
-  public EntityLiving() {
-    super();
-  }
-
-  /**
-   * Konstruktor.
-   *
-   * @param posX
-   *          X-Koordinate
-   * @param posY
-   *          Y-Koordinate
-   * @param image
-   *          Bild
-   * @param maxHealth
-   *          maximale Gesundheit
-   */
-  public EntityLiving(int posX, int posY, BufferedImage image, int maxHealth) {
-    this(posX, posY, 1, 1, image, maxHealth);
-  }
-
-  /**
-   * Konstruktor.
-   *
-   * @param posX
-   *          X-Koordinate
-   * @param posY
-   *          Y-Koordinate
-   * @param sizeX
-   *          Breite
-   * @param sizeY
-   *          Höhe
-   * @param image
-   *          Bild
-   * @param maxHealth
-   *          maximale Gesundheit
-   */
-  public EntityLiving(int posX, int posY, int sizeX, int sizeY, BufferedImage image, int maxHealth) {
-    super(posX, posY, sizeX, sizeY, image);
-    this.maxHealth = maxHealth;
-    health = maxHealth;
-  }
-
-  /**
-   * Schadet um die gegebene Menge an Gesundheit.
-   *
-   * @param by
-   *          Menge an Gesundheit
-   */
-  public void damage(int by) {
-    health -= by;
-    if (health > maxHealth) {
-      health = maxHealth;
+    /**
+     * Konstruktor.
+     */
+    public EntityLiving() {
+        super();
     }
-    if (health < 0) {
-      health = 0;
-      setDead();
+
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param image
+     *            Bild
+     * @param maxHealth
+     *            maximale Gesundheit
+     */
+    public EntityLiving(int posX, int posY, BufferedImage image, int maxHealth) {
+        this(posX, posY, 1, 1, image, maxHealth);
     }
-  }
 
-  /**
-   * Die aktuelle Gesundheit.
-   *
-   * @return Gsundheit
-   */
-  public int getHealth() {
-    return health;
-  }
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
+     * @param image
+     *            Bild
+     * @param maxHealth
+     *            maximale Gesundheit
+     */
+    public EntityLiving(int posX, int posY, int sizeX, int sizeY, BufferedImage image, int maxHealth) {
+        super(posX, posY, sizeX, sizeY, image);
+        this.maxHealth = maxHealth;
+        health = maxHealth;
+    }
 
-  /**
-   * Die maximale Gesundheit.
-   *
-   * @return maximale Gesundheit
-   */
-  public int getMaxHealth() {
-    return maxHealth;
-  }
+    /**
+     * Schadet um die gegebene Menge an Gesundheit.
+     *
+     * @param by
+     *            Menge an Gesundheit
+     */
+    public void damage(int by) {
+        health -= by;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+        if (health < 0) {
+            health = 0;
+            setDead();
+        }
+    }
 
-  /**
-   * Heilt um die gegebene Menge an Gesundheit.
-   *
-   * @param by
-   *          Menge an Gesundheit
-   */
-  public void heal(int by) {
-    damage(-by);
-  }
+    /**
+     * Die aktuelle Gesundheit.
+     *
+     * @return Gsundheit
+     */
+    public int getHealth() {
+        return health;
+    }
 
-  @Override
-  public void load(SaveData data) {
-    super.load(data);
-    health = data.getInteger(Strings.ENTITY_HEALTH);
-    maxHealth = data.getInteger(Strings.ENTITY_MAX_HEALTH);
-  }
+    /**
+     * Die maximale Gesundheit.
+     *
+     * @return maximale Gesundheit
+     */
+    public int getMaxHealth() {
+        return maxHealth;
+    }
 
-  @Override
-  public void write(SaveData data) {
-    super.write(data);
-    data.set(Strings.ENTITY_HEALTH, health);
-    data.set(Strings.ENTITY_MAX_HEALTH, health);
-  }
+    /**
+     * Heilt um die gegebene Menge an Gesundheit.
+     *
+     * @param by
+     *            Menge an Gesundheit
+     */
+    public void heal(int by) {
+        damage(-by);
+    }
+
+    @Override
+    public void load(SaveData data) {
+        super.load(data);
+        health = data.getInteger(Strings.ENTITY_HEALTH);
+        maxHealth = data.getInteger(Strings.ENTITY_MAX_HEALTH);
+    }
+
+    @Override
+    public void write(SaveData data) {
+        super.write(data);
+        data.set(Strings.ENTITY_HEALTH, health);
+        data.set(Strings.ENTITY_MAX_HEALTH, health);
+    }
 
 }

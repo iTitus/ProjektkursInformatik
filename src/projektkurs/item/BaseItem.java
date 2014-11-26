@@ -9,36 +9,36 @@ import projektkurs.util.I18n;
  */
 public class BaseItem extends AbstractItem {
 
-  /**
-   * Bild dieses Items.
-   */
-  private final BufferedImage image;
-  /**
-   * Name dieses Items.
-   */
-  private final String        name;
+    /**
+     * Bild dieses Items.
+     */
+    private final BufferedImage image;
+    /**
+     * Name dieses Items.
+     */
+    private final String name;
 
-  /**
-   * Konstruktor.
-   *
-   * @param name
-   *          Name
-   * @param image
-   *          Bild
-   */
-  public BaseItem(String name, BufferedImage image) {
-    this.name = name;
-    this.image = image;
-  }
+    /**
+     * Konstruktor.
+     *
+     * @param name
+     *            Name
+     * @param image
+     *            Bild
+     */
+    public BaseItem(String name, BufferedImage image) {
+        this.name = name;
+        this.image = image;
+    }
 
-  @Override
-  public BufferedImage getImage() {
-    return image;
-  }
+    @Override
+    public BufferedImage getImage() {
+        return image;
+    }
 
-  @Override
-  public String getName() {
-    return I18n.getString(String.format("item.%s.name", name));
-  }
+    @Override
+    public String getName() {
+        return I18n.getString(String.format("item.%s.name", name));
+    }
 
 }

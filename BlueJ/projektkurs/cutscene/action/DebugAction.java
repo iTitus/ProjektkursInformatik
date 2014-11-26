@@ -9,9 +9,9 @@ import projektkurs.util.Logger;
  */
 public class DebugAction extends Action {
 
-  @Override
-  public void doAction(CutScene cutScene) {
-    Logger.info(cutScene.getElapsedTicks() + " - FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS());
-  }
+    @Override
+    public void doAction(CutScene cutScene) {
+        Logger.info(cutScene.getElapsedTicks() + " - FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS());
+    }
 
 }

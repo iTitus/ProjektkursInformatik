@@ -1,134 +1,134 @@
 package projektkurs.dialog.part;
 
+import java.util.Iterator;
+
 import projektkurs.dialog.DialogManager;
 
 /**
  * Ein Teil des Dialoges.
  */
-public class DialogPart {
+public class DialogPart implements Iterable<String> {
 
-  /**
-   * Ist dieser DialogPart schlecht.
-   */
-  private final boolean isGood;
-  /**
-   * Nec-Wert dieses DialogParts.
-   */
-  private final int     necValue;
-  /**
-   * Die Antwort des NPCs.
-   */
-  private final String  npcAnswer;
-  /**
-   * Die weiterführenden DialogParts.
-   */
-  private DialogPart[]  parts;
-  /**
-   * Wert dieses DialogParts.
-   */
-  private final int     value;
+    /**
+     * Aktueller Index.
+     */
+    private int currIndex;
+    /**
+     * Ist dieser DialogPart gut. Wenn ja muss man über dem benötigten Wert liegen, wenn nein darunter.
+     */
+    private final boolean isGood;
+    /**
+     * Anzeigename.
+     */
+    private final String name;
+    /**
+     * Benötigter Wert.
+     */
+    private final int necessaryValue;
+    /**
+     * Enthält das Gespräch, jeweils ein String pro Person und Sprechpart.
+     */
+    private final String[] talk;
+    /**
+     * Änderung des Wertes.
+     */
+    private final int valueChange;
 
-  /**
-   * Konstruktor.
-   *
-   * @param npcAnswer
-   *          Antwort des NPCs
-   * @param value
-   *          Wert
-   * @param necValue
-   *          Nec-Wert
-   * @param isGood
-   *          Ist der DialogPart gut
-   * @param parts
-   *          Weiterführend DialogParts
-   */
-  public DialogPart(String npcAnswer, int value, int necValue, boolean isGood, DialogPart... parts) {
-    this.parts = parts;
-    this.value = value;
-    this.npcAnswer = npcAnswer;
-    this.parts = parts;
-    this.necValue = necValue;
-    this.isGood = isGood;
-  }
-
-  /**
-   * Der Nec-Wert.
-   *
-   * @return Nec-Wert
-   */
-  public int getNecValue() {
-    return necValue;
-  }
-
-  /**
-   * Die Antwort des NPCs.
-   *
-   * @return Antwort
-   */
-  public String getNpcAnswer() {
-    return npcAnswer;
-  }
-
-  /**
-   * Der weiterführende DialogPart am gegebenen Index.
-   *
-   * @param i
-   *          Index
-   * @return der weiterführende DialogPart
-   */
-  public DialogPart getPartAt(int i) {
-    if (i < 0 || i >= parts.length) {
-      throw new IllegalArgumentException(i + " is not in parts");
+    /**
+     * Konstruktor.
+     *
+     * @param name
+     *            Anzeigename
+     * @param valueChange
+     *            Wertänderung
+     * @param necessaryValue
+     *            benötigter Wert
+     * @param isGood
+     *            ist dieser DialogPart gut
+     * @param talk
+     *            weiterführendes Gespräch
+     */
+    public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, String... talk) {
+        this.name = name;
+        this.valueChange = valueChange;
+        this.necessaryValue = necessaryValue;
+        this.isGood = isGood;
+        this.talk = talk;
+        currIndex = 0;
     }
-    return parts[i];
-  }
 
-  /**
-   * Die Größe dieses DialogParts.
-   *
-   * @return Größe
-   */
-  public int getSize() {
-    return parts.length;
-  }
+    /**
+     * Anzeigename.
+     *
+     * @return Anzeigename
+     */
+    public String getName() {
+        return name;
+    }
 
-  /**
-   * Die Antwort des NPCs im weiterführenden DialogPart am gegebenen Index.
-   *
-   * @param i
-   *          Index
-   * @return Antwort
-   */
-  public String getStringAt(int i) {
-    return getPartAt(i).getNpcAnswer();
-  }
+    /**
+     * Der benötigte Wert.
+     *
+     * @return benötigter Wert
+     */
+    public int getNecessaryValue() {
+        return necessaryValue;
+    }
 
-  /**
-   * Wert dieses DialogParts.
-   *
-   * @return Wert
-   */
-  public int getValue() {
-    return value;
-  }
+    /**
+     * Nächster Sprechpart.
+     *
+     * @return nächster Sprechpart
+     */
+    public String getNextString() {
+        return talk[currIndex++];
+    }
 
-  /**
-   * Ist der DialogPart am gegebenen Index gut genug.
-   *
-   * @param i
-   *          Index
-   * @return true, wenn ja; false, wenn nein
-   */
-  public boolean isGoodEnoughFor(int i) {
-    return isGood ? parts[i].getNecValue() >= DialogManager.getCurrValue() : parts[i].getNecValue() < DialogManager.getCurrValue();
-  }
+    /**
+     * Änderung des Wertes.
+     *
+     * @return Wertänderung
+     */
+    public int getValueChange() {
+        return valueChange;
+    }
 
-  /**
-   * Soll der Dialog beendet werden.
-   *
-   * @return true, wenn ja; false, wenn nein
-   */
-  public boolean shouldExit() {
-    return parts == null;
-  }
+    /**
+     * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getName() ausgeführt werden.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean isNPCSpeaking() {
+        return currIndex % 2 == 0;
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return new Iterator<String>() {
+
+            @Override
+            public boolean hasNext() {
+                return currIndex < talk.length;
+            }
+
+            @Override
+            public String next() {
+                return getNextString();
+            }
+
+            @Override
+            public void remove() {
+                // NO-OP
+            }
+        };
+    }
+
+    /**
+     * Ist dieser DialogPart gut genug um angezeigt zu werden.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean shouldShowUp() {
+        return isGood ? necessaryValue <= DialogManager.getCurrentValue() : necessaryValue >= DialogManager.getCurrentValue();
+    }
 }

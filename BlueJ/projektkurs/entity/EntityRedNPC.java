@@ -10,30 +10,30 @@ import projektkurs.lib.Integers;
  */
 public class EntityRedNPC extends EntityNPC {
 
-  /**
-   * Konstruktor.
-   */
-  public EntityRedNPC() {
-    super();
-  }
+    /**
+     * Konstruktor.
+     */
+    public EntityRedNPC() {
+        super();
+    }
 
-  /**
-   * Konstruktor.
-   *
-   * @param posX
-   *          X-Koordinate
-   * @param posY
-   *          Y-Koordinate
-   * @param image
-   *          Bild
-   */
-  public EntityRedNPC(int posX, int posY, BufferedImage image) {
-    super(posX, posY, image, Integers.PLAYER_HEALTH);
-  }
+    /**
+     * Konstruktor.
+     *
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param image
+     *            Bild
+     */
+    public EntityRedNPC(int posX, int posY, BufferedImage image) {
+        super(posX, posY, image, Integers.PLAYER_HEALTH);
+    }
 
-  @Override
-  public Behaviours getBehaviour() {
-    return Behaviours.RUN_AROUND;
-  }
+    @Override
+    public Behaviours getBehaviour() {
+        return Behaviours.RUN_AROUND;
+    }
 
 }

@@ -5,16 +5,16 @@ package projektkurs.util;
  */
 public interface ICanUpdate {
 
-  /**
-   * Kann dieses Objekt jetzt updaten.
-   *
-   * @return true, wenn ja; false, wenn nein
-   */
-  boolean canUpdate();
+    /**
+     * Kann dieses Objekt jetzt updaten.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    boolean canUpdate();
 
-  /**
-   * Updated.
-   */
-  void update();
+    /**
+     * Updated.
+     */
+    void update();
 
 }

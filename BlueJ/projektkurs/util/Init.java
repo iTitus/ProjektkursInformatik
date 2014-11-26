@@ -12,30 +12,30 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Init {
 
-  /**
-   * Start-Phasen.
-   */
-  public static enum State {
     /**
-     * Mittlere Startphase.
+     * Start-Phasen.
      */
-    INIT,
-    /**
-     * Späte Startphase.
-     */
-    POST,
-    /**
-     * Frühe Startphase.
-     */
-    PRE,
-    /**
-     * Startphase für Resoureceloading.
-     */
-    RESOURCES
-  }
+    public static enum State {
+        /**
+         * Mittlere Startphase.
+         */
+        INIT,
+        /**
+         * Späte Startphase.
+         */
+        POST,
+        /**
+         * Frühe Startphase.
+         */
+        PRE,
+        /**
+         * Startphase für Resoureceloading.
+         */
+        RESOURCES
+    }
 
-  /**
-   * Startphase, in der diese Methode ausgeführt werden soll - default ist INIT.
-   */
-  State state() default State.INIT;
+    /**
+     * Startphase, in der diese Methode ausgeführt werden soll - default ist INIT.
+     */
+    State state() default State.INIT;
 }

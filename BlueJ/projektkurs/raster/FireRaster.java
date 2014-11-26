@@ -14,33 +14,33 @@ import projektkurs.render.AnimationFrame;
  */
 public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
 
-  /**
-   * Konstruktor.
-   */
-  public FireRaster() {
-    super(AnimationFrame.getSynchronousAnimation(Images.fire, 5));
-  }
-
-  @Override
-  public ExtraInformation createExtraInformation() {
-    return new ExtraInformationFire();
-  }
-
-  @Override
-  public void render(Graphics2D g, int x, int y) {
-    ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
-    if (extra instanceof ExtraInformationFire) {
-      ((ExtraInformationFire) extra).getBackground().render(g, x, y);
+    /**
+     * Konstruktor.
+     */
+    public FireRaster() {
+        super(AnimationFrame.getSynchronousAnimation(Images.fire, 5));
     }
-    super.render(g, x, y);
-  }
 
-  @Override
-  public void renderCutScene(Graphics2D g, int x, int y) {
-    ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
-    if (extra instanceof ExtraInformationFire) {
-      ((ExtraInformationFire) extra).getBackground().renderCutScene(g, x, y);
+    @Override
+    public ExtraInformation createExtraInformation() {
+        return new ExtraInformationFire();
     }
-    super.renderCutScene(g, x, y);
-  }
+
+    @Override
+    public void render(Graphics2D g, int x, int y) {
+        ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
+        if (extra instanceof ExtraInformationFire) {
+            ((ExtraInformationFire) extra).getBackground().render(g, x, y);
+        }
+        super.render(g, x, y);
+    }
+
+    @Override
+    public void renderCutScene(Graphics2D g, int x, int y) {
+        ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
+        if (extra instanceof ExtraInformationFire) {
+            ((ExtraInformationFire) extra).getBackground().renderCutScene(g, x, y);
+        }
+        super.renderCutScene(g, x, y);
+    }
 }

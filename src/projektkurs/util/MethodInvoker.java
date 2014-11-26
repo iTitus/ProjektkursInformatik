@@ -7,16 +7,16 @@ import java.lang.reflect.Method;
  */
 public class MethodInvoker extends MethodInvokerWithReturn<Void> {
 
-  /**
-   * Konstruktor.
-   *
-   * @param m
-   *          Methode
-   * @param objects
-   *          eventuelle Parameter
-   */
-  public MethodInvoker(Method m, Object... objects) {
-    super(m, objects);
-  }
+    /**
+     * Konstruktor.
+     *
+     * @param m
+     *            Methode
+     * @param objects
+     *            eventuelle Parameter
+     */
+    public MethodInvoker(Method m, Object... objects) {
+        super(m, objects);
+    }
 
 }

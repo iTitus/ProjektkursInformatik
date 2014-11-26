@@ -1,5 +1,8 @@
 package projektkurs.dialog;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import projektkurs.dialog.part.DialogPart;
 
 /**
@@ -7,35 +10,33 @@ import projektkurs.dialog.part.DialogPart;
  */
 public class Dialog {
 
-  /**
-   * Der aktuelle DialogPart.
-   */
-  private DialogPart currPart;
+    /**
+     * Alle DialogParts in diesem Dialog.
+     */
+    private final ArrayList<DialogPart> parts;
 
-  /**
-   * Strings des aktuellen DialogParts.
-   *
-   * @return Strings des aktuellen DialogParts
-   */
-  public String[] getStrings() {
-    String[] ret = new String[currPart.getSize()];
-    for (int i = 0; i < currPart.getSize(); i++) {
-      ret[i] = currPart.isGoodEnoughFor(i) ? currPart.getStringAt(i) : null;
+    /**
+     * Konstruktor.
+     *
+     * @param parts
+     *            alle DialogParts
+     */
+    public Dialog(DialogPart... parts) {
+        this.parts = new ArrayList<DialogPart>(Arrays.asList(parts));
     }
-    return ret;
-  }
 
-  /**
-   * Ändert den aktuellen DialogPart.
-   *
-   * @param i
-   *          Index
-   */
-  public void setNext(int i) {
-    DialogManager.changeValueBy(currPart.getValue());
-    if (!currPart.isGoodEnoughFor(i)) {
-      throw new IllegalArgumentException();
+    /**
+     * Alle DialogParts die sich zeigen können.
+     *
+     * @return alle DialogParts
+     */
+    public ArrayList<DialogPart> getShownParts() {
+        ArrayList<DialogPart> list = new ArrayList<DialogPart>();
+        for (DialogPart part : parts) {
+            if (part.shouldShowUp()) {
+                list.add(part);
+            }
+        }
+        return list;
     }
-    currPart = currPart.getPartAt(i);
-  }
 }

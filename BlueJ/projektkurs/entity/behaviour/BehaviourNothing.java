@@ -7,9 +7,9 @@ import projektkurs.entity.Entity;
  */
 public class BehaviourNothing implements IBehaviour {
 
-  @Override
-  public void update(Entity e) {
-    // NO-OP
-  }
+    @Override
+    public void update(Entity e) {
+        // NO-OP
+    }
 
 }

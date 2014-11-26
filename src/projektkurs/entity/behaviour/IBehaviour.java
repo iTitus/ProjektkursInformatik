@@ -7,12 +7,12 @@ import projektkurs.entity.Entity;
  */
 public interface IBehaviour {
 
-  /**
-   * Updated diese Behaviour.
-   *
-   * @param e
-   *          der Entity
-   */
-  void update(Entity e);
+    /**
+     * Updated diese Behaviour.
+     *
+     * @param e
+     *            der Entity
+     */
+    void update(Entity e);
 
 }
