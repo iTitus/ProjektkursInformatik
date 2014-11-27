@@ -10,6 +10,10 @@ import projektkurs.dialog.DialogManager;
 public class DialogPart implements Iterable<String> {
 
     /**
+     * Ist dieser DialogPart aktivert.
+     */
+    private boolean activated;
+    /**
      * Aktueller Index.
      */
     private int currIndex;
@@ -29,6 +33,7 @@ public class DialogPart implements Iterable<String> {
      * Enthält das Gespräch, jeweils ein String pro Person und Sprechpart.
      */
     private final String[] talk;
+
     /**
      * Änderung des Wertes.
      */
@@ -55,6 +60,7 @@ public class DialogPart implements Iterable<String> {
         this.isGood = isGood;
         this.talk = talk;
         currIndex = 0;
+        activated = true;
     }
 
     /**
@@ -94,7 +100,25 @@ public class DialogPart implements Iterable<String> {
     }
 
     /**
-     * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getName() ausgeführt werden.
+     * Gibt es einen nächsten Sprechpart.
+     *
+     * @return true, wenn ja; false wenn nein
+     */
+    public boolean hasNextString() {
+        return currIndex < talk.length;
+    }
+
+    /**
+     * Ist dieser DialogPart aktiviert.
+     *
+     * @return true, wenn ja; false, wenn nein.
+     */
+    public boolean isActivated() {
+        return activated;
+    }
+
+    /**
+     * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getNextString() ausgeführt werden.
      *
      * @return true, wenn ja; false, wenn nein
      */
@@ -124,11 +148,22 @@ public class DialogPart implements Iterable<String> {
     }
 
     /**
+     * Setzt den Anzeigenstatus.
+     *
+     * @param activated
+     *            true, wenn er aktivert werden soll; false, wenn er deaktiviert werden soll
+     */
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    /**
      * Ist dieser DialogPart gut genug um angezeigt zu werden.
      *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldShowUp() {
-        return isGood ? necessaryValue <= DialogManager.getCurrentValue() : necessaryValue >= DialogManager.getCurrentValue();
+        return activated && (isGood ? necessaryValue <= DialogManager.getCurrentValue() : necessaryValue >= DialogManager.getCurrentValue());
     }
+
 }

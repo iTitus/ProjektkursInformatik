@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
+import projektkurs.gui.GuiDialogChooser;
 import projektkurs.util.I18n;
 
 /**
@@ -38,6 +39,13 @@ public final class Scripts {
     public static void switchMap(Integer i) {
         Main.getLevel().setMap(i);
         Main.getPlayer().setPos(1, 1);
+    }
+
+    /**
+     * Zeigt den Testdialog.
+     */
+    public static void testDialog() {
+        Main.openGui(new GuiDialogChooser(Dialoge.test, null));
     }
 
     /**

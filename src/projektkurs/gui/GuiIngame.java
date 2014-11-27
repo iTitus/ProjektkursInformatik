@@ -47,6 +47,10 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         }
 
         Main.getPlayer().onLeftClick(screenX, screenY, e);
+
+        if (e.isShiftDown()) {
+            Scripts.testDialog();
+        }
     }
 
     @Override
