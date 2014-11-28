@@ -13,6 +13,17 @@ public final class MathUtil {
     private static final Random RANDOM = new Random();
 
     /**
+     * Betrag der gegebenen Zahl.
+     *
+     * @param i
+     *            Zahl
+     * @return Betrag
+     */
+    public static int abs(int i) {
+        return i < 0 ? -i : i;
+    }
+
+    /**
      * Aufrunden.
      *
      * @param d

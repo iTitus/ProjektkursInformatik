@@ -50,15 +50,18 @@ public class DialogPart implements Iterable<String> {
      *            benötigter Wert
      * @param isGood
      *            ist dieser DialogPart gut
-     * @param talk
-     *            weiterführendes Gespräch
+     * @param talkLength
+     *            Länge des weiterführenden Gesprächs
      */
-    public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, String... talk) {
+    public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, int talkLength) {
         this.name = name;
         this.valueChange = valueChange;
         this.necessaryValue = necessaryValue;
         this.isGood = isGood;
-        this.talk = talk;
+        this.talk = new String[talkLength];
+        for (int i = 0; i < talk.length; i++) {
+            talk[i] = name + "." + i;
+        }
         currIndex = 0;
         activated = true;
     }

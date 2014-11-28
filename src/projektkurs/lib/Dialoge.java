@@ -30,7 +30,7 @@ public final class Dialoge {
     @Init
     public static void init() {
 
-        test = new Dialog(new DialogPart("test1 - GOOD", 10, 0, true, "Hi man", "NPC: Hello", "Bye", "NPC:Blub"), new DialogPart("test2 - BAD", -10, 0, false, "Bösah bubeh!", "NPC: Selba!"));
+        test = new Dialog(new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
         registerMapping("test", test);
 
     }
