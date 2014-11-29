@@ -10,6 +10,7 @@ import projektkurs.entity.Entity;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
+import projektkurs.lib.Integers;
 import projektkurs.util.RenderUtil;
 
 /**
@@ -21,6 +22,14 @@ public class GuiDialog extends Gui implements IButtonListener {
      * Aktuell angezeigter DialogPart.
      */
     private final DialogPart dialogPart;
+    /**
+     * Entity No. 1.
+     */
+    private final Entity entity1;
+    /**
+     * Entity No. 2.
+     */
+    private final Entity entity2;
     /**
      * Eltern-Gui.
      */
@@ -45,6 +54,8 @@ public class GuiDialog extends Gui implements IButtonListener {
     public GuiDialog(Gui parent, DialogPart dialogPart, Entity entity1, Entity entity2) {
         this.parent = parent;
         this.dialogPart = dialogPart;
+        this.entity1 = entity1;
+        this.entity2 = entity2;
         text = new TextView(34, 34, 256, 64, 0, dialogPart.getNextString());
     }
 
@@ -80,8 +91,15 @@ public class GuiDialog extends Gui implements IButtonListener {
     @Override
     public void render(Graphics2D g) {
         RenderUtil.drawDefaultBackground(g);
-
+        if (dialogPart.isNPCSpeaking()) {
+            if (entity2 != null) {
+                RenderUtil.drawImage(g, entity2.getImage(), 34 + 256, 34, entity2.getSizeX() * Integers.RASTER_SIZE, entity2.getSizeY() * Integers.RASTER_SIZE);
+            }
+        } else {
+            if (entity1 != null) {
+                RenderUtil.drawImage(g, entity1.getImage(), 34 + 256, 34, entity1.getSizeX() * Integers.RASTER_SIZE, entity1.getSizeY() * Integers.RASTER_SIZE);
+            }
+        }
         super.render(g);
     }
-
 }

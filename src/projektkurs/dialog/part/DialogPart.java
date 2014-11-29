@@ -58,7 +58,7 @@ public class DialogPart implements Iterable<String> {
         this.valueChange = valueChange;
         this.necessaryValue = necessaryValue;
         this.isGood = isGood;
-        this.talk = new String[talkLength];
+        talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
             talk[i] = name + "." + i;
         }
@@ -133,14 +133,16 @@ public class DialogPart implements Iterable<String> {
     public Iterator<String> iterator() {
         return new Iterator<String>() {
 
+            private int index = 0;
+
             @Override
             public boolean hasNext() {
-                return currIndex < talk.length;
+                return index < talk.length;
             }
 
             @Override
             public String next() {
-                return getNextString();
+                return talk[index++];
             }
 
             @Override
