@@ -13,6 +13,7 @@ import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.story.StoryManager;
 import projektkurs.util.Logger;
+import projektkurs.util.MathUtil;
 
 /**
  * Ein Spielfeld.
@@ -40,6 +41,14 @@ public class Spielfeld implements Cloneable {
      */
     private final int sizeY;
     /**
+     * X-Koordinate des Spielererscheinungsortes.
+     */
+    private int spawnX;
+    /**
+     * Y-Koordinate des Spielererscheinungsortes.
+     */
+    private int spawnY;
+    /**
      * Der Storymanger.
      */
     private final StoryManager storyManager;
@@ -51,10 +60,16 @@ public class Spielfeld implements Cloneable {
      *            Spielfeldbreite
      * @param sizeY
      *            Spielfeldhöhe
+     * @param spawnX
+     *            X-Koordinate des Spielererscheinungsortes
+     * @param spawnY
+     *            Y-Koordinate des Spielererscheinungsortes
      */
-    public Spielfeld(int sizeX, int sizeY) {
+    public Spielfeld(int sizeX, int sizeY, int spawnX, int spawnY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.spawnX = MathUtil.limitArray(spawnX, sizeX);
+        this.spawnY = MathUtil.limitArray(spawnY, sizeY);
         map = new AbstractRaster[sizeX][sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
@@ -208,6 +223,24 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * X-Koordinate des Spieler-Erscheinungsortes.
+     *
+     * @return X-Koordinate
+     */
+    public int getSpawnX() {
+        return spawnX;
+    }
+
+    /**
+     * Y-Koordinate des Spieler-Erscheinungsortes.
+     *
+     * @return Y-Koordinate
+     */
+    public int getSpawnY() {
+        return spawnY;
+    }
+
+    /**
      * Der StoryManager dieser Map.
      *
      * @return StoryManager
@@ -280,6 +313,26 @@ public class Spielfeld implements Cloneable {
             getExtraInformationList().add(newExtra);
 
         }
+    }
+
+    /**
+     * Setzt die X-Koordinate des Spielererscheinungsortes.
+     *
+     * @param spawnX
+     *            X-Koordinate
+     */
+    public void setSpawnX(int spawnX) {
+        this.spawnX = spawnX;
+    }
+
+    /**
+     * Setzt die Y-Koordinate des Spielererscheinungsortes.
+     *
+     * @param spawnY
+     *            Y-Koordinate
+     */
+    public void setSpawnY(int spawnY) {
+        this.spawnY = spawnY;
     }
 
     /**

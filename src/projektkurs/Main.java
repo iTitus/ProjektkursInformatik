@@ -15,7 +15,6 @@ import projektkurs.io.InputManager;
 import projektkurs.io.Option;
 import projektkurs.level.Level;
 import projektkurs.lib.Images;
-import projektkurs.lib.Integers;
 import projektkurs.lib.Levels;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
@@ -27,7 +26,6 @@ import projektkurs.thread.MoveThread;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
-import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 
 /**
@@ -179,8 +177,8 @@ public final class Main {
     @Init(state = State.PRE)
     public static void initFields() {
         imgr = new InputManager();
-        player = new EntityPlayer(MathUtil.roundDiv(Integers.sightX, 2) - 1, MathUtil.roundDiv(Integers.sightY, 2) - 1, Images.charakter);
         currLevel = Levels.level0;
+        player = new EntityPlayer(currLevel.getCurrMap().getSpawnX(), currLevel.getCurrMap().getSpawnY(), Images.charakter);
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();

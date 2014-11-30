@@ -111,7 +111,7 @@ public final class I18n {
      *
      * @param key
      *            Der Schlüssel für den String (zB. "item.nuke.name")
-     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Übersetzung gibt
+     * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Übersetzung gibt
      */
     public static String getString(String key) {
 
@@ -120,6 +120,29 @@ public final class I18n {
         } catch (Throwable t) {
             try {
                 return fallback.getString(key);
+            } catch (Throwable t1) {
+                return '!' + key + '!';
+            }
+        }
+
+    }
+
+    /**
+     * Gibt den formatierten übersetzten String zurück.
+     *
+     * @param key
+     *            Der Schlüssel für den String (zB. "item.nuke.name")
+     * @param args
+     *            Formatierungsargumente
+     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Übersetzung gibt
+     */
+    public static String getStringFormatted(String key, Object... args) {
+
+        try {
+            return String.format(resource.getString(key), args);
+        } catch (Throwable t) {
+            try {
+                return String.format(fallback.getString(key), args);
             } catch (Throwable t1) {
                 return '!' + key + '!';
             }

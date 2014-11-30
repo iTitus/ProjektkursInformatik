@@ -50,10 +50,8 @@ public final class MapBuilder {
         // KISTEN!
         for (int i = 0; i < MathUtil.randomInt(10, 15); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.kiste);
-
         }
-
-        map.setRasterAt(MathUtil.roundDiv(Integers.sightX, 2), MathUtil.roundDiv(Integers.sightY, 2), Raster.kiste);
+        map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.kiste);
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
@@ -119,7 +117,7 @@ public final class MapBuilder {
 
         // ITEMS
         map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
-        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 1)));
+        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 42, 42)));
         map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 1234)));
         map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
 

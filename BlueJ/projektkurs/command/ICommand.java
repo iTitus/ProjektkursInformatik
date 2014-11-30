@@ -21,11 +21,4 @@ public interface ICommand {
      */
     String getCommand();
 
-    /**
-     * Verwendung.
-     *
-     * @return Verwendung
-     */
-    String getUsage();
-
 }

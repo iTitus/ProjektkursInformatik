@@ -5,6 +5,7 @@ import java.util.HashMap;
 import projektkurs.level.Level;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
+import projektkurs.util.MathUtil;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -44,10 +45,10 @@ public final class Levels {
      */
     @Init(state = State.PRE)
     public static void init() {
-        level0 = new Level("Level0", new Spielfeld(100, 100), new Spielfeld(10, 10));
+        level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(10, 10, 1, 1));
         registerMapping("Level0", level0);
 
-        level1 = new Level("Level1", new Spielfeld(25, 25), new Spielfeld(10, 10));
+        level1 = new Level("Level1", new Spielfeld(25, 25, 1, 1), new Spielfeld(10, 10, 1, 1));
         registerMapping("Level1", level1);
 
     }

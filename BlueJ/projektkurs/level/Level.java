@@ -1,5 +1,6 @@
 package projektkurs.level;
 
+import projektkurs.Main;
 import projektkurs.util.Logger;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
@@ -96,5 +97,6 @@ public class Level {
             return;
         }
         currMap = maps[i];
+        Main.getPlayer().setPos(currMap.getSpawnX(), currMap.getSpawnY());
     }
 }
