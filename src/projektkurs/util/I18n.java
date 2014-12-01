@@ -71,6 +71,15 @@ public final class I18n {
             return getString(name);
         }
 
+        /**
+         * Der unlokalisierte Name der Sprache.
+         *
+         * @return unlokalisierter Name der Sprache.
+         */
+        public String getUnlocalizedName() {
+            return name;
+        }
+
         @Override
         public String toString() {
             return getName();
@@ -104,6 +113,15 @@ public final class I18n {
             currentLocale = SupportedLocales.DEFAULT;
         }
         init();
+    }
+
+    /**
+     * Die aktuelle Sprache.
+     *
+     * @return aktuelle Sprache.
+     */
+    public static SupportedLocales getLocale() {
+        return currentLocale;
     }
 
     /**

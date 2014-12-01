@@ -36,7 +36,7 @@ public class TextView extends TextField {
                 text += "%s";
                 this.text = String.format(text, objects);
             } else {
-                this.text = String.format(I18n.getString(text), objects);
+                this.text = I18n.getStringFormatted(text, objects);
             }
         } else {
             this.text = I18n.getString(text);
