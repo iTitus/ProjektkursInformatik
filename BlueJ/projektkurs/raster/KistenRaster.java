@@ -25,7 +25,7 @@ public class KistenRaster extends SolidRaster implements IHasExtraInformation {
     @Override
     public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
         if (entity instanceof EntityPlayer) {
-            Main.openGui(new GuiInventory(((ExtraInformationKiste) Main.getLevel().getCurrMap().getExtraInformationAt(x, y)).getInventar()));
+            Main.openGui(new GuiInventory(((ExtraInformationKiste) Main.getLevel().getMap().getExtraInformationAt(x, y)).getInventar()));
         }
         return super.canWalkOnFromDirection(x, y, entity, dir);
     }

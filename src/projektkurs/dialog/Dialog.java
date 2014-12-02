@@ -1,7 +1,6 @@
 package projektkurs.dialog;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import projektkurs.dialog.part.DialogPart;
 
@@ -13,7 +12,7 @@ public class Dialog {
     /**
      * Alle DialogParts in diesem Dialog.
      */
-    private final ArrayList<DialogPart> parts;
+    private final DialogPart[] parts;
 
     /**
      * Konstruktor.
@@ -22,7 +21,7 @@ public class Dialog {
      *            alle DialogParts
      */
     public Dialog(DialogPart... parts) {
-        this.parts = new ArrayList<DialogPart>(Arrays.asList(parts));
+        this.parts = parts;
     }
 
     /**

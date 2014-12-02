@@ -135,7 +135,7 @@ public final class RenderUtil {
      *            Y-Koordinate des Rasters
      */
     public static void drawCutSceneRaster(Graphics2D g, BufferedImage image, int x, int y) {
-        drawImage(g, image, (x - CutSceneManager.getCurrentCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCurrentCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+        drawImage(g, image, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
     }
 
     /**

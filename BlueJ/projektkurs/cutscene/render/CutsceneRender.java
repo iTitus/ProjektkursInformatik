@@ -73,24 +73,24 @@ public class CutsceneRender {
             g.setColor(Color.BLACK);
             g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
 
-            if (CutSceneManager.getCurrentCutScene().needsRasterBackground()) {
+            if (CutSceneManager.getCutScene().needsRasterBackground()) {
                 for (int x = 0; x < Integers.sightX; x++) {
                     for (int y = 0; y < Integers.sightY; y++) {
-                        int rX = x + CutSceneManager.getCurrentCutSceneRenderHelper().getSightX();
-                        int rY = y + CutSceneManager.getCurrentCutSceneRenderHelper().getSightY();
-                        if (CutSceneManager.getCurrSpielfeld().isRasterAt(rX, rY)) {
-                            CutSceneManager.getCurrSpielfeld().getRasterAt(rX, rY).renderCutScene(g, rX, rY);
+                        int rX = x + CutSceneManager.getCutSceneRenderHelper().getSightX();
+                        int rY = y + CutSceneManager.getCutSceneRenderHelper().getSightY();
+                        if (CutSceneManager.getMap().isRasterAt(rX, rY)) {
+                            CutSceneManager.getMap().getRasterAt(rX, rY).renderCutScene(g, rX, rY);
                         } else {
                             RenderUtil.drawDefaultRaster(g, Images.baum, rX, rY);
                         }
                     }
                 }
             } else {
-                RenderUtil.drawImage(g, CutSceneManager.getCurrentCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX, Integers.sightY);
+                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX, Integers.sightY);
             }
 
-            for (CutSceneObject obj : CutSceneManager.getCurrentCutScene().getCutSceneObjectList()) {
-                if (obj.isInside(CutSceneManager.getCurrentCutSceneRenderHelper().getSightX(), CutSceneManager.getCurrentCutSceneRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
+            for (CutSceneObject obj : CutSceneManager.getCutScene().getCutSceneObjectList()) {
+                if (obj.isInside(CutSceneManager.getCutSceneRenderHelper().getSightX(), CutSceneManager.getCutSceneRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
                     obj.render(g);
                 }
             }

@@ -187,7 +187,7 @@ public class CutSceneObject {
      * @return X-Koordinate auf dem Bildschirm
      */
     private int getRenderX() {
-        return (posY - CutSceneManager.getCurrentCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y;
+        return (posY - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y;
     }
 
     /**
@@ -196,6 +196,6 @@ public class CutSceneObject {
      * @return Y-Koordinate auf dem Bildschirm
      */
     private int getRenderY() {
-        return (posX - CutSceneManager.getCurrentCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X;
+        return (posX - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X;
     }
 }

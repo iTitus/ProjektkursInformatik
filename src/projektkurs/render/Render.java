@@ -93,15 +93,15 @@ public class Render {
                 for (int y = 0; y < Integers.sightY; y++) {
                     int sX = x + Main.getRenderHelper().getSightX();
                     int sY = y + Main.getRenderHelper().getSightY();
-                    if (Main.getLevel().getCurrMap().isRasterAt(sX, sY)) {
-                        Main.getLevel().getCurrMap().getRasterAt(sX, sY).render(g, sX, sY);
+                    if (Main.getLevel().getMap().isRasterAt(sX, sY)) {
+                        Main.getLevel().getMap().getRasterAt(sX, sY).render(g, sX, sY);
                     } else {
                         RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
                     }
                 }
             }
 
-            for (Entity e : Main.getLevel().getCurrMap().getEntityList()) {
+            for (Entity e : Main.getLevel().getMap().getEntityList()) {
                 if (!e.shouldDeSpawn() && e.isInside(Main.getRenderHelper().getSightX(), Main.getRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
                     e.render(g);
                 }

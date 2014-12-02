@@ -57,7 +57,7 @@ public class Level {
      *
      * @return Spielfeld
      */
-    public Spielfeld getCurrMap() {
+    public Spielfeld getMap() {
         return currMap;
     }
 
@@ -86,7 +86,7 @@ public class Level {
     }
 
     /**
-     * Wählt das Spielfeld am Index aus.
+     * Wählt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
      *
      * @param i
      *            Index

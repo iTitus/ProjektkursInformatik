@@ -36,7 +36,7 @@ public class ItemNuke extends BaseItem {
             int centerX = e.getFacing().getOffsetX() * Integers.NUKE_RADIUS + e.getPosX() + e.getFacing().getOffsetX();
             int centerY = e.getFacing().getOffsetY() * Integers.NUKE_RADIUS + e.getPosY() + e.getFacing().getOffsetY();
 
-            for (Entity toKill : Main.getLevel().getCurrMap().getEntitiesInRect(centerX - Integers.NUKE_RADIUS, centerY - Integers.NUKE_RADIUS, 2 * Integers.NUKE_RADIUS + 1, 2 * Integers.NUKE_RADIUS + 1)) {
+            for (Entity toKill : Main.getLevel().getMap().getEntitiesInRect(centerX - Integers.NUKE_RADIUS, centerY - Integers.NUKE_RADIUS, 2 * Integers.NUKE_RADIUS + 1, 2 * Integers.NUKE_RADIUS + 1)) {
                 if (!(toKill instanceof EntityPlayer)) {
                     if (toKill instanceof EntityLiving) {
                         ((EntityLiving) toKill).damage(((EntityLiving) toKill).getMaxHealth() + 1);
@@ -49,10 +49,10 @@ public class ItemNuke extends BaseItem {
             for (int x = centerX - Integers.NUKE_RADIUS; x <= centerX + Integers.NUKE_RADIUS; x++) {
                 for (int y = centerY - Integers.NUKE_RADIUS; y <= centerY + Integers.NUKE_RADIUS; y++) {
                     if (rand.nextInt(2) == 0) {
-                        Main.getLevel().getCurrMap().setRasterAt(x, y, Raster.fire);
+                        Main.getLevel().getMap().setRasterAt(x, y, Raster.fire);
                     } else {
-                        if (!(Main.getLevel().getCurrMap().getRasterAt(x, y) instanceof FireRaster)) {
-                            Main.getLevel().getCurrMap().setRasterAt(x, y, Raster.destroyedRaster);
+                        if (!(Main.getLevel().getMap().getRasterAt(x, y) instanceof FireRaster)) {
+                            Main.getLevel().getMap().setRasterAt(x, y, Raster.destroyedRaster);
                         }
                     }
 

@@ -57,7 +57,7 @@ public final class CutSceneManager {
      *
      * @return RenderHelper
      */
-    public static CutScene getCurrentCutScene() {
+    public static CutScene getCutScene() {
         return currCutScene;
     }
 
@@ -66,7 +66,7 @@ public final class CutSceneManager {
      *
      * @return CutsceneRender
      */
-    public static CutsceneRender getCurrentCutSceneRender() {
+    public static CutsceneRender getCutSceneRender() {
         return currCutSceneRender;
     }
 
@@ -75,17 +75,8 @@ public final class CutSceneManager {
      *
      * @return RenderHelper
      */
-    public static RenderHelper getCurrentCutSceneRenderHelper() {
+    public static RenderHelper getCutSceneRenderHelper() {
         return currCutSceneRenderHelper;
-    }
-
-    /**
-     * Das aktuelle Spielfeld der CutScene.
-     *
-     * @return Spielfeld
-     */
-    public static Spielfeld getCurrSpielfeld() {
-        return currSpielfeld;
     }
 
     /**
@@ -104,6 +95,15 @@ public final class CutSceneManager {
      */
     public static int getFPS() {
         return fps;
+    }
+
+    /**
+     * Das aktuelle Spielfeld der CutScene.
+     *
+     * @return Spielfeld
+     */
+    public static Spielfeld getMap() {
+        return currSpielfeld;
     }
 
     /**
@@ -140,7 +140,7 @@ public final class CutSceneManager {
             currCutScene = cutScene;
             currCutSceneRenderHelper = new RenderHelper();
             currCutSceneRender = new CutsceneRender();
-            currSpielfeld = Main.getLevel().getCurrMap().copy();
+            currSpielfeld = Main.getLevel().getMap().copy();
 
             cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + "- CutScene");
             JPanel panel = (JPanel) cutSceneFrame.getContentPane();

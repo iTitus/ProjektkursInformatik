@@ -3,7 +3,7 @@ package projektkurs.command;
 /**
  * Kommandoergebnisse.
  */
-public enum CommandResult {
+public enum EnumCommandResult {
     /**
      * Kommando nicht erfolgreich.
      */

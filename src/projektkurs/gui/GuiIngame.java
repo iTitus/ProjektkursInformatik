@@ -41,7 +41,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         int rX = MathUtil.floorDiv(screenX - Integers.WINDOW_HUD_X, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
         int rY = MathUtil.floorDiv(screenY - Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
 
-        AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
+        AbstractRaster r = Main.getLevel().getMap().getRasterAt(rX, rY);
         if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
             r.onLeftClick(rX, rY, e);
         }
@@ -60,7 +60,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         int rX = MathUtil.floorDiv(screenY - Integers.WINDOW_HUD_X, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
         int rY = MathUtil.floorDiv(screenX - Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
 
-        AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(rX, rY);
+        AbstractRaster r = Main.getLevel().getMap().getRasterAt(rX, rY);
         if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
             r.onRightClick(rX, rY, e);
         }

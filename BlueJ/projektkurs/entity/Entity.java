@@ -108,19 +108,19 @@ public abstract class Entity implements ICanUpdate, ISaveable {
 
         facing = Direction.getDirectionForOffset(MathUtil.signum(x - posX), MathUtil.signum(y - posY));
 
-        if (x < 0 || x >= Main.getLevel().getCurrMap().getMapSizeX() || y < 0 || y >= Main.getLevel().getCurrMap().getMapSizeY()) {
+        if (x < 0 || x >= Main.getLevel().getMap().getMapSizeX() || y < 0 || y >= Main.getLevel().getMap().getMapSizeY()) {
             return false;
         }
 
         boolean ret = true;
 
-        Entity e = Main.getLevel().getCurrMap().getEntityAt(x, y);
+        Entity e = Main.getLevel().getMap().getEntityAt(x, y);
         if (e != null) {
             onCollideWith(e);
             ret = false;
         }
 
-        AbstractRaster r = Main.getLevel().getCurrMap().getRasterAt(x, y);
+        AbstractRaster r = Main.getLevel().getMap().getRasterAt(x, y);
         if (r != null) {
             Direction d = Direction.getDirectionForOffset(MathUtil.signum(x - posX), MathUtil.signum(y - posY)).getOpposite();
             r.onCollideWith(x, y, this);

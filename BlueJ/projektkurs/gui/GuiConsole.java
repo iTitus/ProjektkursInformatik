@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import projektkurs.Main;
-import projektkurs.command.CommandResult;
+import projektkurs.command.EnumCommandResult;
 import projektkurs.command.ICommand;
 import projektkurs.gui.element.ITextFieldListener;
 import projektkurs.gui.element.TextField;
@@ -92,12 +92,12 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                 for (int i = 0; i < args.length; i++) {
                     args[i] = parts[i + 1];
                 }
-                CommandResult result;
+                EnumCommandResult result;
                 try {
                     result = c.execute(args);
                 } catch (Throwable t) {
                     Logger.logThrowable("Unable to execute command '" + command + "' with the aruments " + partList, t);
-                    result = CommandResult.GENERAL_FAILURE;
+                    result = EnumCommandResult.GENERAL_FAILURE;
                 }
                 switch (result) {
                     case GENERAL_FAILURE:

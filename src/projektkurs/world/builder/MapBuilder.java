@@ -134,7 +134,7 @@ public final class MapBuilder {
      */
     public static void generateAndPopulateLevel0Map1(Spielfeld map) {
 
-        // ANIMATIONS!
+        // DESTROYED-RASTER HINTERGRUND!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {
                 map.setRasterAt(x, y, Raster.destroyedRaster);
@@ -166,6 +166,7 @@ public final class MapBuilder {
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
+        // RASEN!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             for (int y = 0; y < map.getMapSizeY(); y++) {
                 map.setRasterAt(x, y, Raster.rasen);

@@ -36,6 +36,6 @@ public class ConditionedMoveSightAction extends Action {
 
     @Override
     public void doAction(CutScene cutScene) {
-        CutSceneManager.getCurrentCutSceneRenderHelper().moveSight(dx, dy);
+        CutSceneManager.getCutSceneRenderHelper().moveSight(dx, dy);
     }
 }

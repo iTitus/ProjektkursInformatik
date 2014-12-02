@@ -37,7 +37,6 @@ public final class Main {
      * Das aktuelle Level.
      */
     private static Level currLevel;
-
     /**
      * Der GameThread.
      */
@@ -178,7 +177,7 @@ public final class Main {
     public static void initFields() {
         imgr = new InputManager();
         currLevel = Levels.level0;
-        player = new EntityPlayer(currLevel.getCurrMap().getSpawnX(), currLevel.getCurrMap().getSpawnY(), Images.charakter);
+        player = new EntityPlayer(currLevel.getMap().getSpawnX(), currLevel.getMap().getSpawnY(), Images.charakter);
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();

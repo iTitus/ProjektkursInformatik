@@ -28,7 +28,7 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
 
     @Override
     public void render(Graphics2D g, int x, int y) {
-        ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
+        ExtraInformation extra = Main.getLevel().getMap().getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationFire) {
             ((ExtraInformationFire) extra).getBackground().render(g, x, y);
         }
@@ -37,7 +37,7 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
 
     @Override
     public void renderCutScene(Graphics2D g, int x, int y) {
-        ExtraInformation extra = Main.getLevel().getCurrMap().getExtraInformationAt(x, y);
+        ExtraInformation extra = Main.getLevel().getMap().getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationFire) {
             ((ExtraInformationFire) extra).getBackground().renderCutScene(g, x, y);
         }

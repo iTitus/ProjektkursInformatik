@@ -10,10 +10,10 @@ import projektkurs.lib.Levels;
 public class CommandSwitch implements ICommand {
 
     @Override
-    public CommandResult execute(String[] args) {
+    public EnumCommandResult execute(String[] args) {
 
         if (args.length < 1 || args.length > 2) {
-            return CommandResult.WRONG_USAGE;
+            return EnumCommandResult.WRONG_USAGE;
         }
 
         int map = -1;
@@ -21,7 +21,7 @@ public class CommandSwitch implements ICommand {
         try {
             map = Integer.valueOf(args.length == 1 ? args[0] : args[1]);
         } catch (NumberFormatException e) {
-            return CommandResult.NUMBER_PARSING;
+            return EnumCommandResult.NUMBER_PARSING;
         }
 
         Level l = null;
@@ -32,13 +32,13 @@ public class CommandSwitch implements ICommand {
         }
 
         if (l == null || map < 0 || map >= l.getMapCount()) {
-            return CommandResult.OBJECT_NOT_FOUND;
+            return EnumCommandResult.OBJECT_NOT_FOUND;
         }
 
         l.setMap(map);
         Main.setLevel(l);
 
-        return CommandResult.SUCCESS;
+        return EnumCommandResult.SUCCESS;
     }
 
     @Override

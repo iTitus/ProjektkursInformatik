@@ -13,7 +13,7 @@ import projektkurs.util.Queue;
 public final class CutScene {
 
     /**
-     * Queues für das verarbeiten der Actions.
+     * Queues für das Verarbeiten der Actions.
      */
     private Queue<Action> actionQueue, startupQueue, tempQueue;
     /**

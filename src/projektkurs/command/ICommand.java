@@ -12,7 +12,7 @@ public interface ICommand {
      *            Argumente
      * @return Ergebnis
      */
-    CommandResult execute(String[] args);
+    EnumCommandResult execute(String[] args);
 
     /**
      * Kommandoname.
