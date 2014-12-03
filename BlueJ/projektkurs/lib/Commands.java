@@ -2,7 +2,10 @@ package projektkurs.lib;
 
 import java.util.HashMap;
 
+import projektkurs.command.CommandCutScene;
+import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
+import projektkurs.command.CommandRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.command.ICommand;
 import projektkurs.util.Init;
@@ -17,6 +20,14 @@ public final class Commands {
      */
     public static final HashMap<ICommand, String> BACK_MAPPINGS = new HashMap<ICommand, String>();
     /**
+     * CutScene-Start-Kommando.
+     */
+    public static ICommand cutScene;
+    /**
+     * Dialog-Start-Kommando.
+     */
+    public static ICommand dialog;
+    /**
      * Item-Kommando.
      */
     public static ICommand item;
@@ -24,6 +35,14 @@ public final class Commands {
      * Die Mappings.
      */
     public static final HashMap<String, ICommand> MAPPINGS = new HashMap<String, ICommand>();
+    /**
+     * Raster-Setz-Kommando.
+     */
+    public static ICommand raster;
+    /**
+     * Spawn-Kommando.
+     */
+    public static ICommand spawn;
     /**
      * Switch-Level-Kommando.
      */
@@ -36,6 +55,15 @@ public final class Commands {
     public static void init() {
 
         item = new CommandItem();
+        registerMapping(item);
+
+        dialog = new CommandDialog();
+        registerMapping(item);
+
+        cutScene = new CommandCutScene();
+        registerMapping(item);
+
+        raster = new CommandRaster();
         registerMapping(item);
 
         switchLevel = new CommandSwitch();

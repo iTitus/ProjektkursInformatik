@@ -99,22 +99,25 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                     Logger.logThrowable("Unable to execute command '" + command + "' with the aruments " + partList, t);
                     result = EnumCommandResult.GENERAL_FAILURE;
                 }
+                if (result == null) {
+                    result = EnumCommandResult.GENERAL_FAILURE;
+                }
                 switch (result) {
                     case GENERAL_FAILURE:
-                        field.setText(I18n.getStringFormatted("commands.failure.general", command));
+                        field.setText(I18n.getStringFormatted("command.failure.general", command));
                         break;
                     case NO_SUCCESS:
                     case SUCCESS:
                         Main.closeGui();
                         break;
                     case NUMBER_PARSING:
-                        field.setText(I18n.getString("commands.failure.number"));
+                        field.setText(I18n.getString("command.failure.number"));
                         break;
                     case OBJECT_NOT_FOUND:
-                        field.setText(I18n.getString("commands.failure.object"));
+                        field.setText(I18n.getString("command.failure.object"));
                         break;
                     case OUT_OF_BOUNDS:
-                        field.setText(I18n.getString("commands.failure.bounds"));
+                        field.setText(I18n.getString("command.failure.bounds"));
                         break;
                     case WRONG_USAGE:
                         field.setText(I18n.getStringFormatted("command.usage", I18n.getString("command." + command + ".usage")));
