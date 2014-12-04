@@ -103,7 +103,7 @@ public class GuiDialog extends Gui implements IButtonListener {
                 RenderUtil.drawImage(g, entity1.getImage(), 34 + 256, 34, entity1.getSizeX() * Integers.RASTER_SIZE, entity1.getSizeY() * Integers.RASTER_SIZE);
             }
             if (entity2 != null) {
-                RenderUtil.drawImage(g, entity2.getImage(), Integers.windowX - 34, Integers.windowY - 34 - entity2.getSizeY() * Integers.RASTER_SIZE, entity2.getSizeX() * Integers.RASTER_SIZE, entity2.getSizeY() * Integers.RASTER_SIZE);
+                RenderUtil.drawImage(g, entity2.getImage(), Integers.windowX - 34 - entity2.getSizeX() * Integers.RASTER_SIZE, Integers.windowY - 34 - entity2.getSizeY() * Integers.RASTER_SIZE, entity2.getSizeX() * Integers.RASTER_SIZE, entity2.getSizeY() * Integers.RASTER_SIZE);
             }
         }
         super.render(g);

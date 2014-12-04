@@ -10,7 +10,6 @@ import projektkurs.gui.element.InventoryElement;
 import projektkurs.gui.element.PlayerInventoryElement;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
-import projektkurs.lib.Scripts;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.util.MathUtil;
 
@@ -47,10 +46,6 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         }
 
         Main.getPlayer().onLeftClick(screenX, screenY, e);
-
-        if (e.isShiftDown()) {
-            Scripts.testDialog();
-        }
     }
 
     @Override
@@ -66,10 +61,6 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         }
 
         Main.getPlayer().onRightClick(screenX, screenY, e);
-
-        if (e.isShiftDown()) {
-            Scripts.cutSceneOne();
-        }
     }
 
     @Override

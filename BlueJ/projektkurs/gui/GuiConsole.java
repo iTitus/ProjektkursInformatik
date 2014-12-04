@@ -108,7 +108,9 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                         break;
                     case NO_SUCCESS:
                     case SUCCESS:
-                        Main.closeGui();
+                        if (Main.getGui() == this) {
+                            Main.closeGui();
+                        }
                         break;
                     case NUMBER_PARSING:
                         field.setText(I18n.getString("command.failure.number"));

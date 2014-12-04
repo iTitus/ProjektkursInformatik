@@ -5,7 +5,6 @@ import java.util.HashMap;
 import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
-import projektkurs.command.CommandRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.command.ICommand;
 import projektkurs.util.Init;
@@ -40,10 +39,6 @@ public final class Commands {
      */
     public static ICommand raster;
     /**
-     * Spawn-Kommando.
-     */
-    public static ICommand spawn;
-    /**
      * Switch-Level-Kommando.
      */
     public static ICommand switchLevel;
@@ -58,13 +53,13 @@ public final class Commands {
         registerMapping(item);
 
         dialog = new CommandDialog();
-        registerMapping(item);
+        registerMapping(dialog);
 
         cutScene = new CommandCutScene();
-        registerMapping(item);
+        registerMapping(cutScene);
 
-        raster = new CommandRaster();
-        registerMapping(item);
+        // raster = new CommandRaster();
+        // registerMapping(raster);
 
         switchLevel = new CommandSwitch();
         registerMapping(switchLevel);
