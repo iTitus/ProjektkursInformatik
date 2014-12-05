@@ -18,7 +18,6 @@ public final class Scripts {
      */
     public static void cutSceneOne() {
         CutSceneManager.startCutScene(CutScenes.cutSceneOne);
-        switchMap(1);
     }
 
     /**
@@ -28,17 +27,6 @@ public final class Scripts {
         Main.pause();
         JOptionPane.showOptionDialog(null, I18n.getString("description.loose"), I18n.getString("description.loose"), 0, JOptionPane.ERROR_MESSAGE, new ImageIcon(Images.nuke), new Object[] { I18n.getString("button.exit") }, null);
         Main.exit();
-    }
-
-    /**
-     * Wechselt das Spielfeld und setzt den Spieler an die Position 1, 1.
-     *
-     * @param i
-     *            Index
-     */
-    public static void switchMap(Integer i) {
-        Main.getLevel().setMap(i);
-        Main.getPlayer().setPos(1, 1);
     }
 
     /**

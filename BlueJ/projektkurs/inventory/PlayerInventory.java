@@ -119,10 +119,10 @@ public class PlayerInventory extends Inventory {
      *            Index; -1, um keinen ItemStack auszuwählen
      */
     public void setSelectedItemStack(int index) {
-        if (index < 0 || index >= stacks.length) {
-            selectedItemStack = -1;
-        } else {
+        if (MathUtil.isInArray(index, stacks.length)) {
             selectedItemStack = index;
+        } else {
+            selectedItemStack = -1;
         }
     }
 

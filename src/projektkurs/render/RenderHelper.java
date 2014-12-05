@@ -1,6 +1,7 @@
 package projektkurs.render;
 
 import projektkurs.lib.Integers;
+import projektkurs.util.IHasPosition;
 
 /**
  * Helperklasse zum Rendern.
@@ -56,7 +57,18 @@ public class RenderHelper {
     }
 
     /**
-     * Ist der gegebene Punk im Sichtfeld.
+     * Ist das gegebene Objekt im Sichtfeld.
+     *
+     * @param iHasPosition
+     *            IHasPosition
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean isInSight(IHasPosition iHasPosition) {
+        return iHasPosition.getPosX() >= sightX && iHasPosition.getPosX() >= sightY && iHasPosition.getPosX() < sightX + Integers.sightX && iHasPosition.getPosY() < sightY + Integers.sightY;
+    }
+
+    /**
+     * Ist der gegebene Punkt im Sichtfeld.
      *
      * @param x
      *            x

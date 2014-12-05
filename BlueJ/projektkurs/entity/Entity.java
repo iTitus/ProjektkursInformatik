@@ -12,6 +12,7 @@ import projektkurs.lib.Strings;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.util.Direction;
 import projektkurs.util.ICanUpdate;
+import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.ISaveable;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
@@ -20,7 +21,7 @@ import projektkurs.util.SaveData;
 /**
  * Ein Entity.
  */
-public abstract class Entity implements ICanUpdate, ISaveable {
+public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSize {
 
     /**
      * Richtung, in die dieser Entity guckt.
@@ -35,11 +36,11 @@ public abstract class Entity implements ICanUpdate, ISaveable {
      */
     private boolean shouldDeSpawn;
     /**
-     * X-Position.
+     * X-Koordinate.
      */
     protected int posX;
     /**
-     * Y-Position.
+     * Y-Koordinate.
      */
     protected int posY;
     /**
@@ -106,11 +107,11 @@ public abstract class Entity implements ICanUpdate, ISaveable {
      */
     public boolean canMoveTo(int x, int y) {
 
-        facing = Direction.getDirectionForOffset(MathUtil.signum(x - posX), MathUtil.signum(y - posY));
-
-        if (x < 0 || x >= Main.getLevel().getMap().getMapSizeX() || y < 0 || y >= Main.getLevel().getMap().getMapSizeY()) {
+        if (!Main.getLevel().getMap().isInMap(x, y)) {
             return false;
         }
+
+        facing = Direction.getDirectionForOffset(MathUtil.signum(x - posX), MathUtil.signum(y - posY));
 
         boolean ret = true;
 
@@ -175,20 +176,12 @@ public abstract class Entity implements ICanUpdate, ISaveable {
         return image;
     }
 
-    /**
-     * X-Koordinate.
-     *
-     * @return X-Koordinate
-     */
+    @Override
     public int getPosX() {
         return posX;
     }
 
-    /**
-     * Y-Koordinate.
-     *
-     * @return Y-Koordinate
-     */
+    @Override
     public int getPosY() {
         return posY;
     }
@@ -211,20 +204,12 @@ public abstract class Entity implements ICanUpdate, ISaveable {
         return (posY - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y;
     }
 
-    /**
-     * Breite.
-     *
-     * @return Breite
-     */
+    @Override
     public int getSizeX() {
         return sizeX;
     }
 
-    /**
-     * Höhe.
-     *
-     * @return Höhe
-     */
+    @Override
     public int getSizeY() {
         return sizeY;
     }
@@ -330,15 +315,8 @@ public abstract class Entity implements ICanUpdate, ISaveable {
         this.image = image;
     }
 
-    /**
-     * Setzt die Position dieses Entities.
-     *
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
-     */
-    public void setPos(int posX, int posY) {
+    @Override
+    public void setPosition(int posX, int posY) {
         moveBy(posX - this.posX, posY - this.posY);
     }
 

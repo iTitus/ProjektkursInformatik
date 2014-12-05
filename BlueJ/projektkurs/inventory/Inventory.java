@@ -2,6 +2,7 @@ package projektkurs.inventory;
 
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Strings;
+import projektkurs.util.MathUtil;
 import projektkurs.util.SaveData;
 
 /**
@@ -155,10 +156,10 @@ public class Inventory {
      * @return ItemStack an der Stelle Index
      */
     public ItemStack getItemStackAt(int index) {
-        if (index < 0 || index >= stacks.length) {
-            return null;
+        if (MathUtil.isInArray(index, stacks.length)) {
+            return stacks[index];
         }
-        return stacks[index];
+        return null;
     }
 
     /**
@@ -320,7 +321,7 @@ public class Inventory {
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean setItemStackInSlot(int index, ItemStack stack) {
-        if (index >= 0 && index < stacks.length) {
+        if (MathUtil.isInArray(index, stacks.length)) {
             stacks[index] = stack;
             return true;
         }

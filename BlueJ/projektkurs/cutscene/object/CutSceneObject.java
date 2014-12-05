@@ -5,11 +5,12 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Integers;
+import projektkurs.util.IHasPositionAndSize;
 
 /**
  * Ein Objekt in einer CutScene.
  */
-public class CutSceneObject {
+public class CutSceneObject implements IHasPositionAndSize {
 
     /**
      * Bild.
@@ -46,7 +47,7 @@ public class CutSceneObject {
      */
     public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
         this.image = image;
-        setPos(posX, posY);
+        setPosition(posX, posY);
         this.sizeX = sizeX;
         this.sizeY = sizeY;
     }
@@ -60,38 +61,22 @@ public class CutSceneObject {
         return image;
     }
 
-    /**
-     * X-Position.
-     *
-     * @return X-Position
-     */
+    @Override
     public int getPosX() {
         return posX;
     }
 
-    /**
-     * Y-Position.
-     *
-     * @return Y-Position
-     */
+    @Override
     public int getPosY() {
         return posY;
     }
 
-    /**
-     * Breite.
-     *
-     * @return Breite
-     */
+    @Override
     public int getSizeX() {
         return sizeX;
     }
 
-    /**
-     * Höhe.
-     *
-     * @return Höhe
-     */
+    @Override
     public int getSizeY() {
         return sizeY;
     }
@@ -148,36 +133,9 @@ public class CutSceneObject {
         g.drawImage(image, getRenderX(), getRenderY(), sizeX * Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE, null);
     }
 
-    /**
-     * Setzt das CutSceneObject an eine Position.
-     *
-     * @param posX
-     *            X-Position
-     * @param posY
-     *            Y-Position
-     */
-    public void setPos(int posX, int posY) {
+    @Override
+    public void setPosition(int posX, int posY) {
         this.posX = posX;
-        this.posY = posY;
-    }
-
-    /**
-     * Setzt die X-Position.
-     *
-     * @param posX
-     *            X-Position
-     */
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    /**
-     * Setzt die Y-Position.
-     *
-     * @param posY
-     *            Y-Position
-     */
-    public void setPosY(int posY) {
         this.posY = posY;
     }
 
@@ -198,4 +156,5 @@ public class CutSceneObject {
     private int getRenderY() {
         return (posX - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X;
     }
+
 }

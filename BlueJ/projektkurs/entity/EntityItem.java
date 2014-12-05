@@ -63,4 +63,5 @@ public class EntityItem extends Entity {
         super.write(data);
         data.set(Strings.ENTITY_ITEM, stack.write());
     }
+
 }

@@ -3,6 +3,7 @@ package projektkurs.command;
 import projektkurs.Main;
 import projektkurs.level.Level;
 import projektkurs.lib.Levels;
+import projektkurs.util.MathUtil;
 
 /**
  * Switch-Level-Kommando.
@@ -31,7 +32,7 @@ public class CommandSwitch implements ICommand {
             l = Main.getLevel();
         }
 
-        if (l == null || map < 0 || map >= l.getMapCount()) {
+        if (l == null || !MathUtil.isInArray(map, l.getMapCount())) {
             return EnumCommandResult.OBJECT_NOT_FOUND;
         }
 

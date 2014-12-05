@@ -2,6 +2,7 @@ package projektkurs.level;
 
 import projektkurs.Main;
 import projektkurs.util.Logger;
+import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.builder.MapBuilder;
@@ -69,11 +70,11 @@ public class Level {
      * @return Spielfeld
      */
     public Spielfeld getMapAt(int i) {
-        if (i < 0 || i >= maps.length) {
-            Logger.logThrowable("Unable to get map", new ArrayIndexOutOfBoundsException(i));
-            return null;
+        if (MathUtil.isInArray(i, maps.length)) {
+            return maps[i];
         }
-        return maps[i];
+        Logger.logThrowable("Unable to get map", new ArrayIndexOutOfBoundsException(i));
+        return null;
     }
 
     /**
@@ -92,11 +93,11 @@ public class Level {
      *            Index
      */
     public void setMap(int i) {
-        if (i < 0 || i >= maps.length) {
+        if (MathUtil.isInArray(i, maps.length)) {
+            currMap = maps[i];
+            Main.getPlayer().setPosition(currMap.getSpawnX(), currMap.getSpawnY());
+        } else {
             Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
-            return;
         }
-        currMap = maps[i];
-        Main.getPlayer().setPos(currMap.getSpawnX(), currMap.getSpawnY());
     }
 }

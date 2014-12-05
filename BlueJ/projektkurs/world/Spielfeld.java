@@ -137,13 +137,11 @@ public class Spielfeld implements Cloneable {
      * @return gefundener Entity
      */
     public Entity getEntityAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return null;
-        }
-
-        for (Entity e : getEntityList()) {
-            if (e.getPosX() == x && e.getPosY() == y) {
-                return e;
+        if (isInMap(x, y)) {
+            for (Entity e : getEntityList()) {
+                if (e.getPosX() == x && e.getPosY() == y) {
+                    return e;
+                }
             }
         }
         return null;
@@ -168,12 +166,11 @@ public class Spielfeld implements Cloneable {
      * @return gefundene ExtraInformation
      */
     public ExtraInformation getExtraInformationAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return null;
-        }
-        for (ExtraInformation extra : getExtraInformationList()) {
-            if (extra.getX() == x && extra.getY() == y) {
-                return extra;
+        if (isInMap(x, y)) {
+            for (ExtraInformation extra : getExtraInformationList()) {
+                if (extra.getPosX() == x && extra.getPosY() == y) {
+                    return extra;
+                }
             }
         }
         return null;
@@ -216,10 +213,10 @@ public class Spielfeld implements Cloneable {
      * @return gefundenes Raster
      */
     public AbstractRaster getRasterAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return null;
+        if (isInMap(x, y)) {
+            return map[x][y];
         }
-        return map[x][y];
+        return null;
     }
 
     /**
@@ -263,6 +260,19 @@ public class Spielfeld implements Cloneable {
     }
 
     /**
+     * Prüft ob die gegebene Koordinate innerhalb dieser Map ist.
+     *
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     * @return true, wenn ja; false, wenn nicht
+     */
+    public boolean isInMap(int x, int y) {
+        return MathUtil.isInArray(x, Main.getLevel().getMap().getMapSizeX()) && MathUtil.isInArray(y, Main.getLevel().getMap().getMapSizeY());
+    }
+
+    /**
      * Ist ein Raster an der gegebenen Position.
      *
      * @param x
@@ -272,10 +282,10 @@ public class Spielfeld implements Cloneable {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isRasterAt(int x, int y) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return false;
+        if (isInMap(x, y)) {
+            return map[x][y] != null;
         }
-        return map[x][y] != null;
+        return false;
     }
 
     /**
@@ -299,39 +309,31 @@ public class Spielfeld implements Cloneable {
      *            zu setzendes Raster
      */
     public void setRasterAt(int x, int y, AbstractRaster r) {
-        if (x < 0 || x >= map.length || y < 0 || y >= map[x].length) {
-            return;
-        }
-        ExtraInformation oldExtra = getExtraInformationAt(x, y);
-        if (oldExtra != null) {
-            removeExtraInformation(oldExtra);
-        }
-        map[x][y] = r;
-        if (r instanceof IHasExtraInformation) {
-            ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
-            newExtra.setPosition(x, y);
-            getExtraInformationList().add(newExtra);
+        if (isInMap(x, y)) {
+            ExtraInformation oldExtra = getExtraInformationAt(x, y);
+            if (oldExtra != null) {
+                removeExtraInformation(oldExtra);
+            }
+            map[x][y] = r;
+            if (r instanceof IHasExtraInformation) {
+                ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
+                newExtra.setPosition(x, y);
+                getExtraInformationList().add(newExtra);
 
+            }
         }
     }
 
     /**
-     * Setzt die X-Koordinate des Spielererscheinungsortes.
+     * Setzt die Koordinaten des Spielererscheinungsortes.
      *
      * @param spawnX
      *            X-Koordinate
-     */
-    public void setSpawnX(int spawnX) {
-        this.spawnX = spawnX;
-    }
-
-    /**
-     * Setzt die Y-Koordinate des Spielererscheinungsortes.
-     *
      * @param spawnY
      *            Y-Koordinate
      */
-    public void setSpawnY(int spawnY) {
+    public void setSpawn(int spawnX, int spawnY) {
+        this.spawnX = spawnX;
         this.spawnY = spawnY;
     }
 

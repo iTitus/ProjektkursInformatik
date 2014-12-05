@@ -5,6 +5,7 @@ import java.util.HashMap;
 import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
+import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.command.ICommand;
 import projektkurs.util.Init;
@@ -37,7 +38,7 @@ public final class Commands {
     /**
      * Raster-Setz-Kommando.
      */
-    public static ICommand raster;
+    public static ICommand setraster;
     /**
      * Switch-Level-Kommando.
      */
@@ -58,8 +59,8 @@ public final class Commands {
         cutScene = new CommandCutScene();
         registerMapping(cutScene);
 
-        // raster = new CommandRaster();
-        // registerMapping(raster);
+        setraster = new CommandSetRaster();
+        registerMapping(setraster);
 
         switchLevel = new CommandSwitch();
         registerMapping(switchLevel);

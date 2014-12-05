@@ -154,6 +154,19 @@ public final class MathUtil {
     }
 
     /**
+     * Prüft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
+     *
+     * @param i
+     *            Index
+     * @param length
+     *            Array-Länge
+     * @return true, wenn ja; false, wenn nein
+     */
+    public static boolean isInArray(int i, int length) {
+        return i >= 0 && i < length;
+    }
+
+    /**
      * Gibt eine Zahl zurück, die im gegebenen Intervall liegt: [min; max].
      *
      * @param i

@@ -102,7 +102,7 @@ public class Render {
             }
 
             for (Entity e : Main.getLevel().getMap().getEntityList()) {
-                if (!e.shouldDeSpawn() && e.isInside(Main.getRenderHelper().getSightX(), Main.getRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
+                if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
                     e.render(g);
                 }
             }
