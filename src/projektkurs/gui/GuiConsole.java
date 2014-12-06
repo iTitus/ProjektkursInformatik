@@ -28,6 +28,15 @@ public class GuiConsole extends Gui implements ITextFieldListener {
      */
     private TextField field;
 
+    /**
+     * Das TextField in diesem Gui.
+     *
+     * @return TextField
+     */
+    public TextField getTextField() {
+        return field;
+    }
+
     @Override
     public void initGui() {
         super.initGui();
