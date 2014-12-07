@@ -120,9 +120,8 @@ public final class Images {
     public static BufferedImage wand;
 
     /**
-     * Rasenbild.
+     * Befreit alle Bilder.
      */
-
     public static void flushAll() {
         for (BufferedImage img : MAPPINGS.values()) {
             if (img != null) {
