@@ -27,11 +27,11 @@ public class CutSceneObject implements IHasPositionAndSize {
     /**
      * Breite.
      */
-    private final int sizeX;
+    private int sizeX;
     /**
      * Höhe.
      */
-    private final int sizeY;
+    private int sizeY;
 
     /**
      * @param image
@@ -137,6 +137,12 @@ public class CutSceneObject implements IHasPositionAndSize {
     public void setPosition(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
+    }
+
+    @Override
+    public void setSize(int sizeX, int sizeY) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
     }
 
     /**

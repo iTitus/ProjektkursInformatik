@@ -3,7 +3,7 @@ package projektkurs.gui.element;
 import java.awt.event.MouseWheelEvent;
 
 /**
- * Ein Interface für ein GUI, das auf Slotklicks hören soll.
+ * Ein Interface für ein GUI, das auf Interaktionen mit dem Spielerinventar hören soll hören soll.
  */
 public interface IPlayerInventoryElementListener extends IInventoryElementListener {
 

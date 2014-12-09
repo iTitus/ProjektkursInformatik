@@ -19,4 +19,14 @@ public interface IHasPositionAndSize extends IHasPosition {
      */
     int getSizeY();
 
+    /**
+     * Setzt die Größe.
+     *
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
+     */
+    void setSize(int sizeX, int sizeY);
+
 }

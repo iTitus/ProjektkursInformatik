@@ -18,10 +18,6 @@ public class Button extends Element {
      */
     protected boolean enabled;
     /**
-     * Das Gui, in dem sich dieser Knopf befindet.
-     */
-    protected IButtonListener gui;
-    /**
      * Der Name des Knopfes.
      */
     protected String name;
@@ -39,16 +35,20 @@ public class Button extends Element {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param name
      *            Name
      */
-    public Button(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener gui, String name) {
-        super(posX, posY, sizeX, sizeY, id);
+    public Button(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener listener, String name) {
+        super(posX, posY, sizeX, sizeY, id, listener);
         this.name = name;
-        this.gui = gui;
         enabled = true;
+    }
+
+    @Override
+    public IButtonListener getListener() {
+        return (IButtonListener) super.getListener();
     }
 
     /**
@@ -72,14 +72,14 @@ public class Button extends Element {
     @Override
     public void onLeftClick(int x, int y, MouseEvent e) {
         if (isInside(x, y)) {
-            gui.onButtonLeftClick(this, e);
+            getListener().onButtonLeftClick(this, e);
         }
     }
 
     @Override
     public void onRightClick(int x, int y, MouseEvent e) {
         if (isInside(x, y)) {
-            gui.onButtonRightClick(this, e);
+            getListener().onButtonRightClick(this, e);
         }
     }
 

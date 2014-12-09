@@ -320,6 +320,12 @@ public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSi
         moveBy(posX - this.posX, posY - this.posY);
     }
 
+    @Override
+    public void setSize(int sizeX, int sizeY) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+    }
+
     /**
      * Soll dieser Entity nächsten Tick verschwinden.
      *

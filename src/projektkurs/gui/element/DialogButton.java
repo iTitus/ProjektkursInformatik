@@ -25,13 +25,13 @@ public class DialogButton extends Button {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param dialogPart
      *            folgende DialogPart
      */
-    public DialogButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener gui, DialogPart dialogPart) {
-        super(posX, posY, sizeX, sizeY, id, gui, dialogPart.getName());
+    public DialogButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener listener, DialogPart dialogPart) {
+        super(posX, posY, sizeX, sizeY, id, listener, dialogPart.getName());
         this.dialogPart = dialogPart;
     }
 

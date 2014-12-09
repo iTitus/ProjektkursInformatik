@@ -17,10 +17,6 @@ import projektkurs.util.RenderUtil;
 public class InventoryElement extends Element {
 
     /**
-     * Das Gui, in dem dieses InventoryElement liegt.
-     */
-    protected IInventoryElementListener gui;
-    /**
      * Das Inventory, das hiermit repräsentiert wird.
      */
     protected Inventory inv;
@@ -30,13 +26,13 @@ public class InventoryElement extends Element {
      *
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param inv
      *            zu repräsentierendes Inventory
      */
-    public InventoryElement(int id, IInventoryElementListener gui, Inventory inv) {
-        this(MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2), id, gui, inv);
+    public InventoryElement(int id, IInventoryElementListener listener, Inventory inv) {
+        this(MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2), id, listener, inv);
     }
 
     /**
@@ -48,13 +44,13 @@ public class InventoryElement extends Element {
      *            Y-Koordinate des Mittelpunkts
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param inv
      *            zu repräsentierendes Inventory
      */
-    public InventoryElement(int centerX, int centerY, int id, IInventoryElementListener gui, Inventory inv) {
-        this(centerX - MathUtil.floorDiv(Integers.SLOT_SIZE * inv.getSize(), 2), centerY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), Integers.SLOT_SIZE * inv.getSize(), Integers.SLOT_SIZE, id, gui, inv);
+    public InventoryElement(int centerX, int centerY, int id, IInventoryElementListener listener, Inventory inv) {
+        this(centerX - MathUtil.floorDiv(Integers.SLOT_SIZE * inv.getSize(), 2), centerY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), Integers.SLOT_SIZE * inv.getSize(), Integers.SLOT_SIZE, id, listener, inv);
     }
 
     /**
@@ -70,14 +66,13 @@ public class InventoryElement extends Element {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param inv
      *            zu repräsentierendes Inventory
      */
-    public InventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IInventoryElementListener gui, Inventory inv) {
-        super(posX, posY, sizeX, sizeY, id);
-        this.gui = gui;
+    public InventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IInventoryElementListener listener, Inventory inv) {
+        super(posX, posY, sizeX, sizeY, id, listener);
         this.inv = inv;
     }
 
@@ -91,16 +86,21 @@ public class InventoryElement extends Element {
     }
 
     @Override
+    public IInventoryElementListener getListener() {
+        return (IInventoryElementListener) super.getListener();
+    }
+
+    @Override
     public void onLeftClick(int x, int y, MouseEvent e) {
         if (isInside(x, y)) {
-            gui.onSlotLeftClick(MathUtil.floorDiv(x - posX, Integers.SLOT_SIZE), this, e);
+            getListener().onSlotLeftClick(MathUtil.floorDiv(x - posX, Integers.SLOT_SIZE), this, e);
         }
     }
 
     @Override
     public void onRightClick(int x, int y, MouseEvent e) {
         if (isInside(x, y)) {
-            gui.onSlotRightClick(MathUtil.floorDiv(x - posX, Integers.SLOT_SIZE), this, e);
+            getListener().onSlotRightClick(MathUtil.floorDiv(x - posX, Integers.SLOT_SIZE), this, e);
         }
     }
 

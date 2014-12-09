@@ -5,16 +5,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
+import projektkurs.util.IHasPositionAndSize;
+
 /**
  * Ein GUI-Element.
  */
-public abstract class Element {
+public abstract class Element implements IHasPositionAndSize {
+
+    /**
+     * Der Listener dieses Elements.
+     */
+    private final IElementListener listener;
 
     /**
      * Nummer.
      */
     protected final int id;
-
     /**
      * X-Position.
      */
@@ -27,6 +33,7 @@ public abstract class Element {
      * Breite.
      */
     protected int sizeX;
+
     /**
      * Höhe.
      */
@@ -45,13 +52,16 @@ public abstract class Element {
      *            Höhe
      * @param id
      *            Nummer
+     * @param listener
+     *            Listener
      */
-    public Element(int posX, int posY, int sizeX, int sizeY, int id) {
+    public Element(int posX, int posY, int sizeX, int sizeY, int id, IElementListener listener) {
         this.posX = posX;
         this.posY = posY;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.id = id;
+        this.listener = listener;
     }
 
     /**
@@ -64,37 +74,30 @@ public abstract class Element {
     }
 
     /**
-     * Die X-Koordinate dieses Elements.
+     * Der Listener dieses Elements.
      *
-     * @return X-Koordinate
+     * @return Listener.
      */
+    public IElementListener getListener() {
+        return listener;
+    }
+
+    @Override
     public int getPosX() {
         return posX;
     }
 
-    /**
-     * Die Y-Koordinate dieses Elements.
-     *
-     * @return Y-Koordinate
-     */
+    @Override
     public int getPosY() {
         return posY;
     }
 
-    /**
-     * Die Breite dieses Elements.
-     *
-     * @return Breite
-     */
+    @Override
     public int getSizeX() {
         return sizeX;
     }
 
-    /**
-     * Die Höhe dieses Elements.
-     *
-     * @return Höhe
-     */
+    @Override
     public int getSizeY() {
         return sizeY;
     }
@@ -210,43 +213,15 @@ public abstract class Element {
         // NO-OP
     }
 
-    /**
-     * Setzt die X-Koordinate dieses Elements.
-     *
-     * @param posX
-     *            X-Koordinate
-     */
-    public void setPosX(int posX) {
-        this.posX = posX;
+    @Override
+    public void setPosition(int x, int y) {
+        posX = x;
+        posY = y;
     }
 
-    /**
-     * Setzt die Y-Koordinate dieses Elements.
-     *
-     * @param posY
-     *            Y-Koordinate
-     */
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
-
-    /**
-     * Setzt die Breite dieses Elements.
-     *
-     * @param sizeX
-     *            Breite
-     */
-    public void setSizeX(int sizeX) {
+    @Override
+    public void setSize(int sizeX, int sizeY) {
         this.sizeX = sizeX;
-    }
-
-    /**
-     * Setzt die Höhe dieses Elements.
-     *
-     * @param sizeY
-     *            Höhe
-     */
-    public void setSizeY(int sizeY) {
         this.sizeY = sizeY;
     }
 

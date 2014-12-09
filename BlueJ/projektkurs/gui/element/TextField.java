@@ -19,6 +19,26 @@ import projektkurs.util.RenderUtil;
 public class TextField extends Element {
 
     /**
+     * Ein leerer ITextFieldListener.
+     */
+    private static final ITextFieldListener EMPTY_LISTENER = new ITextFieldListener() {
+
+        @Override
+        public void onFocusGained(TextField field) {
+            // NO-OP
+        }
+
+        @Override
+        public void onFocusLost(TextField field) {
+            // NO-OP
+        }
+
+        @Override
+        public void onTextChanged(TextField field) {
+            // NO-OP
+        }
+    };
+    /**
      * Ist dieses Textfeld aktiviert.
      */
     protected boolean enabled;
@@ -26,10 +46,7 @@ public class TextField extends Element {
      * Ist dieses Textfeld fokussiert.
      */
     protected boolean focussed;
-    /**
-     * Das Gui, in dem sich dieses Textfeld befindet.
-     */
-    protected ITextFieldListener gui;
+
     /**
      * Der Text im Textfeld.
      */
@@ -68,37 +85,21 @@ public class TextField extends Element {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param text
      *            Anfangstext
      */
-    public TextField(int posX, int posY, int sizeX, int sizeY, int id, ITextFieldListener gui, String text) {
-        super(posX, posY, sizeX, sizeY, id);
-        if (gui != null) {
-            this.gui = gui;
-        } else {
-            this.gui = new ITextFieldListener() {
-
-                @Override
-                public void onFocusGained(TextField field) {
-                    // NO-OP
-                }
-
-                @Override
-                public void onFocusLost(TextField field) {
-                    // NO-OP
-                }
-
-                @Override
-                public void onTextChanged(TextField field) {
-                    // NO-OP
-                }
-            };
-        }
+    public TextField(int posX, int posY, int sizeX, int sizeY, int id, ITextFieldListener listener, String text) {
+        super(posX, posY, sizeX, sizeY, id, listener != null ? listener : EMPTY_LISTENER);
         this.text = text;
         focussed = false;
         enabled = true;
+    }
+
+    @Override
+    public ITextFieldListener getListener() {
+        return (ITextFieldListener) super.getListener();
     }
 
     /**
@@ -135,15 +136,15 @@ public class TextField extends Element {
                 if (text.length() > 0) {
                     text = text.substring(0, text.length() - 1);
                 }
-                gui.onTextChanged(this);
+                getListener().onTextChanged(this);
             } else if (e.getKeyCode() == KeyBindings.ENTER) {
                 focussed = false;
-                gui.onFocusLost(this);
+                getListener().onFocusLost(this);
             } else if (e.isControlDown()) {
                 if (e.getKeyCode() == KeyBindings.PASTE_KEY) {
                     try {
                         text += Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null).getTransferData(DataFlavor.stringFlavor);
-                        gui.onTextChanged(this);
+                        getListener().onTextChanged(this);
                     } catch (Throwable t) {
                         Logger.logThrowable("Unable to paste clipboard contents", t);
                     }
@@ -151,7 +152,7 @@ public class TextField extends Element {
             } else if (!e.isAltDown() && !e.isMetaDown()) {
                 if (keyChar != KeyBindings.UNKNOWN_CHAR) {
                     text += keyChar;
-                    gui.onTextChanged(this);
+                    getListener().onTextChanged(this);
                 }
             }
         }
@@ -162,10 +163,10 @@ public class TextField extends Element {
         if (enabled) {
             if (isInside(x, y)) {
                 focussed = true;
-                gui.onFocusGained(this);
+                getListener().onFocusGained(this);
             } else {
                 focussed = false;
-                gui.onFocusLost(this);
+                getListener().onFocusLost(this);
             }
         }
     }
@@ -176,14 +177,14 @@ public class TextField extends Element {
             if (isInside(x, y)) {
                 if (focussed) {
                     text = "";
-                    gui.onTextChanged(this);
+                    getListener().onTextChanged(this);
                 } else {
                     focussed = true;
-                    gui.onFocusGained(this);
+                    getListener().onFocusGained(this);
                 }
             } else {
                 focussed = false;
-                gui.onFocusLost(this);
+                getListener().onFocusLost(this);
             }
         }
     }
@@ -205,7 +206,7 @@ public class TextField extends Element {
             this.enabled = enabled;
             if (!this.enabled) {
                 focussed = false;
-                gui.onFocusLost(this);
+                getListener().onFocusLost(this);
             }
         }
     }
@@ -220,9 +221,9 @@ public class TextField extends Element {
         if (enabled && this.focussed != focussed) {
             this.focussed = focussed;
             if (this.focussed) {
-                gui.onFocusGained(this);
+                getListener().onFocusGained(this);
             } else {
-                gui.onFocusLost(this);
+                getListener().onFocusLost(this);
             }
         }
     }

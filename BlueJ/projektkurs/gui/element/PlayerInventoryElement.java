@@ -27,13 +27,13 @@ public class PlayerInventoryElement extends InventoryElement {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param inv
      *            zu repräsentierendes PlayerInventory
      */
-    public PlayerInventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IPlayerInventoryElementListener gui, PlayerInventory inv) {
-        super(posX, posY, sizeX, sizeY, id, gui, inv);
+    public PlayerInventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IPlayerInventoryElementListener listener, PlayerInventory inv) {
+        super(posX, posY, sizeX, sizeY, id, listener, inv);
     }
 
     /**
@@ -65,12 +65,19 @@ public class PlayerInventoryElement extends InventoryElement {
     }
 
     @Override
+    public IPlayerInventoryElementListener getListener() {
+        return (IPlayerInventoryElementListener) super.getListener();
+    }
+
+    @Override
     public void onMouseWheelMoved(int by, MouseWheelEvent e) {
         PlayerInventory pInv = (PlayerInventory) inv;
         if (by > 0) {
             pInv.setSelectedItemStack(pInv.getSelectedIndex() >= pInv.getSize() ? 0 : pInv.getSelectedIndex() + 1);
+            getListener().onSlotChanged(this, e);
         } else if (by < 0) {
             pInv.setSelectedItemStack(pInv.getSelectedIndex() <= 0 ? pInv.getSize() - 1 : pInv.getSelectedIndex() - 1);
+            getListener().onSlotChanged(this, e);
         }
     }
 

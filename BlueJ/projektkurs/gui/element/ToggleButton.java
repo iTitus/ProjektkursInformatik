@@ -29,13 +29,13 @@ public class ToggleButton extends Button {
      *            Höhe
      * @param id
      *            Nummer
-     * @param gui
-     *            Gui/Listener
+     * @param listener
+     *            Listener
      * @param names
      *            alle Namen
      */
-    public ToggleButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener gui, String... names) {
-        super(posX, posY, sizeX, sizeY, id, gui, names[0]);
+    public ToggleButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener listener, String... names) {
+        super(posX, posY, sizeX, sizeY, id, listener, names[0]);
         this.names = names;
         index = 0;
     }
@@ -65,7 +65,7 @@ public class ToggleButton extends Button {
                 setIndex(index + 10);
             }
             setIndex(index + 1);
-            gui.onButtonLeftClick(this, e);
+            getListener().onButtonLeftClick(this, e);
         }
     }
 
@@ -76,7 +76,7 @@ public class ToggleButton extends Button {
                 setIndex(index - 10);
             }
             setIndex(index - 1);
-            gui.onButtonRightClick(this, e);
+            getListener().onButtonRightClick(this, e);
         }
     }
 
