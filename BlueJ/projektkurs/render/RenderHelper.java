@@ -64,7 +64,7 @@ public class RenderHelper {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInSight(IHasPosition iHasPosition) {
-        return iHasPosition.getPosX() >= sightX && iHasPosition.getPosX() >= sightY && iHasPosition.getPosX() < sightX + Integers.sightX && iHasPosition.getPosY() < sightY + Integers.sightY;
+        return iHasPosition.getPosX() >= sightX && iHasPosition.getPosY() >= sightY && iHasPosition.getPosX() < sightX + Integers.sightX && iHasPosition.getPosY() < sightY + Integers.sightY;
     }
 
     /**

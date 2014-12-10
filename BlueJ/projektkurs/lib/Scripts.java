@@ -21,6 +21,16 @@ public final class Scripts {
     }
 
     /**
+     * Ändert das Spielfeld.
+     *
+     * @param i
+     *            Spielfeld
+     */
+    public static void switchMap(Integer i) {
+        Main.getLevel().setMap(i);
+    }
+
+    /**
      * Gewinnt das Spiel.
      */
     public static void win() {
