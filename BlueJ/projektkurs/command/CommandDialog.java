@@ -8,7 +8,7 @@ import projektkurs.lib.Dialoge;
 /**
  * Das Dialog-Start-Kommando.
  */
-public class CommandDialog implements ICommand {
+public class CommandDialog extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {

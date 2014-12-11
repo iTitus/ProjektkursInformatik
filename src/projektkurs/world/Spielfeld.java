@@ -12,13 +12,14 @@ import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.story.StoryManager;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 
 /**
  * Ein Spielfeld.
  */
-public class Spielfeld implements Cloneable {
+public class Spielfeld implements Cloneable, IUpdatable {
 
     /**
      * Alle Entities.
@@ -74,6 +75,11 @@ public class Spielfeld implements Cloneable {
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
         storyManager = new StoryManager();
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -352,6 +358,7 @@ public class Spielfeld implements Cloneable {
     /**
      * Updated das Spielfeld.
      */
+    @Override
     public void update() {
 
         Main.getPlayer().moveBy(Main.getInputManager().getNextDirection());
@@ -398,7 +405,9 @@ public class Spielfeld implements Cloneable {
         }
         getEntityList().removeAll(toRemove);
 
-        storyManager.update();
+        if (storyManager.canUpdate()) {
+            storyManager.update();
+        }
 
     }
 

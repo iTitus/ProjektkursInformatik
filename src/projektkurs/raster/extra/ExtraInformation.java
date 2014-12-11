@@ -1,15 +1,15 @@
 package projektkurs.raster.extra;
 
 import projektkurs.lib.Strings;
-import projektkurs.util.ICanUpdate;
 import projektkurs.util.IHasPosition;
 import projektkurs.util.ISaveable;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.SaveData;
 
 /**
  * Eine ExtraInformation.
  */
-public class ExtraInformation implements ICanUpdate, ISaveable, IHasPosition {
+public class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
 
     /**
      * X-Koordinate.

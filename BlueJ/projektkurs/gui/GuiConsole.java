@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import projektkurs.Main;
+import projektkurs.command.Command;
 import projektkurs.command.EnumCommandResult;
-import projektkurs.command.ICommand;
 import projektkurs.gui.element.ITextFieldListener;
 import projektkurs.gui.element.TextField;
 import projektkurs.lib.Commands;
@@ -95,7 +95,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
             partList.removeAll(toRemove);
             String[] parts = partList.toArray(new String[partList.size()]);
             String command = parts[0].toLowerCase(SupportedLocales.DEFAULT.getLocale());
-            ICommand c = Commands.MAPPINGS.get(command);
+            Command c = Commands.MAPPINGS.get(command);
             if (c != null) {
                 String[] args = new String[parts.length - 1];
                 for (int i = 0; i < args.length; i++) {

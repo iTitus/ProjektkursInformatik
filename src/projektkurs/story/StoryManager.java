@@ -5,25 +5,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import projektkurs.story.trigger.ITrigger;
+import projektkurs.story.trigger.Trigger;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MethodInvoker;
 
 /**
  * Der Storymanager.
  */
-public class StoryManager {
+public class StoryManager implements IUpdatable {
 
     /**
      * Alle Trigger.
      */
-    private final HashMap<ITrigger, MethodInvoker> triggerMap;
+    private final HashMap<Trigger, MethodInvoker> triggerMap;
 
     /**
      * Konstruktor.
      */
     public StoryManager() {
-        triggerMap = new HashMap<ITrigger, MethodInvoker>();
+        triggerMap = new HashMap<Trigger, MethodInvoker>();
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -36,7 +42,7 @@ public class StoryManager {
      * @param objects
      *            eventuelle Parameter
      */
-    public void registerTrigger(ITrigger trigger, Method m, Object... objects) {
+    public void registerTrigger(Trigger trigger, Method m, Object... objects) {
         if (triggerMap.containsKey(trigger)) {
             Logger.logThrowable("Unable to register Trigger '" + trigger.getClass() + "'", new IllegalArgumentException("'" + trigger.getClass() + "' is already registered"));
         } else {
@@ -50,23 +56,24 @@ public class StoryManager {
      * @param trigger
      *            zu entfernender Trigger.
      */
-    public void removeTrigger(ITrigger trigger) {
+    public void removeTrigger(Trigger trigger) {
         triggerMap.remove(trigger);
     }
 
     /**
      * Updated alle Trigger.
      */
+    @Override
     public void update() {
-        ArrayList<ITrigger> triggerToRemove = new ArrayList<ITrigger>();
-        for (Entry<ITrigger, MethodInvoker> entry : triggerMap.entrySet()) {
+        ArrayList<Trigger> triggerToRemove = new ArrayList<Trigger>();
+        for (Entry<Trigger, MethodInvoker> entry : triggerMap.entrySet()) {
             if (entry.getKey().isTriggerActive()) {
                 entry.getValue().invoke();
                 triggerToRemove.add(entry.getKey());
             }
         }
 
-        for (ITrigger toRemove : triggerToRemove) {
+        for (Trigger toRemove : triggerToRemove) {
             removeTrigger(toRemove);
         }
 

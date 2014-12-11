@@ -3,12 +3,12 @@ package projektkurs.story.trigger;
 /**
  * Ein Trigger, der mehrere andere Trigger in sich vereint.
  */
-public abstract class CombinedTrigger implements ITrigger {
+public abstract class CombinedTrigger extends Trigger {
 
     /**
      * Die Trigger.
      */
-    protected final ITrigger[] trigger;
+    protected final Trigger[] trigger;
 
     /**
      * Konstruktor.
@@ -16,7 +16,7 @@ public abstract class CombinedTrigger implements ITrigger {
      * @param triggers
      *            die Trigger
      */
-    public CombinedTrigger(ITrigger... triggers) {
+    public CombinedTrigger(Trigger... triggers) {
         trigger = triggers;
     }
 

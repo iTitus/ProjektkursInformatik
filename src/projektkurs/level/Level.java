@@ -1,6 +1,7 @@
 package projektkurs.level;
 
 import projektkurs.Main;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
@@ -10,7 +11,7 @@ import projektkurs.world.builder.MapBuilder;
 /**
  * Ein Level.
  */
-public class Level {
+public class Level implements IUpdatable {
 
     /**
      * Aktuelles Spielfeld.
@@ -37,6 +38,11 @@ public class Level {
         this.maps = maps;
         currMap = maps[0];
         this.name = name;
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -98,6 +104,13 @@ public class Level {
             Main.getPlayer().setPosition(currMap.getSpawnX(), currMap.getSpawnY());
         } else {
             Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
+        }
+    }
+
+    @Override
+    public void update() {
+        if (currMap.canUpdate()) {
+            currMap.update();
         }
     }
 }

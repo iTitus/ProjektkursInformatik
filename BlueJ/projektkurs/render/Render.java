@@ -9,12 +9,13 @@ import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.RenderUtil;
 
 /**
  * Renderklasse.
  */
-public class Render {
+public class Render implements IUpdatable {
 
     /**
      * Das Spiel-Canvas.
@@ -36,6 +37,11 @@ public class Render {
         canvas = null;
         strategy = null;
         g = null;
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -79,6 +85,7 @@ public class Render {
     /**
      * Updated den Bildschirm.
      */
+    @Override
     public void update() {
         if (strategy != null) {
 

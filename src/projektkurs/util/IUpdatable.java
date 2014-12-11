@@ -3,7 +3,7 @@ package projektkurs.util;
 /**
  * Interface für Objekte, die upgedated werden können.
  */
-public interface ICanUpdate {
+public interface IUpdatable {
 
     /**
      * Kann dieses Objekt jetzt updaten.

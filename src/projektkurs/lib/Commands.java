@@ -2,12 +2,12 @@ package projektkurs.lib;
 
 import java.util.HashMap;
 
+import projektkurs.command.Command;
 import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
-import projektkurs.command.ICommand;
 import projektkurs.util.Init;
 
 /**
@@ -18,31 +18,31 @@ public final class Commands {
     /**
      * Die Zurück-Mappings.
      */
-    public static final HashMap<ICommand, String> BACK_MAPPINGS = new HashMap<ICommand, String>();
+    public static final HashMap<Command, String> BACK_MAPPINGS = new HashMap<Command, String>();
     /**
      * CutScene-Start-Kommando.
      */
-    public static ICommand cutScene;
+    public static Command cutScene;
     /**
      * Dialog-Start-Kommando.
      */
-    public static ICommand dialog;
+    public static Command dialog;
     /**
      * Item-Kommando.
      */
-    public static ICommand item;
+    public static Command item;
     /**
      * Die Mappings.
      */
-    public static final HashMap<String, ICommand> MAPPINGS = new HashMap<String, ICommand>();
+    public static final HashMap<String, Command> MAPPINGS = new HashMap<String, Command>();
     /**
      * Raster-Setz-Kommando.
      */
-    public static ICommand setraster;
+    public static Command setraster;
     /**
      * Switch-Level-Kommando.
      */
-    public static ICommand switchLevel;
+    public static Command switchLevel;
 
     /**
      * Initialisiert alle Dialoge.
@@ -73,7 +73,7 @@ public final class Commands {
      * @param c
      *            ICommand
      */
-    private static void registerMapping(ICommand c) {
+    private static void registerMapping(Command c) {
         MAPPINGS.put(c.getCommand(), c);
         BACK_MAPPINGS.put(c, c.getCommand());
     }

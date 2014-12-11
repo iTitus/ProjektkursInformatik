@@ -3,12 +3,12 @@ package projektkurs.story.trigger;
 /**
  * Ein Trigger.
  */
-public interface ITrigger {
+public abstract class Trigger {
 
     /**
      * Ist dieser Trigger aktiv.
      *
      * @return true, wenn ja; false, wenn nein
      */
-    boolean isTriggerActive();
+    public abstract boolean isTriggerActive();
 }

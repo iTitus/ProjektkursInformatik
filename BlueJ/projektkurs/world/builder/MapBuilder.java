@@ -15,7 +15,7 @@ import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.raster.extra.ExtraInformationKiste;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
-import projektkurs.story.trigger.InventoryTrigger;
+import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
 import projektkurs.util.Direction;
 import projektkurs.util.MathUtil;
@@ -122,7 +122,7 @@ public final class MapBuilder {
         map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
 
         // STORYMAGER!
-        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);
+        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);
 
     }
 

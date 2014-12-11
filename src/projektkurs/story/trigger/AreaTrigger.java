@@ -5,7 +5,7 @@ import projektkurs.Main;
 /**
  * Prüft, ob sich der Spieler in einem gegebenen Rechteck befindet.
  */
-public class AreaTrigger implements ITrigger {
+public class AreaTrigger extends Trigger {
 
     /**
      * X-Koordinate.

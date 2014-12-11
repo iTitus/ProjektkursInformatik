@@ -3,17 +3,18 @@ package projektkurs.entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import projektkurs.Main;
-import projektkurs.entity.behaviour.Behaviours;
+import projektkurs.entity.behaviour.Behaviour;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.util.Direction;
-import projektkurs.util.ICanUpdate;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.ISaveable;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.SaveData;
@@ -21,8 +22,12 @@ import projektkurs.util.SaveData;
 /**
  * Ein Entity.
  */
-public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSize {
+public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSize {
 
+    /**
+     * Alle Behaviours dieses Entities.
+     */
+    private final ArrayList<Behaviour> behaviours = new ArrayList<Behaviour>();
     /**
      * Richtung, in die dieser Entity guckt.
      */
@@ -137,16 +142,7 @@ public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSi
 
     @Override
     public boolean canUpdate() {
-        return !getBehaviour().equals(Behaviours.NOTHING);
-    }
-
-    /**
-     * Behaviours dieses Entities.
-     *
-     * @return Behaviours
-     */
-    public Behaviours getBehaviour() {
-        return Behaviours.NOTHING;
+        return !behaviours.isEmpty();
     }
 
     /**
@@ -337,7 +333,11 @@ public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSi
 
     @Override
     public void update() {
-        getBehaviour().getBehaviour().update(this);
+        for (Behaviour behaviour : behaviours) {
+            if (behaviour.canUpdate()) {
+                behaviour.update();
+            }
+        }
     }
 
     @Override
@@ -349,6 +349,23 @@ public abstract class Entity implements ICanUpdate, ISaveable, IHasPositionAndSi
         data.set(Strings.ENTITY_DESPAWN, shouldDeSpawn);
         data.set(Strings.ENTITY_FACING, facing.ordinal());
         data.set(Strings.ENTITY_IMAGE, Images.BACK_MAPPINGS.get(image));
+    }
+
+    /**
+     * Fügt eine Behaviour hinzu.
+     *
+     * @param behaviour
+     *            Behaviour
+     */
+    protected void addBehaviour(Behaviour behaviour) {
+        if (behaviour != null) {
+            for (Behaviour bhvr : behaviours) {
+                if (!bhvr.isCompatibleWith(behaviour) || !behaviour.isCompatibleWith(bhvr)) {
+                    return;
+                }
+            }
+            behaviours.add(behaviour);
+        }
     }
 
 }

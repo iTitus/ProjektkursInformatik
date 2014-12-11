@@ -7,7 +7,7 @@ import projektkurs.lib.CutScenes;
 /**
  * Das CutScene-Start-Kommando.
  */
-public class CommandCutScene implements ICommand {
+public class CommandCutScene extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {

@@ -171,7 +171,9 @@ public final class CutSceneManager {
 
                 while (delta >= 1) {
                     loops++;
-                    currCutScene.update();
+                    if (currCutScene.canUpdate()) {
+                        currCutScene.update();
+                    }
                     Main.getRenderHelper().addRenderTick();
                     delta--;
                 }

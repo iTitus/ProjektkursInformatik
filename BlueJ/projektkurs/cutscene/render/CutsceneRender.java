@@ -9,12 +9,13 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.RenderUtil;
 
 /**
  *
  */
-public class CutsceneRender {
+public class CutsceneRender implements IUpdatable {
 
     /**
      * Das Canvas, auf dem die CutScene gemalt wird.
@@ -36,6 +37,11 @@ public class CutsceneRender {
         canvas = null;
         g = null;
         strategy = null;
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -64,6 +70,7 @@ public class CutsceneRender {
     /**
      * Rendert die aktuelle CutScene.
      */
+    @Override
     public void update() {
         if (strategy != null) {
             g = (Graphics2D) strategy.getDrawGraphics();

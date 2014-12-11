@@ -11,7 +11,7 @@ public class CombinedAndTrigger extends CombinedTrigger {
      * @param trigger
      *            die Trigger
      */
-    public CombinedAndTrigger(ITrigger... trigger) {
+    public CombinedAndTrigger(Trigger... trigger) {
         super(trigger);
     }
 

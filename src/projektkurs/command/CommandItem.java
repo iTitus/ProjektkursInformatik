@@ -8,7 +8,7 @@ import projektkurs.lib.Items;
 /**
  * Das Item-Kommando.
  */
-public class CommandItem implements ICommand {
+public class CommandItem extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {

@@ -3,7 +3,7 @@ package projektkurs.command;
 /**
  * Ein Kommando.
  */
-public interface ICommand {
+public abstract class Command {
 
     /**
      * Führt das Kommando aus.
@@ -12,13 +12,13 @@ public interface ICommand {
      *            Argumente
      * @return Ergebnis
      */
-    EnumCommandResult execute(String[] args);
+    public abstract EnumCommandResult execute(String[] args);
 
     /**
      * Kommandoname.
      *
      * @return Kommandoname
      */
-    String getCommand();
+    public abstract String getCommand();
 
 }

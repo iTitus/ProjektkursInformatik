@@ -2,7 +2,7 @@ package projektkurs.entity;
 
 import java.awt.image.BufferedImage;
 
-import projektkurs.entity.behaviour.Behaviours;
+import projektkurs.entity.behaviour.BehaviourRunAround;
 import projektkurs.lib.Integers;
 
 /**
@@ -15,6 +15,7 @@ public class EntityRedNPC extends EntityNPC {
      */
     public EntityRedNPC() {
         super();
+        addBehaviour(new BehaviourRunAround(this));
     }
 
     /**
@@ -31,9 +32,9 @@ public class EntityRedNPC extends EntityNPC {
         super(posX, posY, image, Integers.PLAYER_HEALTH);
     }
 
-    @Override
-    public Behaviours getBehaviour() {
-        return Behaviours.RUN_AROUND;
-    }
+    // @Override
+    // public Behaviours getBehaviour() {
+    // return Behaviours.RUN_AROUND;
+    // }
 
 }

@@ -8,7 +8,7 @@ import projektkurs.util.MathUtil;
 /**
  * Switch-Level-Kommando.
  */
-public class CommandSwitch implements ICommand {
+public class CommandSwitch extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {

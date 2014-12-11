@@ -7,7 +7,7 @@ import projektkurs.raster.AbstractRaster;
 /**
  * Das Raster-Setz-Kommando.
  */
-public class CommandSetRaster implements ICommand {
+public class CommandSetRaster extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {

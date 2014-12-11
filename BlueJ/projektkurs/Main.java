@@ -21,7 +21,6 @@ import projektkurs.lib.Strings;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
 import projektkurs.thread.GameThread;
-import projektkurs.thread.LoopThread;
 import projektkurs.thread.MoveThread;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
@@ -64,7 +63,7 @@ public final class Main {
     /**
      * Der Bewegungs-Thread.
      */
-    private static LoopThread moveThread;
+    private static MoveThread moveThread;
     /**
      * Der Spieler.
      */

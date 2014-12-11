@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.Queue;
 
 /**
  * Eine CutScene.
  */
-public final class CutScene {
+public final class CutScene implements IUpdatable {
 
     /**
      * Queues für das Verarbeiten der Actions.
@@ -60,6 +61,11 @@ public final class CutScene {
         isFinished = false;
         this.background = background;
         objects = new ArrayList<CutSceneObject>();
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     /**
@@ -171,6 +177,7 @@ public final class CutScene {
     /**
      * Updated die CutScene.
      */
+    @Override
     public void update() {
 
         if (elapsedTicks == 0 && startupQueue != null && !startupQueue.empty()) {

@@ -98,7 +98,9 @@ public class GameThread extends Thread {
             while (!pausing && delta >= 1) {
                 loops++;
                 try {
-                    Main.getLevel().getMap().update();
+                    if (Main.getLevel().canUpdate()) {
+                        Main.getLevel().update();
+                    }
                     Main.getRenderHelper().addRenderTick();
                 } catch (Throwable t) {
                     Logger.logThrowable("Unable to update the game", t);
@@ -107,7 +109,7 @@ public class GameThread extends Thread {
                 delta--;
             }
 
-            if (!pausing) {
+            if (!pausing && Main.getRender().canUpdate()) {
                 frames++;
                 try {
                     Main.getRender().update();
@@ -136,7 +138,7 @@ public class GameThread extends Thread {
         super.start();
         running = true;
         pausing = false;
-        Logger.info("Successfully started Thread: " + getClass().getSimpleName());
+        Logger.info("Successfully started Game-Thread");
     }
 
     /**
