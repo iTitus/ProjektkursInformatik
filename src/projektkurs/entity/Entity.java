@@ -61,6 +61,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * Konstruktor.
      */
     public Entity() {
+        shouldDeSpawn = false;
+        facing = Direction.UNKNOWN;
     }
 
     /**
@@ -92,13 +94,12 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      *            Bild
      */
     public Entity(int posX, int posY, int sizeX, int sizeY, BufferedImage image) {
+        this();
         this.posX = posX;
         this.posY = posY;
         this.image = image;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        shouldDeSpawn = false;
-        facing = Direction.UNKNOWN;
     }
 
     /**

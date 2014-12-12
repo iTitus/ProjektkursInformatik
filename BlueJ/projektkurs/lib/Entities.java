@@ -26,6 +26,22 @@ public final class Entities {
     public static final HashMap<String, Class<? extends Entity>> MAPPINGS = new HashMap<String, Class<? extends Entity>>();
 
     /**
+     * Erstellt einen Entity seiner ID.
+     *
+     * @param id
+     *            Entity-ID
+     * @return Entity
+     */
+    public static Entity createEntity(String id) {
+
+        if (id == null || id.equalsIgnoreCase("")) {
+            return null;
+        }
+
+        return ReflectionUtil.newInstance(MAPPINGS.get(id));
+    }
+
+    /**
      * Initialisiert alle Entitytypen.
      */
     @Init

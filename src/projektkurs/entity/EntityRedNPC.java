@@ -32,9 +32,4 @@ public class EntityRedNPC extends EntityNPC {
         super(posX, posY, image, Integers.PLAYER_HEALTH);
     }
 
-    // @Override
-    // public Behaviours getBehaviour() {
-    // return Behaviours.RUN_AROUND;
-    // }
-
 }

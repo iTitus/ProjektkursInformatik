@@ -1,6 +1,7 @@
 package projektkurs.dialog.part;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import projektkurs.dialog.DialogManager;
 
@@ -133,21 +134,24 @@ public class DialogPart implements Iterable<String> {
     public Iterator<String> iterator() {
         return new Iterator<String>() {
 
-            private int index = 0;
+            private int cursor = 0;
 
             @Override
             public boolean hasNext() {
-                return index < talk.length;
+                return cursor < talk.length;
             }
 
             @Override
             public String next() {
-                return talk[index++];
+                if (cursor + 1 >= talk.length) {
+                    throw new NoSuchElementException();
+                }
+                return talk[cursor++];
             }
 
             @Override
             public void remove() {
-                // NO-OP
+                throw new UnsupportedOperationException();
             }
         };
     }
