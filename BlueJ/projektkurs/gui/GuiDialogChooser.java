@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.dialog.Dialog;
-import projektkurs.dialog.part.DialogPart;
+import projektkurs.dialog.DialogPart;
 import projektkurs.entity.Entity;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.DialogButton;

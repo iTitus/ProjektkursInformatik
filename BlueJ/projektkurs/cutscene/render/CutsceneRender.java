@@ -13,7 +13,7 @@ import projektkurs.util.IUpdatable;
 import projektkurs.util.RenderUtil;
 
 /**
- *
+ * CutScene-Renderklasse.
  */
 public class CutsceneRender implements IUpdatable {
 

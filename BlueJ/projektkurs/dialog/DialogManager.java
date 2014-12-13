@@ -1,32 +1,32 @@
 package projektkurs.dialog;
 
 /**
- * Managt den aktuell laufenden Dialog.
+ * Managt alle Dialoge.
  */
 public final class DialogManager {
 
     /**
-     * Der aktuelle Wert des Dialogs.
+     * Der aktuelle Wert der Dialoge.
      */
-    private static int currValue;
+    private static int value;
 
     /**
-     * Ändert den Wert des Dialogs.
+     * Ändert den Wert der Dialoge.
      *
-     * @param value
+     * @param by
      *            Änderung
      */
-    public static void changeValueBy(int value) {
-        currValue += value;
+    public static void changeValue(int by) {
+        value += by;
     }
 
     /**
-     * Der Wert des aktuellen Dialogs.
+     * Der Wert der Dialoge.
      *
      * @return Wert
      */
-    public static int getCurrentValue() {
-        return currValue;
+    public static int getValue() {
+        return value;
     }
 
     /**

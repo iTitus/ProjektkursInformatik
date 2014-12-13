@@ -2,8 +2,6 @@ package projektkurs.dialog;
 
 import java.util.ArrayList;
 
-import projektkurs.dialog.part.DialogPart;
-
 /**
  * Dialog.
  */

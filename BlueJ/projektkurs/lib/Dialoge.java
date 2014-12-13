@@ -3,7 +3,7 @@ package projektkurs.lib;
 import java.util.HashMap;
 
 import projektkurs.dialog.Dialog;
-import projektkurs.dialog.part.DialogPart;
+import projektkurs.dialog.DialogPart;
 import projektkurs.util.Init;
 
 /**

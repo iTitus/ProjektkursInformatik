@@ -1,6 +1,6 @@
 package projektkurs.gui.element;
 
-import projektkurs.dialog.part.DialogPart;
+import projektkurs.dialog.DialogPart;
 
 /**
  * Ein Dialog-Auswählbutton.

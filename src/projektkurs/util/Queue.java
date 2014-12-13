@@ -99,10 +99,10 @@ public class Queue<T> {
     public String toString() {
         ArrayList<Node<T>> nodes = new ArrayList<Node<T>>();
 
-        Node<T> currNode = head;
-        while (currNode != null) {
-            nodes.add(currNode);
-            currNode = currNode.getNext();
+        Node<T> node = head;
+        while (node != null) {
+            nodes.add(node);
+            node = node.getNext();
         }
 
         return "Queue" + nodes.toString();

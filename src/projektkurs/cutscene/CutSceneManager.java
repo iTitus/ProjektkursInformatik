@@ -21,32 +21,32 @@ public final class CutSceneManager {
     /**
      * Gerade laufende CutScene.
      */
-    private static CutScene currCutScene;
-    /**
-     * CutsceneRender der gerade laufenden CutScene.
-     */
-    private static CutsceneRender currCutSceneRender;
-    /**
-     * RenderHelper der gerade laufenden CutScene.
-     */
-    private static RenderHelper currCutSceneRenderHelper;
-    /**
-     * Spielfeld der gerade laufenden CutScene.
-     */
-    private static Spielfeld currSpielfeld;
+    private static CutScene cutScene;
     /**
      * Das Fenster der gerade laufenden CutScene.
      */
     private static JFrame cutSceneFrame;
     /**
+     * CutsceneRender der gerade laufenden CutScene.
+     */
+    private static CutsceneRender cutSceneRender;
+    /**
+     * RenderHelper der gerade laufenden CutScene.
+     */
+    private static RenderHelper cutSceneRenderHelper;
+    /**
      * Partielle Ticks.
      */
     private static double delta;
-
     /**
      * Frames per second.
      */
     private static int fps;
+
+    /**
+     * Spielfeld der gerade laufenden CutScene.
+     */
+    private static Spielfeld map;
     /**
      * Updates per second.
      */
@@ -58,7 +58,7 @@ public final class CutSceneManager {
      * @return RenderHelper
      */
     public static CutScene getCutScene() {
-        return currCutScene;
+        return cutScene;
     }
 
     /**
@@ -67,7 +67,7 @@ public final class CutSceneManager {
      * @return CutsceneRender
      */
     public static CutsceneRender getCutSceneRender() {
-        return currCutSceneRender;
+        return cutSceneRender;
     }
 
     /**
@@ -76,7 +76,7 @@ public final class CutSceneManager {
      * @return RenderHelper
      */
     public static RenderHelper getCutSceneRenderHelper() {
-        return currCutSceneRenderHelper;
+        return cutSceneRenderHelper;
     }
 
     /**
@@ -103,7 +103,7 @@ public final class CutSceneManager {
      * @return Spielfeld
      */
     public static Spielfeld getMap() {
-        return currSpielfeld;
+        return map;
     }
 
     /**
@@ -121,32 +121,32 @@ public final class CutSceneManager {
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isRunning() {
-        return currCutScene != null;
+        return cutScene != null;
     }
 
     /**
      * Führt eine CutScene aus.
      *
-     * @param cutScene
+     * @param cutSceneToStart
      *            CutScene
      */
-    public static void startCutScene(CutScene cutScene) {
+    public static void startCutScene(CutScene cutSceneToStart) {
 
         if (!isRunning()) {
             Logger.info("Starting CutScene");
             Main.pause();
             Main.hide();
 
-            currCutScene = cutScene;
-            currCutSceneRenderHelper = new RenderHelper();
-            currCutSceneRender = new CutsceneRender();
-            currSpielfeld = Main.getLevel().getMap().copy();
+            cutScene = cutSceneToStart;
+            cutSceneRenderHelper = new RenderHelper();
+            cutSceneRender = new CutsceneRender();
+            map = Main.getLevel().getMap().copy();
 
             cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + "- CutScene");
             JPanel panel = (JPanel) cutSceneFrame.getContentPane();
             panel.setLayout(null);
-            panel.setPreferredSize(currCutSceneRender.getCutSceneCanvas().getPreferredSize());
-            panel.add(currCutSceneRender.getCutSceneCanvas());
+            panel.setPreferredSize(cutSceneRender.getCutSceneCanvas().getPreferredSize());
+            panel.add(cutSceneRender.getCutSceneCanvas());
 
             cutSceneFrame.setUndecorated(true);
             cutSceneFrame.setResizable(false);
@@ -154,7 +154,7 @@ public final class CutSceneManager {
             cutSceneFrame.pack();
             cutSceneFrame.setVisible(true);
 
-            currCutSceneRender.initBuffers();
+            cutSceneRender.initBuffers();
 
             final double nsPerTick = MathUtil.ceilDiv(Integers.NS_PER_SECOND, Integers.UPS);
             fps = 0;
@@ -164,22 +164,22 @@ public final class CutSceneManager {
             long lastTime = System.nanoTime();
             long lastTimer = System.nanoTime();
 
-            while (!currCutScene.isFinished()) {
+            while (!cutScene.isFinished()) {
                 long time = System.nanoTime();
                 delta += (time - lastTime) / nsPerTick;
                 lastTime = time;
 
                 while (delta >= 1) {
                     loops++;
-                    if (currCutScene.canUpdate()) {
-                        currCutScene.update();
+                    if (cutScene.canUpdate()) {
+                        cutScene.update();
                     }
                     Main.getRenderHelper().addRenderTick();
                     delta--;
                 }
 
                 frames++;
-                currCutSceneRender.update();
+                cutSceneRender.update();
 
                 if (System.nanoTime() - lastTimer >= Integers.NS_PER_SECOND) {
                     lastTimer += Integers.NS_PER_SECOND;
@@ -192,11 +192,11 @@ public final class CutSceneManager {
             }
 
             cutSceneFrame.dispose();
-            currCutScene = null;
+            cutScene = null;
             cutSceneFrame = null;
-            currCutSceneRenderHelper = null;
-            currCutSceneRender = null;
-            currSpielfeld = null;
+            cutSceneRenderHelper = null;
+            cutSceneRender = null;
+            map = null;
             Main.show();
             Main.resume();
             Logger.info("Finished CutScene");

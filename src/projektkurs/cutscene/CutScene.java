@@ -182,11 +182,11 @@ public final class CutScene implements IUpdatable {
 
         if (elapsedTicks == 0 && startupQueue != null && !startupQueue.empty()) {
 
-            Action currAction;
+            Action action;
             while (!startupQueue.empty()) {
-                currAction = startupQueue.frontDeQueue();
-                if (currAction != null) {
-                    currAction.doAction(this);
+                action = startupQueue.frontDeQueue();
+                if (action != null) {
+                    action.doAction(this);
                 }
             }
 
@@ -197,14 +197,14 @@ public final class CutScene implements IUpdatable {
 
             tempQueue = new Queue<Action>();
 
-            Action currAction;
+            Action action;
             while (!actionQueue.empty()) {
-                currAction = actionQueue.frontDeQueue();
+                action = actionQueue.frontDeQueue();
 
-                if (currAction != null && currAction.shouldDoAction(this)) {
-                    currAction.doAction(this);
+                if (action != null && action.shouldDoAction(this)) {
+                    action.doAction(this);
                 }
-                tempQueue.enQueue(currAction);
+                tempQueue.enQueue(action);
             }
             actionQueue = tempQueue;
         } else {

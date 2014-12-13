@@ -39,12 +39,12 @@ public class AnimatedRaster extends SimpleRaster {
     @Override
     public void render(Graphics2D g, int x, int y) {
         if (animationFrames != null) {
-            int currentAnimationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
+            int animationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
-                if (currentAnimationTime >= totalAnimationTime) {
+                if (animationTime >= totalAnimationTime) {
                     totalAnimationTime += animationFrame.getAnimationTime();
-                    if (currentAnimationTime < totalAnimationTime) {
+                    if (animationTime < totalAnimationTime) {
                         RenderUtil.drawDefaultRaster(g, animationFrame.getImage(), x, y);
                         break;
                     }
@@ -56,12 +56,12 @@ public class AnimatedRaster extends SimpleRaster {
     @Override
     public void renderCutScene(Graphics2D g, int x, int y) {
         if (animationFrames != null) {
-            int currentAnimationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
+            int animationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
-                if (currentAnimationTime >= totalAnimationTime) {
+                if (animationTime >= totalAnimationTime) {
                     totalAnimationTime += animationFrame.getAnimationTime();
-                    if (currentAnimationTime < totalAnimationTime) {
+                    if (animationTime < totalAnimationTime) {
                         RenderUtil.drawCutSceneRaster(g, animationFrame.getImage(), x, y);
                         break;
                     }

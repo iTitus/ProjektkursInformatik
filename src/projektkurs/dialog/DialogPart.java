@@ -15,7 +15,7 @@ public class DialogPart implements Iterable<String> {
     /**
      * Aktueller Index.
      */
-    private int currIndex;
+    private int index;
     /**
      * Ist dieser DialogPart gut. Wenn ja muss man über dem benötigten Wert liegen, wenn nein darunter.
      */
@@ -61,7 +61,7 @@ public class DialogPart implements Iterable<String> {
         for (int i = 0; i < talk.length; i++) {
             talk[i] = name + "." + i;
         }
-        currIndex = 0;
+        index = 0;
         activated = true;
     }
 
@@ -89,7 +89,7 @@ public class DialogPart implements Iterable<String> {
      * @return nächster Sprechpart
      */
     public String getNextString() {
-        return talk[currIndex++];
+        return talk[index++];
     }
 
     /**
@@ -107,7 +107,7 @@ public class DialogPart implements Iterable<String> {
      * @return true, wenn ja; false wenn nein
      */
     public boolean hasNextString() {
-        return currIndex < talk.length;
+        return index < talk.length;
     }
 
     /**
@@ -125,7 +125,7 @@ public class DialogPart implements Iterable<String> {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isNPCSpeaking() {
-        return currIndex % 2 == 0;
+        return index % 2 == 0;
     }
 
     @Override
@@ -170,7 +170,7 @@ public class DialogPart implements Iterable<String> {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldShowUp() {
-        return activated && (isGood ? necessaryValue <= DialogManager.getCurrentValue() : necessaryValue >= DialogManager.getCurrentValue());
+        return activated && (isGood ? necessaryValue <= DialogManager.getValue() : necessaryValue >= DialogManager.getValue());
     }
 
 }

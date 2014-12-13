@@ -33,10 +33,6 @@ import projektkurs.util.ReflectionUtil;
 public final class Main {
 
     /**
-     * Das aktuelle Level.
-     */
-    private static Level currLevel;
-    /**
      * Der GameThread.
      */
     private static GameThread gameThread;
@@ -45,10 +41,6 @@ public final class Main {
      */
     private static Gui gui;
     /**
-     * Der InputManager.
-     */
-    private static InputManager imgr;
-    /**
      * Das Ingame-GUI (das normale Spiel).
      */
     private static GuiIngame ingameGui;
@@ -56,6 +48,14 @@ public final class Main {
      * Eine Liste mit allen Methoden, die eine @Init-Annotation haben.
      */
     private static ArrayList<Method> initMethods;
+    /**
+     * Der InputManager.
+     */
+    private static InputManager inputManager;
+    /**
+     * Das aktuelle Level.
+     */
+    private static Level level;
     /**
      * Das Hauptfenster.
      */
@@ -114,7 +114,7 @@ public final class Main {
      * @return InputManager
      */
     public static InputManager getInputManager() {
-        return imgr;
+        return inputManager;
     }
 
     /**
@@ -123,7 +123,7 @@ public final class Main {
      * @return Level
      */
     public static Level getLevel() {
-        return currLevel;
+        return level;
     }
 
     /**
@@ -174,9 +174,9 @@ public final class Main {
      */
     @Init(state = State.PRE)
     public static void initFields() {
-        imgr = new InputManager();
-        currLevel = Levels.level0;
-        player = new EntityPlayer(currLevel.getMap().getSpawnX(), currLevel.getMap().getSpawnY(), Images.charakter);
+        inputManager = new InputManager();
+        level = Levels.level0;
+        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.charakter);
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();
@@ -260,7 +260,7 @@ public final class Main {
      */
     public static void setLevel(Level l) {
         if (l != null) {
-            currLevel = l;
+            level = l;
         }
     }
 

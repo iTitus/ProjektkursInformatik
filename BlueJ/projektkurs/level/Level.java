@@ -16,7 +16,7 @@ public class Level implements IUpdatable {
     /**
      * Aktuelles Spielfeld.
      */
-    private Spielfeld currMap;
+    private Spielfeld map;
     /**
      * Alle Spielfelder.
      */
@@ -36,7 +36,7 @@ public class Level implements IUpdatable {
      */
     public Level(String name, Spielfeld... maps) {
         this.maps = maps;
-        currMap = maps[0];
+        map = maps[0];
         this.name = name;
     }
 
@@ -65,7 +65,7 @@ public class Level implements IUpdatable {
      * @return Spielfeld
      */
     public Spielfeld getMap() {
-        return currMap;
+        return map;
     }
 
     /**
@@ -100,8 +100,8 @@ public class Level implements IUpdatable {
      */
     public void setMap(int i) {
         if (MathUtil.isInArray(i, maps.length)) {
-            currMap = maps[i];
-            Main.getPlayer().setPosition(currMap.getSpawnX(), currMap.getSpawnY());
+            map = maps[i];
+            Main.getPlayer().setPosition(map.getSpawnX(), map.getSpawnY());
         } else {
             Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
         }
@@ -109,8 +109,8 @@ public class Level implements IUpdatable {
 
     @Override
     public void update() {
-        if (currMap.canUpdate()) {
-            currMap.update();
+        if (map.canUpdate()) {
+            map.update();
         }
     }
 }
