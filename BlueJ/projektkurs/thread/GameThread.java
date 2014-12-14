@@ -85,10 +85,11 @@ public class GameThread extends Thread {
     @Override
     public void run() {
 
-        int loops = 0;
+        int updates = 0;
         int frames = 0;
         long lastTime = System.nanoTime();
         long lastTimer = System.nanoTime();
+        boolean shouldRender = false;
 
         while (running) {
             long time = System.nanoTime();
@@ -96,7 +97,7 @@ public class GameThread extends Thread {
             lastTime = time;
 
             while (!pausing && delta >= 1) {
-                loops++;
+                updates++;
                 try {
                     if (Main.getLevel().canUpdate()) {
                         Main.getLevel().update();
@@ -107,23 +108,34 @@ public class GameThread extends Thread {
                     Main.exit();
                 }
                 delta--;
+                shouldRender = true;
             }
 
-            if (!pausing && Main.getRender().canUpdate()) {
-                frames++;
+            if (shouldRender) {
+                if (!pausing && Main.getRender().canUpdate()) {
+                    frames++;
+                    try {
+                        Main.getRender().update();
+                    } catch (Throwable t) {
+                        Logger.logThrowable("Unable to render the game", t);
+                        Main.exit();
+                    }
+                    shouldRender = false;
+                }
+            } else {
                 try {
-                    Main.getRender().update();
+                    Thread.sleep(1);
                 } catch (Throwable t) {
-                    Logger.logThrowable("Unable to render the game", t);
+                    Logger.logThrowable("Unable to pause the thread", t);
                     Main.exit();
                 }
             }
 
             if (System.nanoTime() - lastTimer >= 1000000000) {
                 lastTimer += 1000000000;
-                ups = loops;
+                ups = updates;
                 fps = frames;
-                loops = 0;
+                updates = 0;
                 frames = 0;
             }
 
