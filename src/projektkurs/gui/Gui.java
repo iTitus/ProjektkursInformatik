@@ -123,7 +123,14 @@ public abstract class Gui {
      *            Element
      */
     protected void addElement(Element e) {
-        guiElements.add(e);
+        if (e != null) {
+            for (Element element : guiElements) {
+                if (element.getID() == e.getID()) {
+                    throw new IllegalArgumentException("An Element with the ID '" + e.getID() + "' is already registered");
+                }
+            }
+            guiElements.add(e);
+        }
     }
 
     /**

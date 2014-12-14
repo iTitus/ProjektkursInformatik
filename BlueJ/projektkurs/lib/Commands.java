@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.command.Command;
@@ -9,6 +10,7 @@ import projektkurs.command.CommandItem;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.util.Init;
+import projektkurs.util.Pair;
 
 /**
  * Alle Kommandos.
@@ -43,6 +45,15 @@ public final class Commands {
      * Switch-Level-Kommando.
      */
     public static Command switchLevel;
+
+    /**
+     * Das Pair, das alle Kommandos enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.commands", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle Dialoge.

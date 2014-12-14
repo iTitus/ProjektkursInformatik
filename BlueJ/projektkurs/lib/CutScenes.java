@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.cutscene.CutScene;
@@ -12,6 +13,7 @@ import projektkurs.cutscene.condition.TickCondition;
 import projektkurs.cutscene.condition.TickCondition.TickConditionType;
 import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.util.Init;
+import projektkurs.util.Pair;
 
 /**
  * Alle CutScenes.
@@ -30,6 +32,15 @@ public final class CutScenes {
      * Die Mappings.
      */
     public static final HashMap<String, CutScene> MAPPINGS = new HashMap<String, CutScene>();
+
+    /**
+     * Das Pair, das alle CutScenes enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.cutscenes", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle CutScenes.

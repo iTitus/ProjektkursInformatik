@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.entity.Entity;
@@ -8,6 +9,7 @@ import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
+import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.util.SaveData;
 
@@ -39,6 +41,15 @@ public final class Entities {
         }
 
         return ReflectionUtil.newInstance(MAPPINGS.get(id));
+    }
+
+    /**
+     * Das Pair, das alle Entities enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.entities", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

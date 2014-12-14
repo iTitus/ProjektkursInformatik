@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.sound.sampled.AudioSystem;
@@ -9,6 +10,7 @@ import projektkurs.Main;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
+import projektkurs.util.Pair;
 
 /**
  * Alle Sounds.
@@ -180,6 +182,15 @@ public final class Sounds {
         for (Sound s : MAPPINGS.values()) {
             s.close();
         }
+    }
+
+    /**
+     * Das Pair, das alle Kommandos enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.sounds", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

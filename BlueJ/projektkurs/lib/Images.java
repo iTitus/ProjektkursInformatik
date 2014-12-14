@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -12,6 +13,7 @@ import projektkurs.Main;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
+import projektkurs.util.Pair;
 
 /**
  * Alle Bilder.
@@ -128,6 +130,15 @@ public final class Images {
                 img.flush();
             }
         }
+    }
+
+    /**
+     * Das Pair, das alle Images enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.images", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

@@ -1,7 +1,7 @@
 package projektkurs.command;
 
 import projektkurs.Main;
-import projektkurs.item.AbstractItem;
+import projektkurs.item.Item;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Items;
 
@@ -17,7 +17,7 @@ public class CommandItem extends Command {
             return EnumCommandResult.WRONG_USAGE;
         }
 
-        AbstractItem item = Items.MAPPINGS.get(args[0]);
+        Item item = Items.MAPPINGS.get(args[0]);
         if (item == null) {
             return EnumCommandResult.OBJECT_NOT_FOUND;
         }

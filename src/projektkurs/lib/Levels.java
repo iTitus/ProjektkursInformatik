@@ -1,11 +1,13 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.level.Level;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.MathUtil;
+import projektkurs.util.Pair;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -38,6 +40,15 @@ public final class Levels {
         for (Level l : MAPPINGS.values()) {
             l.generateAndPopulateAll();
         }
+    }
+
+    /**
+     * Das Pair, das alle Kommandos enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.levels", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

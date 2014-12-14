@@ -35,7 +35,7 @@ public class ItemStack {
     /**
      * Itemtyp dieses ItemStacks.
      */
-    private final AbstractItem item;
+    private final Item item;
     /**
      * Größe dieses ItemStacks.
      */
@@ -47,7 +47,7 @@ public class ItemStack {
      * @param item
      *            Itemtyp
      */
-    public ItemStack(AbstractItem item) {
+    public ItemStack(Item item) {
         this(item, 1);
     }
 
@@ -59,7 +59,7 @@ public class ItemStack {
      * @param stackSize
      *            Größe
      */
-    public ItemStack(AbstractItem item, int stackSize) {
+    public ItemStack(Item item, int stackSize) {
         this(item, stackSize, 0);
     }
 
@@ -73,7 +73,7 @@ public class ItemStack {
      * @param damage
      *            Schaden
      */
-    public ItemStack(AbstractItem item, int stackSize, int damage) {
+    public ItemStack(Item item, int stackSize, int damage) {
         if (stackSize < 0) {
             throw new IllegalArgumentException("StackSize must not be negative");
         }
@@ -134,7 +134,7 @@ public class ItemStack {
      *
      * @return Itemtyp
      */
-    public AbstractItem getItem() {
+    public Item getItem() {
         return item;
     }
 
@@ -195,7 +195,7 @@ public class ItemStack {
      *            AbstractItem
      * @return true, wenn ja; false, wenn nein
      */
-    public boolean itemEquals(AbstractItem other) {
+    public boolean itemEquals(Item other) {
         return other == null && item == null || other != null && item != null && other.equals(item);
     }
 

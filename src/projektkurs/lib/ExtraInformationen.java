@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.raster.extra.ExtraInformation;
@@ -7,6 +8,7 @@ import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.raster.extra.ExtraInformationFire;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
+import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.util.SaveData;
 
@@ -23,6 +25,15 @@ public final class ExtraInformationen {
      * Mappings.
      */
     public static final HashMap<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
+
+    /**
+     * Das Pair, das alle ExtraInformationen enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.extras", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle ExtraInformationstypen.

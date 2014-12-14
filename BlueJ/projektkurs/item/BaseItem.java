@@ -7,7 +7,7 @@ import projektkurs.util.I18n;
 /**
  * Ein einfaches Item.
  */
-public class BaseItem extends AbstractItem {
+public class BaseItem extends Item {
 
     /**
      * Bild dieses Items.

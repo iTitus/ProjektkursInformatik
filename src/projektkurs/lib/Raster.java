@@ -1,5 +1,6 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.raster.AbstractRaster;
@@ -11,6 +12,7 @@ import projektkurs.raster.SimpleRaster;
 import projektkurs.raster.SolidRaster;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
+import projektkurs.util.Pair;
 
 /**
  * Alle Raster.
@@ -57,6 +59,15 @@ public final class Raster {
      * Wand.
      */
     public static AbstractRaster wand;
+
+    /**
+     * Das Pair, das alle Kommandos enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.raster", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle Items.

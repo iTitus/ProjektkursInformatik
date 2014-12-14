@@ -1,10 +1,12 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.dialog.Dialog;
 import projektkurs.dialog.DialogPart;
 import projektkurs.util.Init;
+import projektkurs.util.Pair;
 
 /**
  * Alle Dialoge.
@@ -23,6 +25,15 @@ public final class Dialoge {
      * Test-Dialog.
      */
     public static Dialog test;
+
+    /**
+     * Das Pair, das alle Dialoge enthält.
+     *
+     * @return Pair
+     */
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.dialogs", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle Dialoge.

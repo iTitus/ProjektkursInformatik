@@ -8,7 +8,7 @@ import projektkurs.entity.Entity;
 /**
  * Ein abstraktes Item.
  */
-public abstract class AbstractItem {
+public abstract class Item {
 
     /**
      * Das Bild.
