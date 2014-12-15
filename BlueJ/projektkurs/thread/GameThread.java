@@ -107,13 +107,13 @@ public class GameThread extends Thread {
                     Logger.logThrowable("Unable to update the game", t);
                     Main.exit();
                 }
-                delta--;
                 shouldRender = true;
+                delta--;
             }
 
             if (shouldRender) {
-                if (!pausing && Main.getRender().canUpdate()) {
-                    frames++;
+                frames++;
+                if (Main.getRender().canUpdate()) {
                     try {
                         Main.getRender().update();
                     } catch (Throwable t) {

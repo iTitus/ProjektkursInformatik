@@ -141,7 +141,7 @@ public class DialogPart implements Iterable<String> {
 
             @Override
             public String next() {
-                if (index + 1 >= talk.length) {
+                if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 return talk[index++];
