@@ -10,7 +10,6 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.render.RenderHelper;
 import projektkurs.util.Logger;
-import projektkurs.util.MathUtil;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -156,37 +155,52 @@ public final class CutSceneManager {
 
             cutSceneRender.initBuffers();
 
-            final double nsPerTick = MathUtil.ceilDiv(Integers.NS_PER_SECOND, Integers.UPS);
+            final double nsPerTick = Integers.NS_PER_SECOND / (double) Integers.UPS;
             fps = 0;
             ups = Integers.UPS;
-            int loops = 0, frames = 0;
             delta = 0D;
-            long lastTime = System.nanoTime();
-            long lastTimer = System.nanoTime();
+
+            int loops = 0;
+            int updates = 0;
+            int frames = 0;
+
+            long nextTime = System.nanoTime();
+            long timer = System.nanoTime();
 
             while (!cutScene.isFinished()) {
-                long time = System.nanoTime();
-                delta += (time - lastTime) / nsPerTick;
-                lastTime = time;
-
-                while (delta >= 1) {
-                    loops++;
+                loops = 0;
+                while (System.nanoTime() > nextTime && loops < Integers.MAX_FRAME_SKIP) {
+                    updates++;
                     if (cutScene.canUpdate()) {
-                        cutScene.update();
+                        try {
+                            cutScene.update();
+                        } catch (Throwable t) {
+                            Logger.logThrowable("Unable to update the cutscene", t);
+                            Main.exit();
+                        }
                     }
                     Main.getRenderHelper().addRenderTick();
-                    delta--;
+                    nextTime += nsPerTick;
+                    loops++;
                 }
+                delta = (System.nanoTime() + nsPerTick - nextTime) / nsPerTick;
 
                 frames++;
-                cutSceneRender.update();
+                if (cutSceneRender.canUpdate()) {
+                    try {
+                        cutSceneRender.update();
+                    } catch (Throwable t) {
+                        Logger.logThrowable("Unable to render the cutscene", t);
+                        Main.exit();
+                    }
+                }
 
-                if (System.nanoTime() - lastTimer >= Integers.NS_PER_SECOND) {
-                    lastTimer += Integers.NS_PER_SECOND;
-                    ups = loops;
+                if (System.nanoTime() - timer >= 1000000000) {
+                    timer += 1000000000;
+                    ups = updates;
                     fps = frames;
+                    updates = 0;
                     frames = 0;
-                    loops = 0;
                 }
 
             }

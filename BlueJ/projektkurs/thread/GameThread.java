@@ -10,7 +10,7 @@ import projektkurs.util.Logger;
 public class GameThread extends Thread {
 
     /**
-     * Delta.
+     * Delta - welcher Anteil eines Updates ist schon vergangen.
      */
     private double delta;
     /**
@@ -20,7 +20,7 @@ public class GameThread extends Thread {
     /**
      * Nanosekunden pro Schleifendurchlauf.
      */
-    private final double nsPerLoop;
+    private final double nsPerTick;
     /**
      * Pausiert der thread.
      */
@@ -39,7 +39,7 @@ public class GameThread extends Thread {
      */
     public GameThread() {
         super("Game-Thread");
-        nsPerLoop = 1000000000D / Integers.UPS;
+        nsPerTick = Integers.NS_PER_SECOND / (double) Integers.UPS;
         delta = 0D;
         fps = 0;
         ups = Integers.UPS;
@@ -85,33 +85,32 @@ public class GameThread extends Thread {
     @Override
     public void run() {
 
+        int loops = 0;
         int updates = 0;
         int frames = 0;
-        long lastTime = System.nanoTime();
-        long lastTimer = System.nanoTime();
-        boolean shouldRender = false;
+
+        long nextTime = System.nanoTime();
+        long timer = System.nanoTime();
 
         while (running) {
-            long time = System.nanoTime();
-            delta += (time - lastTime) / nsPerLoop;
-            lastTime = time;
-
-            while (!pausing && delta >= 1) {
-                updates++;
-                try {
+            loops = 0;
+            if (!pausing) {
+                while (System.nanoTime() > nextTime && loops < Integers.MAX_FRAME_SKIP) {
+                    updates++;
                     if (Main.getLevel().canUpdate()) {
-                        Main.getLevel().update();
+                        try {
+                            Main.getLevel().update();
+                        } catch (Throwable t) {
+                            Logger.logThrowable("Unable to render the game", t);
+                            Main.exit();
+                        }
                     }
                     Main.getRenderHelper().addRenderTick();
-                } catch (Throwable t) {
-                    Logger.logThrowable("Unable to update the game", t);
-                    Main.exit();
+                    nextTime += nsPerTick;
+                    loops++;
                 }
-                shouldRender = true;
-                delta--;
-            }
+                delta = (System.nanoTime() + nsPerTick - nextTime) / nsPerTick;
 
-            if (shouldRender) {
                 frames++;
                 if (Main.getRender().canUpdate()) {
                     try {
@@ -120,26 +119,20 @@ public class GameThread extends Thread {
                         Logger.logThrowable("Unable to render the game", t);
                         Main.exit();
                     }
-                    shouldRender = false;
                 }
             } else {
-                try {
-                    Thread.sleep(1);
-                } catch (Throwable t) {
-                    Logger.logThrowable("Unable to pause the thread", t);
-                    Main.exit();
-                }
+                delta = 0D;
             }
 
-            if (System.nanoTime() - lastTimer >= 1000000000) {
-                lastTimer += 1000000000;
+            if (System.nanoTime() - timer >= 1000000000) {
+                timer += 1000000000;
                 ups = updates;
                 fps = frames;
                 updates = 0;
                 frames = 0;
             }
-
         }
+
     }
 
     /**
