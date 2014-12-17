@@ -91,6 +91,34 @@ public final class MathUtil {
     }
 
     /**
+     * Gibt eine Zahl zurück, die im gegebenen Intervall liegt: [min; max].
+     *
+     * @param i
+     *            Zahl
+     * @param min
+     *            Minimum
+     * @param max
+     *            Maximum
+     * @return eingegrenzte Zahl
+     */
+    public static int clamp(int i, int min, int max) {
+        return Math.max(Math.min(i, max), min);
+    }
+
+    /**
+     * Gibt eine Zahl zurück, die in einem Array der gegebenen Länge liegt: [0; length[.
+     *
+     * @param i
+     *            Zahl
+     * @param length
+     *            Länge des Arrays
+     * @return eingegrenzte Zahl
+     */
+    public static int clampToArray(int i, int length) {
+        return clamp(i, 0, length - 1);
+    }
+
+    /**
      * Abrunden.
      *
      * @param d
@@ -167,37 +195,6 @@ public final class MathUtil {
     }
 
     /**
-     * Gibt eine Zahl zurück, die im gegebenen Intervall liegt: [min; max].
-     *
-     * @param i
-     *            Zahl
-     * @param min
-     *            Minimum
-     * @param max
-     *            Maximum
-     * @return eingegrenzte Zahl
-     */
-    public static int limit(int i, int min, int max) {
-        if (max < min) {
-            return i;
-        }
-        return Math.min(Math.max(i, min), max);
-    }
-
-    /**
-     * Gibt eine Zahl zurück, die in einem Array der gegebenen Länge liegt: [0; length[.
-     *
-     * @param i
-     *            Zahl
-     * @param length
-     *            Länge des Arrays
-     * @return eingegrenzte Zahl
-     */
-    public static int limitArray(int i, int length) {
-        return limit(i, 0, length - 1);
-    }
-
-    /**
      * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
      *
      * @param max
@@ -250,7 +247,7 @@ public final class MathUtil {
      *
      * @param d
      *            Zahl
-     * @return aufgerundetes Ergebnis
+     * @return gerundetes Ergebnis
      */
     public static int round(double d) {
         return floor(d + .5);
@@ -316,13 +313,7 @@ public final class MathUtil {
      * @return -1, 0 oder 1 - je nach Vorzeichen
      */
     public static int signum(int i) {
-        if (i > 0) {
-            return 1;
-        }
-        if (i < 0) {
-            return -1;
-        }
-        return 0;
+        return i > 0 ? 1 : i < 0 ? -1 : 0;
     }
 
     /**

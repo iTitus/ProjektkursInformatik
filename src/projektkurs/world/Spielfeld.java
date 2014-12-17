@@ -69,8 +69,8 @@ public class Spielfeld implements Cloneable, IUpdatable {
     public Spielfeld(int sizeX, int sizeY, int spawnX, int spawnY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.spawnX = MathUtil.limitArray(spawnX, sizeX);
-        this.spawnY = MathUtil.limitArray(spawnY, sizeY);
+        this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
+        this.spawnY = MathUtil.clampToArray(spawnY, sizeY);
         map = new AbstractRaster[sizeX][sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();

@@ -62,7 +62,7 @@ public final class RenderUtil {
      */
     public static void drawCenteredString(Graphics2D g, String s, int centerX, int centerY, int size) {
         Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.limitArray(size, FONTS.length)]);
+        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
         drawCenteredString(g, s, centerX, centerY);
         g.setFont(oldfont);
     }
@@ -86,9 +86,9 @@ public final class RenderUtil {
     public static void drawCenteredStringInRect(Graphics2D g, String s, int posX, int posY, int sizeX, int sizeY) {
         Font oldfont = g.getFont();
         int size = Integers.DEFAULT_FONT_SIZE;
-        g.setFont(FONTS[MathUtil.limitArray(size, FONTS.length)]);
+        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
         while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-            g.setFont(FONTS[MathUtil.limitArray(--size, FONTS.length)]);
+            g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
         }
         drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
         g.setFont(oldfont);
@@ -114,9 +114,9 @@ public final class RenderUtil {
      */
     public static void drawCenteredStringInRect(Graphics2D g, String s, int posX, int posY, int sizeX, int sizeY, int size) {
         Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.limitArray(size, FONTS.length)]);
+        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
         while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-            g.setFont(FONTS[MathUtil.limitArray(--size, FONTS.length)]);
+            g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
         }
         drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
         g.setFont(oldfont);
@@ -247,7 +247,7 @@ public final class RenderUtil {
      */
     public static void drawString(Graphics2D g, String string, int posX, int posY, int size) {
         Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.limitArray(size, FONTS.length)]);
+        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
         g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
         g.setFont(oldfont);
     }

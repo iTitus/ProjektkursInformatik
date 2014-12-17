@@ -63,6 +63,37 @@ public class Vector2d {
     }
 
     /**
+     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Gradmaß.
+     *
+     * @param v
+     *            Vektor
+     * @return Winkel im Gradmaß
+     */
+    public double angleBetweenDeg(Vector2d v) {
+        return Math.toDegrees(angleBetweenRad(v));
+    }
+
+    /**
+     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Bogenmaß.
+     *
+     * @param v
+     *            Vektor
+     * @return Winkel im Bogenmaß
+     */
+    public double angleBetweenRad(Vector2d v) {
+        return thetaRad() - v.thetaRad();
+    }
+
+    /**
+     * Kopiert diesen Vektor.
+     *
+     * @return kopierter Vektor
+     */
+    public Vector2d copy() {
+        return new Vector2d(x, y);
+    }
+
+    /**
      * Das Kreuzprodukt dieses Vektors mit dem gegegeben Vektor. Da dieser Vektor 2-dimensional ist, ist das Ergebnis eine Zahl.
      *
      * @param v
@@ -107,6 +138,33 @@ public class Vector2d {
     }
 
     /**
+     * Die gerundete X-Komponente.
+     *
+     * @return X-Komponente
+     */
+    public int getIntX() {
+        return MathUtil.round(x);
+    }
+
+    /**
+     * Die gerundete Y-Komponente.
+     *
+     * @return Y-Komponente
+     */
+    public int getIntY() {
+        return MathUtil.round(y);
+    }
+
+    /**
+     * Der Betrag/Die Länge des Vektors.
+     *
+     * @return Betrag/Länge
+     */
+    public double getLength() {
+        return Math.sqrt(x * x + y * y);
+    }
+
+    /**
      * Die X-Komponente.
      *
      * @return X-Komponente
@@ -122,15 +180,6 @@ public class Vector2d {
      */
     public double getY() {
         return y;
-    }
-
-    /**
-     * Betrag/Länge des Vektors.
-     *
-     * @return Betrag/Länge
-     */
-    public double length() {
-        return Math.sqrt(x * x + y * y);
     }
 
     /**
@@ -174,7 +223,7 @@ public class Vector2d {
      * @return normalisierter Vektor
      */
     public Vector2d normalize() {
-        return div(length());
+        return div(getLength());
     }
 
     /**
@@ -196,9 +245,9 @@ public class Vector2d {
      * @return rotierter Vektor
      */
     public Vector2d rotateRad(double angleRad) {
-        double cos = Math.cos(angleRad);
-        double sin = Math.sin(angleRad);
-        return new Vector2d(x * cos - y * sin, x * sin + y * cos);
+        double cosX = Math.cos(angleRad);
+        double sinY = Math.sin(angleRad);
+        return new Vector2d(x * cosX - y * sinY, x * sinY + y * cosX);
     }
 
     /**
@@ -221,6 +270,24 @@ public class Vector2d {
      */
     public Vector2d sub(Vector2d v) {
         return new Vector2d(x - v.y, y - v.y);
+    }
+
+    /**
+     * Der Winkel der Polarkoordinate im Gradmaß.
+     *
+     * @return Winkel im Gradmaß
+     */
+    public double thetaDeg() {
+        return Math.toDegrees(thetaRad());
+    }
+
+    /**
+     * Der Winkel der Polarkoordinate im Bogenmaß.
+     *
+     * @return Winkel im Bogenmaß
+     */
+    public double thetaRad() {
+        return Math.atan2(y, x);
     }
 
     @Override
