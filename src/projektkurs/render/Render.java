@@ -78,7 +78,7 @@ public class Render implements IUpdatable {
      * Initialisiert die BufferStrategy.
      */
     public void initBuffers() {
-        canvas.createBufferStrategy(2);
+        canvas.createBufferStrategy(3);
         strategy = canvas.getBufferStrategy();
     }
 

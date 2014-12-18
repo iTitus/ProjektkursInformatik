@@ -63,7 +63,7 @@ public class CutsceneRender implements IUpdatable {
      * Initialisiert die BufferStrategy der aktuellen CutScene.
      */
     public void initBuffers() {
-        canvas.createBufferStrategy(2);
+        canvas.createBufferStrategy(3);
         strategy = canvas.getBufferStrategy();
     }
 
@@ -93,7 +93,7 @@ public class CutsceneRender implements IUpdatable {
                     }
                 }
             } else {
-                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX, Integers.sightY);
+                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
             }
 
             for (CutSceneObject obj : CutSceneManager.getCutScene().getCutSceneObjectList()) {
