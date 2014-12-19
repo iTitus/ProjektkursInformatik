@@ -31,6 +31,21 @@ public final class RenderUtil {
     private static final Font[] FONTS = new Font[Integers.MAX_FONT_SIZE];
 
     /**
+     * Rendert den Standardhintergrund.
+     *
+     * @param g
+     *            Graphics2D
+     * @param c
+     *            Color
+     */
+    public static void drawBackground(Graphics2D g, Color c) {
+        Color oldColor = g.getColor();
+        g.setColor(c);
+        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
+        g.setColor(oldColor);
+    }
+
+    /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
      *
      * @param g
@@ -177,6 +192,13 @@ public final class RenderUtil {
      */
     public static void drawDefaultRaster(Graphics2D g, BufferedImage img, int x, int y) {
         drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+    }
+
+    public static void drawFilledRectangle(Graphics2D g, Color c, int x, int y, int width, int height) {
+        Color oldColor = g.getColor();
+        g.setColor(c);
+        g.fillRect(x, y, width, height);
+        g.setColor(oldColor);
     }
 
     /**

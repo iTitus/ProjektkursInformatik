@@ -6,19 +6,6 @@ package projektkurs.util;
 public class Vector2d {
 
     /**
-     * Sind diese zwei Vektoren gleich.
-     *
-     * @param a
-     *            1. Vektor
-     * @param b
-     *            2. Vektor
-     * @return true, wenn ja; false, wenn nein.
-     */
-    public static boolean equals(Vector2d a, Vector2d b) {
-        return a.x == b.x && a.y == b.y;
-    }
-
-    /**
      * X-Komponente.
      */
     private final double x;
@@ -137,13 +124,23 @@ public class Vector2d {
         return x * v.getX() + y * v.getY();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Vector2d) {
+            Vector2d v = (Vector2d) o;
+            return x == v.x && y == v.y;
+
+        }
+        return false;
+    }
+
     /**
      * Die gerundete X-Komponente.
      *
      * @return X-Komponente
      */
     public int getIntX() {
-        return MathUtil.round(x);
+        return MathUtil.floor(x);
     }
 
     /**
@@ -152,7 +149,7 @@ public class Vector2d {
      * @return Y-Komponente
      */
     public int getIntY() {
-        return MathUtil.round(y);
+        return MathUtil.floor(y);
     }
 
     /**
@@ -180,6 +177,13 @@ public class Vector2d {
      */
     public double getY() {
         return y;
+    }
+
+    @Override
+    public int hashCode() {
+        long bits = Double.doubleToLongBits(x);
+        bits ^= Double.doubleToLongBits(y) * 31;
+        return (int) bits ^ (int) (bits >> 32);
     }
 
     /**

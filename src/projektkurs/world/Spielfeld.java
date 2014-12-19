@@ -386,6 +386,10 @@ public class Spielfeld implements Cloneable, IUpdatable {
             Main.getGui().onMouseWheelMoved(wE.getWheelRotation(), wE);
         }
 
+        if (Main.getGui().canUpdate()) {
+            Main.getGui().update();
+        }
+
         for (ExtraInformation extra : getExtraInformationList()) {
             if (extra.canUpdate()) {
                 extra.update();

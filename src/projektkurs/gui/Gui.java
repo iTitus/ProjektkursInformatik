@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import projektkurs.Main;
 import projektkurs.gui.element.Element;
 import projektkurs.lib.KeyBindings;
+import projektkurs.util.IUpdatable;
 
 /**
  * Ein Graphical User Interface (GUI).
  */
-public abstract class Gui {
+public abstract class Gui implements IUpdatable {
 
     /**
      * Alle Elements in diesem Gui.
@@ -25,6 +26,11 @@ public abstract class Gui {
      */
     public Gui() {
         guiElements = new ArrayList<Element>();
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return !guiElements.isEmpty();
     }
 
     /**
@@ -116,13 +122,22 @@ public abstract class Gui {
         }
     }
 
+    @Override
+    public void update() {
+        for (Element e : guiElements) {
+            if (e.canUpdate()) {
+                e.update();
+            }
+        }
+    }
+
     /**
      * Fügt dem Gui ein Element hinzu.
      *
      * @param e
      *            Element
      */
-    protected void addElement(Element e) {
+    protected final void addElement(Element e) {
         if (e != null) {
             for (Element element : guiElements) {
                 if (element.getID() == e.getID()) {
@@ -139,7 +154,7 @@ public abstract class Gui {
      * @param e
      *            Element
      */
-    protected void removeElement(Element e) {
+    protected final void removeElement(Element e) {
         guiElements.remove(e);
     }
 

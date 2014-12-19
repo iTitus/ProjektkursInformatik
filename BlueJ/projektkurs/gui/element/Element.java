@@ -6,11 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
 import projektkurs.util.IHasPositionAndSize;
+import projektkurs.util.IUpdatable;
 
 /**
  * Ein GUI-Element.
  */
-public abstract class Element implements IHasPositionAndSize {
+public abstract class Element implements IHasPositionAndSize, IUpdatable {
 
     /**
      * Der Listener dieses Elements.
@@ -62,6 +63,11 @@ public abstract class Element implements IHasPositionAndSize {
         this.sizeY = sizeY;
         this.id = id;
         this.listener = listener;
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return false;
     }
 
     /**
@@ -223,6 +229,11 @@ public abstract class Element implements IHasPositionAndSize {
     public void setSize(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+    }
+
+    @Override
+    public void update() {
+        // NO-OP
     }
 
 }

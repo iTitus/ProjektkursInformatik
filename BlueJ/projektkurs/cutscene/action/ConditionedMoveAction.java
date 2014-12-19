@@ -44,4 +44,13 @@ public class ConditionedMoveAction extends Action {
         object.moveBy(dx, dy);
     }
 
+    /**
+     * Das CutSceneObject, das bewegt werden soll.
+     *
+     * @return CutSceneObject
+     */
+    public CutSceneObject getCutSceneObject() {
+        return object;
+    }
+
 }
