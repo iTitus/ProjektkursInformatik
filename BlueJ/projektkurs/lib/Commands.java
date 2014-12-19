@@ -7,6 +7,7 @@ import projektkurs.command.Command;
 import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
+import projektkurs.command.CommandOpenSimulation;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.util.Init;
@@ -42,6 +43,10 @@ public final class Commands {
      */
     public static Command setraster;
     /**
+     * Simulations-Kommando.
+     */
+    public static Command simulation;
+    /**
      * Switch-Level-Kommando.
      */
     public static Command switchLevel;
@@ -75,6 +80,9 @@ public final class Commands {
 
         switchLevel = new CommandSwitch();
         registerMapping(switchLevel);
+
+        simulation = new CommandOpenSimulation();
+        registerMapping(simulation);
 
     }
 
