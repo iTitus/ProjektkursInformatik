@@ -20,8 +20,8 @@ public class CombinedAndCondition extends CombinedCondition {
 
     @Override
     public boolean isTrue(Action action, CutScene cutScene) {
-        for (int i = 0; i < conditions.length; i++) {
-            if (!conditions[i].isTrue(action, cutScene)) {
+        for (Condition condition : conditions) {
+            if (!condition.isTrue(action, cutScene)) {
                 return false;
             }
         }

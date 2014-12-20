@@ -8,7 +8,7 @@ public abstract class CombinedTrigger extends Trigger {
     /**
      * Die Trigger.
      */
-    protected final Trigger[] trigger;
+    protected final Trigger[] triggers;
 
     /**
      * Konstruktor.
@@ -17,7 +17,7 @@ public abstract class CombinedTrigger extends Trigger {
      *            die Trigger
      */
     public CombinedTrigger(Trigger... triggers) {
-        trigger = triggers;
+        this.triggers = triggers;
     }
 
 }

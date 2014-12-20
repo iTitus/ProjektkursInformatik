@@ -46,8 +46,8 @@ public class ItemNuke extends BaseItem {
                 }
             }
 
-            for (int x = centerX - Integers.NUKE_RADIUS; x <= centerX + Integers.NUKE_RADIUS; x++) {
-                for (int y = centerY - Integers.NUKE_RADIUS; y <= centerY + Integers.NUKE_RADIUS; y++) {
+            for (int y = centerY - Integers.NUKE_RADIUS; y <= centerY + Integers.NUKE_RADIUS; y++) {
+                for (int x = centerX - Integers.NUKE_RADIUS; x <= centerX + Integers.NUKE_RADIUS; x++) {
                     if (rand.nextInt(2) == 0) {
                         Main.getLevel().getMap().setRasterAt(x, y, Raster.fire);
                     } else {

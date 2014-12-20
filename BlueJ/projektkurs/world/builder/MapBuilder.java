@@ -36,8 +36,8 @@ public final class MapBuilder {
     public static void generateAndPopulateLevel0Map0(Spielfeld map) {
 
         // RASEN!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
         }
@@ -67,8 +67,8 @@ public final class MapBuilder {
         map.setRasterAt(3, 1, Raster.fire);
 
         // TÜREN!
-        for (int x = 20; x < 25; x++) {
-            for (int y = 18; y < 23; y++) {
+        for (int y = 20; y < 25; y++) {
+            for (int x = 18; x < 23; x++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
         }
@@ -96,8 +96,8 @@ public final class MapBuilder {
         // KISTENINHALTE!
         Inventory inv;
         ExtraInformation extra;
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
                 inv = new Inventory(Integers.KISTENGROESSE);
                 inv.addItemStack(new ItemStack(Items.item42, 42));
                 inv.addItemStack(new ItemStack(Items.nuke));
@@ -135,8 +135,8 @@ public final class MapBuilder {
     public static void generateAndPopulateLevel0Map1(Spielfeld map) {
 
         // DESTROYED-RASTER HINTERGRUND!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.destroyedRaster);
             }
         }
@@ -167,8 +167,8 @@ public final class MapBuilder {
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
         // RASEN!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
         }
@@ -195,8 +195,8 @@ public final class MapBuilder {
      */
     public static void generateAndPopulateLevel1Map1(Spielfeld map) {
 
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
         }

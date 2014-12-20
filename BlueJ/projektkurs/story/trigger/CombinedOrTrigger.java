@@ -17,8 +17,8 @@ public class CombinedOrTrigger extends CombinedTrigger {
 
     @Override
     public boolean isTriggerActive() {
-        for (int i = 0; i < trigger.length; i++) {
-            if (!trigger[i].isTriggerActive()) {
+        for (Trigger trigger : triggers) {
+            if (!trigger.isTriggerActive()) {
                 return true;
             }
         }

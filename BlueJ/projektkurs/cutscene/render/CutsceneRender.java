@@ -81,8 +81,8 @@ public class CutsceneRender implements IUpdatable {
             g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
 
             if (CutSceneManager.getCutScene().needsRasterBackground()) {
-                for (int x = 0; x < Integers.sightX; x++) {
-                    for (int y = 0; y < Integers.sightY; y++) {
+                for (int y = 0; y < Integers.sightY; y++) {
+                    for (int x = 0; x < Integers.sightX; x++) {
                         int rX = x + CutSceneManager.getCutSceneRenderHelper().getSightX();
                         int rY = y + CutSceneManager.getCutSceneRenderHelper().getSightY();
                         if (CutSceneManager.getMap().isRasterAt(rX, rY)) {
