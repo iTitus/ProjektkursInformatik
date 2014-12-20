@@ -50,11 +50,10 @@ public enum Direction {
      * Alle Richtungen, außer der ungültigen Richtung.
      */
     public static final Direction[] VALID_DIRECTIONS = new Direction[] { UP, UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT };
-
     /**
      * Tabelle - wird benutzt um die Offset-Werte zu dekodieren.
      */
-    private static final Direction[][] TABLE = { { UP_LEFT, LEFT, DOWN_LEFT }, { UP, UNKNOWN, DOWN }, { UP_RIGHT, RIGHT, DOWN_RIGHT } };
+    private static final Direction[] TABLE = { UP_LEFT, UP, UP_RIGHT, LEFT, UNKNOWN, RIGHT, DOWN_LEFT, DOWN, DOWN_RIGHT };
 
     /**
      * Richtung für die gegebenen Offset-Werte.
@@ -69,7 +68,7 @@ public enum Direction {
         if (offsetX < -1 || offsetX > 1 || offsetY < -1 || offsetY > 1) {
             return UNKNOWN;
         }
-        return TABLE[offsetX + 1][offsetY + 1];
+        return TABLE[offsetX + 1 + (offsetY + 1) * 3];
     }
 
     /**

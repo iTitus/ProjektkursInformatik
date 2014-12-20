@@ -155,7 +155,7 @@ public final class MapBuilder {
         map.spawn(Main.getPlayer());
 
         // STORYMANAGER!
-        map.getStoryManager().registerTrigger(new PosTrigger(8, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
+        map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
 
     /**

@@ -32,7 +32,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
     /**
      * Alle Raster.
      */
-    private final AbstractRaster[][] map;
+    private final AbstractRaster[] map;
     /**
      * Spielfeldbreite.
      */
@@ -71,7 +71,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
         this.sizeY = sizeY;
         this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
         this.spawnY = MathUtil.clampToArray(spawnY, sizeY);
-        map = new AbstractRaster[sizeX][sizeY];
+        map = new AbstractRaster[sizeX * sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
         storyManager = new StoryManager();
@@ -220,7 +220,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
      */
     public AbstractRaster getRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return map[x][y];
+            return map[x + y * sizeX];
         }
         return null;
     }
@@ -275,7 +275,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
      * @return true, wenn ja; false, wenn nicht
      */
     public boolean isInMap(int x, int y) {
-        return MathUtil.isInArray(x, Main.getLevel().getMap().getMapSizeX()) && MathUtil.isInArray(y, Main.getLevel().getMap().getMapSizeY());
+        return MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY);
     }
 
     /**
@@ -289,7 +289,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
      */
     public boolean isRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return map[x][y] != null;
+            return map[x + y * sizeX] != null;
         }
         return false;
     }
@@ -320,7 +320,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
             if (oldExtra != null) {
                 removeExtraInformation(oldExtra);
             }
-            map[x][y] = r;
+            map[x + y * sizeX] = r;
             if (r instanceof IHasExtraInformation) {
                 ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
                 newExtra.setPosition(x, y);
