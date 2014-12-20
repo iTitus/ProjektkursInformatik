@@ -63,6 +63,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     public Entity() {
         shouldDeSpawn = false;
         facing = Direction.UNKNOWN;
+        image = null;
+        posX = 0;
+        posY = 0;
+        sizeX = 1;
+        sizeY = 1;
     }
 
     /**
@@ -358,7 +363,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param behaviour
      *            Behaviour
      */
-    protected void addBehaviour(Behaviour behaviour) {
+    protected final void addBehaviour(Behaviour behaviour) {
         if (behaviour != null) {
             for (Behaviour bhvr : behaviours) {
                 if (!bhvr.isCompatibleWith(behaviour) || !behaviour.isCompatibleWith(bhvr)) {

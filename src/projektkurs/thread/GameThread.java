@@ -106,7 +106,7 @@ public class GameThread extends Thread {
                         Main.exit();
                     }
                 }
-                Main.getRenderHelper().addRenderTick();
+                Main.addTick();
                 delta--;
             }
             frames++;

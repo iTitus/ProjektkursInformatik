@@ -21,7 +21,6 @@ import projektkurs.lib.Strings;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
 import projektkurs.thread.GameThread;
-import projektkurs.thread.MoveThread;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
@@ -61,10 +60,6 @@ public final class Main {
      */
     private static JFrame mainFrame;
     /**
-     * Der Bewegungs-Thread.
-     */
-    private static MoveThread moveThread;
-    /**
      * Der Spieler.
      */
     private static EntityPlayer player;
@@ -76,6 +71,17 @@ public final class Main {
      * Der RenderHelper.
      */
     private static RenderHelper renderHelper;
+    /**
+     * Die Ticks.
+     */
+    private static int ticks;
+
+    /**
+     * Fügt einen Tick hinzu.
+     */
+    public static void addTick() {
+        ticks++;
+    }
 
     /**
      * Schließt das gerade geöffnete GUI und öffnet das Ingame-GUI.
@@ -163,6 +169,15 @@ public final class Main {
     }
 
     /**
+     * Die aktuellen Ticks.
+     *
+     * @return Ticks
+     */
+    public static int getTicks() {
+        return ticks;
+    }
+
+    /**
      * Die aktuelle UPS (updates per second).
      *
      * @return UPS
@@ -198,11 +213,7 @@ public final class Main {
     @Init(state = State.POST)
     public static void initThreads() {
         gameThread = new GameThread();
-        moveThread = new MoveThread();
-
         gameThread.start();
-        moveThread.start();
-
     }
 
     /**
@@ -239,9 +250,6 @@ public final class Main {
      * Pausiert das Spiel.
      */
     public static void pause() {
-        if (moveThread != null) {
-            moveThread.pause(true);
-        }
         if (gameThread != null) {
             gameThread.pause(true);
         }
@@ -252,9 +260,6 @@ public final class Main {
      * Lässt das Spiel weiter laufen.
      */
     public static void resume() {
-        if (moveThread != null) {
-            moveThread.pause(false);
-        }
         if (gameThread != null) {
             gameThread.pause(false);
         }
@@ -318,9 +323,6 @@ public final class Main {
                 Logger.info("Initialising shutdown routine!");
                 if (gameThread != null) {
                     gameThread.terminate();
-                }
-                if (moveThread != null) {
-                    moveThread.terminate();
                 }
                 // Save to disk
                 Sounds.closeAll();

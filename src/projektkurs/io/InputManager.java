@@ -11,14 +11,16 @@ import javax.swing.event.MouseInputListener;
 
 import projektkurs.Main;
 import projektkurs.gui.GuiIngame;
+import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.util.Direction;
+import projektkurs.util.IUpdatable;
 import projektkurs.util.Queue;
 
 /**
  * Zuständig für den Input (Tastatur, Maus).
  */
-public class InputManager implements KeyListener, MouseInputListener, MouseWheelListener {
+public class InputManager implements KeyListener, MouseInputListener, MouseWheelListener, IUpdatable {
 
     /**
      * Linker Mausknopf.
@@ -76,6 +78,11 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
         mouseEvents = new Queue<MouseEvent>();
         mouseWheelEvents = new Queue<MouseWheelEvent>();
         moveDir = 0;
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return Main.getTicks() % Integers.MPU == 0;
     }
 
     /**
@@ -297,10 +304,8 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
 
     }
 
-    /**
-     * Methode um moveDir zu aktualisieren.
-     */
-    public void updateMoveDir() {
+    @Override
+    public void update() {
 
         moveDir = 0b0000;
 

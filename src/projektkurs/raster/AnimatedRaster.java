@@ -39,7 +39,7 @@ public class AnimatedRaster extends SimpleRaster {
     @Override
     public void render(Graphics2D g, int x, int y) {
         if (animationFrames != null) {
-            int animationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
+            int animationTime = Main.getTicks() % animationLength;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
                 if (animationTime >= totalAnimationTime) {
@@ -56,7 +56,7 @@ public class AnimatedRaster extends SimpleRaster {
     @Override
     public void renderCutScene(Graphics2D g, int x, int y) {
         if (animationFrames != null) {
-            int animationTime = Main.getRenderHelper().getRenderTicks() % animationLength;
+            int animationTime = Main.getTicks() % animationLength;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
                 if (animationTime >= totalAnimationTime) {

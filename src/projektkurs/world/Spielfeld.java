@@ -390,6 +390,10 @@ public class Spielfeld implements Cloneable, IUpdatable {
             Main.getGui().update();
         }
 
+        if (Main.getInputManager().canUpdate()) {
+            Main.getInputManager().update();
+        }
+
         for (ExtraInformation extra : getExtraInformationList()) {
             if (extra.canUpdate()) {
                 extra.update();

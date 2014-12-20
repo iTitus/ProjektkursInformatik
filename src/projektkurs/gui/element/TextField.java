@@ -192,7 +192,7 @@ public class TextField extends Element {
     @Override
     public void render(Graphics2D g) {
         g.drawRect(posX, posY, sizeX, sizeY);
-        RenderUtil.drawCenteredStringInRect(g, text + (focussed && Main.getRenderHelper().getRenderTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
+        RenderUtil.drawCenteredStringInRect(g, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
     }
 
     /**

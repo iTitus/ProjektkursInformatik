@@ -44,6 +44,10 @@ public final class Integers {
      */
     public static final int MAX_FONT_SIZE = 64;
     /**
+     * Updates pro Bewegungsupdate.
+     */
+    public static final int MPU = 4;
+    /**
      * Nanosekunden in einer Sekunde.
      */
     public static final int NS_PER_SECOND = 1000000000;
@@ -59,10 +63,6 @@ public final class Integers {
      * Rastergröße in Pixeln.
      */
     public static final int RASTER_SIZE = 32;
-    /**
-     * Bewegungsupdates pro Sekunde.
-     */
-    public static final int RPS = 5;
     /**
      * Chance, dass sich ein Entity mit dem Run-Around Verhalten bewegt.
      */

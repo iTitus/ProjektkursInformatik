@@ -18,6 +18,11 @@ public class BehaviourNothing extends Behaviour {
     }
 
     @Override
+    public boolean canUpdate() {
+        return false;
+    }
+
+    @Override
     public boolean isCompatibleWith(Behaviour behaviour) {
         return false;
     }

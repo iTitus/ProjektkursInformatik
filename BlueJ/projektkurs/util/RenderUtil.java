@@ -194,6 +194,22 @@ public final class RenderUtil {
         drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
+    /**
+     * Malt ein gefülltes Rechteck.
+     *
+     * @param g
+     *            Graphics2D
+     * @param c
+     *            Farbe
+     * @param x
+     *            X-Koordinate der linken oberen Ecke
+     * @param y
+     *            Y-Koordinate der linken oberen Ecke
+     * @param width
+     *            Breite
+     * @param height
+     *            Höhe
+     */
     public static void drawFilledRectangle(Graphics2D g, Color c, int x, int y, int width, int height) {
         Color oldColor = g.getColor();
         g.setColor(c);

@@ -30,6 +30,7 @@ public class EntityRedNPC extends EntityNPC {
      */
     public EntityRedNPC(int posX, int posY, BufferedImage image) {
         super(posX, posY, image, Integers.PLAYER_HEALTH);
+        addBehaviour(new BehaviourRunAround(this));
     }
 
 }

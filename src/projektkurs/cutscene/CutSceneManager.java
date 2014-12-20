@@ -181,7 +181,7 @@ public final class CutSceneManager {
                             Main.exit();
                         }
                     }
-                    Main.getRenderHelper().addRenderTick();
+                    Main.addTick();
                     delta--;
                 }
 

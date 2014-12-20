@@ -9,11 +9,6 @@ import projektkurs.util.IHasPosition;
 public class RenderHelper {
 
     /**
-     * Vergangene Renderticks.
-     */
-    private int renderTicks;
-
-    /**
      * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
      */
     private int sightX;
@@ -21,22 +16,6 @@ public class RenderHelper {
      * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
      */
     private int sightY;
-
-    /**
-     * Fügt einen Rendertick hinzu.
-     */
-    public void addRenderTick() {
-        renderTicks++;
-    }
-
-    /**
-     * Die vergangenen Renderticks.
-     *
-     * @return Renderticks
-     */
-    public int getRenderTicks() {
-        return renderTicks;
-    }
 
     /**
      * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
