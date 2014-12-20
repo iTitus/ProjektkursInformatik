@@ -89,10 +89,8 @@ public class RenderHelper {
      *            Bewegung in y-Richtung
      */
     public void moveSight(int dx, int dy) {
-        if (dx != 0 || dy != 0) {
-            sightX += dx;
-            sightY += dy;
-        }
+        sightX += dx;
+        sightY += dy;
     }
 
     /**
@@ -104,9 +102,7 @@ public class RenderHelper {
      *            Y-Koordinate der oberen linken Ecke des Sichtfeldes
      */
     public void setSight(int sightX, int sightY) {
-        if (sightX != this.sightX || sightY != this.sightY) {
-            this.sightX = sightX;
-            this.sightY = sightY;
-        }
+        this.sightX = sightX;
+        this.sightY = sightY;
     }
 }

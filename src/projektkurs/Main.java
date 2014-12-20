@@ -93,6 +93,15 @@ public final class Main {
     }
 
     /**
+     * Den aktuellen Delta-Wert.
+     *
+     * @return Delta
+     */
+    public static double getDelta() {
+        return gameThread != null ? gameThread.getDelta() : 0;
+    }
+
+    /**
      * Die aktuelle FPS (frames per second).
      *
      * @return FPS

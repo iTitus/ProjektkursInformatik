@@ -44,10 +44,6 @@ public final class Integers {
      */
     public static final int MAX_FONT_SIZE = 64;
     /**
-     * Maximale Anzahl der übersprungenen Frames.
-     */
-    public static final int MAX_FRAME_SKIP = 5;
-    /**
      * Nanosekunden in einer Sekunde.
      */
     public static final int NS_PER_SECOND = 1000000000;

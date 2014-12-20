@@ -1,6 +1,7 @@
 package projektkurs.lib;
 
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
@@ -174,10 +175,10 @@ public final class Images {
         key = loadImage("key.png");
         registerImage("key", key);
 
-        slot = loadImage("slot.png");
+        slot = loadImage("slot.png", 34, 34);
         registerImage("slot", slot);
 
-        slothighlight = loadImage("slot_highlight.png");
+        slothighlight = loadImage("slot_highlight.png", 34, 34);
         registerImage("slot_highlight", slothighlight);
 
         doorNS = loadImage("door.png");
@@ -206,13 +207,13 @@ public final class Images {
         healthpotion = loadImage("healthpotion.png");
         registerImage("healthpotion", healthpotion);
 
-        button = loadImage("button.png");
+        button = loadImage("button.png", 256, 64);
         registerImage("button", button);
 
-        buttonHighlight = loadImage("button_highlight.png");
+        buttonHighlight = loadImage("button_highlight.png", 256, 64);
         registerImage("button_highlight", buttonHighlight);
 
-        buttonDisabled = loadImage("button_disabled.png");
+        buttonDisabled = loadImage("button_disabled.png", 256, 64);
         registerImage("button_disabled", buttonDisabled);
 
     }
@@ -231,10 +232,25 @@ public final class Images {
      * Lädt ein Bild.
      *
      * @param name
-     *            Name des Bildes
-     * @return BufferedImage
+     *            Dateiname des Bilde
+     * @return Bild
      */
     private static BufferedImage loadImage(String name) {
+        return loadImage(name, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+    }
+
+    /**
+     * Lädt ein Bild.
+     *
+     * @param name
+     *            Dateiname des Bildes
+     * @param width
+     *            Breite
+     * @param height
+     *            Höhe
+     * @return Bild
+     */
+    private static BufferedImage loadImage(String name, int width, int height) {
 
         String path = "resources/images/" + name;
 
@@ -250,7 +266,15 @@ public final class Images {
                 Logger.logThrowable("Unable to load image '" + name + "'", t2);
             }
         }
-        return img;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = image.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g.drawImage(img, 0, 0, width, height, null);
+        g.dispose();
+        return image;
     }
 
     /**
@@ -279,14 +303,11 @@ public final class Images {
      */
     private static BufferedImage loadImageRotate90(String name) {
         BufferedImage img = loadImage(name);
-        if (img != null) {
-            BufferedImage rotated = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
-            Graphics2D g = (Graphics2D) rotated.getGraphics();
-            g.setTransform(AffineTransform.getQuadrantRotateInstance(1));
-            g.drawImage(img, 0, -img.getWidth(), null);
-            return rotated;
-        }
-        return null;
+        BufferedImage rotated = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        Graphics2D g = (Graphics2D) rotated.getGraphics();
+        g.setTransform(AffineTransform.getQuadrantRotateInstance(1));
+        g.drawImage(img, 0, -img.getWidth(), null);
+        return rotated;
     }
 
     /**

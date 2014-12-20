@@ -96,8 +96,8 @@ public class Render implements IUpdatable {
 
             g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth(), Integers.INFO_X, Integers.INFO_Y);
 
-            for (int x = 0; x < Integers.sightX; x++) {
-                for (int y = 0; y < Integers.sightY; y++) {
+            for (int y = 0; y < Integers.sightY; y++) {
+                for (int x = 0; x < Integers.sightX; x++) {
                     int sX = x + Main.getRenderHelper().getSightX();
                     int sY = y + Main.getRenderHelper().getSightY();
                     if (Main.getLevel().getMap().isRasterAt(sX, sY)) {

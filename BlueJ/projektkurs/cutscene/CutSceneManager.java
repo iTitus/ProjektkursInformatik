@@ -160,16 +160,18 @@ public final class CutSceneManager {
             ups = Integers.UPS;
             delta = 0D;
 
-            int loops = 0;
             int updates = 0;
             int frames = 0;
 
-            long nextTime = System.nanoTime();
+            long now = 0L;
+            long lastTime = System.nanoTime();
             long timer = System.nanoTime();
 
             while (!cutScene.isFinished()) {
-                loops = 0;
-                while (System.nanoTime() > nextTime && loops < Integers.MAX_FRAME_SKIP) {
+                now = System.nanoTime();
+                delta += (now - lastTime) / nsPerTick;
+                lastTime = now;
+                while (delta >= 1) {
                     updates++;
                     if (cutScene.canUpdate()) {
                         try {
@@ -180,10 +182,8 @@ public final class CutSceneManager {
                         }
                     }
                     Main.getRenderHelper().addRenderTick();
-                    nextTime += nsPerTick;
-                    loops++;
+                    delta--;
                 }
-                delta = (System.nanoTime() + nsPerTick - nextTime) / nsPerTick;
 
                 frames++;
                 if (cutSceneRender.canUpdate()) {
@@ -195,8 +195,8 @@ public final class CutSceneManager {
                     }
                 }
 
-                if (System.nanoTime() - timer >= 1000000000) {
-                    timer += 1000000000;
+                if (System.nanoTime() - timer >= Integers.NS_PER_SECOND) {
+                    timer += Integers.NS_PER_SECOND;
                     ups = updates;
                     fps = frames;
                     updates = 0;

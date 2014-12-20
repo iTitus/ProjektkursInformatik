@@ -93,7 +93,7 @@ public class CutsceneRender implements IUpdatable {
                     }
                 }
             } else {
-                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
+                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
             }
 
             for (CutSceneObject obj : CutSceneManager.getCutScene().getCutSceneObjectList()) {

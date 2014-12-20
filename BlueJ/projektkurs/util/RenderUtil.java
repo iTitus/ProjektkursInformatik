@@ -150,7 +150,7 @@ public final class RenderUtil {
      *            Y-Koordinate des Rasters
      */
     public static void drawCutSceneRaster(Graphics2D g, BufferedImage image, int x, int y) {
-        drawImage(g, image, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+        drawImage(g, image, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
     /**
@@ -191,7 +191,7 @@ public final class RenderUtil {
      *            Y-Koordinate des Rasters
      */
     public static void drawDefaultRaster(Graphics2D g, BufferedImage img, int x, int y) {
-        drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE, Integers.RASTER_SIZE);
+        drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
     public static void drawFilledRectangle(Graphics2D g, Color c, int x, int y, int width, int height) {
@@ -214,7 +214,7 @@ public final class RenderUtil {
      *            Y-Koordinate
      */
     public static void drawImage(Graphics2D g, BufferedImage img, int x, int y) {
-        drawImage(g, img, x, y, img.getWidth(), img.getHeight());
+        g.drawImage(img, x, y, null);
     }
 
     /**
