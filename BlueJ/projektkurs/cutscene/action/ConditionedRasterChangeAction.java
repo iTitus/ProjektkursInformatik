@@ -5,11 +5,11 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.condition.Condition;
 import projektkurs.raster.AbstractRaster;
 
-public class ConditionedRasterChangeAction extends Action{
+public class ConditionedRasterChangeAction extends Action {
 
-    private int x;
-    private int y;
-    private AbstractRaster abstractRaster;
+    private final AbstractRaster abstractRaster;
+    private final int x;
+    private final int y;
 
     public ConditionedRasterChangeAction(int x, int y, Condition condition, AbstractRaster abstractRaster) {
         super(condition);
@@ -17,7 +17,7 @@ public class ConditionedRasterChangeAction extends Action{
         this.y = y;
         this.abstractRaster = abstractRaster;
     }
-    
+
     @Override
     public void doAction(CutScene cutScene) {
         CutSceneManager.getMap().setRasterAt(x, y, abstractRaster);

@@ -30,6 +30,10 @@ public final class CutScene implements IUpdatable {
      */
     private boolean isFinished;
     /**
+     * Name der CutScene.
+     */
+    private final String name;
+    /**
      * Alle CutSceneObjects in der CutScene.
      */
     private final ArrayList<CutSceneObject> objects;
@@ -37,7 +41,7 @@ public final class CutScene implements IUpdatable {
     /**
      * Konstruktor für eine CutScene.
      */
-    public CutScene() {
+    public CutScene(String name) {
         actionQueue = new Queue<Action>();
         startupQueue = new Queue<Action>();
         tempQueue = new Queue<Action>();
@@ -45,6 +49,7 @@ public final class CutScene implements IUpdatable {
         isFinished = false;
         background = null;
         objects = new ArrayList<CutSceneObject>();
+        this.name = name;
     }
 
     /**
@@ -53,7 +58,7 @@ public final class CutScene implements IUpdatable {
      * @param background
      *            Hintergrundbild
      */
-    public CutScene(BufferedImage background) {
+    public CutScene(String name, BufferedImage background) {
         actionQueue = new Queue<Action>();
         startupQueue = new Queue<Action>();
         tempQueue = new Queue<Action>();
@@ -61,6 +66,7 @@ public final class CutScene implements IUpdatable {
         isFinished = false;
         this.background = background;
         objects = new ArrayList<CutSceneObject>();
+        this.name = name;
     }
 
     @Override
@@ -105,6 +111,15 @@ public final class CutScene implements IUpdatable {
      */
     public int getElapsedTicks() {
         return elapsedTicks;
+    }
+
+    /**
+     * Der Name der CutScene.
+     *
+     * @return Name
+     */
+    public String getName() {
+        return name;
     }
 
     /**

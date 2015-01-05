@@ -7,7 +7,7 @@ import projektkurs.raster.AbstractRaster;
 
 public class ConditionedClearMapAction extends Action {
 
-    private AbstractRaster abstractRaster;
+    private final AbstractRaster abstractRaster;
 
     public ConditionedClearMapAction(Condition condition, AbstractRaster abstractRaster) {
         super(condition);

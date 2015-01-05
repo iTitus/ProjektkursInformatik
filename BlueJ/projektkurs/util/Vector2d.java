@@ -13,7 +13,7 @@ public class Vector2d {
      * Einheitsvektor Y.
      */
     public static final Vector2d Y = new Vector2d(0, 1);
-    
+
     /**
      * X-Komponente.
      */

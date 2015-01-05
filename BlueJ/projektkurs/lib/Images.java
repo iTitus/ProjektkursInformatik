@@ -21,6 +21,76 @@ import projektkurs.util.Pair;
 public final class Images {
 
     /**
+     *
+     */
+    public static BufferedImage auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE;
+
+    /**
+     * Autobild
+     */
+    public static BufferedImage auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_NS, auto_SN, auto_EW, auto_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_w_NS, auto_w_SN, auto_w_EW, auto_w_WE;
+
+    /**
+     *
+     */
+    public static BufferedImage auto_w2_NS, auto_w2_SN, auto_w2_EW, auto_w2_WE;
+
+    public static BufferedImage auto2vOnO;
+
+    public static BufferedImage auto2vOnW;
+
+    public static BufferedImage auto2vV;
+
+    public static BufferedImage autogelbvOnO;
+
+    public static BufferedImage autogelbvOnW;
+
+    /**
      * Zurück-Mappings.
      */
     public static final HashMap<BufferedImage, String> BACK_MAPPINGS = new HashMap<BufferedImage, String>();
@@ -29,6 +99,77 @@ public final class Images {
      * Baumbild.
      */
     public static BufferedImage baum;
+
+    /**
+     *
+     */
+    public static BufferedImage baum1;
+
+    /**
+     *
+     */
+    public static BufferedImage baum10;
+
+    /**
+     *
+     */
+    public static BufferedImage baum11;
+
+    /**
+     *
+     */
+    public static BufferedImage baum12;
+
+    /**
+     *
+     */
+    public static BufferedImage baum13;
+
+    /**
+     *
+     */
+    public static BufferedImage baum2;
+
+    /**
+     *
+     */
+    public static BufferedImage baum3;
+
+    /**
+     *
+     */
+    public static BufferedImage baum4;
+
+    /**
+     *
+     */
+    public static BufferedImage baum5;
+
+    /**
+     *
+     */
+    public static BufferedImage baum6;
+
+    /**
+     *
+     */
+    public static BufferedImage baum7;
+
+    /**
+     *
+     */
+    public static BufferedImage baum8;
+
+    /**
+     *
+     */
+    public static BufferedImage baum9;
+
+    public static BufferedImage busviolettvOnO;
+
+    public static BufferedImage busviolettvSnW;
+
+    public static BufferedImage busviolettvV;
 
     /**
      * Gui-Knopf-Bild.
@@ -91,6 +232,27 @@ public final class Images {
     public static BufferedImage[] fire;
 
     /**
+     *
+     */
+    public static BufferedImage gras;
+
+    public static BufferedImage haus1;
+
+    public static BufferedImage haus2;
+
+    public static BufferedImage haus3;
+
+    public static BufferedImage haus4;
+
+    public static BufferedImage haus5;
+
+    public static BufferedImage haus6;
+
+    public static BufferedImage haus7;
+
+    public static BufferedImage haus8;
+
+    /**
      * Gesundheitstrank.
      */
     public static BufferedImage healthpotion;
@@ -111,6 +273,127 @@ public final class Images {
     public static BufferedImage kiste;
 
     /**
+     *
+     */
+    public static BufferedImage kreuzung;
+
+    /**
+     *
+     */
+    public static BufferedImage kreuzungT;
+
+    public static BufferedImage kreuzungT_EW;
+
+    public static BufferedImage kreuzungT_NS;
+
+    public static BufferedImage kreuzungT_SN;
+
+    public static BufferedImage kreuzungT_WE;
+
+    public static BufferedImage ladyvO_EW;
+
+    public static BufferedImage ladyvO_NS;
+
+    public static BufferedImage ladyvO_SN;
+
+    public static BufferedImage ladyvO_WE;
+
+    public static BufferedImage ladyvObAho_EW;
+
+    public static BufferedImage ladyvObAho_NS;
+
+    public static BufferedImage ladyvObAho_SN;
+
+    public static BufferedImage ladyvObAho_WE;
+
+    public static BufferedImage ladyvOrAho_EW;
+
+    public static BufferedImage ladyvOrAho_NS;
+
+    public static BufferedImage ladyvOrAho_SN;
+
+    public static BufferedImage ladyvOrAho_WE;
+
+    public static BufferedImage ladyvOrAo_EW;
+
+    public static BufferedImage ladyvOrAo_NS;
+
+    public static BufferedImage ladyvOrAo_SN;
+
+    public static BufferedImage ladyvOrAo_WE;
+
+    public static BufferedImage ladyvVbAho;
+
+    public static BufferedImage ladyvVbAho2;
+
+    public static BufferedImage ladyvVbAo;
+
+    public static BufferedImage ladyvVlAqurAo;
+
+    public static BufferedImage ladyvVrS;
+
+    public static BufferedImage lasterschwarzmitAnhängervO_EW;
+
+    public static BufferedImage lasterschwarzmitAnhängervO_NS;
+
+    public static BufferedImage lasterschwarzmitAnhängervO_SN;
+
+    public static BufferedImage lasterschwarzmitAnhängervO_WE;
+
+    public static BufferedImage lasterschwarzvO_EW;
+
+    public static BufferedImage lasterschwarzvO_NS;
+
+    public static BufferedImage lasterschwarzvO_SN;
+
+    public static BufferedImage lasterschwarzvO_WE;
+
+    public static BufferedImage lasterschwarzvV;
+
+    public static BufferedImage lasterweißvO_EW;
+
+    public static BufferedImage lasterweißvO_NS;
+
+    public static BufferedImage lasterweißvO_SN;
+
+    public static BufferedImage lasterweißvO_WE;
+
+    public static BufferedImage lasterweißvV;
+
+    /**
+     *
+     */
+    public static BufferedImage lordH;
+
+    /**
+     *
+     */
+    public static BufferedImage lordS;
+
+    /**
+     *
+     */
+    public static BufferedImage lordvdS;
+
+    /**
+     *
+     */
+    public static BufferedImage lordvdS2;
+
+    /**
+     *
+     */
+    public static BufferedImage lordvdS3;
+
+    public static BufferedImage lordvO_EW;
+
+    public static BufferedImage lordvO_NS;
+
+    public static BufferedImage lordvO_SN;
+
+    public static BufferedImage lordvO_WE;
+
+    /**
      * Mappings.
      */
     public static final HashMap<String, BufferedImage> MAPPINGS = new HashMap<String, BufferedImage>();
@@ -120,13 +403,25 @@ public final class Images {
      */
     public static BufferedImage nuke;
 
+    public static BufferedImage pflaster;
+
     /**
      * Rasenbild.
      */
     public static BufferedImage rasen;
 
     /**
-     * 
+     *
+     */
+    public static BufferedImage rasen2;
+
+    /**
+     *
+     */
+    public static BufferedImage redNPC;
+
+    /**
+     *
      */
     public static BufferedImage slot;
 
@@ -135,359 +430,56 @@ public final class Images {
      */
     public static BufferedImage slothighlight;
 
-    /**
-     * Wandbild.
-     */
-    public static BufferedImage wand;
+    public static BufferedImage strasse_EW;
 
-    /**
-     * Autobild
-     */
-    public static BufferedImage auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE;
+    public static BufferedImage strasse_NS;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE;
+    public static BufferedImage typvO_EW;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE;
+    public static BufferedImage typvO_NS;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE;
+    public static BufferedImage typvO_SN;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE;
+    public static BufferedImage typvO_WE;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE;
+    public static BufferedImage typvO2_EW;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE;
+    public static BufferedImage typvO2_NS;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE;
+    public static BufferedImage typvO2_SN;
 
-    /**
-     * 
-     */
-    public static BufferedImage auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE;
-
-    /**
-     * 
-     */
-    public static BufferedImage auto_NS, auto_SN, auto_EW, auto_WE;
-
-    /**
-     * 
-     */
-    public static BufferedImage auto_w_NS, auto_w_SN, auto_w_EW, auto_w_WE;
-
-    /**
-     * 
-     */
-    public static BufferedImage auto_w2_NS, auto_w2_SN, auto_w2_EW, auto_w2_WE;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum1;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum2;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum3;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum4;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum5;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum6;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum7;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum8;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum9;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum10;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum11;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum12;
-
-    /**
-     * 
-     */
-    public static BufferedImage baum13;
-
-    /**
-     * 
-     */
-    public static BufferedImage lordvdS;
-
-    /**
-     * 
-     */
-    public static BufferedImage lordvdS2;
-
-    /**
-     * 
-     */
-    public static BufferedImage lordvdS3;
-
-    /**
-     * 
-     */
-    public static BufferedImage lordS;
-
-    /**
-     * 
-     */
-    public static BufferedImage lordH;
-
-    /**
-     * 
-     */
-    public static BufferedImage rasen2;
-
-    /**
-     * 
-     */
-    public static BufferedImage kreuzung;
-
-    /**
-     * 
-     */
-    public static BufferedImage gras;
-
-    /**
-     * 
-     */
-    public static BufferedImage kreuzungT;
-
-    /**
-     * 
-     */
-    public static BufferedImage redNPC;
-
-    public static BufferedImage lordvO_NS;
-
-    public static BufferedImage lordvO_EW;
-
-    public static BufferedImage weibvOlAo;
-
-    public static BufferedImage weibvV;
-
-    public static BufferedImage weibvO;
-
-    public static BufferedImage wasser;
-
-    public static BufferedImage lasterschwarzvV;
-
-    public static BufferedImage ladyvVbAho;
-
-    public static BufferedImage ladyvVbAho2;
-
-    public static BufferedImage busviolettvV;
-
-    public static BufferedImage ladyvVbAo;
-
-    public static BufferedImage ladyvVlAqurAo;
-
-    public static BufferedImage ladyvVrS;
-
-    public static BufferedImage pflaster;
-
-    public static BufferedImage haus1;
-
-    public static BufferedImage haus4;
-
-    public static BufferedImage haus2;
-
-    public static BufferedImage haus3;
-
-    public static BufferedImage haus5;
-
-    public static BufferedImage haus6;
-
-    public static BufferedImage haus8;
-
-    public static BufferedImage haus7;
-
-    public static BufferedImage lasterweißvV;
-
-    public static BufferedImage auto2vV;
-
-    public static BufferedImage auto2vOnW;
-
-    public static BufferedImage auto2vOnO;
-
-    public static BufferedImage autogelbvOnO;
-
-    public static BufferedImage busviolettvSnW;
-
-    public static BufferedImage busviolettvOnO;
-
-    public static BufferedImage autogelbvOnW;
+    public static BufferedImage typvO2_WE;
 
     public static BufferedImage typvObAo_EW;
+
+    public static BufferedImage typvObAo_NS;
 
     public static BufferedImage typvObAo_SN;
 
     public static BufferedImage typvObAo_WE;
 
-    public static BufferedImage typvObAo_NS;
-
-    public static BufferedImage typvO_WE;
-
-    public static BufferedImage typvO_NS;
-
-    public static BufferedImage typvO_EW;
-
-    public static BufferedImage typvO_SN;
-
-    public static BufferedImage typvO2_WE;
-
-    public static BufferedImage typvO2_NS;
-
-    public static BufferedImage typvO2_EW;
-
-    public static BufferedImage typvO2_SN;
-
-    public static BufferedImage typvOrAho_WE;
+    public static BufferedImage typvOrAho_EW;
 
     public static BufferedImage typvOrAho_NS;
 
-    public static BufferedImage typvOrAho_EW;
-
-    public static BufferedImage typvOrAo_WE;
-
-    public static BufferedImage typvOrAo_NS;
+    public static BufferedImage typvOrAho_WE;
 
     public static BufferedImage typvOrAo_EW;
 
+    public static BufferedImage typvOrAo_NS;
+
     public static BufferedImage typvOrAo_SN;
 
-    public static BufferedImage lasterweißvO_NS;
+    public static BufferedImage typvOrAo_WE;
 
-    public static BufferedImage lasterweißvO_EW;
+    /**
+     * Wandbild.
+     */
+    public static BufferedImage wand;
 
-    public static BufferedImage lasterweißvO_SN;
+    public static BufferedImage wasser;
 
-    public static BufferedImage lasterweißvO_WE;
-
-    public static BufferedImage lordvO_SN;
-
-    public static BufferedImage lordvO_WE;
-
-    public static BufferedImage lasterschwarzmitAnhängervO_EW;
-
-    public static BufferedImage lasterschwarzmitAnhängervO_WE;
-
-    public static BufferedImage lasterschwarzmitAnhängervO_SN;
-
-    public static BufferedImage lasterschwarzvO_NS;
-
-    public static BufferedImage lasterschwarzvO_EW;
-
-    public static BufferedImage lasterschwarzvO_SN;
-
-    public static BufferedImage lasterschwarzvO_WE;
-
-    public static BufferedImage lasterschwarzmitAnhängervO_NS;
-
-    public static BufferedImage ladyvObAho_NS;
-
-    public static BufferedImage ladyvObAho_EW;
-
-    public static BufferedImage ladyvObAho_SN;
-
-    public static BufferedImage ladyvObAho_WE;
-
-    public static BufferedImage ladyvOrAo_WE;
-
-    public static BufferedImage ladyvOrAo_NS;
-
-    public static BufferedImage ladyvOrAo_EW;
-
-    public static BufferedImage ladyvOrAo_SN;
-
-    public static BufferedImage ladyvO_WE;
-
-    public static BufferedImage ladyvO_SN;
-
-    public static BufferedImage ladyvO_EW;
-
-    public static BufferedImage ladyvO_NS;
-
-    public static BufferedImage kreuzungT_NS;
-
-    public static BufferedImage kreuzungT_WE;
-
-    public static BufferedImage kreuzungT_SN;
-
-    public static BufferedImage kreuzungT_EW;
-
-    public static BufferedImage ladyvOrAho_NS;
-
-    public static BufferedImage ladyvOrAho_EW;
-
-    public static BufferedImage ladyvOrAho_SN;
-
-    public static BufferedImage ladyvOrAho_WE;
-
-    public static BufferedImage weibvOlAo_NS;
-
-    public static BufferedImage weibvOlAo_EW;
-
-    public static BufferedImage weibvOlAo_SN;
-
-    public static BufferedImage weibvOlAo_WE;
+    public static BufferedImage weibvO;
 
     public static BufferedImage weibvO_EW;
 
@@ -495,9 +487,17 @@ public final class Images {
 
     public static BufferedImage weibvO_WE;
 
-    public static BufferedImage strasse_NS;
+    public static BufferedImage weibvOlAo;
 
-    public static BufferedImage strasse_EW;
+    public static BufferedImage weibvOlAo_EW;
+
+    public static BufferedImage weibvOlAo_NS;
+
+    public static BufferedImage weibvOlAo_SN;
+
+    public static BufferedImage weibvOlAo_WE;
+
+    public static BufferedImage weibvV;
 
     /**
      * Befreit alle Bilder.
@@ -644,14 +644,13 @@ public final class Images {
         // registerAllDir("AutoMitOffenerTürFahrerDrinnen4.png", "automitoffenerTürFahrerdrinnen4", auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE);
         auto_di4_NS = loadImage("AutoMitOffenerTürFahrerDrinnen4.png");
         registerImage("auto_di4_NS", auto_di4_NS);
-        
-        
-        //      N
-        //      ^
-        //  W < + > O
-        //      v
-        //      S
-        
+
+        // N
+        // ^
+        // W < + > O
+        // v
+        // S
+
         auto_di4_EW = loadImageRotate90("AutoMitOffenerTürFahrerDrinnen4.png");
         registerImage("auto_di4_EW", auto_di4_EW); // WE FAILED THE TURING TEST!!!
         // registerAllDir("Auto.png", "Auto", auto_NS, auto_SN, auto_EW, auto_WE);
@@ -675,19 +674,19 @@ public final class Images {
 
         auto2vV = loadImage("Auto1.0.png");
         registerImage("auto2vV", auto2vV);
-        
+
         auto2vOnO = loadImage("Auto1.1.png");
         registerImage("auto2vOnO", auto2vOnO);
-        
+
         auto2vOnW = loadImage("Auto1.2.png");
         registerImage("auto2vOnW", auto2vOnW);
-        
+
         autogelbvOnO = loadImage("Auto3.0.png");
-        registerImage("autogelbvOnO",autogelbvOnO);        
-        
+        registerImage("autogelbvOnO", autogelbvOnO);
+
         autogelbvOnW = loadImage("Auto3.1.png");
         registerImage("autogelbvOnW", autogelbvOnW);
-        
+
         baum1 = loadImage("Baum1.png");
         registerImage("Baum1", baum1);
 
@@ -732,16 +731,15 @@ public final class Images {
 
         busviolettvSnW = loadImage("Bus1.1.png");
         registerImage(" busviolettvSnW", busviolettvSnW);
-        
-       
+
         busviolettvV = loadImage("Bus1.2.png");
         registerImage(" busviolettvV", busviolettvV);
-        
+
         busviolettvOnO = loadImage("Bus1.3.png");
         registerImage("busviolettvOvO", busviolettvOnO);
-        
-        //bus1.4 ignoriert
-        
+
+        // bus1.4 ignoriert
+
         haus1 = loadImage("Haus.png");
         registerImage("haus1", haus1);
 
@@ -771,123 +769,93 @@ public final class Images {
 
         kreuzungT_EW = loadImage("Kreuzung2.png");
         registerImage("kreuzungT_EW", kreuzungT_EW);
-        
+
         kreuzungT_SN = loadImageRotate90("Kreuzung2.png");
         registerImage("kreuzungT_SN", kreuzungT_SN);
-        
+
         kreuzungT_WE = loadImage("Kreuzung2.2.png");
         registerImage("kreuzungT_WE", kreuzungT_WE);
-        
+
         kreuzungT_NS = loadImage("Kreuzung2.2.png");
         registerImage("kreuzungT_NS", kreuzungT_NS);
-        
-        
-        
 
         ladyvOrAho_NS = loadImage("LadyVonOben.png");
         registerImage("ladyvO_NS", ladyvO_NS);
-        
+
         ladyvOrAho_EW = loadImageRotate90("LadyVonOben.png");
         registerImage("ladyvO_EW", ladyvO_EW);
-        
+
         ladyvOrAho_SN = loadImage("LadyVonOben1.2.png");
         registerImage("ladyvO_SN", ladyvO_SN);
-        
+
         ladyvOrAho_WE = loadImageRotate90("LadyVonOben1.2.png");
         registerImage("ladyvO_WE", ladyvO_WE);
-        
-        
-        
 
         ladyvO_NS = loadImage("LadyVonOben2.png");
         registerImage("ladyvO_NS", ladyvO_NS);
-        
+
         ladyvO_EW = loadImageRotate90("LadyVonOben2.png");
         registerImage("ladyvO_EW", ladyvO_EW);
-        
+
         ladyvO_SN = loadImage("LadyVonOben2.2.png");
         registerImage("ladyvO_SN", ladyvO_SN);
-        
+
         ladyvO_WE = loadImageRotate90("LadyVonOben2.2.png");
         registerImage("ladyvO_WE", ladyvO_WE);
 
-        
-        
-        
         ladyvOrAo_WE = loadImage("LadyVonOben3.png");
         registerImage("ladyvOrAo_WE", ladyvOrAo_WE);
-        
+
         ladyvOrAo_NS = loadImageRotate90("LadyVonOben3.png");
         registerImage("ladyvOrAo_NS", ladyvOrAo_NS);
-        
+
         ladyvOrAo_EW = loadImage("LadyVonOben3.2.png");
         registerImage("ladyvOrAo_EW", ladyvOrAo_EW);
-        
+
         ladyvOrAo_SN = loadImageRotate90("LadyVonOben3.2.png");
         registerImage("ladyvOrAo_SN", ladyvOrAo_SN);
-        
-        
 
         ladyvObAho_NS = loadImage("LadyVonOben4.png");
         registerImage("ladyvonObAho_NS", ladyvObAho_NS);
 
         ladyvObAho_EW = loadImageRotate90("LadyVonOben4.png");
         registerImage("ladyvonObAho_EW", ladyvObAho_EW);
-        
+
         ladyvObAho_SN = loadImage("LadyVonOben4.2.png");
         registerImage("ladyvonObAho_SN", ladyvObAho_SN);
 
         ladyvObAho_WE = loadImageRotate90("LadyVonOben4.2.png");
         registerImage("ladyvonObAho_WE", ladyvObAho_WE);
 
-        
-        
         ladyvVbAho = loadImage("LadyVonVorne.png");
         registerImage("ladyvbAho", ladyvVbAho);
-        
-        
-        
 
         ladyvVbAho2 = loadImage("LadyVonVorne2.png");
         registerImage("ladyvVbAho2", ladyvVbAho2);
-        
-        
-        
 
         ladyvVbAo = loadImage("LadyVonVorne3.png");
         registerImage("ladyvVbAo", ladyvVbAo);
-        
-        
-        
 
-        ladyvVlAqurAo = loadImage("LadyVonVorne4.png");//<--Nice
+        ladyvVlAqurAo = loadImage("LadyVonVorne4.png");// <--Nice
         registerImage("ladyvVlAqurAo", ladyvVlAqurAo);
-        
-        
 
         ladyvVrS = loadImage("LadyVonVorne5.png");
         registerImage("ladyvVrS", ladyvVrS);
 
-        
-        
         lasterschwarzvV = loadImage("Lastwagen1.0.png");
         registerImage("lasterschwarzvV", lasterschwarzvV);
-        
-        
-        
 
         lasterschwarzvO_NS = loadImage("Lastwagen1.6.png");
         registerImage("lasterschwarzvO_NS", lasterschwarzvO_NS);
-        
+
         lasterschwarzvO_EW = loadImageRotate90("Lastwagen1.6.png");
         registerImage("lasterschwarzvO_EW", lasterschwarzvO_EW);
-        
+
         lasterschwarzvO_SN = loadImage("Lastwagen1.6.2.png");
         registerImage("lasterschwarzvO_SN", lasterschwarzvO_SN);
-        
+
         lasterschwarzvO_WE = loadImageRotate90("Lastwagen1.6.2.png");
         registerImage("lasterschwarzvO_WE", lasterschwarzvO_WE);
-        
 
         lasterschwarzmitAnhängervO_EW = loadImage("Lastwagen1.3.png");
         registerImage("lasterschwarzmitAnhängervO_EW", lasterschwarzmitAnhängervO_EW);
@@ -901,57 +869,35 @@ public final class Images {
         lasterschwarzmitAnhängervO_NS = loadImageRotate90("Lastwagen1.3.2.png");
         registerImage("lasterschwarzmitAnhängervO_NS", lasterschwarzmitAnhängervO_NS);
 
-  
-
         lasterweißvO_NS = loadImage("FliegendeZahnpastaTube1.0.png");
         registerImage("lasterweißvO_NS", lasterweißvO_NS);
 
         lasterweißvO_EW = loadImageRotate90("FliegendeZahnpastaTube1.0.png");
         registerImage("lasterweißvO_EW", lasterweißvO_EW);
-        
+
         lasterweißvO_SN = loadImage("FliegendeZahnpastaTube1.1.2");
         registerImage("lasterweißvO_SN", lasterweißvO_SN);
-        
+
         lasterweißvO_WE = loadImageRotate90("FliegendeZahnpastaTube1.1.2");
         registerImage("lasterweißvO_WE", lasterweißvO_WE);
-        
-        
 
         lasterweißvV = loadImage("FliegendeZahnpastaTube1.2");
         registerImage("lasterweißvV", lasterweißvV);
-        
-        
-        
 
         lordvdS = loadImage("LordVonDerSeite.png");
         registerImage("lordvonderSeite", lordvdS);
-        
-        
-        
 
         lordvdS2 = loadImage("LordVonDerSeite2.png");
         registerImage("lordvonderSeite2", lordvdS2);
-        
-        
-        
 
         lordvdS3 = loadImage("LordVonDerSeite3.png");
         registerImage("lordvonderSeite3", lordvdS3);
-        
-        
-        
 
         lordS = loadImage("LordSitzend.png");
         registerImage("lordS", lordS);
-        
-        
-        
 
         lordH = loadImage("LordHinten.png");// abcdefghijklmnopqrstuvwxyz
         registerImage("lordH", lordH);
-        
-        
-        
 
         // registerAllDir("LordVonOben.png", "LordvO", LordvO_NS, LordvO_SN, LordvO_EW,LordvO_WE);
 
@@ -960,92 +906,75 @@ public final class Images {
 
         lordvO_EW = loadImageRotate90("LordVonOben1.png");
         registerImage("lordvO_EW", lordvO_EW);
-        
+
         lordvO_SN = loadImage("LordVonOben1.1.png");
         registerImage("lordvO_SN", lordvO_SN);
-        
+
         lordvO_WE = loadImageRotate90("LordVonOben1.1.png");
         registerImage("lordvO_WE", lordvO_WE);
-        
-        
 
         gras = loadImage("Gras.png");
         registerImage("gras", gras);
 
-        
-        
-        
         pflaster = loadImage("PflasterStein.png");
         registerImage("pflaster", pflaster);
 
         rasen2 = loadImage("Wiese.png");
         registerImage("rasen2", rasen2);
-        
+
         strasse_EW = loadImage("Strasse.png");
         registerImage("strasse_EW", strasse_EW);
-        
+
         strasse_NS = loadImageRotate90("");
         registerImage("strasse_NS", strasse_NS);
-        
 
         typvObAo_EW = loadImage("Typ1.2.png");
         registerImage("typvObAo_EW", typvObAo_EW);
-        
+
         typvObAo_SN = loadImageRotate90("Typ1.2.png");
         registerImage("typvObAo_SN", typvObAo_SN);
-        
+
         typvObAo_WE = loadImage("Typ1.2.png");
         registerImage("typvObAo_WE", typvObAo_WE);
-        
+
         typvObAo_NS = loadImageRotate90("Typ1.2.png");
         registerImage("typvObAo_NS", typvObAo_NS);
-        
-        
-        
 
         typvO_WE = loadImage("Typ1.3.png");
         registerImage("typvO_WE", typvO_WE);
-        
+
         typvO_NS = loadImageRotate90("Typ1.3.png");
         registerImage("typvO_NS", typvO_NS);
-        
+
         typvO_EW = loadImage("Typ1.3.png");
         registerImage("typvO_EW", typvO_EW);
-        
+
         typvO_SN = loadImageRotate90("Typ1.3.png");
         registerImage("typvO_SN", typvO_SN);
-        
-        
-        
 
         typvO2_WE = loadImage("Typ1.png");
         registerImage("typvO2_WE", typvO2_WE);
 
         typvO2_NS = loadImageRotate90("Typ1.png");
-        registerImage("typvO2_NS", typvO2_NS); 
-        
+        registerImage("typvO2_NS", typvO2_NS);
+
         typvO2_EW = loadImage("Typ1.0.2.png");
         registerImage("typvO2_EW", typvO2_EW);
-        
+
         typvO2_SN = loadImageRotate90("Typ1.0.2.png");
         registerImage("typvO2_SN", typvO2_SN);
-        
-        
-        
-        
+
         typvOrAho_WE = loadImage("Typ1.4.png");
         registerImage("typvOrAho_WE", typvOrAho_WE);
-        
+
         typvOrAho_NS = loadImageRotate90("Typ1.4.png");
         registerImage("typvOrAho_NS", typvOrAho_NS);
-        
+
         typvOrAho_EW = loadImage("Typ1.4.png");
         registerImage("typvOrAho_EW", typvOrAho_EW);
-        
+
         typvOrAho_WE = loadImageRotate90("Typ1.4.png");
         registerImage("typvOrAho_WE", typvOrAho_WE);
-        
-        
 
         typvOrAo_WE = loadImage("Typ1.5.png");
         registerImage("typvOrAo_WE", typvOrAo_WE);
@@ -1059,48 +988,39 @@ public final class Images {
         typvOrAo_SN = loadImageRotate90("Typ1.5.2.png");
         registerImage("typvOrAo_SN", typvOrAo_SN);
 
-        
         weibvV = loadImage("Weib1.0.png");
         registerImage("weibvV", weibvV);
-        
-        
 
         wasser = loadImage("Wasser.png");
         registerImage("wasser", wasser);
 
-        
-        
         weibvOlAo_NS = loadImage("Weib1.1.png");
         registerImage("weibvOlAo", weibvOlAo);
-        
+
         weibvOlAo_EW = loadImageRotate90("Weib1.1.png");
         registerImage("weibvOlAo", weibvOlAo);
-        
+
         weibvOlAo_SN = loadImage("Weib1.1.2.png");
         registerImage("weibvOlAo", weibvOlAo);
-        
+
         weibvOlAo_WE = loadImageRotate90("Weib1.1.2.png");
         registerImage("weibvOlAo", weibvOlAo);
-        
-        
 
         weibvV = loadImage("Weib1.2.png");
         registerImage("weibvV", weibvV);
-        
-        
 
         weibvO_EW = loadImage("Weib1.3.png");
         registerImage("weibvO", weibvO);
 
         weibvO_SO = loadImageRotate90("Weib1.3.png");
         registerImage("weibvO", weibvO);
-  
+
         weibvO_WE = loadImage("Weib1.3.2.png");
         registerImage("weibvO", weibvO);
-        
+
         weibvO_EW = loadImageRotate90("Weib1.3.2.png");
         registerImage("weibvO", weibvO);
-    
+
     }
 
     /**
@@ -1179,21 +1099,8 @@ public final class Images {
     }
 
     /**
-     * Registriert ein Mapping.
-     *
-     * @param name
-     *            Name
-     * @param image
-     *            Bild
-     */
-    private static void registerImage(String name, BufferedImage image) {
-        MAPPINGS.put(name, image);
-        BACK_MAPPINGS.put(image, name);
-    }
-
-    /**
      * "NS", "SN", "EW", "WE"
-     * 
+     *
      * @param imageName
      * @param name
      * @param images
@@ -1209,6 +1116,19 @@ public final class Images {
             return rotated;
         }
         return null;
+    }
+
+    /**
+     * Registriert ein Mapping.
+     *
+     * @param name
+     *            Name
+     * @param image
+     *            Bild
+     */
+    private static void registerImage(String name, BufferedImage image) {
+        MAPPINGS.put(name, image);
+        BACK_MAPPINGS.put(image, name);
     }
 
     /**

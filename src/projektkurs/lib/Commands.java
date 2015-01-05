@@ -11,6 +11,7 @@ import projektkurs.command.CommandOpenSimulation;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.util.Init;
+import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
 /**
@@ -18,10 +19,6 @@ import projektkurs.util.Pair;
  */
 public final class Commands {
 
-    /**
-     * Die Zurück-Mappings.
-     */
-    public static final HashMap<Command, String> BACK_MAPPINGS = new HashMap<Command, String>();
     /**
      * CutScene-Start-Kommando.
      */
@@ -93,8 +90,11 @@ public final class Commands {
      *            ICommand
      */
     private static void registerMapping(Command c) {
-        MAPPINGS.put(c.getCommand(), c);
-        BACK_MAPPINGS.put(c, c.getCommand());
+        if (c != null && !MAPPINGS.containsKey(c.getCommand())) {
+            MAPPINGS.put(c.getCommand(), c);
+        } else {
+            Logger.warn("Unable to register command", c);
+        }
     }
 
     /**
@@ -102,5 +102,4 @@ public final class Commands {
      */
     private Commands() {
     }
-
 }

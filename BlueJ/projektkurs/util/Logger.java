@@ -133,12 +133,14 @@ public final class Logger {
                 if (objs != null && objs.length > 0) {
                     int i = 1;
                     for (Object o : objs) {
-                        if (o != null) {
-                            String out2 = String.format("[%s] [%s]: %d) %s", SIMPLE_DATE.format(new Date()), level.toString(), i++, o);
-                            LOG.add(out2);
-                            level.getPrintStream().println(out2);
-                            level.getPrintStream().flush();
+                        String oStr = o != null ? o.toString() : "null";
+                        if (oStr == null) {
+                            oStr = "null";
                         }
+                        String out2 = String.format("[%s] [%s]: %d) %s", SIMPLE_DATE.format(new Date()), level.toString(), i++, oStr);
+                        LOG.add(out2);
+                        level.getPrintStream().println(out2);
+                        level.getPrintStream().flush();
                     }
                 }
             }

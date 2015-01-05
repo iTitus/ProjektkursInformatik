@@ -21,4 +21,9 @@ public abstract class Command {
      */
     public abstract String getCommand();
 
+    @Override
+    public String toString() {
+        return "Command[" + getCommand() + "]";
+    }
+
 }
