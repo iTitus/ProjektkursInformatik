@@ -6,6 +6,15 @@ package projektkurs.util;
 public class Vector2d {
 
     /**
+     * Einheitsvektor X.
+     */
+    public static final Vector2d X = new Vector2d(1, 0);
+    /**
+     * Einheitsvektor Y.
+     */
+    public static final Vector2d Y = new Vector2d(0, 1);
+    
+    /**
      * X-Komponente.
      */
     private final double x;
