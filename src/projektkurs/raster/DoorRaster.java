@@ -16,6 +16,13 @@ import projektkurs.util.RenderUtil;
  */
 public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
+    /**
+     * Konstruktor.
+     */
+    public DoorRaster() {
+        super("door");
+    }
+
     @Override
     public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
         ExtraInformation extra = Main.getLevel().getMap().getExtraInformationAt(x, y);

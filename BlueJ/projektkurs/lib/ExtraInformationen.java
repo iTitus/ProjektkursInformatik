@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.raster.extra.ExtraInformationFire;
 import projektkurs.util.Init;
@@ -17,10 +18,6 @@ import projektkurs.util.SaveData;
  */
 public final class ExtraInformationen {
 
-    /**
-     * Zurück-Mappings.
-     */
-    public static final HashMap<Class<? extends ExtraInformation>, String> BACK_MAPPINGS = new HashMap<Class<? extends ExtraInformation>, String>();
     /**
      * Mappings.
      */
@@ -40,9 +37,9 @@ public final class ExtraInformationen {
      */
     @Init
     public static void init() {
-        registerExtraInformation("door", ExtraInformationDoor.class);
-        registerExtraInformation("fire", ExtraInformationFire.class);
-        registerExtraInformation("kiste", ExtraInformationFire.class);
+        registerExtraInformation(ExtraInformationDoor.class);
+        registerExtraInformation(ExtraInformationFire.class);
+        registerExtraInformation(ExtraInformationChest.class);
     }
 
     /**
@@ -73,7 +70,7 @@ public final class ExtraInformationen {
      */
     public static SaveData writeExtraInformation(ExtraInformation extra) {
         SaveData data = new SaveData();
-        data.set(Strings.EXTRA_ID, ExtraInformationen.BACK_MAPPINGS.get(extra.getClass()));
+        data.set(Strings.EXTRA_ID, extra.getInternalName());
         extra.write(data);
         return data;
     }
@@ -81,14 +78,16 @@ public final class ExtraInformationen {
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
      * @param cls
-     *            Entity-Klasse
+     *            ExtraInformations-Klasse
      */
-    private static void registerExtraInformation(String name, Class<? extends ExtraInformation> cls) {
-        MAPPINGS.put(name, cls);
-        BACK_MAPPINGS.put(cls, name);
+    private static void registerExtraInformation(Class<? extends ExtraInformation> cls) {
+        ExtraInformation extra = ReflectionUtil.newInstance(cls);
+        if (extra != null && !MAPPINGS.containsKey(extra.getInternalName())) {
+            MAPPINGS.put(extra.getInternalName(), cls);
+        } else {
+            Logger.warn("Unable to register ExtraInformation", cls);
+        }
     }
 
     /**

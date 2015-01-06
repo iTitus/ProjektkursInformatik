@@ -9,7 +9,7 @@ import projektkurs.util.RenderUtil;
 /**
  * Ein einfaches animiertes Raster.
  */
-public class AnimatedRaster extends SimpleRaster {
+public class AnimatedRaster extends AbstractRaster {
 
     /**
      * Alle AnimationFrame.
@@ -23,11 +23,13 @@ public class AnimatedRaster extends SimpleRaster {
     /**
      * Konstruktor.
      *
+     * @param name
+     *            Name
      * @param animationFrames
      *            alle AnimationFrames
      */
-    public AnimatedRaster(AnimationFrame... animationFrames) {
-        super(null);
+    public AnimatedRaster(String name, AnimationFrame... animationFrames) {
+        super(name);
         this.animationFrames = animationFrames;
         int animationLength = 0;
         for (AnimationFrame animationFrame : animationFrames) {

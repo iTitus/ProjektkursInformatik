@@ -6,6 +6,7 @@ import java.util.HashMap;
 import projektkurs.dialog.Dialog;
 import projektkurs.dialog.DialogPart;
 import projektkurs.util.Init;
+import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
 /**
@@ -13,10 +14,6 @@ import projektkurs.util.Pair;
  */
 public final class Dialoge {
 
-    /**
-     * Die Zurück-Mappings.
-     */
-    public static final HashMap<Dialog, String> BACK_MAPPINGS = new HashMap<Dialog, String>();
     /**
      * Die Mappings.
      */
@@ -41,22 +38,23 @@ public final class Dialoge {
     @Init
     public static void init() {
 
-        test = new Dialog(new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
-        registerMapping("test", test);
+        test = new Dialog("testDialog", new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
+        registerMapping(test);
 
     }
 
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
      * @param d
      *            Dialog
      */
-    private static void registerMapping(String name, Dialog d) {
-        MAPPINGS.put(name, d);
-        BACK_MAPPINGS.put(d, name);
+    private static void registerMapping(Dialog d) {
+        if (d != null && !MAPPINGS.containsKey(d.getName())) {
+            MAPPINGS.put(d.getName(), d);
+        } else {
+            Logger.warn("Unable to register Dialog", d);
+        }
     }
 
     /**

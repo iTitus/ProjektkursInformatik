@@ -13,11 +13,13 @@ public class SolidRaster extends SimpleRaster {
     /**
      * Konstrukor.
      *
+     * @param name
+     *            Name
      * @param image
      *            Bild.
      */
-    public SolidRaster(BufferedImage image) {
-        super(image);
+    public SolidRaster(String name, BufferedImage image) {
+        super(name, image);
     }
 
     @Override

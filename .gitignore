@@ -6,6 +6,7 @@ log*.txt
 
 *.ser
 *.checkstyle
+*.db
 
 # BlueJ
 *.class

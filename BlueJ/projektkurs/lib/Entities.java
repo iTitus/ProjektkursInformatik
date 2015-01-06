@@ -19,10 +19,6 @@ import projektkurs.util.SaveData;
 public final class Entities {
 
     /**
-     * Zurück-Mappings.
-     */
-    public static final HashMap<Class<? extends Entity>, String> BACK_MAPPINGS = new HashMap<Class<? extends Entity>, String>();
-    /**
      * Mappings.
      */
     public static final HashMap<String, Class<? extends Entity>> MAPPINGS = new HashMap<String, Class<? extends Entity>>();
@@ -57,9 +53,9 @@ public final class Entities {
      */
     @Init
     public static void init() {
-        registerEntity("player", EntityPlayer.class);
-        registerEntity("item", EntityItem.class);
-        registerEntity("redNPC", EntityRedNPC.class);
+        registerEntity(EntityPlayer.class);
+        registerEntity(EntityItem.class);
+        registerEntity(EntityRedNPC.class);
     }
 
     /**
@@ -97,7 +93,7 @@ public final class Entities {
             return null;
         }
         SaveData data = new SaveData();
-        data.set(Strings.ENTITY_ID, BACK_MAPPINGS.get(e.getClass()));
+        data.set(Strings.ENTITY_ID, e.getInternalName());
         e.write(data);
         return data;
     }
@@ -105,14 +101,16 @@ public final class Entities {
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
      * @param cls
      *            Entity-Klasse
      */
-    private static void registerEntity(String name, Class<? extends Entity> cls) {
-        MAPPINGS.put(name, cls);
-        BACK_MAPPINGS.put(cls, name);
+    private static void registerEntity(Class<? extends Entity> cls) {
+        Entity e = ReflectionUtil.newInstance(cls);
+        if (e != null && !MAPPINGS.containsKey(e.getInternalName())) {
+            MAPPINGS.put(e.getInternalName(), cls);
+        } else {
+            Logger.warn("Unable to register Entity", cls);
+        }
     }
 
     /**

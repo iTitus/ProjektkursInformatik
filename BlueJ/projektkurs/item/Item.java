@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import projektkurs.entity.Entity;
+import projektkurs.util.I18n;
 
 /**
  * Ein abstraktes Item.
@@ -11,11 +12,33 @@ import projektkurs.entity.Entity;
 public abstract class Item {
 
     /**
+     * Bild dieses Items.
+     */
+    private final BufferedImage image;
+    /**
+     * Name dieses Items.
+     */
+    private final String name;
+
+    /**
+     * Konstruktor.
+     *
+     * @param name
+     *            Name
+     */
+    public Item(String name, BufferedImage image) {
+        this.name = name;
+        this.image = image;
+    }
+
+    /**
      * Das Bild.
      *
      * @return Bild
      */
-    public abstract BufferedImage getImage();
+    public BufferedImage getImage() {
+        return image;
+    }
 
     /**
      * Das Bild des gegebenen ItemStacks.
@@ -29,11 +52,22 @@ public abstract class Item {
     }
 
     /**
+     * Interner Name.
+     *
+     * @return Name
+     */
+    public String getInternalName() {
+        return name;
+    }
+
+    /**
      * Übersetzter Name.
      *
      * @return Name
      */
-    public abstract String getName();
+    public String getName() {
+        return I18n.getString("item." + name + ".name");
+    }
 
     /**
      * Übersetzter Name - ItemStack sensitiv.
@@ -84,6 +118,6 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return getName();
+        return "Item[" + getInternalName() + "]";
     }
 }

@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class Dialog {
 
     /**
+     * Name.
+     */
+    private final String name;
+    /**
      * Alle DialogParts in diesem Dialog.
      */
     private final DialogPart[] parts;
@@ -15,11 +19,23 @@ public class Dialog {
     /**
      * Konstruktor.
      *
+     * @param name
+     *            Name
      * @param parts
      *            alle DialogParts
      */
-    public Dialog(DialogPart... parts) {
+    public Dialog(String name, DialogPart... parts) {
+        this.name = name;
         this.parts = parts;
+    }
+
+    /**
+     * Der Name des Dialogs.
+     *
+     * @return Name
+     */
+    public String getName() {
+        return name;
     }
 
     /**

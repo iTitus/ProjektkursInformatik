@@ -40,6 +40,9 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Konstruktor für eine CutScene.
+     *
+     * @param name
+     *            Name
      */
     public CutScene(String name) {
         actionQueue = new Queue<Action>();
@@ -55,6 +58,8 @@ public final class CutScene implements IUpdatable {
     /**
      * CutScene mit Custom Background.
      *
+     * @param name
+     *            Name
      * @param background
      *            Hintergrundbild
      */

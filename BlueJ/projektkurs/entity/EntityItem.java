@@ -43,6 +43,11 @@ public class EntityItem extends Entity {
         return stack.getItem().getImage(stack);
     }
 
+    @Override
+    public String getInternalName() {
+        return "item";
+    }
+
     /**
      * Der entahltene ItemStack.
      *

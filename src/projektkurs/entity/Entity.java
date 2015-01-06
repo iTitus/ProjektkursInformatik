@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviour;
@@ -25,7 +27,7 @@ import projektkurs.util.SaveData;
 public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSize {
 
     /**
-     * Alle Behaviours dieses Entities.
+     * Alle Behaviours dieses Entities.sd
      */
     private final ArrayList<Behaviour> behaviours = new ArrayList<Behaviour>();
     /**
@@ -35,7 +37,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     /**
      * Bild.
      */
-    private BufferedImage image;
+    private BufferedImage[] images;
+    /**
+     * Soll das Bild sich mit ändernder Richtung verändern.
+     */
+    private boolean shouldChangeImageWithFacing;
     /**
      * Soll dieser Entity nächsten Tick verschwinden.
      */
@@ -44,14 +50,17 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * X-Koordinate.
      */
     protected int posX;
+
     /**
      * Y-Koordinate.
      */
     protected int posY;
+
     /**
      * Breite.
      */
     protected int sizeX;
+
     /**
      * Höhe.
      */
@@ -63,7 +72,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     public Entity() {
         shouldDeSpawn = false;
         facing = Direction.UNKNOWN;
-        image = null;
+        images = null;
         posX = 0;
         posY = 0;
         sizeX = 1;
@@ -80,8 +89,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param image
      *            Bild
      */
-    public Entity(int posX, int posY, BufferedImage image) {
-        this(posX, posY, 1, 1, image);
+    public Entity(int posX, int posY, BufferedImage... images) {
+        this(posX, posY, 1, 1, images);
     }
 
     /**
@@ -98,13 +107,22 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param image
      *            Bild
      */
-    public Entity(int posX, int posY, int sizeX, int sizeY, BufferedImage image) {
+    public Entity(int posX, int posY, int sizeX, int sizeY, BufferedImage... images) {
         this();
         this.posX = posX;
         this.posY = posY;
-        this.image = image;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        if (images.length == 4) {
+            this.images = images;
+            shouldChangeImageWithFacing = true;
+        } else if (images.length == 1) {
+            this.images = images;
+            shouldChangeImageWithFacing = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     /**
@@ -152,6 +170,15 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
+     * Alle Behaviours.
+     *
+     * @return Behaviours
+     */
+    public List<Behaviour> getBehaviours() {
+        return Collections.unmodifiableList(behaviours);
+    }
+
+    /**
      * Rectangle dieses Entities.
      *
      * @return Rectangle
@@ -175,8 +202,27 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @return BufferedImage
      */
     public BufferedImage getImage() {
-        return image;
+        if (!shouldChangeImageWithFacing) {
+            return images[0];
+        }
+        return images[MathUtil.floorDiv(facing.getIndex(), 2)];
     }
+
+    /**
+     * Alle Bilder.
+     *
+     * @return Bilder
+     */
+    public BufferedImage[] getImages() {
+        return images;
+    }
+
+    /**
+     * Der Interne Name dieses Entity-Typs.
+     *
+     * @return Interner Name
+     */
+    public abstract String getInternalName();
 
     @Override
     public int getPosX() {
@@ -251,8 +297,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         sizeX = data.getInteger(Strings.ENTITY_SIZE_X);
         sizeY = data.getInteger(Strings.ENTITY_SIZE_Y);
         shouldDeSpawn = data.getBoolean(Strings.ENTITY_DESPAWN);
-        facing = Direction.values()[data.getInteger(Strings.ENTITY_FACING)];
-        image = Images.MAPPINGS.get(data.getString(Strings.ENTITY_IMAGE));
+        facing = Direction.getDirectionForIndex(data.getInteger(Strings.ENTITY_FACING));
+        images = new BufferedImage[data.getInteger(Strings.ENTITY_IMAGE_LENGTH)];
+        for (int i = 0; i < images.length; i++) {
+            images[i] = Images.MAPPINGS.get(data.getString(Strings.ENTITY_IMAGE + "[" + i + "]"));
+        }
     }
 
     /**
@@ -313,8 +362,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param image
      *            Bild
      */
-    public void setImage(BufferedImage image) {
-        this.image = image;
+    public void setImage(BufferedImage image, int i) {
+        images[i] = image;
     }
 
     @Override
@@ -326,6 +375,15 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     public void setSize(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+    }
+
+    /**
+     * Ändert dieser Entity sein Bild mit sich ändernder Richtung.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean shouldChangeImageWithFacing() {
+        return shouldChangeImageWithFacing;
     }
 
     /**
@@ -353,8 +411,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         data.set(Strings.ENTITY_SIZE_X, sizeX);
         data.set(Strings.ENTITY_SIZE_Y, sizeY);
         data.set(Strings.ENTITY_DESPAWN, shouldDeSpawn);
-        data.set(Strings.ENTITY_FACING, facing.ordinal());
-        data.set(Strings.ENTITY_IMAGE, Images.BACK_MAPPINGS.get(image));
+        data.set(Strings.ENTITY_FACING, facing.getIndex());
+        data.set(Strings.ENTITY_IMAGE_LENGTH, images.length);
+        for (int i = 0; i < images.length; i++) {
+            data.set(Strings.ENTITY_IMAGE + "[" + i + "]", Images.BACK_MAPPINGS.get(images[i]));
+        }
     }
 
     /**

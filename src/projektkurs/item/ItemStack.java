@@ -266,7 +266,7 @@ public class ItemStack {
      */
     public SaveData write() {
         SaveData data = new SaveData();
-        data.set(Strings.STACK_ITEM, Items.BACK_MAPPINGS.get(item));
+        data.set(Strings.STACK_ITEM, item.getInternalName());
         data.set(Strings.STACK_SIZE, stackSize);
         data.set(Strings.STACK_DAMAGE, damage);
         return data;

@@ -19,7 +19,12 @@ public class ExtraInformationKiste extends ExtraInformation {
      * Konstruktor.
      */
     public ExtraInformationKiste() {
-        inventar = new Inventory(Integers.KISTENGROESSE);
+        inventar = new Inventory(Integers.CHEST_SIZE);
+    }
+
+    @Override
+    public String getInternalName() {
+        return "chest";
     }
 
     /**

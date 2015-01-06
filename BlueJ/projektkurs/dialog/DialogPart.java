@@ -32,7 +32,6 @@ public class DialogPart implements Iterable<String> {
      * Enthält das Gespräch, jeweils ein String pro Person und Sprechpart.
      */
     private final String[] talk;
-
     /**
      * Änderung des Wertes.
      */
@@ -59,7 +58,7 @@ public class DialogPart implements Iterable<String> {
         this.isGood = isGood;
         talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
-            talk[i] = name + "." + i;
+            talk[i] = "dialog.part." + name + "." + i;
         }
         index = 0;
         activated = true;

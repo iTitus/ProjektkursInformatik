@@ -34,6 +34,10 @@ public final class Strings {
      */
     public static final String ENTITY_IMAGE = "image";
     /**
+     * SaveData-Key für die Anzahl der Bilder.
+     */
+    public static final String ENTITY_IMAGE_LENGTH = "imageLength";
+    /**
      * SaveData-Key für inventory.
      */
     public static final String ENTITY_INV = "inventory";

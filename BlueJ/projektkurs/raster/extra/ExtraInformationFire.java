@@ -40,6 +40,11 @@ public class ExtraInformationFire extends ExtraInformation {
     }
 
     @Override
+    public String getInternalName() {
+        return "fire";
+    }
+
+    @Override
     public void load(SaveData data) {
         super.load(data);
         background = Raster.MAPPINGS.get(data.getString(Strings.EXTRA_RASTER));
@@ -66,7 +71,7 @@ public class ExtraInformationFire extends ExtraInformation {
     @Override
     public void write(SaveData data) {
         super.write(data);
-        data.set(Strings.EXTRA_RASTER, Raster.BACK_MAPPINGS.get(background));
+        data.set(Strings.EXTRA_RASTER, background != null ? background.getName() : "");
     }
 
 }

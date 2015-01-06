@@ -93,6 +93,15 @@ public class Level implements IUpdatable {
     }
 
     /**
+     * Name.
+     *
+     * @return Name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Wählt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
      *
      * @param i

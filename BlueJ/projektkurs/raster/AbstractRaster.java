@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.entity.Entity;
-import projektkurs.lib.Raster;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
 
@@ -12,6 +11,21 @@ import projektkurs.util.Logger;
  * Woraus die Welt besteht: Das abstrakte Raster.
  */
 public abstract class AbstractRaster {
+
+    /**
+     * Name.
+     */
+    private final String name;
+
+    /**
+     * Konstruktor.
+     *
+     * @param name
+     *            Name
+     */
+    public AbstractRaster(String name) {
+        this.name = name;
+    }
 
     /**
      * Kann ein Entity aus der gegebenen Richtung auf dieses Raster laufen.
@@ -28,6 +42,15 @@ public abstract class AbstractRaster {
      */
     public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
         return true;
+    }
+
+    /**
+     * Name.
+     *
+     * @return Name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -114,7 +137,7 @@ public abstract class AbstractRaster {
 
     @Override
     public String toString() {
-        return Raster.BACK_MAPPINGS.get(this);
+        return "Raster[" + getName() + "]";
     }
 
 }

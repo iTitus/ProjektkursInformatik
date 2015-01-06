@@ -6,6 +6,7 @@ import java.util.HashMap;
 import projektkurs.level.Level;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 import projektkurs.world.Spielfeld;
@@ -57,24 +58,25 @@ public final class Levels {
     @Init(state = State.PRE)
     public static void init() {
         level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
-        registerMapping("Level0", level0);
+        registerMapping(level0);
 
         level1 = new Level("Level1", new Spielfeld(25, 25, 1, 1), new Spielfeld(10, 10, 1, 1));
-        registerMapping("Level1", level1);
+        registerMapping(level1);
 
     }
 
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
      * @param l
      *            Level
      */
-    private static void registerMapping(String name, Level l) {
-        MAPPINGS.put(name, l);
-        BACK_MAPPINGS.put(l, name);
+    private static void registerMapping(Level l) {
+        if (l != null && !MAPPINGS.containsKey(l.getName())) {
+            MAPPINGS.put(l.getName(), l);
+        } else {
+            Logger.warn("Unable to register Level", l);
+        }
     }
 
     /**

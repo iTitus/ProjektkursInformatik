@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.raster.AbstractRaster;
+import projektkurs.raster.ChestRaster;
 import projektkurs.raster.DoorRaster;
 import projektkurs.raster.FinishRaster;
 import projektkurs.raster.FireRaster;
-import projektkurs.raster.KistenRaster;
 import projektkurs.raster.SimpleRaster;
 import projektkurs.raster.SolidRaster;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
 /**
@@ -20,13 +21,13 @@ import projektkurs.util.Pair;
 public final class Raster {
 
     /**
-     * Zurück-Mappings.
-     */
-    public static final HashMap<AbstractRaster, String> BACK_MAPPINGS = new HashMap<AbstractRaster, String>();
-    /**
      * Baum.
      */
     public static AbstractRaster baum;
+    /**
+     * Kiste.
+     */
+    public static AbstractRaster chest;
     /**
      * Zerstörter Boden.
      */
@@ -44,10 +45,6 @@ public final class Raster {
      */
     public static AbstractRaster fire;
     /**
-     * Kiste.
-     */
-    public static AbstractRaster kiste;
-    /**
      * Mappings.
      */
     public static final HashMap<String, AbstractRaster> MAPPINGS = new HashMap<String, AbstractRaster>();
@@ -58,7 +55,7 @@ public final class Raster {
     /**
      * Wand.
      */
-    public static AbstractRaster wand;
+    public static AbstractRaster wall;
 
     /**
      * Das Pair, das alle Kommandos enthält.
@@ -74,43 +71,44 @@ public final class Raster {
      */
     @Init(state = State.PRE)
     public static void init() {
-        wand = new SolidRaster(Images.wand);
-        registerRaster("wand", wand);
+        wall = new SolidRaster("wall", Images.wand);
+        registerRaster(wall);
 
-        kiste = new KistenRaster();
-        registerRaster("kiste", kiste);
+        chest = new ChestRaster();
+        registerRaster(chest);
 
-        rasen = new SimpleRaster(Images.rasen);
-        registerRaster("rasen", rasen);
+        rasen = new SimpleRaster("grass", Images.rasen);
+        registerRaster(rasen);
 
-        baum = new SolidRaster(Images.baum);
-        registerRaster("baum", baum);
+        baum = new SolidRaster("tree", Images.baum);
+        registerRaster(baum);
 
         door = new DoorRaster();
-        registerRaster("door", door);
+        registerRaster(door);
 
         finish = new FinishRaster();
-        registerRaster("finish", finish);
+        registerRaster(finish);
 
-        destroyedRaster = new SimpleRaster(Images.destroyedRaster);
-        registerRaster("destroyedRaster", destroyedRaster);
+        destroyedRaster = new SimpleRaster("destroyedRaster", Images.destroyedRaster);
+        registerRaster(destroyedRaster);
 
         fire = new FireRaster();
-        registerRaster("fire", fire);
+        registerRaster(fire);
 
     }
 
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
-     * @param raster
+     * @param r
      *            Raster
      */
-    private static void registerRaster(String name, AbstractRaster raster) {
-        MAPPINGS.put(name, raster);
-        BACK_MAPPINGS.put(raster, name);
+    private static void registerRaster(AbstractRaster r) {
+        if (r != null && !MAPPINGS.containsKey(r.getName())) {
+            MAPPINGS.put(r.getName(), r);
+        } else {
+            Logger.warn("Unable to register Raster", r);
+        }
     }
 
     /**

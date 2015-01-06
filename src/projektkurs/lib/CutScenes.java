@@ -14,7 +14,9 @@ import projektkurs.cutscene.condition.TickCondition;
 import projektkurs.cutscene.condition.TickCondition.TickConditionType;
 import projektkurs.cutscene.condition.TickIntervalCondition;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.util.CutSceneUtil;
 import projektkurs.util.Init;
+import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
 /**
@@ -45,7 +47,7 @@ public final class CutScenes {
      */
     @Init
     public static void init() {
-        one = new CutScene("one", Images.rasen);
+        one = new CutScene("one");
         /*
          * CutSceneObject auto_x = new CutSceneObject(Images.item42, 10, 10, 3, 3); CutSceneObject figur = new CutSceneObject(Images.key, 5, 5, 1, 1); CutSceneObject hafen = new CutSceneObject(Images.baum, 50, 7, 9, 9); one.registerStartupAction(new SpawnAction(auto_x)); one.registerStartupAction(new
          * SpawnAction(figur)); one.registerStartupAction(new SpawnAction(hafen)); one.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 20), new TickIntervalCondition(0, 79)), auto_x, 1, 0)); one.registerTickAction(new ConditionedMoveSightAction(new
@@ -53,9 +55,9 @@ public final class CutScenes {
          */
         CutSceneObject auto = new CutSceneObject(Images.auto_w_WE, 19, 10, 1, 1);
 
-        CutSceneObject straßehorizontal = new CutSceneObject(Images.strasse_EW, 0, 18, 2, 4);
+        CutSceneObject strasseHorizontal = new CutSceneObject(Images.strasse_EW, 0, 18, 2, 4);
         CutSceneObject wasser = new CutSceneObject(Images.wasser, 300, 0, 1, 1);
-        CutSceneObject straßevertikal = new CutSceneObject(Images.strasse_NS, 298, 0, 1, 1);
+        CutSceneObject strasseVertikal = new CutSceneObject(Images.strasse_NS, 298, 0, 1, 1);
 
         // CutSceneObject pflaster = new CutSceneObject(Images.pflaster, 0, 0, 1, 1);
         // CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 0, 0, 4, 2);
@@ -80,18 +82,18 @@ public final class CutScenes {
         // one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
 
         for (int i = 0; i < baeumer.length; i++) {
-            baeumer[i] = new CutSceneObject(CutSceneUtil.getRanBaum(), i * 3, 17, 2, 2);
+            baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 17, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumer[i]));
 
-            baeumel[i] = new CutSceneObject(CutSceneUtil.getRanBaum(), i * 3, 22, 2, 2);
+            baeumel[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 22, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumel[i]));
         }
 
         // one.registerStartupAction(new SpawnAction(rasen));
-        one.registerStartupAction(new SpawnAction(straßehorizontal));
+        one.registerStartupAction(new SpawnAction(strasseHorizontal));
 
         one.registerStartupAction(new SpawnAction(wasser));
-        one.registerStartupAction(new SpawnAction(straßevertikal));
+        one.registerStartupAction(new SpawnAction(strasseVertikal));
         // one.registerStartupAction(new SpawnAction(pflaster));
         // one.registerStartupAction(new SpawnAction())
         one.registerStartupAction(new SpawnAction(auto));
@@ -122,13 +124,15 @@ public final class CutScenes {
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
      * @param c
      *            CutScene
      */
     private static void registerMapping(CutScene c) {
-        MAPPINGS.put(c.getName(), c);
+        if (c != null && !MAPPINGS.containsKey(c.getName())) {
+            MAPPINGS.put(c.getName(), c);
+        } else {
+            Logger.warn("Unable to register CutScene", c);
+        }
     }
 
     /**

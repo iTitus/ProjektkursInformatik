@@ -9,6 +9,7 @@ import projektkurs.item.ItemHealthPotion;
 import projektkurs.item.ItemNuke;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
+import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
 /**
@@ -16,10 +17,6 @@ import projektkurs.util.Pair;
  */
 public final class Items {
 
-    /**
-     * Zurück-Mappings.
-     */
-    public static final HashMap<Item, String> BACK_MAPPINGS = new HashMap<Item, String>();
     /**
      * Gesundheitstrank.
      */
@@ -56,29 +53,30 @@ public final class Items {
     @Init(state = State.PRE)
     public static void init() {
         item42 = new BaseItem("42", Images.item42);
-        registerItem("42", item42);
+        registerItem(item42);
 
         nuke = new ItemNuke();
-        registerItem("nuke", nuke);
+        registerItem(nuke);
 
         key = new BaseItem("key", Images.key);
-        registerItem("key", key);
+        registerItem(key);
 
         healthPotion = new ItemHealthPotion();
-        registerItem("potion.health", healthPotion);
+        registerItem(healthPotion);
     }
 
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
-     * @param item
+     * @param i
      *            Item
      */
-    private static void registerItem(String name, Item item) {
-        MAPPINGS.put(name, item);
-        BACK_MAPPINGS.put(item, name);
+    private static void registerItem(Item i) {
+        if (i != null && !MAPPINGS.containsKey(i.getName())) {
+            MAPPINGS.put(i.getInternalName(), i);
+        } else {
+            Logger.warn("Unable to register Item", i);
+        }
     }
 
     /**

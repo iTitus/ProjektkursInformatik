@@ -11,8 +11,8 @@ import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Scripts;
 import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.ExtraInformationDoor;
-import projektkurs.raster.extra.ExtraInformationKiste;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryHasItemStackTrigger;
@@ -49,18 +49,18 @@ public final class MapBuilder {
 
         // KISTEN!
         for (int i = 0; i < MathUtil.randomInt(10, 15); i++) {
-            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.kiste);
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.chest);
         }
-        map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.kiste);
+        map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wand);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
         }
         for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wand);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
         // Animation Test
@@ -98,13 +98,13 @@ public final class MapBuilder {
         ExtraInformation extra;
         for (int y = 0; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
-                inv = new Inventory(Integers.KISTENGROESSE);
+                inv = new Inventory(Integers.CHEST_SIZE);
                 inv.addItemStack(new ItemStack(Items.item42, 42));
                 inv.addItemStack(new ItemStack(Items.nuke));
                 inv.addItemStack(new ItemStack(Items.key));
                 extra = map.getExtraInformationAt(x, y);
-                if (extra instanceof ExtraInformationKiste) {
-                    ((ExtraInformationKiste) extra).setInventar(inv);
+                if (extra instanceof ExtraInformationChest) {
+                    ((ExtraInformationChest) extra).setInventory(inv);
                 }
             }
         }
@@ -143,12 +143,12 @@ public final class MapBuilder {
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wand);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
         }
         for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wand);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
         // ENTITIES!
@@ -175,12 +175,12 @@ public final class MapBuilder {
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wand);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
         }
         for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wand);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
         // ENTITIES!
@@ -203,12 +203,12 @@ public final class MapBuilder {
 
         // WÄNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wand);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wand);
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
         }
         for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wand);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wand);
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
         // ENTITIES!

@@ -33,4 +33,9 @@ public class EntityRedNPC extends EntityNPC {
         addBehaviour(new BehaviourRunAround(this));
     }
 
+    @Override
+    public String getInternalName() {
+        return "redNPC";
+    }
+
 }

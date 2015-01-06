@@ -8,6 +8,10 @@ import java.awt.Toolkit;
 public final class Integers {
 
     /**
+     * Größe des Kisteninventars.
+     */
+    public static final int CHEST_SIZE = 3;
+    /**
      * Ticks, die der Cursor zum Blinken braucht.
      */
     public static final int CURSOR_BLINK_TIME = 16;
@@ -32,14 +36,6 @@ public final class Integers {
      */
     public static final int INFO_Y = 16;
     /**
-     * Größe des Spielerinventars.
-     */
-    public static final int INVENTARGROESSE = 7;
-    /**
-     * Größe des Kisteninventars.
-     */
-    public static final int KISTENGROESSE = 3;
-    /**
      * Maximale Schriftgröße.
      */
     public static final int MAX_FONT_SIZE = 64;
@@ -59,6 +55,10 @@ public final class Integers {
      * Spielergesundheit.
      */
     public static final int PLAYER_HEALTH = 500;
+    /**
+     * Größe des Spielerinventars.
+     */
+    public static final int PLAYER_INVENTORY_SIZE = 7;
     /**
      * Rastergröße in Pixeln.
      */

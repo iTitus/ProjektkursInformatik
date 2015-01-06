@@ -9,7 +9,7 @@ import projektkurs.util.SaveData;
 /**
  * Eine ExtraInformation.
  */
-public class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
+public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
 
     /**
      * X-Koordinate.
@@ -24,6 +24,13 @@ public class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
     public boolean canUpdate() {
         return false;
     }
+
+    /**
+     * Der Interne Name dieses ExtraInformation-Typs.
+     *
+     * @return Interner Name
+     */
+    public abstract String getInternalName();
 
     @Override
     public int getPosX() {

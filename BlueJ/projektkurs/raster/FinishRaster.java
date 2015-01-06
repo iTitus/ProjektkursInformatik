@@ -15,7 +15,7 @@ public class FinishRaster extends SimpleRaster {
      * Konstruktor.
      */
     public FinishRaster() {
-        super(Images.finish);
+        super("finish", Images.finish);
     }
 
     @Override

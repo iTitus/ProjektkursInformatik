@@ -27,6 +27,10 @@ public final class Sounds {
          */
         private Clip clip;
         /**
+         * Name.
+         */
+        private final String name;
+        /**
          * Pausiert dieser Sound gerade.
          */
         private boolean pausing;
@@ -34,11 +38,13 @@ public final class Sounds {
         /**
          * Konstruktor.
          *
+         * @param name
+         *            Name
          * @param fileName
          *            Dateiname
          */
-        public Sound(String fileName) {
-
+        public Sound(String name, String fileName) {
+            this.name = name;
             pausing = false;
             try {
                 clip = AudioSystem.getClip();
@@ -64,6 +70,15 @@ public final class Sounds {
             if (clip != null) {
                 clip.close();
             }
+        }
+
+        /**
+         * Name.
+         *
+         * @return Name
+         */
+        public String getName() {
+            return name;
         }
 
         /**
@@ -199,8 +214,8 @@ public final class Sounds {
     @Init(state = State.RESOURCES)
     public static void init() {
 
-        explosion = new Sound("boom.wav");
-        registerSound("explosion", explosion);
+        explosion = new Sound("explosion", "boom.wav");
+        registerSound(explosion);
 
     }
 
@@ -243,14 +258,15 @@ public final class Sounds {
     /**
      * Registriert ein Mapping.
      *
-     * @param name
-     *            Name
-     * @param sound
+     * @param s
      *            Sound
      */
-    private static void registerSound(String name, Sound sound) {
-        MAPPINGS.put(name, sound);
-        BACK_MAPPINGS.put(sound, name);
+    private static void registerSound(Sound s) {
+        if (s != null && !MAPPINGS.containsKey(s.getName())) {
+            MAPPINGS.put(s.getName(), s);
+        } else {
+            Logger.warn("Unable to register Sound", s);
+        }
     }
 
     /**

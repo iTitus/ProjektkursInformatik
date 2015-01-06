@@ -40,7 +40,12 @@ public class EntityPlayer extends EntityLiving {
      */
     public EntityPlayer(int posX, int posY, BufferedImage image) {
         super(posX, posY, image, Integers.PLAYER_HEALTH);
-        inventar = new PlayerInventory(Integers.INVENTARGROESSE, 0);
+        inventar = new PlayerInventory(Integers.PLAYER_INVENTORY_SIZE, 0);
+    }
+
+    @Override
+    public String getInternalName() {
+        return "player";
     }
 
     /**

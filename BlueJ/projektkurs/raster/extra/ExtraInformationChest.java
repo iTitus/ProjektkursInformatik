@@ -8,18 +8,18 @@ import projektkurs.util.SaveData;
 /**
  * ExtraInformation einer Kiste.
  */
-public class ExtraInformationKiste extends ExtraInformation {
+public class ExtraInformationChest extends ExtraInformation {
 
     /**
      * Das Inventar.
      */
-    private Inventory inventar;
+    private Inventory inventory;
 
     /**
      * Konstruktor.
      */
-    public ExtraInformationKiste() {
-        inventar = new Inventory(Integers.CHEST_SIZE);
+    public ExtraInformationChest() {
+        inventory = new Inventory(Integers.CHEST_SIZE);
     }
 
     @Override
@@ -32,14 +32,14 @@ public class ExtraInformationKiste extends ExtraInformation {
      *
      * @return Inventar.
      */
-    public Inventory getInventar() {
-        return inventar;
+    public Inventory getInventory() {
+        return inventory;
     }
 
     @Override
     public void load(SaveData data) {
         super.load(data);
-        inventar = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
+        inventory = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
     }
 
     /**
@@ -48,14 +48,14 @@ public class ExtraInformationKiste extends ExtraInformation {
      * @param inventar
      *            Inventar
      */
-    public void setInventar(Inventory inventar) {
-        this.inventar = inventar;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     @Override
     public void write(SaveData data) {
         super.write(data);
-        data.set(Strings.EXTRA_INV, inventar.write());
+        data.set(Strings.EXTRA_INV, inventory.write());
     }
 
 }

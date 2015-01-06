@@ -8,39 +8,39 @@ public enum Direction {
     /**
      * Nach unten.
      */
-    DOWN(0, 1),
+    DOWN(4, 0, 1),
     /**
      * Nach links-unten.
      */
-    DOWN_LEFT(-1, 1),
+    DOWN_LEFT(5, -1, 1),
     /**
      * Nach rechts-unten.
      */
-    DOWN_RIGHT(1, 1),
+    DOWN_RIGHT(3, 1, 1),
     /**
      * Nach links.
      */
-    LEFT(-1, 0),
+    LEFT(6, -1, 0),
     /**
      * Nach rechts.
      */
-    RIGHT(1, 0),
+    RIGHT(2, 1, 0),
     /**
      * Unbekannte Richtung.
      */
-    UNKNOWN(0, 0),
+    UNKNOWN(-1, 0, 0),
     /**
      * Nach oben.
      */
-    UP(0, -1),
+    UP(0, 0, -1),
     /**
      * Nach links-oben.
      */
-    UP_LEFT(-1, -1),
+    UP_LEFT(7, -1, -1),
     /**
      * Nach links-oben.
      */
-    UP_RIGHT(1, -1);
+    UP_RIGHT(1, 1, -1);
 
     /**
      * Die Kardinalen-Richtungen: Nach oben, nach rechts, nach unten und nach links.
@@ -54,6 +54,20 @@ public enum Direction {
      * Tabelle - wird benutzt um die Offset-Werte zu dekodieren.
      */
     private static final Direction[] TABLE = { UP_LEFT, UP, UP_RIGHT, LEFT, UNKNOWN, RIGHT, DOWN_LEFT, DOWN, DOWN_RIGHT };
+
+    /**
+     * Direction die zu dem gegebenen Index gehört.
+     *
+     * @param index
+     *            Index
+     * @return Direction
+     */
+    public static Direction getDirectionForIndex(int index) {
+        if (MathUtil.isInArray(index, VALID_DIRECTIONS.length)) {
+            return VALID_DIRECTIONS[index];
+        }
+        return UNKNOWN;
+    }
 
     /**
      * Richtung für die gegebenen Offset-Werte.
@@ -72,9 +86,14 @@ public enum Direction {
     }
 
     /**
+     * Index.
+     */
+    private final int index;
+    /**
      * X-Offset.
      */
     private final int offsetX;
+
     /**
      * Y-Offset.
      */
@@ -88,9 +107,19 @@ public enum Direction {
      * @param offsetY
      *            Y-Offset
      */
-    private Direction(int offsetX, int offsetY) {
+    private Direction(int index, int offsetX, int offsetY) {
+        this.index = index;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
+    }
+
+    /**
+     * Index.
+     *
+     * @return Index
+     */
+    public int getIndex() {
+        return index;
     }
 
     /**

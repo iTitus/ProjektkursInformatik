@@ -59,6 +59,11 @@ public class ExtraInformationDoor extends ExtraInformation {
         }
     }
 
+    @Override
+    public String getInternalName() {
+        return "door";
+    }
+
     /**
      * Ist die Tür von der gegebenen Richtung aus offen und damit begehbar.
      *
@@ -73,7 +78,7 @@ public class ExtraInformationDoor extends ExtraInformation {
     @Override
     public void load(SaveData data) {
         super.load(data);
-        direction = Direction.values()[data.getInteger(Strings.EXTRA_DIR)];
+        direction = Direction.getDirectionForIndex(data.getInteger(Strings.EXTRA_DIR));
         isOpen = data.getBoolean(Strings.EXTRA_OPEN);
         openingKey = data.getInteger(Strings.EXTRA_KEY);
     }
@@ -113,7 +118,7 @@ public class ExtraInformationDoor extends ExtraInformation {
     @Override
     public void write(SaveData data) {
         super.write(data);
-        data.set(Strings.EXTRA_DIR, direction.ordinal());
+        data.set(Strings.EXTRA_DIR, direction.getIndex());
         data.set(Strings.EXTRA_OPEN, isOpen);
         data.set(Strings.EXTRA_KEY, openingKey);
     }
