@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.cutscene.CutScene;
-import projektkurs.cutscene.action.ConditionedClearMapAction;
 import projektkurs.cutscene.action.ConditionedExitAction;
 import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.action.ConditionedMoveSightAction;
@@ -56,37 +55,38 @@ public final class CutScenes {
          */
         CutSceneObject auto = new CutSceneObject(Images.auto_w_WE, 19, 10, 1, 1);
 
-        CutSceneObject strasseHorizontal = new CutSceneObject(Images.strasse_EW, 0, 18, 2, 4);
-        CutSceneObject wasser = new CutSceneObject(Images.wasser, 300, 0, 1, 1);
-        CutSceneObject strasseVertikal = new CutSceneObject(Images.strasse_NS, 298, 0, 1, 1);
+        CutSceneObject strasseHorizontal = new CutSceneObject(Images.strasse_EW, 0, 8, 2, 4);
 
-        // CutSceneObject pflaster = new CutSceneObject(Images.pflaster, 0, 0, 1, 1);
-        // CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 0, 0, 4, 2);
-        // CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_WE, 0, 0, 4, 2);
-        // CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_WE, 0, 0, 4, 2);
-        // CutSceneObject typ4 = new CutSceneObject(Images.auto_di_WE, 0, 0, 4, 2);
-        //
-        // CutSceneObject typ5 = new CutSceneObject(Images.auto_do_WE, 0, 0, 4, 2);
-        // CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_WE, 0, 0, 4, 2);
-        // CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_WE, 0, 0, 4, 2);
-        // CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_WE, 0, 0, 4, 2);
+        // CutSceneObject auto = new CutSceneObject(Images.auto_w_WE, 9, 10, 1, 1);
+        CutSceneObject wasser = new CutSceneObject(Images.wasser, 200, 0, 1, 1);
+        CutSceneObject strasseVertikal = new CutSceneObject(Images.strasse_NS, 198, 0, 1, 1);
+        CutSceneObject pflaster = new CutSceneObject(Images.pflaster, 0, 0, 1, 1);
+        CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 0, 0, 4, 2);
+        CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_WE, 0, 0, 4, 2);
+        CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_WE, 0, 0, 4, 2);
+        CutSceneObject typ4 = new CutSceneObject(Images.auto_di_WE, 0, 0, 4, 2);
+
+        CutSceneObject typ5 = new CutSceneObject(Images.auto_do_WE, 0, 0, 4, 2);
+        CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_WE, 0, 0, 4, 2);
+        CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_WE, 0, 0, 4, 2);
+        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_WE, 0, 0, 4, 2);
 
         CutSceneObject[] baeumer = new CutSceneObject[50];
         CutSceneObject[] baeumel = new CutSceneObject[50];
 
         CutSceneObject[] strassen = new CutSceneObject[20];
         for (int j = 0; j < strassen.length; j++) {
-            strassen[j] = new CutSceneObject(Images.strasse_EW, j * 8, 18, 8, 4);
+            strassen[j] = new CutSceneObject(Images.strasse_EW, j * 8, 8, 8, 4);
             one.registerStartupAction(new SpawnAction(strassen[j]));
         }
 
-        one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
+        // one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
 
         for (int i = 0; i < baeumer.length; i++) {
-            baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 17, 2, 2);
+            baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 6, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumer[i]));
 
-            baeumel[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 22, 2, 2);
+            baeumel[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 12, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumel[i]));
         }
 
@@ -101,7 +101,7 @@ public final class CutScenes {
 
         one.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(0, 40)), auto, 1, 0));
 
-        one.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(40, 100)), 1, 0));
+        one.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(40, 400)), 1, 0));
 
         one.registerTickAction(new DebugAction());
 

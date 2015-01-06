@@ -92,9 +92,6 @@ public class Render implements IUpdatable {
             g = (Graphics2D) strategy.getDrawGraphics();
 
             g.clearRect(0, 0, Integers.windowX, Integers.windowY);
-            g.setColor(Color.BLACK);
-
-            g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth(), Integers.INFO_X, Integers.INFO_Y);
 
             for (int y = 0; y < Integers.sightY; y++) {
                 for (int x = 0; x < Integers.sightX; x++) {
@@ -114,7 +111,10 @@ public class Render implements IUpdatable {
                 }
             }
 
+            g.setColor(Color.BLACK);
             Main.getGui().render(g);
+
+            g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth(), Integers.INFO_X, Integers.INFO_Y);
 
             g.dispose();
             strategy.show();

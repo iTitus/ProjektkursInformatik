@@ -77,9 +77,6 @@ public class CutsceneRender implements IUpdatable {
 
             g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
-            g.setColor(Color.BLACK);
-            g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
-
             if (CutSceneManager.getCutScene().needsRasterBackground()) {
                 for (int y = 0; y < Integers.sightY; y++) {
                     for (int x = 0; x < Integers.sightX; x++) {
@@ -101,6 +98,11 @@ public class CutsceneRender implements IUpdatable {
                     obj.render(g);
                 }
             }
+
+            RenderUtil.drawBorder(g);
+
+            g.setColor(Color.BLACK);
+            g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
 
             g.dispose();
             strategy.show();

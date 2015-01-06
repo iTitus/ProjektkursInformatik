@@ -46,6 +46,19 @@ public final class RenderUtil {
     }
 
     /**
+     * Malt den Rand.
+     *
+     * @param g
+     *            Graphics2D
+     */
+    public static void drawBorder(Graphics2D g) {
+        g.clearRect(0, 0, Integers.windowX, Integers.WINDOW_HUD_Y);
+        g.clearRect(0, Integers.windowY - Integers.WINDOW_HUD_Y, Integers.windowX, Integers.WINDOW_HUD_Y);
+        g.clearRect(0, Integers.WINDOW_HUD_Y, Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
+        g.clearRect(Integers.windowX - Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
+    }
+
+    /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
      *
      * @param g

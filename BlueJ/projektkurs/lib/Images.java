@@ -620,13 +620,13 @@ public final class Images {
         doorNS = loadImage("door.png");
         registerImage("door_NS", doorNS);
 
-        doorEW = loadImageRotate("door.png");
+        doorEW = loadImageRotate90("door.png");
         registerImage("door_WE", doorEW);
 
         doorOpenNS = loadImage("door_open.png");
         registerImage("door_open_NS", doorOpenNS);
 
-        doorOpenEW = loadImageRotate("door_open.png");
+        doorOpenEW = loadImageRotate90("door_open.png");
         registerImage("door_open_WE", doorOpenEW);
 
         finish = loadImage("finish.png");
@@ -1138,36 +1138,25 @@ public final class Images {
         return images;
     }
 
+    // private static BufferedImage loadImageRotate(String name) {
+    // BufferedImage img = loadImage(name);
+    // if (img != null) {
+    // BufferedImage rotated = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+    // Graphics2D g = (Graphics2D) rotated.getGraphics();
+    // g.setTransform(AffineTransform.getQuadrantRotateInstance(1));
+    // g.drawImage(img, 0, -img.getWidth(), null);
+    // return rotated;
+    // }
+    // return null;
+    // }
+
     /**
-     * Lädt ein Bild und dreht es dabei um i*90°.
+     * Lädth ein um 90° gedrehtes Bild.
      *
      * @param name
-     *            Name des Bildes
-     * @param i
-     *            rotated by i*90degrees
+     *            Name des Bildes.
      * @return BufferedImage
      */
-    // FIXME: Problems!
-    private static BufferedImage loadImageRotate(String name) {
-        BufferedImage img = loadImage(name);
-        if (img != null) {
-            BufferedImage rotated = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
-            Graphics2D g = (Graphics2D) rotated.getGraphics();
-            g.setTransform(AffineTransform.getQuadrantRotateInstance(1));
-            g.drawImage(img, 0, -img.getWidth(), null);
-            return rotated;
-        }
-        return null;
-    }
-
-    /**
-     * "NS", "SN", "EW", "WE"
-     *
-     * @param imageName
-     * @param name
-     * @param images
-     */
-
     private static BufferedImage loadImageRotate90(String name) {
         BufferedImage img = loadImage(name);
         if (img != null) {
