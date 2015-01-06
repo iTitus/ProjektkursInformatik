@@ -77,7 +77,7 @@ public final class Raster {
         chest = new ChestRaster();
         registerRaster(chest);
 
-        rasen = new SimpleRaster("grass", Images.rasen);
+        rasen = new SimpleRaster("grass", Images.rasen3);
         registerRaster(rasen);
 
         baum = new SolidRaster("tree", Images.baum);

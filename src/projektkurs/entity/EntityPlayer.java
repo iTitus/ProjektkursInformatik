@@ -38,8 +38,8 @@ public class EntityPlayer extends EntityLiving {
      * @param image
      *            Bild
      */
-    public EntityPlayer(int posX, int posY, BufferedImage image) {
-        super(posX, posY, image, Integers.PLAYER_HEALTH);
+    public EntityPlayer(int posX, int posY, BufferedImage... images) {
+        super(posX, posY, Integers.PLAYER_HEALTH, images);
         inventar = new PlayerInventory(Integers.PLAYER_INVENTORY_SIZE, 0);
     }
 

@@ -71,7 +71,7 @@ public class ExtraInformationFire extends ExtraInformation {
     @Override
     public void write(SaveData data) {
         super.write(data);
-        data.set(Strings.EXTRA_RASTER, background != null ? background.getName() : "");
+        data.set(Strings.EXTRA_RASTER, background.getName());
     }
 
 }

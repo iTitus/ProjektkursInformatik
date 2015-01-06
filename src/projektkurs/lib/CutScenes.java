@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.cutscene.CutScene;
+import projektkurs.cutscene.action.ConditionedClearMapAction;
 import projektkurs.cutscene.action.ConditionedExitAction;
 import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.action.ConditionedMoveSightAction;
@@ -79,7 +80,7 @@ public final class CutScenes {
             one.registerStartupAction(new SpawnAction(strassen[j]));
         }
 
-        // one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
+        one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
 
         for (int i = 0; i < baeumer.length; i++) {
             baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 17, 2, 2);

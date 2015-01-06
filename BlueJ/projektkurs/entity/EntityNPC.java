@@ -26,8 +26,8 @@ public abstract class EntityNPC extends EntityLiving {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityNPC(int posX, int posY, BufferedImage image, int maxHealth) {
-        this(posX, posY, 1, 1, image, maxHealth);
+    public EntityNPC(int posX, int posY, int maxHealth, BufferedImage... images) {
+        this(posX, posY, 1, 1, maxHealth, images);
     }
 
     /**
@@ -46,8 +46,8 @@ public abstract class EntityNPC extends EntityLiving {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityNPC(int posX, int posY, int sizeX, int sizeY, BufferedImage image, int maxHealth) {
-        super(posX, posY, sizeX, sizeY, image, maxHealth);
+    public EntityNPC(int posX, int posY, int sizeX, int sizeY, int maxHealth, BufferedImage... images) {
+        super(posX, posY, sizeX, sizeY, maxHealth, images);
     }
 
 }

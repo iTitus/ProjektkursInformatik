@@ -200,7 +200,7 @@ public final class Main {
     public static void initFields() {
         inputManager = new InputManager();
         level = Levels.level0;
-        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.charakter);
+        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();

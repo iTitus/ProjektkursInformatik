@@ -38,8 +38,8 @@ public abstract class EntityLiving extends Entity {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityLiving(int posX, int posY, BufferedImage image, int maxHealth) {
-        this(posX, posY, 1, 1, image, maxHealth);
+    public EntityLiving(int posX, int posY, int maxHealth, BufferedImage[] images) {
+        this(posX, posY, 1, 1, maxHealth, images);
     }
 
     /**
@@ -58,8 +58,8 @@ public abstract class EntityLiving extends Entity {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityLiving(int posX, int posY, int sizeX, int sizeY, BufferedImage image, int maxHealth) {
-        super(posX, posY, sizeX, sizeY, image);
+    public EntityLiving(int posX, int posY, int sizeX, int sizeY, int maxHealth, BufferedImage... images) {
+        super(posX, posY, sizeX, sizeY, images);
         this.maxHealth = maxHealth;
         health = maxHealth;
     }

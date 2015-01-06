@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.cutscene.CutScene;
+import projektkurs.cutscene.action.ConditionedClearMapAction;
 import projektkurs.cutscene.action.ConditionedExitAction;
 import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.action.ConditionedMoveSightAction;
@@ -47,7 +48,7 @@ public final class CutScenes {
      */
     @Init
     public static void init() {
-        one = new CutScene("one", Images.rasen);
+        one = new CutScene("one");
         /*
          * CutSceneObject auto_x = new CutSceneObject(Images.item42, 10, 10, 3, 3); CutSceneObject figur = new CutSceneObject(Images.key, 5, 5, 1, 1); CutSceneObject hafen = new CutSceneObject(Images.baum, 50, 7, 9, 9); one.registerStartupAction(new SpawnAction(auto_x)); one.registerStartupAction(new
          * SpawnAction(figur)); one.registerStartupAction(new SpawnAction(hafen)); one.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 20), new TickIntervalCondition(0, 79)), auto_x, 1, 0)); one.registerTickAction(new ConditionedMoveSightAction(new
@@ -79,7 +80,7 @@ public final class CutScenes {
             one.registerStartupAction(new SpawnAction(strassen[j]));
         }
 
-        // one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
+        one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
 
         for (int i = 0; i < baeumer.length; i++) {
             baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 17, 2, 2);
