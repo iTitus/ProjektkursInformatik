@@ -934,13 +934,13 @@ public final class Images {
         lasterweißvO_EW = loadImageRotate90("FliegendeZahnpastaTube1.0.png");
         registerImage("lasterweißvO_EW", lasterweißvO_EW);
 
-        lasterweißvO_SN = loadImage("FliegendeZahnpastaTube1.1.2");
+        lasterweißvO_SN = loadImage("FliegendeZahnpastaTube1.1.2.png");
         registerImage("lasterweißvO_SN", lasterweißvO_SN);
 
-        lasterweißvO_WE = loadImageRotate90("FliegendeZahnpastaTube1.1.2");
+        lasterweißvO_WE = loadImageRotate90("FliegendeZahnpastaTube1.1.2.png");
         registerImage("lasterweißvO_WE", lasterweißvO_WE);
 
-        lasterweißvV = loadImage("FliegendeZahnpastaTube1.2");
+        lasterweißvV = loadImage("FliegendeZahnpastaTube1.2.png");
         registerImage("lasterweißvV", lasterweißvV);
 
         lordvdS = loadImage("LordVonDerSeite.png");
