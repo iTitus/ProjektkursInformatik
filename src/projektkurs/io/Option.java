@@ -8,15 +8,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
@@ -24,7 +21,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import projektkurs.Main;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.util.I18n;
@@ -93,17 +89,13 @@ public final class Option extends JPanel implements ActionListener, ChangeListen
     }
 
     /**
-     * Labels.
-     */
-    private final JLabel charakterBild, nameSightX, nameSightY;
-    /**
-     * RadioButtons.
-     */
-    private final JRadioButton defaultCharacter, altCharakter;
-    /**
      * Sprachauswahlbox.
      */
     private final JComboBox<SupportedLocales> langBox;
+    /**
+     * Labels.
+     */
+    private final JLabel nameSightX, nameSightY;
     /**
      * Knöpfe zum Beenden.
      */
@@ -134,26 +126,7 @@ public final class Option extends JPanel implements ActionListener, ChangeListen
         JPanel charakterAuswahl = new JPanel();
         JPanel buttons = new JPanel(new GridLayout(0, 1));
 
-        defaultCharacter = new JRadioButton(I18n.getString("button.chooseCharacter.default"));
-        altCharakter = new JRadioButton(I18n.getString("button.chooseCharacter.altCharacter"));
-
-        defaultCharacter.setActionCommand("charakter");
-        defaultCharacter.addActionListener(this);
-        defaultCharacter.setSelected(true);
-        altCharakter.setActionCommand("altCharakter");
-        altCharakter.addActionListener(this);
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(defaultCharacter);
-        group.add(altCharakter);
-
-        buttons.add(defaultCharacter);
-        buttons.add(altCharakter);
-
-        charakterBild = new JLabel(new ImageIcon(Images.charakter));
-
         charakterAuswahl.add(buttons);
-        charakterAuswahl.add(charakterBild);
 
         charakterAuswahl.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
@@ -240,9 +213,6 @@ public final class Option extends JPanel implements ActionListener, ChangeListen
      * Interne Methode, um den Namen/die Texte der Buttons zu ändern.
      */
     private void update() {
-
-        defaultCharacter.setText(I18n.getString("button.chooseCharacter.default"));
-        altCharakter.setText(I18n.getString("button.chooseCharacter.altCharacter"));
 
         nameSightX.setText(I18n.getString("description.sightX") + ": " + sliderSightX.getValue());
         nameSightY.setText(I18n.getString("description.sightY") + ": " + sliderSightY.getValue());

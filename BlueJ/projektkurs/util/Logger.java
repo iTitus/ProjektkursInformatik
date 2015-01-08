@@ -140,9 +140,9 @@ public final class Logger {
                         String out2 = String.format("[%s] [%s]: %d) %s", SIMPLE_DATE.format(new Date()), level.toString(), i++, oStr);
                         LOG.add(out2);
                         level.getPrintStream().println(out2);
-                        level.getPrintStream().flush();
                     }
                 }
+                level.getPrintStream().flush();
             }
         }
     }

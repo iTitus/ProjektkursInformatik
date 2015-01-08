@@ -84,15 +84,15 @@ public final class CutScenes {
 
         CutSceneObject auto = new CutSceneObject(Images.auto_w_WE, 9, 10, 4, 2);
 
-        CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 0, 0, 4, 2);
-        CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_WE, 0, 0, 4, 2);
-        CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_WE, 0, 0, 4, 2);
-        CutSceneObject typ4 = new CutSceneObject(Images.auto_di_WE, 0, 0, 4, 2);
+        CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 40, 0, 4, 2);
+        CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_WE, 40, 0, 4, 2);
+        CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_WE, 40, 0, 4, 2);
+        CutSceneObject typ4 = new CutSceneObject(Images.auto_di_WE, 40, 0, 4, 2);
 
-        CutSceneObject typ5 = new CutSceneObject(Images.auto_do_WE, 0, 0, 4, 2);
-        CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_WE, 0, 0, 4, 2);
-        CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_WE, 0, 0, 4, 2);
-        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_WE, 0, 0, 4, 2);
+        CutSceneObject typ5 = new CutSceneObject(Images.auto_do_WE, 40, 0, 4, 2);
+        CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_WE, 40, 0, 4, 2);
+        CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_WE, 40, 0, 4, 2);
+        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_WE, 40, 0, 4, 2);
 
         CutSceneObject[] baeumer = new CutSceneObject[16];
         CutSceneObject[] baeumel = new CutSceneObject[16];
