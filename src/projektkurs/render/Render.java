@@ -93,28 +93,31 @@ public class Render implements IUpdatable {
 
             g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
-            for (int y = 0; y < Integers.sightY; y++) {
-                for (int x = 0; x < Integers.sightX; x++) {
-                    int sX = x + Main.getRenderHelper().getSightX();
-                    int sY = y + Main.getRenderHelper().getSightY();
-                    if (Main.getLevel().getMap().isRasterAt(sX, sY)) {
-                        Main.getLevel().getMap().getRasterAt(sX, sY).render(g, sX, sY);
-                    } else {
-                        RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
+            if (Main.getLevel() != null) {
+                for (int y = 0; y < Integers.sightY; y++) {
+                    for (int x = 0; x < Integers.sightX; x++) {
+                        int sX = x + Main.getRenderHelper().getSightX();
+                        int sY = y + Main.getRenderHelper().getSightY();
+                        if (Main.getLevel().getMap().isRasterAt(sX, sY)) {
+                            Main.getLevel().getMap().getRasterAt(sX, sY).render(g, sX, sY);
+                        } else {
+                            RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
+                        }
                     }
                 }
-            }
 
-            for (Entity e : Main.getLevel().getMap().getEntityList()) {
-                if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
-                    e.render(g);
+                for (Entity e : Main.getLevel().getMap().getEntityList()) {
+                    if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
+                        e.render(g);
+                    }
                 }
             }
 
             g.setColor(Color.BLACK);
             Main.getGui().render(g);
 
-            g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth(), Integers.INFO_X, Integers.INFO_Y);
+            g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + (Main.getLevel() != null && Main.getPlayer() != null ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() : ""),
+                    Integers.INFO_X, Integers.INFO_Y);
 
             g.dispose();
             strategy.show();

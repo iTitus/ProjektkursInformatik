@@ -30,14 +30,23 @@ public abstract class Gui implements IUpdatable {
 
     @Override
     public boolean canUpdate() {
-        return !guiElements.isEmpty();
+        return !getGuiElements().isEmpty();
+    }
+
+    /**
+     * Alle Elemente in diesem Gui.
+     *
+     * @return alle Elemente
+     */
+    public ArrayList<Element> getGuiElements() {
+        return guiElements;
     }
 
     /**
      * Initialísiert das Gui.
      */
     public void initGui() {
-        guiElements.clear();
+        getGuiElements().clear();
     }
 
     /**
@@ -49,7 +58,7 @@ public abstract class Gui implements IUpdatable {
      *            KeyEvent
      */
     public void onKeyTyped(char keyChar, KeyEvent e) {
-        for (Element el : guiElements) {
+        for (Element el : getGuiElements()) {
             el.onKeyTyped(keyChar, e);
         }
         if (keyChar == KeyBindings.KEY_OPTION) {
@@ -68,7 +77,7 @@ public abstract class Gui implements IUpdatable {
      *            MouseEvent
      */
     public void onLeftClick(int screenX, int screenY, MouseEvent e) {
-        for (Element el : guiElements) {
+        for (Element el : getGuiElements()) {
             el.onLeftClick(screenX, screenY, e);
         }
     }
@@ -82,7 +91,7 @@ public abstract class Gui implements IUpdatable {
      *            MouseWheelEvent
      */
     public void onMouseWheelMoved(int by, MouseWheelEvent e) {
-        for (Element el : guiElements) {
+        for (Element el : getGuiElements()) {
             el.onMouseWheelMoved(by, e);
         }
     }
@@ -98,7 +107,7 @@ public abstract class Gui implements IUpdatable {
      *            MouseEvent
      */
     public void onRightClick(int screenX, int screenY, MouseEvent e) {
-        for (Element el : guiElements) {
+        for (Element el : getGuiElements()) {
             el.onRightClick(screenX, screenY, e);
         }
     }
@@ -111,7 +120,7 @@ public abstract class Gui implements IUpdatable {
      */
     public void render(Graphics2D g) {
         Element hovered = null;
-        for (Element el : guiElements) {
+        for (Element el : getGuiElements()) {
             el.render(g);
             if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
                 hovered = el;
@@ -124,7 +133,7 @@ public abstract class Gui implements IUpdatable {
 
     @Override
     public void update() {
-        for (Element e : guiElements) {
+        for (Element e : getGuiElements()) {
             if (e.canUpdate()) {
                 e.update();
             }
@@ -139,12 +148,12 @@ public abstract class Gui implements IUpdatable {
      */
     protected final void addElement(Element e) {
         if (e != null) {
-            for (Element element : guiElements) {
+            for (Element element : getGuiElements()) {
                 if (element.getID() == e.getID()) {
                     throw new IllegalArgumentException("An Element with the ID '" + e.getID() + "' is already registered");
                 }
             }
-            guiElements.add(e);
+            getGuiElements().add(e);
         }
     }
 
@@ -155,7 +164,7 @@ public abstract class Gui implements IUpdatable {
      *            Element
      */
     protected final void removeElement(Element e) {
-        guiElements.remove(e);
+        getGuiElements().remove(e);
     }
 
 }

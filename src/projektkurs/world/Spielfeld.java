@@ -1,13 +1,9 @@
 package projektkurs.world;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
-import projektkurs.io.InputManager;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
@@ -367,33 +363,6 @@ public class Spielfeld implements IUpdatable {
     public void update() {
 
         Main.getPlayer().moveBy(Main.getInputManager().getNextDirection());
-
-        KeyEvent kE;
-        while (Main.getInputManager().hasKeyEvents()) {
-            kE = Main.getInputManager().getNextKeyEvent();
-            Main.getGui().onKeyTyped(kE.getKeyChar(), kE);
-        }
-
-        MouseEvent mE;
-        while (Main.getInputManager().hasMouseEvents()) {
-            mE = Main.getInputManager().getNextMouseEvent();
-            if (mE.getButton() == InputManager.LEFT_MOUSE_BUTTON) {
-                Main.getGui().onLeftClick(mE.getX(), mE.getY(), mE);
-            }
-            if (mE.getButton() == InputManager.RIGHT_MOUSE_BUTTON) {
-                Main.getGui().onRightClick(mE.getX(), mE.getY(), mE);
-            }
-        }
-
-        MouseWheelEvent wE;
-        while (Main.getInputManager().hasMouseWheelEvents()) {
-            wE = Main.getInputManager().getNextMouseWheelEvent();
-            Main.getGui().onMouseWheelMoved(wE.getWheelRotation(), wE);
-        }
-
-        if (Main.getGui().canUpdate()) {
-            Main.getGui().update();
-        }
 
         if (Main.getInputManager().canUpdate()) {
             Main.getInputManager().update();

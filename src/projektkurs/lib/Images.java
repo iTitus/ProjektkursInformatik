@@ -23,55 +23,73 @@ public final class Images {
     /**
      *
      */
-    public static BufferedImage auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE;
+    public static BufferedImage auto_dc_NS, auto_dc_EW;
+    public static BufferedImage auto_dc_SN;
+    public static BufferedImage auto_dc_WE;
     /**
      *
      */
-    public static BufferedImage auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE;
+    public static BufferedImage auto_di_NS, auto_di_EW;
+    public static BufferedImage auto_di_SN;
+    public static BufferedImage auto_di_WE;
     /**
      *
      */
-    public static BufferedImage auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE;
+    public static BufferedImage auto_di2_NS, auto_di2_EW;
+    public static BufferedImage auto_di2_SN;
+    public static BufferedImage auto_di2_WE;
     /**
      *
      */
-    public static BufferedImage auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE;
+    public static BufferedImage auto_di3_NS, auto_di3_EW;
+    public static BufferedImage auto_di3_SN;
+    public static BufferedImage auto_di3_WE;
     /**
      *
      */
-    public static BufferedImage auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE;
+    public static BufferedImage auto_di4_NS, auto_di4_EW;
+    public static BufferedImage auto_di4_SN;
+    public static BufferedImage auto_di4_WE;
     /**
      * Autobild
      */
-    public static BufferedImage auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE;
+    public static BufferedImage auto_do_NS, auto_do_EW;
+    public static BufferedImage auto_do_SN;
+    public static BufferedImage auto_do_WE;
     /**
      *
      */
-    public static BufferedImage auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE;
+    public static BufferedImage auto_do2_NS, auto_do2_EW;
+    public static BufferedImage auto_do2_SN;
+    public static BufferedImage auto_do2_WE;
     /**
      *
      */
-    public static BufferedImage auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE;
+    public static BufferedImage auto_do3_NS, auto_do3_EW;
+    public static BufferedImage auto_do3_SN;
+    public static BufferedImage auto_do3_WE;
     /**
      *
      */
-    public static BufferedImage auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE;
+    public static BufferedImage auto_do4_NS, auto_do4_EW;
+    public static BufferedImage auto_do4_SN;
+    public static BufferedImage auto_do4_WE;
     /**
      *
      */
-    public static BufferedImage auto_NS, auto_SN, auto_EW, auto_WE;
+    public static BufferedImage auto_NS, auto_EW;
+    public static BufferedImage auto_SN;
     /**
      *
      */
-    public static BufferedImage auto_w_NS, auto_w_SN, auto_w_EW, auto_w_WE;
+    public static BufferedImage auto_w_NS, auto_w_EW;
+    public static BufferedImage auto_w_SN;
+    public static BufferedImage auto_w_WE;
     /**
      *
      */
-    public static BufferedImage auto_w2_NS, auto_w2_SN, auto_w2_EW, auto_w2_WE;
-    public static BufferedImage auto2vO_EW;
-    public static BufferedImage auto2vO_NS;
-    public static BufferedImage auto2vO_SN;
-    public static BufferedImage auto2vO_WE;
+    public static BufferedImage auto_w2_NS, auto_w2_EW;
+    public static BufferedImage auto_WE;
     /**
     *
     */
@@ -84,8 +102,6 @@ public final class Images {
     *
     */
     public static BufferedImage auto2vV;
-    public static BufferedImage autogelbvO_EW;
-    public static BufferedImage autogelbvO_WE;
     /**
     *
     */
@@ -191,7 +207,7 @@ public final class Images {
      */
     public static BufferedImage doorEW;
     /**
-     * Geschlossene Tür in Nord-Süd-Ausrichtung.
+     * Geschlossene Tür in Nord-S�d Ausrichtung.
      */
     public static BufferedImage doorNS;
     /**
@@ -218,14 +234,26 @@ public final class Images {
     *
     */
     public static BufferedImage haus1;
+    public static BufferedImage haus1_EW;
+    public static BufferedImage haus1_NS;
+    public static BufferedImage haus1_SN;
+    public static BufferedImage haus1_WE;
     /**
     *
     */
     public static BufferedImage haus2;
+    public static BufferedImage haus2_EW;
+    public static BufferedImage haus2_NS;
+    public static BufferedImage haus2_SN;
+    public static BufferedImage haus2_WE;
     /**
     *
     */
     public static BufferedImage haus3;
+    public static BufferedImage haus3_EW;
+    public static BufferedImage haus3_NS;
+    public static BufferedImage haus3_SN;
+    public static BufferedImage haus3_WE;
     /**
     *
     */
@@ -298,30 +326,37 @@ public final class Images {
     *
     */
     public static BufferedImage ladyvO_SN;
+
     /**
     *
     */
     public static BufferedImage ladyvO_WE;
+
     /**
     *
     */
     public static BufferedImage ladyvObAho_EW;
+
     /**
     *
     */
     public static BufferedImage ladyvObAho_NS;
+
     /**
     *
     */
     public static BufferedImage ladyvObAho_SN;
+
     /**
     *
     */
     public static BufferedImage ladyvObAho_WE;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAho_EW;
+
     /**
     *
     */
@@ -358,54 +393,67 @@ public final class Images {
     *
     */
     public static BufferedImage ladyvVbAho2;
+
     /**
     *
     */
     public static BufferedImage ladyvVbAo;
+
     /**
     *
     */
     public static BufferedImage ladyvVlAqurAo;
+
     /**
     *
     */
     public static BufferedImage ladyvVrS;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzmitAnhängervO_EW;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzmitAnhängervO_NS;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzmitAnhängervO_SN;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzmitAnhängervO_WE;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_EW;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_NS;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_SN;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_WE;
+
     /**
     *
     */
     public static BufferedImage lasterschwarzvV;
+
     /**
     *
     */
@@ -445,22 +493,30 @@ public final class Images {
      *
      */
     public static BufferedImage lordvdS;
+
     /**
      *
      */
     public static BufferedImage lordvdS2;
+
     /**
      *
      */
     public static BufferedImage lordvdS3;
+
     public static BufferedImage lordvO_EW;
+
     public static BufferedImage lordvO_NS;
+
     public static BufferedImage lordvO_SN;
+
     public static BufferedImage lordvO_WE;
+
     /**
      * Mappings.
      */
     public static final HashMap<String, BufferedImage> MAPPINGS = new HashMap<String, BufferedImage>();
+
     /**
      * Atombombenbild.
      */
@@ -654,6 +710,10 @@ public final class Images {
 
         auto_do_EW = loadImageRotate90("auto_do_EW", "AutoMitOffenerTürFahrerDraussen1.png");
 
+        auto_do_SN = loadImageRotate180("auto_do_SN", "AutoMitOffenerTürFahrerDraussen1.png");
+
+        auto_do_WE = loadImageRotate270("auto_do_WE", "AutoMitOffenerTürFahrerDraussen1.png");
+
         // registerAllDir("AutoMitFahrerDrinnen.png", "automitFahrerDrinnen", auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE);
 
         auto_dc_NS = loadImage("auto_dc_NS", "AutoMitFahrerDrinnen.png");
@@ -670,11 +730,19 @@ public final class Images {
 
         auto_do2_EW = loadImageRotate90("auto_do2_EW", "AutoMitOffenerTürFahrerDraussen2.png");
 
+        auto_do2_SN = loadImageRotate180("auto_do2_NS", "AutoMitOffenerTürFahrerDraussen2.png");
+
+        auto_do2_WE = loadImageRotate270("auto_do2_WE", "AutoMitOffenerTürFahrerDraussen2.png");
+
         // registerAllDir("AutoMitOffenerTürFahrerDraussen3.png", "automitoffenerTürFahrerdraussen3", auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE);
 
         auto_do3_NS = loadImage("auto_do3_NS", "AutoMitOffenerTürFahrerDraussen3.png");
 
         auto_do3_EW = loadImageRotate90("auto_do3_EW", "AutoMitOffenerTürFahrerDraussen3.png");
+
+        auto_do3_SN = loadImageRotate180("auto_do3_SN", "AutoMitOffenerTürFahrerDraussen3.png");
+
+        auto_do3_WE = loadImageRotate270("auto_do3_WE", "AutoMitOffenerTürFahrerDraussen3.png");
 
         // registerAllDir("AutoMitOffenerTürFahrerDraussen4.png", "automitoffenerTürFahrerdraussen4", auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE);
 
@@ -682,11 +750,19 @@ public final class Images {
 
         auto_do4_EW = loadImageRotate90("auto_do4_EW", "AutoMitOffenerTürFahrerDraussen4.png");
 
+        auto_do4_SN = loadImageRotate180("auto_do4_SN", "AutoMitOffenerTürFahrerDraussen4.png");
+
+        auto_do4_WE = loadImageRotate270("auto_do4_WE", "AutoMitOffenerTürFahrerDraussen4.png");
+
         // registerAllDir("AutoMitOffenerTürFahrerDrinnen.png", "automitoffenerTürFahrerdrinnen", auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE);
 
         auto_di_NS = loadImage("auto_di_NS", "AutoMitOffenerTürFahrerDrinnen.png");
 
         auto_di_EW = loadImageRotate90("auto_di_EW", "AutoMitOffenerTürFahrerDrinnen.png");
+
+        auto_di_SN = loadImageRotate180("auto_di_SN", "AutoMitOffenerTürFahrerDrinnen.png");
+
+        auto_di_WE = loadImageRotate270("auto_di_WE", "AutoMitOffenerTürFahrerDrinnen.png");
 
         // registerAllDir("AutoMitOffenerTürFahrerDrinnen2.png", "automitoffenerTürFahrerdrinnen2", auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE);
 
@@ -694,23 +770,45 @@ public final class Images {
 
         auto_di2_EW = loadImageRotate90("auto_di2_EW", "AutoMitOffenerTürFahrerDrinnen2.png");
 
+        auto_di2_SN = loadImageRotate180("auto_di2_SN", "AutoMitOffenerTürFahrerDrinnen2.png");
+
+        auto_di2_WE = loadImageRotate270("auto_di2_WE", "AutoMitOffenerTürFahrerDrinnen2.png");
+
         // registerAllDir("AutoMitOffenerTürFahrerDrinnen3.png", "automitoffenerTürFahrerdrinnen3", auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE);
 
         auto_di3_NS = loadImage("auto_di3_NS", "AutoMitOffenerTürFahrerDrinnen3.png");
 
         auto_di3_EW = loadImageRotate90("auto_di3_EW", "AutoMitOffenerTürFahrerDrinnen3.png");
 
+        auto_di3_SN = loadImageRotate180("auto_di3_SN", "AutoMitOffenerTürFahrerDrinnen3.png");
+
+        auto_di3_WE = loadImageRotate270("auto_di3_WE", "AutoMitOffenerTürFahrerDrinnen3.png");
+
         // registerAllDir("AutoMitOffenerTürFahrerDrinnen4.png", "automitoffenerTürFahrerdrinnen4", auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE);
 
         auto_di4_NS = loadImage("auto_di4_NS", "AutoMitOffenerTürFahrerDrinnen4.png");
 
+        // N
+        // ^
+        // W < + > O
+        // v
+        // S
+
         auto_di4_EW = loadImageRotate90("auto_di4_EW", "AutoMitOffenerTürFahrerDrinnen4.png");
+
+        auto_di4_SN = loadImageRotate180("auto_di4_SN", "AutoMitOffenerTürFahrerDrinnen4.png");
+
+        auto_di4_WE = loadImageRotate270("auto_di4_WE", "AutoMitOffenerTürFahrerDrinnen4.png");
 
         // registerAllDir("Auto.png", "Auto", auto_NS, auto_SN, auto_EW, auto_WE);
 
         auto_NS = loadImage("auto_NS", "Auto.png");
 
         auto_EW = loadImageRotate90("auto_EW", "Auto.png");
+
+        auto_SN = loadImageRotate180("auto_SN", "Auto.png");
+
+        auto_WE = loadImageRotate270("auto_WE", "Auto.png");
 
         // registerAllDir("AutoMitFahrerDrinnen.png", "automitFahrerDrinnen", auto_w_NS, auto_w_SN, auto_w_EW, auto_w_WE);
 
@@ -730,17 +828,13 @@ public final class Images {
 
         auto2vV = loadImage("auto2vV", "Auto1.0.png");
 
-        auto2vO_WE = loadImage("auto2vO_WE", "Auto1.1.png");
+        auto2vOnO = loadImage("auto2vOnO", "Auto1.1.png");
 
-        auto2vO_NS = loadImageRotate90("auto2vO_NS", "Auto1.1.png");
+        auto2vOnW = loadImage("auto2vOnW", "Auto1.2.png");
 
-        auto2vO_EW = loadImage("auto2vO_EW", "Auto1.2.png");
+        autogelbvOnO = loadImage("autogelbvOnO", "Auto3.0.png");
 
-        auto2vO_SN = loadImage("auto2vO_SN", "Auto1.2.png");
-
-        autogelbvO_WE = loadImage("autogelbvO_WE", "Auto3.0.png");
-
-        autogelbvO_EW = loadImage("autogelbvO_EW", "Auto3.1.png");
+        autogelbvOnW = loadImage("autogelbvOnW", "Auto3.1.png");
 
         baum1 = loadImage("Baum1", "Baum1.png");
 
@@ -776,11 +870,29 @@ public final class Images {
 
         // bus1.4 ignoriert
 
-        haus1 = loadImage("haus1", "Haus.png");
+        haus1_NS = loadImage("haus1_NS", "Haus1.2.png");
 
-        haus2 = loadImage("haus2", "Haus2.png");
+        haus1_EW = loadImageRotate90("haus1_EW", "Haus1.2.png");
 
-        haus3 = loadImage("haus3", "Haus3.png");
+        haus1_SN = loadImageRotate180("haus1_SN", "Haus1.2.png");
+
+        haus1_WE = loadImageRotate270("haus1_WE", "Haus1.2.png");
+
+        haus2_NS = loadImage("haus2_NS", "Haus2.png");
+
+        haus2_EW = loadImage("haus2_EW", "Haus2.png");
+
+        haus2_SN = loadImage("haus2_SN", "Haus2.png");
+
+        haus2_WE = loadImage("haus2_WE", "Haus2.png");
+
+        haus3_NS = loadImage("haus3_NS", "Haus3.png");
+
+        haus3_EW = loadImageRotate90("haus3_EW", "Haus3.png");
+
+        haus3_SN = loadImageRotate180("haus3_SN", "Haus3.png");
+
+        haus3_WE = loadImageRotate270("haus3_WE", "Haus3.png");
 
         haus4 = loadImage("haus4", "Haus4.png");
 
@@ -966,20 +1078,19 @@ public final class Images {
 
         weibvO_EW = loadImageRotate90("weibvO_EW", "Weib1.3.2.png");
 
-        Logger.warn("################# Variablen die null sind: ######################################");
         Field[] fields = Images.class.getDeclaredFields();
+
         for (Field f : fields) {
             if (f != null && f.getType() != HashMap.class) {
                 if (f.getType().isArray()) {
                     try {
                         BufferedImage[] images = (BufferedImage[]) f.get(null);
                         if (images == null) {
-                            Logger.warn(f.getName());
+                            System.err.println(f.getName());
                         } else {
                             for (BufferedImage i : images) {
                                 if (i == null) {
-                                    Logger.warn(f.getName() + " -> nur min. ein Element");
-                                    break;
+                                    System.err.println(f.getName());
                                 }
                             }
                         }
@@ -989,7 +1100,7 @@ public final class Images {
                 } else {
                     try {
                         if (f.get(null) == null) {
-                            Logger.warn(f.getName());
+                            System.err.println(f.getName());
                         }
                     } catch (Throwable t) {
                         t.printStackTrace();
@@ -997,7 +1108,7 @@ public final class Images {
                 }
             }
         }
-        Logger.warn("##############################################################################");
+
     }
 
     /**

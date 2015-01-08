@@ -11,11 +11,10 @@ import javax.swing.SwingUtilities;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.gui.Gui;
 import projektkurs.gui.GuiIngame;
+import projektkurs.gui.GuiMainMenu;
 import projektkurs.io.InputManager;
-import projektkurs.io.Option;
 import projektkurs.level.Level;
 import projektkurs.lib.Images;
-import projektkurs.lib.Levels;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Strings;
 import projektkurs.render.Render;
@@ -199,18 +198,18 @@ public final class Main {
     @Init(state = State.PRE)
     public static void initFields() {
         inputManager = new InputManager();
-        level = Levels.level0;
-        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
+        level = null;
+        player = null;
         render = new Render();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();
-        closeGui();
+        openGui(new GuiMainMenu());
     }
 
     /**
      * Interne Methode, um die Threads (Timer für die Ticks) zu starten.
      */
-    @Init(state = State.POST)
+    @Init(state = State.PRE)
     public static void initThreads() {
         gameThread = new GameThread();
         gameThread.start();
@@ -286,6 +285,17 @@ public final class Main {
     }
 
     /**
+     * Startet das gegebene Level.
+     *
+     * @param Level
+     */
+    public static void startLevel(Level l) {
+        setLevel(l);
+        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
+        closeGui();
+    }
+
+    /**
      * Führt alle init-Methoden aus, die im gegebenen State ausgeführt werden sollen.
      *
      * @param state
@@ -335,15 +345,15 @@ public final class Main {
         // Resources
         init(State.RESOURCES);
 
-        Option.createAndShowGUI();
-
-        while (!Option.isFinished()) {
-            try {
-                Thread.sleep(1);
-            } catch (Throwable t) {
-                Logger.logThrowable("Unable to wait for the options window", t);
-            }
-        }
+        // Option.createAndShowGUI();
+        //
+        // while (!Option.isFinished()) {
+        // try {
+        // Thread.sleep(1);
+        // } catch (Throwable t) {
+        // Logger.logThrowable("Unable to wait for the options window", t);
+        // }
+        // }
 
         // PreInit
         // Load from disk

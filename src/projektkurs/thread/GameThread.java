@@ -1,6 +1,11 @@
 package projektkurs.thread;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+
 import projektkurs.Main;
+import projektkurs.io.InputManager;
 import projektkurs.lib.Integers;
 import projektkurs.util.Logger;
 
@@ -98,13 +103,48 @@ public class GameThread extends Thread {
             lastTime = now;
             while (delta >= 1) {
                 updates++;
-                if (Main.getLevel().canUpdate()) {
+                if (Main.getLevel() != null && Main.getLevel().canUpdate()) {
                     try {
                         Main.getLevel().update();
                     } catch (Throwable t) {
-                        Logger.logThrowable("Unable to render the game", t);
+                        Logger.logThrowable("Unable to update the game", t);
                         Main.exit();
                     }
+                }
+                try {
+                    KeyEvent kE;
+                    while (Main.getInputManager().hasKeyEvents()) {
+                        kE = Main.getInputManager().getNextKeyEvent();
+                        Main.getGui().onKeyTyped(kE.getKeyChar(), kE);
+                    }
+
+                    MouseEvent mE;
+                    while (Main.getInputManager().hasMouseEvents()) {
+                        mE = Main.getInputManager().getNextMouseEvent();
+                        if (mE.getButton() == InputManager.LEFT_MOUSE_BUTTON) {
+                            Main.getGui().onLeftClick(mE.getX(), mE.getY(), mE);
+                        }
+                        if (mE.getButton() == InputManager.RIGHT_MOUSE_BUTTON) {
+                            Main.getGui().onRightClick(mE.getX(), mE.getY(), mE);
+                        }
+                    }
+
+                    MouseWheelEvent wE;
+                    while (Main.getInputManager().hasMouseWheelEvents()) {
+                        wE = Main.getInputManager().getNextMouseWheelEvent();
+                        Main.getGui().onMouseWheelMoved(wE.getWheelRotation(), wE);
+                    }
+                } catch (Throwable t) {
+                    Logger.logThrowable("Unable to update the inputs", t);
+                    Main.exit();
+                }
+                try {
+                    if (Main.getGui().canUpdate()) {
+                        Main.getGui().update();
+                    }
+                } catch (Throwable t) {
+                    Logger.logThrowable("Unable to update the gui", t);
+                    Main.exit();
                 }
                 Main.addTick();
                 delta--;
