@@ -13,6 +13,7 @@ import projektkurs.Main;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
+import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 
 /**
@@ -20,75 +21,87 @@ import projektkurs.util.Pair;
  */
 public final class Images {
 
+    public static BufferedImage auto_dc_EW;
     /**
      *
      */
-    public static BufferedImage auto_dc_NS, auto_dc_EW;
+    public static BufferedImage auto_dc_NS;
     public static BufferedImage auto_dc_SN;
     public static BufferedImage auto_dc_WE;
+    public static BufferedImage auto_di_EW;
     /**
      *
      */
-    public static BufferedImage auto_di_NS, auto_di_EW;
+    public static BufferedImage auto_di_NS;
     public static BufferedImage auto_di_SN;
     public static BufferedImage auto_di_WE;
+    public static BufferedImage auto_di2_EW;
     /**
      *
      */
-    public static BufferedImage auto_di2_NS, auto_di2_EW;
+    public static BufferedImage auto_di2_NS;
     public static BufferedImage auto_di2_SN;
     public static BufferedImage auto_di2_WE;
+    public static BufferedImage auto_di3_EW;
     /**
      *
      */
-    public static BufferedImage auto_di3_NS, auto_di3_EW;
+    public static BufferedImage auto_di3_NS;
     public static BufferedImage auto_di3_SN;
     public static BufferedImage auto_di3_WE;
+    public static BufferedImage auto_di4_EW;
     /**
      *
      */
-    public static BufferedImage auto_di4_NS, auto_di4_EW;
+    public static BufferedImage auto_di4_NS;
     public static BufferedImage auto_di4_SN;
     public static BufferedImage auto_di4_WE;
+    public static BufferedImage auto_do_EW;
     /**
      * Autobild
      */
-    public static BufferedImage auto_do_NS, auto_do_EW;
+    public static BufferedImage auto_do_NS;
     public static BufferedImage auto_do_SN;
     public static BufferedImage auto_do_WE;
+    public static BufferedImage auto_do2_EW;
     /**
      *
      */
-    public static BufferedImage auto_do2_NS, auto_do2_EW;
+    public static BufferedImage auto_do2_NS;
     public static BufferedImage auto_do2_SN;
     public static BufferedImage auto_do2_WE;
+    public static BufferedImage auto_do3_EW;
     /**
      *
      */
-    public static BufferedImage auto_do3_NS, auto_do3_EW;
+    public static BufferedImage auto_do3_NS;
     public static BufferedImage auto_do3_SN;
     public static BufferedImage auto_do3_WE;
+    public static BufferedImage auto_do4_EW;
     /**
      *
      */
-    public static BufferedImage auto_do4_NS, auto_do4_EW;
+    public static BufferedImage auto_do4_NS;
     public static BufferedImage auto_do4_SN;
     public static BufferedImage auto_do4_WE;
+    public static BufferedImage auto_EW;
     /**
      *
      */
-    public static BufferedImage auto_NS, auto_EW;
+    public static BufferedImage auto_NS;
     public static BufferedImage auto_SN;
+    public static BufferedImage auto_w_EW;
     /**
      *
      */
-    public static BufferedImage auto_w_NS, auto_w_EW;
+    public static BufferedImage auto_w_NS;
     public static BufferedImage auto_w_SN;
     public static BufferedImage auto_w_WE;
+    public static BufferedImage auto_w2_EW;
     /**
      *
      */
-    public static BufferedImage auto_w2_NS, auto_w2_EW;
+    public static BufferedImage auto_w2_NS;
     public static BufferedImage auto_WE;
     /**
     *
@@ -195,7 +208,7 @@ public final class Images {
      */
     public static BufferedImage buttonHighlight;
     /**
-     * Charakterbild - Userauswahl.
+     * Charakterbild.
      */
     public static BufferedImage charakter;
     /**
@@ -207,7 +220,7 @@ public final class Images {
      */
     public static BufferedImage doorEW;
     /**
-     * Geschlossene Tür in Nord-S�d Ausrichtung.
+     * Geschlossene Tür in Nord-Süd Ausrichtung.
      */
     public static BufferedImage doorNS;
     /**
@@ -730,7 +743,7 @@ public final class Images {
 
         auto_do2_EW = loadImageRotate90("auto_do2_EW", "AutoMitOffenerTürFahrerDraussen2.png");
 
-        auto_do2_SN = loadImageRotate180("auto_do2_NS", "AutoMitOffenerTürFahrerDraussen2.png");
+        auto_do2_SN = loadImageRotate180("auto_do2_SN", "AutoMitOffenerTürFahrerDraussen2.png");
 
         auto_do2_WE = loadImageRotate270("auto_do2_WE", "AutoMitOffenerTürFahrerDraussen2.png");
 
@@ -1120,15 +1133,18 @@ public final class Images {
      *            Winkel im Bogenmaß
      * @return gedrehtes Bild
      */
-    public static BufferedImage rotate(BufferedImage image, double angle) {
-        double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
-        int w = image.getWidth(), h = image.getHeight();
-        int neww = (int) Math.floor(w * cos + h * sin), newh = (int) Math.floor(h * cos + w * sin);
-        BufferedImage result = new BufferedImage(neww, newh, image.getType());
+    public static BufferedImage rotate(BufferedImage img, double angle) {
+        double sin = Math.abs(Math.sin(angle));
+        double cos = Math.abs(Math.cos(angle));
+        int w = img.getWidth();
+        int h = img.getHeight();
+        int newW = MathUtil.floor(w * cos + h * sin);
+        int newH = MathUtil.floor(h * cos + w * sin);
+        BufferedImage result = new BufferedImage(newW, newH, img.getType());
         Graphics2D g = result.createGraphics();
-        g.translate((neww - w) / 2, (newh - h) / 2);
-        g.rotate(angle, w / 2, h / 2);
-        g.drawRenderedImage(image, null);
+        g.translate(MathUtil.floorDiv(newW - w, 2), MathUtil.floorDiv(newH - h, 2));
+        g.rotate(angle, MathUtil.floorDiv(w, 2), MathUtil.floorDiv(h, 2));
+        g.drawRenderedImage(img, null);
         g.dispose();
         return result;
     }

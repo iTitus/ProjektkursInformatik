@@ -91,6 +91,14 @@ public final class Main {
     }
 
     /**
+     * Beendet das aktuelle Level.
+     */
+    public static void closeLevel() {
+        level = null;
+        player = null;
+    }
+
+    /**
      * Verlässt das Spiel.
      */
     public static void exit() {
@@ -266,18 +274,6 @@ public final class Main {
     }
 
     /**
-     * Setzt das aktuelle Level.
-     *
-     * @param l
-     *            Level
-     */
-    public static void setLevel(Level l) {
-        if (l != null) {
-            level = l;
-        }
-    }
-
-    /**
      *
      */
     public static void show() {
@@ -285,14 +281,17 @@ public final class Main {
     }
 
     /**
-     * Startet das gegebene Level.
+     * Startet das gegebene Level und resettet es dabei.
      *
      * @param Level
      */
     public static void startLevel(Level l) {
-        setLevel(l);
-        player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
-        closeGui();
+        if (l != null) {
+            level = l;
+            player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
+            l.generateAndPopulateAll();
+            closeGui();
+        }
     }
 
     /**
@@ -345,16 +344,6 @@ public final class Main {
         // Resources
         init(State.RESOURCES);
 
-        // Option.createAndShowGUI();
-        //
-        // while (!Option.isFinished()) {
-        // try {
-        // Thread.sleep(1);
-        // } catch (Throwable t) {
-        // Logger.logThrowable("Unable to wait for the options window", t);
-        // }
-        // }
-
         // PreInit
         // Load from disk
         init(State.PRE);
@@ -373,6 +362,7 @@ public final class Main {
                 panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
                 panel.add(render.getGameCanvas());
 
+                mainFrame.setIconImage(Images.item42);
                 mainFrame.setUndecorated(true);
                 mainFrame.setResizable(false);
                 mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

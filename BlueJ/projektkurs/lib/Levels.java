@@ -36,7 +36,6 @@ public final class Levels {
     /**
      * Generiert alle Level.
      */
-    @Init
     public static void generateAndPopulateAllLevels() {
         for (Level l : MAPPINGS.values()) {
             l.generateAndPopulateAll();
