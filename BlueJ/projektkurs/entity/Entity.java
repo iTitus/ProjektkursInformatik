@@ -17,6 +17,7 @@ import projektkurs.util.Direction;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.ISaveable;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.SaveData;
@@ -73,6 +74,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         shouldDeSpawn = false;
         facing = Direction.UNKNOWN;
         images = null;
+        shouldChangeImageWithFacing = false;
         posX = 0;
         posY = 0;
         sizeX = 1;
@@ -144,10 +146,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
         boolean ret = true;
 
-        Entity e = Main.getLevel().getMap().getEntityAt(x, y);
-        if (e != null) {
-            onCollideWith(e);
-            ret = false;
+        for (Entity e : Main.getLevel().getMap().getEntitiesAt(x, y)) {
+            if (e != null) {
+                onCollideWith(e);
+                ret = false;
+            }
         }
 
         AbstractRaster r = Main.getLevel().getMap().getRasterAt(x, y);
@@ -301,6 +304,13 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         images = new BufferedImage[data.getInteger(Strings.ENTITY_IMAGE_LENGTH)];
         for (int i = 0; i < images.length; i++) {
             images[i] = Images.MAPPINGS.get(data.getString(Strings.ENTITY_IMAGE + "[" + i + "]"));
+        }
+        if (images.length == 1) {
+            shouldChangeImageWithFacing = false;
+        } else if (images.length == 4) {
+            shouldChangeImageWithFacing = true;
+        } else {
+            Logger.warn(getInternalName() + ": Wrong SaveData format -> 1 or 4 images");
         }
     }
 

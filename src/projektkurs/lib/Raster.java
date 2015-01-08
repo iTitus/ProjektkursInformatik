@@ -58,6 +58,11 @@ public final class Raster {
     public static AbstractRaster wall;
 
     /**
+     * Wasser
+     */
+    public static SolidRaster water;
+
+    /**
      * Das Pair, das alle Kommandos enthält.
      *
      * @return Pair
@@ -95,6 +100,8 @@ public final class Raster {
         fire = new FireRaster();
         registerRaster(fire);
 
+        water = new SolidRaster("water", Images.wasser);
+        registerRaster(water);
     }
 
     /**

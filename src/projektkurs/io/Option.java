@@ -150,7 +150,7 @@ public final class Option extends JPanel implements ActionListener, ChangeListen
         buttons.add(defaultCharacter);
         buttons.add(altCharakter);
 
-        charakterBild = new JLabel(new ImageIcon(Images.defaultCharakter));
+        charakterBild = new JLabel(new ImageIcon(Images.charakter));
 
         charakterAuswahl.add(buttons);
         charakterAuswahl.add(charakterBild);
@@ -213,14 +213,6 @@ public final class Option extends JPanel implements ActionListener, ChangeListen
             case "lang":
                 I18n.changeLocale((SupportedLocales) langBox.getSelectedItem());
                 update();
-                break;
-            case "charakter":
-                charakterBild.setIcon(new ImageIcon(Images.defaultCharakter));
-                Images.setCharakterImage(Images.defaultCharakter);
-                break;
-            case "altCharakter":
-                charakterBild.setIcon(new ImageIcon(Images.redNPC));
-                Images.setCharakterImage(Images.redNPC);
                 break;
             case "ok":
                 setFinished();

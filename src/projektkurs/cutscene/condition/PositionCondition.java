@@ -2,7 +2,6 @@ package projektkurs.cutscene.condition;
 
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.Action;
-import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.object.CutSceneObject;
 
 /**
@@ -68,6 +67,6 @@ public class PositionCondition extends Condition {
 
     @Override
     public boolean isTrue(Action action, CutScene cutScene) {
-        return ((ConditionedMoveAction) action).getCutSceneObject().getPosX() == x && ((ConditionedMoveAction) action).getCutSceneObject().getPosY() == y;
+        return object.getPosX() == x && object.getPosY() == y;
     }
 }

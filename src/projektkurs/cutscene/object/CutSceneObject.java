@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Integers;
 import projektkurs.util.IHasPositionAndSize;
+import projektkurs.util.RenderUtil;
 
 /**
  * Ein Objekt in einer CutScene.
@@ -130,7 +131,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      *            das Graphics2D Objekt
      */
     public void render(Graphics2D g) {
-        g.drawImage(image, getRenderX(), getRenderY(), sizeX * Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE, null);
+        RenderUtil.drawImage(g, image, getRenderX(), getRenderY(), sizeX * Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE);
     }
 
     @Override

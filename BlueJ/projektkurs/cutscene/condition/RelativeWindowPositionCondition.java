@@ -3,7 +3,6 @@ package projektkurs.cutscene.condition;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.action.Action;
-import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.object.CutSceneObject;
 
 /**
@@ -27,6 +26,6 @@ public class RelativeWindowPositionCondition extends PositionCondition {
 
     @Override
     public boolean isTrue(Action action, CutScene cutScene) {
-        return ((ConditionedMoveAction) action).getCutSceneObject().getPosX() - CutSceneManager.getCutSceneRenderHelper().getSightX() == getX() && ((ConditionedMoveAction) action).getCutSceneObject().getPosY() - CutSceneManager.getCutSceneRenderHelper().getSightY() == getY();
+        return getCutSceneObject().getPosX() - CutSceneManager.getCutSceneRenderHelper().getSightX() == getX() && getCutSceneObject().getPosY() - CutSceneManager.getCutSceneRenderHelper().getSightY() == getY();
     }
 }

@@ -13,13 +13,13 @@ import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.story.StoryManager;
 import projektkurs.util.IUpdatable;
-import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
+import projektkurs.util.SaveData;
 
 /**
  * Ein Spielfeld.
  */
-public class Spielfeld implements Cloneable, IUpdatable {
+public class Spielfeld implements IUpdatable {
 
     /**
      * Alle Entities.
@@ -88,12 +88,22 @@ public class Spielfeld implements Cloneable, IUpdatable {
      * @return Spielfeld
      */
     public Spielfeld copy() {
-        try {
-            return (Spielfeld) clone();
-        } catch (Throwable t) {
-            Logger.logThrowable("Unable to clone the map", t);
-            return null;
+        Spielfeld world = new Spielfeld(sizeX, sizeY, spawnX, spawnY);
+
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
+                world.setRasterAt(x, y, getRasterAt(x, y));
+                ExtraInformation extra = world.getExtraInformationAt(x, y);
+                ExtraInformation thisExtra = getExtraInformationAt(x, y);
+                if (extra != null && thisExtra != null) {
+                    SaveData data = new SaveData();
+                    thisExtra.write(data);
+                    extra.load(data);
+                }
+            }
         }
+
+        return world;
     }
 
     /**
@@ -106,6 +116,21 @@ public class Spielfeld implements Cloneable, IUpdatable {
         if (e != null) {
             getEntityList().remove(e);
         }
+    }
+
+    /**
+     * Findet alle Entities an der gegebenen Position.
+     *
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     * @return gefundener Entity
+     */
+    public ArrayList<Entity> getEntitiesAt(int x, int y) {
+        ArrayList<Entity> ret = new ArrayList<Entity>();
+        ret.addAll(getEntitiesInRect(x, y, 1, 1));
+        return ret;
     }
 
     /**
@@ -131,26 +156,6 @@ public class Spielfeld implements Cloneable, IUpdatable {
         }
 
         return ret;
-    }
-
-    /**
-     * Findet den Entity an der gegebenen Position.
-     *
-     * @param x
-     *            X-Koordinate
-     * @param y
-     *            Y-Koordinate
-     * @return gefundener Entity
-     */
-    public Entity getEntityAt(int x, int y) {
-        if (isInMap(x, y)) {
-            for (Entity e : getEntityList()) {
-                if (e.getPosX() == x && e.getPosY() == y) {
-                    return e;
-                }
-            }
-        }
-        return null;
     }
 
     /**
@@ -262,7 +267,7 @@ public class Spielfeld implements Cloneable, IUpdatable {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isEntityAtPos(int x, int y) {
-        return getEntityAt(x, y) != null;
+        return getEntitiesAt(x, y) != null;
     }
 
     /**

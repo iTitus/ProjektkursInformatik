@@ -62,9 +62,10 @@ public class ExtraInformationFire extends ExtraInformation {
 
     @Override
     public void update() {
-        Entity e = Main.getLevel().getMap().getEntityAt(posX, posY);
-        if (e != null && e instanceof EntityLiving) {
-            ((EntityLiving) e).damage(1);
+        for (Entity e : Main.getLevel().getMap().getEntitiesAt(posX, posY)) {
+            if (e != null && e instanceof EntityLiving) {
+                ((EntityLiving) e).damage(1);
+            }
         }
     }
 
