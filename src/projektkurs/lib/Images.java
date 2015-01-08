@@ -1038,6 +1038,7 @@ public final class Images {
      *            Name des Bildes.
      * @return BufferedImage
      */
+    @SuppressWarnings("unused")
     private static BufferedImage loadImageRotate180(String name, String fileName) {
         BufferedImage img = loadImage(name, fileName);
         if (img != null) {
@@ -1053,6 +1054,7 @@ public final class Images {
      *            Name des Bildes.
      * @return BufferedImage
      */
+    @SuppressWarnings("unused")
     private static BufferedImage loadImageRotate270(String name, String fileName) {
         BufferedImage img = loadImage(name, fileName);
         if (img != null) {
