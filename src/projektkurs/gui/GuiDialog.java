@@ -8,6 +8,7 @@ import projektkurs.Main;
 import projektkurs.dialog.DialogPart;
 import projektkurs.entity.Entity;
 import projektkurs.gui.element.Button;
+import projektkurs.gui.element.Element;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
 import projektkurs.lib.Integers;
@@ -31,10 +32,6 @@ public class GuiDialog extends Gui implements IButtonListener {
      */
     private final Entity entity2;
     /**
-     * Eltern-Gui.
-     */
-    private final Gui parent;
-    /**
      * Das Dialog-Anzeigefeld.
      */
     private final TextView text;
@@ -52,7 +49,7 @@ public class GuiDialog extends Gui implements IButtonListener {
      *            anderer Entity
      */
     public GuiDialog(Gui parent, DialogPart dialogPart, Entity entity1, Entity entity2) {
-        this.parent = parent;
+        super(parent);
         this.dialogPart = dialogPart;
         this.entity1 = entity1;
         this.entity2 = entity2;
@@ -74,7 +71,7 @@ public class GuiDialog extends Gui implements IButtonListener {
                 button.setName("button.dialog.exit");
             }
         } else {
-            Main.openGui(parent);
+            Main.openGui(getParent());
         }
     }
 
@@ -85,7 +82,9 @@ public class GuiDialog extends Gui implements IButtonListener {
 
     @Override
     public void onKeyTyped(char keyChar, KeyEvent e) {
-        // NO-OP
+        for (Element el : getGuiElements()) {
+            el.onKeyTyped(keyChar, e);
+        }
     }
 
     @Override

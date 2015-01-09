@@ -1,12 +1,10 @@
 package projektkurs.gui;
 
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
-import projektkurs.gui.element.Element;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Levels;
@@ -46,13 +44,6 @@ public class GuiMainMenu extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
-    }
-
-    @Override
-    public void onKeyTyped(char keyChar, KeyEvent e) {
-        for (Element el : getGuiElements()) {
-            el.onKeyTyped(keyChar, e);
-        }
     }
 
     @Override

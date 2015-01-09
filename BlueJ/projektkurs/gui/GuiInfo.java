@@ -1,11 +1,9 @@
 package projektkurs.gui;
 
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import projektkurs.Main;
 import projektkurs.gui.element.TextView;
 import projektkurs.lib.Commands;
 import projektkurs.lib.CutScenes;
@@ -15,7 +13,6 @@ import projektkurs.lib.ExtraInformationen;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
-import projektkurs.lib.KeyBindings;
 import projektkurs.lib.Levels;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
@@ -29,18 +26,13 @@ import projektkurs.util.RenderUtil;
 public class GuiInfo extends Gui {
 
     /**
-     * Eltern-Gui.
-     */
-    private final Gui parent;
-
-    /**
      * Konstruktor.
      *
      * @param parent
      *            Eltern-Gui
      */
     public GuiInfo(Gui parent) {
-        this.parent = parent;
+        super(parent);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,14 +40,6 @@ public class GuiInfo extends Gui {
     public void initGui() {
         super.initGui();
         addInfos(Levels.getPair(), CutScenes.getPair(), Dialoge.getPair(), Raster.getPair(), ExtraInformationen.getPair(), Entities.getPair(), Items.getPair(), Commands.getPair(), Images.getPair(), Sounds.getPair());
-    }
-
-    @Override
-    public void onKeyTyped(char keyChar, KeyEvent e) {
-        super.onKeyTyped(keyChar, e);
-        if (keyChar == KeyBindings.KEY_OPTION) {
-            Main.openGui(parent);
-        }
     }
 
     @Override

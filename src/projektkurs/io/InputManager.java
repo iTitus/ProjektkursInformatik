@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.util.HashSet;
 
 import javax.swing.event.MouseInputListener;
 
@@ -15,6 +14,7 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.util.Direction;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.MathUtil;
 import projektkurs.util.Queue;
 
 /**
@@ -46,7 +46,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     /**
      * Speichert alle gerade gedrückten Tasten.
      */
-    private final HashSet<Integer> keysPressed;
+    private final boolean[] keysPressed;
     /**
      * Zu verarbeitende MouseEvents.
      */
@@ -73,7 +73,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
      * Konstruktor.
      */
     public InputManager() {
-        keysPressed = new HashSet<Integer>();
+        keysPressed = new boolean[0xFFFF];
         keyEvents = new Queue<KeyEvent>();
         mouseEvents = new Queue<MouseEvent>();
         mouseWheelEvents = new Queue<MouseWheelEvent>();
@@ -176,7 +176,10 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isKeyPressed(int keyCode) {
-        return keysPressed.contains(keyCode);
+        if (!MathUtil.isInArray(keyCode, keysPressed.length)) {
+            return false;
+        }
+        return keysPressed[keyCode];
     }
 
     /**
@@ -187,10 +190,10 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
      */
     @Override
     public void keyPressed(KeyEvent e) {
-
         keyEvents.enQueue(e);
-        keysPressed.add(e.getKeyCode());
-
+        if (MathUtil.isInArray(e.getKeyCode(), keysPressed.length)) {
+            keysPressed[e.getKeyCode()] = true;
+        }
     }
 
     /**
@@ -201,9 +204,9 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
      */
     @Override
     public void keyReleased(KeyEvent e) {
-
-        keysPressed.remove(e.getKeyCode());
-
+        if (MathUtil.isInArray(e.getKeyCode(), keysPressed.length)) {
+            keysPressed[e.getKeyCode()] = false;
+        }
     }
 
     /**
@@ -310,16 +313,16 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
         moveDir = 0b0000;
 
         if (Main.getGui() instanceof GuiIngame) {
-            if (keysPressed.contains(KeyBindings.KEY_UP)) {
+            if (keysPressed[KeyBindings.KEY_UP]) {
                 moveDir |= 0b0001;
             }
-            if (keysPressed.contains(KeyBindings.KEY_DOWN)) {
+            if (keysPressed[KeyBindings.KEY_DOWN]) {
                 moveDir |= 0b0010;
             }
-            if (keysPressed.contains(KeyBindings.KEY_LEFT)) {
+            if (keysPressed[KeyBindings.KEY_LEFT]) {
                 moveDir |= 0b0100;
             }
-            if (keysPressed.contains(KeyBindings.KEY_RIGHT)) {
+            if (keysPressed[KeyBindings.KEY_RIGHT]) {
                 moveDir |= 0b1000;
             }
         }

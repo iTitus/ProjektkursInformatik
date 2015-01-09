@@ -86,8 +86,10 @@ public final class Main {
      * Schließt das gerade geöffnete GUI und öffnet das Ingame-GUI.
      */
     public static void closeGui() {
-        Main.gui = ingameGui;
-        Main.gui.initGui();
+        if (level != null && player != null) {
+            Main.gui = ingameGui;
+            Main.gui.initGui();
+        }
     }
 
     /**
