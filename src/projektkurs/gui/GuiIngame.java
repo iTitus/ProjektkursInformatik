@@ -26,8 +26,8 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
 
     @Override
     public void onKeyTyped(char keyChar, KeyEvent e) {
-        if (e.getKeyCode() == KeyBindings.KEY_OPTION) {
-            Main.openGui(new GuiOption());
+        if (e.getKeyCode() == KeyBindings.KEY_MENU) {
+            Main.openGui(new GuiIngameMenu());
         } else if (e.getKeyCode() == KeyBindings.KEY_CONSOLE) {
             Main.openGui(new GuiConsole());
         }

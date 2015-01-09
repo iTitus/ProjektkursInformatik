@@ -17,10 +17,20 @@ import projektkurs.util.RenderUtil;
  */
 public class GuiOption extends Gui implements IButtonListener {
 
+    /**
+     * Konstruktor.
+     *
+     * @param parent
+     *            Eltern-Gui
+     */
+    public GuiOption(Gui parent) {
+        super(parent);
+    }
+
     @Override
     public void initGui() {
         super.initGui();
-        addElement(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - 64, Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 0, this, "Main Menu"));
+        addElement(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT, Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 2, this, "Back"));
         ToggleButton soundButton = new ToggleButton(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT * 2, Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 1, this, "button.sound.on",
                 "button.sound.off");
         soundButton.setIndex(Sounds.isMuted() ? 1 : 0);
@@ -33,8 +43,7 @@ public class GuiOption extends Gui implements IButtonListener {
     public void onButtonLeftClick(Button button, MouseEvent e) {
         switch (button.getID()) {
             case 0:
-                Main.closeLevel();
-                Main.openGui(new GuiMainMenu());
+                Main.openGui(getParent());
                 break;
             case 1:
                 Sounds.mute(((ToggleButton) button).getIndex() != 0);

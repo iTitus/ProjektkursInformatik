@@ -87,7 +87,7 @@ public abstract class Gui implements IUpdatable {
         for (Element el : guiElements) {
             el.onKeyTyped(keyChar, e);
         }
-        if (keyChar == KeyBindings.KEY_OPTION) {
+        if (keyChar == KeyBindings.KEY_MENU) {
             Main.openGui(parent);
         }
     }
