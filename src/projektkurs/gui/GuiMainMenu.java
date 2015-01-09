@@ -21,7 +21,8 @@ public class GuiMainMenu extends Gui implements IButtonListener {
         super.initGui();
         addElement(new Button(64, 64, 256, 64, 0, this, "Level0"));
         addElement(new Button(64, 128, 256, 64, 1, this, "Level1"));
-        addElement(new Button(64, 192, 256, 64, 2, this, "button.exit"));
+        addElement(new Button(64, 192, 256, 64, 2, this, "Options"));
+        addElement(new Button(64, 256, 256, 64, 3, this, "button.exit"));
     }
 
     @Override
@@ -34,6 +35,9 @@ public class GuiMainMenu extends Gui implements IButtonListener {
                 Main.startLevel(Levels.level1);
                 break;
             case 2:
+                Main.openGui(new GuiOption(this));
+                break;
+            case 3:
                 Main.exit();
                 break;
             default:
@@ -48,6 +52,7 @@ public class GuiMainMenu extends Gui implements IButtonListener {
 
     @Override
     public void render(Graphics2D g) {
+        RenderUtil.drawDefaultBackground(g);
         super.render(g);
         RenderUtil.drawCenteredString(g, "MAIN MENU", MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2));
     }

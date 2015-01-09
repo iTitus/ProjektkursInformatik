@@ -1,5 +1,6 @@
 package projektkurs.gui;
 
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
@@ -7,6 +8,7 @@ import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
 import projektkurs.util.I18n;
+import projektkurs.util.RenderUtil;
 
 /**
  * Das Sprachauswahl-GUI.
@@ -46,6 +48,12 @@ public class GuiLangChooser extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
+    }
+
+    @Override
+    public void render(Graphics2D g) {
+        RenderUtil.drawDefaultBackground(g);
+        super.render(g);
     }
 
 }

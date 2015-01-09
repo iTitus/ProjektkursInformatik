@@ -71,14 +71,14 @@ public class Button extends Element {
 
     @Override
     public void onLeftClick(int x, int y, MouseEvent e) {
-        if (isInside(x, y)) {
+        if (enabled && isInside(x, y)) {
             getListener().onButtonLeftClick(this, e);
         }
     }
 
     @Override
     public void onRightClick(int x, int y, MouseEvent e) {
-        if (isInside(x, y)) {
+        if (enabled && isInside(x, y)) {
             getListener().onButtonRightClick(this, e);
         }
     }

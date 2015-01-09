@@ -1,10 +1,12 @@
 package projektkurs.gui;
 
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
+import projektkurs.util.RenderUtil;
 
 /**
  * Das Menü, das im Spiele aufgerufen werden kann.
@@ -36,6 +38,12 @@ public class GuiIngameMenu extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
+    }
+
+    @Override
+    public void render(Graphics2D g) {
+        RenderUtil.drawDefaultBackground(g);
+        super.render(g);
     }
 
 }
