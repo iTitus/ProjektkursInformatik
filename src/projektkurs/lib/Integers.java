@@ -40,6 +40,10 @@ public final class Integers {
      */
     public static final int MAX_FONT_SIZE = 64;
     /**
+     * Maximale Anzahl an Rastern.
+     */
+    public static final int MAX_RASTER_NUMBER = Byte.MAX_VALUE;
+    /**
      * Updates pro Bewegungsupdate.
      */
     public static final int MPU = 4;

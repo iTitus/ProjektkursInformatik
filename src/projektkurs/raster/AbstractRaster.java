@@ -13,6 +13,11 @@ import projektkurs.util.Logger;
 public abstract class AbstractRaster {
 
     /**
+     * ID.
+     */
+    private final byte id;
+
+    /**
      * Name.
      */
     private final String name;
@@ -20,10 +25,13 @@ public abstract class AbstractRaster {
     /**
      * Konstruktor.
      *
+     * @param id
+     *            ID
      * @param name
      *            Name
      */
-    public AbstractRaster(String name) {
+    public AbstractRaster(byte id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -42,6 +50,15 @@ public abstract class AbstractRaster {
      */
     public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
         return true;
+    }
+
+    /**
+     * ID.
+     *
+     * @return ID
+     */
+    public byte getID() {
+        return id;
     }
 
     /**

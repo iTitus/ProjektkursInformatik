@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
+import projektkurs.lib.Raster;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
@@ -28,7 +29,7 @@ public class Spielfeld implements IUpdatable {
     /**
      * Alle Raster.
      */
-    private final AbstractRaster[] map;
+    private final byte[] map;
     /**
      * Spielfeldbreite.
      */
@@ -67,7 +68,7 @@ public class Spielfeld implements IUpdatable {
         this.sizeY = sizeY;
         this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
         this.spawnY = MathUtil.clampToArray(spawnY, sizeY);
-        map = new AbstractRaster[sizeX * sizeY];
+        map = new byte[sizeX * sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
         storyManager = new StoryManager();
@@ -221,7 +222,7 @@ public class Spielfeld implements IUpdatable {
      */
     public AbstractRaster getRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return map[x + y * sizeX];
+            return Raster.RASTER[map[x + y * sizeX]];
         }
         return null;
     }
@@ -290,7 +291,7 @@ public class Spielfeld implements IUpdatable {
      */
     public boolean isRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return map[x + y * sizeX] != null;
+            return map[x + y * sizeX] > 0;
         }
         return false;
     }
@@ -321,12 +322,16 @@ public class Spielfeld implements IUpdatable {
             if (oldExtra != null) {
                 removeExtraInformation(oldExtra);
             }
-            map[x + y * sizeX] = r;
-            if (r instanceof IHasExtraInformation) {
-                ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
-                newExtra.setPosition(x, y);
-                getExtraInformationList().add(newExtra);
+            if (r != null) {
+                map[x + y * sizeX] = r.getID();
+                if (r instanceof IHasExtraInformation) {
+                    ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
+                    newExtra.setPosition(x, y);
+                    getExtraInformationList().add(newExtra);
 
+                }
+            } else {
+                map[x + y * sizeX] = 0;
             }
         }
     }

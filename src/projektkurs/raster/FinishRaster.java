@@ -13,9 +13,12 @@ public class FinishRaster extends SimpleRaster {
 
     /**
      * Konstruktor.
+     *
+     * @param id
+     *            ID
      */
-    public FinishRaster() {
-        super("finish", Images.finish);
+    public FinishRaster(byte id) {
+        super(id, "finish", Images.finish);
     }
 
     @Override

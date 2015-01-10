@@ -18,13 +18,15 @@ public class SimpleRaster extends AbstractRaster {
     /**
      * Konstruktor.
      *
+     * @param id
+     *            ID
      * @param name
      *            Name
      * @param image
      *            Bild
      */
-    public SimpleRaster(String name, BufferedImage image) {
-        super(name);
+    public SimpleRaster(byte id, String name, BufferedImage image) {
+        super(id, name);
         this.image = image;
     }
 

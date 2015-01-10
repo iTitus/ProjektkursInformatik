@@ -16,9 +16,12 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
 
     /**
      * Konstruktor.
+     *
+     * @param id
+     *            ID
      */
-    public FireRaster() {
-        super("fire", AnimationFrame.getSynchronousAnimation(Images.fire, 5));
+    public FireRaster(byte id) {
+        super(id, "fire", AnimationFrame.getSynchronousAnimation(Images.fire, 5));
     }
 
     @Override

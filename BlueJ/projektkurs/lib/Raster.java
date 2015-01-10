@@ -53,6 +53,10 @@ public final class Raster {
      */
     public static AbstractRaster rasen;
     /**
+     * Array aller Raster nach ihrer ID.
+     */
+    public static final AbstractRaster[] RASTER = new AbstractRaster[Integers.MAX_RASTER_NUMBER];
+    /**
      * Wand.
      */
     public static AbstractRaster wall;
@@ -76,31 +80,31 @@ public final class Raster {
      */
     @Init(state = State.PRE)
     public static void init() {
-        wall = new SolidRaster("wall", Images.wand);
+        wall = new SolidRaster((byte) 1, "wall", Images.wand);
         registerRaster(wall);
 
-        chest = new ChestRaster();
+        chest = new ChestRaster((byte) 2);
         registerRaster(chest);
 
-        rasen = new SimpleRaster("grass", Images.rasen3);
+        rasen = new SimpleRaster((byte) 3, "grass", Images.rasen3);
         registerRaster(rasen);
 
-        baum = new SolidRaster("tree", Images.baum);
+        baum = new SolidRaster((byte) 4, "tree", Images.baum);
         registerRaster(baum);
 
-        door = new DoorRaster();
+        door = new DoorRaster((byte) 5);
         registerRaster(door);
 
-        finish = new FinishRaster();
+        finish = new FinishRaster((byte) 6);
         registerRaster(finish);
 
-        destroyedRaster = new SimpleRaster("destroyedRaster", Images.destroyedRaster);
+        destroyedRaster = new SimpleRaster((byte) 7, "destroyedRaster", Images.destroyedRaster);
         registerRaster(destroyedRaster);
 
-        fire = new FireRaster();
+        fire = new FireRaster((byte) 8);
         registerRaster(fire);
 
-        water = new SolidRaster("water", Images.wasser);
+        water = new SolidRaster((byte) 9, "water", Images.wasser);
         registerRaster(water);
     }
 
@@ -111,8 +115,9 @@ public final class Raster {
      *            Raster
      */
     private static void registerRaster(AbstractRaster r) {
-        if (r != null && !MAPPINGS.containsKey(r.getName())) {
+        if (r != null && !MAPPINGS.containsKey(r.getName()) && RASTER[r.getID()] != null) {
             MAPPINGS.put(r.getName(), r);
+            RASTER[r.getID()] = r;
         } else {
             Logger.warn("Unable to register Raster", r);
         }
