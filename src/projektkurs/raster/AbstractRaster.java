@@ -154,7 +154,7 @@ public abstract class AbstractRaster {
 
     @Override
     public String toString() {
-        return "Raster[" + getName() + "]";
+        return "Raster[" + getID() + ", " + getName() + "]";
     }
 
 }

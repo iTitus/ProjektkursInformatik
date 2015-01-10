@@ -13,9 +13,12 @@ public class ItemHealthPotion extends BaseItem {
 
     /**
      * Konstruktor.
+     *
+     * @param id
+     *            ID
      */
-    public ItemHealthPotion() {
-        super("potion.health", Images.healthpotion);
+    public ItemHealthPotion(int id) {
+        super(id, "potion.health", Images.healthpotion);
     }
 
     @Override

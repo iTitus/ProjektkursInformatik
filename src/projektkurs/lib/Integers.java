@@ -40,6 +40,10 @@ public final class Integers {
      */
     public static final int MAX_FONT_SIZE = 64;
     /**
+     * Maximale Anzahl an Items.
+     */
+    public static final int MAX_ITEM_NUMBER = Byte.MAX_VALUE;
+    /**
      * Maximale Anzahl an Rastern.
      */
     public static final int MAX_RASTER_NUMBER = Byte.MAX_VALUE;

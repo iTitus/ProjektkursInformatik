@@ -26,6 +26,10 @@ public final class Items {
      */
     public static Item item42;
     /**
+     * Array aller Items nach ihrer ID.
+     */
+    public static final Item[] ITEMS = new Item[Integers.MAX_ITEM_NUMBER];
+    /**
      * Schlüssel.
      */
     public static Item key;
@@ -52,16 +56,16 @@ public final class Items {
      */
     @Init(state = State.PRE)
     public static void init() {
-        item42 = new BaseItem("42", Images.item42);
+        item42 = new BaseItem(1, "42", Images.item42);
         registerItem(item42);
 
-        nuke = new ItemNuke();
+        nuke = new ItemNuke(2);
         registerItem(nuke);
 
-        key = new BaseItem("key", Images.key);
+        key = new BaseItem(3, "key", Images.key);
         registerItem(key);
 
-        healthPotion = new ItemHealthPotion();
+        healthPotion = new ItemHealthPotion(4);
         registerItem(healthPotion);
     }
 
@@ -72,8 +76,9 @@ public final class Items {
      *            Item
      */
     private static void registerItem(Item i) {
-        if (i != null && !MAPPINGS.containsKey(i.getName())) {
+        if (i != null && !MAPPINGS.containsKey(i.getName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {
             MAPPINGS.put(i.getInternalName(), i);
+            ITEMS[i.getID()] = i;
         } else {
             Logger.warn("Unable to register Item", i);
         }

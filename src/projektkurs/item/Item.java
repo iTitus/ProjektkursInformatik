@@ -12,6 +12,10 @@ import projektkurs.util.I18n;
 public abstract class Item {
 
     /**
+     * ID dieses Items.
+     */
+    private final int id;
+    /**
      * Bild dieses Items.
      */
     private final BufferedImage image;
@@ -23,12 +27,23 @@ public abstract class Item {
     /**
      * Konstruktor.
      *
+     * @param ID
      * @param name
      *            Name
      */
-    public Item(String name, BufferedImage image) {
+    public Item(int id, String name, BufferedImage image) {
+        this.id = id;
         this.name = name;
         this.image = image;
+    }
+
+    /**
+     * ID.
+     *
+     * @return ID
+     */
+    public int getID() {
+        return id;
     }
 
     /**
@@ -118,6 +133,6 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return "Item[" + getInternalName() + "]";
+        return "Item[" + getID() + ", " + getInternalName() + "]";
     }
 }

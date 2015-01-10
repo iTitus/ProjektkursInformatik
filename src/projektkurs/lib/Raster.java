@@ -115,7 +115,7 @@ public final class Raster {
      *            Raster
      */
     private static void registerRaster(AbstractRaster r) {
-        if (r != null && !MAPPINGS.containsKey(r.getName()) && RASTER[r.getID()] != null) {
+        if (r != null && !MAPPINGS.containsKey(r.getName()) && r.getID() > 0 && r.getID() < RASTER.length && RASTER[r.getID()] == null) {
             MAPPINGS.put(r.getName(), r);
             RASTER[r.getID()] = r;
         } else {

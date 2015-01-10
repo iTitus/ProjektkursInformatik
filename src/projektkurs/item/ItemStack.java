@@ -22,7 +22,7 @@ public class ItemStack {
         if (data == null) {
             return null;
         }
-        ItemStack stack = new ItemStack(Items.MAPPINGS.get(data.getString(Strings.STACK_ITEM)));
+        ItemStack stack = new ItemStack(Items.ITEMS[data.getInteger(Strings.STACK_ITEM)]);
         stack.setStackSize(data.getInteger(Strings.STACK_SIZE));
         stack.setDamage(data.getInteger(Strings.STACK_DAMAGE));
         return stack;
@@ -266,7 +266,7 @@ public class ItemStack {
      */
     public SaveData write() {
         SaveData data = new SaveData();
-        data.set(Strings.STACK_ITEM, item.getInternalName());
+        data.set(Strings.STACK_ITEM, item.getID());
         data.set(Strings.STACK_SIZE, stackSize);
         data.set(Strings.STACK_DAMAGE, damage);
         return data;

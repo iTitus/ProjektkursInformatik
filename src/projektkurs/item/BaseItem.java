@@ -10,13 +10,15 @@ public class BaseItem extends Item {
     /**
      * Konstruktor.
      *
+     * @param id
+     *            ID
      * @param name
      *            Name
      * @param image
      *            Bild
      */
-    public BaseItem(String name, BufferedImage image) {
-        super(name, image);
+    public BaseItem(int id, String name, BufferedImage image) {
+        super(id, name, image);
     }
 
 }
