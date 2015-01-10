@@ -1,10 +1,16 @@
 package projektkurs.level;
 
+import java.awt.Graphics2D;
+
 import projektkurs.Main;
+import projektkurs.entity.Entity;
+import projektkurs.lib.Images;
+import projektkurs.lib.Integers;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
+import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.builder.MapBuilder;
 
@@ -99,6 +105,30 @@ public class Level implements IUpdatable {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Rendert das Level.
+     *
+     * @param g
+     *            Graphics2D
+     */
+    public void render(Graphics2D g) {
+        for (int y = Main.getRenderHelper().getSightY(); y < Main.getRenderHelper().getSightY() + Integers.sightY; y++) {
+            for (int x = Main.getRenderHelper().getSightX(); x < Main.getRenderHelper().getSightX() + Integers.sightX; x++) {
+                if (map.isRasterAt(x, y)) {
+                    map.getRasterAt(x, y).render(g, x, y);
+                } else {
+                    RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
+                }
+            }
+        }
+
+        for (Entity e : map.getEntityList()) {
+            if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
+                e.render(g);
+            }
+        }
     }
 
     /**

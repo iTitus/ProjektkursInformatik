@@ -78,14 +78,12 @@ public class CutsceneRender implements IUpdatable {
             g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
             if (CutSceneManager.getCutScene().needsRasterBackground()) {
-                for (int y = 0; y < Integers.sightY; y++) {
-                    for (int x = 0; x < Integers.sightX; x++) {
-                        int rX = x + CutSceneManager.getCutSceneRenderHelper().getSightX();
-                        int rY = y + CutSceneManager.getCutSceneRenderHelper().getSightY();
-                        if (CutSceneManager.getMap().isRasterAt(rX, rY)) {
-                            CutSceneManager.getMap().getRasterAt(rX, rY).renderCutScene(g, rX, rY);
+                for (int y = CutSceneManager.getCutSceneRenderHelper().getSightY(); y < CutSceneManager.getCutSceneRenderHelper().getSightY() + Integers.sightY; y++) {
+                    for (int x = CutSceneManager.getCutSceneRenderHelper().getSightX(); x < CutSceneManager.getCutSceneRenderHelper().getSightX() + Integers.sightX; x++) {
+                        if (CutSceneManager.getMap().isRasterAt(x, y)) {
+                            CutSceneManager.getMap().getRasterAt(x, y).renderCutScene(g, x, y);
                         } else {
-                            RenderUtil.drawDefaultRaster(g, Images.baum, rX, rY);
+                            RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
                         }
                     }
                 }

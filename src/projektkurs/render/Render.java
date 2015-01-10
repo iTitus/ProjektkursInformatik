@@ -6,11 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
 import projektkurs.Main;
-import projektkurs.entity.Entity;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.util.IUpdatable;
-import projektkurs.util.RenderUtil;
 
 /**
  * Renderklasse.
@@ -94,23 +91,7 @@ public class Render implements IUpdatable {
             g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
             if (Main.getLevel() != null) {
-                for (int y = 0; y < Integers.sightY; y++) {
-                    for (int x = 0; x < Integers.sightX; x++) {
-                        int sX = x + Main.getRenderHelper().getSightX();
-                        int sY = y + Main.getRenderHelper().getSightY();
-                        if (Main.getLevel().getMap().isRasterAt(sX, sY)) {
-                            Main.getLevel().getMap().getRasterAt(sX, sY).render(g, sX, sY);
-                        } else {
-                            RenderUtil.drawDefaultRaster(g, Images.baum, sX, sY);
-                        }
-                    }
-                }
-
-                for (Entity e : Main.getLevel().getMap().getEntityList()) {
-                    if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
-                        e.render(g);
-                    }
-                }
+                Main.getLevel().render(g);
             }
 
             g.setColor(Color.BLACK);
