@@ -80,31 +80,31 @@ public final class Raster {
      */
     @Init(state = State.PRE)
     public static void init() {
-        wall = new SolidRaster((byte) 1, "wall", Images.wand);
+        wall = new SolidRaster(1, "wall", Images.wand);
         registerRaster(wall);
 
-        chest = new ChestRaster((byte) 2);
+        chest = new ChestRaster(2);
         registerRaster(chest);
 
-        rasen = new SimpleRaster((byte) 3, "grass", Images.rasen3);
+        rasen = new SimpleRaster(3, "grass", Images.rasen3);
         registerRaster(rasen);
 
-        baum = new SolidRaster((byte) 4, "tree", Images.baum);
+        baum = new SolidRaster(4, "tree", Images.baum);
         registerRaster(baum);
 
-        door = new DoorRaster((byte) 5);
+        door = new DoorRaster(5);
         registerRaster(door);
 
-        finish = new FinishRaster((byte) 6);
+        finish = new FinishRaster(6);
         registerRaster(finish);
 
-        destroyedRaster = new SimpleRaster((byte) 7, "destroyedRaster", Images.destroyedRaster);
+        destroyedRaster = new SimpleRaster(7, "destroyedRaster", Images.destroyedRaster);
         registerRaster(destroyedRaster);
 
-        fire = new FireRaster((byte) 8);
+        fire = new FireRaster(8);
         registerRaster(fire);
 
-        water = new SolidRaster((byte) 9, "water", Images.wasser);
+        water = new SolidRaster(9, "water", Images.wasser);
         registerRaster(water);
     }
 

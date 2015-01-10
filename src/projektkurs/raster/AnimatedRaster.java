@@ -30,7 +30,7 @@ public class AnimatedRaster extends AbstractRaster {
      * @param animationFrames
      *            alle AnimationFrames
      */
-    public AnimatedRaster(byte id, String name, AnimationFrame... animationFrames) {
+    public AnimatedRaster(int id, String name, AnimationFrame... animationFrames) {
         super(id, name);
         this.animationFrames = animationFrames;
         int animationLength = 0;

@@ -17,7 +17,7 @@ public class FinishRaster extends SimpleRaster {
      * @param id
      *            ID
      */
-    public FinishRaster(byte id) {
+    public FinishRaster(int id) {
         super(id, "finish", Images.finish);
     }
 

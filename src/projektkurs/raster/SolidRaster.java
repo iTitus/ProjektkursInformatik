@@ -20,7 +20,7 @@ public class SolidRaster extends SimpleRaster {
      * @param image
      *            Bild.
      */
-    public SolidRaster(byte id, String name, BufferedImage image) {
+    public SolidRaster(int id, String name, BufferedImage image) {
         super(id, name, image);
     }
 

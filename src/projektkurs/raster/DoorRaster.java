@@ -22,7 +22,7 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
      * @param id
      *            ID
      */
-    public DoorRaster(byte id) {
+    public DoorRaster(int id) {
         super(id, "door");
     }
 

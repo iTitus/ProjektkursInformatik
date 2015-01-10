@@ -25,7 +25,7 @@ public class SimpleRaster extends AbstractRaster {
      * @param image
      *            Bild
      */
-    public SimpleRaster(byte id, String name, BufferedImage image) {
+    public SimpleRaster(int id, String name, BufferedImage image) {
         super(id, name);
         this.image = image;
     }

@@ -21,7 +21,7 @@ public class ChestRaster extends SolidRaster implements IHasExtraInformation {
      * @param id
      *            ID
      */
-    public ChestRaster(byte id) {
+    public ChestRaster(int id) {
         super(id, "chest", Images.kiste);
     }
 

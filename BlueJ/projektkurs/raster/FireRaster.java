@@ -20,7 +20,7 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
      * @param id
      *            ID
      */
-    public FireRaster(byte id) {
+    public FireRaster(int id) {
         super(id, "fire", AnimationFrame.getSynchronousAnimation(Images.fire, 5));
     }
 

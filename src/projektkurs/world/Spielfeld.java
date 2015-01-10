@@ -29,7 +29,7 @@ public class Spielfeld implements IUpdatable {
     /**
      * Alle Raster.
      */
-    private final byte[] map;
+    private final int[] map;
     /**
      * Spielfeldbreite.
      */
@@ -68,7 +68,7 @@ public class Spielfeld implements IUpdatable {
         this.sizeY = sizeY;
         this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
         this.spawnY = MathUtil.clampToArray(spawnY, sizeY);
-        map = new byte[sizeX * sizeY];
+        map = new int[sizeX * sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
         storyManager = new StoryManager();

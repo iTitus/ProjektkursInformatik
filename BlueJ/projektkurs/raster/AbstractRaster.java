@@ -15,7 +15,7 @@ public abstract class AbstractRaster {
     /**
      * ID.
      */
-    private final byte id;
+    private final int id;
 
     /**
      * Name.
@@ -30,7 +30,7 @@ public abstract class AbstractRaster {
      * @param name
      *            Name
      */
-    public AbstractRaster(byte id, String name) {
+    public AbstractRaster(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -57,7 +57,7 @@ public abstract class AbstractRaster {
      *
      * @return ID
      */
-    public byte getID() {
+    public int getID() {
         return id;
     }
 
