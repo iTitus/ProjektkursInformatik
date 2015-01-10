@@ -25,9 +25,9 @@ public class AnimationFrame {
     }
 
     /**
-     * Zeit, die dieser AnimationFrame angezeigt wird, in Renderticks.
+     * Zeit, die dieser AnimationFrame angezeigt wird, in Ticks.
      */
-    private final int animationTime;
+    private final int animationFrameDuration;
 
     /**
      * Bild.
@@ -39,12 +39,12 @@ public class AnimationFrame {
      *
      * @param image
      *            Bild
-     * @param animationTime
+     * @param animationFrameDuration
      *            Zeitspanne, die dieser AnimationFrame angezeigt werden soll
      */
-    public AnimationFrame(BufferedImage image, int animationTime) {
+    public AnimationFrame(BufferedImage image, int animationFrameDuration) {
         this.image = image;
-        this.animationTime = animationTime;
+        this.animationFrameDuration = animationFrameDuration;
     }
 
     /**
@@ -52,8 +52,8 @@ public class AnimationFrame {
      *
      * @return Animationszeit.
      */
-    public int getAnimationTime() {
-        return animationTime;
+    public int getAnimationFrameDuration() {
+        return animationFrameDuration;
     }
 
     /**

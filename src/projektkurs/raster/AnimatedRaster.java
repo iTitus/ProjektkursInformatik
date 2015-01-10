@@ -18,7 +18,7 @@ public class AnimatedRaster extends AbstractRaster {
     /**
      * Gesamtlänge der Animation.
      */
-    private final int animationLength;
+    private final int totalAnimationDuration;
 
     /**
      * Konstruktor.
@@ -33,21 +33,21 @@ public class AnimatedRaster extends AbstractRaster {
     public AnimatedRaster(int id, String name, AnimationFrame... animationFrames) {
         super(id, name);
         this.animationFrames = animationFrames;
-        int animationLength = 0;
+        int totalAnimationDuration = 0;
         for (AnimationFrame animationFrame : animationFrames) {
-            animationLength += animationFrame.getAnimationTime();
+            totalAnimationDuration += animationFrame.getAnimationFrameDuration();
         }
-        this.animationLength = animationLength;
+        this.totalAnimationDuration = totalAnimationDuration;
     }
 
     @Override
     public void render(Graphics2D g, int x, int y) {
-        if (animationFrames != null) {
-            int animationTime = Main.getTicks() % animationLength;
+        if (animationFrames != null && animationFrames.length > 0) {
+            int animationTime = Main.getTicks() % totalAnimationDuration;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
                 if (animationTime >= totalAnimationTime) {
-                    totalAnimationTime += animationFrame.getAnimationTime();
+                    totalAnimationTime += animationFrame.getAnimationFrameDuration();
                     if (animationTime < totalAnimationTime) {
                         RenderUtil.drawDefaultRaster(g, animationFrame.getImage(), x, y);
                         break;
@@ -59,12 +59,12 @@ public class AnimatedRaster extends AbstractRaster {
 
     @Override
     public void renderCutScene(Graphics2D g, int x, int y) {
-        if (animationFrames != null) {
-            int animationTime = Main.getTicks() % animationLength;
+        if (animationFrames != null && animationFrames.length > 0) {
+            int animationTime = Main.getTicks() % totalAnimationDuration;
             int totalAnimationTime = 0;
             for (AnimationFrame animationFrame : animationFrames) {
                 if (animationTime >= totalAnimationTime) {
-                    totalAnimationTime += animationFrame.getAnimationTime();
+                    totalAnimationTime += animationFrame.getAnimationFrameDuration();
                     if (animationTime < totalAnimationTime) {
                         RenderUtil.drawCutSceneRaster(g, animationFrame.getImage(), x, y);
                         break;
