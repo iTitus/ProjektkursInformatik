@@ -115,6 +115,10 @@ public final class Images {
     *
     */
     public static BufferedImage auto2vV;
+    public static BufferedImage autogelbvO_EW;
+    public static BufferedImage autogelbvO_NS;
+    public static BufferedImage autogelbvO_SN;
+    public static BufferedImage autogelbvO_WE;
     /**
     *
     */
@@ -183,6 +187,17 @@ public final class Images {
      *
      */
     public static BufferedImage baum9;
+    public static BufferedImage bodenbeige;
+    public static BufferedImage bodenblau;
+    public static BufferedImage bodendunkelgrau;
+    public static BufferedImage bodenhellgrau;
+    public static BufferedImage bodenkachelngroß;
+    public static BufferedImage bodenkachelnklein;
+    public static BufferedImage bodenorange;
+    public static BufferedImage bodenrot;
+    public static BufferedImage bodenschwarz;
+    public static BufferedImage bodenstein;
+    public static BufferedImage bodensteinkacheln;
     /**
     *
     */
@@ -208,7 +223,7 @@ public final class Images {
      */
     public static BufferedImage buttonHighlight;
     /**
-     * Charakterbild.
+     * Charakterbild - Userauswahl.
      */
     public static BufferedImage charakter;
     /**
@@ -271,10 +286,25 @@ public final class Images {
     *
     */
     public static BufferedImage haus4;
+    public static BufferedImage haus4_EW;
+
+    public static BufferedImage haus4_NS;
+
+    public static BufferedImage haus4_SN;
+
+    public static BufferedImage haus4_WE;
+
     /**
     *
     */
     public static BufferedImage haus5;
+
+    public static BufferedImage haus5ecke_ES;
+
+    public static BufferedImage haus5ecke_NE;
+
+    public static BufferedImage haus5ecke_SW;
+    public static BufferedImage haus5ecke_WN;
     /**
     *
     */
@@ -283,58 +313,74 @@ public final class Images {
     *
     */
     public static BufferedImage haus7;
+    public static BufferedImage haus7ecke_ES;
+    public static BufferedImage haus7ecke_NE;
+    public static BufferedImage haus7ecke_SW;
+    public static BufferedImage haus7ecke_WN;
     /**
      *
      */
-    public static BufferedImage haus8;
+    // public static BufferedImage haus8;
     /**
      * Gesundheitstrank.
      */
     public static BufferedImage healthpotion;
+
     /**
      * Item_42-Bild.
      */
     public static BufferedImage item42;
+
     /**
      * Schlüsselbild.
      */
     public static BufferedImage key;
+
     /**
      * Kistenbild.
      */
     public static BufferedImage kiste;
+
     /**
      *
      */
     public static BufferedImage kreuzung;
+
     /**
      *
      */
     public static BufferedImage kreuzungT;
+
     /**
     *
     */
     public static BufferedImage kreuzungT_EW;
+
     /**
     *
     */
     public static BufferedImage kreuzungT_NS;
+
     /**
     *
     */
     public static BufferedImage kreuzungT_SN;
+
     /**
     *
     */
     public static BufferedImage kreuzungT_WE;
+
     /**
     *
     */
     public static BufferedImage ladyvO_EW;
+
     /**
     *
     */
     public static BufferedImage ladyvO_NS;
+
     /**
     *
     */
@@ -374,34 +420,42 @@ public final class Images {
     *
     */
     public static BufferedImage ladyvOrAho_NS;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAho_SN;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAho_WE;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAo_EW;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAo_NS;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAo_SN;
+
     /**
     *
     */
     public static BufferedImage ladyvOrAo_WE;
+
     /**
     *
     */
     public static BufferedImage ladyvVbAho;
+
     /**
     *
     */
@@ -567,6 +621,54 @@ public final class Images {
 
     public static BufferedImage schranke_WE;
 
+    public static BufferedImage schranke2_EW;
+
+    public static BufferedImage schranke2_NS;
+
+    public static BufferedImage schranke2_SN;
+
+    public static BufferedImage schranke2_WE;
+
+    public static BufferedImage schranke3_EW;
+
+    public static BufferedImage schranke3_NS;
+
+    public static BufferedImage schranke3_SN;
+
+    public static BufferedImage schranke3_WE;
+
+    public static BufferedImage schranke4_EW;
+
+    public static BufferedImage schranke4_NS;
+
+    public static BufferedImage schranke4_SN;
+
+    public static BufferedImage schranke4_WE;
+
+    public static BufferedImage schranke5_EW;
+
+    public static BufferedImage schranke5_NS;
+
+    public static BufferedImage schranke5_SN;
+
+    public static BufferedImage schranke5_WE;
+
+    public static BufferedImage schranke6_EW;
+
+    public static BufferedImage schranke6_NS;
+
+    public static BufferedImage schranke6_SN;
+
+    public static BufferedImage schranke6_WE;
+
+    public static BufferedImage schranke7_EW;
+
+    public static BufferedImage schranke7_NS;
+
+    public static BufferedImage schranke7_SN;
+
+    public static BufferedImage schranke7_WE;
+
     /**
      *
      */
@@ -580,6 +682,30 @@ public final class Images {
     public static BufferedImage strasse_EW;
 
     public static BufferedImage strasse_NS;
+
+    public static BufferedImage teddymOhrringenvV;
+
+    public static BufferedImage teddysvO_EW;
+
+    public static BufferedImage teddysvO_NS;
+
+    public static BufferedImage teddysvO_SN;
+
+    public static BufferedImage teddysvO_WE;
+
+    public static BufferedImage teddysvV;
+
+    public static BufferedImage teddyvO_EW;
+
+    public static BufferedImage teddyvO_NS;
+
+    public static BufferedImage teddyvO_SN;
+
+    public static BufferedImage teddyvO_WE;
+
+    public static BufferedImage teddyvOs_WE;
+
+    public static BufferedImage teddyvV;
 
     public static BufferedImage typvO_EW;
 
@@ -625,27 +751,16 @@ public final class Images {
     public static BufferedImage wand;
 
     public static BufferedImage wasser;
-
     public static BufferedImage weibvO;
-
     public static BufferedImage weibvO_EW;
-
     public static BufferedImage weibvO_SO;
-
     public static BufferedImage weibvO_WE;
-
     public static BufferedImage weibvOlAo;
-
     public static BufferedImage weibvOlAo_EW;
-
     public static BufferedImage weibvOlAo_NS;
-
     public static BufferedImage weibvOlAo_SN;
-
     public static BufferedImage weibvOlAo_WE;
-
     public static BufferedImage weibvVbAo;
-
     public static BufferedImage weibvVrAho;
 
     /**
@@ -801,12 +916,6 @@ public final class Images {
 
         auto_di4_NS = loadImage("auto_di4_NS", "AutoMitOffenerTürFahrerDrinnen4.png");
 
-        // N
-        // ^
-        // W < + > O
-        // v
-        // S
-
         auto_di4_EW = loadImageRotate90("auto_di4_EW", "AutoMitOffenerTürFahrerDrinnen4.png");
 
         auto_di4_SN = loadImageRotate180("auto_di4_SN", "AutoMitOffenerTürFahrerDrinnen4.png");
@@ -845,9 +954,13 @@ public final class Images {
 
         auto2vOnW = loadImage("auto2vOnW", "Auto1.2.png");
 
-        autogelbvOnO = loadImage("autogelbvOnO", "Auto3.0.png");
+        autogelbvO_WE = loadImage("autogelbvO_WE", "Auto3.0.png");
 
-        autogelbvOnW = loadImage("autogelbvOnW", "Auto3.1.png");
+        autogelbvO_NS = loadImageRotate90("autogelbvO_NS", "Auto3.0.png");
+
+        autogelbvO_EW = loadImage("autogelbvO_EW", "Auto3.1.png");
+
+        autogelbvO_SN = loadImageRotate90("autogelbvO_SN", "Auto3.1.png");
 
         baum1 = loadImage("Baum1", "Baum1.png");
 
@@ -874,6 +987,28 @@ public final class Images {
         baum12 = loadImage("Baum12", "Baum12.png");
 
         baum13 = loadImage("Baum13", "Baum13.png");
+
+        bodenrot = loadImage("bodenrot", ".png");
+
+        bodenschwarz = loadImage("bodenschwarz", ".png");
+
+        bodendunkelgrau = loadImage("bodendunkelgrau", ".png");
+
+        bodenhellgrau = loadImage("bodenhellgrau", "boden.png");
+
+        bodenkachelngroß = loadImage("bodenkachelngroß", "boden2.png");
+
+        bodenkachelnklein = loadImage("bodenkachelnklein", ".png");
+
+        bodenstein = loadImage("bodenstein", ".png");
+
+        bodensteinkacheln = loadImage("bodensteinkacheln", ".png");
+
+        bodenblau = loadImage("bodenblau", ".png");
+
+        bodenbeige = loadImage("bodenbeige", ".png");
+
+        bodenorange = loadImage("bodenorange", ".png");
 
         busviolettvV = loadImage(" busviolettvV", "Bus1.2.png");
 
@@ -907,15 +1042,24 @@ public final class Images {
 
         haus3_WE = loadImageRotate270("haus3_WE", "Haus3.png");
 
-        haus4 = loadImage("haus4", "Haus4.png");
+        haus4_WE = loadImage("haus4_WE", "Haus4.png");
+        haus4_NS = loadImageRotate90("haus4_NS", "Haus4.png");
+        haus4_EW = loadImageRotate180("haus4_EW", "Haus4.png");
+        haus4_SN = loadImageRotate270("haus4_SN", "Haus4.png");
 
-        haus5 = loadImage("haus5", "Haus5.png");
+        haus5ecke_WN = loadImage("haus5ecke_WN", "Haus5.png");
+        haus5ecke_NE = loadImageRotate90("haus5ecke_NE", "Haus5.png");
+        haus5ecke_ES = loadImageRotate180("haus5ecke_ES", "Haus5.png");
+        haus5ecke_SW = loadImageRotate270("haus5ecke_SW", "Haus5.png");
 
         haus6 = loadImage("haus6", "Haus6.png");
 
-        haus7 = loadImage("haus7", "Haus7.png");
+        haus7ecke_NE = loadImage("haus7_NE", "Haus7.2.png");
+        haus7ecke_ES = loadImageRotate90("haus7_ES", "Haus7.2.png");
+        haus7ecke_SW = loadImageRotate180("haus7_SW", "Haus7.2.png");
+        haus7ecke_WN = loadImageRotate270("haus7_WN", "Haus7.2.png");
 
-        haus8 = loadImage("haus8", "Haus8.png");
+        // sieht scheiße aus!!! haus8 = loadImage("haus8", "Haus8.png");
 
         kreuzung = loadImage("kreuzung", "Kreuzung.png");
 
@@ -1022,16 +1166,65 @@ public final class Images {
         rasen3 = loadImage("rasen3", "rasen3.png");
 
         schranke_NS = loadImage("schranke_NS", "Schranke.png");
-
         schranke_EW = loadImageRotate90("schranke_EW", "Schranke.png");
+        schranke_SN = loadImageRotate180("schranke_SN", "Schranke.png");
+        schranke_WE = loadImageRotate270("schranke_WE", "Schranke.png");
 
-        schranke_SN = loadImage("schranke_SN", "Schranke1.2.png");
+        schranke2_NS = loadImage("schranke2_NS", "Schranke.png");
+        schranke2_EW = loadImageRotate90("schranke2_EW", "Schranke.png");
+        schranke2_SN = loadImageRotate180("schranke2_SN", "Schranke.png");
+        schranke2_WE = loadImageRotate270("schranke2_WE", "Schranke.png");
 
-        schranke_WE = loadImage("schranke_WE", "Schranke1.2.png");
+        schranke3_NS = loadImage("schranke3_NS", "Schranke.png");
+        schranke3_EW = loadImageRotate90("schranke3_EW", "Schranke.png");
+        schranke3_SN = loadImageRotate180("schranke3_SN", "Schranke.png");
+        schranke3_WE = loadImageRotate270("schranke3_WE", "Schranke.png");
+
+        schranke4_NS = loadImage("schranke4_NS", "Schranke.png");
+        schranke4_EW = loadImageRotate90("schranke4_EW", "Schranke.png");
+        schranke4_SN = loadImageRotate180("schranke4_SN", "Schranke.png");
+        schranke4_WE = loadImageRotate270("schranke4_WE", "Schranke.png");
+
+        schranke5_NS = loadImage("schranke5_NS", "Schranke.png");
+        schranke5_EW = loadImageRotate90("schranke5_EW", "Schranke.png");
+        schranke5_SN = loadImageRotate180("schranke5_SN", "Schranke.png");
+        schranke5_WE = loadImageRotate270("schranke5_WE", "Schranke.png");
+
+        schranke6_NS = loadImage("schranke6_NS", "Schranke.png");
+        schranke6_EW = loadImageRotate90("schranke6_EW", "Schranke.png");
+        schranke6_SN = loadImageRotate180("schranke6_SN", "Schranke.png");
+        schranke6_WE = loadImageRotate270("schranke6_WE", "Schranke.png");
+
+        schranke7_NS = loadImage("schranke7_NS", "Schranke.png");
+        schranke7_EW = loadImageRotate90("schranke7_EW", "Schranke.png");
+        schranke7_SN = loadImageRotate180("schranke7_SN", "Schranke.png");
+        schranke7_WE = loadImageRotate270("schranke7_WE", "Schranke.png");
 
         strasse_EW = loadImage("strasse_EW", "Strasse.png");
 
         strasse_NS = loadImageRotate90("strasse_NS", "Strasse.png");
+
+        teddyvV = loadImage("teddyvV", ".png");
+
+        teddyvO_NS = loadImage("teddyvO_NS", ".png");
+
+        teddyvO_EW = loadImageRotate90("teddyvO_EW", ".png");
+
+        teddyvO_SN = loadImageRotate180("teddyvO_SN", ".png");
+
+        teddyvO_WE = loadImageRotate270("teddyvO_WE", ".png");
+
+        teddysvO_NS = loadImage("teddysvO_NS", ".png");
+
+        teddysvO_EW = loadImageRotate90("teddysvO_EW", ".png");
+
+        teddysvO_SN = loadImageRotate180("teddysv_SN", ".png");
+
+        teddysvO_WE = loadImageRotate270("teddysvO_WE", ".png");
+
+        teddysvV = loadImage("teddysvV", ".png");
+
+        teddymOhrringenvV = loadImage("teddymOhrringenvV", ".png");
 
         typvObAo_EW = loadImage("typvObAo_EW", "Typ1.2.png");
 

@@ -9,14 +9,13 @@ import projektkurs.cutscene.action.ConditionedExitAction;
 import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.action.ConditionedMoveSightAction;
 import projektkurs.cutscene.action.ConditionedRasterChangeAction;
-import projektkurs.cutscene.action.ConditionedSpawnAction;
 import projektkurs.cutscene.action.DebugAction;
 import projektkurs.cutscene.action.SpawnAction;
 import projektkurs.cutscene.condition.AreaCondition;
 import projektkurs.cutscene.condition.CombinedAndCondition;
+import projektkurs.cutscene.condition.InvertedCondition;
 import projektkurs.cutscene.condition.TickCondition;
 import projektkurs.cutscene.condition.TickCondition.TickConditionType;
-import projektkurs.cutscene.condition.TickIntervalCondition;
 import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.util.CutSceneUtil;
 import projektkurs.util.Init;
@@ -82,17 +81,17 @@ public final class CutScenes {
             one.registerStartupAction(new SpawnAction(plaster3[k]));
         }
 
-        CutSceneObject auto = new CutSceneObject(Images.auto_w_WE, 9, 10, 4, 2);
+        CutSceneObject auto = new CutSceneObject(Images.auto_w_EW, 9, 10, 4, 2);
 
-        CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_WE, 40, 0, 4, 2);
-        CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_WE, 40, 0, 4, 2);
-        CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_WE, 40, 0, 4, 2);
-        CutSceneObject typ4 = new CutSceneObject(Images.auto_di_WE, 40, 0, 4, 2);
+        CutSceneObject typ1 = new CutSceneObject(Images.auto_di4_EW, 40, 10, 4, 2);
+        CutSceneObject typ2 = new CutSceneObject(Images.auto_di3_EW, 40, 10, 4, 2);
+        CutSceneObject typ3 = new CutSceneObject(Images.auto_di2_EW, 40, 10, 4, 2);
+        CutSceneObject typ4 = new CutSceneObject(Images.auto_di_EW, 40, 10, 4, 2);
 
-        CutSceneObject typ5 = new CutSceneObject(Images.auto_do_WE, 40, 0, 4, 2);
-        CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_WE, 40, 0, 4, 2);
-        CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_WE, 40, 0, 4, 2);
-        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_WE, 40, 0, 4, 2);
+        CutSceneObject typ5 = new CutSceneObject(Images.auto_do_EW, 40, 10, 4, 2);
+        CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_EW, 40, 10, 4, 2);
+        CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
+        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
 
         CutSceneObject[] baeumer = new CutSceneObject[16];
         CutSceneObject[] baeumel = new CutSceneObject[16];
@@ -150,15 +149,17 @@ public final class CutScenes {
 
         one.registerTickAction(new DebugAction());
 
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(120, 122), typ1));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(122, 124), typ2));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(124, 126), typ3));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(126, 128), typ4));
+        CutSceneUtil.registerAnimation(one, 20, new InvertedCondition(new AreaCondition(auto, 0, 0, 40, 20)), auto, typ1, typ2, typ3, typ4, typ5, typ6, typ7);
 
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(128, 130), typ5));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(132, 134), typ6));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(134, 136), typ7));
-        one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(136, 138), typ8));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(400, 600), typ1));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(122, 124), typ2));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(124, 126), typ3));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(126, 128), typ4));
+        //
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(128, 130), typ5));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(132, 134), typ6));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(134, 136), typ7));
+        // one.registerTickAction(new ConditionedSpawnAction(new TickIntervalCondition(136, 138), typ8));
 
         one.registerTickAction(new ConditionedExitAction(new TickCondition(TickConditionType.GREATER, 600)));
 

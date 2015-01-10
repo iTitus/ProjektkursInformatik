@@ -21,7 +21,6 @@ public class DelayedCondition extends Condition {
             counter = cutScene.getElapsedTicks();
         }
         if (counter >= 0 && cutScene.getElapsedTicks() - counter >= delay) {
-            counter = -1;
             return true;
         }
         return false;
