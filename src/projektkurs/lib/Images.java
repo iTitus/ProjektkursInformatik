@@ -1254,6 +1254,7 @@ public final class Images {
             BACK_MAPPINGS.put(image, name);
         } else {
             Logger.warn("Unable to register image", name, image);
+            throw new IllegalArgumentException("Unable to register image " + name + " (" + image + ")");
         }
     }
 

@@ -176,6 +176,7 @@ public final class CutScenes {
             MAPPINGS.put(c.getName(), c);
         } else {
             Logger.warn("Unable to register CutScene", c);
+            throw new IllegalArgumentException("Unable to register CutScene " + c);
         }
     }
 

@@ -75,6 +75,7 @@ public final class Levels {
             MAPPINGS.put(l.getName(), l);
         } else {
             Logger.warn("Unable to register Level", l);
+            throw new IllegalArgumentException("Unable to register Level " + l);
         }
     }
 

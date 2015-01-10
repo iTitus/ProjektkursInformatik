@@ -110,6 +110,7 @@ public final class Entities {
             MAPPINGS.put(e.getInternalName(), cls);
         } else {
             Logger.warn("Unable to register Entity", cls);
+            throw new IllegalArgumentException("Unable to register Entity " + cls);
         }
     }
 

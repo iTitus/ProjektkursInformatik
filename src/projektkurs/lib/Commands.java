@@ -94,6 +94,7 @@ public final class Commands {
             MAPPINGS.put(c.getCommand(), c);
         } else {
             Logger.warn("Unable to register command", c);
+            throw new IllegalArgumentException("Unable to register command " + c);
         }
     }
 

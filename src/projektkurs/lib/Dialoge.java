@@ -54,6 +54,7 @@ public final class Dialoge {
             MAPPINGS.put(d.getName(), d);
         } else {
             Logger.warn("Unable to register Dialog", d);
+            throw new IllegalArgumentException("Unable to register Dialog " + d);
         }
     }
 

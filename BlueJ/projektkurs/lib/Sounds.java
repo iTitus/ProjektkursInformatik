@@ -266,6 +266,7 @@ public final class Sounds {
             MAPPINGS.put(s.getName(), s);
         } else {
             Logger.warn("Unable to register Sound", s);
+            throw new IllegalArgumentException("Unable to register Sound " + s);
         }
     }
 

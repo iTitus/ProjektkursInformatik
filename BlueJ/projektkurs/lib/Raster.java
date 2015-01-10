@@ -120,6 +120,7 @@ public final class Raster {
             RASTER[r.getID()] = r;
         } else {
             Logger.warn("Unable to register Raster", r);
+            throw new IllegalArgumentException("Unable to register Raster " + r);
         }
     }
 

@@ -87,6 +87,7 @@ public final class ExtraInformationen {
             MAPPINGS.put(extra.getInternalName(), cls);
         } else {
             Logger.warn("Unable to register ExtraInformation", cls);
+            throw new IllegalArgumentException("Unable to register ExtraInformation " + cls);
         }
     }
 

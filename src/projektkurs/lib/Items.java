@@ -81,6 +81,7 @@ public final class Items {
             ITEMS[i.getID()] = i;
         } else {
             Logger.warn("Unable to register Item", i);
+            throw new IllegalArgumentException("Unable to register Item " + i);
         }
     }
 
