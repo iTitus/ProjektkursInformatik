@@ -16,7 +16,6 @@ public abstract class AbstractRaster {
      * ID.
      */
     private final int id;
-
     /**
      * Name.
      */

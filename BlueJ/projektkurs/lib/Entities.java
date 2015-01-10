@@ -76,7 +76,7 @@ public final class Entities {
         try {
             e.load(data);
         } catch (Throwable t) {
-            Logger.warn("Unable to load Entity from " + data, t);
+            Logger.logThrowable("Unable to load Entity from " + data, t);
         }
         return e;
     }

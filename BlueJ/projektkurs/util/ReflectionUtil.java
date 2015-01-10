@@ -214,8 +214,8 @@ public final class ReflectionUtil {
      *            Parameter
      * @return Void
      */
-    public static Void invokeStatic(Method m, Object... args) {
-        return invokeStaticWithReturn(m, args);
+    public static void invokeStatic(Method m, Object... args) {
+        invokeStaticWithReturn(m, args);
     }
 
     /**

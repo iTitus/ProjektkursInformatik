@@ -187,7 +187,7 @@ public class GameThread extends Thread {
         super.start();
         running = true;
         pausing = false;
-        Logger.info("Successfully started Game-Thread");
+        Logger.info("Successfully started the Game-Thread");
     }
 
     /**

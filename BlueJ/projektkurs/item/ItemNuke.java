@@ -20,9 +20,12 @@ public class ItemNuke extends BaseItem {
 
     /**
      * Konstruktor.
+     *
+     * @param id
+     *            ID
      */
-    public ItemNuke() {
-        super("nuke", Images.nuke);
+    public ItemNuke(int id) {
+        super(id, "nuke", Images.nuke);
     }
 
     @Override

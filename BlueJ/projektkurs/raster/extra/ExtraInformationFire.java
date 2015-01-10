@@ -47,7 +47,7 @@ public class ExtraInformationFire extends ExtraInformation {
     @Override
     public void load(SaveData data) {
         super.load(data);
-        background = Raster.MAPPINGS.get(data.getString(Strings.EXTRA_RASTER));
+        background = Raster.RASTER[data.getInteger(Strings.EXTRA_RASTER)];
     }
 
     /**
@@ -72,7 +72,7 @@ public class ExtraInformationFire extends ExtraInformation {
     @Override
     public void write(SaveData data) {
         super.write(data);
-        data.set(Strings.EXTRA_RASTER, background.getName());
+        data.set(Strings.EXTRA_RASTER, background.getID());
     }
 
 }

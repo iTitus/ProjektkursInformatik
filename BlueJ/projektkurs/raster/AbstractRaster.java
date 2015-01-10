@@ -16,7 +16,6 @@ public abstract class AbstractRaster {
      * ID.
      */
     private final int id;
-
     /**
      * Name.
      */
@@ -154,7 +153,7 @@ public abstract class AbstractRaster {
 
     @Override
     public String toString() {
-        return "Raster[" + getName() + "]";
+        return "Raster[" + getID() + ", " + getName() + "]";
     }
 
 }

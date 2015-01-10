@@ -314,7 +314,12 @@ public final class Main {
         for (Method m : initMethods) {
             if (m.getAnnotation(Init.class).state().equals(state)) {
                 Logger.info("Invoking @" + state + ": " + m.toString());
-                ReflectionUtil.invokeStatic(m);
+                try {
+                    m.invoke(null);
+                } catch (Throwable t) {
+                    Logger.logThrowable("Unable to start the game. Exception @ " + state, t);
+                    Main.exit();
+                }
             }
         }
 
