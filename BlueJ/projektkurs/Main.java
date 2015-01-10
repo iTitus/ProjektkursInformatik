@@ -370,7 +370,6 @@ public final class Main {
                 panel.add(render.getGameCanvas());
 
                 mainFrame.setIconImage(Images.item42);
-                mainFrame.setUndecorated(true);
                 mainFrame.setResizable(false);
                 mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mainFrame.pack();
