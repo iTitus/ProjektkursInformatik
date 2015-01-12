@@ -112,14 +112,14 @@ public final class MapBuilder {
         // ENTITIES!
         map.spawn(Main.getPlayer());
         for (int x = 0; x < 3; x++) {
-            map.spawn(new EntityRedNPC(MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10, Images.redNPC));
+            map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10, Images.redNPC));
         }
 
         // ITEMS
-        map.spawn(new EntityItem(5, 5, new ItemStack(Items.key, 1, 1000)));
-        map.spawn(new EntityItem(5, 6, new ItemStack(Items.item42, 42, 42)));
-        map.spawn(new EntityItem(5, 7, new ItemStack(Items.nuke, 1234)));
-        map.spawn(new EntityItem(5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
+        map.spawn(new EntityItem(map, 5, 5, new ItemStack(Items.key, 1, 1000)));
+        map.spawn(new EntityItem(map, 5, 6, new ItemStack(Items.item42, 42, 42)));
+        map.spawn(new EntityItem(map, 5, 7, new ItemStack(Items.nuke, 1234)));
+        map.spawn(new EntityItem(map, 5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
 
         // STORYMAGER!
         map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);

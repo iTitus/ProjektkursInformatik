@@ -8,6 +8,7 @@ import projektkurs.lib.Items;
 import projektkurs.lib.Strings;
 import projektkurs.util.Direction;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * ExtraInformation einer Tür.
@@ -29,8 +30,16 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
      */
-    public ExtraInformationDoor() {
+    public ExtraInformationDoor(Spielfeld map, int x, int y) {
+        super(map, x, y);
         direction = Direction.UNKNOWN;
     }
 

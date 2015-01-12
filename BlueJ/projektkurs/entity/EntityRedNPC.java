@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.entity.behaviour.BehaviourRunAround;
 import projektkurs.lib.Integers;
+import projektkurs.world.Spielfeld;
 
 /**
  * Der rote NPC.
@@ -12,15 +13,20 @@ public class EntityRedNPC extends EntityNPC {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
      */
-    public EntityRedNPC() {
-        super();
+    public EntityRedNPC(Spielfeld map) {
+        super(map);
         addBehaviour(new BehaviourRunAround(this));
     }
 
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Koordinate
      * @param posY
@@ -28,14 +34,9 @@ public class EntityRedNPC extends EntityNPC {
      * @param image
      *            Bild
      */
-    public EntityRedNPC(int posX, int posY, BufferedImage image) {
-        super(posX, posY, Integers.PLAYER_HEALTH, image);
+    public EntityRedNPC(Spielfeld map, int posX, int posY, BufferedImage image) {
+        super(map, posX, posY, Integers.PLAYER_HEALTH, image);
         addBehaviour(new BehaviourRunAround(this));
-    }
-
-    @Override
-    public String getInternalName() {
-        return "redNPC";
     }
 
 }

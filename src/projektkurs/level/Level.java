@@ -3,14 +3,10 @@ package projektkurs.level;
 import java.awt.Graphics2D;
 
 import projektkurs.Main;
-import projektkurs.entity.Entity;
-import projektkurs.lib.Images;
-import projektkurs.lib.Integers;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
-import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
 import projektkurs.world.builder.MapBuilder;
 
@@ -20,9 +16,9 @@ import projektkurs.world.builder.MapBuilder;
 public class Level implements IUpdatable {
 
     /**
-     * Aktuelles Spielfeld.
+     * Aktueller Spielfeld-Index.
      */
-    private Spielfeld map;
+    private int currentMap;
     /**
      * Alle Spielfelder.
      */
@@ -42,13 +38,13 @@ public class Level implements IUpdatable {
      */
     public Level(String name, Spielfeld... maps) {
         this.maps = maps;
-        map = maps[0];
+        currentMap = 0;
         this.name = name;
     }
 
     @Override
     public boolean canUpdate() {
-        return true;
+        return getMap().canUpdate();
     }
 
     /**
@@ -71,7 +67,7 @@ public class Level implements IUpdatable {
      * @return Spielfeld
      */
     public Spielfeld getMap() {
-        return map;
+        return maps[currentMap];
     }
 
     /**
@@ -114,21 +110,7 @@ public class Level implements IUpdatable {
      *            Graphics2D
      */
     public void render(Graphics2D g) {
-        for (int y = Main.getRenderHelper().getSightY(); y < Main.getRenderHelper().getSightY() + Integers.sightY; y++) {
-            for (int x = Main.getRenderHelper().getSightX(); x < Main.getRenderHelper().getSightX() + Integers.sightX; x++) {
-                if (map.isRasterAt(x, y)) {
-                    map.getRasterAt(x, y).render(g, x, y);
-                } else {
-                    RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
-                }
-            }
-        }
-
-        for (Entity e : map.getEntityList()) {
-            if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
-                e.render(g);
-            }
-        }
+        getMap().render(g);
     }
 
     /**
@@ -139,8 +121,8 @@ public class Level implements IUpdatable {
      */
     public void setMap(int i) {
         if (MathUtil.isInArray(i, maps.length)) {
-            map = maps[i];
-            Main.getPlayer().setPosition(map.getSpawnX(), map.getSpawnY());
+            currentMap = i;
+            Main.getPlayer().setPosition(getMap().getSpawnX(), getMap().getSpawnY());
         } else {
             Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
         }
@@ -148,8 +130,6 @@ public class Level implements IUpdatable {
 
     @Override
     public void update() {
-        if (map.canUpdate()) {
-            map.update();
-        }
+        getMap().update();
     }
 }

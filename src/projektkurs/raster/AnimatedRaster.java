@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import projektkurs.Main;
 import projektkurs.render.AnimationFrame;
 import projektkurs.util.RenderUtil;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein einfaches animiertes Raster.
@@ -41,7 +42,7 @@ public class AnimatedRaster extends AbstractRaster {
     }
 
     @Override
-    public void render(Graphics2D g, int x, int y) {
+    public void render(Graphics2D g, Spielfeld map, int x, int y) {
         if (animationFrames != null && animationFrames.length > 0) {
             int animationTime = Main.getTicks() % totalAnimationDuration;
             int totalAnimationTime = 0;

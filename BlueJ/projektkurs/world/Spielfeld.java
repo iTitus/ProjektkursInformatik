@@ -1,9 +1,12 @@
 package projektkurs.world;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
+import projektkurs.lib.Images;
+import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
@@ -11,6 +14,7 @@ import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.story.StoryManager;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.MathUtil;
+import projektkurs.util.RenderUtil;
 import projektkurs.util.SaveData;
 
 /**
@@ -307,6 +311,30 @@ public class Spielfeld implements IUpdatable {
     }
 
     /**
+     * Rendert das Spielfeld.
+     *
+     * @param g
+     *            Graphics2D
+     */
+    public void render(Graphics2D g) {
+        for (int y = Main.getRenderHelper().getSightY(); y < Main.getRenderHelper().getSightY() + Integers.sightY; y++) {
+            for (int x = Main.getRenderHelper().getSightX(); x < Main.getRenderHelper().getSightX() + Integers.sightX; x++) {
+                if (isRasterAt(x, y)) {
+                    getRasterAt(x, y).render(g, this, x, y);
+                } else {
+                    RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
+                }
+            }
+        }
+
+        for (Entity e : getEntityList()) {
+            if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
+                e.render(g);
+            }
+        }
+    }
+
+    /**
      * Setzt ein Raster und seine ExtraInformation an die gegebene Position.
      *
      * @param x
@@ -325,8 +353,7 @@ public class Spielfeld implements IUpdatable {
             if (r != null) {
                 map[x + y * sizeX] = r.getID();
                 if (r instanceof IHasExtraInformation) {
-                    ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation();
-                    newExtra.setPosition(x, y);
+                    ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation(this, x, y);
                     getExtraInformationList().add(newExtra);
 
                 }

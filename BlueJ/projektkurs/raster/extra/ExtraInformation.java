@@ -5,12 +5,17 @@ import projektkurs.util.IHasPosition;
 import projektkurs.util.ISaveable;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Eine ExtraInformation.
  */
 public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
 
+    /**
+     * Spielfeld.
+     */
+    protected final Spielfeld map;
     /**
      * X-Koordinate.
      */
@@ -19,6 +24,18 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
      * Y-Koordinate.
      */
     protected int posY;
+
+    /**
+     * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public ExtraInformation(Spielfeld map, int x, int y) {
+        this.map = map;
+        posX = x;
+        posY = y;
+    }
 
     @Override
     public boolean canUpdate() {
@@ -31,6 +48,15 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
      * @return Interner Name
      */
     public abstract String getInternalName();
+
+    /**
+     * Das Spielfeld.
+     *
+     * @return Spielfeld
+     */
+    public Spielfeld getMap() {
+        return map;
+    }
 
     @Override
     public int getPosX() {

@@ -21,6 +21,7 @@ import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein Entity.
@@ -48,20 +49,21 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     private boolean shouldDeSpawn;
     /**
+     * Spielfeld.
+     */
+    protected final Spielfeld map;
+    /**
      * X-Koordinate.
      */
     protected int posX;
-
     /**
      * Y-Koordinate.
      */
     protected int posY;
-
     /**
      * Breite.
      */
     protected int sizeX;
-
     /**
      * Höhe.
      */
@@ -70,7 +72,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     /**
      * Konstruktor.
      */
-    public Entity() {
+    public Entity(Spielfeld map) {
+        this.map = map;
         shouldDeSpawn = false;
         facing = Direction.UNKNOWN;
         images = null;
@@ -84,6 +87,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Position
      * @param posY
@@ -91,13 +96,15 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param image
      *            Bild
      */
-    public Entity(int posX, int posY, BufferedImage... images) {
-        this(posX, posY, 1, 1, images);
+    public Entity(Spielfeld map, int posX, int posY, BufferedImage... images) {
+        this(map, posX, posY, 1, 1, images);
     }
 
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Position
      * @param posY
@@ -109,8 +116,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param image
      *            Bild
      */
-    public Entity(int posX, int posY, int sizeX, int sizeY, BufferedImage... images) {
-        this();
+    public Entity(Spielfeld map, int posX, int posY, int sizeX, int sizeY, BufferedImage... images) {
+        this(map);
         this.posX = posX;
         this.posY = posY;
         this.sizeX = sizeX;
@@ -138,7 +145,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     public boolean canMoveTo(int x, int y) {
 
-        if (!Main.getLevel().getMap().isInMap(x, y)) {
+        if (!map.isInMap(x, y)) {
             return false;
         }
 
@@ -146,19 +153,19 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
         boolean ret = true;
 
-        for (Entity e : Main.getLevel().getMap().getEntitiesAt(x, y)) {
+        for (Entity e : map.getEntitiesAt(x, y)) {
             if (e != null) {
                 onCollideWith(e);
                 ret = false;
             }
         }
 
-        AbstractRaster r = Main.getLevel().getMap().getRasterAt(x, y);
+        AbstractRaster r = map.getRasterAt(x, y);
         if (r != null) {
             Direction d = Direction.getDirectionForOffset(MathUtil.signum(x - posX), MathUtil.signum(y - posY)).getOpposite();
-            r.onCollideWith(x, y, this);
-            if (r.canWalkOnFromDirection(x, y, this, d) && ret) {
-                r.onWalkOnFromDirection(x, y, this, d);
+            r.onCollideWith(map, x, y, this);
+            if (r.canWalkOnFromDirection(map, x, y, this, d) && ret) {
+                r.onWalkOnFromDirection(map, x, y, this, d);
             } else {
                 ret = false;
             }
@@ -225,7 +232,18 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      *
      * @return Interner Name
      */
-    public abstract String getInternalName();
+    public final String getInternalName() {
+        return getClass().getName();
+    }
+
+    /**
+     * Das Spielfeld.
+     *
+     * @return Spielfeld
+     */
+    public Spielfeld getMap() {
+        return map;
+    }
 
     @Override
     public int getPosX() {

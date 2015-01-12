@@ -988,27 +988,27 @@ public final class Images {
 
         baum13 = loadImage("Baum13", "Baum13.png");
 
-        bodenrot = loadImage("bodenrot", ".png");
-
-        bodenschwarz = loadImage("bodenschwarz", ".png");
-
-        bodendunkelgrau = loadImage("bodendunkelgrau", ".png");
-
-        bodenhellgrau = loadImage("bodenhellgrau", "boden.png");
-
-        bodenkachelngroß = loadImage("bodenkachelngroß", "boden2.png");
-
-        bodenkachelnklein = loadImage("bodenkachelnklein", ".png");
-
-        bodenstein = loadImage("bodenstein", ".png");
-
-        bodensteinkacheln = loadImage("bodensteinkacheln", ".png");
-
-        bodenblau = loadImage("bodenblau", ".png");
-
-        bodenbeige = loadImage("bodenbeige", ".png");
-
-        bodenorange = loadImage("bodenorange", ".png");
+        // bodenrot = loadImage("bodenrot", ".png");
+        //
+        // bodenschwarz = loadImage("bodenschwarz", ".png");
+        //
+        // bodendunkelgrau = loadImage("bodendunkelgrau", ".png");
+        //
+        // bodenhellgrau = loadImage("bodenhellgrau", "boden.png");
+        //
+        // bodenkachelngroß = loadImage("bodenkachelngroß", "boden2.png");
+        //
+        // bodenkachelnklein = loadImage("bodenkachelnklein", ".png");
+        //
+        // bodenstein = loadImage("bodenstein", ".png");
+        //
+        // bodensteinkacheln = loadImage("bodensteinkacheln", ".png");
+        //
+        // bodenblau = loadImage("bodenblau", ".png");
+        //
+        // bodenbeige = loadImage("bodenbeige", ".png");
+        //
+        // bodenorange = loadImage("bodenorange", ".png");
 
         busviolettvV = loadImage(" busviolettvV", "Bus1.2.png");
 
@@ -1204,27 +1204,27 @@ public final class Images {
 
         strasse_NS = loadImageRotate90("strasse_NS", "Strasse.png");
 
-        teddyvV = loadImage("teddyvV", ".png");
-
-        teddyvO_NS = loadImage("teddyvO_NS", ".png");
-
-        teddyvO_EW = loadImageRotate90("teddyvO_EW", ".png");
-
-        teddyvO_SN = loadImageRotate180("teddyvO_SN", ".png");
-
-        teddyvO_WE = loadImageRotate270("teddyvO_WE", ".png");
-
-        teddysvO_NS = loadImage("teddysvO_NS", ".png");
-
-        teddysvO_EW = loadImageRotate90("teddysvO_EW", ".png");
-
-        teddysvO_SN = loadImageRotate180("teddysv_SN", ".png");
-
-        teddysvO_WE = loadImageRotate270("teddysvO_WE", ".png");
-
-        teddysvV = loadImage("teddysvV", ".png");
-
-        teddymOhrringenvV = loadImage("teddymOhrringenvV", ".png");
+        // teddyvV = loadImage("teddyvV", ".png");
+        //
+        // teddyvO_NS = loadImage("teddyvO_NS", ".png");
+        //
+        // teddyvO_EW = loadImageRotate90("teddyvO_EW", ".png");
+        //
+        // teddyvO_SN = loadImageRotate180("teddyvO_SN", ".png");
+        //
+        // teddyvO_WE = loadImageRotate270("teddyvO_WE", ".png");
+        //
+        // teddysvO_NS = loadImage("teddysvO_NS", ".png");
+        //
+        // teddysvO_EW = loadImageRotate90("teddysvO_EW", ".png");
+        //
+        // teddysvO_SN = loadImageRotate180("teddysv_SN", ".png");
+        //
+        // teddysvO_WE = loadImageRotate270("teddysvO_WE", ".png");
+        //
+        // teddysvV = loadImage("teddysvV", ".png");
+        //
+        // teddymOhrringenvV = loadImage("teddymOhrringenvV", ".png");
 
         typvObAo_EW = loadImage("typvObAo_EW", "Typ1.2.png");
 
@@ -1363,6 +1363,7 @@ public final class Images {
                 Logger.info("Successfully loaded image '" + fileName + "'");
             } catch (Throwable t2) {
                 Logger.logThrowable("Unable to load image '" + fileName + "'", t2);
+                throw new IllegalArgumentException("Unable to load image " + fileName);
             }
         }
         if (img != null) {

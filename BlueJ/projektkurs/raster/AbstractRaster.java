@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import projektkurs.entity.Entity;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
+import projektkurs.world.Spielfeld;
 
 /**
  * Woraus die Welt besteht: Das abstrakte Raster.
@@ -37,6 +38,8 @@ public abstract class AbstractRaster {
     /**
      * Kann ein Entity aus der gegebenen Richtung auf dieses Raster laufen.
      *
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate des Rasters
      * @param y
@@ -47,7 +50,7 @@ public abstract class AbstractRaster {
      *            Richtung, aus der der Entity kommt
      * @return true, wenn ja; false, wenn nein
      */
-    public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
+    public boolean canWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction dir) {
         return true;
     }
 
@@ -72,6 +75,8 @@ public abstract class AbstractRaster {
     /**
      * Wird ausgeführt, wenn ein Entity mit diesem Raster kollidiert - bevor canWalkOnFromDirection ausgeführt wird.
      *
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate des Rasters
      * @param y
@@ -79,13 +84,15 @@ public abstract class AbstractRaster {
      * @param entity
      *            Entity.
      */
-    public void onCollideWith(int x, int y, Entity entity) {
+    public void onCollideWith(Spielfeld map, int x, int y, Entity entity) {
         // NO-OP
     }
 
     /**
-     * Wird ausgeführt, wenn auf dieses Raster mit der linken Maustaster geklickt wird.
+     * Wird ausgeführt, wenn auf dieses Raster mit der linken Maustaste geklickt wird.
      *
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate
      * @param y
@@ -93,13 +100,15 @@ public abstract class AbstractRaster {
      * @param e
      *            MouseEvent
      */
-    public void onLeftClick(int x, int y, MouseEvent e) {
+    public void onLeftClick(Spielfeld map, int x, int y, MouseEvent e) {
         Logger.info("Left-Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
     }
 
     /**
-     * Wird ausgeführt, wenn auf dieses Raster mit der rechten Maustaster geklickt wird.
+     * Wird ausgeführt, wenn auf dieses Raster mit der rechten Maustaste geklickt wird.
      *
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate
      * @param y
@@ -107,13 +116,15 @@ public abstract class AbstractRaster {
      * @param e
      *            MouseEvent
      */
-    public void onRightClick(int x, int y, MouseEvent e) {
+    public void onRightClick(Spielfeld map, int x, int y, MouseEvent e) {
         Logger.info("Right-Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
     }
 
     /**
      * Wird ausgeführt, wenn ein Entity auf dieses Raster draufläuft.
      *
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate des Rasters
      * @param y
@@ -123,7 +134,7 @@ public abstract class AbstractRaster {
      * @param d
      *            Richtung, aus der der Entity kommt
      */
-    public void onWalkOnFromDirection(int x, int y, Entity entity, Direction d) {
+    public void onWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction d) {
         // NO-OP
     }
 
@@ -132,12 +143,14 @@ public abstract class AbstractRaster {
      *
      * @param g
      *            Graphics2D
+     * @param map
+     *            Spielfeld
      * @param x
      *            X-Koordinate des Rasters
      * @param y
      *            Y-Koordinate des Rasters
      */
-    public abstract void render(Graphics2D g, int x, int y);
+    public abstract void render(Graphics2D g, Spielfeld map, int x, int y);
 
     /**
      * Rendert das Raster in CutScenes.

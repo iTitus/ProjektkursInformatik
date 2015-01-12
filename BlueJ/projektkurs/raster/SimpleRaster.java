@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import projektkurs.util.RenderUtil;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein einfaches Raster.
@@ -31,7 +32,7 @@ public class SimpleRaster extends AbstractRaster {
     }
 
     @Override
-    public void render(Graphics2D g, int x, int y) {
+    public void render(Graphics2D g, Spielfeld map, int x, int y) {
         RenderUtil.drawDefaultRaster(g, image, x, y);
     }
 

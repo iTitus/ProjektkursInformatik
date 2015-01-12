@@ -2,12 +2,13 @@ package projektkurs.raster;
 
 import java.awt.Graphics2D;
 
-import projektkurs.Main;
+import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Images;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationFire;
 import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.render.AnimationFrame;
+import projektkurs.world.Spielfeld;
 
 /**
  * Feuer.
@@ -25,25 +26,25 @@ public class FireRaster extends AnimatedRaster implements IHasExtraInformation {
     }
 
     @Override
-    public ExtraInformation createExtraInformation() {
-        return new ExtraInformationFire();
+    public ExtraInformation createExtraInformation(Spielfeld map, int x, int y) {
+        return new ExtraInformationFire(map, x, y);
     }
 
     @Override
-    public void render(Graphics2D g, int x, int y) {
-        ExtraInformation extra = Main.getLevel().getMap().getExtraInformationAt(x, y);
+    public void render(Graphics2D g, Spielfeld map, int x, int y) {
+        ExtraInformation extra = map.getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationFire) {
             AbstractRaster r = ((ExtraInformationFire) extra).getBackground();
             if (r != null) {
-                r.render(g, x, y);
+                r.render(g, map, x, y);
             }
         }
-        super.render(g, x, y);
+        super.render(g, map, x, y);
     }
 
     @Override
     public void renderCutScene(Graphics2D g, int x, int y) {
-        ExtraInformation extra = Main.getLevel().getMap().getExtraInformationAt(x, y);
+        ExtraInformation extra = CutSceneManager.getMap().getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationFire) {
             AbstractRaster r = ((ExtraInformationFire) extra).getBackground();
             if (r != null) {

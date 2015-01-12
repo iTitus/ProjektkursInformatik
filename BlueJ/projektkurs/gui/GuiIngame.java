@@ -42,7 +42,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
 
         AbstractRaster r = Main.getLevel().getMap().getRasterAt(rX, rY);
         if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
-            r.onLeftClick(rX, rY, e);
+            r.onLeftClick(Main.getLevel().getMap(), rX, rY, e);
         }
 
         Main.getPlayer().onLeftClick(screenX, screenY, e);
@@ -57,7 +57,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
 
         AbstractRaster r = Main.getLevel().getMap().getRasterAt(rX, rY);
         if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
-            r.onRightClick(rX, rY, e);
+            r.onRightClick(Main.getLevel().getMap(), rX, rY, e);
         }
 
         Main.getPlayer().onRightClick(screenX, screenY, e);

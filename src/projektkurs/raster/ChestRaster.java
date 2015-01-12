@@ -9,6 +9,7 @@ import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.util.Direction;
+import projektkurs.world.Spielfeld;
 
 /**
  * Kiste.
@@ -26,16 +27,16 @@ public class ChestRaster extends SolidRaster implements IHasExtraInformation {
     }
 
     @Override
-    public boolean canWalkOnFromDirection(int x, int y, Entity entity, Direction dir) {
+    public boolean canWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction dir) {
         if (entity instanceof EntityPlayer) {
-            Main.openGui(new GuiInventory(((ExtraInformationChest) Main.getLevel().getMap().getExtraInformationAt(x, y)).getInventory()));
+            Main.openGui(new GuiInventory(((ExtraInformationChest) map.getExtraInformationAt(x, y)).getInventory()));
         }
-        return super.canWalkOnFromDirection(x, y, entity, dir);
+        return super.canWalkOnFromDirection(map, x, y, entity, dir);
     }
 
     @Override
-    public ExtraInformation createExtraInformation() {
-        return new ExtraInformationChest();
+    public ExtraInformation createExtraInformation(Spielfeld map, int x, int y) {
+        return new ExtraInformationChest(map, x, y);
     }
 
 }

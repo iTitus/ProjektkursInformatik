@@ -10,6 +10,7 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.Scripts;
 import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Der Spieler.
@@ -23,14 +24,19 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
      */
-    public EntityPlayer() {
-        super();
+    public EntityPlayer(Spielfeld map) {
+        super(map);
     }
 
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Koordinate
      * @param posY
@@ -38,14 +44,9 @@ public class EntityPlayer extends EntityLiving {
      * @param image
      *            Bild
      */
-    public EntityPlayer(int posX, int posY, BufferedImage... images) {
-        super(posX, posY, Integers.PLAYER_HEALTH, images);
+    public EntityPlayer(Spielfeld map, int posX, int posY, BufferedImage... images) {
+        super(map, posX, posY, Integers.PLAYER_HEALTH, images);
         inventar = new PlayerInventory(Integers.PLAYER_INVENTORY_SIZE, 0);
-    }
-
-    @Override
-    public String getInternalName() {
-        return "player";
     }
 
     /**
@@ -96,7 +97,7 @@ public class EntityPlayer extends EntityLiving {
     public void onLeftClick(int screenX, int screenY, MouseEvent e) {
         ItemStack stack = inventar.getSelectedItemStack();
         if (stack != null) {
-            stack.getItem().onLeftClick(this, stack, screenX, screenY, e);
+            stack.getItem().onLeftClick(map, this, stack, screenX, screenY, e);
             if (stack.getStackSize() <= 0) {
                 inventar.removeItemStack(inventar.getSelectedIndex());
             }
@@ -116,7 +117,7 @@ public class EntityPlayer extends EntityLiving {
     public void onRightClick(int screenX, int screenY, MouseEvent e) {
         ItemStack stack = inventar.getSelectedItemStack();
         if (stack != null) {
-            stack.getItem().onRightClick(this, stack, screenX, screenY, e);
+            stack.getItem().onRightClick(map, this, stack, screenX, screenY, e);
             if (stack.getStackSize() <= 0) {
                 inventar.removeItemStack(inventar.getSelectedIndex());
             }

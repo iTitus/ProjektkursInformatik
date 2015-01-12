@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
 import projektkurs.lib.Images;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein Gesundheitstrank-Item.
@@ -22,7 +23,7 @@ public class ItemHealthPotion extends BaseItem {
     }
 
     @Override
-    public void onLeftClick(Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
+    public void onLeftClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
         if (e instanceof EntityLiving) {
             EntityLiving l = (EntityLiving) e;
             if (l.getHealth() < l.getMaxHealth()) {

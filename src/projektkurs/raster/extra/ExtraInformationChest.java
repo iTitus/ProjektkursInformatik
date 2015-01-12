@@ -4,6 +4,7 @@ import projektkurs.inventory.Inventory;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * ExtraInformation einer Kiste.
@@ -17,8 +18,16 @@ public class ExtraInformationChest extends ExtraInformation {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
      */
-    public ExtraInformationChest() {
+    public ExtraInformationChest(Spielfeld map, int x, int y) {
+        super(map, x, y);
         inventory = new Inventory(Integers.CHEST_SIZE);
     }
 

@@ -281,6 +281,30 @@ public final class ReflectionUtil {
     }
 
     /**
+     * Legt eine neue Instanz der gegebenen Klasse an.
+     *
+     * @param <T>
+     *            Typ der Klasse
+     * @param cls
+     *            Klasse
+     * @param args
+     *            Konstruktorargumente
+     * @return Instanz
+     */
+    public static <T> T newInstance(Class<T> cls, Object... args) {
+        try {
+            Class<?>[] clazzes = new Class<?>[args.length];
+            for (int i = 0; i < clazzes.length; i++) {
+                clazzes[i] = args[i].getClass();
+            }
+            return cls.getConstructor(clazzes).newInstance(args);
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to instantiate class '" + cls + "'", t);
+            return null;
+        }
+    }
+
+    /**
      * Füllt die gegebene Liste mit allen Klassen im gegebenem Ordner aus dem gegebenen Package.
      *
      * @param first

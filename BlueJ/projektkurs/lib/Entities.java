@@ -12,6 +12,7 @@ import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Alle Entitytypen.
@@ -24,19 +25,19 @@ public final class Entities {
     public static final HashMap<String, Class<? extends Entity>> MAPPINGS = new HashMap<String, Class<? extends Entity>>();
 
     /**
-     * Erstellt einen Entity seiner ID.
+     * Erstellt einen Entity mithilfe seiner ID.
      *
      * @param id
      *            Entity-ID
      * @return Entity
      */
-    public static Entity createEntity(String id) {
+    public static Entity createEntity(Spielfeld map, String id) {
 
-        if (id == null || id.equalsIgnoreCase("")) {
+        if (id == null || id.length() <= 0) {
             return null;
         }
 
-        return ReflectionUtil.newInstance(MAPPINGS.get(id));
+        return ReflectionUtil.newInstance(MAPPINGS.get(id), map);
     }
 
     /**
@@ -65,13 +66,13 @@ public final class Entities {
      *            SaveData
      * @return Entity
      */
-    public static Entity loadEntity(SaveData data) {
+    public static Entity loadEntity(Spielfeld map, SaveData data) {
 
         if (data == null) {
             return null;
         }
 
-        Entity e = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.ENTITY_ID)));
+        Entity e = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.ENTITY_ID)), map);
 
         try {
             e.load(data);
@@ -105,9 +106,8 @@ public final class Entities {
      *            Entity-Klasse
      */
     private static void registerEntity(Class<? extends Entity> cls) {
-        Entity e = ReflectionUtil.newInstance(cls);
-        if (e != null && !MAPPINGS.containsKey(e.getInternalName())) {
-            MAPPINGS.put(e.getInternalName(), cls);
+        if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
+            MAPPINGS.put(cls.getName(), cls);
         } else {
             Logger.warn("Unable to register Entity", cls);
             throw new IllegalArgumentException("Unable to register Entity " + cls);

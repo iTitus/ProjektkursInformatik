@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein ItemStack, der auf dem Boden liegt.
@@ -18,9 +19,12 @@ public class EntityItem extends Entity {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
      */
-    public EntityItem() {
-        super();
+    public EntityItem(Spielfeld map) {
+        super(map);
     }
 
     /**
@@ -33,19 +37,14 @@ public class EntityItem extends Entity {
      * @param stack
      *            der enthaltene ItemStack
      */
-    public EntityItem(int posX, int posY, ItemStack stack) {
-        super(posX, posY, stack.getItem().getImage(stack));
+    public EntityItem(Spielfeld map, int posX, int posY, ItemStack stack) {
+        super(map, posX, posY, stack.getItem().getImage(stack));
         this.stack = stack;
     }
 
     @Override
     public BufferedImage getImage() {
         return stack.getItem().getImage(stack);
-    }
-
-    @Override
-    public String getInternalName() {
-        return "item";
     }
 
     /**

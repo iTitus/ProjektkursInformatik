@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import projektkurs.lib.Strings;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * Ein lebender Entity.
@@ -21,14 +22,19 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
      */
-    public EntityLiving() {
-        super();
+    public EntityLiving(Spielfeld map) {
+        super(map);
     }
 
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Koordinate
      * @param posY
@@ -38,13 +44,15 @@ public abstract class EntityLiving extends Entity {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityLiving(int posX, int posY, int maxHealth, BufferedImage[] images) {
-        this(posX, posY, 1, 1, maxHealth, images);
+    public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, BufferedImage[] images) {
+        this(map, posX, posY, 1, 1, maxHealth, images);
     }
 
     /**
      * Konstruktor.
      *
+     * @param map
+     *            Spielfeld
      * @param posX
      *            X-Koordinate
      * @param posY
@@ -58,8 +66,8 @@ public abstract class EntityLiving extends Entity {
      * @param maxHealth
      *            maximale Gesundheit
      */
-    public EntityLiving(int posX, int posY, int sizeX, int sizeY, int maxHealth, BufferedImage... images) {
-        super(posX, posY, sizeX, sizeY, images);
+    public EntityLiving(Spielfeld map, int posX, int posY, int sizeX, int sizeY, int maxHealth, BufferedImage... images) {
+        super(map, posX, posY, sizeX, sizeY, images);
         this.maxHealth = maxHealth;
         health = maxHealth;
     }

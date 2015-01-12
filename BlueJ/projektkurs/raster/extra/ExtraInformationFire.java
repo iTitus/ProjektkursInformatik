@@ -1,12 +1,12 @@
 package projektkurs.raster.extra;
 
-import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Strings;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.util.SaveData;
+import projektkurs.world.Spielfeld;
 
 /**
  * ExtraInformation von Feuer.
@@ -20,8 +20,16 @@ public class ExtraInformationFire extends ExtraInformation {
 
     /**
      * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
      */
-    public ExtraInformationFire() {
+    public ExtraInformationFire(Spielfeld map, int x, int y) {
+        super(map, x, y);
         background = Raster.destroyedRaster;
     }
 
@@ -62,7 +70,7 @@ public class ExtraInformationFire extends ExtraInformation {
 
     @Override
     public void update() {
-        for (Entity e : Main.getLevel().getMap().getEntitiesAt(posX, posY)) {
+        for (Entity e : map.getEntitiesAt(posX, posY)) {
             if (e != null && e instanceof EntityLiving) {
                 ((EntityLiving) e).damage(1);
             }

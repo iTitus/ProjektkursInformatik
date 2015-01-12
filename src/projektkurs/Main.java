@@ -290,7 +290,7 @@ public final class Main {
     public static void startLevel(Level l) {
         if (l != null) {
             level = l;
-            player = new EntityPlayer(level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
+            player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
             l.generateAndPopulateAll();
             closeGui();
         }
