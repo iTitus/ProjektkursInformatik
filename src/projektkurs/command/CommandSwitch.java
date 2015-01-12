@@ -22,6 +22,10 @@ public class CommandSwitch extends Command {
             return EnumCommandResult.NUMBER_PARSING;
         }
 
+        if (map < 0 || map >= Main.getLevel().getMapCount()) {
+            return EnumCommandResult.OUT_OF_BOUNDS;
+        }
+
         Main.getLevel().setMap(map);
 
         return EnumCommandResult.SUCCESS;

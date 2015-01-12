@@ -51,7 +51,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     /**
      * Spielfeld.
      */
-    protected final Spielfeld map;
+    protected Spielfeld map;
     /**
      * X-Koordinate.
      */
@@ -392,6 +392,16 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     public void setImage(BufferedImage image, int i) {
         images[i] = image;
+    }
+
+    /**
+     * Setzt das Spielfeld.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public void setMap(Spielfeld map) {
+        this.map = map;
     }
 
     @Override

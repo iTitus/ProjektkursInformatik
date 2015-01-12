@@ -1,6 +1,5 @@
 package projektkurs.world.builder;
 
-import projektkurs.Main;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.inventory.Inventory;
@@ -110,7 +109,6 @@ public final class MapBuilder {
         }
 
         // ENTITIES!
-        map.spawn(Main.getPlayer());
         for (int x = 0; x < 3; x++) {
             map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10, Images.redNPC));
         }
@@ -151,9 +149,6 @@ public final class MapBuilder {
             map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
-        // ENTITIES!
-        map.spawn(Main.getPlayer());
-
         // STORYMANAGER!
         map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
@@ -183,8 +178,6 @@ public final class MapBuilder {
             map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
-        // ENTITIES!
-        map.spawn(Main.getPlayer());
     }
 
     /**
@@ -210,9 +203,6 @@ public final class MapBuilder {
             map.setRasterAt(0, y, Raster.wall);
             map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
-
-        // ENTITIES!
-        map.spawn(Main.getPlayer());
     }
 
     /**

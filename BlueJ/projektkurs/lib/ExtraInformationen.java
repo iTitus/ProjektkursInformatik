@@ -82,9 +82,8 @@ public final class ExtraInformationen {
      *            ExtraInformations-Klasse
      */
     private static void registerExtraInformation(Class<? extends ExtraInformation> cls) {
-        ExtraInformation extra = ReflectionUtil.newInstance(cls);
-        if (extra != null && !MAPPINGS.containsKey(extra.getInternalName())) {
-            MAPPINGS.put(extra.getInternalName(), cls);
+        if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
+            MAPPINGS.put(cls.getName(), cls);
         } else {
             Logger.warn("Unable to register ExtraInformation", cls);
             throw new IllegalArgumentException("Unable to register ExtraInformation " + cls);

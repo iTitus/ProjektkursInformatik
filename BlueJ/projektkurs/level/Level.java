@@ -121,8 +121,11 @@ public class Level implements IUpdatable {
      */
     public void setMap(int i) {
         if (MathUtil.isInArray(i, maps.length)) {
+            getMap().deSpawn(Main.getPlayer());
             currentMap = i;
+            Main.getPlayer().setMap(getMap());
             Main.getPlayer().setPosition(getMap().getSpawnX(), getMap().getSpawnY());
+            getMap().spawn(Main.getPlayer());
         } else {
             Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
         }

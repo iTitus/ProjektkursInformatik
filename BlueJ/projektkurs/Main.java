@@ -96,6 +96,7 @@ public final class Main {
      * Beendet das aktuelle Level.
      */
     public static void closeLevel() {
+        level.getMap().deSpawn(player);
         level = null;
         player = null;
     }
@@ -292,6 +293,7 @@ public final class Main {
             level = l;
             player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
             l.generateAndPopulateAll();
+            level.getMap().spawn(player);
             closeGui();
         }
     }
