@@ -128,7 +128,7 @@ public final class Images {
     */
     public static BufferedImage autogelbvOnW;
     /**
-     * Zurück-Mappings.
+     * Zurueck-Mappings.
      */
     public static final HashMap<BufferedImage, String> BACK_MAPPINGS = new HashMap<BufferedImage, String>();
     /**
@@ -191,7 +191,7 @@ public final class Images {
     public static BufferedImage bodenblau;
     public static BufferedImage bodendunkelgrau;
     public static BufferedImage bodenhellgrau;
-    public static BufferedImage bodenkachelngroß;
+    public static BufferedImage bodenkachelngroÃŸ;
     public static BufferedImage bodenkachelnklein;
     public static BufferedImage bodenorange;
     public static BufferedImage bodenrot;
@@ -227,23 +227,23 @@ public final class Images {
      */
     public static BufferedImage charakter;
     /**
-     * Zerstörtes-Land-Bild.
+     * ZerstÃ¶rtes-Land-Bild.
      */
     public static BufferedImage destroyedRaster;
     /**
-     * Geschlossene Tür in Ost-West Ausrichtung.
+     * Geschlossene Tuer in Ost-West Ausrichtung.
      */
     public static BufferedImage doorEW;
     /**
-     * Geschlossene Tür in Nord-Süd Ausrichtung.
+     * Geschlossene Tuer in Nord-Sued Ausrichtung.
      */
     public static BufferedImage doorNS;
     /**
-     * Offene Tür in Ost-West Ausrichtung.
+     * Offene Tuer in Ost-West Ausrichtung.
      */
     public static BufferedImage doorOpenEW;
     /**
-     * Offene Tür in Nord-Süd-Ausrichtung.
+     * Offene Tuer in Nord-Sued-Ausrichtung.
      */
     public static BufferedImage doorOpenNS;
     /**
@@ -332,7 +332,7 @@ public final class Images {
     public static BufferedImage item42;
 
     /**
-     * Schlüsselbild.
+     * Schluesselbild.
      */
     public static BufferedImage key;
 
@@ -479,22 +479,22 @@ public final class Images {
     /**
     *
     */
-    public static BufferedImage lasterschwarzmitAnhängervO_EW;
+    public static BufferedImage lasterschwarzmitAnhÃ¤ngervO_EW;
 
     /**
     *
     */
-    public static BufferedImage lasterschwarzmitAnhängervO_NS;
+    public static BufferedImage lasterschwarzmitAnhÃ¤ngervO_NS;
 
     /**
     *
     */
-    public static BufferedImage lasterschwarzmitAnhängervO_SN;
+    public static BufferedImage lasterschwarzmitAnhÃ¤ngervO_SN;
 
     /**
     *
     */
-    public static BufferedImage lasterschwarzmitAnhängervO_WE;
+    public static BufferedImage lasterschwarzmitAnhÃ¤ngervO_WE;
 
     /**
     *
@@ -524,27 +524,27 @@ public final class Images {
     /**
     *
     */
-    public static BufferedImage lasterweißvO_EW;
+    public static BufferedImage lasterweiÃŸvO_EW;
 
     /**
     *
     */
-    public static BufferedImage lasterweißvO_NS;
+    public static BufferedImage lasterweiÃŸvO_NS;
 
     /**
     *
     */
-    public static BufferedImage lasterweißvO_SN;
+    public static BufferedImage lasterweiÃŸvO_SN;
 
     /**
     *
     */
-    public static BufferedImage lasterweißvO_WE;
+    public static BufferedImage lasterweiÃŸvO_WE;
 
     /**
     *
     */
-    public static BufferedImage lasterweißvV;
+    public static BufferedImage lasterweiÃŸvV;
 
     /**
      *
@@ -751,18 +751,122 @@ public final class Images {
     public static BufferedImage wand;
 
     public static BufferedImage wasser;
+
     public static BufferedImage weibvO;
+
     public static BufferedImage weibvO_EW;
+
     public static BufferedImage weibvO_SO;
+
     public static BufferedImage weibvO_WE;
+
     public static BufferedImage weibvOlAo;
+
     public static BufferedImage weibvOlAo_EW;
+
     public static BufferedImage weibvOlAo_NS;
+
     public static BufferedImage weibvOlAo_SN;
+
     public static BufferedImage weibvOlAo_WE;
+
     public static BufferedImage weibvVbAo;
+
     public static BufferedImage weibvVrAho;
 
+    public static BufferedImage ohrringe;
+
+    public static BufferedImage bodenpink;
+    
+    public static BufferedImage klavier;
+    
+    public static BufferedImage sesselschwarz_SN;
+    
+    public static BufferedImage sesselschwarz_NS;
+    
+    public static BufferedImage sesselschwarz_EW;
+    
+    public static BufferedImage sesselschwarz_WE;
+    
+    public static BufferedImage sesselschwarzbeige_NS;
+    
+    public static BufferedImage sesselschwarzbeige_EW;
+    
+    public static BufferedImage sesselschwarzbeige_SN;
+    
+    public static BufferedImage sesselschwarzbeige_WE;
+    
+    public static BufferedImage sesselbeigefell_NS;
+    
+    public static BufferedImage sesselbeigefell_EW;
+    
+    public static BufferedImage sesselbeigefell_SN;
+    
+    public static BufferedImage sesselbeigefell_WE;
+    
+    public static BufferedImage stuhlbraunundholz_EW;
+    
+    public static BufferedImage stuhlbraunundholz_SN;
+    
+    public static BufferedImage stuhlbraunundholz_WE;
+    
+    public static BufferedImage stuhlbraunundholz_NS;
+    
+    public static BufferedImage stuhltriptrap_WE;
+    
+    public static BufferedImage stuhltriptrap_NS;
+    
+    public static BufferedImage stuhltriptrap_EW;
+    
+    public static BufferedImage stuhltriptrap_SN;
+    
+    public static BufferedImage stuhlbuero_WE;
+    
+    public static BufferedImage stuhlbuero_NS;
+    
+    public static BufferedImage stuhlbuero_EW;
+    
+    public static BufferedImage stuhlbuero_SN;
+    
+    public static BufferedImage stuhlholz_NS;
+    
+    public static BufferedImage stuhlholz_EW;
+    
+    public static BufferedImage stuhlholz_SN;
+    
+    public static BufferedImage stuhlholz_WE;
+    public static BufferedImage autopolizeivV;
+    public static BufferedImage autopolizeivO_WE;
+    public static BufferedImage autopolizeivO_NS;
+    public static BufferedImage autopolizeivO_EW;
+    public static BufferedImage autopolizeivO_SN;
+    public static BufferedImage autopolizeivdS_WE;
+    public static BufferedImage autopolizeivdS_EW;
+    public static BufferedImage faehre;
+    public static BufferedImage elster;
+    private static BufferedImage hauswelldach_WE;
+    private static BufferedImage hauswelldach_NS;
+    private static BufferedImage hauswelldach_EW;
+    private static BufferedImage hauswelldach_SN;
+    private static BufferedImage jojo;
+    private static BufferedImage jojokaputt;
+    private static BufferedImage kaugummigelb;
+    private static BufferedImage kaugummirot;
+    private static BufferedImage messer;
+    private static BufferedImage muelltonnezuvO;
+    private static BufferedImage muelltonneoffenvO;
+    private static BufferedImage nestvO;
+    private static BufferedImage nestmitEiernvO;
+    private static BufferedImage netz;
+    private static BufferedImage netzfaden;
+    private static BufferedImage grammophonvdS;
+    private static BufferedImage grammophonvO_WE;
+    private static BufferedImage grammophonvO_NS;
+    private static BufferedImage grammophonvO_EW;
+    private static BufferedImage grammophonvO_SN;
+    private static BufferedImage steinschleuder;
+    private static BufferedImage wasserdunkel;
+    
     /**
      * Befreit alle Bilder.
      */
@@ -775,7 +879,7 @@ public final class Images {
     }
 
     /**
-     * Das Pair, das alle Images enth�lt.
+     * Das Pair, das alle Images enthï¿½lt.
      *
      * @return Pair
      */
@@ -832,15 +936,15 @@ public final class Images {
 
         buttonDisabled = loadImage("button_disabled", "button_disabled.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDraussen1.png", "automitoffenerTürFahrerdraussen1", auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDraussen1.png", "automitoffenerTuerFahrerdraussen1", auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE);
 
-        auto_do_NS = loadImage("auto_do_NS", "AutoMitOffenerTürFahrerDraussen1.png");
+        auto_do_NS = loadImage("auto_do_NS", "AutoMitOffenerTuerFahrerDraussen1.png");
 
-        auto_do_EW = loadImageRotate90("auto_do_EW", "AutoMitOffenerTürFahrerDraussen1.png");
+        auto_do_EW = loadImageRotate90("auto_do_EW", "AutoMitOffenerTuerFahrerDraussen1.png");
 
-        auto_do_SN = loadImageRotate180("auto_do_SN", "AutoMitOffenerTürFahrerDraussen1.png");
+        auto_do_SN = loadImageRotate180("auto_do_SN", "AutoMitOffenerTuerFahrerDraussen1.png");
 
-        auto_do_WE = loadImageRotate270("auto_do_WE", "AutoMitOffenerTürFahrerDraussen1.png");
+        auto_do_WE = loadImageRotate270("auto_do_WE", "AutoMitOffenerTuerFahrerDraussen1.png");
 
         // registerAllDir("AutoMitFahrerDrinnen.png", "automitFahrerDrinnen", auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE);
 
@@ -852,75 +956,75 @@ public final class Images {
 
         auto_dc_WE = loadImageRotate270("auto_dc_WE", "AutoMitFahrerDrinnen.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDraussen2.png", "automitoffenerTürFahrerdraussen2", auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDraussen2.png", "automitoffenerTuerFahrerdraussen2", auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE);
 
-        auto_do2_NS = loadImage("auto_do2_NS", "AutoMitOffenerTürFahrerDraussen2.png");
+        auto_do2_NS = loadImage("auto_do2_NS", "AutoMitOffenerTuerFahrerDraussen2.png");
 
-        auto_do2_EW = loadImageRotate90("auto_do2_EW", "AutoMitOffenerTürFahrerDraussen2.png");
+        auto_do2_EW = loadImageRotate90("auto_do2_EW", "AutoMitOffenerTuerFahrerDraussen2.png");
 
-        auto_do2_SN = loadImageRotate180("auto_do2_SN", "AutoMitOffenerTürFahrerDraussen2.png");
+        auto_do2_SN = loadImageRotate180("auto_do2_SN", "AutoMitOffenerTuerFahrerDraussen2.png");
 
-        auto_do2_WE = loadImageRotate270("auto_do2_WE", "AutoMitOffenerTürFahrerDraussen2.png");
+        auto_do2_WE = loadImageRotate270("auto_do2_WE", "AutoMitOffenerTuerFahrerDraussen2.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDraussen3.png", "automitoffenerTürFahrerdraussen3", auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDraussen3.png", "automitoffenerTuerFahrerdraussen3", auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE);
 
-        auto_do3_NS = loadImage("auto_do3_NS", "AutoMitOffenerTürFahrerDraussen3.png");
+        auto_do3_NS = loadImage("auto_do3_NS", "AutoMitOffenerTuerFahrerDraussen3.png");
 
-        auto_do3_EW = loadImageRotate90("auto_do3_EW", "AutoMitOffenerTürFahrerDraussen3.png");
+        auto_do3_EW = loadImageRotate90("auto_do3_EW", "AutoMitOffenerTuerFahrerDraussen3.png");
 
-        auto_do3_SN = loadImageRotate180("auto_do3_SN", "AutoMitOffenerTürFahrerDraussen3.png");
+        auto_do3_SN = loadImageRotate180("auto_do3_SN", "AutoMitOffenerTuerFahrerDraussen3.png");
 
-        auto_do3_WE = loadImageRotate270("auto_do3_WE", "AutoMitOffenerTürFahrerDraussen3.png");
+        auto_do3_WE = loadImageRotate270("auto_do3_WE", "AutoMitOffenerTuerFahrerDraussen3.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDraussen4.png", "automitoffenerTürFahrerdraussen4", auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDraussen4.png", "automitoffenerTuerFahrerdraussen4", auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE);
 
-        auto_do4_NS = loadImage("auto_do4_NS", "AutoMitOffenerTürFahrerDraussen4.png");
+        auto_do4_NS = loadImage("auto_do4_NS", "AutoMitOffenerTuerFahrerDraussen4.png");
 
-        auto_do4_EW = loadImageRotate90("auto_do4_EW", "AutoMitOffenerTürFahrerDraussen4.png");
+        auto_do4_EW = loadImageRotate90("auto_do4_EW", "AutoMitOffenerTuerFahrerDraussen4.png");
 
-        auto_do4_SN = loadImageRotate180("auto_do4_SN", "AutoMitOffenerTürFahrerDraussen4.png");
+        auto_do4_SN = loadImageRotate180("auto_do4_SN", "AutoMitOffenerTuerFahrerDraussen4.png");
 
-        auto_do4_WE = loadImageRotate270("auto_do4_WE", "AutoMitOffenerTürFahrerDraussen4.png");
+        auto_do4_WE = loadImageRotate270("auto_do4_WE", "AutoMitOffenerTuerFahrerDraussen4.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDrinnen.png", "automitoffenerTürFahrerdrinnen", auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen.png", "automitoffenerTuerFahrerdrinnen", auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE);
 
-        auto_di_NS = loadImage("auto_di_NS", "AutoMitOffenerTürFahrerDrinnen.png");
+        auto_di_NS = loadImage("auto_di_NS", "AutoMitOffenerTuerFahrerDrinnen.png");
 
-        auto_di_EW = loadImageRotate90("auto_di_EW", "AutoMitOffenerTürFahrerDrinnen.png");
+        auto_di_EW = loadImageRotate90("auto_di_EW", "AutoMitOffenerTuerFahrerDrinnen.png");
 
-        auto_di_SN = loadImageRotate180("auto_di_SN", "AutoMitOffenerTürFahrerDrinnen.png");
+        auto_di_SN = loadImageRotate180("auto_di_SN", "AutoMitOffenerTuerFahrerDrinnen.png");
 
-        auto_di_WE = loadImageRotate270("auto_di_WE", "AutoMitOffenerTürFahrerDrinnen.png");
+        auto_di_WE = loadImageRotate270("auto_di_WE", "AutoMitOffenerTuerFahrerDrinnen.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDrinnen2.png", "automitoffenerTürFahrerdrinnen2", auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen2.png", "automitoffenerTuerFahrerdrinnen2", auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE);
 
-        auto_di2_NS = loadImage("auto_di2_NS", "AutoMitOffenerTürFahrerDrinnen2.png");
+        auto_di2_NS = loadImage("auto_di2_NS", "AutoMitOffenerTuerFahrerDrinnen2.png");
 
-        auto_di2_EW = loadImageRotate90("auto_di2_EW", "AutoMitOffenerTürFahrerDrinnen2.png");
+        auto_di2_EW = loadImageRotate90("auto_di2_EW", "AutoMitOffenerTuerFahrerDrinnen2.png");
 
-        auto_di2_SN = loadImageRotate180("auto_di2_SN", "AutoMitOffenerTürFahrerDrinnen2.png");
+        auto_di2_SN = loadImageRotate180("auto_di2_SN", "AutoMitOffenerTuerFahrerDrinnen2.png");
 
-        auto_di2_WE = loadImageRotate270("auto_di2_WE", "AutoMitOffenerTürFahrerDrinnen2.png");
+        auto_di2_WE = loadImageRotate270("auto_di2_WE", "AutoMitOffenerTuerFahrerDrinnen2.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDrinnen3.png", "automitoffenerTürFahrerdrinnen3", auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen3.png", "automitoffenerTuerFahrerdrinnen3", auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE);
 
-        auto_di3_NS = loadImage("auto_di3_NS", "AutoMitOffenerTürFahrerDrinnen3.png");
+        auto_di3_NS = loadImage("auto_di3_NS", "AutoMitOffenerTuerFahrerDrinnen3.png");
 
-        auto_di3_EW = loadImageRotate90("auto_di3_EW", "AutoMitOffenerTürFahrerDrinnen3.png");
+        auto_di3_EW = loadImageRotate90("auto_di3_EW", "AutoMitOffenerTuerFahrerDrinnen3.png");
 
-        auto_di3_SN = loadImageRotate180("auto_di3_SN", "AutoMitOffenerTürFahrerDrinnen3.png");
+        auto_di3_SN = loadImageRotate180("auto_di3_SN", "AutoMitOffenerTuerFahrerDrinnen3.png");
 
-        auto_di3_WE = loadImageRotate270("auto_di3_WE", "AutoMitOffenerTürFahrerDrinnen3.png");
+        auto_di3_WE = loadImageRotate270("auto_di3_WE", "AutoMitOffenerTuerFahrerDrinnen3.png");
 
-        // registerAllDir("AutoMitOffenerTürFahrerDrinnen4.png", "automitoffenerTürFahrerdrinnen4", auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE);
+        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen4.png", "automitoffenerTuerFahrerdrinnen4", auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE);
 
-        auto_di4_NS = loadImage("auto_di4_NS", "AutoMitOffenerTürFahrerDrinnen4.png");
+        auto_di4_NS = loadImage("auto_di4_NS", "AutoMitOffenerTuerFahrerDrinnen4.png");
 
-        auto_di4_EW = loadImageRotate90("auto_di4_EW", "AutoMitOffenerTürFahrerDrinnen4.png");
+        auto_di4_EW = loadImageRotate90("auto_di4_EW", "AutoMitOffenerTuerFahrerDrinnen4.png");
 
-        auto_di4_SN = loadImageRotate180("auto_di4_SN", "AutoMitOffenerTürFahrerDrinnen4.png");
+        auto_di4_SN = loadImageRotate180("auto_di4_SN", "AutoMitOffenerTuerFahrerDrinnen4.png");
 
-        auto_di4_WE = loadImageRotate270("auto_di4_WE", "AutoMitOffenerTürFahrerDrinnen4.png");
+        auto_di4_WE = loadImageRotate270("auto_di4_WE", "AutoMitOffenerTuerFahrerDrinnen4.png");
 
         // registerAllDir("Auto.png", "Auto", auto_NS, auto_SN, auto_EW, auto_WE);
 
@@ -961,6 +1065,18 @@ public final class Images {
         autogelbvO_EW = loadImage("autogelbvO_EW", "Auto3.1.png");
 
         autogelbvO_SN = loadImageRotate90("autogelbvO_SN", "Auto3.1.png");
+        
+        autopolizeivV = loadImage("autopolizeivV", "BullenAutoVonVorne.png"); 
+        
+        autopolizeivO_WE = loadImage("autopolizeivO_WE", "BullenAutoVonOben.png"); 
+        autopolizeivO_NS = loadImageRotate90("autopolizeivO_NS", "BullenAutoVonOben.png"); 
+        autopolizeivO_EW = loadImageRotate180("autopolizeivO_EW", "BullenAutoVonOben.png"); 
+        autopolizeivO_SN = loadImageRotate270("autopolizeivO_SN", "BullenAutoVonOben.png"); 
+        
+        autopolizeivdS_WE = loadImage("autopolizeivdS_WE","BullenAutoVonDerSeite.png");
+        autopolizeivdS_EW = loadImage("autopolizeivdS_EW","BullenAutoVonDerSeite1.2.png");
+        
+        
 
         baum1 = loadImage("Baum1", "Baum1.png");
 
@@ -988,27 +1104,27 @@ public final class Images {
 
         baum13 = loadImage("Baum13", "Baum13.png");
 
-        // bodenrot = loadImage("bodenrot", ".png");
-        //
-        // bodenschwarz = loadImage("bodenschwarz", ".png");
-        //
-        // bodendunkelgrau = loadImage("bodendunkelgrau", ".png");
-        //
-        // bodenhellgrau = loadImage("bodenhellgrau", "boden.png");
-        //
-        // bodenkachelngroß = loadImage("bodenkachelngroß", "boden2.png");
-        //
-        // bodenkachelnklein = loadImage("bodenkachelnklein", ".png");
-        //
-        // bodenstein = loadImage("bodenstein", ".png");
-        //
-        // bodensteinkacheln = loadImage("bodensteinkacheln", ".png");
-        //
-        // bodenblau = loadImage("bodenblau", ".png");
-        //
-        // bodenbeige = loadImage("bodenbeige", ".png");
-        //
-        // bodenorange = loadImage("bodenorange", ".png");
+        bodenrot = loadImage("bodenrot", "Boden12.png");
+
+        bodenpink = loadImage("bodenpink", "Boden5.png");
+
+        bodenschwarz = loadImage("bodenschwarz", "Boden11.png");
+
+        bodendunkelgrau = loadImage("bodendunkelgrau", "Boden10.png");
+
+        bodenkachelngroÃŸ = loadImage("bodenkachelngroÃŸ", "boden.png");
+
+        bodenkachelnklein = loadImage("bodenkachelnklein", "boden2.png");
+
+        bodenstein = loadImage("bodenstein", "Boden6.png");
+
+        bodensteinkacheln = loadImage("bodensteinkacheln", "boden3.png");
+
+        bodenblau = loadImage("bodenblau", "Boden9.png");
+
+        bodenbeige = loadImage("bodenbeige", "Boden4.png");
+
+        bodenorange = loadImage("bodenorange", "Boden8.png");
 
         busviolettvV = loadImage(" busviolettvV", "Bus1.2.png");
 
@@ -1017,6 +1133,22 @@ public final class Images {
         busviolettvOnO = loadImage("busviolettvOvO", "Bus1.3.png");
 
         // bus1.4 ignoriert
+        
+        elster = loadImage("elster", ".png");
+        
+        faehre = loadImage("faehre",".png");
+        
+        grammophonvdS = loadImage("grammophonvdS",".png");
+        
+        grammophonvO_WE = loadImage("grammophonvO_WE",".png");
+        
+        grammophonvO_NS = loadImageRotate90("grammophonvO_NS",".png");
+
+        grammophonvO_EW = loadImageRotate180("grammophonvO_EW",".png");
+
+        grammophonvO_SN = loadImageRotate270("grammophonvO_SN",".png");
+
+        gras = loadImage("gras", "Gras.png");
 
         haus1_NS = loadImage("haus1_NS", "Haus1.2.png");
 
@@ -1057,9 +1189,24 @@ public final class Images {
         haus7ecke_NE = loadImage("haus7_NE", "Haus7.2.png");
         haus7ecke_ES = loadImageRotate90("haus7_ES", "Haus7.2.png");
         haus7ecke_SW = loadImageRotate180("haus7_SW", "Haus7.2.png");
-        haus7ecke_WN = loadImageRotate270("haus7_WN", "Haus7.2.png");
+        haus7ecke_WN = loadImageRotate270("haus7_WN", "Haus7.2.png");    
+        
+        // sieht scheiÃŸe aus!!! haus8 = loadImage("haus8", "Haus8.png");
+        
+        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");
+        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png"); 
+        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png"); 
+        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png"); 
+        
+        jojo = loadImage("jojo", ".png");
+        
+        jojokaputt = loadImage("jojokaputt", ".png");
 
-        // sieht scheiße aus!!! haus8 = loadImage("haus8", "Haus8.png");
+        kaugummigelb = loadImage("kaugummigelb", ".png");
+        
+        kaugummirot = loadImage("kaugummirot", ".png");
+        
+        klavier = loadImage("klavier", "Keyboard.png");
 
         kreuzung = loadImage("kreuzung", "Kreuzung.png");
 
@@ -1123,19 +1270,19 @@ public final class Images {
 
         lasterschwarzvO_WE = loadImageRotate90("lasterschwarzvO_WE", "Lastwagen1.6.2.png");
 
-        lasterschwarzmitAnhängervO_EW = loadImage("lasterschwarzmitAnhängervO_EW", "Lastwagen1.4.png");
+        lasterschwarzmitAnhÃ¤ngervO_EW = loadImage("lasterschwarzmitAnhÃ¤ngervO_EW", "Lastwagen1.4.png");
 
-        lasterschwarzmitAnhängervO_SN = loadImageRotate90("lasterschwarzmitAnhängervO_SN", "Lastwagen1.4.png");
+        lasterschwarzmitAnhÃ¤ngervO_SN = loadImageRotate90("lasterschwarzmitAnhÃ¤ngervO_SN", "Lastwagen1.4.png");
 
-        lasterschwarzmitAnhängervO_WE = loadImage("lasterschwarzmitAnhängervO_WE", "Lastwagen1.4.2.png");
+        lasterschwarzmitAnhÃ¤ngervO_WE = loadImage("lasterschwarzmitAnhÃ¤ngervO_WE", "Lastwagen1.4.2.png");
 
-        lasterschwarzmitAnhängervO_NS = loadImageRotate90("lasterschwarzmitAnhängervO_NS", "Lastwagen1.4.2.png");
+        lasterschwarzmitAnhÃ¤ngervO_NS = loadImageRotate90("lasterschwarzmitAnhÃ¤ngervO_NS", "Lastwagen1.4.2.png");
 
-        lasterweißvO_NS = loadImage("lasterweißvO_NS", "FliegendeZahnpastaTube1.0.png");
+        lasterweiÃŸvO_NS = loadImage("lasterweiÃŸvO_NS", "FliegendeZahnpastaTube1.0.png");
 
-        lasterweißvO_EW = loadImageRotate90("lasterweißvO_EW", "FliegendeZahnpastaTube1.0.png");
+        lasterweiÃŸvO_EW = loadImageRotate90("lasterweiÃŸvO_EW", "FliegendeZahnpastaTube1.0.png");
 
-        lasterweißvV = loadImage("lasterweißvV", "FliegendeZahnpastaTube1.2.png");
+        lasterweiÃŸvV = loadImage("lasterweiÃŸvV", "FliegendeZahnpastaTube1.2.png");
 
         lordvdS = loadImage("lordvonderSeite", "LordVonDerSeite.png");
 
@@ -1154,8 +1301,22 @@ public final class Images {
         lordvO_SN = loadImage("lordvO_SN", "LordVonOben1.2.png");
 
         lordvO_WE = loadImageRotate90("lordvO_WE", "LordVonOben1.2.png");
+        
+        messer = loadImage("messer", ".png");
 
-        gras = loadImage("gras", "Gras.png");
+        muelltonnezuvO = loadImage("muelltonnezuvO", ".png");
+
+        muelltonneoffenvO = loadImage("muelltonneoffenvO", ".png");
+		
+        nestvO = loadImage("nestvO", ".png");
+        
+        nestmitEiernvO = loadImage("nestmitEiernvO", ".png");
+        
+        netz = loadImage("netz", ".png");
+        
+        netzfaden = loadImage("netzfaden", ".png");
+        
+        ohrringe = loadImage("ohrringe", "Ohrringe.png");
 
         pflaster = loadImage("pflaster", "PflasterStein.png");
 
@@ -1170,61 +1331,98 @@ public final class Images {
         schranke_SN = loadImageRotate180("schranke_SN", "Schranke.png");
         schranke_WE = loadImageRotate270("schranke_WE", "Schranke.png");
 
-        schranke2_NS = loadImage("schranke2_NS", "Schranke.png");
-        schranke2_EW = loadImageRotate90("schranke2_EW", "Schranke.png");
-        schranke2_SN = loadImageRotate180("schranke2_SN", "Schranke.png");
-        schranke2_WE = loadImageRotate270("schranke2_WE", "Schranke.png");
+        schranke2_NS = loadImage("schranke2_NS", "Schranke4.png");
+        schranke2_EW = loadImageRotate90("schranke2_EW", "Schranke4.png");
+        schranke2_SN = loadImageRotate180("schranke2_SN", "Schranke4.png");
+        schranke2_WE = loadImageRotate270("schranke2_WE", "Schranke4.png");
 
-        schranke3_NS = loadImage("schranke3_NS", "Schranke.png");
-        schranke3_EW = loadImageRotate90("schranke3_EW", "Schranke.png");
-        schranke3_SN = loadImageRotate180("schranke3_SN", "Schranke.png");
-        schranke3_WE = loadImageRotate270("schranke3_WE", "Schranke.png");
+        schranke3_NS = loadImage("schranke3_NS", "Schranke2(2).png");
+        schranke3_EW = loadImageRotate90("schranke3_EW", "Schranke2(2).png");
+        schranke3_SN = loadImageRotate180("schranke3_SN", "Schranke2(2).png");
+        schranke3_WE = loadImageRotate270("schranke3_WE", "Schranke2(2).png");
 
-        schranke4_NS = loadImage("schranke4_NS", "Schranke.png");
-        schranke4_EW = loadImageRotate90("schranke4_EW", "Schranke.png");
-        schranke4_SN = loadImageRotate180("schranke4_SN", "Schranke.png");
-        schranke4_WE = loadImageRotate270("schranke4_WE", "Schranke.png");
+        schranke4_NS = loadImage("schranke4_NS", "Schranke1(2).png");
+        schranke4_EW = loadImageRotate90("schranke4_EW", "Schranke1(2).png");
+        schranke4_SN = loadImageRotate180("schranke4_SN", "Schranke1(2).png");
+        schranke4_WE = loadImageRotate270("schranke4_WE", "Schranke1(2).png");
 
-        schranke5_NS = loadImage("schranke5_NS", "Schranke.png");
-        schranke5_EW = loadImageRotate90("schranke5_EW", "Schranke.png");
-        schranke5_SN = loadImageRotate180("schranke5_SN", "Schranke.png");
-        schranke5_WE = loadImageRotate270("schranke5_WE", "Schranke.png");
+        schranke5_NS = loadImage("schranke5_NS", "Schranke3(1).png");
+        schranke5_EW = loadImageRotate90("schranke5_EW", "Schranke3(1).png");
+        schranke5_SN = loadImageRotate180("schranke5_SN", "Schranke3(1).png");
+        schranke5_WE = loadImageRotate270("schranke5_WE", "Schranke3(1).png");
 
-        schranke6_NS = loadImage("schranke6_NS", "Schranke.png");
-        schranke6_EW = loadImageRotate90("schranke6_EW", "Schranke.png");
-        schranke6_SN = loadImageRotate180("schranke6_SN", "Schranke.png");
-        schranke6_WE = loadImageRotate270("schranke6_WE", "Schranke.png");
+        schranke6_NS = loadImage("schranke6_NS", "Schranke5.png");
+        schranke6_EW = loadImageRotate90("schranke6_EW", "Schranke5.png");
+        schranke6_SN = loadImageRotate180("schranke6_SN", "Schranke5.png");
+        schranke6_WE = loadImageRotate270("schranke6_WE", "Schranke5.png");
 
-        schranke7_NS = loadImage("schranke7_NS", "Schranke.png");
-        schranke7_EW = loadImageRotate90("schranke7_EW", "Schranke.png");
-        schranke7_SN = loadImageRotate180("schranke7_SN", "Schranke.png");
-        schranke7_WE = loadImageRotate270("schranke7_WE", "Schranke.png");
+        // schranke7_NS = loadImage("schranke7_NS", ".png");
+        // schranke7_EW = loadImageRotate90("schranke7_EW", "Schranke.png");
+        // schranke7_SN = loadImageRotate180("schranke7_SN", "Schranke.png");
+        // schranke7_WE = loadImageRotate270("schranke7_WE", "Schranke.png");
+
+        sesselschwarz_SN = loadImage("sesselschwarz_SN", "Stuhl5.png");
+        sesselschwarz_WE = loadImageRotate90("sesselschwarz_WE", "Stuhl5.png");
+        sesselschwarz_NS = loadImageRotate180("sesselschwarz_NS", "Stuhl5.png");
+        sesselschwarz_EW = loadImageRotate270("sesselschwarz_EW", "Stuhl5.png");
+
+        sesselschwarzbeige_NS = loadImage("sesselschwarzbeige_NS", "Stuhl7.png");
+        sesselschwarzbeige_EW = loadImageRotate90("sesselschwarzbeige_EW", "Stuhl7.png");
+        sesselschwarzbeige_SN = loadImageRotate180("sesselschwarzbeige_SN", "Stuhl7.png");
+        sesselschwarzbeige_WE = loadImageRotate270("sesselschwarzbeige_WE", "Stuhl7.png");
+
+        sesselbeigefell_NS = loadImage("sesselbeigefell_NS", "Stuhl6.png");
+        sesselbeigefell_EW = loadImageRotate90("sesselbeigefell_EW", "Stuhl6.png");
+        sesselbeigefell_SN = loadImageRotate180("sesselbeigefell_SN", "Stuhl6.png");
+        sesselbeigefell_WE = loadImageRotate270("sesselbeigefell_WE", "Stuhl6.png");
+        
+        steinschleuder = loadImage("steinschleuder",".png");
 
         strasse_EW = loadImage("strasse_EW", "Strasse.png");
 
         strasse_NS = loadImageRotate90("strasse_NS", "Strasse.png");
 
-        // teddyvV = loadImage("teddyvV", ".png");
-        //
-        // teddyvO_NS = loadImage("teddyvO_NS", ".png");
-        //
-        // teddyvO_EW = loadImageRotate90("teddyvO_EW", ".png");
-        //
-        // teddyvO_SN = loadImageRotate180("teddyvO_SN", ".png");
-        //
-        // teddyvO_WE = loadImageRotate270("teddyvO_WE", ".png");
-        //
-        // teddysvO_NS = loadImage("teddysvO_NS", ".png");
-        //
-        // teddysvO_EW = loadImageRotate90("teddysvO_EW", ".png");
-        //
-        // teddysvO_SN = loadImageRotate180("teddysv_SN", ".png");
-        //
-        // teddysvO_WE = loadImageRotate270("teddysvO_WE", ".png");
-        //
-        // teddysvV = loadImage("teddysvV", ".png");
-        //
-        // teddymOhrringenvV = loadImage("teddymOhrringenvV", ".png");
+        stuhlbraunundholz_EW = loadImage("stuhlbraunundholz_EW", "Stuhl3.png");
+        stuhlbraunundholz_SN = loadImageRotate90("stuhlbraunundholz_SN", "Stuhl3.png");
+        stuhlbraunundholz_WE = loadImageRotate180("stuhlbraunundholz_WE", "Stuhl3.png");
+        stuhlbraunundholz_NS = loadImageRotate270("stuhlbraunundholz_NS", "Stuhl3.png");
+
+        stuhltriptrap_WE = loadImage("stuhltriptrap_WE", "Stuhl4.png");
+        stuhltriptrap_NS = loadImageRotate90("stuhltriptrap_NS", "Stuhl4.png");
+        stuhltriptrap_EW = loadImageRotate180("stuhltriptrap_EW", "Stuhl4.png");
+        stuhltriptrap_SN = loadImageRotate270("stuhltriptrap_SN", "Stuhl4.png");
+
+        stuhlbuero_WE = loadImage("stuhlbuero_WE", "Stuhl1.png");
+        stuhlbuero_NS = loadImageRotate90("stuhlbuero_NS", "Stuhl1.png");
+        stuhlbuero_EW = loadImageRotate180("stuhlbuero_EW", "Stuhl1.png");
+        stuhlbuero_SN = loadImageRotate270("stuhlbuero_SN", "Stuhl1.png");
+
+        stuhlholz_NS = loadImage("stuhlholz_NS", "Stuhl2.png");
+        stuhlholz_EW = loadImageRotate90("stuhlholz_EW", "Stuhl2.png");
+        stuhlholz_SN = loadImageRotate180("stuhlholz_SN", "Stuhl2.png");
+        stuhlholz_WE = loadImageRotate270("stuhlholz_WE", "Stuhl2.png");
+
+        teddyvV = loadImage("teddyvV", "Teddy6.png");
+
+        teddyvO_NS = loadImage("teddyvO_NS", "Teddy7.png");
+
+        teddyvO_EW = loadImageRotate90("teddyvO_EW", "Teddy7.png");
+
+        teddyvO_SN = loadImageRotate180("teddyvO_SN", "Teddy7.png");
+
+        teddyvO_WE = loadImageRotate270("teddyvO_WE", "Teddy7.png");
+
+        teddysvO_NS = loadImage("teddysvO_NS", "Teddy4.png");
+
+        teddysvO_EW = loadImageRotate90("teddysvO_EW", "Teddy4.png");
+
+        teddysvO_SN = loadImageRotate180("teddysv_SN", "Teddy4.png");
+
+        teddysvO_WE = loadImageRotate270("teddysvO_WE", "Teddy4.png");
+
+        teddysvV = loadImage("teddysvV", "Teddy1.png");
+
+        teddymOhrringenvV = loadImage("teddymOhrringenvV", "Teddy3.png");
 
         typvObAo_EW = loadImage("typvObAo_EW", "Typ1.2.png");
 
@@ -1261,10 +1459,12 @@ public final class Images {
         typvOrAo_EW = loadImage("typvOrAo_EW", "Typ1.5.2.png");
 
         typvOrAo_SN = loadImageRotate90("typvOrAo_SN", "Typ1.5.2.png");
+        
+        wasser = loadImage("wasser", "Wasser.png");
+        
+        wasserdunkel = loadImage("wasserdunkel", ".png");
 
         weibvVbAo = loadImage("weibvVbAo", "Weib1.0.png");
-
-        wasser = loadImage("wasser", "Wasser.png");
 
         weibvOlAo_NS = loadImage("weibvOlAo_NS", "Weib1.1.png");
 
@@ -1323,7 +1523,7 @@ public final class Images {
      * @param image
      *            Bild
      * @param angle
-     *            Winkel im Bogenmaß
+     *            Winkel im BogenmaÃŸ
      * @return gedrehtes Bild
      */
     public static BufferedImage rotate(BufferedImage img, double angle) {
@@ -1343,13 +1543,13 @@ public final class Images {
     }
 
     /**
-     * Lädt ein Bild.
+     * LÃ¤dt ein Bild.
      *
      * @param name
      *            Name des Bildes
      * @return BufferedImage
      */
-    private static BufferedImage loadImage(String name, String fileName) {
+    public static BufferedImage loadImage(String name, String fileName) {
 
         String path = "resources/images/" + fileName;
 
@@ -1373,7 +1573,7 @@ public final class Images {
     }
 
     /**
-     * Lädt ein Array aus Bildern.
+     * LÃ¤dt ein Array aus Bildern.
      *
      * @param name
      *            Name des Bildes
@@ -1381,7 +1581,7 @@ public final class Images {
      *            Anzahl der Bilder
      * @return BufferedImage[]
      */
-    private static BufferedImage[] loadImageArray(String name, String fileName, int length) {
+    public static BufferedImage[] loadImageArray(String name, String fileName, int length) {
         BufferedImage[] images = new BufferedImage[length];
         for (int i = 0; i < images.length; i++) {
             images[i] = loadImage(String.format(name, i), String.format(fileName, i));
@@ -1390,13 +1590,13 @@ public final class Images {
     }
 
     /**
-     * Lädt ein um 180° gedrehtes Bild.
+     * LÃ¤dt ein um 180Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
      * @return BufferedImage
      */
-    private static BufferedImage loadImageRotate180(String name, String fileName) {
+    public static BufferedImage loadImageRotate180(String name, String fileName) {
         BufferedImage img = loadImage(name, fileName);
         if (img != null) {
             return rotate(img, Math.toRadians(180));
@@ -1405,13 +1605,13 @@ public final class Images {
     }
 
     /**
-     * Lädt ein um 270° gedrehtes Bild.
+     * LÃ¤dt ein um 270Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
      * @return BufferedImage
      */
-    private static BufferedImage loadImageRotate270(String name, String fileName) {
+    public static BufferedImage loadImageRotate270(String name, String fileName) {
         BufferedImage img = loadImage(name, fileName);
         if (img != null) {
             return rotate(img, Math.toRadians(270));
@@ -1420,13 +1620,13 @@ public final class Images {
     }
 
     /**
-     * Lädt ein um 90° gedrehtes Bild.
+     * LÃ¤dt ein um 90Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
      * @return BufferedImage
      */
-    private static BufferedImage loadImageRotate90(String name, String fileName) {
+    public static BufferedImage loadImageRotate90(String name, String fileName) {
         BufferedImage img = loadImage(name, fileName);
         if (img != null) {
             return rotate(img, Math.toRadians(90));
