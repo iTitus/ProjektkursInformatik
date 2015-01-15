@@ -4,7 +4,7 @@ import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.gui.GuiInventory;
-import projektkurs.lib.Images;
+import projektkurs.lib.Sprites;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.IHasExtraInformation;
@@ -23,7 +23,7 @@ public class ChestRaster extends SolidRaster implements IHasExtraInformation {
      *            ID
      */
     public ChestRaster(int id) {
-        super(id, "chest", Images.kiste);
+        super(id, "chest", Sprites.chest);
     }
 
     @Override

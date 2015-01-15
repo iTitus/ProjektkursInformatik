@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +12,7 @@ import projektkurs.gui.element.TextField;
 import projektkurs.lib.Commands;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
+import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.I18n.SupportedLocales;
 import projektkurs.util.Logger;
@@ -69,9 +69,9 @@ public class GuiConsole extends Gui implements ITextFieldListener {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
 
     /**

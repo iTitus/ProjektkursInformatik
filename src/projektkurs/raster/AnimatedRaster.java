@@ -1,9 +1,8 @@
 package projektkurs.raster;
 
-import java.awt.Graphics2D;
-
 import projektkurs.Main;
 import projektkurs.render.AnimationFrame;
+import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
 
@@ -42,7 +41,7 @@ public class AnimatedRaster extends AbstractRaster {
     }
 
     @Override
-    public void render(Graphics2D g, Spielfeld map, int x, int y) {
+    public void render(Screen screen, Spielfeld map, int x, int y) {
         if (animationFrames != null && animationFrames.length > 0) {
             int animationTime = Main.getTicks() % totalAnimationDuration;
             int totalAnimationTime = 0;
@@ -50,7 +49,7 @@ public class AnimatedRaster extends AbstractRaster {
                 if (animationTime >= totalAnimationTime) {
                     totalAnimationTime += animationFrame.getAnimationFrameDuration();
                     if (animationTime < totalAnimationTime) {
-                        RenderUtil.drawDefaultRaster(g, animationFrame.getImage(), x, y);
+                        RenderUtil.drawDefaultRaster(screen, animationFrame.getSprite(), x, y);
                         break;
                     }
                 }
@@ -59,7 +58,7 @@ public class AnimatedRaster extends AbstractRaster {
     }
 
     @Override
-    public void renderCutScene(Graphics2D g, int x, int y) {
+    public void renderCutScene(Screen screen, int x, int y) {
         if (animationFrames != null && animationFrames.length > 0) {
             int animationTime = Main.getTicks() % totalAnimationDuration;
             int totalAnimationTime = 0;
@@ -67,7 +66,7 @@ public class AnimatedRaster extends AbstractRaster {
                 if (animationTime >= totalAnimationTime) {
                     totalAnimationTime += animationFrame.getAnimationFrameDuration();
                     if (animationTime < totalAnimationTime) {
-                        RenderUtil.drawCutSceneRaster(g, animationFrame.getImage(), x, y);
+                        RenderUtil.drawCutSceneRaster(screen, animationFrame.getSprite(), x, y);
                         break;
                     }
                 }

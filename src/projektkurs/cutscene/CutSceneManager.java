@@ -6,6 +6,7 @@ import javax.swing.WindowConstants;
 
 import projektkurs.Main;
 import projektkurs.cutscene.render.CutsceneRender;
+import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.render.RenderHelper;
@@ -147,6 +148,7 @@ public final class CutSceneManager {
             panel.setPreferredSize(cutSceneRender.getCutSceneCanvas().getPreferredSize());
             panel.add(cutSceneRender.getCutSceneCanvas());
 
+            cutSceneFrame.setIconImage(Images.item42);
             cutSceneFrame.setUndecorated(true);
             cutSceneFrame.setResizable(false);
             cutSceneFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

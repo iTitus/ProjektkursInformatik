@@ -1,8 +1,7 @@
 package projektkurs.raster;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.entity.Entity;
+import projektkurs.render.Sprite;
 import projektkurs.util.Direction;
 import projektkurs.world.Spielfeld;
 
@@ -18,11 +17,11 @@ public class SolidRaster extends SimpleRaster {
      *            ID
      * @param name
      *            Name
-     * @param image
-     *            Bild.
+     * @param sprite
+     *            Sprite
      */
-    public SolidRaster(int id, String name, BufferedImage image) {
-        super(id, name, image);
+    public SolidRaster(int id, String name, Sprite sprite) {
+        super(id, name, sprite);
     }
 
     @Override

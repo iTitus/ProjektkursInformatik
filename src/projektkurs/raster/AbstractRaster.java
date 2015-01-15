@@ -1,9 +1,9 @@
 package projektkurs.raster;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.entity.Entity;
+import projektkurs.render.Screen;
 import projektkurs.util.Direction;
 import projektkurs.util.Logger;
 import projektkurs.world.Spielfeld;
@@ -141,8 +141,8 @@ public abstract class AbstractRaster {
     /**
      * Rendert das Raster.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param map
      *            Spielfeld
      * @param x
@@ -150,19 +150,19 @@ public abstract class AbstractRaster {
      * @param y
      *            Y-Koordinate des Rasters
      */
-    public abstract void render(Graphics2D g, Spielfeld map, int x, int y);
+    public abstract void render(Screen screen, Spielfeld map, int x, int y);
 
     /**
      * Rendert das Raster in CutScenes.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param x
      *            X-Koordinate des Rasters
      * @param y
      *            Y-Koordinate des Rasters
      */
-    public abstract void renderCutScene(Graphics2D g, int x, int y);
+    public abstract void renderCutScene(Screen screen, int x, int y);
 
     @Override
     public String toString() {

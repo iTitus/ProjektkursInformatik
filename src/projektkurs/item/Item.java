@@ -1,9 +1,9 @@
 package projektkurs.item;
 
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 import projektkurs.entity.Entity;
+import projektkurs.render.Sprite;
 import projektkurs.util.I18n;
 import projektkurs.world.Spielfeld;
 
@@ -19,7 +19,7 @@ public abstract class Item {
     /**
      * Bild dieses Items.
      */
-    private final BufferedImage image;
+    private final Sprite image;
     /**
      * Name dieses Items.
      */
@@ -28,14 +28,17 @@ public abstract class Item {
     /**
      * Konstruktor.
      *
-     * @param ID
+     * @param id
+     *            ID
      * @param name
      *            Name
+     * @param sprite
+     *            Sprite
      */
-    public Item(int id, String name, BufferedImage image) {
+    public Item(int id, String name, Sprite sprite) {
         this.id = id;
         this.name = name;
-        this.image = image;
+        this.image = sprite;
     }
 
     /**
@@ -52,7 +55,7 @@ public abstract class Item {
      *
      * @return Bild
      */
-    public BufferedImage getImage() {
+    public Sprite getSprite() {
         return image;
     }
 
@@ -63,8 +66,8 @@ public abstract class Item {
      *            ItemStack
      * @return Bild
      */
-    public BufferedImage getImage(ItemStack stack) {
-        return getImage();
+    public Sprite getSprite(ItemStack stack) {
+        return getSprite();
     }
 
     /**

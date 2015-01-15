@@ -1,6 +1,5 @@
 package projektkurs.gui.element;
 
-import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.event.KeyEvent;
@@ -9,6 +8,7 @@ import java.awt.event.MouseEvent;
 import projektkurs.Main;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
+import projektkurs.render.Screen;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
@@ -190,9 +190,9 @@ public class TextField extends Element {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        g.drawRect(posX, posY, sizeX, sizeY);
-        RenderUtil.drawCenteredStringInRect(g, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
+    public void render(Screen screen) {
+        screen.drawRect(posX, posY, sizeX, sizeY);
+        RenderUtil.drawCenteredStringInRect(screen, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
     }
 
     /**

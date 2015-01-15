@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
@@ -9,6 +8,7 @@ import projektkurs.gui.element.InventoryElement;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
+import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
@@ -72,9 +72,10 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
+
 
 }

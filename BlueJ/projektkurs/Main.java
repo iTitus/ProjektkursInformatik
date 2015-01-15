@@ -351,7 +351,9 @@ public final class Main {
         }, "Shutdown-Hook"));
 
         // Resources
+        init(State.RESOURCES_PRE);
         init(State.RESOURCES);
+        init(State.RESOURCES_POST);
 
         // PreInit
         // Load from disk
@@ -372,6 +374,7 @@ public final class Main {
                 panel.add(render.getGameCanvas());
 
                 mainFrame.setIconImage(Images.item42);
+                mainFrame.setUndecorated(true);
                 mainFrame.setResizable(false);
                 mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mainFrame.pack();

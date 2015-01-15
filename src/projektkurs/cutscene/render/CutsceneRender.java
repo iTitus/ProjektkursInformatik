@@ -4,11 +4,14 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.object.CutSceneObject;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.RenderUtil;
 
@@ -29,6 +32,18 @@ public class CutsceneRender implements IUpdatable {
      * Die BufferStrategy der aktuellen CutScene.
      */
     private BufferStrategy strategy;
+    /**
+     * Bild.
+     */
+    private final BufferedImage image = new BufferedImage(Integers.windowX, Integers.windowY, BufferedImage.TYPE_INT_RGB);
+    /**
+     * Die zum Bild gehörigen Pixel.
+     */
+    private final int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+    /**
+     * Screen.
+     */
+    private Screen screen;
 
     /**
      * Konstruktor.
@@ -37,6 +52,7 @@ public class CutsceneRender implements IUpdatable {
         canvas = null;
         g = null;
         strategy = null;
+        screen = new Screen(Integers.windowX, Integers.windowY);
     }
 
     @Override
@@ -75,29 +91,34 @@ public class CutsceneRender implements IUpdatable {
         if (strategy != null) {
             g = (Graphics2D) strategy.getDrawGraphics();
 
-            g.clearRect(0, 0, Integers.windowX, Integers.windowY);
+            // g.clearRect(0, 0, Integers.windowX, Integers.windowY);
 
             if (CutSceneManager.getCutScene().needsRasterBackground()) {
                 for (int y = CutSceneManager.getCutSceneRenderHelper().getSightY(); y < CutSceneManager.getCutSceneRenderHelper().getSightY() + Integers.sightY; y++) {
                     for (int x = CutSceneManager.getCutSceneRenderHelper().getSightX(); x < CutSceneManager.getCutSceneRenderHelper().getSightX() + Integers.sightX; x++) {
                         if (CutSceneManager.getMap().isRasterAt(x, y)) {
-                            CutSceneManager.getMap().getRasterAt(x, y).renderCutScene(g, x, y);
+                            CutSceneManager.getMap().getRasterAt(x, y).renderCutScene(screen, x, y);
                         } else {
-                            RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
+                            RenderUtil.drawDefaultRaster(screen, Sprites.tree, x, y);
                         }
                     }
                 }
             } else {
-                RenderUtil.drawImage(g, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
+                RenderUtil.drawSprite(screen, CutSceneManager.getCutScene().getBackground(), Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y);
             }
 
             for (CutSceneObject obj : CutSceneManager.getCutScene().getCutSceneObjectList()) {
                 if (obj.isInside(CutSceneManager.getCutSceneRenderHelper().getSightX(), CutSceneManager.getCutSceneRenderHelper().getSightY(), Integers.sightX, Integers.sightY)) {
-                    obj.render(g);
+                    obj.render(screen);
                 }
             }
 
-            RenderUtil.drawBorder(g);
+            RenderUtil.drawBorder(screen);
+
+            for (int i = 0; i < pixels.length; i++) {
+                pixels[i] = screen.getPixel(i);
+            }
+            RenderUtil.drawImage(g, image, Integers.windowX, Integers.windowY);
 
             g.setColor(Color.BLACK);
             g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);

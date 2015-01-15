@@ -43,7 +43,7 @@ public final class Levels {
     }
 
     /**
-     * Das Pair, das alle Kommandos enthält.
+     * Das Pair, das alle Levels enthält.
      *
      * @return Pair
      */

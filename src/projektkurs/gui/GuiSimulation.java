@@ -1,8 +1,6 @@
 package projektkurs.gui;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
+import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 
 /**
@@ -22,8 +20,8 @@ public class GuiSimulation extends Gui {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawBackground(g, Color.WHITE);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
 }

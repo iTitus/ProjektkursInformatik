@@ -1,11 +1,11 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
+import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 
 /**
@@ -41,9 +41,10 @@ public class GuiIngameMenu extends Gui implements IButtonListener {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
+
 
 }

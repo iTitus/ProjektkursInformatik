@@ -4,10 +4,13 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 import projektkurs.Main;
 import projektkurs.lib.Integers;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.RenderUtil;
 
 /**
  * Renderklasse.
@@ -26,6 +29,18 @@ public class Render implements IUpdatable {
      * Die aktuelle BufferStrategy.
      */
     private BufferStrategy strategy;
+    /**
+     * Der Screen.
+     */
+    private Screen screen;
+    /**
+     * Bild.
+     */
+    private final BufferedImage image = new BufferedImage(Integers.windowX, Integers.windowY, BufferedImage.TYPE_INT_RGB);
+    /**
+     * Die zum Bild gehörigen Pixel.
+     */
+    private final int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
     /**
      * Konstruktor.
@@ -34,6 +49,7 @@ public class Render implements IUpdatable {
         canvas = null;
         strategy = null;
         g = null;
+        screen = new Screen(Integers.windowX, Integers.windowY);
     }
 
     @Override
@@ -88,14 +104,19 @@ public class Render implements IUpdatable {
 
             g = (Graphics2D) strategy.getDrawGraphics();
 
-            g.clearRect(0, 0, Integers.windowX, Integers.windowY);
+            screen.clear();
 
             if (Main.getLevel() != null) {
-                Main.getLevel().render(g);
+                Main.getLevel().render(screen);
             }
 
             g.setColor(Color.BLACK);
-            Main.getGui().render(g);
+            Main.getGui().render(screen);
+
+            for (int i = 0; i < pixels.length; i++) {
+                pixels[i] = screen.getPixel(i);
+            }
+            RenderUtil.drawImage(g, image, Integers.windowX, Integers.windowY);
 
             g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + (Main.getLevel() != null && Main.getPlayer() != null ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() : ""),
                     Integers.INFO_X, Integers.INFO_Y);

@@ -56,13 +56,13 @@ public final class Items {
      */
     @Init(state = State.PRE)
     public static void init() {
-        item42 = new BaseItem(1, "42", Images.item42);
+        item42 = new BaseItem(1, "42", Sprites.item42);
         registerItem(item42);
 
         nuke = new ItemNuke(2);
         registerItem(nuke);
 
-        key = new BaseItem(3, "key", Images.key);
+        key = new BaseItem(3, "key", Sprites.key);
         registerItem(key);
 
         healthPotion = new ItemHealthPotion(4);

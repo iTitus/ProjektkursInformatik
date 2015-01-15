@@ -1,10 +1,9 @@
 package projektkurs.cutscene.object;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.lib.Integers;
+import projektkurs.render.Screen;
+import projektkurs.render.Sprite;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.RenderUtil;
 
@@ -16,7 +15,7 @@ public class CutSceneObject implements IHasPositionAndSize {
     /**
      * Bild.
      */
-    private final BufferedImage image;
+    private final Sprite sprite;
     /**
      * X-Position.
      */
@@ -35,8 +34,8 @@ public class CutSceneObject implements IHasPositionAndSize {
     private int sizeY;
 
     /**
-     * @param image
-     *            Bild des CutSceneObject @param posX
+     * @param sprite
+     *            Sprite
      * @param posX
      *            X-Position
      * @param posY
@@ -46,8 +45,8 @@ public class CutSceneObject implements IHasPositionAndSize {
      * @param sizeY
      *            Höhe
      */
-    public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
-        this.image = image;
+    public CutSceneObject(Sprite sprite, int posX, int posY, int sizeX, int sizeY) {
+        this.sprite = sprite;
         setPosition(posX, posY);
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -56,10 +55,10 @@ public class CutSceneObject implements IHasPositionAndSize {
     /**
      * Bild.
      *
-     * @return BufferedImage
+     * @return Sprite
      */
-    public BufferedImage getImage() {
-        return image;
+    public Sprite getSprite() {
+        return sprite;
     }
 
     @Override
@@ -127,11 +126,11 @@ public class CutSceneObject implements IHasPositionAndSize {
     /**
      * Rendert das CutSceneObject.
      *
-     * @param g
-     *            das Graphics2D Objekt
+     * @param screen
+     *            Screen
      */
-    public void render(Graphics2D g) {
-        RenderUtil.drawImage(g, image, getRenderX(), getRenderY(), sizeX * Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE);
+    public void render(Screen screen) {
+        RenderUtil.drawSprite(screen, sprite, getRenderX(), getRenderY());
     }
 
     @Override

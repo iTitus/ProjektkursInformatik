@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,6 +15,9 @@ import projektkurs.lib.Items;
 import projektkurs.lib.Levels;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
+import projektkurs.lib.SpriteSheets;
+import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 import projektkurs.util.RenderUtil;
@@ -39,14 +41,15 @@ public class GuiInfo extends Gui {
     @Override
     public void initGui() {
         super.initGui();
-        addInfos(Levels.getPair(), CutScenes.getPair(), Dialoge.getPair(), Raster.getPair(), ExtraInformationen.getPair(), Entities.getPair(), Items.getPair(), Commands.getPair(), Images.getPair(), Sounds.getPair());
+        addInfos(Levels.getPair(), CutScenes.getPair(), Dialoge.getPair(), Raster.getPair(), ExtraInformationen.getPair(), Entities.getPair(), Items.getPair(), Commands.getPair(), Images.getPair(), SpriteSheets.getPair(), Sprites.getPair(), Sounds.getPair());
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
+
 
     /**
      * Fügt alle TextViews hinzu.

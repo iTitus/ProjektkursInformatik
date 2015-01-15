@@ -10,6 +10,8 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
+import projektkurs.render.Screen;
+import projektkurs.render.Sprite;
 import projektkurs.util.Init.State;
 
 /**
@@ -24,7 +26,7 @@ public final class RenderUtil {
     /**
      * Die Standard-Hintergrundfarbe.
      */
-    private static final Color DEFAULT_BACKGROUND_COLOR = new Color(127, 127, 127, 156);
+    private static final int DEFAULT_BACKGROUND_COLOR = 0xFFFFFF;
     /**
      * Alle benutzten Schriften.
      */
@@ -48,14 +50,30 @@ public final class RenderUtil {
     /**
      * Malt den Rand.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      */
-    public static void drawBorder(Graphics2D g) {
-        g.clearRect(0, 0, Integers.windowX, Integers.WINDOW_HUD_Y);
-        g.clearRect(0, Integers.windowY - Integers.WINDOW_HUD_Y, Integers.windowX, Integers.WINDOW_HUD_Y);
-        g.clearRect(0, Integers.WINDOW_HUD_Y, Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
-        g.clearRect(Integers.windowX - Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y);
+    public static void drawBorder(Screen screen) {
+        for (int y = 0; y < Integers.WINDOW_HUD_Y; y++) {
+            for (int x = 0; x < Integers.windowX; x++) {
+                screen.setPixel(0, x, y);
+            }
+        }
+        for (int y = Integers.WINDOW_HUD_Y; y < Integers.windowY - Integers.WINDOW_HUD_Y; y++) {
+            for (int x = 0; x < Integers.WINDOW_HUD_X; x++) {
+                screen.setPixel(0, x, y);
+            }
+        }
+        for (int y = Integers.WINDOW_HUD_Y; y < Integers.windowY - Integers.WINDOW_HUD_Y; y++) {
+            for (int x = Integers.windowX - Integers.WINDOW_HUD_X; x < Integers.windowX; x++) {
+                screen.setPixel(0, x, y);
+            }
+        }
+        for (int y = Integers.windowY - Integers.WINDOW_HUD_Y; y < Integers.windowY; y++) {
+            for (int x = 0; x < Integers.WINDOW_HUD_X; x++) {
+                screen.setPixel(0, x, y);
+            }
+        }
     }
 
     /**
@@ -70,8 +88,8 @@ public final class RenderUtil {
      * @param centerY
      *            Y-Koordinate des Mittelpunktes
      */
-    public static void drawCenteredString(Graphics2D g, String s, int centerX, int centerY) {
-        g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), s), centerX - MathUtil.floorDiv(g.getFontMetrics().stringWidth(s), 2), centerY + MathUtil.ceilDiv(g.getFontMetrics().getHeight(), 4));
+    public static void drawCenteredString(Screen screen, String s, int centerX, int centerY) {
+        // screen.drawGlyphVector(screen.getFont().createGlyphVector(screen.getFontRenderContext(), s), centerX - MathUtil.floorDiv(screen.getFontMetrics().stringWidth(s), 2), centerY + MathUtil.ceilDiv(screen.getFontMetrics().getHeight(), 4));
     }
 
     /**
@@ -88,18 +106,18 @@ public final class RenderUtil {
      * @param size
      *            die Größe der Schrift
      */
-    public static void drawCenteredString(Graphics2D g, String s, int centerX, int centerY, int size) {
-        Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        drawCenteredString(g, s, centerX, centerY);
-        g.setFont(oldfont);
+    public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int size) {
+        // Font oldfont = g.getFont();
+        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
+        // drawCenteredString(g, s, centerX, centerY);
+        // g.setFont(oldfont);
     }
 
     /**
      * Schreibt einen zentrierten String in ein gegebenes Rechteck.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param s
      *            String
      * @param posX
@@ -111,15 +129,15 @@ public final class RenderUtil {
      * @param sizeY
      *            Höhe
      */
-    public static void drawCenteredStringInRect(Graphics2D g, String s, int posX, int posY, int sizeX, int sizeY) {
-        Font oldfont = g.getFont();
-        int size = Integers.DEFAULT_FONT_SIZE;
-        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-            g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
-        }
-        drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
-        g.setFont(oldfont);
+    public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY) {
+        // Font oldfont = screen.getFont();
+        // int size = Integers.DEFAULT_FONT_SIZE;
+        // screen.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
+        // while (size > 1 && (screen.getFontMetrics().stringWidth(s) >= sizeX || screen.getFontMetrics().getHeight() >= sizeY)) {
+        // screen.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
+        // }
+        // drawCenteredString(screen, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
+        // screen.setFont(oldfont);
     }
 
     /**
@@ -140,55 +158,53 @@ public final class RenderUtil {
      * @param size
      *            gewünschte Schriftgröße
      */
-    public static void drawCenteredStringInRect(Graphics2D g, String s, int posX, int posY, int sizeX, int sizeY, int size) {
-        Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-            g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
-        }
-        drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
-        g.setFont(oldfont);
+    public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY, int size) {
+        // Font oldfont = g.getFont();
+        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
+        // while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
+        // g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
+        // }
+        // drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
+        // g.setFont(oldfont);
     }
 
     /**
      * Malt ein Rasterbild in eine CutScene.
      *
-     * @param g
-     *            Graphics2D
-     * @param image
-     *            Rasterbild
+     * @param screen
+     *            Screen
+     * @param sprite
+     *            Sprite
      * @param x
      *            X-Koordinate des Rasters
      * @param y
      *            Y-Koordinate des Rasters
      */
-    public static void drawCutSceneRaster(Graphics2D g, BufferedImage image, int x, int y) {
-        drawImage(g, image, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
+    public static void drawCutSceneRaster(Screen screen, Sprite sprite, int x, int y) {
+        drawSprite(screen, sprite, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
     /**
      * Rendert den Standardhintergrund.
      *
-     * @param g
-     *            Graphics2D Objekt
+     * @param screen
+     *            Screen
      */
-    public static void drawDefaultBackground(Graphics2D g) {
-        Color oldColor = g.getColor();
-        g.setColor(DEFAULT_BACKGROUND_COLOR);
-        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
-        g.setColor(oldColor);
+    public static void drawDefaultBackground(Screen screen) {
+        screen.setColor(DEFAULT_BACKGROUND_COLOR);
     }
 
     /**
      * Malt einen Entity aufs Spielfeld.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param e
      *            Entity
      */
-    public static void drawDefaultEntity(Graphics2D g, Entity e) {
-        drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX() * Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
+    public static void drawDefaultEntity(Screen screen, Entity e) {
+        // drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX() * Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
+        // TODO
     }
 
     /**
@@ -197,7 +213,7 @@ public final class RenderUtil {
      * @param g
      *            Graphics2D
      * @param img
-     *            Rasterbild
+     *            BufferedImage
      * @param x
      *            X-Koordinate des Rasters
      * @param y
@@ -205,6 +221,23 @@ public final class RenderUtil {
      */
     public static void drawDefaultRaster(Graphics2D g, BufferedImage img, int x, int y) {
         drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
+    }
+
+    /**
+     * Malt ein Rasterbild aufs Spielfeld.
+     *
+     * @param screen
+     *            Screen
+     * @param sprite
+     *            Sprite
+     * @param x
+     *            X-Koordinate des Rasters
+     * @param y
+     *            Y-Koordinate des Rasters
+     */
+    public static void drawDefaultRaster(Screen screen, Sprite sprite, int x, int y) {
+        // drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
+        // TODO
     }
 
     /**
@@ -278,8 +311,9 @@ public final class RenderUtil {
      * @param posY
      *            Y-Koordinate
      */
-    public static void drawString(Graphics2D g, String string, int posX, int posY) {
-        g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
+    public static void drawString(Screen screen, String string, int posX, int posY) {
+        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
+        // FIXME: TODO: watch reallie intelent wideos (TOT)
     }
 
     /**
@@ -315,19 +349,19 @@ public final class RenderUtil {
      * @param y
      *            Y-Koordinate
      */
-    public static void drawTooltip(Graphics2D g, String str, int x, int y) {
-        Color oldColor = g.getColor();
-        Font oldfont = g.getFont();
-        g.setFont(FONTS[Integers.DEFAULT_FONT_SIZE]);
-        int height = g.getFontMetrics().getHeight();
-        int width = g.getFontMetrics().stringWidth(str);
-        g.setColor(TOOLTIP_COLOR);
-        g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-        RenderUtil.drawCenteredStringInRect(g, str, x, y - height, width, height);
-        g.setFont(oldfont);
-        g.setColor(oldColor);
+    public static void drawTooltip(Screen screen, String str, int x, int y) {
+//        Color oldColor = g.getColor();
+//        Font oldfont = g.getFont();
+//        g.setFont(FONTS[Integers.DEFAULT_FONT_SIZE]);
+//        int height = g.getFontMetrics().getHeight();
+//        int width = g.getFontMetrics().stringWidth(str);
+//        g.setColor(TOOLTIP_COLOR);
+//        g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+//        g.setColor(Color.BLACK);
+//        g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+//        RenderUtil.drawCenteredStringInRect(g, str, x, y - height, width, height);
+//        g.setFont(oldfont);
+//        g.setColor(oldColor);
     }
 
     /**
@@ -344,5 +378,29 @@ public final class RenderUtil {
      * Nicht instanziierbar.
      */
     private RenderUtil() {
+    }
+
+    /**
+     * Malt einen Sprite an die gegebenen Koordinaten.
+     * 
+     * @param screen
+     *            Screen
+     * @param sprite
+     *            Sprite
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     */
+    public static void drawSprite(Screen screen, Sprite sprite, int x, int y) {
+        int pixel;
+        for (int yy = 0; yy < sprite.getSizeY(); yy++) {
+            for (int xx = 0; xx < sprite.getSizeX(); xx++) {
+                pixel = sprite.getPixel(xx, yy);
+                if (pixel != Integers.TRANSPARENCY) {
+                    screen.setPixel(pixel, x + xx, y + yy);
+                }
+            }
+        }
     }
 }

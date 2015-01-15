@@ -1,10 +1,10 @@
 package projektkurs.gui.element;
 
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
+import projektkurs.render.Screen;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.IUpdatable;
 
@@ -204,18 +204,18 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     /**
      * Rendert dieses Element.
      *
-     * @param g
-     *            Graphics2D Objekt
+     * @param screen
+     *            Screen
      */
-    public abstract void render(Graphics2D g);
+    public abstract void render(Screen screen);
 
     /**
      * Rendert einen Tooltip.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      */
-    public void renderTooltip(Graphics2D g) {
+    public void renderTooltip(Screen screen) {
         // NO-OP
     }
 

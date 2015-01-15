@@ -29,9 +29,17 @@ public @interface Init {
          */
         PRE,
         /**
-         * Startphase für Resoureceloading.
+         * Mittlere Startphase für Resoureceloading.
          */
-        RESOURCES
+        RESOURCES,
+        /**
+         * Späte Startphase für Resoureceloading.
+         */
+        RESOURCES_POST,
+        /**
+         * Frühe Startphase für Resoureceloading.
+         */
+        RESOURCES_PRE
     }
 
     /**

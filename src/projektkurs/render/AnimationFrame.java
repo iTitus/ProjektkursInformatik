@@ -1,22 +1,20 @@
 package projektkurs.render;
 
-import java.awt.image.BufferedImage;
-
 /**
  * Ein Animationsframe.
  */
 public class AnimationFrame {
 
     /**
-     * Statische Hilsfmethode, die aus einem gegebenen BufferedImage[] und einer gegebenen frameTime eine gleichmäßige Animation macht.
+     * Statische Hilsfmethode, die aus einem gegebenen Sprite[] und einer gegebenen frameTime eine gleichmäßige Animation macht.
      *
      * @param images
-     *            BufferedImage[]
+     *            Sprite[]
      * @param frameTime
-     *            Zei, die ein Bild angezeigt wird, in Renderticks
+     *            Zei, die ein Sprite angezeigt wird, in Renderticks
      * @return AnimationFrame[]
      */
-    public static AnimationFrame[] getSynchronousAnimation(BufferedImage[] images, int frameTime) {
+    public static AnimationFrame[] getSynchronousAnimation(Sprite[] images, int frameTime) {
         AnimationFrame[] frames = new AnimationFrame[images.length];
         for (int i = 0; i < frames.length; i++) {
             frames[i] = new AnimationFrame(images[i], frameTime);
@@ -30,19 +28,19 @@ public class AnimationFrame {
     private final int animationFrameDuration;
 
     /**
-     * Bild.
+     * Sprite.
      */
-    private final BufferedImage image;
+    private final Sprite image;
 
     /**
      * Konstruktor.
      *
      * @param image
-     *            Bild
+     *            Sprite
      * @param animationFrameDuration
      *            Zeitspanne, die dieser AnimationFrame angezeigt werden soll
      */
-    public AnimationFrame(BufferedImage image, int animationFrameDuration) {
+    public AnimationFrame(Sprite image, int animationFrameDuration) {
         this.image = image;
         this.animationFrameDuration = animationFrameDuration;
     }
@@ -57,11 +55,11 @@ public class AnimationFrame {
     }
 
     /**
-     * Bild.
+     * Sprite.
      *
-     * @return Bild
+     * @return Sprite
      */
-    public BufferedImage getImage() {
+    public Sprite getSprite() {
         return image;
     }
 

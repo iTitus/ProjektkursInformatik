@@ -1,7 +1,5 @@
 package projektkurs.raster;
 
-import java.awt.Graphics2D;
-
 import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.Entity;
@@ -9,6 +7,7 @@ import projektkurs.entity.EntityPlayer;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.raster.extra.IHasExtraInformation;
+import projektkurs.render.Screen;
 import projektkurs.util.Direction;
 import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
@@ -53,18 +52,18 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
     }
 
     @Override
-    public void render(Graphics2D g, Spielfeld map, int x, int y) {
+    public void render(Screen screen, Spielfeld map, int x, int y) {
         ExtraInformation extra = map.getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationDoor) {
-            RenderUtil.drawDefaultRaster(g, ((ExtraInformationDoor) extra).getImage(), x, y);
+            RenderUtil.drawDefaultRaster(screen, ((ExtraInformationDoor) extra).getSprite(), x, y);
         }
     }
 
     @Override
-    public void renderCutScene(Graphics2D g, int x, int y) {
+    public void renderCutScene(Screen screen, int x, int y) {
         ExtraInformation extra = CutSceneManager.getMap().getExtraInformationAt(x, y);
         if (extra instanceof ExtraInformationDoor) {
-            RenderUtil.drawCutSceneRaster(g, ((ExtraInformationDoor) extra).getImage(), x, y);
+            RenderUtil.drawCutSceneRaster(screen, ((ExtraInformationDoor) extra).getSprite(), x, y);
         }
 
     }

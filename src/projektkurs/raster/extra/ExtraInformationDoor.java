@@ -1,11 +1,10 @@
 package projektkurs.raster.extra;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Images;
 import projektkurs.lib.Items;
+import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
+import projektkurs.render.Sprite;
 import projektkurs.util.Direction;
 import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
@@ -57,14 +56,14 @@ public class ExtraInformationDoor extends ExtraInformation {
      *
      * @return Bild.
      */
-    public BufferedImage getImage() {
+    public Sprite getSprite() {
 
         switch (direction) {
             case LEFT:
             case RIGHT:
-                return isOpen ? Images.doorOpenEW : Images.doorEW;
+                return isOpen ? Sprites.door_open : Sprites.door;
             default:
-                return isOpen ? Images.doorOpenNS : Images.doorNS;
+                return isOpen ? Sprites.door_open : Sprites.door;
         }
     }
 

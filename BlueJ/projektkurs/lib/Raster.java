@@ -67,7 +67,7 @@ public final class Raster {
     public static SolidRaster water;
 
     /**
-     * Das Pair, das alle Kommandos enthält.
+     * Das Pair, das alle Raster enthält.
      *
      * @return Pair
      */
@@ -83,14 +83,14 @@ public final class Raster {
         wall = new SolidRaster(1, "wall", Images.wand);
         registerRaster(wall);
 
-        chest = new ChestRaster(2);
-        registerRaster(chest);
-
-        rasen = new SimpleRaster(3, "grass", Images.rasen3);
+        rasen = new SimpleRaster(2, "grass", Images.rasen3);
         registerRaster(rasen);
 
-        baum = new SolidRaster(4, "tree", Images.baum);
+        baum = new SolidRaster(3, "tree", Images.baum);
         registerRaster(baum);
+
+        chest = new ChestRaster(4);
+        registerRaster(chest);
 
         door = new DoorRaster(5);
         registerRaster(door);
@@ -129,5 +129,4 @@ public final class Raster {
      */
     private Raster() {
     }
-
 }

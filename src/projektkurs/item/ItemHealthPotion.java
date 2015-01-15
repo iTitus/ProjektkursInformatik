@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
-import projektkurs.lib.Images;
+import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -19,7 +19,7 @@ public class ItemHealthPotion extends BaseItem {
      *            ID
      */
     public ItemHealthPotion(int id) {
-        super(id, "potion.health", Images.healthpotion);
+        super(id, "potion.health", Sprites.healthpotion);
     }
 
     @Override

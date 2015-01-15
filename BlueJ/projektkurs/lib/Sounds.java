@@ -200,7 +200,7 @@ public final class Sounds {
     }
 
     /**
-     * Das Pair, das alle Kommandos enthält.
+     * Das Pair, das alle Sounds enthält.
      *
      * @return Pair
      */

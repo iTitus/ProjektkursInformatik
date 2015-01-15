@@ -1,10 +1,10 @@
 package projektkurs.gui.element;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
-import projektkurs.lib.Images;
+import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.RenderUtil;
 
@@ -84,18 +84,18 @@ public class Button extends Element {
     }
 
     @Override
-    public void render(Graphics2D g) {
+    public void render(Screen screen) {
         if (enabled) {
             if (isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
-                RenderUtil.drawImage(g, Images.buttonHighlight, posX, posY, sizeX, sizeY);
+                RenderUtil.drawSprite(screen, Sprites.buttonHighlight, posX, posY, sizeX, sizeY);
             } else {
-                RenderUtil.drawImage(g, Images.button, posX, posY, sizeX, sizeY);
+                RenderUtil.drawSprite(screen, Sprites.button, posX, posY, sizeX, sizeY);
             }
         } else {
-            RenderUtil.drawImage(g, Images.buttonDisabled, posX, posY, sizeX, sizeY);
+            RenderUtil.drawSprite(screen, Sprites.buttonDisabled, posX, posY, sizeX, sizeY);
         }
 
-        RenderUtil.drawCenteredStringInRect(g, I18n.getString(name), posX, posY, sizeX, sizeY);
+        RenderUtil.drawCenteredStringInRect(screen, I18n.getString(name), posX, posY, sizeX, sizeY);
     }
 
     /**

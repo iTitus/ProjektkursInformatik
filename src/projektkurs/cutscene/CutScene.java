@@ -1,10 +1,10 @@
 package projektkurs.cutscene;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.render.Sprite;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Queue;
 
@@ -20,7 +20,7 @@ public final class CutScene implements IUpdatable {
     /**
      * Eventuelles Hintergrundbild.
      */
-    private BufferedImage background;
+    private Sprite background;
     /**
      * Bereits vergangene Ticks.
      */
@@ -63,15 +63,15 @@ public final class CutScene implements IUpdatable {
      * @param background
      *            Hintergrundbild
      */
-    public CutScene(String name, BufferedImage background) {
+    public CutScene(String name, Sprite background) {
         actionQueue = new Queue<Action>();
         startupQueue = new Queue<Action>();
         tempQueue = new Queue<Action>();
         elapsedTicks = 0;
         isFinished = false;
-        this.background = background;
         objects = new ArrayList<CutSceneObject>();
         this.name = name;
+        this.background = background;
     }
 
     @Override
@@ -96,7 +96,7 @@ public final class CutScene implements IUpdatable {
      *
      * @return BufferedImage
      */
-    public BufferedImage getBackground() {
+    public Sprite getBackground() {
         return background;
     }
 
@@ -171,7 +171,7 @@ public final class CutScene implements IUpdatable {
      * @param background
      *            Hintergrundbild
      */
-    public void setBackground(BufferedImage background) {
+    public void setBackground(Sprite background) {
         this.background = background;
     }
 

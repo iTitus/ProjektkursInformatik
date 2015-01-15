@@ -1,7 +1,6 @@
 package projektkurs.entity;
 
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 import projektkurs.Main;
 import projektkurs.inventory.PlayerInventory;
@@ -9,6 +8,7 @@ import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Scripts;
 import projektkurs.lib.Strings;
+import projektkurs.render.Sprite;
 import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
@@ -41,11 +41,11 @@ public class EntityPlayer extends EntityLiving {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param image
-     *            Bild
+     * @param sprites
+     *            Bilder
      */
-    public EntityPlayer(Spielfeld map, int posX, int posY, BufferedImage... images) {
-        super(map, posX, posY, Integers.PLAYER_HEALTH, images);
+    public EntityPlayer(Spielfeld map, int posX, int posY, Sprite... sprites) {
+        super(map, posX, posY, Integers.PLAYER_HEALTH, sprites);
         inventar = new PlayerInventory(Integers.PLAYER_INVENTORY_SIZE, 0);
     }
 
