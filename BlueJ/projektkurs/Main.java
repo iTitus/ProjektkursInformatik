@@ -292,7 +292,7 @@ public final class Main {
     public static void startLevel(Level l) {
         if (l != null) {
             level = l;
-            player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Sprites.lordvO_EW, Sprites.lordvO_SN, Sprites.lordvO_WE, Sprites.lordvO_NS);
+            player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Sprites.lordvO_N, Sprites.lordvO_O, Sprites.lordvO_S, Sprites.lordvO_W);
             l.generateAndPopulateAll();
             level.getMap().spawn(player);
             closeGui();

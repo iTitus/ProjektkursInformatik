@@ -27,10 +27,10 @@ public final class Sprites {
     public static Sprite healthpotion;
     public static Sprite item42;
     public static Sprite key;
-    public static Sprite lordvO_EW;
-    public static Sprite lordvO_NS;
-    public static Sprite lordvO_SN;
-    public static Sprite lordvO_WE;
+    public static Sprite lordvO_N;
+    public static Sprite lordvO_O;
+    public static Sprite lordvO_S;
+    public static Sprite lordvO_W;
     /**
      * Die Mappings.
      */
@@ -117,17 +117,17 @@ public final class Sprites {
         slot_highlight = new Sprite("slot_highlight", Integers.SLOT_SIZE, Integers.SLOT_SIZE, 3 * Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
         registerSprite(slot_highlight);
 
-        lordvO_NS = new Sprite("lordvO_NS", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
-        registerSprite(lordvO_NS);
+        lordvO_W = new Sprite("lordvO_W", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
+        registerSprite(lordvO_W);
 
-        lordvO_EW = lordvO_NS.rotate("lordvO_EW", Math.toRadians(90));
-        registerSprite(lordvO_EW);
+        lordvO_N = lordvO_W.rotate("lordvO_N", Math.toRadians(90));
+        registerSprite(lordvO_N);
 
-        lordvO_SN = lordvO_EW.rotate("lordvO_SN", Math.toRadians(90));
-        registerSprite(lordvO_SN);
+        lordvO_O = lordvO_N.rotate("lordvO_O", Math.toRadians(90));
+        registerSprite(lordvO_O);
 
-        lordvO_WE = lordvO_SN.rotate("lordvO_WE", "LordVonDerSeite2.png");
-        registerSprite(lordvO_WE);
+        lordvO_S = lordvO_O.rotate("lordvO_S", Math.toRadians(90));
+        registerSprite(lordvO_S);
 
         redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(redNPC);
