@@ -19,10 +19,10 @@ public class GuiMainMenu extends Gui implements IButtonListener {
     @Override
     public void initGui() {
         super.initGui();
-        addElement(new Button(64, 64, 256, 64, 0, this, "Level0"));
-        addElement(new Button(64, 128, 256, 64, 1, this, "Level1"));
-        addElement(new Button(64, 192, 256, 64, 2, this, "Options"));
-        addElement(new Button(64, 256, 256, 64, 3, this, "button.exit"));
+        addElement(new Button(64, 64, 0, this, "Level0"));
+        addElement(new Button(64, 128, 1, this, "Level1"));
+        addElement(new Button(64, 192, 2, this, "Options"));
+        addElement(new Button(64, 256, 3, this, "button.exit"));
     }
 
     @Override

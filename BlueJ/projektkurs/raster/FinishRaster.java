@@ -2,8 +2,8 @@ package projektkurs.raster;
 
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityPlayer;
-import projektkurs.lib.Images;
 import projektkurs.lib.Scripts;
+import projektkurs.lib.Sprites;
 import projektkurs.util.Direction;
 import projektkurs.world.Spielfeld;
 
@@ -19,7 +19,7 @@ public class FinishRaster extends SimpleRaster {
      *            ID
      */
     public FinishRaster(int id) {
-        super(id, "finish", Images.finish);
+        super(id, "finish", Sprites.finish);
     }
 
     @Override

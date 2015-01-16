@@ -26,14 +26,6 @@ public class Render implements IUpdatable {
      */
     private Graphics2D g;
     /**
-     * Die aktuelle BufferStrategy.
-     */
-    private BufferStrategy strategy;
-    /**
-     * Der Screen.
-     */
-    private Screen screen;
-    /**
      * Bild.
      */
     private final BufferedImage image = new BufferedImage(Integers.windowX, Integers.windowY, BufferedImage.TYPE_INT_RGB);
@@ -41,6 +33,14 @@ public class Render implements IUpdatable {
      * Die zum Bild gehörigen Pixel.
      */
     private final int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+    /**
+     * Der Screen.
+     */
+    private final Screen screen;
+    /**
+     * Die aktuelle BufferStrategy.
+     */
+    private BufferStrategy strategy;
 
     /**
      * Konstruktor.

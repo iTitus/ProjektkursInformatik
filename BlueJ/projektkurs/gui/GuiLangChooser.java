@@ -1,12 +1,12 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
+import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.RenderUtil;
 
@@ -31,7 +31,7 @@ public class GuiLangChooser extends Gui implements IButtonListener {
         addElement(new TextView(34, 34, 256, 64, 0, "info.lang.current", I18n.getLocale()));
         Button b;
         for (int i = 0; i < I18n.getSupportedLocales().length; i++) {
-            b = new Button(34, 34 + (i + 1) * 64, 256, 64, i + 1, this, I18n.getSupportedLocales()[i].getUnlocalizedName());
+            b = new Button(34, 34 + (i + 1) * 64, i + 1, this, I18n.getSupportedLocales()[i].getUnlocalizedName());
             if (I18n.getSupportedLocales()[i].equals(I18n.getLocale())) {
                 b.setEnabled(false);
             }
@@ -51,9 +51,9 @@ public class GuiLangChooser extends Gui implements IButtonListener {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
 
 }

@@ -108,7 +108,7 @@ public class InventoryElement extends Element {
     public void render(Screen screen) {
         ItemStack stack;
         for (int i = 0; i < inv.getSize(); i++) {
-            RenderUtil.drawSprite(screen, Sprites.slot, i * Integers.SLOT_SIZE + posX, posY, Integers.SLOT_SIZE, Integers.SLOT_SIZE);
+            RenderUtil.drawSprite(screen, Sprites.slot, i * Integers.SLOT_SIZE + posX, posY);
             stack = inv.getItemStackAt(i);
             if (stack != null) {
                 RenderUtil.drawSprite(screen, stack.getSprite(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);

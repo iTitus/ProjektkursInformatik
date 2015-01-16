@@ -37,10 +37,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     private Direction facing;
     /**
-     * Bild.
-     */
-    private Sprite[] sprites;
-    /**
      * Soll das Bild sich mit ändernder Richtung verändern.
      */
     private boolean shouldChangeImageWithFacing;
@@ -48,6 +44,10 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * Soll dieser Entity nächsten Tick verschwinden.
      */
     private boolean shouldDeSpawn;
+    /**
+     * Bild.
+     */
+    private Sprite[] sprites;
     /**
      * Spielfeld.
      */
@@ -93,22 +93,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      *            X-Position
      * @param posY
      *            Y-Position
-     * @param sprites
-     *            Sprite
-     */
-    public Entity(Spielfeld map, int posX, int posY, Sprite... sprites) {
-        this(map, posX, posY, 1, 1, sprites);
-    }
-
-    /**
-     * Konstruktor.
-     *
-     * @param map
-     *            Spielfeld
-     * @param posX
-     *            X-Position
-     * @param posY
-     *            Y-Position
      * @param sizeX
      *            Breite
      * @param sizeY
@@ -132,6 +116,22 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
             throw new IllegalArgumentException();
         }
 
+    }
+
+    /**
+     * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     * @param posX
+     *            X-Position
+     * @param posY
+     *            Y-Position
+     * @param sprites
+     *            Sprite
+     */
+    public Entity(Spielfeld map, int posX, int posY, Sprite... sprites) {
+        this(map, posX, posY, 1, 1, sprites);
     }
 
     /**
@@ -207,27 +207,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Bild.
-     *
-     * @return Sprite
-     */
-    public Sprite getSprite() {
-        if (!shouldChangeImageWithFacing) {
-            return sprites[0];
-        }
-        return sprites[MathUtil.floorDiv(facing.getIndex(), 2)];
-    }
-
-    /**
-     * Alle Bilder.
-     *
-     * @return Bilder
-     */
-    public Sprite[] getSprites() {
-        return sprites;
-    }
-
-    /**
      * Der Interne Name dieses Entity-Typs.
      *
      * @return Interner Name
@@ -281,6 +260,27 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     @Override
     public int getSizeY() {
         return sizeY;
+    }
+
+    /**
+     * Bild.
+     *
+     * @return Sprite
+     */
+    public Sprite getSprite() {
+        if (!shouldChangeImageWithFacing) {
+            return sprites[0];
+        }
+        return sprites[MathUtil.floorDiv(facing.getIndex(), 2)];
+    }
+
+    /**
+     * Alle Bilder.
+     *
+     * @return Bilder
+     */
+    public Sprite[] getSprites() {
+        return sprites;
     }
 
     /**
@@ -385,16 +385,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Setzt das Bild dieses Entities.
-     *
-     * @param sprite
-     *            Bild
-     */
-    public void setSprite(Sprite sprite, int i) {
-        sprites[i] = sprite;
-    }
-
-    /**
      * Setzt das Spielfeld.
      *
      * @param map
@@ -413,6 +403,16 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     public void setSize(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+    }
+
+    /**
+     * Setzt das Bild dieses Entities.
+     *
+     * @param sprite
+     *            Bild
+     */
+    public void setSprite(Sprite sprite, int i) {
+        sprites[i] = sprite;
     }
 
     /**

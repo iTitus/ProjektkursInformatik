@@ -38,7 +38,7 @@ public abstract class Item {
     public Item(int id, String name, Sprite sprite) {
         this.id = id;
         this.name = name;
-        this.image = sprite;
+        image = sprite;
     }
 
     /**
@@ -48,26 +48,6 @@ public abstract class Item {
      */
     public int getID() {
         return id;
-    }
-
-    /**
-     * Das Bild.
-     *
-     * @return Bild
-     */
-    public Sprite getSprite() {
-        return image;
-    }
-
-    /**
-     * Das Bild des gegebenen ItemStacks.
-     *
-     * @param stack
-     *            ItemStack
-     * @return Bild
-     */
-    public Sprite getSprite(ItemStack stack) {
-        return getSprite();
     }
 
     /**
@@ -97,6 +77,26 @@ public abstract class Item {
      */
     public String getName(ItemStack stack) {
         return getName();
+    }
+
+    /**
+     * Das Bild.
+     *
+     * @return Bild
+     */
+    public Sprite getSprite() {
+        return image;
+    }
+
+    /**
+     * Das Bild des gegebenen ItemStacks.
+     *
+     * @param stack
+     *            ItemStack
+     * @return Bild
+     */
+    public Sprite getSprite(ItemStack stack) {
+        return getSprite();
     }
 
     /**

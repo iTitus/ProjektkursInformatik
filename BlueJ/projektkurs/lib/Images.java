@@ -256,6 +256,10 @@ public final class Images {
     public static BufferedImage doorOpenNS;
     public static BufferedImage elster;
     public static BufferedImage faehre;
+    public static BufferedImage faehre_EW;
+    public static BufferedImage faehre_NS;
+    public static BufferedImage faehre_SN;
+    public static BufferedImage faehre_WE;
     /**
      * Zielbild.
      */
@@ -264,36 +268,37 @@ public final class Images {
      * Feueranimationsbilder.
      */
     public static BufferedImage[] fire;
+    public static BufferedImage foo = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
     public static BufferedImage grammophonvdS;
     public static BufferedImage grammophonvO_EW;
     public static BufferedImage grammophonvO_NS;
+
     public static BufferedImage grammophonvO_SN;
+
     public static BufferedImage grammophonvO_WE;
+
     /**
      *
      */
     public static BufferedImage gras;
+
     /**
     *
     */
     public static BufferedImage haus1;
+
     public static BufferedImage haus1_EW;
 
     public static BufferedImage haus1_NS;
 
     public static BufferedImage haus1_SN;
-
     public static BufferedImage haus1_WE;
-
     /**
     *
     */
     public static BufferedImage haus2;
-
     public static BufferedImage haus2_EW;
-
     public static BufferedImage haus2_NS;
-
     public static BufferedImage haus2_SN;
     public static BufferedImage haus2_WE;
     /**
@@ -301,13 +306,18 @@ public final class Images {
     */
     public static BufferedImage haus3;
     public static BufferedImage haus3_EW;
+
     public static BufferedImage haus3_NS;
+
     public static BufferedImage haus3_SN;
+
     public static BufferedImage haus3_WE;
+
     /**
     *
     */
     public static BufferedImage haus4;
+
     public static BufferedImage haus4_EW;
 
     public static BufferedImage haus4_NS;
@@ -911,15 +921,10 @@ public final class Images {
     public static BufferedImage weibvOlAo;
 
     public static BufferedImage weibvOlAo_EW;
-
     public static BufferedImage weibvOlAo_NS;
-
     public static BufferedImage weibvOlAo_SN;
-
     public static BufferedImage weibvOlAo_WE;
-
     public static BufferedImage weibvVbAo;
-
     public static BufferedImage weibvVrAho;
 
     /**
@@ -1189,7 +1194,10 @@ public final class Images {
 
         elster = loadImage("elster", ".png");
 
-        faehre = loadImage("faehre", ".png");
+        faehre_NS = loadImage("faehre_NS", ".png");// TODO: Pic missing
+        faehre_EW = loadImageRotate90("faehre_EW", ".png");// TODO: Pic missing
+        faehre_SN = loadImageRotate180("faehre_SN", ".png");// TODO: Pic missing
+        faehre_WE = loadImageRotate270("faehre_WE", ".png");// TODO: Pic missing
 
         grammophonvdS = loadImage("grammophonvdS", ".png");
 

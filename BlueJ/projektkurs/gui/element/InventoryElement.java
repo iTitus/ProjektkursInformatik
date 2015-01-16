@@ -1,13 +1,13 @@
 package projektkurs.gui.element;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
@@ -105,23 +105,23 @@ public class InventoryElement extends Element {
     }
 
     @Override
-    public void render(Graphics2D g) {
+    public void render(Screen screen) {
         ItemStack stack;
         for (int i = 0; i < inv.getSize(); i++) {
-            RenderUtil.drawImage(g, Images.slot, i * Integers.SLOT_SIZE + posX, posY, Integers.SLOT_SIZE, Integers.SLOT_SIZE);
+            RenderUtil.drawSprite(screen, Sprites.slot, i * Integers.SLOT_SIZE + posX, posY);
             stack = inv.getItemStackAt(i);
             if (stack != null) {
-                RenderUtil.drawImage(g, stack.getImage(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
-                g.drawString(stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
+                RenderUtil.drawSprite(screen, stack.getSprite(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
+                RenderUtil.drawString(screen, stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
             }
         }
     }
 
     @Override
-    public void renderTooltip(Graphics2D g) {
+    public void renderTooltip(Screen screen) {
         ItemStack hovered = inv.getItemStackAt(MathUtil.floorDiv(Main.getInputManager().getMouseX() - posX, Integers.SLOT_SIZE));
         if (hovered != null) {
-            RenderUtil.drawTooltip(g, hovered.getName(), Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
+            RenderUtil.drawTooltip(screen, hovered.getName(), Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
         }
     }
 

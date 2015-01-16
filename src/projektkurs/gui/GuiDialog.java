@@ -60,7 +60,7 @@ public class GuiDialog extends Gui implements IButtonListener {
     public void initGui() {
         super.initGui();
         addElement(text);
-        addElement(new Button(34, 34 + 64, 256, 64, 1, this, "button.dialog.next"));
+        addElement(new Button(34, 34 + 64, 1, this, "button.dialog.next"));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package projektkurs.item;
 
-import java.awt.image.BufferedImage;
+import projektkurs.render.Sprite;
 
 /**
  * Ein einfaches Item.
@@ -14,11 +14,11 @@ public class BaseItem extends Item {
      *            ID
      * @param name
      *            Name
-     * @param image
-     *            Bild
+     * @param sprite
+     *            Sprite
      */
-    public BaseItem(int id, String name, BufferedImage image) {
-        super(id, name, image);
+    public BaseItem(int id, String name, Sprite sprite) {
+        super(id, name, sprite);
     }
 
 }

@@ -6,10 +6,10 @@ import java.util.Random;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
 import projektkurs.entity.EntityPlayer;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
+import projektkurs.lib.Sprites;
 import projektkurs.raster.FireRaster;
 import projektkurs.world.Spielfeld;
 
@@ -25,7 +25,7 @@ public class ItemNuke extends BaseItem {
      *            ID
      */
     public ItemNuke(int id) {
-        super(id, "nuke", Images.nuke);
+        super(id, "nuke", Sprites.nuke);
     }
 
     @Override

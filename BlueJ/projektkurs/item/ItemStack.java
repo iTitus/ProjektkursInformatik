@@ -1,9 +1,8 @@
 package projektkurs.item;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.lib.Items;
 import projektkurs.lib.Strings;
+import projektkurs.render.Sprite;
 import projektkurs.util.SaveData;
 
 /**
@@ -121,15 +120,6 @@ public class ItemStack {
     }
 
     /**
-     * Das Bild dieses ItemStacks.
-     *
-     * @return Bild
-     */
-    public BufferedImage getImage() {
-        return item.getImage(this);
-    }
-
-    /**
      * Der Itemtyp dieses ItemStacks.
      *
      * @return Itemtyp
@@ -145,6 +135,15 @@ public class ItemStack {
      */
     public String getName() {
         return String.format("%d x %s:%d", stackSize, item.getName(this), damage);
+    }
+
+    /**
+     * Das Bild dieses ItemStacks.
+     *
+     * @return Bild
+     */
+    public Sprite getSprite() {
+        return item.getSprite(this);
     }
 
     /**

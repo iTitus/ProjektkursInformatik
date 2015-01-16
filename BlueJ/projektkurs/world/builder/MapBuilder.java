@@ -4,7 +4,6 @@ import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
@@ -110,7 +109,7 @@ public final class MapBuilder {
 
         // ENTITIES!
         for (int x = 0; x < 3; x++) {
-            map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10, Images.redNPC));
+            map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10));
         }
 
         // ITEMS

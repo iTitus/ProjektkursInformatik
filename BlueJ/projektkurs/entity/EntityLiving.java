@@ -1,8 +1,7 @@
 package projektkurs.entity;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.lib.Strings;
+import projektkurs.render.Sprite;
 import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
@@ -39,13 +38,19 @@ public abstract class EntityLiving extends Entity {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param image
-     *            Bild
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
      * @param maxHealth
      *            maximale Gesundheit
+     * @param sprites
+     *            Bilder
      */
-    public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, BufferedImage[] images) {
-        this(map, posX, posY, 1, 1, maxHealth, images);
+    public EntityLiving(Spielfeld map, int posX, int posY, int sizeX, int sizeY, int maxHealth, Sprite... sprites) {
+        super(map, posX, posY, sizeX, sizeY, sprites);
+        this.maxHealth = maxHealth;
+        health = maxHealth;
     }
 
     /**
@@ -57,19 +62,13 @@ public abstract class EntityLiving extends Entity {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param sizeX
-     *            Breite
-     * @param sizeY
-     *            Höhe
-     * @param image
-     *            Bild
      * @param maxHealth
      *            maximale Gesundheit
+     * @param sprites
+     *            Bilder
      */
-    public EntityLiving(Spielfeld map, int posX, int posY, int sizeX, int sizeY, int maxHealth, BufferedImage... images) {
-        super(map, posX, posY, sizeX, sizeY, images);
-        this.maxHealth = maxHealth;
-        health = maxHealth;
+    public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, Sprite... sprites) {
+        this(map, posX, posY, 1, 1, maxHealth, sprites);
     }
 
     /**

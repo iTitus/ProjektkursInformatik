@@ -242,6 +242,14 @@ public final class MathUtil {
         return RANDOM.nextInt(max - min + 1) + min;
     }
 
+    public static double rotX(double angle, double x, double y) {
+        return y * Math.cos(angle) + x * Math.sin(angle);
+    }
+
+    public static double rotY(double angle, double x, double y) {
+        return y * Math.sin(angle) - x * Math.cos(angle);
+    }
+
     /**
      * Runden.
      *

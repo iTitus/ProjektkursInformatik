@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -18,6 +17,7 @@ import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.SpriteSheets;
 import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 import projektkurs.util.RenderUtil;
@@ -45,9 +45,9 @@ public class GuiInfo extends Gui {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
     }
 
     /**

@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
@@ -8,6 +7,7 @@ import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Levels;
+import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
@@ -19,10 +19,10 @@ public class GuiMainMenu extends Gui implements IButtonListener {
     @Override
     public void initGui() {
         super.initGui();
-        addElement(new Button(64, 64, 256, 64, 0, this, "Level0"));
-        addElement(new Button(64, 128, 256, 64, 1, this, "Level1"));
-        addElement(new Button(64, 192, 256, 64, 2, this, "Options"));
-        addElement(new Button(64, 256, 256, 64, 3, this, "button.exit"));
+        addElement(new Button(64, 64, 0, this, "Level0"));
+        addElement(new Button(64, 128, 1, this, "Level1"));
+        addElement(new Button(64, 192, 2, this, "Options"));
+        addElement(new Button(64, 256, 3, this, "button.exit"));
     }
 
     @Override
@@ -51,9 +51,9 @@ public class GuiMainMenu extends Gui implements IButtonListener {
     }
 
     @Override
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultBackground(g);
-        super.render(g);
-        RenderUtil.drawCenteredString(g, "MAIN MENU", MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2));
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
+        RenderUtil.drawCenteredString(screen, "MAIN MENU", MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2));
     }
 }

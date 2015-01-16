@@ -1,16 +1,16 @@
 package projektkurs.world;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
+import projektkurs.lib.Sprites;
 import projektkurs.raster.AbstractRaster;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.IHasExtraInformation;
+import projektkurs.render.Screen;
 import projektkurs.story.StoryManager;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.MathUtil;
@@ -313,23 +313,23 @@ public class Spielfeld implements IUpdatable {
     /**
      * Rendert das Spielfeld.
      *
-     * @param g
-     *            Graphics2D
+     * @param s
+     *            Screen
      */
-    public void render(Graphics2D g) {
+    public void render(Screen s) {
         for (int y = Main.getRenderHelper().getSightY(); y < Main.getRenderHelper().getSightY() + Integers.sightY; y++) {
             for (int x = Main.getRenderHelper().getSightX(); x < Main.getRenderHelper().getSightX() + Integers.sightX; x++) {
                 if (isRasterAt(x, y)) {
-                    getRasterAt(x, y).render(g, this, x, y);
+                    getRasterAt(x, y).render(s, this, x, y);
                 } else {
-                    RenderUtil.drawDefaultRaster(g, Images.baum, x, y);
+                    RenderUtil.drawDefaultRaster(s, Sprites.tree, x, y);
                 }
             }
         }
 
         for (Entity e : getEntityList()) {
             if (!e.shouldDeSpawn() && Main.getRenderHelper().isInSight(e)) {
-                e.render(g);
+                e.render(s);
             }
         }
     }

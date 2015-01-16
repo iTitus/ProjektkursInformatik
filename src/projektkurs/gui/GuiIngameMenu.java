@@ -16,8 +16,8 @@ public class GuiIngameMenu extends Gui implements IButtonListener {
     @Override
     public void initGui() {
         super.initGui();
-        addElement(new Button(64, 64, 256, 64, 0, this, "Options"));
-        addElement(new Button(64, 128, 256, 64, 1, this, "Main Menu"));
+        addElement(new Button(64, 64, 0, this, "Options"));
+        addElement(new Button(64, 128, 1, this, "Main Menu"));
     }
 
     @Override
@@ -45,6 +45,5 @@ public class GuiIngameMenu extends Gui implements IButtonListener {
         RenderUtil.drawDefaultBackground(screen);
         super.render(screen);
     }
-
 
 }

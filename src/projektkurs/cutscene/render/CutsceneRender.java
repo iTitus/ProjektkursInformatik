@@ -29,10 +29,6 @@ public class CutsceneRender implements IUpdatable {
      */
     private Graphics2D g;
     /**
-     * Die BufferStrategy der aktuellen CutScene.
-     */
-    private BufferStrategy strategy;
-    /**
      * Bild.
      */
     private final BufferedImage image = new BufferedImage(Integers.windowX, Integers.windowY, BufferedImage.TYPE_INT_RGB);
@@ -43,7 +39,11 @@ public class CutsceneRender implements IUpdatable {
     /**
      * Screen.
      */
-    private Screen screen;
+    private final Screen screen;
+    /**
+     * Die BufferStrategy der aktuellen CutScene.
+     */
+    private BufferStrategy strategy;
 
     /**
      * Konstruktor.

@@ -1,18 +1,18 @@
 package projektkurs.entity;
 
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviour;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
 import projektkurs.raster.AbstractRaster;
+import projektkurs.render.Screen;
+import projektkurs.render.Sprite;
 import projektkurs.util.Direction;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.ISaveable;
@@ -29,17 +29,13 @@ import projektkurs.world.Spielfeld;
 public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSize {
 
     /**
-     * Alle Behaviours dieses Entities.sd
+     * Alle Behaviours dieses Entities.
      */
     private final ArrayList<Behaviour> behaviours = new ArrayList<Behaviour>();
     /**
      * Richtung, in die dieser Entity guckt.
      */
     private Direction facing;
-    /**
-     * Bild.
-     */
-    private BufferedImage[] images;
     /**
      * Soll das Bild sich mit ändernder Richtung verändern.
      */
@@ -48,6 +44,10 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * Soll dieser Entity nächsten Tick verschwinden.
      */
     private boolean shouldDeSpawn;
+    /**
+     * Bild.
+     */
+    private Sprite[] sprites;
     /**
      * Spielfeld.
      */
@@ -76,7 +76,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         this.map = map;
         shouldDeSpawn = false;
         facing = Direction.UNKNOWN;
-        images = null;
+        sprites = null;
         shouldChangeImageWithFacing = false;
         posX = 0;
         posY = 0;
@@ -93,11 +93,29 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      *            X-Position
      * @param posY
      *            Y-Position
-     * @param image
-     *            Bild
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Höhe
+     * @param sprites
+     *            Sprite
      */
-    public Entity(Spielfeld map, int posX, int posY, BufferedImage... images) {
-        this(map, posX, posY, 1, 1, images);
+    public Entity(Spielfeld map, int posX, int posY, int sizeX, int sizeY, Sprite... sprites) {
+        this(map);
+        this.posX = posX;
+        this.posY = posY;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        if (sprites.length == 4) {
+            this.sprites = sprites;
+            shouldChangeImageWithFacing = true;
+        } else if (sprites.length == 1) {
+            this.sprites = sprites;
+            shouldChangeImageWithFacing = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     /**
@@ -109,29 +127,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      *            X-Position
      * @param posY
      *            Y-Position
-     * @param sizeX
-     *            Breite
-     * @param sizeY
-     *            Höhe
-     * @param image
-     *            Bild
+     * @param sprites
+     *            Sprite
      */
-    public Entity(Spielfeld map, int posX, int posY, int sizeX, int sizeY, BufferedImage... images) {
-        this(map);
-        this.posX = posX;
-        this.posY = posY;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
-        if (images.length == 4) {
-            this.images = images;
-            shouldChangeImageWithFacing = true;
-        } else if (images.length == 1) {
-            this.images = images;
-            shouldChangeImageWithFacing = false;
-        } else {
-            throw new IllegalArgumentException();
-        }
-
+    public Entity(Spielfeld map, int posX, int posY, Sprite... sprites) {
+        this(map, posX, posY, 1, 1, sprites);
     }
 
     /**
@@ -207,27 +207,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Bild.
-     *
-     * @return BufferedImage
-     */
-    public BufferedImage getImage() {
-        if (!shouldChangeImageWithFacing) {
-            return images[0];
-        }
-        return images[MathUtil.floorDiv(facing.getIndex(), 2)];
-    }
-
-    /**
-     * Alle Bilder.
-     *
-     * @return Bilder
-     */
-    public BufferedImage[] getImages() {
-        return images;
-    }
-
-    /**
      * Der Interne Name dieses Entity-Typs.
      *
      * @return Interner Name
@@ -284,6 +263,27 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
+     * Bild.
+     *
+     * @return Sprite
+     */
+    public Sprite getSprite() {
+        if (!shouldChangeImageWithFacing) {
+            return sprites[0];
+        }
+        return sprites[MathUtil.floorDiv(facing.getIndex(), 2)];
+    }
+
+    /**
+     * Alle Bilder.
+     *
+     * @return Bilder
+     */
+    public Sprite[] getSprites() {
+        return sprites;
+    }
+
+    /**
      * Ist ein anderer Entity innerhalb von diesem Entity.
      *
      * @param e
@@ -319,13 +319,13 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         sizeY = data.getInteger(Strings.ENTITY_SIZE_Y);
         shouldDeSpawn = data.getBoolean(Strings.ENTITY_DESPAWN);
         facing = Direction.getDirectionForIndex(data.getInteger(Strings.ENTITY_FACING));
-        images = new BufferedImage[data.getInteger(Strings.ENTITY_IMAGE_LENGTH)];
-        for (int i = 0; i < images.length; i++) {
-            images[i] = Images.MAPPINGS.get(data.getString(Strings.ENTITY_IMAGE + "[" + i + "]"));
+        sprites = new Sprite[data.getInteger(Strings.ENTITY_SPRITE_LENGTH)];
+        for (int i = 0; i < sprites.length; i++) {
+            sprites[i] = Sprites.MAPPINGS.get(data.getString(Strings.ENTITY_SPRITE + "[" + i + "]"));
         }
-        if (images.length == 1) {
+        if (sprites.length == 1) {
             shouldChangeImageWithFacing = false;
-        } else if (images.length == 4) {
+        } else if (sprites.length == 4) {
             shouldChangeImageWithFacing = true;
         } else {
             Logger.warn(getInternalName() + ": Wrong SaveData format -> 1 or 4 images");
@@ -370,11 +370,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     /**
      * Rendert den Entity.
      *
-     * @param g
-     *            Graphics2D Objekt
+     * @param screen
+     *            Screen
      */
-    public void render(Graphics2D g) {
-        RenderUtil.drawDefaultEntity(g, this);
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultEntity(screen, this);
     }
 
     /**
@@ -382,16 +382,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     public void setDead() {
         shouldDeSpawn = true;
-    }
-
-    /**
-     * Setzt das Bild dieses Entities.
-     *
-     * @param image
-     *            Bild
-     */
-    public void setImage(BufferedImage image, int i) {
-        images[i] = image;
     }
 
     /**
@@ -413,6 +403,16 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     public void setSize(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+    }
+
+    /**
+     * Setzt das Bild dieses Entities.
+     *
+     * @param sprite
+     *            Bild
+     */
+    public void setSprite(Sprite sprite, int i) {
+        sprites[i] = sprite;
     }
 
     /**
@@ -450,9 +450,9 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         data.set(Strings.ENTITY_SIZE_Y, sizeY);
         data.set(Strings.ENTITY_DESPAWN, shouldDeSpawn);
         data.set(Strings.ENTITY_FACING, facing.getIndex());
-        data.set(Strings.ENTITY_IMAGE_LENGTH, images.length);
-        for (int i = 0; i < images.length; i++) {
-            data.set(Strings.ENTITY_IMAGE + "[" + i + "]", Images.BACK_MAPPINGS.get(images[i]));
+        data.set(Strings.ENTITY_SPRITE_LENGTH, sprites.length);
+        for (int i = 0; i < sprites.length; i++) {
+            data.set(Strings.ENTITY_SPRITE + "[" + i + "]", sprites[i].getName());
         }
     }
 

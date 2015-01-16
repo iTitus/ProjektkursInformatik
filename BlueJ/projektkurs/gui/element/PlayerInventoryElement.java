@@ -1,12 +1,12 @@
 package projektkurs.gui.element;
 
-import java.awt.Graphics2D;
 import java.awt.event.MouseWheelEvent;
 
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
+import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 
 /**
@@ -82,14 +82,15 @@ public class PlayerInventoryElement extends InventoryElement {
     }
 
     @Override
-    public void render(Graphics2D g) {
+    public void render(Screen screen) {
         ItemStack stack;
         for (int i = 0; i < inv.getSize(); i++) {
-            RenderUtil.drawImage(g, i == ((PlayerInventory) inv).getSelectedIndex() ? Images.slothighlight : Images.slot, i * Integers.SLOT_SIZE + posX, posY, Integers.SLOT_SIZE, Integers.SLOT_SIZE);
+            RenderUtil.drawSprite(screen, i == ((PlayerInventory) inv).getSelectedIndex() ? Sprites.slot_highlight : Sprites.slot, i * Integers.SLOT_SIZE + posX, posY);
             stack = inv.getItemStackAt(i);
             if (stack != null) {
-                RenderUtil.drawImage(g, stack.getImage(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
-                g.drawString(stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
+                RenderUtil.drawSprite(screen, stack.getSprite(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
+                RenderUtil.drawString(screen, stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
+
             }
         }
     }

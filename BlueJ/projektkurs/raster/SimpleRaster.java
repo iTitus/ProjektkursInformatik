@@ -1,8 +1,7 @@
 package projektkurs.raster;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
+import projektkurs.render.Screen;
+import projektkurs.render.Sprite;
 import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
 
@@ -14,7 +13,7 @@ public class SimpleRaster extends AbstractRaster {
     /**
      * Das Bild.
      */
-    private final BufferedImage image;
+    private final Sprite sprite;
 
     /**
      * Konstruktor.
@@ -23,21 +22,21 @@ public class SimpleRaster extends AbstractRaster {
      *            ID
      * @param name
      *            Name
-     * @param image
-     *            Bild
+     * @param sprite
+     *            Sprite
      */
-    public SimpleRaster(int id, String name, BufferedImage image) {
+    public SimpleRaster(int id, String name, Sprite sprite) {
         super(id, name);
-        this.image = image;
+        this.sprite = sprite;
     }
 
     @Override
-    public void render(Graphics2D g, Spielfeld map, int x, int y) {
-        RenderUtil.drawDefaultRaster(g, image, x, y);
+    public void render(Screen screen, Spielfeld map, int x, int y) {
+        RenderUtil.drawDefaultRaster(screen, sprite, x, y);
     }
 
     @Override
-    public void renderCutScene(Graphics2D g, int x, int y) {
-        RenderUtil.drawCutSceneRaster(g, image, x, y);
+    public void renderCutScene(Screen screen, int x, int y) {
+        RenderUtil.drawCutSceneRaster(screen, sprite, x, y);
     }
 }

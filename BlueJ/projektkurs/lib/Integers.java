@@ -92,6 +92,10 @@ public final class Integers {
      */
     public static final int STACK_SIZE_OFFSET = 11;
     /**
+     * Transparenter Pixel.
+     */
+    public static final int TRANSPARENCY = 0xFFFF00FF;
+    /**
      * Updates pro Sekunde.
      */
     public static final int UPS = 20;

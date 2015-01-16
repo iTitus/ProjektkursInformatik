@@ -14,6 +14,9 @@ import projektkurs.util.Pair;
  */
 public final class SpriteSheets {
 
+    public static SpriteSheet entities;
+    public static SpriteSheet guis;
+    public static SpriteSheet items;
     /**
      * Die Mappings.
      */
@@ -36,6 +39,15 @@ public final class SpriteSheets {
     public static void init() {
         raster = new SpriteSheet("raster", "rasterSheet.png");
         registerSpriteSheet(raster);
+
+        items = new SpriteSheet("items", "itemSheet.png");
+        registerSpriteSheet(items);
+
+        guis = new SpriteSheet("guis", "guiSheet.png");
+        registerSpriteSheet(guis);
+
+        entities = new SpriteSheet("entities", "entitySheet.png");
+        registerSpriteSheet(entities);
     }
 
     /**

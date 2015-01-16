@@ -30,14 +30,6 @@ public final class Strings {
      */
     public static final String ENTITY_ID = "id";
     /**
-     * SaveData-Key für sprite.
-     */
-    public static final String ENTITY_SPRITE = "sprite";
-    /**
-     * SaveData-Key für die Anzahl der Bilder.
-     */
-    public static final String ENTITY_SPRITE_LENGTH = "spriteLength";
-    /**
      * SaveData-Key für inventory.
      */
     public static final String ENTITY_INV = "inventory";
@@ -57,6 +49,14 @@ public final class Strings {
      * SaveData-Key für sizeY.
      */
     public static final String ENTITY_SIZE_Y = "sizeY";
+    /**
+     * SaveData-Key für sprite.
+     */
+    public static final String ENTITY_SPRITE = "sprite";
+    /**
+     * SaveData-Key für die Anzahl der Bilder.
+     */
+    public static final String ENTITY_SPRITE_LENGTH = "spriteLength";
     /**
      * SaveData-Key für posX.
      */

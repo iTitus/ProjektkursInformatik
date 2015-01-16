@@ -16,6 +16,7 @@ import projektkurs.io.InputManager;
 import projektkurs.level.Level;
 import projektkurs.lib.Images;
 import projektkurs.lib.Sounds;
+import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
 import projektkurs.render.Render;
 import projektkurs.render.RenderHelper;
@@ -291,7 +292,7 @@ public final class Main {
     public static void startLevel(Level l) {
         if (l != null) {
             level = l;
-            player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Images.lordvO_EW, Images.lordvO_SN, Images.lordvO_WE, Images.lordvO_NS);
+            player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Sprites.lordvO_EW, Sprites.lordvO_SN, Sprites.lordvO_WE, Sprites.lordvO_NS);
             l.generateAndPopulateAll();
             level.getMap().spawn(player);
             closeGui();

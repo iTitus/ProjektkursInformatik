@@ -51,6 +51,11 @@ public class ExtraInformationDoor extends ExtraInformation {
         return direction;
     }
 
+    @Override
+    public String getInternalName() {
+        return "door";
+    }
+
     /**
      * Das Bild.
      *
@@ -65,11 +70,6 @@ public class ExtraInformationDoor extends ExtraInformation {
             default:
                 return isOpen ? Sprites.door_open : Sprites.door;
         }
-    }
-
-    @Override
-    public String getInternalName() {
-        return "door";
     }
 
     /**

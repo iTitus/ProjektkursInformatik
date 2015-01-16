@@ -13,10 +13,6 @@ import projektkurs.util.RenderUtil;
 public class CutSceneObject implements IHasPositionAndSize {
 
     /**
-     * Bild.
-     */
-    private final Sprite sprite;
-    /**
      * X-Position.
      */
     private int posX;
@@ -32,6 +28,10 @@ public class CutSceneObject implements IHasPositionAndSize {
      * Höhe.
      */
     private int sizeY;
+    /**
+     * Bild.
+     */
+    private final Sprite sprite;
 
     /**
      * @param sprite
@@ -52,15 +52,6 @@ public class CutSceneObject implements IHasPositionAndSize {
         this.sizeY = sizeY;
     }
 
-    /**
-     * Bild.
-     *
-     * @return Sprite
-     */
-    public Sprite getSprite() {
-        return sprite;
-    }
-
     @Override
     public int getPosX() {
         return posX;
@@ -79,6 +70,15 @@ public class CutSceneObject implements IHasPositionAndSize {
     @Override
     public int getSizeY() {
         return sizeY;
+    }
+
+    /**
+     * Bild.
+     *
+     * @return Sprite
+     */
+    public Sprite getSprite() {
+        return sprite;
     }
 
     /**

@@ -1,9 +1,8 @@
 package projektkurs.entity;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.entity.behaviour.BehaviourRunAround;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -31,11 +30,9 @@ public class EntityRedNPC extends EntityNPC {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param image
-     *            Bild
      */
-    public EntityRedNPC(Spielfeld map, int posX, int posY, BufferedImage image) {
-        super(map, posX, posY, Integers.PLAYER_HEALTH, image);
+    public EntityRedNPC(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, Integers.PLAYER_HEALTH, Sprites.redNPC);
         addBehaviour(new BehaviourRunAround(this));
     }
 

@@ -14,6 +14,9 @@ import projektkurs.util.Pair;
  */
 public final class Sprites {
 
+    public static Sprite button;
+    public static Sprite button_disabled;
+    public static Sprite button_highlight;
     public static Sprite chest;
     public static Sprite destroyed;
     public static Sprite door;
@@ -21,10 +24,21 @@ public final class Sprites {
     public static Sprite finish;
     public static Sprite[] fire;
     public static Sprite grass;
+    public static Sprite healthpotion;
+    public static Sprite item42;
+    public static Sprite key;
+    public static Sprite lordvO_EW;
+    public static Sprite lordvO_NS;
+    public static Sprite lordvO_SN;
+    public static Sprite lordvO_WE;
     /**
      * Die Mappings.
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
+    public static Sprite nuke;
+    public static Sprite redNPC;
+    public static Sprite slot;
+    public static Sprite slot_highlight;
     public static Sprite tree;
     public static Sprite wall;
     public static Sprite water;
@@ -75,6 +89,48 @@ public final class Sprites {
 
         water = new Sprite("water", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(water);
+
+        item42 = new Sprite("item42", Integers.RASTER_SIZE, 0, 0, SpriteSheets.items);
+        registerSprite(item42);
+
+        nuke = new Sprite("nuke", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(nuke);
+
+        key = new Sprite("key", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(key);
+
+        healthpotion = new Sprite("healthpotion", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(healthpotion);
+
+        button = new Sprite("button", Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 0, 0, SpriteSheets.guis);
+        registerSprite(button);
+
+        button_highlight = new Sprite("button_highlight", Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 0, Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
+        registerSprite(button_highlight);
+
+        button_disabled = new Sprite("button_disabled", Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 0, 2 * Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
+        registerSprite(button_disabled);
+
+        slot = new Sprite("slot", Integers.SLOT_SIZE, 0, 3 * Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
+        registerSprite(slot);
+
+        slot_highlight = new Sprite("slot_highlight", Integers.SLOT_SIZE, Integers.SLOT_SIZE, 3 * Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
+        registerSprite(slot_highlight);
+
+        lordvO_NS = new Sprite("lordvO_NS", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
+        registerSprite(lordvO_NS);
+
+        lordvO_EW = lordvO_NS.rotate("lordvO_EW", Math.toRadians(90));
+        registerSprite(lordvO_EW);
+
+        lordvO_SN = lordvO_EW.rotate("lordvO_SN", Math.toRadians(90));
+        registerSprite(lordvO_SN);
+
+        lordvO_WE = lordvO_SN.rotate("lordvO_WE", "LordVonDerSeite2.png");
+        registerSprite(lordvO_WE);
+
+        redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(redNPC);
     }
 
     /**

@@ -79,8 +79,8 @@ public final class RenderUtil {
     /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param s
      *            String
      * @param centerX
@@ -300,20 +300,27 @@ public final class RenderUtil {
     }
 
     /**
-     * Schreibt einen String an die gegebenen Koordinaten.
+     * Malt einen Sprite an die gegebenen Koordinaten.
      *
-     * @param g
-     *            Graphics2D
-     * @param string
-     *            String
-     * @param posX
+     * @param screen
+     *            Screen
+     * @param sprite
+     *            Sprite
+     * @param x
      *            X-Koordinate
-     * @param posY
+     * @param y
      *            Y-Koordinate
      */
-    public static void drawString(Screen screen, String string, int posX, int posY) {
-        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
-        // FIXME: TODO: watch reallie intelent wideos (TOT)
+    public static void drawSprite(Screen screen, Sprite sprite, int x, int y) {
+        int pixel;
+        for (int yy = 0; yy < sprite.getSizeY(); yy++) {
+            for (int xx = 0; xx < sprite.getSizeX(); xx++) {
+                pixel = sprite.getPixel(xx, yy);
+                if (pixel != Integers.TRANSPARENCY) {
+                    screen.setPixel(pixel, x + xx, y + yy);
+                }
+            }
+        }
     }
 
     /**
@@ -338,6 +345,23 @@ public final class RenderUtil {
     }
 
     /**
+     * Schreibt einen String an die gegebenen Koordinaten.
+     *
+     * @param g
+     *            Graphics2D
+     * @param string
+     *            String
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     */
+    public static void drawString(Screen screen, String string, int posX, int posY) {
+        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
+        // FIXME: TODO: watch reallie intelent wideos (TOT)
+    }
+
+    /**
      * Rendert einen Tooltip an die gegebene Position.
      *
      * @param g
@@ -350,18 +374,18 @@ public final class RenderUtil {
      *            Y-Koordinate
      */
     public static void drawTooltip(Screen screen, String str, int x, int y) {
-//        Color oldColor = g.getColor();
-//        Font oldfont = g.getFont();
-//        g.setFont(FONTS[Integers.DEFAULT_FONT_SIZE]);
-//        int height = g.getFontMetrics().getHeight();
-//        int width = g.getFontMetrics().stringWidth(str);
-//        g.setColor(TOOLTIP_COLOR);
-//        g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-//        g.setColor(Color.BLACK);
-//        g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-//        RenderUtil.drawCenteredStringInRect(g, str, x, y - height, width, height);
-//        g.setFont(oldfont);
-//        g.setColor(oldColor);
+        // Color oldColor = g.getColor();
+        // Font oldfont = g.getFont();
+        // g.setFont(FONTS[Integers.DEFAULT_FONT_SIZE]);
+        // int height = g.getFontMetrics().getHeight();
+        // int width = g.getFontMetrics().stringWidth(str);
+        // g.setColor(TOOLTIP_COLOR);
+        // g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+        // g.setColor(Color.BLACK);
+        // g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
+        // RenderUtil.drawCenteredStringInRect(g, str, x, y - height, width, height);
+        // g.setFont(oldfont);
+        // g.setColor(oldColor);
     }
 
     /**
@@ -378,29 +402,5 @@ public final class RenderUtil {
      * Nicht instanziierbar.
      */
     private RenderUtil() {
-    }
-
-    /**
-     * Malt einen Sprite an die gegebenen Koordinaten.
-     * 
-     * @param screen
-     *            Screen
-     * @param sprite
-     *            Sprite
-     * @param x
-     *            X-Koordinate
-     * @param y
-     *            Y-Koordinate
-     */
-    public static void drawSprite(Screen screen, Sprite sprite, int x, int y) {
-        int pixel;
-        for (int yy = 0; yy < sprite.getSizeY(); yy++) {
-            for (int xx = 0; xx < sprite.getSizeX(); xx++) {
-                pixel = sprite.getPixel(xx, yy);
-                if (pixel != Integers.TRANSPARENCY) {
-                    screen.setPixel(pixel, x + xx, y + yy);
-                }
-            }
-        }
     }
 }

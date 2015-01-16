@@ -1,6 +1,5 @@
 package projektkurs.gui;
 
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -11,6 +10,7 @@ import java.util.List;
 import projektkurs.Main;
 import projektkurs.gui.element.Element;
 import projektkurs.lib.KeyBindings;
+import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 
 /**
@@ -141,19 +141,19 @@ public abstract class Gui implements IUpdatable {
     /**
      * Rendert das Gui.
      *
-     * @param g
-     *            Graphics2D Objekt
+     * @param screen
+     *            Screen
      */
-    public void render(Graphics2D g) {
+    public void render(Screen screen) {
         Element hovered = null;
         for (Element el : guiElements) {
-            el.render(g);
+            el.render(screen);
             if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
                 hovered = el;
             }
         }
         if (hovered != null) {
-            hovered.renderTooltip(g);
+            hovered.renderTooltip(screen);
         }
     }
 

@@ -1,9 +1,8 @@
 package projektkurs.entity;
 
-import java.awt.image.BufferedImage;
-
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Strings;
+import projektkurs.render.Sprite;
 import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
@@ -38,13 +37,13 @@ public class EntityItem extends Entity {
      *            der enthaltene ItemStack
      */
     public EntityItem(Spielfeld map, int posX, int posY, ItemStack stack) {
-        super(map, posX, posY, stack.getItem().getImage(stack));
+        super(map, posX, posY, stack.getItem().getSprite(stack));
         this.stack = stack;
     }
 
     @Override
-    public BufferedImage getImage() {
-        return stack.getItem().getImage(stack);
+    public Sprite getSprite() {
+        return stack.getItem().getSprite(stack);
     }
 
     /**

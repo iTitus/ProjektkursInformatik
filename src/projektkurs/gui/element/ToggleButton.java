@@ -23,10 +23,6 @@ public class ToggleButton extends Button {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param sizeX
-     *            Breite
-     * @param sizeY
-     *            Höhe
      * @param id
      *            Nummer
      * @param listener
@@ -34,8 +30,8 @@ public class ToggleButton extends Button {
      * @param names
      *            alle Namen
      */
-    public ToggleButton(int posX, int posY, int sizeX, int sizeY, int id, IButtonListener listener, String... names) {
-        super(posX, posY, sizeX, sizeY, id, listener, names[0]);
+    public ToggleButton(int posX, int posY, int id, IButtonListener listener, String... names) {
+        super(posX, posY, id, listener, names[0]);
         this.names = names;
         index = 0;
     }

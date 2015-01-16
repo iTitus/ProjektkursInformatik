@@ -31,7 +31,7 @@ public class GuiLangChooser extends Gui implements IButtonListener {
         addElement(new TextView(34, 34, 256, 64, 0, "info.lang.current", I18n.getLocale()));
         Button b;
         for (int i = 0; i < I18n.getSupportedLocales().length; i++) {
-            b = new Button(34, 34 + (i + 1) * 64, 256, 64, i + 1, this, I18n.getSupportedLocales()[i].getUnlocalizedName());
+            b = new Button(34, 34 + (i + 1) * 64, i + 1, this, I18n.getSupportedLocales()[i].getUnlocalizedName());
             if (I18n.getSupportedLocales()[i].equals(I18n.getLocale())) {
                 b.setEnabled(false);
             }
@@ -55,6 +55,5 @@ public class GuiLangChooser extends Gui implements IButtonListener {
         RenderUtil.drawDefaultBackground(screen);
         super.render(screen);
     }
-
 
 }

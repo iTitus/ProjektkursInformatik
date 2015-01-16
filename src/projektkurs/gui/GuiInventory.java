@@ -77,5 +77,4 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
         super.render(screen);
     }
 
-
 }

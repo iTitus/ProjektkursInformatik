@@ -60,10 +60,6 @@ public class SpriteSheet {
         return pixels.length;
     }
 
-    public int[] getPixels() {
-        return pixels;
-    }
-
     public int getSizeX() {
         return sizeX;
     }

@@ -65,7 +65,7 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
         super.initGui();
         int id = 0;
         for (DialogPart shown : dialog.getShownParts()) {
-            addElement(new DialogButton(34, 34 + id * 64, 256, 64, id++, this, shown));
+            addElement(new DialogButton(34, 34 + id * 64, id++, this, shown));
         }
     }
 

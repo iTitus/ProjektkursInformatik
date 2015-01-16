@@ -50,7 +50,6 @@ public class GuiInfo extends Gui {
         super.render(screen);
     }
 
-
     /**
      * Fügt alle TextViews hinzu.
      *

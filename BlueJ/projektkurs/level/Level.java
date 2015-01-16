@@ -1,8 +1,7 @@
 package projektkurs.level;
 
-import java.awt.Graphics2D;
-
 import projektkurs.Main;
+import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
@@ -107,10 +106,10 @@ public class Level implements IUpdatable {
      * Rendert das Level.
      *
      * @param g
-     *            Graphics2D
+     *            Screen
      */
-    public void render(Graphics2D g) {
-        getMap().render(g);
+    public void render(Screen s) {
+        getMap().render(s);
     }
 
     /**

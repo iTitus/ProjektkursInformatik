@@ -38,24 +38,6 @@ public abstract class EntityLiving extends Entity {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param maxHealth
-     *            maximale Gesundheit
-     * @param sprites
-     *            Bilder
-     */
-    public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, Sprite... sprites) {
-        this(map, posX, posY, 1, 1, maxHealth, sprites);
-    }
-
-    /**
-     * Konstruktor.
-     *
-     * @param map
-     *            Spielfeld
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
      * @param sizeX
      *            Breite
      * @param sizeY
@@ -69,6 +51,24 @@ public abstract class EntityLiving extends Entity {
         super(map, posX, posY, sizeX, sizeY, sprites);
         this.maxHealth = maxHealth;
         health = maxHealth;
+    }
+
+    /**
+     * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     * @param posX
+     *            X-Koordinate
+     * @param posY
+     *            Y-Koordinate
+     * @param maxHealth
+     *            maximale Gesundheit
+     * @param sprites
+     *            Bilder
+     */
+    public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, Sprite... sprites) {
+        this(map, posX, posY, 1, 1, maxHealth, sprites);
     }
 
     /**

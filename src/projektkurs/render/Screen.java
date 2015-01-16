@@ -20,6 +20,16 @@ public class Screen {
         setColor(0);
     }
 
+    /**
+     * @param posX
+     * @param posY
+     * @param sizeX2
+     * @param sizeY2
+     */
+    public void drawRect(int posX, int posY, int sizeX, int sizeY) {
+        // TODO
+    }
+
     public int getPixel(int index) {
         if (MathUtil.isInArray(index, pixels.length)) {
             return pixels[index];
@@ -60,16 +70,6 @@ public class Screen {
         if (MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
             pixels[x + y * sizeX] = color;
         }
-    }
-
-    /**
-     * @param posX
-     * @param posY
-     * @param sizeX2
-     * @param sizeY2
-     */
-    public void drawRect(int posX, int posY, int sizeX, int sizeY) {
-        // TODO
     }
 
 }
