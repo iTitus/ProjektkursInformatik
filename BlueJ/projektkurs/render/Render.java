@@ -1,7 +1,6 @@
 package projektkurs.render;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -10,21 +9,18 @@ import java.awt.image.DataBufferInt;
 import projektkurs.Main;
 import projektkurs.lib.Integers;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
 /**
  * Renderklasse.
  */
-public class Render implements IUpdatable {
+public class Render extends Canvas implements IUpdatable {
 
     /**
-     * Das Spiel-Canvas.
+     * Serielle Version.
      */
-    private Canvas canvas;
-    /**
-     * Das aktuelle Graphics2D-Objekt.
-     */
-    private Graphics2D g;
+    private static final long serialVersionUID = 1L;
     /**
      * Bild.
      */
@@ -37,18 +33,20 @@ public class Render implements IUpdatable {
      * Der Screen.
      */
     private final Screen screen;
-    /**
-     * Die aktuelle BufferStrategy.
-     */
-    private BufferStrategy strategy;
 
     /**
      * Konstruktor.
      */
     public Render() {
-        canvas = null;
-        strategy = null;
-        g = null;
+        setIgnoreRepaint(true);
+        setBounds(0, 0, Integers.windowX, Integers.windowY);
+        addKeyListener(Main.getInputManager());
+        addMouseListener(Main.getInputManager());
+        addMouseMotionListener(Main.getInputManager());
+        addMouseWheelListener(Main.getInputManager());
+        setFocusable(true);
+        requestFocus();
+        requestFocusInWindow();
         screen = new Screen(Integers.windowX, Integers.windowY);
     }
 
@@ -58,72 +56,41 @@ public class Render implements IUpdatable {
     }
 
     /**
-     * Die aktuelle BufferStrategy.
-     *
-     * @return BufferStrategy
-     */
-    public BufferStrategy getBufferStrategy() {
-        return strategy;
-    }
-
-    /**
-     * Gibt das aktuelle Canvas zurück.
-     *
-     * @return Canvas
-     */
-    public Canvas getGameCanvas() {
-        if (canvas == null) {
-            canvas = new Canvas();
-            canvas.setIgnoreRepaint(true);
-            canvas.setBounds(0, 0, Integers.windowX, Integers.windowY);
-            canvas.addKeyListener(Main.getInputManager());
-            canvas.addMouseListener(Main.getInputManager());
-            canvas.addMouseMotionListener(Main.getInputManager());
-            canvas.addMouseWheelListener(Main.getInputManager());
-            canvas.setFocusable(true);
-            canvas.requestFocus();
-            canvas.requestFocusInWindow();
-        }
-        return canvas;
-    }
-
-    /**
-     * Initialisiert die BufferStrategy.
-     */
-    public void initBuffers() {
-        canvas.createBufferStrategy(3);
-        strategy = canvas.getBufferStrategy();
-    }
-
-    /**
      * Updated den Bildschirm.
      */
     @Override
     public void update() {
-        if (strategy != null) {
-
-            g = (Graphics2D) strategy.getDrawGraphics();
-
-            screen.clear();
-
-            if (Main.getLevel() != null) {
-                Main.getLevel().render(screen);
-            }
-
-            g.setColor(Color.BLACK);
-            Main.getGui().render(screen);
-
-            for (int i = 0; i < pixels.length; i++) {
-                pixels[i] = screen.getPixel(i);
-            }
-            RenderUtil.drawImage(g, image, Integers.windowX, Integers.windowY);
-
-            g.drawString("FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + (Main.getLevel() != null && Main.getPlayer() != null ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() : ""),
-                    Integers.INFO_X, Integers.INFO_Y);
-
-            g.dispose();
-            strategy.show();
-
+        BufferStrategy strategy = getBufferStrategy();
+        if (strategy == null) {
+            createBufferStrategy(3);
+            return;
         }
+
+        screen.clear();
+
+        if (Main.getLevel() != null) {
+            Main.getLevel().render(screen);
+        }
+
+        Main.getGui().render(screen);
+
+        for (int i = 0; i < pixels.length; i++) {
+            pixels[i] = screen.getPixel(i);
+        }
+
+        Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+        RenderUtil.drawImage(g, image, 0, 0, getWidth(), getHeight());
+
+        g.drawString(
+                "FPS: "
+                        + Main.getFPS()
+                        + " - UPS: "
+                        + Main.getUPS()
+                        + (Main.getLevel() != null && Main.getPlayer() != null ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() + " | Facing: " + Main.getPlayer().getFacing() + " ("
+                                + MathUtil.floorDiv(Main.getPlayer().getFacing().getIndex(), 2) + ")" : ""), Integers.INFO_X, Integers.INFO_Y);
+
+        g.dispose();
+        strategy.show();
+
     }
 }

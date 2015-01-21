@@ -44,7 +44,10 @@ public class Sprite {
         this.name = name;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.pixels = Arrays.copyOf(pixels, pixels.length);
+        this.pixels = new int[pixels.length];
+        for (int i = 0; i < pixels.length; i++) {
+            this.pixels[i] = pixels[i];
+        }
     }
 
     public String getName() {
@@ -79,6 +82,8 @@ public class Sprite {
 
     public int[] rotate(double angle) {
 
+        angle -= Math.toRadians(90);
+
         int[] result = new int[pixels.length];
 
         double nx_x = MathUtil.rotX(-angle, 1, 0);
@@ -89,21 +94,20 @@ public class Sprite {
         double x0 = MathUtil.rotX(-angle, -sizeX / 2D, -sizeY / 2D) + sizeX / 2D;
         double y0 = MathUtil.rotY(-angle, -sizeX / 2D, -sizeY / 2D) + sizeY / 2D;
 
-        double x1 = x0;
-        double y1 = y0;
-        int xx;
-        int yy;
-        int col;
+        double x1, y1;
+        int xx, yy, col;
 
         for (int y = 0; y < sizeY; y++) {
+            x1 = x0;
+            y1 = y0;
             for (int x = 0; x < sizeX; x++) {
                 xx = MathUtil.floor(x1);
                 yy = MathUtil.floor(y1);
 
-                if (MathUtil.isInArray(xx, sizeX) && MathUtil.isInArray(yy, sizeY)) {
-                    col = getPixel(xx, yy);
-                } else {
+                if (MathUtil.isNotInArray(xx, sizeX) || MathUtil.isNotInArray(yy, sizeY)) {
                     col = Integers.TRANSPARENCY;
+                } else {
+                    col = getPixel(xx, yy);
                 }
 
                 result[x + y * sizeX] = col;

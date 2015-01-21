@@ -5,7 +5,6 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import projektkurs.entity.EntityPlayer;
@@ -212,7 +211,14 @@ public final class Main {
         inputManager = new InputManager();
         level = null;
         player = null;
+        mainFrame = new JFrame(Strings.NAME + " " + Strings.VERSION);
+        mainFrame.setIconImage(Images.item42);
+        mainFrame.setUndecorated(true);
+        mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         render = new Render();
+        mainFrame.add(render);
+        mainFrame.pack();
         renderHelper = new RenderHelper();
         ingameGui = new GuiIngame();
         openGui(new GuiMainMenu());
@@ -360,31 +366,17 @@ public final class Main {
         // Load from disk
         init(State.PRE);
 
-        // Init
-        init(State.INIT);
-
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
-                mainFrame = new JFrame(Strings.NAME + " " + Strings.VERSION);
-
-                JPanel panel = (JPanel) mainFrame.getContentPane();
-                panel.setLayout(null);
-                panel.setPreferredSize(render.getGameCanvas().getPreferredSize());
-                panel.add(render.getGameCanvas());
-
-                mainFrame.setIconImage(Images.item42);
-                mainFrame.setUndecorated(true);
-                mainFrame.setResizable(false);
-                mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                mainFrame.pack();
-
                 mainFrame.setVisible(true);
-                render.initBuffers();
             }
 
         });
+
+        // Init
+        init(State.INIT);
 
         // PostInit
         init(State.POST);

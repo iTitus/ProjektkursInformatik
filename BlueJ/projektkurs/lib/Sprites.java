@@ -117,17 +117,17 @@ public final class Sprites {
         slot_highlight = new Sprite("slot_highlight", Integers.SLOT_SIZE, Integers.SLOT_SIZE, 3 * Integers.DEFAULT_BUTTON_HEIGHT, SpriteSheets.guis);
         registerSprite(slot_highlight);
 
-        lordvO_W = new Sprite("lordvO_W", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
-        registerSprite(lordvO_W);
-
-        lordvO_N = lordvO_W.rotate("lordvO_N", Math.toRadians(90));
+        lordvO_N = new Sprite("lordvO_N", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
         registerSprite(lordvO_N);
 
         lordvO_O = lordvO_N.rotate("lordvO_O", Math.toRadians(90));
         registerSprite(lordvO_O);
 
-        lordvO_S = lordvO_O.rotate("lordvO_S", Math.toRadians(90));
+        lordvO_S = lordvO_N.rotate("lordvO_S", Math.toRadians(180));
         registerSprite(lordvO_S);
+
+        lordvO_W = lordvO_N.rotate("lordvO_W", Math.toRadians(270));
+        registerSprite(lordvO_W);
 
         redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(redNPC);

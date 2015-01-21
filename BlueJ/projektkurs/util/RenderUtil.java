@@ -33,21 +33,6 @@ public final class RenderUtil {
     private static final Font[] FONTS = new Font[Integers.MAX_FONT_SIZE];
 
     /**
-     * Rendert den Standardhintergrund.
-     *
-     * @param g
-     *            Graphics2D
-     * @param c
-     *            Color
-     */
-    public static void drawBackground(Graphics2D g, Color c) {
-        Color oldColor = g.getColor();
-        g.setColor(c);
-        g.fillRect(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.sightX * Integers.RASTER_SIZE, Integers.sightY * Integers.RASTER_SIZE);
-        g.setColor(oldColor);
-    }
-
-    /**
      * Malt den Rand.
      *
      * @param screen
@@ -203,24 +188,7 @@ public final class RenderUtil {
      *            Entity
      */
     public static void drawDefaultEntity(Screen screen, Entity e) {
-        // drawImage(g, e.getImage(), e.getRenderX(), e.getRenderY(), e.getSizeX() * Integers.RASTER_SIZE, e.getSizeY() * Integers.RASTER_SIZE);
-        // TODO
-    }
-
-    /**
-     * Malt ein Rasterbild aufs Spielfeld.
-     *
-     * @param g
-     *            Graphics2D
-     * @param img
-     *            BufferedImage
-     * @param x
-     *            X-Koordinate des Rasters
-     * @param y
-     *            Y-Koordinate des Rasters
-     */
-    public static void drawDefaultRaster(Graphics2D g, BufferedImage img, int x, int y) {
-        drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
+        drawSprite(screen, e.getSprite(), e.getRenderX(), e.getRenderY());
     }
 
     /**
@@ -236,8 +204,7 @@ public final class RenderUtil {
      *            Y-Koordinate des Rasters
      */
     public static void drawDefaultRaster(Screen screen, Sprite sprite, int x, int y) {
-        // drawImage(g, img, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
-        // TODO
+        drawSprite(screen, sprite, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
     /**
@@ -256,36 +223,39 @@ public final class RenderUtil {
      * @param height
      *            Höhe
      */
-    public static void drawFilledRectangle(Graphics2D g, Color c, int x, int y, int width, int height) {
-        Color oldColor = g.getColor();
-        g.setColor(c);
-        g.fillRect(x, y, width, height);
-        g.setColor(oldColor);
+    public static void drawFilledRectangle(Screen screen, int color, int x, int y, int width, int height) {
+        if (color != Integers.TRANSPARENCY) {
+            for (int yy = y; yy < y + height; yy++) {
+                for (int xx = x; xx < x + width; xx++) {
+                    screen.setPixel(color, xx, yy);
+                }
+            }
+        }
     }
 
     /**
-     * Malt ein Bild an die gegebenen Koordinaten.
+     * Malt ein BufferedImage auf ein Graphics2D-Objekt.
      *
      * @param g
      *            Graphics2D
-     * @param img
-     *            Bild
+     * @param image
+     *            BufferedImage
      * @param x
      *            X-Koordinate
      * @param y
      *            Y-Koordinate
      */
-    public static void drawImage(Graphics2D g, BufferedImage img, int x, int y) {
-        g.drawImage(img, x, y, null);
+    public static void drawImage(Graphics2D g, BufferedImage image, int x, int y) {
+        g.drawImage(image, x, y, null);
     }
 
     /**
-     * Malt ein Bild an die gegebenen Koordinaten.
+     * Malt ein BufferedImage auf ein Graphics2D-Objekt.
      *
      * @param g
      *            Graphics2D
-     * @param img
-     *            Bild
+     * @param image
+     *            BufferedImage
      * @param x
      *            X-Koordinate
      * @param y
@@ -295,8 +265,8 @@ public final class RenderUtil {
      * @param height
      *            Höhe
      */
-    public static void drawImage(Graphics2D g, BufferedImage img, int x, int y, int width, int height) {
-        g.drawImage(img, x, y, width, height, null);
+    public static void drawImage(Graphics2D g, BufferedImage image, int x, int y, int width, int height) {
+        g.drawImage(image, x, y, width, height, null);
     }
 
     /**
@@ -334,31 +304,30 @@ public final class RenderUtil {
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
-     * @param size
-     *            Schriftgröße
      */
-    public static void drawString(Graphics2D g, String string, int posX, int posY, int size) {
-        Font oldfont = g.getFont();
-        g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
-        g.setFont(oldfont);
+    public static void drawString(Screen screen, String string, int posX, int posY) {
+        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
     }
 
     /**
      * Schreibt einen String an die gegebenen Koordinaten.
      *
-     * @param g
-     *            Graphics2D
+     * @param screen
+     *            Screen
      * @param string
      *            String
      * @param posX
      *            X-Koordinate
      * @param posY
      *            Y-Koordinate
+     * @param size
+     *            Schriftgröße
      */
-    public static void drawString(Screen screen, String string, int posX, int posY) {
-        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
-        // FIXME: TODO: watch reallie intelent wideos (TOT)
+    public static void drawString(Screen screen, String string, int posX, int posY, int size) {
+        // Font oldfont = g.getFont();
+        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
+        // g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
+        // g.setFont(oldfont);
     }
 
     /**

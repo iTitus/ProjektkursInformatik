@@ -195,6 +195,19 @@ public final class MathUtil {
     }
 
     /**
+     * Prüft, ob der gegebenen Index außerhalb der Grenzen des gegebenen Arrays ist.
+     *
+     * @param i
+     *            Index
+     * @param length
+     *            Array-Länge
+     * @return true, wenn ja; false, wenn nein
+     */
+    public static boolean isNotInArray(int i, int length) {
+        return i < 0 || i >= length;
+    }
+
+    /**
      * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
      *
      * @param max
