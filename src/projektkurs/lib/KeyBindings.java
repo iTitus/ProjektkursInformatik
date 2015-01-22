@@ -32,7 +32,7 @@ public final class KeyBindings {
      */
     public static final int KEY_LEFT = KeyEvent.VK_A;
     /**
-     * Taste, um die Menues/Optionen zu oeffnen oder GUIs zu schließen.
+     * Taste, um die Menues/Optionen zu oeffnen oder GUIs zu schliessen.
      */
     public static final int KEY_MENU = KeyEvent.VK_ESCAPE;
     /**

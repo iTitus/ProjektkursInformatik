@@ -21,7 +21,7 @@ public enum EnumCommandResult {
      */
     OBJECT_NOT_FOUND,
     /**
-     * Kommando nicht erfolgreich: Nummer oder Text außerhalb des gueltigen Bereiches.
+     * Kommando nicht erfolgreich: Nummer oder Text ausserhalb des gueltigen Bereiches.
      */
     OUT_OF_BOUNDS,
     /**

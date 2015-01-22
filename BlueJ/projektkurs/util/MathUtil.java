@@ -93,6 +93,21 @@ public final class MathUtil {
     /**
      * Gibt eine Zahl zurueck, die im gegebenen Intervall liegt: [min; max].
      *
+     * @param d
+     *            Zahl
+     * @param min
+     *            Minimum
+     * @param max
+     *            Maximum
+     * @return eingegrenzte Zahl
+     */
+    public static double clamp(double d, double min, double max) {
+        return Math.max(Math.min(d, max), min);
+    }
+
+    /**
+     * Gibt eine Zahl zurueck, die im gegebenen Intervall liegt: [min; max].
+     *
      * @param i
      *            Zahl
      * @param min
@@ -195,7 +210,7 @@ public final class MathUtil {
     }
 
     /**
-     * Prueft, ob der gegebenen Index außerhalb der Grenzen des gegebenen Arrays ist.
+     * Prueft, ob der gegebenen Index ausserhalb der Grenzen des gegebenen Arrays ist.
      *
      * @param i
      *            Index

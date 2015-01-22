@@ -38,7 +38,7 @@ public class Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Groeße
+     *            Groesse
      */
     public Inventory(int size) {
         stacks = new ItemStack[size];
@@ -193,9 +193,9 @@ public class Inventory {
     }
 
     /**
-     * Groeße dieses Inventars.
+     * Groesse dieses Inventars.
      *
-     * @return Groeße
+     * @return Groesse
      */
     public int getSize() {
         return stacks.length;

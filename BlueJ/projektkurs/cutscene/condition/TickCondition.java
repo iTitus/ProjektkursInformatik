@@ -17,11 +17,11 @@ public class TickCondition extends Condition {
          */
         EQUALS,
         /**
-         * Die vergangenen Ticks sind groeßer als die gegebene Tickzahl.
+         * Die vergangenen Ticks sind groesser als die gegebene Tickzahl.
          */
         GREATER,
         /**
-         * Die vergangenen Ticks sind groeßer als die gegebene Tickzahl oder stimmen mit ihr ueberein.
+         * Die vergangenen Ticks sind groesser als die gegebene Tickzahl oder stimmen mit ihr ueberein.
          */
         GREATER_EQUALS,
         /**

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import projektkurs.Main;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.RenderUtil;
@@ -92,7 +93,7 @@ public class Button extends Element {
             RenderUtil.drawSprite(screen, Sprites.button_disabled, posX, posY);
         }
 
-        RenderUtil.drawCenteredStringInRect(screen, I18n.getString(name), posX, posY, sizeX, sizeY);
+        Font.drawCenteredStringInRect(screen, I18n.getString(name), posX, posY, sizeX, sizeY);
     }
 
     /**

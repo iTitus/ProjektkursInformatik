@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import projektkurs.lib.Integers;
 import projektkurs.util.MathUtil;
+import projektkurs.util.RenderUtil;
 
 public class Sprite {
 
@@ -22,6 +23,22 @@ public class Sprite {
         this.sizeY = sizeY;
         pixels = new int[sizeX * sizeY];
         Arrays.fill(pixels, color);
+    }
+
+    public Sprite(String name, int size, int colA, int colB, int colC, int colD) {
+        this(name, size, size, colA, colB, colC, colD);
+    }
+
+    public Sprite(String name, int sizeX, int sizeY, int colA, int colB, int colC, int colD) {
+        this.name = name;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        pixels = new int[sizeX * sizeY];
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
+                pixels[x + y * sizeX] = RenderUtil.interpolate(colA, colB, colC, colD, x / (double) sizeX, y / (double) sizeY);
+            }
+        }
     }
 
     public Sprite(String name, int sizeX, int sizeY, int x, int y, SpriteSheet sheet) {

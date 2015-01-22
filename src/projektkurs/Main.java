@@ -83,7 +83,7 @@ public final class Main {
     }
 
     /**
-     * Schließt das gerade geoeffnete GUI und oeffnet das Ingame-GUI.
+     * Schliesst das gerade geoeffnete GUI und oeffnet das Ingame-GUI.
      */
     public static void closeGui() {
         if (level != null && player != null) {

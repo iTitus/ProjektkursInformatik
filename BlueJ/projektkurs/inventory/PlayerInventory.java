@@ -41,7 +41,7 @@ public class PlayerInventory extends Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Groeße
+     *            Groesse
      */
     public PlayerInventory(int size) {
         this(size, -1);
@@ -51,7 +51,7 @@ public class PlayerInventory extends Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Groeße
+     *            Groesse
      * @param selectedItemStack
      *            auszuwaehlender Index
      */

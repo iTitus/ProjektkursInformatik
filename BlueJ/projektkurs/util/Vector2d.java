@@ -59,22 +59,22 @@ public class Vector2d {
     }
 
     /**
-     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Gradmaß.
+     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Gradmass.
      *
      * @param v
      *            Vektor
-     * @return Winkel im Gradmaß
+     * @return Winkel im Gradmass
      */
     public double angleBetweenDeg(Vector2d v) {
         return Math.toDegrees(angleBetweenRad(v));
     }
 
     /**
-     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Bogenmaß.
+     * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Bogenmass.
      *
      * @param v
      *            Vektor
-     * @return Winkel im Bogenmaß
+     * @return Winkel im Bogenmass
      */
     public double angleBetweenRad(Vector2d v) {
         return thetaRad() - v.thetaRad();
@@ -240,10 +240,10 @@ public class Vector2d {
     }
 
     /**
-     * Rotiert diesen Vektor um die gegebene Gradzahl im Gradmaß.
+     * Rotiert diesen Vektor um die gegebene Gradzahl im Gradmass.
      *
      * @param angleDeg
-     *            Winkel im Gradmaß
+     *            Winkel im Gradmass
      * @return rotierter Vektor
      */
     public Vector2d rotateDeg(double angleDeg) {
@@ -251,10 +251,10 @@ public class Vector2d {
     }
 
     /**
-     * Rotiert diesen Vektor um die gegebene Gradzahl im Bogenmaß.
+     * Rotiert diesen Vektor um die gegebene Gradzahl im Bogenmass.
      *
      * @param angleRad
-     *            Winkel im Bogenmaß
+     *            Winkel im Bogenmass
      * @return rotierter Vektor
      */
     public Vector2d rotateRad(double angleRad) {
@@ -286,18 +286,18 @@ public class Vector2d {
     }
 
     /**
-     * Der Winkel der Polarkoordinate im Gradmaß.
+     * Der Winkel der Polarkoordinate im Gradmass.
      *
-     * @return Winkel im Gradmaß
+     * @return Winkel im Gradmass
      */
     public double thetaDeg() {
         return Math.toDegrees(thetaRad());
     }
 
     /**
-     * Der Winkel der Polarkoordinate im Bogenmaß.
+     * Der Winkel der Polarkoordinate im Bogenmass.
      *
-     * @return Winkel im Bogenmaß
+     * @return Winkel im Bogenmass
      */
     public double thetaRad() {
         return Math.atan2(y, x);

@@ -62,98 +62,6 @@ public final class RenderUtil {
     }
 
     /**
-     * Schreibt einen zentrierten String an die gegebenen Koordinaten.
-     *
-     * @param screen
-     *            Screen
-     * @param s
-     *            String
-     * @param centerX
-     *            X-Koordinate des Mittelpunktes
-     * @param centerY
-     *            Y-Koordinate des Mittelpunktes
-     */
-    public static void drawCenteredString(Screen screen, String s, int centerX, int centerY) {
-        // screen.drawGlyphVector(screen.getFont().createGlyphVector(screen.getFontRenderContext(), s), centerX - MathUtil.floorDiv(screen.getFontMetrics().stringWidth(s), 2), centerY + MathUtil.ceilDiv(screen.getFontMetrics().getHeight(), 4));
-    }
-
-    /**
-     * Schreibt einen zentrierten String an die gegebenen Koordinaten.
-     *
-     * @param g
-     *            Graphics2D
-     * @param s
-     *            String
-     * @param centerX
-     *            X-Koordinate des Mittelpunktes
-     * @param centerY
-     *            Y-Koordinate des Mittelpunktes
-     * @param size
-     *            die Groeße der Schrift
-     */
-    public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int size) {
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // drawCenteredString(g, s, centerX, centerY);
-        // g.setFont(oldfont);
-    }
-
-    /**
-     * Schreibt einen zentrierten String in ein gegebenes Rechteck.
-     *
-     * @param screen
-     *            Screen
-     * @param s
-     *            String
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
-     * @param sizeX
-     *            Breite
-     * @param sizeY
-     *            Hoehe
-     */
-    public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY) {
-        // Font oldfont = screen.getFont();
-        // int size = Integers.DEFAULT_FONT_SIZE;
-        // screen.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // while (size > 1 && (screen.getFontMetrics().stringWidth(s) >= sizeX || screen.getFontMetrics().getHeight() >= sizeY)) {
-        // screen.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
-        // }
-        // drawCenteredString(screen, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
-        // screen.setFont(oldfont);
-    }
-
-    /**
-     * Schreibt einen zentrierten String in ein gegebenes Rechteck.
-     *
-     * @param g
-     *            Graphics2D
-     * @param s
-     *            String
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
-     * @param sizeX
-     *            Breite
-     * @param sizeY
-     *            Hoehe
-     * @param size
-     *            gewuenschte Schriftgroeße
-     */
-    public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY, int size) {
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-        // g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
-        // }
-        // drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
-        // g.setFont(oldfont);
-    }
-
-    /**
      * Malt ein Rasterbild in eine CutScene.
      *
      * @param screen
@@ -320,6 +228,42 @@ public final class RenderUtil {
         // g.setColor(oldColor);
     }
 
+    public static int getBlue(int color) {
+        return color & 255;
+    }
+
+    public static double getBlueD(int color) {
+        return getBlue(color) / 255D;
+    }
+
+    public static int getColor(double r, double g, double b) {
+        return getColor(MathUtil.floorMul(r, 255), MathUtil.floorMul(g, 255), MathUtil.floorMul(b, 255));
+    }
+
+    public static int getColor(int r, int g, int b) {
+        int color = 0;
+        color |= r << 16;
+        color |= g << 8;
+        color |= b;
+        return color;
+    }
+
+    public static int getGreen(int color) {
+        return color >> 8 & 255;
+    }
+
+    public static double getGreenD(int color) {
+        return getGreen(color) / 255D;
+    }
+
+    public static int getRed(int color) {
+        return color >> 16 & 255;
+    }
+
+    public static double getRedD(int color) {
+        return getRed(color) / 255D;
+    }
+
     /**
      * Initialisierung.
      */
@@ -328,6 +272,29 @@ public final class RenderUtil {
         for (int i = 0; i < FONTS.length; i++) {
             FONTS[i] = new Font(Strings.NAME, Font.PLAIN, i);
         }
+    }
+
+    public static int interpolate(int colA, int colB, double fraction) {
+
+        fraction = MathUtil.clamp(fraction, 0, 1);
+
+        double red1 = getRedD(colA);
+        double green1 = getGreenD(colA);
+        double blue1 = getBlueD(colA);
+
+        double deltaRed = getRedD(colB) - red1;
+        double deltaGreen = getGreenD(colB) - green1;
+        double deltaBlue = getBlueD(colB) - blue1;
+
+        double red = red1 + deltaRed * fraction;
+        double green = green1 + deltaGreen * fraction;
+        double blue = blue1 + deltaBlue * fraction;
+
+        return getColor(MathUtil.clamp(red, 0, 1), MathUtil.clamp(green, 0, 1), MathUtil.clamp(blue, 0, 1));
+    }
+
+    public static int interpolate(int colA, int colB, int colC, int colD, double fractionX, double fractionY) {
+        return interpolate(interpolate(colA, colB, fractionX), interpolate(colC, colD, fractionX), fractionY);
     }
 
     /**
