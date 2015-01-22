@@ -5,7 +5,7 @@ import projektkurs.cutscene.condition.Condition;
 import projektkurs.cutscene.object.CutSceneObject;
 
 /**
- * Spawn ein CutSceneObject - sollte am besten nur der Startup-Schlange hinzugefügt werden.
+ * Spawn ein CutSceneObject - sollte am besten nur der Startup-Schlange hinzugefuegt werden.
  */
 public class ConditionedSpawnAction extends Action {
 
@@ -18,7 +18,7 @@ public class ConditionedSpawnAction extends Action {
      * Konstruktor.
      *
      * @param condition
-     *            Ausführbedingung
+     *            Ausfuehrbedingung
      * @param object
      *            CutSceneObject, das gespawnt werden soll
      */

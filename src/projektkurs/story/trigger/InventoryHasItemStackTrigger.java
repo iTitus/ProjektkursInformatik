@@ -4,7 +4,7 @@ import projektkurs.Main;
 import projektkurs.item.ItemStack;
 
 /**
- * Prüft, ob sich ein bestimmter ItemStack im Spielerinventar befindet.
+ * Prueft, ob sich ein bestimmter ItemStack im Spielerinventar befindet.
  */
 public class InventoryHasItemStackTrigger extends Trigger {
 
@@ -17,7 +17,7 @@ public class InventoryHasItemStackTrigger extends Trigger {
      * Konstruktor.
      *
      * @param stack
-     *            zu prüfender ItemStack.
+     *            zu pruefender ItemStack.
      */
     public InventoryHasItemStackTrigger(ItemStack stack) {
         this.stack = stack;

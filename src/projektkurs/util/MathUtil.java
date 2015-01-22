@@ -91,7 +91,7 @@ public final class MathUtil {
     }
 
     /**
-     * Gibt eine Zahl zurück, die im gegebenen Intervall liegt: [min; max].
+     * Gibt eine Zahl zurueck, die im gegebenen Intervall liegt: [min; max].
      *
      * @param i
      *            Zahl
@@ -106,12 +106,12 @@ public final class MathUtil {
     }
 
     /**
-     * Gibt eine Zahl zurück, die in einem Array der gegebenen Länge liegt: [0; length[.
+     * Gibt eine Zahl zurueck, die in einem Array der gegebenen Laenge liegt: [0; length[.
      *
      * @param i
      *            Zahl
      * @param length
-     *            Länge des Arrays
+     *            Laenge des Arrays
      * @return eingegrenzte Zahl
      */
     public static int clampToArray(int i, int length) {
@@ -182,12 +182,12 @@ public final class MathUtil {
     }
 
     /**
-     * Prüft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
+     * Prueft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
      *
      * @param i
      *            Index
      * @param length
-     *            Array-Länge
+     *            Array-Laenge
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isInArray(int i, int length) {
@@ -195,12 +195,12 @@ public final class MathUtil {
     }
 
     /**
-     * Prüft, ob der gegebenen Index außerhalb der Grenzen des gegebenen Arrays ist.
+     * Prueft, ob der gegebenen Index außerhalb der Grenzen des gegebenen Arrays ist.
      *
      * @param i
      *            Index
      * @param length
-     *            Array-Länge
+     *            Array-Laenge
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isNotInArray(int i, int length) {
@@ -208,7 +208,7 @@ public final class MathUtil {
     }
 
     /**
-     * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
+     * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
      *
      * @param max
      *            Zahl
@@ -219,7 +219,7 @@ public final class MathUtil {
     }
 
     /**
-     * Zufällige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
+     * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
      *
      * @param min
      *            Minimum
@@ -232,7 +232,7 @@ public final class MathUtil {
     }
 
     /**
-     * Zufällige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
+     * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
      *
      * @param max
      *            Zahl
@@ -243,7 +243,7 @@ public final class MathUtil {
     }
 
     /**
-     * Zufällige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (inklusiv).
+     * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (inklusiv).
      *
      * @param min
      *            Minimum

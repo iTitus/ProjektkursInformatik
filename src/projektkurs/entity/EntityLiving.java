@@ -41,7 +41,7 @@ public abstract class EntityLiving extends Entity {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param maxHealth
      *            maximale Gesundheit
      * @param sprites

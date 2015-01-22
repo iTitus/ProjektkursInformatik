@@ -82,7 +82,7 @@ public class Sprite {
 
     public int[] rotate(double angle) {
 
-        angle -= Math.toRadians(90);
+        angle = Math.toRadians(angle - 90);
 
         int[] result = new int[pixels.length];
 

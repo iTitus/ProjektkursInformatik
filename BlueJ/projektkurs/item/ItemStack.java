@@ -11,7 +11,7 @@ import projektkurs.util.SaveData;
 public class ItemStack {
 
     /**
-     * Lädt einen ItemStack aus der gegebenen SaveData.
+     * Laedt einen ItemStack aus der gegebenen SaveData.
      *
      * @param data
      *            SaveData
@@ -36,7 +36,7 @@ public class ItemStack {
      */
     private final Item item;
     /**
-     * Größe dieses ItemStacks.
+     * Groeße dieses ItemStacks.
      */
     private int stackSize;
 
@@ -56,7 +56,7 @@ public class ItemStack {
      * @param item
      *            Itemtyp
      * @param stackSize
-     *            Größe
+     *            Groeße
      */
     public ItemStack(Item item, int stackSize) {
         this(item, stackSize, 0);
@@ -68,7 +68,7 @@ public class ItemStack {
      * @param item
      *            Itemtyp
      * @param stackSize
-     *            Größe
+     *            Groeße
      * @param damage
      *            Schaden
      */
@@ -91,7 +91,7 @@ public class ItemStack {
     }
 
     /**
-     * Beschädigt dieses ItemStack um den gegebenen Wert.
+     * Beschaedigt dieses ItemStack um den gegebenen Wert.
      *
      * @param by
      *            Wert
@@ -101,7 +101,7 @@ public class ItemStack {
     }
 
     /**
-     * Verringert die Größe dieses ItemStack um den gegebenen Wert.
+     * Verringert die Groeße dieses ItemStack um den gegebenen Wert.
      *
      * @param by
      *            Wert
@@ -147,16 +147,16 @@ public class ItemStack {
     }
 
     /**
-     * Die Größe dieses ItemStacks.
+     * Die Groeße dieses ItemStacks.
      *
-     * @return Größe
+     * @return Groeße
      */
     public int getStackSize() {
         return stackSize;
     }
 
     /**
-     * Erhöht die Größe dieses ItemStacks um den gegebenen Wert.
+     * Erhoeht die Groeße dieses ItemStacks um den gegebenen Wert.
      *
      * @param by
      *            Wert
@@ -166,7 +166,7 @@ public class ItemStack {
     }
 
     /**
-     * Ist der Itemtyp und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Größe des ItemStacks
+     * Ist der Itemtyp und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Groeße des ItemStacks
      *
      * @param other
      *            ItemStack
@@ -177,7 +177,7 @@ public class ItemStack {
     }
 
     /**
-     * Ist der Itemtyp und die Größe des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert den Schaden des ItemStacks
+     * Ist der Itemtyp und die Groeße des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert den Schaden des ItemStacks
      *
      * @param other
      *            ItemStack
@@ -188,7 +188,7 @@ public class ItemStack {
     }
 
     /**
-     * Ist der gegebene Itemtyp identisch mit diesem Itemstack. Ignoriert die Größe und den Schaden des ItemStacks
+     * Ist der gegebene Itemtyp identisch mit diesem Itemstack. Ignoriert die Groeße und den Schaden des ItemStacks
      *
      * @param other
      *            AbstractItem
@@ -199,7 +199,7 @@ public class ItemStack {
     }
 
     /**
-     * Ist der Itemtyp des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Größe und den Schaden des ItemStacks
+     * Ist der Itemtyp des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Groeße und den Schaden des ItemStacks
      *
      * @param other
      *            ItemStack
@@ -220,20 +220,20 @@ public class ItemStack {
     }
 
     /**
-     * Setzt die Größe dieses ItemStacks.
+     * Setzt die Groeße dieses ItemStacks.
      *
      * @param stackSize
-     *            Größe
+     *            Groeße
      */
     public void setStackSize(int stackSize) {
         this.stackSize = stackSize;
     }
 
     /**
-     * Erstellt einen neuen ItemStack mit dem Itemtyp und dem dem Schaden dieses ItemStacks, aber mit der gegebenen Größe.
+     * Erstellt einen neuen ItemStack mit dem Itemtyp und dem dem Schaden dieses ItemStacks, aber mit der gegebenen Groeße.
      *
      * @param stackSize
-     *            Größe
+     *            Groeße
      * @return ItemStack
      */
     public ItemStack split(int stackSize) {
@@ -243,7 +243,7 @@ public class ItemStack {
     }
 
     /**
-     * Ist der Itemtyp und die Größe und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack.
+     * Ist der Itemtyp und die Groeße und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack.
      *
      * @param other
      *            ItemStack

@@ -1,7 +1,7 @@
 package projektkurs.util;
 
 /**
- * Interface für Objekte, die upgedated werden können.
+ * Interface fuer Objekte, die upgedated werden koennen.
  */
 public interface IUpdatable {
 

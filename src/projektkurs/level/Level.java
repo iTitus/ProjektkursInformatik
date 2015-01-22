@@ -113,7 +113,7 @@ public class Level implements IUpdatable {
     }
 
     /**
-     * Wählt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
+     * Waehlt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
      *
      * @param i
      *            Index

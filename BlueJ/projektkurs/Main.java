@@ -35,7 +35,7 @@ public final class Main {
      */
     private static GameThread gameThread;
     /**
-     * Das aktuell geöffnete GUI.
+     * Das aktuell geoeffnete GUI.
      */
     private static Gui gui;
     /**
@@ -76,14 +76,14 @@ public final class Main {
     private static int ticks;
 
     /**
-     * Fügt einen Tick hinzu.
+     * Fuegt einen Tick hinzu.
      */
     public static void addTick() {
         ticks++;
     }
 
     /**
-     * Schließt das gerade geöffnete GUI und öffnet das Ingame-GUI.
+     * Schließt das gerade geoeffnete GUI und oeffnet das Ingame-GUI.
      */
     public static void closeGui() {
         if (level != null && player != null) {
@@ -102,7 +102,7 @@ public final class Main {
     }
 
     /**
-     * Verlässt das Spiel.
+     * Verlaesst das Spiel.
      */
     public static void exit() {
         System.exit(0);
@@ -152,7 +152,7 @@ public final class Main {
     }
 
     /**
-     * Gibt die aktuelle Figur zurück.
+     * Gibt die aktuelle Figur zurueck.
      *
      * @return Figur
      */
@@ -161,7 +161,7 @@ public final class Main {
     }
 
     /**
-     * Gibt den aktuellen Render zurück.
+     * Gibt den aktuellen Render zurueck.
      *
      * @return Render
      */
@@ -170,7 +170,7 @@ public final class Main {
     }
 
     /**
-     * Gibt den aktuellen Renderhelper zurück.
+     * Gibt den aktuellen Renderhelper zurueck.
      *
      * @return Renderhelper
      */
@@ -225,7 +225,7 @@ public final class Main {
     }
 
     /**
-     * Interne Methode, um die Threads (Timer für die Ticks) zu starten.
+     * Interne Methode, um die Threads (Timer fuer die Ticks) zu starten.
      */
     @Init(state = State.PRE)
     public static void initThreads() {
@@ -274,7 +274,7 @@ public final class Main {
     }
 
     /**
-     * Lässt das Spiel weiter laufen.
+     * Laesst das Spiel weiter laufen.
      */
     public static void resume() {
         if (gameThread != null) {
@@ -306,7 +306,7 @@ public final class Main {
     }
 
     /**
-     * Führt alle init-Methoden aus, die im gegebenen State ausgeführt werden sollen.
+     * Fuehrt alle init-Methoden aus, die im gegebenen State ausgefuehrt werden sollen.
      *
      * @param state
      *            der State

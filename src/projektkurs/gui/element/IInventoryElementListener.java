@@ -3,12 +3,12 @@ package projektkurs.gui.element;
 import java.awt.event.MouseEvent;
 
 /**
- * Ein Interface für ein GUI, das auf Slotklicks hören soll.
+ * Ein Interface fuer ein GUI, das auf Slotklicks hoeren soll.
  */
 public interface IInventoryElementListener extends IElementListener {
 
     /**
-     * Wird ausgeführt, wenn mit der linken Maustaste auf einen Slot geklickt wird.
+     * Wird ausgefuehrt, wenn mit der linken Maustaste auf einen Slot geklickt wird.
      *
      * @param slotIndex
      *            der Index des angeklickten Slots
@@ -20,7 +20,7 @@ public interface IInventoryElementListener extends IElementListener {
     void onSlotLeftClick(int slotIndex, InventoryElement invE, MouseEvent e);
 
     /**
-     * Wird ausgeführt, wenn mit der rechten Maustaste auf einen Slot geklickt wird.
+     * Wird ausgefuehrt, wenn mit der rechten Maustaste auf einen Slot geklickt wird.
      *
      * @param slotIndex
      *            der Index des angeklickten Slots

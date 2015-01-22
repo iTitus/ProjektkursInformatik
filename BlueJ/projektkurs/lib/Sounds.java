@@ -18,7 +18,7 @@ import projektkurs.util.Pair;
 public final class Sounds {
 
     /**
-     * Die Klasse für ein Sound-Objekt.
+     * Die Klasse fuer ein Sound-Objekt.
      */
     public static class Sound {
 
@@ -174,11 +174,11 @@ public final class Sounds {
     }
 
     /**
-     * Zurück-Mappings.
+     * Zurueck-Mappings.
      */
     public static final HashMap<Sound, String> BACK_MAPPINGS = new HashMap<Sound, String>();
     /**
-     * Explosionsgeräusch.
+     * Explosionsgeraeusch.
      */
     public static Sound explosion;
     /**
@@ -200,7 +200,7 @@ public final class Sounds {
     }
 
     /**
-     * Das Pair, das alle Sounds enthält.
+     * Das Pair, das alle Sounds enthaelt.
      *
      * @return Pair
      */

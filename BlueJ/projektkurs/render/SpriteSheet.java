@@ -68,9 +68,21 @@ public class SpriteSheet {
         return sizeY;
     }
 
+    public Sprite[] split(int spriteWidth, int spriteHeight) {
+        int amount = pixels.length / (spriteWidth * spriteHeight);
+        Sprite[] sprites = new Sprite[amount];
+
+        for (int y = 0; y < sizeY / spriteHeight; y++) {
+            for (int x = 0; x < sizeX / spriteWidth; x++) {
+                sprites[x + y * (sizeX / spriteWidth)] = new Sprite(name + "." + x + "." + y, spriteWidth, spriteHeight, x * spriteWidth, y * spriteHeight, this);
+            }
+        }
+
+        return sprites;
+    }
+
     @Override
     public String toString() {
         return "SpriteSheet [" + name + "]";
     }
-
 }

@@ -25,7 +25,7 @@ public final class SaveData implements Serializable {
     }
 
     /**
-     * Gibt den Boolean zurück, der mit dem gegebenen Key verbunden ist.
+     * Gibt den Boolean zurueck, der mit dem gegebenen Key verbunden ist.
      *
      * @param key
      *            Key
@@ -40,7 +40,7 @@ public final class SaveData implements Serializable {
     }
 
     /**
-     * Gibt den Integer zurück, der mit dem gegebenen Key verbunden ist.
+     * Gibt den Integer zurueck, der mit dem gegebenen Key verbunden ist.
      *
      * @param key
      *            Key
@@ -55,7 +55,7 @@ public final class SaveData implements Serializable {
     }
 
     /**
-     * Gibt die SaveData zurück, die mit dem gegebenen Key verbunden ist.
+     * Gibt die SaveData zurueck, die mit dem gegebenen Key verbunden ist.
      *
      * @param key
      *            Key
@@ -70,7 +70,7 @@ public final class SaveData implements Serializable {
     }
 
     /**
-     * Gibt den String zurück, der mit dem gegebenen Key verbunden ist.
+     * Gibt den String zurueck, der mit dem gegebenen Key verbunden ist.
      *
      * @param key
      *            Key

@@ -37,11 +37,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     private Direction facing;
     /**
-     * Soll das Bild sich mit ändernder Richtung verändern.
+     * Soll das Bild sich mit aendernder Richtung veraendern.
      */
     private boolean shouldChangeImageWithFacing;
     /**
-     * Soll dieser Entity nächsten Tick verschwinden.
+     * Soll dieser Entity naechsten Tick verschwinden.
      */
     private boolean shouldDeSpawn;
     /**
@@ -65,7 +65,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     protected int sizeX;
     /**
-     * Höhe.
+     * Hoehe.
      */
     protected int sizeY;
 
@@ -96,7 +96,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param sprites
      *            Sprite
      */
@@ -304,7 +304,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @param sizeX
      *            Breite des Rechtecks
      * @param sizeY
-     *            Höhe des Rechtecks
+     *            Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
@@ -358,7 +358,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Wird aufgerufen wenn dieser Entity einen anderen (e) anstößt.
+     * Wird aufgerufen wenn dieser Entity einen anderen (e) anstoeßt.
      *
      * @param e
      *            anderer Entity
@@ -416,7 +416,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Ändert dieser Entity sein Bild mit sich ändernder Richtung.
+     * Aendert dieser Entity sein Bild mit sich aendernder Richtung.
      *
      * @return true, wenn ja; false, wenn nein
      */
@@ -425,7 +425,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Soll dieser Entity nächsten Tick verschwinden.
+     * Soll dieser Entity naechsten Tick verschwinden.
      *
      * @return true, wenn ja; false, wenn nein
      */
@@ -457,7 +457,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Fügt eine Behaviour hinzu.
+     * Fuegt eine Behaviour hinzu.
      *
      * @param behaviour
      *            Behaviour

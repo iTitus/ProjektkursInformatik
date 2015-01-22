@@ -25,7 +25,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      */
     private int sizeX;
     /**
-     * Höhe.
+     * Hoehe.
      */
     private int sizeY;
     /**
@@ -43,7 +43,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      */
     public CutSceneObject(Sprite sprite, int posX, int posY, int sizeX, int sizeY) {
         this.sprite = sprite;
@@ -103,7 +103,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      * @param sizeX
      *            Breite des Rechtecks
      * @param sizeY
-     *            Höhe des Rechtecks
+     *            Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {

@@ -60,7 +60,7 @@ public abstract class Item {
     }
 
     /**
-     * Übersetzter Name.
+     * Uebersetzter Name.
      *
      * @return Name
      */
@@ -69,7 +69,7 @@ public abstract class Item {
     }
 
     /**
-     * Übersetzter Name - ItemStack sensitiv.
+     * Uebersetzter Name - ItemStack sensitiv.
      *
      * @param stack
      *            ItemStack
@@ -100,7 +100,7 @@ public abstract class Item {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der linken Maustaster mit diesem Item auf das Fenster geklickt wird.
+     * Wird ausgefuehrt, wenn mit der linken Maustaster mit diesem Item auf das Fenster geklickt wird.
      *
      * @param map
      *            Spielfeld
@@ -120,7 +120,7 @@ public abstract class Item {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der rechten Maustaster mit diesem Item auf das Fenster geklickt wird.
+     * Wird ausgefuehrt, wenn mit der rechten Maustaster mit diesem Item auf das Fenster geklickt wird.
      *
      * @param map
      *            Spielfeld

@@ -62,7 +62,7 @@ public class TextField extends Element {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param id
      *            Nummer
      * @param gui
@@ -82,7 +82,7 @@ public class TextField extends Element {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param id
      *            Nummer
      * @param listener

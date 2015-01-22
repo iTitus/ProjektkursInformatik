@@ -20,7 +20,7 @@ public final class KeyBindings {
      */
     public static final int ENTER = KeyEvent.VK_ENTER;
     /**
-     * Taste, um die Konsole zu öffnen.
+     * Taste, um die Konsole zu oeffnen.
      */
     public static final int KEY_CONSOLE = KeyEvent.VK_C;
     /**
@@ -32,7 +32,7 @@ public final class KeyBindings {
      */
     public static final int KEY_LEFT = KeyEvent.VK_A;
     /**
-     * Taste, um die Menüs/Optionen zu öffnen oder GUIs zu schließen.
+     * Taste, um die Menues/Optionen zu oeffnen oder GUIs zu schließen.
      */
     public static final int KEY_MENU = KeyEvent.VK_ESCAPE;
     /**

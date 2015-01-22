@@ -22,7 +22,7 @@ public class ConditionedMoveSightAction extends Action {
      * Konstruktor.
      *
      * @param condition
-     *            Ausführbedingung
+     *            Ausfuehrbedingung
      * @param dx
      *            Sichtfeldbewegung in x-Richtung
      * @param dy

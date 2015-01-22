@@ -30,7 +30,7 @@ public abstract class EntityNPC extends EntityLiving {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param maxHealth
      *            maximale Gesundheit
      * @param sprites

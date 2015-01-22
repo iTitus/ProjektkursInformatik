@@ -3,10 +3,10 @@ package projektkurs.util;
 import java.lang.reflect.Method;
 
 /**
- * Ein MethodInvoker. Führt eine Methode mit Rückgabewerte aus.
+ * Ein MethodInvoker. Fuehrt eine Methode mit Rueckgabewerte aus.
  *
  * @param <T>
- *            erwarteter Rückgabewert.
+ *            erwarteter Rueckgabewert.
  */
 public class MethodInvokerWithReturn<T> {
 
@@ -33,9 +33,9 @@ public class MethodInvokerWithReturn<T> {
     }
 
     /**
-     * Führt die Methode aus.
+     * Fuehrt die Methode aus.
      *
-     * @return Rückgabewert
+     * @return Rueckgabewert
      */
     public T invoke() {
         return ReflectionUtil.<T>invokeStaticWithReturn(m, objects);

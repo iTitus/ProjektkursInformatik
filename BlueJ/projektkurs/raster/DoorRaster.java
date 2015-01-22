@@ -13,7 +13,7 @@ import projektkurs.util.RenderUtil;
 import projektkurs.world.Spielfeld;
 
 /**
- * Eine Tür.
+ * Eine Tuer.
  */
 public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 

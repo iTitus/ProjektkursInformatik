@@ -17,7 +17,7 @@ import projektkurs.world.Spielfeld;
 public final class Levels {
 
     /**
-     * Die Zurück-Mappings.
+     * Die Zurueck-Mappings.
      */
     public static final HashMap<Level, String> BACK_MAPPINGS = new HashMap<Level, String>();
     /**
@@ -43,7 +43,7 @@ public final class Levels {
     }
 
     /**
-     * Das Pair, das alle Levels enthält.
+     * Das Pair, das alle Levels enthaelt.
      *
      * @return Pair
      */
@@ -59,7 +59,7 @@ public final class Levels {
         level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
         registerMapping(level0);
 
-        level1 = new Level("Level1", new Spielfeld(25, 25, 1, 1), new Spielfeld(10, 10, 1, 1));
+        level1 = new Level("Level1", new Spielfeld(50, 50, 10, 10));
         registerMapping(level1);
 
     }

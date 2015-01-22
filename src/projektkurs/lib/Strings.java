@@ -1,7 +1,7 @@
 package projektkurs.lib;
 
 /**
- * Sämtliche Stringkonstanten...
+ * Saemtliche Stringkonstanten...
  */
 public final class Strings {
 
@@ -14,99 +14,99 @@ public final class Strings {
      */
     public static final String[] CREDITS = { "Mergard" };
     /**
-     * SaveData-Key für shouldDespawn.
+     * SaveData-Key fuer shouldDespawn.
      */
     public static final String ENTITY_DESPAWN = "shouldDespawn";
     /**
-     * SaveData-Key für facing.
+     * SaveData-Key fuer facing.
      */
     public static final String ENTITY_FACING = "facing";
     /**
-     * SaveData-Key für health.
+     * SaveData-Key fuer health.
      */
     public static final String ENTITY_HEALTH = "health";
     /**
-     * SaveData-Key für die Entity-ID.
+     * SaveData-Key fuer die Entity-ID.
      */
     public static final String ENTITY_ID = "id";
     /**
-     * SaveData-Key für inventory.
+     * SaveData-Key fuer inventory.
      */
     public static final String ENTITY_INV = "inventory";
     /**
-     * SaveData-Key für item.
+     * SaveData-Key fuer item.
      */
     public static final String ENTITY_ITEM = "item";
     /**
-     * SaveData-Key für maxHealth.
+     * SaveData-Key fuer maxHealth.
      */
     public static final String ENTITY_MAX_HEALTH = "maxHealth";
     /**
-     * SaveData-Key für sizeX.
+     * SaveData-Key fuer sizeX.
      */
     public static final String ENTITY_SIZE_X = "sizeX";
     /**
-     * SaveData-Key für sizeY.
+     * SaveData-Key fuer sizeY.
      */
     public static final String ENTITY_SIZE_Y = "sizeY";
     /**
-     * SaveData-Key für sprite.
+     * SaveData-Key fuer sprite.
      */
     public static final String ENTITY_SPRITE = "sprite";
     /**
-     * SaveData-Key für die Anzahl der Bilder.
+     * SaveData-Key fuer die Anzahl der Bilder.
      */
     public static final String ENTITY_SPRITE_LENGTH = "spriteLength";
     /**
-     * SaveData-Key für posX.
+     * SaveData-Key fuer posX.
      */
     public static final String ENTITY_X = "posX";
     /**
-     * SaveData-Key für posY.
+     * SaveData-Key fuer posY.
      */
     public static final String ENTITY_Y = "posY";
     /**
-     * SaveData-Key für direction.
+     * SaveData-Key fuer direction.
      */
     public static final String EXTRA_DIR = "direction";
     /**
-     * SaveData-Key für id.
+     * SaveData-Key fuer id.
      */
     public static final String EXTRA_ID = "id";
     /**
-     * SaveData-Key für inventory.
+     * SaveData-Key fuer inventory.
      */
     public static final String EXTRA_INV = "inventory";
     /**
-     * SaveData-Key für key.
+     * SaveData-Key fuer key.
      */
     public static final String EXTRA_KEY = "key";
     /**
-     * SaveData-Key für open.
+     * SaveData-Key fuer open.
      */
     public static final String EXTRA_OPEN = "open";
     /**
-     * SaveData-Key für raster.
+     * SaveData-Key fuer raster.
      */
     public static final String EXTRA_RASTER = "raster";
     /**
-     * SaveData-Key für posX.
+     * SaveData-Key fuer posX.
      */
     public static final String EXTRA_X = "posX";
     /**
-     * SaveData-Key für posY.
+     * SaveData-Key fuer posY.
      */
     public static final String EXTRA_Y = "posY";
     /**
-     * SaveData-Key für selected.
+     * SaveData-Key fuer selected.
      */
     public static final String INV_SELECTED = "selected";
     /**
-     * SaveData-Key für size.
+     * SaveData-Key fuer size.
      */
     public static final String INV_SIZE = "size";
     /**
-     * SaveData-Key für slot.
+     * SaveData-Key fuer slot.
      */
     public static final String INV_SLOT = "slot";
     /**
@@ -114,15 +114,15 @@ public final class Strings {
      */
     public static final String NAME = "Project X";
     /**
-     * SaveData-Key für damage.
+     * SaveData-Key fuer damage.
      */
     public static final String STACK_DAMAGE = "damage";
     /**
-     * SaveData-Key für item.
+     * SaveData-Key fuer item.
      */
     public static final String STACK_ITEM = "item";
     /**
-     * SaveData-Key für stackSize.
+     * SaveData-Key fuer stackSize.
      */
     public static final String STACK_SIZE = "stackSize";
     /**

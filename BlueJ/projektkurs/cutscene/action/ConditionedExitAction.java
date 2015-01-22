@@ -12,7 +12,7 @@ public class ConditionedExitAction extends Action {
      * Konstruktor.
      *
      * @param condition
-     *            Ausführbedingung
+     *            Ausfuehrbedingung
      */
     public ConditionedExitAction(Condition condition) {
         super(condition);

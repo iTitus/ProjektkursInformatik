@@ -24,7 +24,7 @@ public final class ExtraInformationen {
     public static final HashMap<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
 
     /**
-     * Das Pair, das alle ExtraInformationen enthält.
+     * Das Pair, das alle ExtraInformationen enthaelt.
      *
      * @return Pair
      */
@@ -43,7 +43,7 @@ public final class ExtraInformationen {
     }
 
     /**
-     * Lädt einen ExtraInformation aus einem SaveData-Objekt.
+     * Laedt einen ExtraInformation aus einem SaveData-Objekt.
      *
      * @param data
      *            SaveData

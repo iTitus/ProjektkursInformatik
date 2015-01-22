@@ -13,7 +13,7 @@ public class Node<T> {
      */
     private final T content;
     /**
-     * Nächste Node.
+     * Naechste Node.
      */
     private Node<T> next;
 
@@ -38,19 +38,19 @@ public class Node<T> {
     }
 
     /**
-     * Die nächste Node.
+     * Die naechste Node.
      *
-     * @return nächste Node
+     * @return naechste Node
      */
     public Node<T> getNext() {
         return next;
     }
 
     /**
-     * Setzt die nächste Node.
+     * Setzt die naechste Node.
      *
      * @param next
-     *            ist die neue nächste Node
+     *            ist die neue naechste Node
      */
     public void setNext(Node<T> next) {
         this.next = next;

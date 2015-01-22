@@ -14,7 +14,7 @@ public class RelativeWindowPositionCondition extends PositionCondition {
      * Konstruktor.
      *
      * @param object
-     *            CutSceneObject, dessen Position überprüft werden sollo
+     *            CutSceneObject, dessen Position ueberprueft werden sollo
      * @param x
      *            X-Koordinate
      * @param y

@@ -3,7 +3,7 @@ package projektkurs.raster.extra;
 import projektkurs.world.Spielfeld;
 
 /**
- * Interface für Raster, die eine ExtraInformation besitzen.
+ * Interface fuer Raster, die eine ExtraInformation besitzen.
  */
 public interface IHasExtraInformation {
 

@@ -23,7 +23,7 @@ public final class CutScenes {
     public static CutScene one;
 
     /**
-     * Das Pair, das alle CutScenes enthält.
+     * Das Pair, das alle CutScenes enthaelt.
      *
      * @return Pair
      */

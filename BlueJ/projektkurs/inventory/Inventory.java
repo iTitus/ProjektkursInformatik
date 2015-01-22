@@ -11,7 +11,7 @@ import projektkurs.util.SaveData;
 public class Inventory {
 
     /**
-     * Lädt ein Inventory aus der gegebenen SaveData.
+     * Laedt ein Inventory aus der gegebenen SaveData.
      *
      * @param data
      *            SaveData
@@ -38,7 +38,7 @@ public class Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Größe
+     *            Groeße
      */
     public Inventory(int size) {
         stacks = new ItemStack[size];
@@ -51,7 +51,7 @@ public class Inventory {
     }
 
     /**
-     * Fügt diesem Inventory einen neuen ItemStack hinzu.
+     * Fuegt diesem Inventory einen neuen ItemStack hinzu.
      *
      * @param newStack
      *            ist der neue ItemStack
@@ -193,21 +193,21 @@ public class Inventory {
     }
 
     /**
-     * Größe dieses Inventars.
+     * Groeße dieses Inventars.
      *
-     * @return Größe
+     * @return Groeße
      */
     public int getSize() {
         return stacks.length;
     }
 
     /**
-     * Erhöht die StackSize eines ItemStacks am gegebenen Index um die gegebene Anzahl.
+     * Erhoeht die StackSize eines ItemStacks am gegebenen Index um die gegebene Anzahl.
      *
      * @param index
-     *            Index, an dem erhöht werden soll
+     *            Index, an dem erhoeht werden soll
      * @param stackSize
-     *            StackSize, um die erhöht werden soll
+     *            StackSize, um die erhoeht werden soll
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean incrStackSize(int index, int stackSize) {

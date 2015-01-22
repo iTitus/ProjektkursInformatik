@@ -39,7 +39,7 @@ public class Spielfeld implements IUpdatable {
      */
     private final int sizeX;
     /**
-     * Spielfeldhöhe.
+     * Spielfeldhoehe.
      */
     private final int sizeY;
     /**
@@ -61,7 +61,7 @@ public class Spielfeld implements IUpdatable {
      * @param sizeX
      *            Spielfeldbreite
      * @param sizeY
-     *            Spielfeldhöhe
+     *            Spielfeldhoehe
      * @param spawnX
      *            X-Koordinate des Spielererscheinungsortes
      * @param spawnY
@@ -108,7 +108,7 @@ public class Spielfeld implements IUpdatable {
     }
 
     /**
-     * Lässt einen Entity verschwinden.
+     * Laesst einen Entity verschwinden.
      *
      * @param e
      *            Entity
@@ -144,7 +144,7 @@ public class Spielfeld implements IUpdatable {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @return gefundene Entities
      */
     public ArrayList<Entity> getEntitiesInRect(int posX, int posY, int sizeX, int sizeY) {
@@ -207,9 +207,9 @@ public class Spielfeld implements IUpdatable {
     }
 
     /**
-     * Höhe der Map.
+     * Hoehe der Map.
      *
-     * @return Höhe
+     * @return Hoehe
      */
     public int getMapSizeY() {
         return sizeY;
@@ -272,7 +272,7 @@ public class Spielfeld implements IUpdatable {
     }
 
     /**
-     * Prüft ob die gegebene Koordinate innerhalb dieser Map ist.
+     * Prueft ob die gegebene Koordinate innerhalb dieser Map ist.
      *
      * @param x
      *            X-Koordinate
@@ -377,7 +377,7 @@ public class Spielfeld implements IUpdatable {
     }
 
     /**
-     * Lässt einen Entity erscheinen.
+     * Laesst einen Entity erscheinen.
      *
      * @param e
      *            Entity

@@ -10,7 +10,7 @@ import projektkurs.cutscene.object.CutSceneObject;
 public class PositionCondition extends Condition {
 
     /**
-     * CutSceneObject, deesen Position überprüft wird.
+     * CutSceneObject, deesen Position ueberprueft wird.
      */
     private final CutSceneObject object;
     /**
@@ -26,7 +26,7 @@ public class PositionCondition extends Condition {
      * Konstruktor.
      *
      * @param object
-     *            CutSceneObject, dessen Position überprüft wird
+     *            CutSceneObject, dessen Position ueberprueft wird
      * @param x
      *            X-Koordinate
      * @param y
@@ -39,7 +39,7 @@ public class PositionCondition extends Condition {
     }
 
     /**
-     * Das CutSceneObject, dessen Postion überprüft wird.
+     * Das CutSceneObject, dessen Postion ueberprueft wird.
      *
      * @return CutSceneObject
      */

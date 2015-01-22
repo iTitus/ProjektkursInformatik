@@ -29,11 +29,11 @@ public final class Raster {
      */
     public static AbstractRaster chest;
     /**
-     * Zerstörter Boden.
+     * Zerstoerter Boden.
      */
     public static AbstractRaster destroyedRaster;
     /**
-     * Tür.
+     * Tuer.
      */
     public static AbstractRaster door;
     /**
@@ -60,14 +60,13 @@ public final class Raster {
      * Wand.
      */
     public static AbstractRaster wall;
-
     /**
      * Wasser
      */
-    public static SolidRaster water;
+    public static AbstractRaster water;
 
     /**
-     * Das Pair, das alle Raster enthält.
+     * Das Pair, das alle Raster enthaelt.
      *
      * @return Pair
      */

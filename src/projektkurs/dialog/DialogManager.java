@@ -11,10 +11,10 @@ public final class DialogManager {
     private static int value;
 
     /**
-     * Ändert den Wert der Dialoge.
+     * Aendert den Wert der Dialoge.
      *
      * @param by
-     *            Änderung
+     *            Aenderung
      */
     public static void changeValue(int by) {
         value += by;

@@ -13,7 +13,7 @@ import projektkurs.util.Init.State;
 public final class I18n {
 
     /**
-     * Unterstützte Sprachen.
+     * Unterstuetzte Sprachen.
      */
     public static enum SupportedLocales {
 
@@ -101,7 +101,7 @@ public final class I18n {
     private static ResourceBundle resource;
 
     /**
-     * Ändert die Sprache.
+     * Aendert die Sprache.
      *
      * @param locale
      *            neue Sprache
@@ -125,11 +125,11 @@ public final class I18n {
     }
 
     /**
-     * Gibt den übersetzten String zurück.
+     * Gibt den uebersetzten String zurueck.
      *
      * @param key
-     *            Der Schlüssel für den String (zB. "item.nuke.name")
-     * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Übersetzung gibt
+     *            Der Schluessel fuer den String (zB. "item.nuke.name")
+     * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Uebersetzung gibt
      */
     public static String getString(String key) {
 
@@ -146,13 +146,13 @@ public final class I18n {
     }
 
     /**
-     * Gibt den formatierten übersetzten String zurück.
+     * Gibt den formatierten uebersetzten String zurueck.
      *
      * @param key
-     *            Der Schlüssel für den String (zB. "item.nuke.name")
+     *            Der Schluessel fuer den String (zB. "item.nuke.name")
      * @param args
      *            Formatierungsargumente
-     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Übersetzung gibt
+     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Uebersetzung gibt
      */
     public static String getStringFormatted(String key, Object... args) {
 
@@ -169,16 +169,16 @@ public final class I18n {
     }
 
     /**
-     * Alle unterstützten Sprachen.
+     * Alle unterstuetzten Sprachen.
      *
-     * @return alle unterstützten Sprachen
+     * @return alle unterstuetzten Sprachen
      */
     public static SupportedLocales[] getSupportedLocales() {
         return SupportedLocales.values();
     }
 
     /**
-     * Initialisiert die gesetze Sprache und lädt die Lokalisierung.
+     * Initialisiert die gesetze Sprache und laedt die Lokalisierung.
      */
     @Init(state = State.RESOURCES)
     public static void init() {

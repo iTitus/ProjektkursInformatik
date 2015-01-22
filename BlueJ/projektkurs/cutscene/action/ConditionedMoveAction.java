@@ -24,7 +24,7 @@ public class ConditionedMoveAction extends Action {
 
     /**
      * @param condition
-     *            Ausführbedingung
+     *            Ausfuehrbedingung
      * @param object
      *            Das CutSceneObject, das bewegt werden soll
      * @param dx

@@ -51,7 +51,7 @@ public class GuiInfo extends Gui {
     }
 
     /**
-     * Fügt alle TextViews hinzu.
+     * Fuegt alle TextViews hinzu.
      *
      * @param texts
      *            Alle Texte

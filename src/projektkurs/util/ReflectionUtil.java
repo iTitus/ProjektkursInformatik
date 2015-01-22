@@ -10,12 +10,12 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 /**
- * Helperklasse für Reflection.
+ * Helperklasse fuer Reflection.
  */
 public final class ReflectionUtil {
 
     /**
-     * Gibt alle Klassen im Classpath zurück, die im gegebenen Package sind.
+     * Gibt alle Klassen im Classpath zurueck, die im gegebenen Package sind.
      *
      * @param packageName
      *            Name des Packages
@@ -39,7 +39,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Gibt alle Klassen aus einem Ordner zurück, die im gegebenen Package sind.
+     * Gibt alle Klassen aus einem Ordner zurueck, die im gegebenen Package sind.
      *
      * @param dir
      *            zu durchsuchender Ordner
@@ -98,7 +98,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen und den gegebenen Argumenten zurück.
+     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen und den gegebenen Argumenten zurueck.
      *
      * @param cls
      *            Klasse
@@ -118,7 +118,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen, den gegebenen Argumenten zurück und den gegebenenen Modifiern zurück.
+     * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen, den gegebenen Argumenten zurueck und den gegebenenen Modifiern zurueck.
      *
      * @param cls
      *            Klasse
@@ -139,7 +139,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Gibt alle Methoden aus den gegebenen Klassen zurück, die die gegebenen Annotationen besitzen und alle gegebenen Modifier haben.
+     * Gibt alle Methoden aus den gegebenen Klassen zurueck, die die gegebenen Annotationen besitzen und alle gegebenen Modifier haben.
      *
      * @param classes
      *            zu durchsuchende Klassen
@@ -158,7 +158,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Gibt alle Pfade zurück, die im Classpath stehen.
+     * Gibt alle Pfade zurueck, die im Classpath stehen.
      *
      * @return alle Pfade
      */
@@ -172,7 +172,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Sind alle gegebenen Modifier an der gegebenen Methode präsent.
+     * Sind alle gegebenen Modifier an der gegebenen Methode praesent.
      *
      * @param m
      *            Methode
@@ -191,7 +191,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Führt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus. Ignoriert de Rückgabewert.
+     * Fuehrt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus. Ignoriert de Rueckgabewert.
      *
      * @param o
      *            Objekt
@@ -206,7 +206,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Führt die gegebene statische Methode mit den gegegebenen Parametern aus. Ignoriert de Rückgabewert.
+     * Fuehrt die gegebene statische Methode mit den gegegebenen Parametern aus. Ignoriert de Rueckgabewert.
      *
      * @param m
      *            Methode
@@ -219,15 +219,15 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Führt die gegebene statische Methode mit den gegegebenen Parametern aus.
+     * Fuehrt die gegebene statische Methode mit den gegegebenen Parametern aus.
      *
      * @param <T>
-     *            der erwartete Rückgabetyp
+     *            der erwartete Rueckgabetyp
      * @param m
      *            Methode
      * @param args
      *            Parameter
-     * @return Rückgabewert
+     * @return Rueckgabewert
      */
     @SuppressWarnings("unchecked")
     public static <T> T invokeStaticWithReturn(Method m, Object... args) {
@@ -240,17 +240,17 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Führt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus.
+     * Fuehrt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus.
      *
      * @param <T>
-     *            der erwartete Rückgabetyp
+     *            der erwartete Rueckgabetyp
      * @param o
      *            Objekt
      * @param m
      *            Methode
      * @param args
      *            Parameter
-     * @return Rückgabewert
+     * @return Rueckgabewert
      */
     @SuppressWarnings("unchecked")
     public static <T> T invokeWithReturn(Object o, Method m, Object... args) {
@@ -305,7 +305,7 @@ public final class ReflectionUtil {
     }
 
     /**
-     * Füllt die gegebene Liste mit allen Klassen im gegebenem Ordner aus dem gegebenen Package.
+     * Fuellt die gegebene Liste mit allen Klassen im gegebenem Ordner aus dem gegebenen Package.
      *
      * @param first
      *            ob dies der erste Methoden-Aufruf ist - sollte true sein

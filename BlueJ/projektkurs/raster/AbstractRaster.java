@@ -73,7 +73,7 @@ public abstract class AbstractRaster {
     }
 
     /**
-     * Wird ausgeführt, wenn ein Entity mit diesem Raster kollidiert - bevor canWalkOnFromDirection ausgeführt wird.
+     * Wird ausgefuehrt, wenn ein Entity mit diesem Raster kollidiert - bevor canWalkOnFromDirection ausgefuehrt wird.
      *
      * @param map
      *            Spielfeld
@@ -89,7 +89,7 @@ public abstract class AbstractRaster {
     }
 
     /**
-     * Wird ausgeführt, wenn auf dieses Raster mit der linken Maustaste geklickt wird.
+     * Wird ausgefuehrt, wenn auf dieses Raster mit der linken Maustaste geklickt wird.
      *
      * @param map
      *            Spielfeld
@@ -105,7 +105,7 @@ public abstract class AbstractRaster {
     }
 
     /**
-     * Wird ausgeführt, wenn auf dieses Raster mit der rechten Maustaste geklickt wird.
+     * Wird ausgefuehrt, wenn auf dieses Raster mit der rechten Maustaste geklickt wird.
      *
      * @param map
      *            Spielfeld
@@ -121,7 +121,7 @@ public abstract class AbstractRaster {
     }
 
     /**
-     * Wird ausgeführt, wenn ein Entity auf dieses Raster draufläuft.
+     * Wird ausgefuehrt, wenn ein Entity auf dieses Raster drauflaeuft.
      *
      * @param map
      *            Spielfeld

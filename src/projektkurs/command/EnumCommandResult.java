@@ -13,7 +13,7 @@ public enum EnumCommandResult {
      */
     NO_SUCCESS,
     /**
-     * Kommando nicht erfolgreich: Fehler während des Konvertierens zu einer Zahl.
+     * Kommando nicht erfolgreich: Fehler waehrend des Konvertierens zu einer Zahl.
      */
     NUMBER_PARSING,
     /**
@@ -21,7 +21,7 @@ public enum EnumCommandResult {
      */
     OBJECT_NOT_FOUND,
     /**
-     * Kommando nicht erfolgreich: Nummer oder Text außerhalb des gültigen Bereiches.
+     * Kommando nicht erfolgreich: Nummer oder Text außerhalb des gueltigen Bereiches.
      */
     OUT_OF_BOUNDS,
     /**

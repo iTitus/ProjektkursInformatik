@@ -24,7 +24,7 @@ public final class Dialoge {
     public static Dialog test;
 
     /**
-     * Das Pair, das alle Dialoge enthält.
+     * Das Pair, das alle Dialoge enthaelt.
      *
      * @return Pair
      */

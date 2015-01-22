@@ -17,7 +17,7 @@ public class DialogPart implements Iterable<String> {
      */
     private int index;
     /**
-     * Ist dieser DialogPart gut. Wenn ja muss man über dem benötigten Wert liegen, wenn nein darunter.
+     * Ist dieser DialogPart gut. Wenn ja muss man ueber dem benoetigten Wert liegen, wenn nein darunter.
      */
     private final boolean isGood;
     /**
@@ -25,15 +25,15 @@ public class DialogPart implements Iterable<String> {
      */
     private final String name;
     /**
-     * Benötigter Wert.
+     * Benoetigter Wert.
      */
     private final int necessaryValue;
     /**
-     * Enthält das Gespräch, jeweils ein String pro Person und Sprechpart.
+     * Enthaelt das Gespraech, jeweils ein String pro Person und Sprechpart.
      */
     private final String[] talk;
     /**
-     * Änderung des Wertes.
+     * Aenderung des Wertes.
      */
     private final int valueChange;
 
@@ -43,13 +43,13 @@ public class DialogPart implements Iterable<String> {
      * @param name
      *            Anzeigename
      * @param valueChange
-     *            Wertänderung
+     *            Wertaenderung
      * @param necessaryValue
-     *            benötigter Wert
+     *            benoetigter Wert
      * @param isGood
      *            ist dieser DialogPart gut
      * @param talkLength
-     *            Länge des weiterführenden Gesprächs
+     *            Laenge des weiterfuehrenden Gespraechs
      */
     public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, int talkLength) {
         this.name = name;
@@ -74,34 +74,34 @@ public class DialogPart implements Iterable<String> {
     }
 
     /**
-     * Der benötigte Wert.
+     * Der benoetigte Wert.
      *
-     * @return benötigter Wert
+     * @return benoetigter Wert
      */
     public int getNecessaryValue() {
         return necessaryValue;
     }
 
     /**
-     * Nächster Sprechpart.
+     * Naechster Sprechpart.
      *
-     * @return nächster Sprechpart
+     * @return naechster Sprechpart
      */
     public String getNextString() {
         return talk[index++];
     }
 
     /**
-     * Änderung des Wertes.
+     * Aenderung des Wertes.
      *
-     * @return Wertänderung
+     * @return Wertaenderung
      */
     public int getValueChange() {
         return valueChange;
     }
 
     /**
-     * Gibt es einen nächsten Sprechpart.
+     * Gibt es einen naechsten Sprechpart.
      *
      * @return true, wenn ja; false wenn nein
      */
@@ -119,7 +119,7 @@ public class DialogPart implements Iterable<String> {
     }
 
     /**
-     * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getNextString() ausgeführt werden.
+     * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getNextString() ausgefuehrt werden.
      *
      * @return true, wenn ja; false, wenn nein
      */

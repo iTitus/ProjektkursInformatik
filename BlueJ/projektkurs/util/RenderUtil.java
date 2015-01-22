@@ -89,7 +89,7 @@ public final class RenderUtil {
      * @param centerY
      *            Y-Koordinate des Mittelpunktes
      * @param size
-     *            die Größe der Schrift
+     *            die Groeße der Schrift
      */
     public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int size) {
         // Font oldfont = g.getFont();
@@ -112,7 +112,7 @@ public final class RenderUtil {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      */
     public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY) {
         // Font oldfont = screen.getFont();
@@ -139,9 +139,9 @@ public final class RenderUtil {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param size
-     *            gewünschte Schriftgröße
+     *            gewuenschte Schriftgroeße
      */
     public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY, int size) {
         // Font oldfont = g.getFont();
@@ -208,7 +208,7 @@ public final class RenderUtil {
     }
 
     /**
-     * Malt ein gefülltes Rechteck.
+     * Malt ein gefuelltes Rechteck.
      *
      * @param g
      *            Graphics2D
@@ -221,7 +221,7 @@ public final class RenderUtil {
      * @param width
      *            Breite
      * @param height
-     *            Höhe
+     *            Hoehe
      */
     public static void drawFilledRectangle(Screen screen, int color, int x, int y, int width, int height) {
         if (color != Integers.TRANSPARENCY) {
@@ -263,7 +263,7 @@ public final class RenderUtil {
      * @param width
      *            Breite
      * @param height
-     *            Höhe
+     *            Hoehe
      */
     public static void drawImage(Graphics2D g, BufferedImage image, int x, int y, int width, int height) {
         g.drawImage(image, x, y, width, height, null);
@@ -291,43 +291,6 @@ public final class RenderUtil {
                 }
             }
         }
-    }
-
-    /**
-     * Schreibt einen String an die gegebenen Koordinaten.
-     *
-     * @param g
-     *            Graphics2D
-     * @param string
-     *            String
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
-     */
-    public static void drawString(Screen screen, String string, int posX, int posY) {
-        // screen.drawGlyphVector(//screen.getFont().createGlyphVector(//screen.getFontRenderContext(), string), posX, posY);
-    }
-
-    /**
-     * Schreibt einen String an die gegebenen Koordinaten.
-     *
-     * @param screen
-     *            Screen
-     * @param string
-     *            String
-     * @param posX
-     *            X-Koordinate
-     * @param posY
-     *            Y-Koordinate
-     * @param size
-     *            Schriftgröße
-     */
-    public static void drawString(Screen screen, String string, int posX, int posY, int size) {
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // g.drawGlyphVector(g.getFont().createGlyphVector(g.getFontRenderContext(), string), posX, posY);
-        // g.setFont(oldfont);
     }
 
     /**

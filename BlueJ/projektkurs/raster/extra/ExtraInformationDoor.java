@@ -10,7 +10,7 @@ import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**
- * ExtraInformation einer Tür.
+ * ExtraInformation einer Tuer.
  */
 public class ExtraInformationDoor extends ExtraInformation {
 
@@ -19,11 +19,11 @@ public class ExtraInformationDoor extends ExtraInformation {
      */
     private Direction direction;
     /**
-     * Ist die Tür geöffnet.
+     * Ist die Tuer geoeffnet.
      */
     private boolean isOpen;
     /**
-     * Öffnungscode.
+     * Oeffnungscode.
      */
     private int openingKey;
 
@@ -66,14 +66,14 @@ public class ExtraInformationDoor extends ExtraInformation {
         switch (direction) {
             case LEFT:
             case RIGHT:
-                return isOpen ? Sprites.door_open : Sprites.door;
+                return isOpen ? Sprites.door_open_WE : Sprites.door_WE;
             default:
-                return isOpen ? Sprites.door_open : Sprites.door;
+                return isOpen ? Sprites.door_open_NS : Sprites.door_NS;
         }
     }
 
     /**
-     * Ist die Tür von der gegebenen Richtung aus offen und damit begehbar.
+     * Ist die Tuer von der gegebenen Richtung aus offen und damit begehbar.
      *
      * @param dir
      *            Richtung
@@ -102,17 +102,17 @@ public class ExtraInformationDoor extends ExtraInformation {
     }
 
     /**
-     * Setzt den Öffnungscode.
+     * Setzt den Oeffnungscode.
      *
      * @param openingKey
-     *            Öffnungscode
+     *            Oeffnungscode
      */
     public void setOpeningKey(int openingKey) {
         this.openingKey = openingKey;
     }
 
     /**
-     * Versucht die Tür mit dem gegebenen Schlüssel zu öffnen.
+     * Versucht die Tuer mit dem gegebenen Schluessel zu oeffnen.
      *
      * @param key
      *            ItemStack

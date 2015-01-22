@@ -1,12 +1,12 @@
 package projektkurs.util;
 
 /**
- * Mit diesem Interface können Objekte gespeichert und geladen werden.
+ * Mit diesem Interface koennen Objekte gespeichert und geladen werden.
  */
 public interface ISaveable {
 
     /**
-     * Lädt alle Felder des Objektes aus der gegebenen SaveData.
+     * Laedt alle Felder des Objektes aus der gegebenen SaveData.
      *
      * @param data
      *            SaveData

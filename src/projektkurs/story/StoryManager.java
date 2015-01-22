@@ -36,9 +36,9 @@ public class StoryManager implements IUpdatable {
      * Registriert einen neuen Trigger hinzu.
      *
      * @param trigger
-     *            hinzuzufügender Trigger
+     *            hinzuzufuegender Trigger
      * @param m
-     *            auszuführende Methode
+     *            auszufuehrende Methode
      * @param objects
      *            eventuelle Parameter
      */

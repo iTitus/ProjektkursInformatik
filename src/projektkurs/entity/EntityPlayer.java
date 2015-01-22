@@ -85,7 +85,7 @@ public class EntityPlayer extends EntityLiving {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
      *
      * @param screenX
      *            X-Bildschirmkoordinate
@@ -105,7 +105,7 @@ public class EntityPlayer extends EntityLiving {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
      *
      * @param screenX
      *            X-Bildschirmkoordinate

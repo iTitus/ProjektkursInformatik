@@ -4,7 +4,7 @@ import projektkurs.Main;
 import projektkurs.gui.GuiSimulation;
 
 /**
- * Das Kommando, um die Simulation zu öffnen.
+ * Das Kommando, um die Simulation zu oeffnen.
  */
 public class CommandOpenSimulation extends Command {
 

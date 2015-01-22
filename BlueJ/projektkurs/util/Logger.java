@@ -15,7 +15,7 @@ import java.util.Date;
 public final class Logger {
 
     /**
-     * Veschiedene LogLevel - beeinflussen den Präfix.
+     * Veschiedene LogLevel - beeinflussen den Praefix.
      */
     public static enum LogLevel {
         /**
@@ -85,7 +85,7 @@ public final class Logger {
      * @param msg
      *            Nachricht
      * @param objs
-     *            eventuelle zusätzliche Objekte
+     *            eventuelle zusaetzliche Objekte
      */
     public static void debug(String msg, Object... objs) {
         log(LogLevel.DEBUG, msg, objs);
@@ -107,7 +107,7 @@ public final class Logger {
      * @param msg
      *            Nachricht
      * @param objs
-     *            eventuelle zusätzliche Objekte
+     *            eventuelle zusaetzliche Objekte
      */
     public static void info(String msg, Object... objs) {
         log(LogLevel.INFO, msg, objs);
@@ -121,7 +121,7 @@ public final class Logger {
      * @param msg
      *            Nachricht
      * @param objs
-     *            eventuelle zusätzliche Objekte
+     *            eventuelle zusaetzliche Objekte
      */
     public static void log(LogLevel level, String msg, Object... objs) {
         if (level != null && msg != null && !msg.equalsIgnoreCase("")) {
@@ -212,7 +212,7 @@ public final class Logger {
      * @param msg
      *            Nachricht
      * @param objs
-     *            eventuelle zusätzliche Objekte
+     *            eventuelle zusaetzliche Objekte
      */
     public static void warn(String msg, Object... objs) {
         log(LogLevel.WARN, msg, objs);

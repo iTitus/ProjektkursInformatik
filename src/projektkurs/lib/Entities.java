@@ -41,7 +41,7 @@ public final class Entities {
     }
 
     /**
-     * Das Pair, das alle Entities enthält.
+     * Das Pair, das alle Entities enthaelt.
      *
      * @return Pair
      */
@@ -60,7 +60,7 @@ public final class Entities {
     }
 
     /**
-     * Lädt einen Entity aus einem SaveData-Objekt.
+     * Laedt einen Entity aus einem SaveData-Objekt.
      *
      * @param data
      *            SaveData

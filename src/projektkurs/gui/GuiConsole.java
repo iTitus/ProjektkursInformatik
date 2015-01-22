@@ -75,7 +75,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
     }
 
     /**
-     * Wird ausgeführt, wenn die Enter-Taste gedrückt wird.
+     * Wird ausgefuehrt, wenn die Enter-Taste gedrueckt wird.
      *
      * @param text
      *            Text im TextField

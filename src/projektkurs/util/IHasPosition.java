@@ -1,7 +1,7 @@
 package projektkurs.util;
 
 /**
- * Interface für Objekte, die eine Position haben.
+ * Interface fuer Objekte, die eine Position haben.
  */
 public interface IHasPosition {
 

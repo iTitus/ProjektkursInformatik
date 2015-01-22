@@ -116,7 +116,7 @@ public final class CutSceneManager {
     }
 
     /**
-     * Läuft gerade eine CutScene.
+     * Laeuft gerade eine CutScene.
      *
      * @return true, wenn ja; false, wenn nein
      */
@@ -125,7 +125,7 @@ public final class CutSceneManager {
     }
 
     /**
-     * Führt eine CutScene aus.
+     * Fuehrt eine CutScene aus.
      *
      * @param cutSceneToStart
      *            CutScene

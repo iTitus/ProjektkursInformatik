@@ -10,12 +10,12 @@ import projektkurs.cutscene.condition.TrueCondition;
 public abstract class Action {
 
     /**
-     * Ausführbedingung.
+     * Ausfuehrbedingung.
      */
     private final Condition condition;
 
     /**
-     * Konstruktor mit der Ausführbedingung 'TrueCondition'.
+     * Konstruktor mit der Ausfuehrbedingung 'TrueCondition'.
      */
     public Action() {
         this(new TrueCondition());
@@ -25,7 +25,7 @@ public abstract class Action {
      * Konstruktor.
      *
      * @param condition
-     *            Ausführbedingung
+     *            Ausfuehrbedingung
      */
     public Action(Condition condition) {
         if (condition != null) {
@@ -36,7 +36,7 @@ public abstract class Action {
     }
 
     /**
-     * Führt die Action aus.
+     * Fuehrt die Action aus.
      *
      * @param cutScene
      *            Aktuelle CutScene
@@ -44,7 +44,7 @@ public abstract class Action {
     public abstract void doAction(CutScene cutScene);
 
     /**
-     * Die Bedingung, um diese Action auszuführen.
+     * Die Bedingung, um diese Action auszufuehren.
      *
      * @return Condition
      */
@@ -53,7 +53,7 @@ public abstract class Action {
     }
 
     /**
-     * Soll diese Action ausgeführt werden.
+     * Soll diese Action ausgefuehrt werden.
      *
      * @param cutScene
      *            Aktuelle CutScene

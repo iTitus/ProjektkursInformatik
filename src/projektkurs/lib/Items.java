@@ -30,7 +30,7 @@ public final class Items {
      */
     public static final Item[] ITEMS = new Item[Integers.MAX_ITEM_NUMBER];
     /**
-     * Schlüssel.
+     * Schluessel.
      */
     public static Item key;
     /**
@@ -43,7 +43,7 @@ public final class Items {
     public static Item nuke;
 
     /**
-     * Das Pair, das alle Items enthält.
+     * Das Pair, das alle Items enthaelt.
      *
      * @return Pair
      */

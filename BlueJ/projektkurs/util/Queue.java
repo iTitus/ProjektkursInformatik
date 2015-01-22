@@ -35,7 +35,7 @@ public class Queue<T> {
     }
 
     /**
-     * Löst das oberste Objekt von der Queue.
+     * Loest das oberste Objekt von der Queue.
      */
     public void deQueue() {
         if (empty()) {
@@ -85,7 +85,7 @@ public class Queue<T> {
     }
 
     /**
-     * Vorderstes Objekt & Lösen des ersten Objektes von der Queue.
+     * Vorderstes Objekt & Loesen des ersten Objektes von der Queue.
      *
      * @return vorderstes Objekt
      */

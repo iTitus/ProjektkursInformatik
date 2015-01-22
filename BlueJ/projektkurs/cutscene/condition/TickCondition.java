@@ -13,15 +13,15 @@ public class TickCondition extends Condition {
      */
     public static enum TickConditionType {
         /**
-         * Die vergangenen Ticks stimmen mit der gegebenen Tickzahl überein.
+         * Die vergangenen Ticks stimmen mit der gegebenen Tickzahl ueberein.
          */
         EQUALS,
         /**
-         * Die vergangenen Ticks sind größer als die gegebene Tickzahl.
+         * Die vergangenen Ticks sind groeßer als die gegebene Tickzahl.
          */
         GREATER,
         /**
-         * Die vergangenen Ticks sind größer als die gegebene Tickzahl oder stimmen mit ihr überein.
+         * Die vergangenen Ticks sind groeßer als die gegebene Tickzahl oder stimmen mit ihr ueberein.
          */
         GREATER_EQUALS,
         /**
@@ -29,7 +29,7 @@ public class TickCondition extends Condition {
          */
         LESSER,
         /**
-         * Die vergangenen Ticks sind kleiner als die gegebene Tickzahl oder stimmen mit ihr überein.
+         * Die vergangenen Ticks sind kleiner als die gegebene Tickzahl oder stimmen mit ihr ueberein.
          */
         LESSER_EQUALS,
         /**

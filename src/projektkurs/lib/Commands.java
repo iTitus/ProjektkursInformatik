@@ -49,7 +49,7 @@ public final class Commands {
     public static Command switchLevel;
 
     /**
-     * Das Pair, das alle Kommandos enthält.
+     * Das Pair, das alle Kommandos enthaelt.
      *
      * @return Pair
      */

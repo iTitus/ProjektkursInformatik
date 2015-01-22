@@ -3,7 +3,7 @@ package projektkurs.story.trigger;
 import projektkurs.Main;
 
 /**
- * Prüft, ob sich der Spieler in einem gegebenen Rechteck befindet.
+ * Prueft, ob sich der Spieler in einem gegebenen Rechteck befindet.
  */
 public class AreaTrigger extends Trigger {
 
@@ -20,7 +20,7 @@ public class AreaTrigger extends Trigger {
      */
     private final int sizeX;
     /**
-     * Höhe.
+     * Hoehe.
      */
     private final int sizeY;
 
@@ -34,7 +34,7 @@ public class AreaTrigger extends Trigger {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      */
     public AreaTrigger(int posX, int posY, int sizeX, int sizeY) {
         this.posX = posX;

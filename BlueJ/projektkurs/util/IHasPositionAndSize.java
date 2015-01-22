@@ -1,7 +1,7 @@
 package projektkurs.util;
 
 /**
- * Interface für Objekte, die eine Position und eine Größe haben.
+ * Interface fuer Objekte, die eine Position und eine Groeße haben.
  */
 public interface IHasPositionAndSize extends IHasPosition {
 
@@ -13,19 +13,19 @@ public interface IHasPositionAndSize extends IHasPosition {
     int getSizeX();
 
     /**
-     * Die Höhe.
+     * Die Hoehe.
      *
-     * @return Höhe
+     * @return Hoehe
      */
     int getSizeY();
 
     /**
-     * Setzt die Größe.
+     * Setzt die Groeße.
      *
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      */
     void setSize(int sizeX, int sizeY);
 

@@ -3,7 +3,7 @@ package projektkurs.gui.element;
 import projektkurs.util.I18n;
 
 /**
- * Ein Textfeld, das man nicht verändern kann.
+ * Ein Textfeld, das man nicht veraendern kann.
  */
 public class TextView extends TextField {
 
@@ -17,7 +17,7 @@ public class TextView extends TextField {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param id
      *            Nummer
      * @param text

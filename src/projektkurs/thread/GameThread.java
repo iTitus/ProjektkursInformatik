@@ -31,7 +31,7 @@ public class GameThread extends Thread {
      */
     private boolean pausing;
     /**
-     * Läuft der Thread.
+     * Laeuft der Thread.
      */
     private boolean running;
     /**
@@ -78,7 +78,7 @@ public class GameThread extends Thread {
     }
 
     /**
-     * Verändert den Pausenstatus.
+     * Veraendert den Pausenstatus.
      *
      * @param pause
      *            true, wenn er pausieren soll; false, wenn er laufen soll

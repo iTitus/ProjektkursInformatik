@@ -47,7 +47,7 @@ public enum Direction {
      */
     public static final Direction[] CARDINAL_DIRECTIONS = new Direction[] { UP, RIGHT, DOWN, LEFT };
     /**
-     * Alle Richtungen, außer der ungültigen Richtung.
+     * Alle Richtungen, außer der ungueltigen Richtung.
      */
     public static final Direction[] VALID_DIRECTIONS = new Direction[] { UP, UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT };
     /**
@@ -56,7 +56,7 @@ public enum Direction {
     private static final Direction[] TABLE = { UP_LEFT, UP, UP_RIGHT, LEFT, UNKNOWN, RIGHT, DOWN_LEFT, DOWN, DOWN_RIGHT };
 
     /**
-     * Direction die zu dem gegebenen Index gehört.
+     * Direction die zu dem gegebenen Index gehoert.
      *
      * @param index
      *            Index
@@ -70,13 +70,13 @@ public enum Direction {
     }
 
     /**
-     * Richtung für die gegebenen Offset-Werte.
+     * Richtung fuer die gegebenen Offset-Werte.
      *
      * @param offsetX
      *            X-Offset
      * @param offsetY
      *            Y-Offset
-     * @return Richtung für die gegebenen Offset-Werte
+     * @return Richtung fuer die gegebenen Offset-Werte
      */
     public static Direction getDirectionForOffset(int offsetX, int offsetY) {
         if (offsetX < -1 || offsetX > 1 || offsetY < -1 || offsetY > 1) {

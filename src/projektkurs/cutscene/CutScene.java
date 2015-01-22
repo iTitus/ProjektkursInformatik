@@ -14,7 +14,7 @@ import projektkurs.util.Queue;
 public final class CutScene implements IUpdatable {
 
     /**
-     * Queues für das Verarbeiten der Actions.
+     * Queues fuer das Verarbeiten der Actions.
      */
     private Queue<Action> actionQueue, startupQueue, tempQueue;
     /**
@@ -39,7 +39,7 @@ public final class CutScene implements IUpdatable {
     private final ArrayList<CutSceneObject> objects;
 
     /**
-     * Konstruktor für eine CutScene.
+     * Konstruktor fuer eine CutScene.
      *
      * @param name
      *            Name
@@ -156,7 +156,7 @@ public final class CutScene implements IUpdatable {
     }
 
     /**
-     * Registriert eine Action, die jeden Tick ausgeführt werden kann.
+     * Registriert eine Action, die jeden Tick ausgefuehrt werden kann.
      *
      * @param action
      *            Action
@@ -183,7 +183,7 @@ public final class CutScene implements IUpdatable {
     }
 
     /**
-     * Lässt ein CutSceneObject in der CutScene erscheinen.
+     * Laesst ein CutSceneObject in der CutScene erscheinen.
      *
      * @param object
      *            CutSceneObject

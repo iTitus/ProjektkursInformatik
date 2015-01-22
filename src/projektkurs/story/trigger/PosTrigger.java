@@ -1,7 +1,7 @@
 package projektkurs.story.trigger;
 
 /**
- * Prüft, ob sich der Spieler an einer gegebenen Position befindet.
+ * Prueft, ob sich der Spieler an einer gegebenen Position befindet.
  */
 public class PosTrigger extends AreaTrigger {
 

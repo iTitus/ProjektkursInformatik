@@ -19,8 +19,10 @@ public final class Sprites {
     public static Sprite button_highlight;
     public static Sprite chest;
     public static Sprite destroyed;
-    public static Sprite door;
-    public static Sprite door_open;
+    public static Sprite door_NS;
+    public static Sprite door_open_NS;
+    public static Sprite door_open_WE;
+    public static Sprite door_WE;
     public static Sprite finish;
     public static Sprite[] fire;
     public static Sprite grass;
@@ -39,12 +41,13 @@ public final class Sprites {
     public static Sprite redNPC;
     public static Sprite slot;
     public static Sprite slot_highlight;
+    public static Sprite street_WE;
     public static Sprite tree;
     public static Sprite wall;
     public static Sprite water;
 
     /**
-     * Das Pair, das alle Sprites enthält.
+     * Das Pair, das alle Sprites enthaelt.
      *
      * @return Pair
      */
@@ -69,11 +72,17 @@ public final class Sprites {
         chest = new Sprite("chest", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
         registerSprite(chest);
 
-        door = new Sprite("door", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
-        registerSprite(door);
+        door_NS = new Sprite("door_NS", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(door_NS);
 
-        door_open = new Sprite("door_open", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
-        registerSprite(door_open);
+        door_WE = door_NS.rotate("door_WE", 90);
+        registerSprite(door_WE);
+
+        door_open_NS = new Sprite("door_open_NS", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(door_open_NS);
+
+        door_open_WE = door_open_NS.rotate("door_open_WE", 90);
+        registerSprite(door_open_WE);
 
         finish = new Sprite("finish", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
         registerSprite(finish);
@@ -120,17 +129,21 @@ public final class Sprites {
         lordvO_N = new Sprite("lordvO_N", Integers.RASTER_SIZE, 0, 0, SpriteSheets.entities);
         registerSprite(lordvO_N);
 
-        lordvO_O = lordvO_N.rotate("lordvO_O", Math.toRadians(90));
+        lordvO_O = lordvO_N.rotate("lordvO_O", 90);
         registerSprite(lordvO_O);
 
-        lordvO_S = lordvO_N.rotate("lordvO_S", Math.toRadians(180));
+        lordvO_S = lordvO_N.rotate("lordvO_S", 180);
         registerSprite(lordvO_S);
 
-        lordvO_W = lordvO_N.rotate("lordvO_W", Math.toRadians(270));
+        lordvO_W = lordvO_N.rotate("lordvO_W", 270);
         registerSprite(lordvO_W);
 
         redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(redNPC);
+
+        street_WE = new Sprite("street_WE", Integers.RASTER_SIZE, 0, 0, SpriteSheets.raster);
+        registerSprite(street_WE);
+
     }
 
     /**
@@ -139,7 +152,7 @@ public final class Sprites {
      * @param s
      *            Sprite
      */
-    private static void registerSprite(Sprite s) {
+    public static void registerSprite(Sprite s) {
         if (s != null && !MAPPINGS.containsKey(s.getName())) {
             MAPPINGS.put(s.getName(), s);
         } else {

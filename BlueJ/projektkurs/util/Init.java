@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Jede öffentlich statische Methode ohne Parameter mit dieser Annotation wird automatisch beim Start in der richtigen Phase ausgeführt.
+ * Jede oeffentlich statische Methode ohne Parameter mit dieser Annotation wird automatisch beim Start in der richtigen Phase ausgefuehrt.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
@@ -21,29 +21,29 @@ public @interface Init {
          */
         INIT,
         /**
-         * Späte Startphase.
+         * Spaete Startphase.
          */
         POST,
         /**
-         * Frühe Startphase.
+         * Fruehe Startphase.
          */
         PRE,
         /**
-         * Mittlere Startphase für Resoureceloading.
+         * Mittlere Startphase fuer Resoureceloading.
          */
         RESOURCES,
         /**
-         * Späte Startphase für Resoureceloading.
+         * Spaete Startphase fuer Resoureceloading.
          */
         RESOURCES_POST,
         /**
-         * Frühe Startphase für Resoureceloading.
+         * Fruehe Startphase fuer Resoureceloading.
          */
         RESOURCES_PRE
     }
 
     /**
-     * Startphase, in der diese Methode ausgeführt werden soll - default ist INIT.
+     * Startphase, in der diese Methode ausgefuehrt werden soll - default ist INIT.
      */
     State state() default State.INIT;
 }

@@ -12,7 +12,7 @@ public class CombinedAndCondition extends CombinedCondition {
      * Konstruktor.
      *
      * @param conditions
-     *            Zu prüfende Conditions.
+     *            Zu pruefende Conditions.
      */
     public CombinedAndCondition(Condition... conditions) {
         super(conditions);

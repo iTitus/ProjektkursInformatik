@@ -37,7 +37,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem der gegebene Wert jeweils zu den beiden Komponenten addiert wurde.
+     * Gibt einen Vektor zurueck, bei dem der gegebene Wert jeweils zu den beiden Komponenten addiert wurde.
      *
      * @param d
      *            Summand
@@ -48,7 +48,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem die Komponenten des gegebenen Vektors jeweils zu beiden Komponenten dieses Vektors addiert wurden.
+     * Gibt einen Vektor zurueck, bei dem die Komponenten des gegebenen Vektors jeweils zu beiden Komponenten dieses Vektors addiert wurden.
      *
      * @param v
      *            Summand-Vektor
@@ -101,7 +101,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem beide Komponenten jeweils durch den gegebenen Wert dividiert wurden.
+     * Gibt einen Vektor zurueck, bei dem beide Komponenten jeweils durch den gegebenen Wert dividiert wurden.
      *
      * @param d
      *            Divisor
@@ -112,7 +112,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem beide Komponenten dieses Vektors jeweils durch die Komponenten des gegebenen Vektors dividiert wurden.
+     * Gibt einen Vektor zurueck, bei dem beide Komponenten dieses Vektors jeweils durch die Komponenten des gegebenen Vektors dividiert wurden.
      *
      * @param v
      *            Divisor-Vektor
@@ -162,9 +162,9 @@ public class Vector2d {
     }
 
     /**
-     * Der Betrag/Die Länge des Vektors.
+     * Der Betrag/Die Laenge des Vektors.
      *
-     * @return Betrag/Länge
+     * @return Betrag/Laenge
      */
     public double getLength() {
         return Math.sqrt(x * x + y * y);
@@ -209,7 +209,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem beide Komponenten jeweils mit dem gegebenen Wert multipliziert wurden.
+     * Gibt einen Vektor zurueck, bei dem beide Komponenten jeweils mit dem gegebenen Wert multipliziert wurden.
      *
      * @param d
      *            Produkt
@@ -220,7 +220,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem beide Komponenten dieses Vektors jeweils mit den Komponenten des gegebenen Vektors multipliziert wurden.
+     * Gibt einen Vektor zurueck, bei dem beide Komponenten dieses Vektors jeweils mit den Komponenten des gegebenen Vektors multipliziert wurden.
      *
      * @param v
      *            Produkt-Vektor
@@ -231,7 +231,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt den normalisierten Vektor mit der Länge 1 zurück.
+     * Gibt den normalisierten Vektor mit der Laenge 1 zurueck.
      *
      * @return normalisierter Vektor
      */
@@ -264,7 +264,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem der gegebene Wert von beiden Komponenten jeweils subtrahiert wurde.
+     * Gibt einen Vektor zurueck, bei dem der gegebene Wert von beiden Komponenten jeweils subtrahiert wurde.
      *
      * @param d
      *            Subtrahend
@@ -275,7 +275,7 @@ public class Vector2d {
     }
 
     /**
-     * Gibt einen Vektor zurück, bei dem die Komponenten des gegebenen Vektors jeweils von beiden Komponenten dieses Vektors subtrahiert wurden.
+     * Gibt einen Vektor zurueck, bei dem die Komponenten des gegebenen Vektors jeweils von beiden Komponenten dieses Vektors subtrahiert wurden.
      *
      * @param v
      *            Subtrahend-Vektor

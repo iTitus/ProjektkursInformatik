@@ -6,7 +6,7 @@ package projektkurs.command;
 public abstract class Command {
 
     /**
-     * Führt das Kommando aus.
+     * Fuehrt das Kommando aus.
      *
      * @param args
      *            Argumente

@@ -5,7 +5,7 @@ import projektkurs.lib.Integers;
 import projektkurs.util.MathUtil;
 
 /**
- * Der Entity läuft herum.
+ * Der Entity laeuft herum.
  */
 public class BehaviourRunAround extends Behaviour {
 

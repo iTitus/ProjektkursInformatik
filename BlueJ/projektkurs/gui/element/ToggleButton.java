@@ -3,7 +3,7 @@ package projektkurs.gui.element;
 import java.awt.event.MouseEvent;
 
 /**
- * Ein Knopf, der beim Drücken den Namen wechselt.
+ * Ein Knopf, der beim Druecken den Namen wechselt.
  */
 public class ToggleButton extends Button {
 

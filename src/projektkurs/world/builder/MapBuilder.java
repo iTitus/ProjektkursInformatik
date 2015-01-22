@@ -40,7 +40,7 @@ public final class MapBuilder {
             }
         }
 
-        // BÄUME!
+        // BAeUME!
         for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.baum);
         }
@@ -51,7 +51,7 @@ public final class MapBuilder {
         }
         map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
 
-        // WÄNDE!
+        // WAeNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             map.setRasterAt(x, 0, Raster.wall);
             map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
@@ -61,10 +61,10 @@ public final class MapBuilder {
             map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
 
-        // Animation Test
+        // Animationen
         map.setRasterAt(3, 1, Raster.fire);
 
-        // TÜREN!
+        // TUeREN!
         for (int y = 20; y < 25; y++) {
             for (int x = 18; x < 23; x++) {
                 map.setRasterAt(x, y, Raster.rasen);
@@ -72,7 +72,7 @@ public final class MapBuilder {
         }
         map.setRasterAt(20, 18, Raster.baum);
         map.setRasterAt(21, 18, Raster.baum);
-        map.setRasterAt(22, 18, Raster.baum);
+        // map.setRasterAt(22, 18, Raster.baum);
         map.setRasterAt(23, 18, Raster.baum);
         map.setRasterAt(24, 18, Raster.baum);
         map.setRasterAt(24, 19, Raster.baum);
@@ -86,10 +86,16 @@ public final class MapBuilder {
         map.setRasterAt(22, 22, Raster.baum);
         map.setRasterAt(23, 22, Raster.baum);
         map.setRasterAt(22, 20, Raster.finish);
+
         map.setRasterAt(20, 20, Raster.door);
         ExtraInformationDoor door = (ExtraInformationDoor) map.getExtraInformationAt(20, 20);
         door.setDirection(Direction.LEFT);
         door.setOpeningKey(1000);
+
+        map.setRasterAt(22, 18, Raster.door);
+        ExtraInformationDoor door2 = (ExtraInformationDoor) map.getExtraInformationAt(22, 18);
+        door2.setDirection(Direction.UP);
+        door2.setOpeningKey(1000);
 
         // KISTENINHALTE!
         Inventory inv;
@@ -138,7 +144,7 @@ public final class MapBuilder {
             }
         }
 
-        // WÄNDE!
+        // WAeNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             map.setRasterAt(x, 0, Raster.wall);
             map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
@@ -160,40 +166,13 @@ public final class MapBuilder {
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
-        // RASEN!
         for (int y = 0; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.rasen);
             }
         }
 
-        // WÄNDE!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wall);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
-        }
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wall);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
-        }
-
-    }
-
-    /**
-     * Level 1 - Spielfeld 1.
-     *
-     * @param map
-     *            Spielfeld
-     */
-    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
-
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen);
-            }
-        }
-
-        // WÄNDE!
+        // WAeNDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             map.setRasterAt(x, 0, Raster.wall);
             map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);

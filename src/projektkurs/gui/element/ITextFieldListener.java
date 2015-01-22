@@ -1,12 +1,12 @@
 package projektkurs.gui.element;
 
 /**
- * Ein Interface für ein GUI, das auf Textfeldeingaben hören soll.
+ * Ein Interface fuer ein GUI, das auf Textfeldeingaben hoeren soll.
  */
 public interface ITextFieldListener extends IElementListener {
 
     /**
-     * Wird ausgeführt, wenn das Textfeld fokussiert wird.
+     * Wird ausgefuehrt, wenn das Textfeld fokussiert wird.
      *
      * @param field
      *            TextField
@@ -14,7 +14,7 @@ public interface ITextFieldListener extends IElementListener {
     void onFocusGained(TextField field);
 
     /**
-     * Wird ausgeführt, wenn das Textfeld den Fokus verliert.
+     * Wird ausgefuehrt, wenn das Textfeld den Fokus verliert.
      *
      * @param field
      *            TextField
@@ -22,7 +22,7 @@ public interface ITextFieldListener extends IElementListener {
     void onFocusLost(TextField field);
 
     /**
-     * Wird ausgeführt, wenn sich der Text im Textfeld verändert.
+     * Wird ausgefuehrt, wenn sich der Text im Textfeld veraendert.
      *
      * @param field
      *            TextField

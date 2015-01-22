@@ -39,7 +39,7 @@ public class Dialog {
     }
 
     /**
-     * Alle DialogParts die sich zeigen können.
+     * Alle DialogParts die sich zeigen koennen.
      *
      * @return alle DialogParts
      */

@@ -12,7 +12,7 @@ import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
 /**
- * Das Hauptmenü.
+ * Das Hauptmenue.
  */
 public class GuiMainMenu extends Gui implements IButtonListener {
 

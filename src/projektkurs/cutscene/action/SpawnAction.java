@@ -3,7 +3,7 @@ package projektkurs.cutscene.action;
 import projektkurs.cutscene.object.CutSceneObject;
 
 /**
- * Lässt ein CutSceneObject erscheinen.
+ * Laesst ein CutSceneObject erscheinen.
  */
 public class SpawnAction extends ConditionedSpawnAction {
 

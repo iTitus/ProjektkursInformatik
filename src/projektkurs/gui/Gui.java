@@ -76,10 +76,10 @@ public abstract class Gui implements IUpdatable {
     }
 
     /**
-     * Wird aufgerufen, wenn eine Taste gedrückt wird.
+     * Wird aufgerufen, wenn eine Taste gedrueckt wird.
      *
      * @param keyChar
-     *            gedrückter Buchstabe
+     *            gedrueckter Buchstabe
      * @param e
      *            KeyEvent
      */
@@ -93,7 +93,7 @@ public abstract class Gui implements IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
      *
      * @param screenX
      *            X-Bildschirmkoordinate
@@ -109,7 +109,7 @@ public abstract class Gui implements IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
+     * Wird ausgefuehrt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
      *
      * @param by
      *            Bewegung des Mausrads
@@ -123,7 +123,7 @@ public abstract class Gui implements IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
      *
      * @param screenX
      *            X-Bildschirmkoordinate
@@ -167,7 +167,7 @@ public abstract class Gui implements IUpdatable {
     }
 
     /**
-     * Fügt dem Gui ein Element hinzu.
+     * Fuegt dem Gui ein Element hinzu.
      *
      * @param e
      *            Element

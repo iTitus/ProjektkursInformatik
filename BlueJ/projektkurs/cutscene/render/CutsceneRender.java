@@ -33,7 +33,7 @@ public class CutsceneRender implements IUpdatable {
      */
     private final BufferedImage image = new BufferedImage(Integers.windowX, Integers.windowY, BufferedImage.TYPE_INT_RGB);
     /**
-     * Die zum Bild gehörigen Pixel.
+     * Die zum Bild gehoerigen Pixel.
      */
     private final int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     /**

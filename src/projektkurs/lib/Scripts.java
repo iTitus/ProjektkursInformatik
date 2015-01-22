@@ -21,7 +21,7 @@ public final class Scripts {
     }
 
     /**
-     * Ändert das Spielfeld.
+     * Aendert das Spielfeld.
      *
      * @param i
      *            Spielfeld

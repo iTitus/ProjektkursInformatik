@@ -9,7 +9,7 @@ import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 
 /**
- * Das Menü, das im Spiele aufgerufen werden kann.
+ * Das Menue, das im Spiele aufgerufen werden kann.
  */
 public class GuiIngameMenu extends Gui implements IButtonListener {
 

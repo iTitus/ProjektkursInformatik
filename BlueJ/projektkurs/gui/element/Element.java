@@ -36,7 +36,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     protected int sizeX;
 
     /**
-     * Höhe.
+     * Hoehe.
      */
     protected int sizeY;
 
@@ -50,7 +50,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param id
      *            Nummer
      * @param listener
@@ -142,7 +142,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
      * @param sizeX
      *            Breite des Rechtecks
      * @param sizeY
-     *            Höhe des Rechtecks
+     *            Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
@@ -150,10 +150,10 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     }
 
     /**
-     * Wird aufgerufen, wenn eine Taste gedrückt wird.
+     * Wird aufgerufen, wenn eine Taste gedrueckt wird.
      *
      * @param keyChar
-     *            gedrückter Buchstabe
+     *            gedrueckter Buchstabe
      * @param e
      *            KeyEvent
      */
@@ -162,7 +162,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
      *
      * @param x
      *            X-Bildschirmkoordinate
@@ -176,7 +176,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
+     * Wird ausgefuehrt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
      *
      * @param by
      *            Bewegung des Mausrads
@@ -188,7 +188,7 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
     }
 
     /**
-     * Wird ausgeführt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
+     * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
      *
      * @param x
      *            X-Bildschirmkoordinate

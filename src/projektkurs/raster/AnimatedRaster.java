@@ -16,7 +16,7 @@ public class AnimatedRaster extends AbstractRaster {
      */
     private final AnimationFrame[] animationFrames;
     /**
-     * Gesamtlänge der Animation.
+     * Gesamtlaenge der Animation.
      */
     private final int totalAnimationDuration;
 

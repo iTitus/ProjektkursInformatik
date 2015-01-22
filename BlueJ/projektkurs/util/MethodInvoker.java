@@ -3,7 +3,7 @@ package projektkurs.util;
 import java.lang.reflect.Method;
 
 /**
- * Ein MethodInvoker. Führt eine Methode ohne Rückgabewerte aus.
+ * Ein MethodInvoker. Fuehrt eine Methode ohne Rueckgabewerte aus.
  */
 public class MethodInvoker extends MethodInvokerWithReturn<Void> {
 

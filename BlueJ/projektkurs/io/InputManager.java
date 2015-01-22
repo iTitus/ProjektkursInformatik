@@ -18,7 +18,7 @@ import projektkurs.util.MathUtil;
 import projektkurs.util.Queue;
 
 /**
- * Zuständig für den Input (Tastatur, Maus).
+ * Zustaendig fuer den Input (Tastatur, Maus).
  */
 public class InputManager implements KeyListener, MouseInputListener, MouseWheelListener, IUpdatable {
 
@@ -44,7 +44,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
      */
     private final Queue<KeyEvent> keyEvents;
     /**
-     * Speichert alle gerade gedrückten Tasten.
+     * Speichert alle gerade gedrueckten Tasten.
      */
     private final boolean[] keysPressed;
     /**
@@ -104,9 +104,9 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Die nächste Bewegungsrichtung. ACHTUNG: Zwischenspeichern empfohlen, resettet sich selber!
+     * Die naechste Bewegungsrichtung. ACHTUNG: Zwischenspeichern empfohlen, resettet sich selber!
      *
-     * @return Direction, die nächste Bewegungsrichtung
+     * @return Direction, die naechste Bewegungsrichtung
      */
     public Direction getNextDirection() {
         Direction dir = Direction.getDirectionForOffset(OFFSET_X[moveDir], OFFSET_Y[moveDir]);
@@ -115,7 +115,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Das nächste zu verarbeitende KeyEvent.
+     * Das naechste zu verarbeitende KeyEvent.
      *
      * @return KeyEvent
      */
@@ -124,7 +124,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Das nächste zu verarbeitende MouseEvent.
+     * Das naechste zu verarbeitende MouseEvent.
      *
      * @return MouseEvent
      */
@@ -133,7 +133,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Das nächste zu verarbeitende MouseWheelEvent.
+     * Das naechste zu verarbeitende MouseWheelEvent.
      *
      * @return MouseWheelEvent
      */
@@ -169,7 +169,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Ist die mit gegebene Taste im Moment gedrückt.
+     * Ist die mit gegebene Taste im Moment gedrueckt.
      *
      * @param keyCode
      *            Ein KeyCode aus der KeyEvent-Klasse
@@ -183,7 +183,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn eine Taste heruntergedrückt wird/ist.
+     * Wird von Java ausgefuehrt, wenn eine Taste heruntergedrueckt wird/ist.
      *
      * @param e
      *            KeyEvent
@@ -197,7 +197,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn eine Taste losgelassen wird. *
+     * Wird von Java ausgefuehrt, wenn eine Taste losgelassen wird. *
      *
      * @param e
      *            KeyEvent
@@ -210,7 +210,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn ein Unicode-Buchstabe eingegeben wird.
+     * Wird von Java ausgefuehrt, wenn ein Unicode-Buchstabe eingegeben wird.
      *
      * @param e
      *            KeyEvent
@@ -221,7 +221,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt und wieder losgelassen wird.
+     * Wird von Java ausgefuehrt, wenn eine Maustaste heruntergedrueckt und wieder losgelassen wird.
      *
      * @param e
      *            MouseEvent
@@ -234,7 +234,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn die Maus mit gedrückter Maustaste bewegt wird.
+     * Wird von Java ausgefuehrt, wenn die Maus mit gedrueckter Maustaste bewegt wird.
      *
      * @param e
      *            MouseEvent
@@ -246,7 +246,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn die Maus in das Fenster eingeführt wird. * @param e MouseEvent
+     * Wird von Java ausgefuehrt, wenn die Maus in das Fenster eingefuehrt wird. * @param e MouseEvent
      */
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -255,7 +255,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn die Maus aus dem Fenster herausgeschoben wird. * @param e MouseEvent
+     * Wird von Java ausgefuehrt, wenn die Maus aus dem Fenster herausgeschoben wird. * @param e MouseEvent
      */
     @Override
     public void mouseExited(MouseEvent e) {
@@ -264,7 +264,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn die Maus bewegt wird. * @param e MouseEvent
+     * Wird von Java ausgefuehrt, wenn die Maus bewegt wird. * @param e MouseEvent
      */
     @Override
     public void mouseMoved(MouseEvent e) {
@@ -273,7 +273,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn eine Maustaste heruntergedrückt wird/ist.
+     * Wird von Java ausgefuehrt, wenn eine Maustaste heruntergedrueckt wird/ist.
      *
      * @param e
      *            MouseEvent
@@ -284,7 +284,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn eine Maustaste losgelassen wird.
+     * Wird von Java ausgefuehrt, wenn eine Maustaste losgelassen wird.
      *
      * @param e
      *            MouseEvent
@@ -295,7 +295,7 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
     }
 
     /**
-     * Wird von Java ausgeführt, wenn das Mausrad gedreht wird.
+     * Wird von Java ausgefuehrt, wenn das Mausrad gedreht wird.
      *
      * @param e
      *            MouseWheelEvent

@@ -7,6 +7,7 @@ import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
@@ -17,19 +18,19 @@ import projektkurs.util.RenderUtil;
 public class InventoryElement extends Element {
 
     /**
-     * Das Inventory, das hiermit repräsentiert wird.
+     * Das Inventory, das hiermit repraesentiert wird.
      */
     protected Inventory inv;
 
     /**
-     * Konstruktor für ein InventoryElement in der Mitte des Guis.
+     * Konstruktor fuer ein InventoryElement in der Mitte des Guis.
      *
      * @param id
      *            Nummer
      * @param listener
      *            Listener
      * @param inv
-     *            zu repräsentierendes Inventory
+     *            zu repraesentierendes Inventory
      */
     public InventoryElement(int id, IInventoryElementListener listener, Inventory inv) {
         this(MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2), id, listener, inv);
@@ -47,7 +48,7 @@ public class InventoryElement extends Element {
      * @param listener
      *            Listener
      * @param inv
-     *            zu repräsentierendes Inventory
+     *            zu repraesentierendes Inventory
      */
     public InventoryElement(int centerX, int centerY, int id, IInventoryElementListener listener, Inventory inv) {
         this(centerX - MathUtil.floorDiv(Integers.SLOT_SIZE * inv.getSize(), 2), centerY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), Integers.SLOT_SIZE * inv.getSize(), Integers.SLOT_SIZE, id, listener, inv);
@@ -63,13 +64,13 @@ public class InventoryElement extends Element {
      * @param sizeX
      *            Breite
      * @param sizeY
-     *            Höhe
+     *            Hoehe
      * @param id
      *            Nummer
      * @param listener
      *            Listener
      * @param inv
-     *            zu repräsentierendes Inventory
+     *            zu repraesentierendes Inventory
      */
     public InventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IInventoryElementListener listener, Inventory inv) {
         super(posX, posY, sizeX, sizeY, id, listener);
@@ -112,7 +113,7 @@ public class InventoryElement extends Element {
             stack = inv.getItemStackAt(i);
             if (stack != null) {
                 RenderUtil.drawSprite(screen, stack.getSprite(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
-                RenderUtil.drawString(screen, stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
+                Font.drawString(screen, stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
             }
         }
     }

@@ -24,7 +24,7 @@ public final class SpriteSheets {
     public static SpriteSheet raster;
 
     /**
-     * Das Pair, das alle SpriteSheets enthält.
+     * Das Pair, das alle SpriteSheets enthaelt.
      *
      * @return Pair
      */
@@ -48,6 +48,7 @@ public final class SpriteSheets {
 
         entities = new SpriteSheet("entities", "entitySheet.png");
         registerSpriteSheet(entities);
+
     }
 
     /**
@@ -56,7 +57,7 @@ public final class SpriteSheets {
      * @param s
      *            SpriteSheet
      */
-    private static void registerSpriteSheet(SpriteSheet s) {
+    public static void registerSpriteSheet(SpriteSheet s) {
         if (s != null && !MAPPINGS.containsKey(s.getName())) {
             MAPPINGS.put(s.getName(), s);
         } else {

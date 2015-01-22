@@ -6,7 +6,7 @@ package projektkurs.render;
 public class AnimationFrame {
 
     /**
-     * Statische Hilsfmethode, die aus einem gegebenen Sprite[] und einer gegebenen frameTime eine gleichmäßige Animation macht.
+     * Statische Hilsfmethode, die aus einem gegebenen Sprite[] und einer gegebenen frameTime eine gleichmaeßige Animation macht.
      *
      * @param images
      *            Sprite[]

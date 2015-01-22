@@ -12,7 +12,7 @@ import projektkurs.util.SaveData;
 public class PlayerInventory extends Inventory {
 
     /**
-     * Lädt ein PlayerInventory aus der gegebenen SaveData.
+     * Laedt ein PlayerInventory aus der gegebenen SaveData.
      *
      * @param data
      *            SaveData
@@ -33,7 +33,7 @@ public class PlayerInventory extends Inventory {
     }
 
     /**
-     * Ausgewählter Index.
+     * Ausgewaehlter Index.
      */
     private int selectedItemStack;
 
@@ -41,7 +41,7 @@ public class PlayerInventory extends Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Größe
+     *            Groeße
      */
     public PlayerInventory(int size) {
         this(size, -1);
@@ -51,9 +51,9 @@ public class PlayerInventory extends Inventory {
      * Konstruktor.
      *
      * @param size
-     *            Größe
+     *            Groeße
      * @param selectedItemStack
-     *            auszuwählender Index
+     *            auszuwaehlender Index
      */
     public PlayerInventory(int size, int selectedItemStack) {
         super(size);
@@ -86,7 +86,7 @@ public class PlayerInventory extends Inventory {
     }
 
     /**
-     * Ausgewählter Index.
+     * Ausgewaehlter Index.
      *
      * @return Index
      */
@@ -95,7 +95,7 @@ public class PlayerInventory extends Inventory {
     }
 
     /**
-     * Ausgewählter ItemStack.
+     * Ausgewaehlter ItemStack.
      *
      * @return ItemStack
      */
@@ -104,7 +104,7 @@ public class PlayerInventory extends Inventory {
     }
 
     /**
-     * Ist ein ItemStack ausgewählt.
+     * Ist ein ItemStack ausgewaehlt.
      *
      * @return true, wenn ja; false, wenn nein
      */
@@ -113,10 +113,10 @@ public class PlayerInventory extends Inventory {
     }
 
     /**
-     * Wählt den ItemStack am Index aus.
+     * Waehlt den ItemStack am Index aus.
      *
      * @param index
-     *            Index; -1, um keinen ItemStack auszuwählen
+     *            Index; -1, um keinen ItemStack auszuwaehlen
      */
     public void setSelectedItemStack(int index) {
         if (MathUtil.isInArray(index, stacks.length)) {

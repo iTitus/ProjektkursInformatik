@@ -1,7 +1,7 @@
 package projektkurs.gui.element;
 
 /**
- * Ein Interface für ein GUI, das auf Elemente hören soll.
+ * Ein Interface fuer ein GUI, das auf Elemente hoeren soll.
  */
 public interface IElementListener {
     // NO-OP

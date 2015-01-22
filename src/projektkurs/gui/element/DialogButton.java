@@ -3,7 +3,7 @@ package projektkurs.gui.element;
 import projektkurs.dialog.DialogPart;
 
 /**
- * Ein Dialog-Auswählbutton.
+ * Ein Dialog-Auswaehlbutton.
  */
 public class DialogButton extends Button {
 
