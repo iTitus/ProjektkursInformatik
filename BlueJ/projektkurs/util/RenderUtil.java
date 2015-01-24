@@ -17,13 +17,13 @@ import projektkurs.render.Sprite;
 public final class RenderUtil {
 
     /**
-     * Tooltip-Farbe.
-     */
-    private static final int TOOLTIP_COLOR = 0x943F3F;
-    /**
      * Die Standard-Hintergrundfarbe.
      */
     private static final int DEFAULT_BACKGROUND_COLOR = 0xFFFFFF;
+    /**
+     * Tooltip-Farbe.
+     */
+    private static final int TOOLTIP_COLOR = 0x943F3F;
 
     /**
      * Malt den Rand.
@@ -269,9 +269,9 @@ public final class RenderUtil {
     public static void drawRectangle(Screen screen, int x, int y, int width, int height, int color) {
         if (color != Integers.TRANSPARENCY) {
             drawLine(screen, x, y, x + width, y, color);
-            drawLine(screen, x + width, y, x + width, y + width, color);
-            drawLine(screen, x + width, y + width, x, y + width, color);
-            drawLine(screen, x, y + width, x, y, color);
+            drawLine(screen, x, y + height, x + width, y + height, color);
+            drawLine(screen, x, y, x, y + height, color);
+            drawLine(screen, x + width, y, x + width, y + height, color);
         }
     }
 
@@ -316,7 +316,7 @@ public final class RenderUtil {
         int width = Font.getStringWidth(str);
         drawFilledRectangle(screen, x, y - height, width + 4, height, TOOLTIP_COLOR);
         drawRectangle(screen, x, y - height, width + 4, height);
-        Font.drawCenteredStringInRect(screen, str, x, y - height, width, height);
+        Font.drawCenteredStringInRect(screen, str, x, y - height, width + 4, height);
     }
 
     public static int getBlue(int color) {

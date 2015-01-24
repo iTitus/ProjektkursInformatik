@@ -48,7 +48,7 @@ public class Font {
      *            die Farbe der Schrift
      */
     public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int color) {
-        drawString(screen, s, centerX - MathUtil.floorDiv(getStringWidth(s), 1.625), centerY - MathUtil.floorDiv(getStringHeight(s), 2) - 4, color);
+        drawString(screen, s, centerX - MathUtil.floorDiv(getStringWidth(s), 1.625) + 1, centerY - MathUtil.floorDiv(getStringHeight(s), 2) - 4 + 1, color);
     }
 
     /**
