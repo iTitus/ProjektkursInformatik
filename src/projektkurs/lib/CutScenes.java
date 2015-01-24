@@ -8,6 +8,8 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
+// import projektkurs.cutscene.action.DespawnPlayerAction;
+
 /**
  * Alle CutScenes.
  */
@@ -90,7 +92,6 @@ public final class CutScenes {
         // }
         // }
         //
-        //
         // for (int i = 0; i < baeumer.length; i++) {
         // baeumer[i] = new CutSceneObject(CutSceneUtil.getRandomTree(), i * 3, 6, 2, 2);
         // one.registerStartupAction(new SpawnAction(baeumer[i]));
@@ -140,8 +141,42 @@ public final class CutScenes {
         //
         // two.registerStartupAction(new EntityToCutSceneObjectAction());
         // two.registerStartupAction(new SpawnAction(fischerboot));
-        // two.registerStartupAction(new SetSightAction(15,12));
+        // two.registerStartupAction(new SetSightAction(15, 12));
+        //
+        // two.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 20), new AreaCondition(fischerboot, 30, -10, -5, 20)), fischerboot, -1, 2));
+        //
         // registerMapping(two);
+        //
+        // CutScene three = new CutScene("three");
+        // CutSceneObject player = new CutSceneObject(Images.lordvO_EW, 0, 0, 0, 0);
+        // CutSceneObject faehre2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
+        // CutSceneObject auto2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
+        //
+        // CutSceneObject typ11 = new CutSceneObject(Images.auto_di4_EW, 40, 10, 4, 2);
+        // CutSceneObject typ21 = new CutSceneObject(Images.auto_di3_EW, 40, 10, 4, 2);
+        // CutSceneObject typ31 = new CutSceneObject(Images.auto_di2_EW, 40, 10, 4, 2);
+        // CutSceneObject typ41 = new CutSceneObject(Images.auto_di_EW, 40, 10, 4, 2);
+        //
+        // CutSceneObject typ51 = new CutSceneObject(Images.auto_do_EW, 40, 10, 4, 2);
+        // CutSceneObject typ61 = new CutSceneObject(Images.auto_do2_EW, 40, 10, 4, 2);
+        // CutSceneObject typ71 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
+        // CutSceneObject typ81 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
+        //
+        // @SuppressWarnings("unused")
+        // int line = 0;// FIXME: fststellung der
+        //
+        // three.registerStartupAction(new EntityToCutSceneObjectAction());
+        // three.registerStartupAction(new DespawnPlayerAction());
+        //
+        // CutSceneUtil.registerAnimation(three, 20, new TrueCondition(), auto2, typ71, typ61, typ51, typ41, typ31, typ21, typ11);
+        //
+        // three.registerStartupAction(new SpawnAction(player));
+        // three.registerStartupAction(new EntityToCutSceneObjectAction());
+        // three.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 140), new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(auto2, 30, 10, 30, 10)), faehre2, 1, 0));
+        // three.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 140), new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(faehre2, 0, 0, 40, 20)), 1, 0));
+        // three.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 140), new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(auto2, 25, 11, 45, 20)), auto2, 1, 0));
+        //
+        // registerMapping(three);
     }
 
     /**

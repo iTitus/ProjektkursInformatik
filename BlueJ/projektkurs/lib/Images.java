@@ -926,6 +926,10 @@ public final class Images {
     public static BufferedImage weibvOlAo_WE;
     public static BufferedImage weibvVbAo;
     public static BufferedImage weibvVrAho;
+    private static BufferedImage elster_EW;
+    private static BufferedImage elster_NS;
+    private static BufferedImage elster_SN;
+    private static BufferedImage elster_WE;
 
     /**
      * Befreit alle Bilder.
@@ -1192,22 +1196,25 @@ public final class Images {
 
         // bus1.4 ignoriert
 
-        elster = loadImage("elster", ".png");
+        elster_NS = loadImage("elster_NS", "Elster.png");
+        elster_EW = loadImageRotate90("elster_EW", "Elster.png");
+        elster_SN = loadImageRotate180("elster_SN", "Elster.png");
+        elster_WE = loadImageRotate270("elster_WE", "Elster.png");
 
         faehre_NS = loadImage("faehre_NS", ".png");// TODO: Pic missing
         faehre_EW = loadImageRotate90("faehre_EW", ".png");// TODO: Pic missing
         faehre_SN = loadImageRotate180("faehre_SN", ".png");// TODO: Pic missing
         faehre_WE = loadImageRotate270("faehre_WE", ".png");// TODO: Pic missing
 
-        grammophonvdS = loadImage("grammophonvdS", ".png");
+        grammophonvdS = loadImage("grammophonvdS", "Grammophon5.png");
 
-        grammophonvO_WE = loadImage("grammophonvO_WE", ".png");
+        grammophonvO_WE = loadImage("grammophonvO_WE", "Grammophon2.png");
 
-        grammophonvO_NS = loadImageRotate90("grammophonvO_NS", ".png");
+        grammophonvO_NS = loadImageRotate90("grammophonvO_NS", "Grammophon2.png");
 
-        grammophonvO_EW = loadImageRotate180("grammophonvO_EW", ".png");
+        grammophonvO_EW = loadImageRotate180("grammophonvO_EW", "Grammophon2.png");
 
-        grammophonvO_SN = loadImageRotate270("grammophonvO_SN", ".png");
+        grammophonvO_SN = loadImageRotate270("grammophonvO_SN", "Grammophon2.png");
 
         gras = loadImage("gras", "Gras.png");
 
@@ -1254,18 +1261,18 @@ public final class Images {
 
         // sieht scheisse aus!!! haus8 = loadImage("haus8", "Haus8.png");
 
-        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");
-        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png");
-        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png");
-        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png");
+        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");// TODO: Pic missing);
+        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png");// TODO: Pic missing);
+        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png");// TODO: Pic missing);
+        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png");// TODO: Pic missing);
 
-        jojo = loadImage("jojo", ".png");
+        jojo = loadImage("jojo", ".png");// TODO: Pic missing);
 
-        jojokaputt = loadImage("jojokaputt", ".png");
+        jojokaputt = loadImage("jojokaputt", ".png");// TODO: Pic missing);
 
-        kaugummigelb = loadImage("kaugummigelb", ".png");
+        kaugummigelb = loadImage("kaugummigelb", "Kaugummi1.png");
 
-        kaugummirot = loadImage("kaugummirot", ".png");// TODO: Pic missing
+        kaugummirot = loadImage("kaugummirot", "Kaugummi2.png");
 
         klavier_WE = loadImage("klavier_WE", "Keyboard.png");
 
@@ -1373,7 +1380,7 @@ public final class Images {
 
         lordvO_WE = loadImageRotate270("lordvO_WE", "LordVonDerSeite2.png");
 
-        messer = loadImage("messer", ".png");// TODO: Pic missing
+        messer = loadImage("messer", "Messer.png");
 
         muelltonnezuvO = loadImage("muelltonnezuvO", ".png");// TODO: Pic missing
 
@@ -1385,7 +1392,7 @@ public final class Images {
 
         netz = loadImage("netz", ".png");// TODO: Pic missing
 
-        netzfaden = loadImage("netzfaden", ".png");// TODO: Pic missing
+        netzfaden = loadImage("netzfaden", "Faden.png");
 
         ohrringe_EW = loadImage("ohrringe_EW", "Ohrringe.png");
 
@@ -1453,7 +1460,7 @@ public final class Images {
         sesselbeigefell_SN = loadImageRotate180("sesselbeigefell_SN", "Stuhl6.png");
         sesselbeigefell_WE = loadImageRotate270("sesselbeigefell_WE", "Stuhl6.png");
 
-        steinschleuder = loadImage("steinschleuder", ".png");// TODO: Pic missing
+        steinschleuder = loadImage("steinschleuder", "SteinSchleuder(Fragezeichen).png");
 
         strasse_EW = loadImage("strasse_EW", "Strasse.png");
 
@@ -1642,7 +1649,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 180° gedrehtes Bild.
+     * Laedt ein um 180Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
@@ -1657,7 +1664,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 270° gedrehtes Bild.
+     * Laedt ein um 270Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
@@ -1672,7 +1679,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 90° gedrehtes Bild.
+     * Laedt ein um 90Â° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
@@ -1734,5 +1741,4 @@ public final class Images {
      */
     private Images() {
     }
-
 }
