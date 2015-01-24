@@ -92,7 +92,6 @@ public class Button extends Element {
         } else {
             RenderUtil.drawSprite(screen, Sprites.button_disabled, posX, posY);
         }
-
         Font.drawCenteredStringInRect(screen, I18n.getString(name), posX, posY, sizeX, sizeY);
     }
 

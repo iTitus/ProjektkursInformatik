@@ -2,7 +2,7 @@ package projektkurs.command;
 
 import projektkurs.Main;
 import projektkurs.dialog.Dialog;
-import projektkurs.gui.GuiDialogChooser;
+import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 
 /**
@@ -22,7 +22,7 @@ public class CommandDialog extends Command {
             return EnumCommandResult.OBJECT_NOT_FOUND;
         }
 
-        Main.openGui(new GuiDialogChooser(dialog, Main.getPlayer()));
+        DialogManager.startDialog(dialog, Main.getPlayer());
 
         return EnumCommandResult.SUCCESS;
     }

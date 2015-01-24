@@ -3,6 +3,8 @@ package projektkurs.entity;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
+import projektkurs.dialog.DialogManager;
+import projektkurs.dialog.ITalkable;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
@@ -76,6 +78,12 @@ public class EntityPlayer extends EntityLiving {
     @Override
     public void onCollideWith(Entity e) {
         super.onCollideWith(e);
+        if (e instanceof ITalkable) {
+            ITalkable talkable = (ITalkable) e;
+            if (talkable.shouldStartDialog()) {
+                DialogManager.startDialog(talkable.getDialog(), e);
+            }
+        }
         if (e instanceof EntityItem) {
             EntityItem item = (EntityItem) e;
             if (inventar.addItemStack(item.getStack())) {

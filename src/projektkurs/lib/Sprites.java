@@ -38,11 +38,23 @@ public final class Sprites {
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
     public static Sprite nuke;
+    public static Sprite rasen_2;
     public static Sprite redNPC;
     public static Sprite slot;
     public static Sprite slot_highlight;
-    public static Sprite street_WE;
     public static Sprite tree;
+    public static Sprite tree_2ne;
+    public static Sprite tree_2nw;
+    public static Sprite tree_2se;
+    public static Sprite tree_2sw;
+    public static Sprite tree_3ne;
+    public static Sprite tree_3nw;
+    public static Sprite tree_3se;
+    public static Sprite tree_3sw;
+    public static Sprite tree_4ne;
+    public static Sprite tree_4nw;
+    public static Sprite tree_4se;
+    public static Sprite tree_4sw;
     public static Sprite wall;
     public static Sprite water;
 
@@ -99,6 +111,45 @@ public final class Sprites {
         water = new Sprite("water", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(water);
 
+        rasen_2 = new Sprite("rasen_2", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(rasen_2);
+
+        tree_2nw = new Sprite("tree_2nw", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_2nw);
+
+        tree_2ne = new Sprite("tree_2ne", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_2ne);
+
+        tree_2se = new Sprite("tree_2se", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_2se);
+
+        tree_2sw = new Sprite("tree_2sw", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_2sw);
+
+        tree_3nw = new Sprite("tree_3nw", Integers.RASTER_SIZE, 0, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_3nw);
+
+        tree_3ne = new Sprite("tree_3ne", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_3ne);
+
+        tree_3se = new Sprite("tree_3se", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_3se);
+
+        tree_3sw = new Sprite("tree_3sw", Integers.RASTER_SIZE, 0, 3 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_3sw);
+
+        tree_4nw = new Sprite("tree_4nw", Integers.RASTER_SIZE, 0, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_4nw);
+
+        tree_4ne = new Sprite("tree_4ne", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_4ne);
+
+        tree_4se = new Sprite("tree_4se", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_4se);
+
+        tree_4sw = new Sprite("tree_4sw", Integers.RASTER_SIZE, 0, 3 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_4sw);
+
         item42 = new Sprite("item42", Integers.RASTER_SIZE, 0, 0, SpriteSheets.items);
         registerSprite(item42);
 
@@ -140,9 +191,6 @@ public final class Sprites {
 
         redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(redNPC);
-
-        street_WE = new Sprite("street_WE", Integers.RASTER_SIZE, 0, 0, SpriteSheets.raster);
-        registerSprite(street_WE);
 
     }
 

@@ -358,7 +358,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
     }
 
     /**
-     * Wird aufgerufen wenn dieser Entity einen anderen (e) anstoesst.
+     * Wird aufgerufen wenn dieser Entity einen anderen (Entity e) anstoesst.
      *
      * @param e
      *            anderer Entity

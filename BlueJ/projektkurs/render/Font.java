@@ -13,9 +13,8 @@ import projektkurs.util.MathUtil;
  */
 public class Font {
 
-    private static int[] carriagePerCharacter = new int[256];
+    private static int[] carriagePerCharacter;
     private static Sprite[] characters;
-
     private static SpriteSheet fontSheet;
 
     /**
@@ -49,10 +48,7 @@ public class Font {
      *            die Farbe der Schrift
      */
     public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int color) {
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // drawCenteredString(g, s, centerX, centerY);
-        // g.setFont(oldfont);
+        drawString(screen, s, centerX - MathUtil.floorDiv(getStringWidth(s), 1.625), centerY - MathUtil.floorDiv(getStringHeight(s), 2) - 4, color);
     }
 
     /**
@@ -94,13 +90,7 @@ public class Font {
      *            Schriftfarbe
      */
     public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY, int color) {
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[MathUtil.clampToArray(size, FONTS.length)]);
-        // while (size > 1 && (g.getFontMetrics().stringWidth(s) >= sizeX || g.getFontMetrics().getHeight() >= sizeY)) {
-        // g.setFont(FONTS[MathUtil.clampToArray(--size, FONTS.length)]);
-        // }
-        // drawCenteredString(g, s, posX + MathUtil.roundDiv(sizeX, 2), posY + MathUtil.roundDiv(sizeY, 2));
-        // g.setFont(oldfont);
+        drawCenteredString(screen, s, posX + MathUtil.floorDiv(sizeX, 2), posY + MathUtil.floorDiv(sizeY, 2), color);
     }
 
     /**
@@ -152,6 +142,35 @@ public class Font {
         }
     }
 
+    /**
+     * Die Hoehe des Strings.
+     *
+     * @param s
+     *            String
+     * @return Hoehe des Strings
+     */
+    public static int getStringHeight(String s) {
+        return 16;
+    }
+
+    /**
+     * Die Breite des Strings.
+     *
+     * @param s
+     *            String
+     * @return Breite des Strings
+     */
+    public static int getStringWidth(String s) {
+        int width = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i);
+            if (MathUtil.isInArray(c, characters.length)) {
+                width += carriagePerCharacter[c];
+            }
+        }
+        return width;
+    }
+
     @Init(state = State.RESOURCES)
     public static void init() {
 
@@ -163,6 +182,7 @@ public class Font {
             Sprites.registerSprite(sprite);
         }
 
+        carriagePerCharacter = new int[characters.length];
         Arrays.fill(carriagePerCharacter, 10);
 
     }

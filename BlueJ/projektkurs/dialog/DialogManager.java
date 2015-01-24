@@ -1,5 +1,9 @@
 package projektkurs.dialog;
 
+import projektkurs.Main;
+import projektkurs.entity.Entity;
+import projektkurs.gui.GuiDialogChooser;
+
 /**
  * Managt alle Dialoge.
  */
@@ -27,6 +31,26 @@ public final class DialogManager {
      */
     public static int getValue() {
         return value;
+    }
+
+    /**
+     * Startet einen Dialog.
+     *
+     * @param d
+     *            Dialog
+     */
+    public static void startDialog(Dialog d, Entity e) {
+        startDialog(d, Main.getPlayer(), e);
+    }
+
+    /**
+     * Startet einen Dialog.
+     *
+     * @param d
+     *            Dialog
+     */
+    public static void startDialog(Dialog d, Entity e1, Entity e2) {
+        Main.openGui(new GuiDialogChooser(d, e1, e2));
     }
 
     /**

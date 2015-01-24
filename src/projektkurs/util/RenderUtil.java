@@ -1,7 +1,5 @@
 package projektkurs.util;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -9,10 +7,9 @@ import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.Entity;
 import projektkurs.lib.Integers;
-import projektkurs.lib.Strings;
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.render.Sprite;
-import projektkurs.util.Init.State;
 
 /**
  * Renderhilfen.
@@ -22,15 +19,11 @@ public final class RenderUtil {
     /**
      * Tooltip-Farbe.
      */
-    public static final Color TOOLTIP_COLOR = new Color(0x94, 0x3F, 0x3F);
+    private static final int TOOLTIP_COLOR = 0x943F3F;
     /**
      * Die Standard-Hintergrundfarbe.
      */
     private static final int DEFAULT_BACKGROUND_COLOR = 0xFFFFFF;
-    /**
-     * Alle benutzten Schriften.
-     */
-    private static final Font[] FONTS = new Font[Integers.MAX_FONT_SIZE];
 
     /**
      * Malt den Rand.
@@ -118,10 +111,8 @@ public final class RenderUtil {
     /**
      * Malt ein gefuelltes Rechteck.
      *
-     * @param g
-     *            Graphics2D
-     * @param c
-     *            Farbe
+     * @param screen
+     *            Screen
      * @param x
      *            X-Koordinate der linken oberen Ecke
      * @param y
@@ -130,8 +121,10 @@ public final class RenderUtil {
      *            Breite
      * @param height
      *            Hoehe
+     * @param color
+     *            Farbe
      */
-    public static void drawFilledRectangle(Screen screen, int color, int x, int y, int width, int height) {
+    public static void drawFilledRectangle(Screen screen, int x, int y, int width, int height, int color) {
         if (color != Integers.TRANSPARENCY) {
             for (int yy = y; yy < y + height; yy++) {
                 for (int xx = x; xx < x + width; xx++) {
@@ -178,6 +171,111 @@ public final class RenderUtil {
     }
 
     /**
+     * Malt eine schwarze Linie von Punkt A bis Punkt B.
+     *
+     * @param screen
+     *            Screen
+     * @param startX
+     *            X-Koordinate
+     * @param startY
+     *            Y-Koordinate
+     * @param endX
+     *            X-Koordinate
+     * @param endY
+     *            Y-Koordinate
+     */
+    public static void drawLine(Screen screen, int startX, int startY, int endX, int endY) {
+        drawLine(screen, startX, startY, endX, endY, 0);
+    }
+
+    /**
+     * Malt eine Linie in der gegebenen Farbe von Punkt A bis Punkt B.
+     *
+     * @param screen
+     *            Screen
+     * @param startX
+     *            X-Koordinate A
+     * @param startY
+     *            Y-Koordinate A
+     * @param endX
+     *            X-Koordinate B
+     * @param endY
+     *            Y-Koordinate B
+     * @param color
+     *            Farbe
+     */
+    public static void drawLine(Screen screen, int startX, int startY, int endX, int endY, int color) {
+        if (color != Integers.TRANSPARENCY) {
+            if (startX < endX) {
+                double m = (endY - startY) / (double) (endX - startX);
+                for (int x = 0; x < endX - startX; x++) {
+                    screen.setPixel(color, x + startX, MathUtil.round(m * x) + startY);
+                }
+            } else if (endX < startX) {
+                double m = (startY - endY) / (double) (startX - endX);
+                for (int x = 0; x < startX - endX; x++) {
+                    screen.setPixel(color, x + endX, MathUtil.round(m * x) + startY);
+                }
+            } else {
+                if (startY < endY) {
+                    for (int y = startY; y < endY; y++) {
+                        screen.setPixel(color, startX, y);
+                    }
+                } else if (endY < startY) {
+                    for (int y = endY; y < startY; y++) {
+                        screen.setPixel(color, startX, y);
+                    }
+                } else {
+                    screen.setPixel(color, startX, startY);
+                }
+            }
+        }
+    }
+
+    /**
+     * Malt ein schwarzes Rechteck an die gegebene Koordinate.
+     *
+     * @param screen
+     *            Screen
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     * @param width
+     *            Breite
+     * @param height
+     *            Hoehe
+     */
+    public static void drawRectangle(Screen screen, int x, int y, int width, int height) {
+        drawRectangle(screen, x, y, width, height, 0);
+    }
+
+    /**
+     * Malt ein Rechteck mit der gegebenen Farbe an die gegebene Koordinate.
+     *
+     * @param screen
+     *            Screen
+     * @param x
+     *            X-Koordinate
+     * @param y
+     *            Y-Koordinate
+     * @param width
+     *            Breite
+     * @param height
+     *            Hoehe
+     * @param color
+     *            Farbe
+     */
+    public static void drawRectangle(Screen screen, int x, int y, int width, int height, int color) {
+        if (color != Integers.TRANSPARENCY) {
+            drawLine(screen, x, y, x + width, y, color);
+            drawLine(screen, x + width, y, x + width, y + width, color);
+            drawLine(screen, x + width, y + width, x, y + width, color);
+            drawLine(screen, x, y + width, x, y, color);
+        }
+    }
+
+    /**
      * Malt einen Sprite an die gegebenen Koordinaten.
      *
      * @param screen
@@ -214,18 +312,11 @@ public final class RenderUtil {
      *            Y-Koordinate
      */
     public static void drawTooltip(Screen screen, String str, int x, int y) {
-        // Color oldColor = g.getColor();
-        // Font oldfont = g.getFont();
-        // g.setFont(FONTS[Integers.DEFAULT_FONT_SIZE]);
-        // int height = g.getFontMetrics().getHeight();
-        // int width = g.getFontMetrics().stringWidth(str);
-        // g.setColor(TOOLTIP_COLOR);
-        // g.fillRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-        // g.setColor(Color.BLACK);
-        // g.drawRoundRect(x, y - height, width + 4, height, MathUtil.ceilDiv(width, 2), MathUtil.ceilDiv(height, 2));
-        // RenderUtil.drawCenteredStringInRect(g, str, x, y - height, width, height);
-        // g.setFont(oldfont);
-        // g.setColor(oldColor);
+        int height = Font.getStringHeight(str);
+        int width = Font.getStringWidth(str);
+        drawFilledRectangle(screen, x, y - height, width + 4, height, TOOLTIP_COLOR);
+        drawRectangle(screen, x, y - height, width + 4, height);
+        Font.drawCenteredStringInRect(screen, str, x, y - height, width, height);
     }
 
     public static int getBlue(int color) {
@@ -262,16 +353,6 @@ public final class RenderUtil {
 
     public static double getRedD(int color) {
         return getRed(color) / 255D;
-    }
-
-    /**
-     * Initialisierung.
-     */
-    @Init(state = State.POST)
-    public static void init() {
-        for (int i = 0; i < FONTS.length; i++) {
-            FONTS[i] = new Font(Strings.NAME, Font.PLAIN, i);
-        }
     }
 
     public static int interpolate(int colA, int colB, double fraction) {

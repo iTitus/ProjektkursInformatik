@@ -21,12 +21,10 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
      * Aktueller Dialog.
      */
     private final Dialog dialog;
-
     /**
      * Entity No. 1.
      */
     private final Entity entity1;
-
     /**
      * Entity No. 2.
      */

@@ -2,6 +2,7 @@ package projektkurs.render;
 
 import java.util.Arrays;
 
+import projektkurs.lib.Integers;
 import projektkurs.util.MathUtil;
 
 public class Screen {
@@ -67,7 +68,7 @@ public class Screen {
     }
 
     public void setPixel(int color, int x, int y) {
-        if (MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
+        if (color != Integers.TRANSPARENCY && MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
             pixels[x + y * sizeX] = color;
         }
     }
