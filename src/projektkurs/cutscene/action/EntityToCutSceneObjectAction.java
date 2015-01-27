@@ -16,7 +16,5 @@ public class EntityToCutSceneObjectAction extends Action {
             CutSceneObject o = new CutSceneObject(e.getSprite(), e.getPosX(), e.getPosY(), e.getSizeX(), e.getSizeY());
             cutScene.spawn(o);
         }
-
     }
-
 }

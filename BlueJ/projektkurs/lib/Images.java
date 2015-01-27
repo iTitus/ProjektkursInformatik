@@ -235,7 +235,7 @@ public final class Images {
      */
     public static BufferedImage charakter;
     /**
-     * Zerstoertes-Land-Bild.
+     * ZerstÃƒÂ¶rtes-Land-Bild.
      */
     public static BufferedImage destroyedRaster;
     /**
@@ -1261,14 +1261,14 @@ public final class Images {
 
         // sieht scheisse aus!!! haus8 = loadImage("haus8", "Haus8.png");
 
-        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");// TODO: Pic missing);
-        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png");// TODO: Pic missing);
-        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png");// TODO: Pic missing);
-        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png");// TODO: Pic missing);
+        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");// TODO: Pic missing
+        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png");// TODO: Pic missing
+        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png");// TODO: Pic missing
+        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png");// TODO: Pic missing
 
-        jojo = loadImage("jojo", ".png");// TODO: Pic missing);
+        jojo = loadImage("jojo", ".png");// TODO: Pic missing
 
-        jojokaputt = loadImage("jojokaputt", ".png");// TODO: Pic missing);
+        jojokaputt = loadImage("jojokaputt", ".png");// TODO: Pic missing
 
         kaugummigelb = loadImage("kaugummigelb", "Kaugummi1.png");
 

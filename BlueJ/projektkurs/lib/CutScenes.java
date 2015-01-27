@@ -8,8 +8,6 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 
-// import projektkurs.cutscene.action.DespawnPlayerAction;
-
 /**
  * Alle CutScenes.
  */
