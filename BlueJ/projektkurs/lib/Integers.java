@@ -94,7 +94,7 @@ public final class Integers {
     /**
      * Transparenter Pixel.
      */
-    public static final int TRANSPARENCY = 0xFFFF00FF;
+    public static final int TRANSPARENCY = 0xFF00FF;
     /**
      * Updates pro Sekunde.
      */

@@ -1,7 +1,11 @@
 package projektkurs.cutscene.object;
 
+import java.awt.image.BufferedImage;
+
 import projektkurs.cutscene.CutSceneManager;
+import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
 import projektkurs.render.Screen;
 import projektkurs.render.Sprite;
 import projektkurs.util.IHasPositionAndSize;
@@ -32,6 +36,28 @@ public class CutSceneObject implements IHasPositionAndSize {
      * Bild.
      */
     private final Sprite sprite;
+
+    /**
+     * Konstruktor.
+     *
+     * @param image
+     *            BufferedImage
+     * @param posX
+     *            X-Position
+     * @param posY
+     *            Y-Position
+     * @param sizeX
+     *            Breite
+     * @param sizeY
+     *            Hoehe
+     */
+    @Deprecated
+    public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
+        sprite = image != null ? new Sprite(Images.BACK_MAPPINGS.get(image), image) : Sprites.MISSING_ICON;
+        setPosition(posX, posY);
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+    }
 
     /**
      * @param sprite

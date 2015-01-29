@@ -35,7 +35,12 @@ public class SpriteSheet {
         sizeX = image.getWidth();
         sizeY = image.getHeight();
         pixels = new int[sizeX * sizeY];
-        image.getRGB(0, 0, sizeX, sizeY, pixels, 0, sizeX);
+        // image.getRGB(0, 0, sizeX, sizeY, pixels, 0, sizeX);
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                pixels[x + y * image.getWidth()] = 0xFFFFFF & image.getRGB(x, y);
+            }
+        }
     }
 
     public String getName() {

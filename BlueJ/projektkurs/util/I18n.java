@@ -29,7 +29,7 @@ public final class I18n {
         /**
          * Die Standardsprache.
          */
-        public static final SupportedLocales DEFAULT = ENGLISH;
+        public static final SupportedLocales DEFAULT = GERMAN;
 
         /**
          * Die Java-Sprache.
@@ -89,7 +89,7 @@ public final class I18n {
     /**
      * Die aktuelle Sprache.
      */
-    private static SupportedLocales currentLocale = SupportedLocales.ENGLISH;
+    private static SupportedLocales currentLocale = SupportedLocales.DEFAULT;
 
     /**
      * Die Standard-Lokalisierung.

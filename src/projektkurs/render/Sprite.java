@@ -1,5 +1,6 @@
 package projektkurs.render;
 
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
 import projektkurs.lib.Integers;
@@ -12,6 +13,18 @@ public class Sprite {
     private final int[] pixels;
     private final int sizeX;
     private final int sizeY;
+
+    public Sprite(String name, BufferedImage image) {
+        this.name = name;
+        pixels = new int[image.getWidth() * image.getHeight()];
+        sizeX = image.getWidth();
+        sizeY = image.getHeight();
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                pixels[x + y * image.getWidth()] = 0xFFFFFF & image.getRGB(x, y);
+            }
+        }
+    }
 
     public Sprite(String name, int size, int color) {
         this(name, size, size, color);

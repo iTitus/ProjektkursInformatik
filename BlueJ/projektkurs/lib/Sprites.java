@@ -37,6 +37,7 @@ public final class Sprites {
      * Die Mappings.
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
+    public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
     public static Sprite nuke;
     public static Sprite rasen_2;
     public static Sprite redNPC;

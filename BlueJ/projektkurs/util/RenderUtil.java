@@ -125,7 +125,7 @@ public final class RenderUtil {
      *            Farbe
      */
     public static void drawFilledRectangle(Screen screen, int x, int y, int width, int height, int color) {
-        if (color != Integers.TRANSPARENCY) {
+        if (!isTransparent(color)) {
             for (int yy = y; yy < y + height; yy++) {
                 for (int xx = x; xx < x + width; xx++) {
                     screen.setPixel(color, xx, yy);
@@ -205,7 +205,7 @@ public final class RenderUtil {
      *            Farbe
      */
     public static void drawLine(Screen screen, int startX, int startY, int endX, int endY, int color) {
-        if (color != Integers.TRANSPARENCY) {
+        if (!isTransparent(color)) {
             if (startX < endX) {
                 double m = (endY - startY) / (double) (endX - startX);
                 for (int x = 0; x < endX - startX; x++) {
@@ -267,7 +267,7 @@ public final class RenderUtil {
      *            Farbe
      */
     public static void drawRectangle(Screen screen, int x, int y, int width, int height, int color) {
-        if (color != Integers.TRANSPARENCY) {
+        if (!isTransparent(color)) {
             drawLine(screen, x, y, x + width, y, color);
             drawLine(screen, x, y + height, x + width, y + height, color);
             drawLine(screen, x, y, x, y + height, color);
@@ -292,7 +292,7 @@ public final class RenderUtil {
         for (int yy = 0; yy < sprite.getSizeY(); yy++) {
             for (int xx = 0; xx < sprite.getSizeX(); xx++) {
                 pixel = sprite.getPixel(xx, yy);
-                if (pixel != Integers.TRANSPARENCY) {
+                if (!isTransparent(pixel)) {
                     screen.setPixel(pixel, x + xx, y + yy);
                 }
             }
@@ -376,6 +376,10 @@ public final class RenderUtil {
 
     public static int interpolate(int colA, int colB, int colC, int colD, double fractionX, double fractionY) {
         return interpolate(interpolate(colA, colB, fractionX), interpolate(colC, colD, fractionX), fractionY);
+    }
+
+    public static boolean isTransparent(int color) {
+        return (color & 0xFFFFFF) == Integers.TRANSPARENCY;
     }
 
     /**

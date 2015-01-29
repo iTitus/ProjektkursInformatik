@@ -29,6 +29,10 @@ public class Dialog {
         this.parts = parts;
     }
 
+    public int getMaxDialogParts() {
+        return parts.length;
+    }
+
     /**
      * Der Name des Dialogs.
      *

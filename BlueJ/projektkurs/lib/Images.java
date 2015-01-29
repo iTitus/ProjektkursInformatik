@@ -10,8 +10,6 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 
 import projektkurs.Main;
-import projektkurs.util.Init;
-import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
@@ -954,7 +952,7 @@ public final class Images {
     /**
      * Initialisiert alle Bilder.
      */
-    @Init(state = State.RESOURCES)
+    // @Init(state = State.RESOURCES)
     public static void init() {
         charakter = loadImage("charakter", "charakter.png");
 
