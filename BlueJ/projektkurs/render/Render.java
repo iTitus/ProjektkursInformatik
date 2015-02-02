@@ -91,6 +91,5 @@ public class Render extends Canvas implements IUpdatable {
 
         g.dispose();
         strategy.show();
-
     }
 }

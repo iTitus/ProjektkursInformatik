@@ -30,11 +30,11 @@ public final class Integers {
     /**
      * X-Bildschirmkoordinate der Informationen.
      */
-    public static final int INFO_X = 16;
+    public static final int INFO_X = 24;
     /**
      * Y-Bildschirmkoordinate der Informationen.
      */
-    public static final int INFO_Y = 16;
+    public static final int INFO_Y = 12;
     /**
      * Maximale Schriftgroesse.
      */

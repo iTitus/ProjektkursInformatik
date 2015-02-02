@@ -1,7 +1,6 @@
 package projektkurs.cutscene;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import projektkurs.Main;
@@ -133,7 +132,7 @@ public final class CutSceneManager {
     public static void startCutScene(CutScene cutSceneToStart) {
 
         if (!isRunning()) {
-            Logger.info("Starting CutScene");
+            Logger.info("Starting CutScene '" + cutSceneToStart.getName() + "'");
             Main.pause();
             Main.hide();
 
@@ -142,20 +141,14 @@ public final class CutSceneManager {
             cutSceneRender = new CutsceneRender();
             map = Main.getLevel().getMap().copy();
 
-            cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + "- CutScene");
-            JPanel panel = (JPanel) cutSceneFrame.getContentPane();
-            panel.setLayout(null);
-            panel.setPreferredSize(cutSceneRender.getCutSceneCanvas().getPreferredSize());
-            panel.add(cutSceneRender.getCutSceneCanvas());
-
+            cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + " - CutScene");
             cutSceneFrame.setIconImage(Images.item42);
             cutSceneFrame.setUndecorated(true);
             cutSceneFrame.setResizable(false);
             cutSceneFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            cutSceneFrame.add(cutSceneRender);
             cutSceneFrame.pack();
             cutSceneFrame.setVisible(true);
-
-            cutSceneRender.initBuffers();
 
             final double nsPerTick = Integers.NS_PER_SECOND / (double) Integers.UPS;
             fps = 0;
