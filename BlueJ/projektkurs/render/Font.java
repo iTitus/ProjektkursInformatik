@@ -7,6 +7,7 @@ import projektkurs.lib.Sprites;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.MathUtil;
+import projektkurs.util.RenderUtil;
 
 /**
  * Textrendering.
@@ -124,7 +125,7 @@ public class Font {
      *            Farbe
      */
     public static void drawString(Screen screen, String string, int posX, int posY, int color) {
-        if (string != null && string.length() > 0) {
+        if (!RenderUtil.isTransparent(color) && string != null && string.length() > 0) {
             int offset = 0;
             for (int i = 0; i < string.length(); i++) {
                 int character = string.charAt(i);
@@ -132,7 +133,7 @@ public class Font {
                     offset += carriagePerCharacter[character];
                     for (int yy = 0; yy < characters[character].getSizeY(); yy++) {
                         for (int xx = 0; xx < characters[character].getSizeX(); xx++) {
-                            if (characters[character].getPixel(xx, yy) == 0xFF000000) {
+                            if (characters[character].getPixel(xx, yy) == 0) {
                                 screen.setPixel(color, posX + offset + xx, posY + yy);
                             }
                         }
