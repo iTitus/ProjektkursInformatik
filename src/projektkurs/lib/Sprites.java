@@ -59,6 +59,8 @@ public final class Sprites {
     public static Sprite wall;
     public static Sprite water;
 
+    public static Sprite nuke_2, nuke_3, nuke_4;
+
     /**
      * Das Pair, das alle Sprites enthaelt.
      *
@@ -192,6 +194,15 @@ public final class Sprites {
 
         redNPC = new Sprite("redNPC", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(redNPC);
+
+        nuke_2 = nuke.rescale("nuke_2", 2, 1);
+        registerSprite(nuke_2);
+
+        nuke_3 = nuke.rescale("nuke_3", 2, 2);
+        registerSprite(nuke_3);
+
+        nuke_4 = nuke.rescale("nuke_4", 0.5, 0.5);
+        registerSprite(nuke_4);
 
     }
 

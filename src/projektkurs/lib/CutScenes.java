@@ -51,6 +51,7 @@ public final class CutScenes {
     /**
      * Initialisiert alle CutScenes.
      */
+    @SuppressWarnings("deprecation")
     @Init
     public static void init() {
         one = new CutScene("one");
@@ -89,7 +90,7 @@ public final class CutScenes {
         CutSceneObject typ5 = new CutSceneObject(Images.auto_do_EW, 40, 10, 4, 2);
         CutSceneObject typ6 = new CutSceneObject(Images.auto_do2_EW, 40, 10, 4, 2);
         CutSceneObject typ7 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
-        CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
+        //CutSceneObject typ8 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
 
         CutSceneObject[] baeumer = new CutSceneObject[16];
         CutSceneObject[] baeumel = new CutSceneObject[16];
@@ -175,7 +176,7 @@ public final class CutScenes {
         CutSceneObject typ51 = new CutSceneObject(Images.auto_do_EW, 40, 10, 4, 2);
         CutSceneObject typ61 = new CutSceneObject(Images.auto_do2_EW, 40, 10, 4, 2);
         CutSceneObject typ71 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
-        CutSceneObject typ81 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
+        // CutSceneObject typ81 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
 
         @SuppressWarnings("unused")
         int line = 0;// FIXME:

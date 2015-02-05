@@ -235,7 +235,7 @@ public final class Images {
      */
     public static BufferedImage charakter;
     /**
-     * Zerstoertes-Land-Bild.
+     * ZerstÃ¶rtes-Land-Bild.
      */
     public static BufferedImage destroyedRaster;
     /**
@@ -270,11 +270,10 @@ public final class Images {
     public static BufferedImage[] fire;
     public static BufferedImage foo = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
     public static BufferedImage grammophonvdS;
+    
     public static BufferedImage grammophonvO_EW;
     public static BufferedImage grammophonvO_NS;
-
     public static BufferedImage grammophonvO_SN;
-
     public static BufferedImage grammophonvO_WE;
 
     /**
@@ -285,18 +284,13 @@ public final class Images {
     /**
     *
     */
-    public static BufferedImage haus1;
-
     public static BufferedImage haus1_EW;
-
     public static BufferedImage haus1_NS;
-
     public static BufferedImage haus1_SN;
     public static BufferedImage haus1_WE;
     /**
     *
     */
-    public static BufferedImage haus2;
     public static BufferedImage haus2_EW;
     public static BufferedImage haus2_NS;
     public static BufferedImage haus2_SN;
@@ -304,39 +298,25 @@ public final class Images {
     /**
     *
     */
-    public static BufferedImage haus3;
     public static BufferedImage haus3_EW;
-
     public static BufferedImage haus3_NS;
-
     public static BufferedImage haus3_SN;
-
     public static BufferedImage haus3_WE;
 
     /**
     *
     */
-    public static BufferedImage haus4;
-
     public static BufferedImage haus4_EW;
-
     public static BufferedImage haus4_NS;
-
     public static BufferedImage haus4_SN;
-
     public static BufferedImage haus4_WE;
 
     /**
     *
     */
-    public static BufferedImage haus5;
-
     public static BufferedImage haus5ecke_ES;
-
     public static BufferedImage haus5ecke_NE;
-
     public static BufferedImage haus5ecke_SW;
-
     public static BufferedImage haus5ecke_WN;
 
     /**
@@ -347,22 +327,14 @@ public final class Images {
     /**
     *
     */
-    public static BufferedImage haus7;
-
     public static BufferedImage haus7ecke_ES;
-
     public static BufferedImage haus7ecke_NE;
-
     public static BufferedImage haus7ecke_SW;
-
     public static BufferedImage haus7ecke_WN;
-
+    
     public static BufferedImage hauswelldach_EW;
-
     public static BufferedImage hauswelldach_NS;
-
     public static BufferedImage hauswelldach_SN;
-
     public static BufferedImage hauswelldach_WE;
 
     /**
@@ -397,14 +369,9 @@ public final class Images {
      */
     public static BufferedImage kiste;
 
-    public static BufferedImage klavier;
-
     public static BufferedImage klavier_EW;
-
     public static BufferedImage klavier_NS;
-
     public static BufferedImage klavier_SN;
-
     public static BufferedImage klavier_WE;
 
     /**
@@ -546,42 +513,17 @@ public final class Images {
     *
     */
     public static BufferedImage lasterschwarzmitAnhaengervO_EW;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzmitAnhaengervO_NS;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzmitAnhaengervO_SN;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzmitAnhaengervO_WE;
 
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_EW;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzvO_NS;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzvO_SN;
-
-    /**
-    *
-    */
     public static BufferedImage lasterschwarzvO_WE;
-
     /**
     *
     */
@@ -591,20 +533,8 @@ public final class Images {
     *
     */
     public static BufferedImage lasterweissvO_EW;
-
-    /**
-    *
-    */
     public static BufferedImage lasterweissvO_NS;
-
-    /**
-    *
-    */
     public static BufferedImage lasterweissvO_SN;
-
-    /**
-    *
-    */
     public static BufferedImage lasterweissvO_WE;
 
     /**
@@ -620,14 +550,9 @@ public final class Images {
     /**
      *
      */
-    public static BufferedImage lordS;
-
     public static BufferedImage lordS_EW;
-
     public static BufferedImage lordS_NS;
-
     public static BufferedImage lordS_SN;
-
     public static BufferedImage lordS_WE;
 
     /**
@@ -921,19 +846,154 @@ public final class Images {
     public static BufferedImage weibvOlAo;
 
     public static BufferedImage weibvOlAo_EW;
-    public static BufferedImage weibvOlAo_NS;
-    public static BufferedImage weibvOlAo_SN;
-    public static BufferedImage weibvOlAo_WE;
-    public static BufferedImage weibvVbAo;
-    public static BufferedImage weibvVrAho;
-    private static BufferedImage elster_EW;
-    private static BufferedImage elster_NS;
-    private static BufferedImage elster_SN;
-    private static BufferedImage elster_WE;
 
-    /**
-     * Befreit alle Bilder.
-     */
+    public static BufferedImage weibvOlAo_NS;
+
+    public static BufferedImage weibvOlAo_SN;
+
+    public static BufferedImage weibvOlAo_WE;
+
+    public static BufferedImage weibvVbAo;
+
+    public static BufferedImage weibvVrAho;
+
+    public static BufferedImage elster_EW;
+
+    public static BufferedImage elster_NS;
+
+    public static BufferedImage elster_SN;
+
+    public static BufferedImage elster_WE;
+
+    public static BufferedImage billiardtisch_EW;
+
+    public static BufferedImage billiardtisch_SN;
+
+    public static BufferedImage billiardtisch_NS;
+
+    public static BufferedImage billiardtisch_WE;
+
+    public static BufferedImage billiardtisch2_EW;
+
+    public static BufferedImage billiardtisch2_WE;
+
+    public static BufferedImage billiardtisch2_NS;
+
+    public static BufferedImage billiardtisch2_SN;
+
+    public static BufferedImage pokertisch;
+
+    public static BufferedImage pokertisch2;
+
+    public static BufferedImage pokerchipshaufen;
+
+    public static BufferedImage pokerkartenstapel;
+
+    public static BufferedImage pokerchipsstapelvO;
+
+    public static BufferedImage pokerchipsstapelvdS;
+
+    public static BufferedImage pokerkartenfaecher;
+
+    public static BufferedImage pokerkartenblatt;
+
+    public static BufferedImage pokerkofferzuvO;
+
+    public static BufferedImage pokerkofferzuvV;
+
+    public static BufferedImage pokerkofferoffen_EW;
+
+    public static BufferedImage pokerkofferoffen_SN;
+
+    public static BufferedImage pokerkofferoffen_WE;
+
+    public static BufferedImage pokerkofferoffen_NS;
+
+    public static BufferedImage pokerkofferzuvO_NS;
+
+    public static BufferedImage pokerkofferzuvO_EW;
+
+    public static BufferedImage pokerkofferzuvO_SN;
+
+    public static BufferedImage pokerkofferzuvO_WE;
+
+    public static BufferedImage pokerkartenstapel_WE;
+
+    public static BufferedImage pokerkartenstapel_NS;
+
+    public static BufferedImage pokerkartenfaecher_NS;
+
+    public static BufferedImage pokerkartenfaecher_WE;
+
+    public static BufferedImage pokerkartenfaecher_EW;
+
+    public static BufferedImage pokerkartenfaecher_SN;
+
+    public static BufferedImage hausmitInnenhof_NS;
+
+    public static BufferedImage hausmitInnenhof_EW;
+
+    public static BufferedImage hausmitInnenhof_SN;
+
+    public static BufferedImage hausmitInnenhof_WE;
+
+    public static BufferedImage hauszelt1_NS;
+
+    public static BufferedImage hauszelt1_EW;
+
+    public static BufferedImage hauszelt1_SN;
+
+    public static BufferedImage hauszelt1_WE;
+
+    public static BufferedImage hauszelt2_NS;
+
+    public static BufferedImage hauszelt2_EW;
+
+    public static BufferedImage hauszelt2_SN;
+
+    public static BufferedImage haus8_WE;
+
+    public static BufferedImage haus8_NS;
+
+    public static BufferedImage haus8_EW;
+
+    public static BufferedImage haus8_SN;
+
+    public static BufferedImage hauszelt2_WE;
+
+    public static BufferedImage hausschloss_NS;
+
+    public static BufferedImage hausschloss_EW;
+
+    public static BufferedImage hausschloss_WE;
+
+    public static BufferedImage hausschloss_SN;
+    
+    public static BufferedImage typvOrAho_SN;
+    
+    public static BufferedImage weibvO_NS;
+    
+    public static BufferedImage weibvO_SN;
+    
+    public static BufferedImage autopolizeivdS_NS;
+    
+    public static BufferedImage autopolizeivdS_SN;
+    
+    public static BufferedImage fischerboot_EW;
+    
+    public static BufferedImage fischerboot_SN;
+    
+    public static BufferedImage fischerboot_WE;
+    
+	public static BufferedImage fischerboot_NS;
+	private static BufferedImage auto_w2_SN;
+	private static BufferedImage auto_w2_WE;
+	private static BufferedImage hausschlossmB_NS;
+	private static BufferedImage hausschlossmB_EW;
+	private static BufferedImage hausschlossmB_SN;
+	private static BufferedImage hausschlossmB_WE;
+	private static BufferedImage pokerwuerfel;
+
     public static void flushAll() {
         for (BufferedImage img : MAPPINGS.values()) {
             if (img != null) {
@@ -1000,121 +1060,66 @@ public final class Images {
 
         buttonDisabled = loadImage("button_disabled", "button_disabled.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDraussen1.png", "automitoffenerTuerFahrerdraussen1", auto_do_NS, auto_do_SN, auto_do_EW, auto_do_WE);
 
         auto_do_NS = loadImage("auto_do_NS", "AutoMitOffenerTuerFahrerDraussen1.png");
-
         auto_do_EW = loadImageRotate90("auto_do_EW", "AutoMitOffenerTuerFahrerDraussen1.png");
-
         auto_do_SN = loadImageRotate180("auto_do_SN", "AutoMitOffenerTuerFahrerDraussen1.png");
-
         auto_do_WE = loadImageRotate270("auto_do_WE", "AutoMitOffenerTuerFahrerDraussen1.png");
 
-        // registerAllDir("AutoMitFahrerDrinnen.png", "automitFahrerDrinnen", auto_dc_NS, auto_dc_SN, auto_dc_EW, auto_dc_WE);
-
         auto_dc_NS = loadImage("auto_dc_NS", "AutoMitFahrerDrinnen.png");
-
         auto_dc_EW = loadImageRotate90("auto_dc_EW", "AutoMitFahrerDrinnen.png");
-
         auto_dc_SN = loadImageRotate180("auto_dc_SN", "AutoMitFahrerDrinnen.png");
-
         auto_dc_WE = loadImageRotate270("auto_dc_WE", "AutoMitFahrerDrinnen.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDraussen2.png", "automitoffenerTuerFahrerdraussen2", auto_do2_NS, auto_do2_SN, auto_do2_EW, auto_do2_WE);
-
         auto_do2_NS = loadImage("auto_do2_NS", "AutoMitOffenerTuerFahrerDraussen2.png");
-
         auto_do2_EW = loadImageRotate90("auto_do2_EW", "AutoMitOffenerTuerFahrerDraussen2.png");
-
         auto_do2_SN = loadImageRotate180("auto_do2_SN", "AutoMitOffenerTuerFahrerDraussen2.png");
-
         auto_do2_WE = loadImageRotate270("auto_do2_WE", "AutoMitOffenerTuerFahrerDraussen2.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDraussen3.png", "automitoffenerTuerFahrerdraussen3", auto_do3_NS, auto_do3_SN, auto_do3_EW, auto_do3_WE);
-
         auto_do3_NS = loadImage("auto_do3_NS", "AutoMitOffenerTuerFahrerDraussen3.png");
-
         auto_do3_EW = loadImageRotate90("auto_do3_EW", "AutoMitOffenerTuerFahrerDraussen3.png");
-
         auto_do3_SN = loadImageRotate180("auto_do3_SN", "AutoMitOffenerTuerFahrerDraussen3.png");
-
         auto_do3_WE = loadImageRotate270("auto_do3_WE", "AutoMitOffenerTuerFahrerDraussen3.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDraussen4.png", "automitoffenerTuerFahrerdraussen4", auto_do4_NS, auto_do4_SN, auto_do4_EW, auto_do4_WE);
-
         auto_do4_NS = loadImage("auto_do4_NS", "AutoMitOffenerTuerFahrerDraussen4.png");
-
         auto_do4_EW = loadImageRotate90("auto_do4_EW", "AutoMitOffenerTuerFahrerDraussen4.png");
-
         auto_do4_SN = loadImageRotate180("auto_do4_SN", "AutoMitOffenerTuerFahrerDraussen4.png");
-
         auto_do4_WE = loadImageRotate270("auto_do4_WE", "AutoMitOffenerTuerFahrerDraussen4.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen.png", "automitoffenerTuerFahrerdrinnen", auto_di_NS, auto_di_SN, auto_di_EW, auto_di_WE);
-
         auto_di_NS = loadImage("auto_di_NS", "AutoMitOffenerTuerFahrerDrinnen.png");
-
         auto_di_EW = loadImageRotate90("auto_di_EW", "AutoMitOffenerTuerFahrerDrinnen.png");
-
         auto_di_SN = loadImageRotate180("auto_di_SN", "AutoMitOffenerTuerFahrerDrinnen.png");
-
         auto_di_WE = loadImageRotate270("auto_di_WE", "AutoMitOffenerTuerFahrerDrinnen.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen2.png", "automitoffenerTuerFahrerdrinnen2", auto_di2_NS, auto_di2_SN, auto_di2_EW, auto_di2_WE);
-
         auto_di2_NS = loadImage("auto_di2_NS", "AutoMitOffenerTuerFahrerDrinnen2.png");
-
         auto_di2_EW = loadImageRotate90("auto_di2_EW", "AutoMitOffenerTuerFahrerDrinnen2.png");
-
         auto_di2_SN = loadImageRotate180("auto_di2_SN", "AutoMitOffenerTuerFahrerDrinnen2.png");
-
         auto_di2_WE = loadImageRotate270("auto_di2_WE", "AutoMitOffenerTuerFahrerDrinnen2.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen3.png", "automitoffenerTuerFahrerdrinnen3", auto_di3_NS, auto_di3_SN, auto_di3_EW, auto_di3_WE);
-
         auto_di3_NS = loadImage("auto_di3_NS", "AutoMitOffenerTuerFahrerDrinnen3.png");
-
         auto_di3_EW = loadImageRotate90("auto_di3_EW", "AutoMitOffenerTuerFahrerDrinnen3.png");
-
         auto_di3_SN = loadImageRotate180("auto_di3_SN", "AutoMitOffenerTuerFahrerDrinnen3.png");
-
         auto_di3_WE = loadImageRotate270("auto_di3_WE", "AutoMitOffenerTuerFahrerDrinnen3.png");
 
-        // registerAllDir("AutoMitOffenerTuerFahrerDrinnen4.png", "automitoffenerTuerFahrerdrinnen4", auto_di4_NS, auto_di4_SN, auto_di4_EW, auto_di4_WE);
-
         auto_di4_NS = loadImage("auto_di4_NS", "AutoMitOffenerTuerFahrerDrinnen4.png");
-
         auto_di4_EW = loadImageRotate90("auto_di4_EW", "AutoMitOffenerTuerFahrerDrinnen4.png");
-
         auto_di4_SN = loadImageRotate180("auto_di4_SN", "AutoMitOffenerTuerFahrerDrinnen4.png");
-
         auto_di4_WE = loadImageRotate270("auto_di4_WE", "AutoMitOffenerTuerFahrerDrinnen4.png");
 
-        // registerAllDir("Auto.png", "Auto", auto_NS, auto_SN, auto_EW, auto_WE);
-
         auto_NS = loadImage("auto_NS", "Auto.png");
-
         auto_EW = loadImageRotate90("auto_EW", "Auto.png");
-
         auto_SN = loadImageRotate180("auto_SN", "Auto.png");
-
         auto_WE = loadImageRotate270("auto_WE", "Auto.png");
 
-        // registerAllDir("AutoMitFahrerDrinnen.png", "automitFahrerDrinnen", auto_w_NS, auto_w_SN, auto_w_EW, auto_w_WE);
-
         auto_w_NS = loadImage("auto_w_NS", "AutoMitFahrerDrinnen.png");
-
         auto_w_EW = loadImageRotate90("auto_w_EW", "AutoMitFahrerDrinnen.png");
-
         auto_w_SN = loadImage("auto_w_SN", "AutoMitFahrerDrinnen1.2.png");
-
         auto_w_WE = loadImageRotate90("auto_w_WE", "AutoMitFahrerDrinnen1.2.png");
 
-        // registerAllDir("AutoMitFahrerDrinnen2.png", "automitFahrerDrinnen2", auto_w2_NS, auto_w2_SN, auto_w2_EW, auto_w2_WE);
-
         auto_w2_NS = loadImage("auto_w2_NS", "AutoMitFahrerDrinnen2.png");
-
         auto_w2_EW = loadImageRotate90("auto_w2_EW", "AutoMitFahrerDrinnen2.png");
+        auto_w2_SN = loadImageRotate180("auto_w2_SN", "AutoMitFahrerDrinnen2.png");
+        auto_w2_WE = loadImageRotate270("auto_w2_WE", "AutoMitFahrerDrinnen2.png");
 
         auto2vV = loadImage("auto2vV", "Auto1.0.png");
 
@@ -1123,12 +1128,9 @@ public final class Images {
         auto2vOnW = loadImage("auto2vOnW", "Auto1.2.png");
 
         autogelbvO_WE = loadImage("autogelbvO_WE", "Auto3.0.png");
-
         autogelbvO_NS = loadImageRotate90("autogelbvO_NS", "Auto3.0.png");
-
-        autogelbvO_EW = loadImage("autogelbvO_EW", "Auto3.1.png");
-
-        autogelbvO_SN = loadImageRotate90("autogelbvO_SN", "Auto3.1.png");
+        autogelbvO_EW = loadImageRotate180("autogelbvO_EW", "Auto3.png");
+        autogelbvO_SN = loadImageRotate270("autogelbvO_SN", "Auto3.png");
 
         autopolizeivV = loadImage("autopolizeivV", "BullenAutoVonVorne.png");
 
@@ -1138,8 +1140,10 @@ public final class Images {
         autopolizeivO_SN = loadImageRotate270("autopolizeivO_SN", "BullenAutoVonOben.png");
 
         autopolizeivdS_WE = loadImage("autopolizeivdS_WE", "BullenAutoVonDerSeite.png");
-        autopolizeivdS_EW = loadImage("autopolizeivdS_EW", "BullenAutoVonDerSeite1.2.png");
-
+        autopolizeivdS_NS = loadImageRotate90("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
+        autopolizeivdS_EW = loadImageRotate180("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
+        autopolizeivdS_SN = loadImageRotate270("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
+        
         baum1 = loadImage("Baum1", "Baum1.png");
 
         baum2 = loadImage("Baum2", "Baum2.png");
@@ -1165,6 +1169,16 @@ public final class Images {
         baum12 = loadImage("Baum12", "Baum12.png");
 
         baum13 = loadImage("Baum13", "Baum13.png");
+
+        billiardtisch_EW = loadImage("billiardtisch_EW", "BallTisch.png");
+        billiardtisch_SN = loadImageRotate90("billiardtisch_SN", "BallTisch.png");
+        billiardtisch_WE = loadImageRotate180("billiardtisch_WE", "BallTisch.png");
+        billiardtisch_NS = loadImageRotate270("billiardtisch_NS", "BallTisch.png");
+
+        billiardtisch2_EW = loadImage("billiardtisch2_EW", "BallTisch2.png");
+        billiardtisch2_SN = loadImageRotate90("billiardtisch2_SN", "BallTisch2.png");
+        billiardtisch2_WE = loadImageRotate180("billiardtisch2_WE", "BallTisch2.png");
+        billiardtisch2_NS = loadImageRotate270("billiardtisch2_NS", "BallTisch2.png");
 
         bodenrot = loadImage("bodenrot", "Boden12.png");
 
@@ -1201,45 +1215,38 @@ public final class Images {
         elster_SN = loadImageRotate180("elster_SN", "Elster.png");
         elster_WE = loadImageRotate270("elster_WE", "Elster.png");
 
-        faehre_NS = loadImage("faehre_NS", ".png");// TODO: Pic missing
-        faehre_EW = loadImageRotate90("faehre_EW", ".png");// TODO: Pic missing
-        faehre_SN = loadImageRotate180("faehre_SN", ".png");// TODO: Pic missing
-        faehre_WE = loadImageRotate270("faehre_WE", ".png");// TODO: Pic missing
+        faehre_NS = loadImage("faehre_NS", "F�hre.png");
+        faehre_EW = loadImageRotate90("faehre_EW", "F�hre.png");
+        faehre_SN = loadImageRotate180("faehre_SN", "F�hre.png");
+        faehre_WE = loadImageRotate270("faehre_WE", "F�hre.png");
 
+        fischerboot_EW = loadImage("fischerboot_EW", "Fischerboot.png");
+        fischerboot_SN = loadImageRotate90("fischerboot_SN", "Fischerboot.png");
+        fischerboot_WE = loadImageRotate180("fischerboot_WE", "Fischerboot.png");
+        fischerboot_NS = loadImageRotate270("fischerboot_NS", "Fischerboot.png");
+        
         grammophonvdS = loadImage("grammophonvdS", "Grammophon5.png");
 
         grammophonvO_WE = loadImage("grammophonvO_WE", "Grammophon2.png");
-
         grammophonvO_NS = loadImageRotate90("grammophonvO_NS", "Grammophon2.png");
-
         grammophonvO_EW = loadImageRotate180("grammophonvO_EW", "Grammophon2.png");
-
         grammophonvO_SN = loadImageRotate270("grammophonvO_SN", "Grammophon2.png");
 
         gras = loadImage("gras", "Gras.png");
 
         haus1_NS = loadImage("haus1_NS", "Haus1.2.png");
-
         haus1_EW = loadImageRotate90("haus1_EW", "Haus1.2.png");
-
         haus1_SN = loadImageRotate180("haus1_SN", "Haus1.2.png");
-
         haus1_WE = loadImageRotate270("haus1_WE", "Haus1.2.png");
 
         haus2_NS = loadImage("haus2_NS", "Haus2.png");
-
-        haus2_EW = loadImage("haus2_EW", "Haus2.png");
-
-        haus2_SN = loadImage("haus2_SN", "Haus2.png");
-
-        haus2_WE = loadImage("haus2_WE", "Haus2.png");
+        haus2_EW = loadImageRotate90("haus2_EW", "Haus2.png");
+        haus2_SN = loadImageRotate180("haus2_SN", "Haus2.png");
+        haus2_WE = loadImageRotate270("haus2_WE", "Haus2.png");
 
         haus3_NS = loadImage("haus3_NS", "Haus3.png");
-
         haus3_EW = loadImageRotate90("haus3_EW", "Haus3.png");
-
         haus3_SN = loadImageRotate180("haus3_SN", "Haus3.png");
-
         haus3_WE = loadImageRotate270("haus3_WE", "Haus3.png");
 
         haus4_WE = loadImage("haus4_WE", "Haus4.png");
@@ -1259,13 +1266,40 @@ public final class Images {
         haus7ecke_SW = loadImageRotate180("haus7_SW", "Haus7.2.png");
         haus7ecke_WN = loadImageRotate270("haus7_WN", "Haus7.2.png");
 
-        // sieht scheisse aus!!! haus8 = loadImage("haus8", "Haus8.png");
+        haus8_WE = loadImage("haus8_WE", ".png");// TODO: Pic missing
+        haus8_NS = loadImageRotate90("haus8_NS", ".png");// TODO: Pic missing
+        haus8_EW = loadImageRotate180("haus8_EW", ".png");// TODO: Pic missing
+        haus8_SN = loadImageRotate270("haus8_SN", ".png");// TODO: Pic missing
 
-        hauswelldach_WE = loadImage("hauswelldach_WE", ".png");// TODO: Pic missing
-        hauswelldach_NS = loadImageRotate90("hauswelldach_NS", ".png");// TODO: Pic missing
-        hauswelldach_EW = loadImageRotate180("hauswelldach_EW", ".png");// TODO: Pic missing
-        hauswelldach_SN = loadImageRotate270("hauswelldach_SN", ".png");// TODO: Pic missing
+        hausmitInnenhof_NS = loadImage("hausmitInnenhof_NS", "Villa2.png");
+        hausmitInnenhof_EW = loadImageRotate90("hausmitInnenhof_EW", "Villa2.png");
+        hausmitInnenhof_SN = loadImageRotate180("hausmitInnenhof_SN", "Villa2.png");
+        hausmitInnenhof_WE = loadImageRotate270("hausmitInnenhof_WE", "Villa2.png");
 
+        hausschloss_NS = loadImage("hausschloss_NS", "VillaOhneB�ume.png");
+        hausschloss_EW = loadImageRotate90("hausschloss_EW", "VillaOhneB�ume.png");
+        hausschloss_SN = loadImageRotate180("hausschloss_SN", "VillaOhneB�ume.png");
+        hausschloss_WE = loadImageRotate270("hausschloss_WE", "VillaOhneB�ume.png");
+
+        hausschlossmB_NS = loadImage("hausschloss_NS", "VillaMitB�ume.png");
+        hausschlossmB_EW = loadImageRotate90("hausschloss_EW", "VillaMitB�ume.png");
+        hausschlossmB_SN = loadImageRotate180("hausschloss_SN", "VillaMitB�ume.png");
+        hausschlossmB_WE = loadImageRotate270("hausschloss_WE", "VillaMitB�ume.png");
+
+        
+        hauszelt1_NS = loadImage("hauszelt1_NS", "Zelt.png");
+        hauszelt1_EW = loadImageRotate90("hauszelt1_EW", "Zelt.png");
+        hauszelt1_SN = loadImageRotate180("hauszelt1_SN", "Zelt.png");
+        hauszelt1_WE = loadImageRotate270("hauszelt1_WE", "Zelt.png");
+
+        hauszelt2_NS = loadImage("hauszelt2_NS", "Zelt2.png");
+        hauszelt2_EW = loadImageRotate90("hauszelt2_EW", "Zelt2.png");
+        hauszelt2_SN = loadImageRotate180("hauszelt2_SN", "Zelt2.png");
+        hauszelt2_WE = loadImageRotate270("hauszelt2_WE", "Zelt2.png");
+
+        // sieht scheisse aus!!! haus8 = 1oadImage("haus8", "Haus8.png");
+
+       
         jojo = loadImage("jojo", ".png");// TODO: Pic missing
 
         jojokaputt = loadImage("jojokaputt", ".png");// TODO: Pic missing
@@ -1275,53 +1309,35 @@ public final class Images {
         kaugummirot = loadImage("kaugummirot", "Kaugummi2.png");
 
         klavier_WE = loadImage("klavier_WE", "Keyboard.png");
-
         klavier_NS = loadImageRotate90("klavier_NS", "Keyboard.png");
-
         klavier_EW = loadImageRotate180("klavier_EW", "Keyboard.png");
-
         klavier_SN = loadImageRotate270("klavier_SN", "Keyboard.png");
 
         kreuzung = loadImage("kreuzung", "Kreuzung.png");
 
         kreuzungT_EW = loadImage("kreuzungT_EW", "Kreuzung2.png");
-
         kreuzungT_SN = loadImageRotate90("kreuzungT_SN", "Kreuzung2.png");
-
         kreuzungT_WE = loadImageRotate180("kreuzungT_WE", "Kreuzung2.png");
-
         kreuzungT_NS = loadImageRotate270("kreuzungT_NS", "Kreuzung2.png");
 
         ladyvOrAho_NS = loadImage("ladyvOrAho_NS", "LadyVonOben.png");
-
         ladyvOrAho_EW = loadImageRotate90("ladyvOrAho_EW", "LadyVonOben.png");
-
         ladyvOrAho_SN = loadImage("ladyvOrAho_SN", "LadyVonOben1.2.png");
-
         ladyvOrAho_WE = loadImageRotate90("ladyvOrAho_WE", "LadyVonOben1.2.png");
 
         ladyvO_NS = loadImage("ladyvO_NS", "LadyVonOben2.png");
-
         ladyvO_EW = loadImageRotate90("ladyvO_EW", "LadyVonOben2.png");
-
         ladyvO_SN = loadImage("ladyvO_SN", "LadyVonOben2.2.png");
-
         ladyvO_WE = loadImageRotate90("ladyvO_WE", "LadyVonOben2.2.png");
 
         ladyvOrAo_WE = loadImage("ladyvOrAo_WE", "LadyVonOben3.png");
-
         ladyvOrAo_NS = loadImageRotate90("ladyvOrAo_NS", "LadyVonOben3.png");
-
         ladyvOrAo_EW = loadImage("ladyvOrAo_EW", "LadyVonOben3.2.png");
-
         ladyvOrAo_SN = loadImageRotate90("ladyvOrAo_SN", "LadyVonOben3.2.png");
 
         ladyvObAho_NS = loadImage("ladyvonObAho_NS", "LadyVonOben4.png");
-
         ladyvObAho_EW = loadImageRotate90("ladyvonObAho_EW", "LadyVonOben4.png");
-
         ladyvObAho_SN = loadImage("ladyvonObAho_SN", "LadyVonOben4.2.png");
-
         ladyvObAho_WE = loadImageRotate90("ladyvonObAho_WE", "LadyVonOben4.2.png");
 
         ladyvVbAho = loadImage("ladyvbAho", "LadyVonVorne.png");
@@ -1337,23 +1353,16 @@ public final class Images {
         lasterschwarzvV = loadImage("lasterschwarzvV", "Lastwagen1.0.png");
 
         lasterschwarzvO_NS = loadImage("lasterschwarzvO_NS", "Lastwagen1.6.png");
-
         lasterschwarzvO_EW = loadImageRotate90("lasterschwarzvO_EW", "Lastwagen1.6.png");
-
         lasterschwarzvO_SN = loadImage("lasterschwarzvO_SN", "Lastwagen1.6.2.png");
-
         lasterschwarzvO_WE = loadImageRotate90("lasterschwarzvO_WE", "Lastwagen1.6.2.png");
 
         lasterschwarzmitAnhaengervO_EW = loadImage("lasterschwarzmitAnhaengervO_EW", "Lastwagen1.4.png");
-
         lasterschwarzmitAnhaengervO_SN = loadImageRotate90("lasterschwarzmitAnhaengervO_SN", "Lastwagen1.4.png");
-
         lasterschwarzmitAnhaengervO_WE = loadImage("lasterschwarzmitAnhaengervO_WE", "Lastwagen1.4.2.png");
-
         lasterschwarzmitAnhaengervO_NS = loadImageRotate90("lasterschwarzmitAnhaengervO_NS", "Lastwagen1.4.2.png");
 
-        lasterweissvO_NS = loadImage("lasterweissvO_NS", "FliegendeZahnpastaTube1.0.png");
-
+        lasterweissvO_NS = loadImage("lasterweissvO_NS", "FliegendeZahnpastaTube1.0.png");//FIXME: Remark
         lasterweissvO_EW = loadImageRotate90("lasterweissvO_EW", "FliegendeZahnpastaTube1.0.png");
 
         lasterweissvV = loadImage("lasterweissvV", "FliegendeZahnpastaTube1.2.png");
@@ -1361,11 +1370,8 @@ public final class Images {
         lordvdS = loadImage("lordvonderSeite", "LordVonDerSeite.png");
 
         lordS_SN = loadImage("lordS_SN", "LordSitzend.png");
-
         lordS_WE = loadImageRotate90("lordS_WE", "LordSitzend.png");
-
         lordS_NS = loadImageRotate180("lordS_NS", "LordSitzend.png");
-
         lordS_EW = loadImageRotate270("lordS_EW", "LordSitzend.png");
 
         lordH = loadImage("lordH", "LordVonHinten.png");
@@ -1373,11 +1379,8 @@ public final class Images {
         // registerAllDir("LordVonOben.png", "LordvO", LordvO_NS, LordvO_SN, LordvO_EW,LordvO_WE);
 
         lordvO_NS = loadImage("lordvO_NS", "LordVonDerSeite2.png");
-
         lordvO_EW = loadImageRotate90("lordvO_EW", "LordVonDerSeite2.png");
-
         lordvO_SN = loadImageRotate180("lordvO_SN", "LordVonDerSeite2.png");
-
         lordvO_WE = loadImageRotate270("lordvO_WE", "LordVonDerSeite2.png");
 
         messer = loadImage("messer", "Messer.png");
@@ -1386,25 +1389,54 @@ public final class Images {
 
         muelltonneoffenvO = loadImage("muelltonneoffenvO", ".png");// TODO: Pic missing
 
-        nestvO = loadImage("nestvO", ".png");// TODO: Pic missing
+        nestmitEiernvO = loadImage("nestmitEiernvO", "Nest.png");
 
-        nestmitEiernvO = loadImage("nestmitEiernvO", ".png");// TODO: Pic missing
-
-        netz = loadImage("netz", ".png");// TODO: Pic missing
+        netz = loadImage("netz", "Netz.png");
 
         netzfaden = loadImage("netzfaden", "Faden.png");
 
         ohrringe_EW = loadImage("ohrringe_EW", "Ohrringe.png");
-
         ohrringe_SN = loadImageRotate90("ohrringe_SN", "Ohrringe.png");
-
         ohrringe_WE = loadImageRotate180("ohrringe_WE", "Ohrringe.png");
-
         ohrringe_NS = loadImageRotate270("ohrringe_NS", "Ohrringe.png");
 
         pflaster = loadImage("pflaster", "PflasterStein.png");
 
         pflaster2 = loadImage("pflaster2", "PflasterSteine2.png");
+
+        pokerchipshaufen = loadImage("pokerchipshaufen", ".png");
+
+        pokerkartenstapel_WE = loadImage("pokerkartenstapel_WE", ".png");
+        pokerkartenstapel_NS = loadImageRotate90("pokerkartenstapel_NS", ".png");
+
+        pokerchipsstapelvO = loadImage("pokerchipsstapelvO", ".png");
+
+        pokerchipsstapelvdS = loadImage("pokerchipsstapelvdS", ".png");
+
+        pokerkartenfaecher_NS = loadImage("pokerkartenfaecher_NS", ".png");
+        pokerkartenfaecher_EW = loadImageRotate90("pokerkartenfaecher_EW", ".png");
+        pokerkartenfaecher_SN = loadImageRotate180("pokerkartenfaecher_SN", ".png");
+        pokerkartenfaecher_WE = loadImageRotate270("pokerkartenfaecher_WE", ".png");
+
+        pokerkartenblatt = loadImage("pokerkartenblatt", "Spielkarten.png");
+
+        pokerkofferzuvV = loadImage("pokerkofferzuvV", ".png");
+
+        pokerkofferoffen_EW = loadImage("pokerkofferoffen_EW", ".png");
+        pokerkofferoffen_SN = loadImageRotate90("pokerkofferoffen_SN", ".png");
+        pokerkofferoffen_WE = loadImageRotate180("pokerkofferoffen_WE", ".png");
+        pokerkofferoffen_NS = loadImageRotate270("pokerkofferoffen_NS", ".png");
+
+        pokerkofferzuvO_NS = loadImage("pokerkofferzuvO_NS", ".png");
+        pokerkofferzuvO_EW = loadImageRotate90("pokerkofferzuvO_EW", ".png");
+        pokerkofferzuvO_SN = loadImageRotate180("pokerkofferzuvO_SN", ".png");
+        pokerkofferzuvO_WE = loadImageRotate270("pokerkofferzuvO_WE", ".png");
+
+        pokertisch = loadImage("pokertisch", "Spielbrett.png");
+
+        pokertisch2 = loadImage("pokertisch2", "SpielBrett2.png");
+        
+        pokerwuerfel = loadImage("pokerwuerfel","W�rfel(1).png");
 
         rasen2 = loadImage("rasen2", "Wiese.png");
 
@@ -1440,11 +1472,6 @@ public final class Images {
         schranke6_SN = loadImageRotate180("schranke6_SN", "Schranke5.png");
         schranke6_WE = loadImageRotate270("schranke6_WE", "Schranke5.png");
 
-        // schranke7_NS = loadImage("schranke7_NS", ".png");
-        // schranke7_EW = loadImageRotate90("schranke7_EW", "Schranke.png");
-        // schranke7_SN = loadImageRotate180("schranke7_SN", "Schranke.png");
-        // schranke7_WE = loadImageRotate270("schranke7_WE", "Schranke.png");
-
         sesselschwarz_SN = loadImage("sesselschwarz_SN", "Stuhl5.png");
         sesselschwarz_WE = loadImageRotate90("sesselschwarz_WE", "Stuhl5.png");
         sesselschwarz_NS = loadImageRotate180("sesselschwarz_NS", "Stuhl5.png");
@@ -1463,7 +1490,6 @@ public final class Images {
         steinschleuder = loadImage("steinschleuder", "SteinSchleuder(Fragezeichen).png");
 
         strasse_EW = loadImage("strasse_EW", "Strasse.png");
-
         strasse_NS = loadImageRotate90("strasse_NS", "Strasse.png");
 
         stuhlbraunundholz_EW = loadImage("stuhlbraunundholz_EW", "Stuhl3.png");
@@ -1489,19 +1515,13 @@ public final class Images {
         teddyvV = loadImage("teddyvV", "Teddy6.png");
 
         teddyvO_NS = loadImage("teddyvO_NS", "Teddy7.png");
-
         teddyvO_EW = loadImageRotate90("teddyvO_EW", "Teddy7.png");
-
         teddyvO_SN = loadImageRotate180("teddyvO_SN", "Teddy7.png");
-
         teddyvO_WE = loadImageRotate270("teddyvO_WE", "Teddy7.png");
 
         teddysvO_NS = loadImage("teddysvO_NS", "Teddy4.png");
-
         teddysvO_EW = loadImageRotate90("teddysvO_EW", "Teddy4.png");
-
         teddysvO_SN = loadImageRotate180("teddysv_SN", "Teddy4.png");
-
         teddysvO_WE = loadImageRotate270("teddysvO_WE", "Teddy4.png");
 
         teddysvV = loadImage("teddysvV", "Teddy1.png");
@@ -1517,56 +1537,42 @@ public final class Images {
         typvObAo_NS = loadImageRotate90("typvObAo_NS", "Typ1.2.png");
 
         typvO_WE = loadImage("typvO_WE", "Typ1.3.png");
-
         typvO_NS = loadImageRotate90("typvO_NS", "Typ1.3.png");
-
         typvO_EW = loadImage("typvO_EW", "Typ1.3.png");
-
         typvO_SN = loadImageRotate90("typvO_SN", "Typ1.3.png");
 
         typvO2_WE = loadImage("typvO2_WE", "Typ1.png");
-
         typvO2_NS = loadImageRotate90("typvO2_NS", "Typ1.png");
-
         typvO2_EW = loadImage("typvO2_EW", "Typ1.0.2.png");
-
         typvO2_SN = loadImageRotate90("typvO2_SN", "Typ1.0.2.png");
 
         typvOrAho_WE = loadImage("typvOrAho_WE", "Typ1.4.png");
-
         typvOrAho_NS = loadImageRotate90("typvOrAho_NS", "Typ1.4.png");
-
+        typvOrAho_EW = loadImageRotate180("typvOrAho_EW", "Typ1.4.png");
+        typvOrAho_SN = loadImageRotate270("typvOrAho_SN", "Typ1.4.png");
+        
         typvOrAo_WE = loadImage("typvOrAo_WE", "Typ1.5.png");
-
         typvOrAo_NS = loadImageRotate90("typvOrAo_NS", "Typ1.5.png");
-
-        typvOrAo_EW = loadImage("typvOrAo_EW", "Typ1.5.2.png");
-
-        typvOrAo_SN = loadImageRotate90("typvOrAo_SN", "Typ1.5.2.png");
+        typvOrAo_EW = loadImageRotate180("typvOrAo_EW", "Typ1.5.png");
+        typvOrAo_SN = loadImageRotate270("typvOrAo_SN", "Typ1.5.png");
 
         wasser = loadImage("wasser", "Wasser.png");
 
-        wasserdunkel = loadImage("wasserdunkel", ".png");// TODO: Pic missing
+        wasserdunkel = loadImage("wasserdunkel", "Wasserdunkel.png");
 
         weibvVbAo = loadImage("weibvVbAo", "Weib1.0.png");
 
         weibvOlAo_NS = loadImage("weibvOlAo_NS", "Weib1.1.png");
-
         weibvOlAo_EW = loadImageRotate90("weibvOlAo_EW", "Weib1.1.png");
-
-        weibvOlAo_SN = loadImage("weibvOlAo_SN", "Weib1.1.2.png");
-
-        weibvOlAo_WE = loadImageRotate90("weibvOlAo_WE", "Weib1.1.2.png");
+        weibvOlAo_SN = loadImageRotate180("weibvOlAo_SN", "Weib1.1.png");
+        weibvOlAo_WE = loadImageRotate270("weibvOlAo_WE", "Weib1.1.png");
 
         weibvVrAho = loadImage("weibvVrAho", "Weib1.2.png");
 
-        weibvO = loadImage("weibvO", "Weib1.3.png");
-
-        weibvO_SO = loadImageRotate90("weibvO_SO", "Weib1.3.png");
-
-        weibvO_WE = loadImage("weibvO_WE", "Weib1.3.2.png");
-
-        weibvO_EW = loadImageRotate90("weibvO_EW", "Weib1.3.2.png");
+        weibvO_EW = loadImage("weibvO_EW", "Weib1.3.png");
+        weibvO_SN = loadImageRotate90("weibvO_SN", "Weib1.3.png");
+        weibvO_WE = loadImageRotate180("weibvO_WE", "Weib1.3.2.png");
+        weibvO_NS = loadImageRotate270("weibvO_NS", "Weib1.3.2.png");
 
         Field[] fields = Images.class.getDeclaredFields();
 
@@ -1649,7 +1655,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 180Â° gedrehtes Bild.
+     * Laedt ein um 180° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
@@ -1664,7 +1670,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 270Â° gedrehtes Bild.
+     * Laedt ein um 270° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.
@@ -1679,7 +1685,7 @@ public final class Images {
     }
 
     /**
-     * Laedt ein um 90Â° gedrehtes Bild.
+     * Laedt ein um 90° gedrehtes Bild.
      *
      * @param name
      *            Name des Bildes.

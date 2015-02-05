@@ -333,9 +333,9 @@ public final class RenderUtil {
 
     public static int getColor(int r, int g, int b) {
         int color = 0;
-        color |= r << 16;
-        color |= g << 8;
-        color |= b;
+        color |= ((r << 16) & 0xFF0000);
+        color |= ((g << 8) & 0xFF00);
+        color |= (b & 0xFF);
         return color;
     }
 

@@ -1,5 +1,6 @@
 package projektkurs.gui;
 
+import projektkurs.lib.Sprites;
 import projektkurs.render.Screen;
 import projektkurs.util.RenderUtil;
 
@@ -22,6 +23,12 @@ public class GuiSimulation extends Gui {
     @Override
     public void render(Screen screen) {
         RenderUtil.drawDefaultBackground(screen);
+
+        RenderUtil.drawSprite(screen, Sprites.nuke, 64, 64);
+        RenderUtil.drawSprite(screen, Sprites.nuke_2, 64, 128);
+        RenderUtil.drawSprite(screen, Sprites.nuke_3, 64, 192);
+        RenderUtil.drawSprite(screen, Sprites.nuke_4, 64, 256);
+
         super.render(screen);
     }
 }
