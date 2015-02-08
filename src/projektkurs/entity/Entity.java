@@ -115,7 +115,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         } else {
             throw new IllegalArgumentException();
         }
-
     }
 
     /**
@@ -194,7 +193,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @return Rectangle
      */
     public Rectangle getBounds() {
-        return new Rectangle(posX, posY, sizeX, sizeY);
+        return new Rectangle(posX, posY, sizeX * Integers.RASTER_SIZE, sizeY * Integers.RASTER_SIZE);
     }
 
     /**
