@@ -67,14 +67,9 @@ public final class Entities {
      * @return Entity
      */
     public static Entity loadEntity(Spielfeld map, SaveData data) {
-
-        if (data == null) {
-            return null;
-        }
-
-        Entity e = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.ENTITY_ID)), map);
-
+        Entity e = null;
         try {
+            e = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.ENTITY_ID)), map);
             e.load(data);
         } catch (Throwable t) {
             Logger.logThrowable("Unable to load Entity from " + data, t);
@@ -90,12 +85,13 @@ public final class Entities {
      * @return SaveData
      */
     public static SaveData writeEntity(Entity e) {
-        if (e == null) {
-            return null;
-        }
         SaveData data = new SaveData();
-        data.set(Strings.ENTITY_ID, e.getInternalName());
-        e.write(data);
+        try {
+            data.set(Strings.ENTITY_ID, e.getInternalName());
+            e.write(data);
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to save Entity '" + e + "' to SaveData", t);
+        }
         return data;
     }
 

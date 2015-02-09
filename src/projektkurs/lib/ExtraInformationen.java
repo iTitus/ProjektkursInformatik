@@ -50,10 +50,9 @@ public final class ExtraInformationen {
      * @return ExtraInformation
      */
     public static ExtraInformation loadExtraInformation(SaveData data) {
-
-        ExtraInformation extra = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.EXTRA_ID)));
-
+        ExtraInformation extra = null;
         try {
+            extra = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.EXTRA_ID)));
             extra.load(data);
         } catch (Throwable t) {
             Logger.logThrowable("Unable to load ExtraInformation from " + data, t);
@@ -70,8 +69,12 @@ public final class ExtraInformationen {
      */
     public static SaveData writeExtraInformation(ExtraInformation extra) {
         SaveData data = new SaveData();
-        data.set(Strings.EXTRA_ID, extra.getInternalName());
-        extra.write(data);
+        try {
+            data.set(Strings.EXTRA_ID, extra.getInternalName());
+            extra.write(data);
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to save ExtraInformation '" + extra + "' to SaveData", t);
+        }
         return data;
     }
 
