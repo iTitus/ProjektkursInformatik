@@ -203,7 +203,7 @@ public final class Raster {
     /**
      * Initialisiert alle Items.
      */
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void init() {
         wall = new SolidRaster(1, "wall", Sprites.wall);
         registerRaster(wall);

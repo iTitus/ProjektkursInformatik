@@ -54,7 +54,7 @@ public final class Levels {
     /**
      * Initialisiert alle Level.
      */
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void init() {
         level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
         registerMapping(level0);

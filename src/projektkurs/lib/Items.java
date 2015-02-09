@@ -54,7 +54,7 @@ public final class Items {
     /**
      * Initialisiert alle Items.
      */
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void init() {
         item42 = new BaseItem(1, "42", Sprites.item42);
         registerItem(item42);

@@ -1014,7 +1014,7 @@ public final class Images {
     /**
      * Initialisiert alle Bilder.
      */
-    @Init(state = State.RESOURCES)
+    @Init(State.RESOURCES)
     public static void init() {
         charakter = loadImage("charakter", "charakter.png");
 

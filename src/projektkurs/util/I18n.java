@@ -180,7 +180,7 @@ public final class I18n {
     /**
      * Initialisiert die gesetze Sprache und laedt die Lokalisierung.
      */
-    @Init(state = State.RESOURCES)
+    @Init(State.RESOURCES)
     public static void init() {
 
         ResourceBundle.clearCache();

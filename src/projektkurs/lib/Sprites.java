@@ -73,7 +73,7 @@ public final class Sprites {
     /**
      * Initialisiert alle Sprites.
      */
-    @Init(state = State.RESOURCES)
+    @Init(State.RESOURCES)
     public static void init() {
         wall = new Sprite("wall", Integers.RASTER_SIZE, 0, 0, SpriteSheets.raster);
         registerSprite(wall);

@@ -45,5 +45,5 @@ public @interface Init {
     /**
      * Startphase, in der diese Methode ausgefuehrt werden soll - default ist INIT.
      */
-    State state() default State.INIT;
+    State value() default State.INIT;
 }
