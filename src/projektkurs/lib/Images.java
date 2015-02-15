@@ -128,6 +128,8 @@ public final class Images {
     */
     public static BufferedImage autogelbvOnW;
     public static BufferedImage autopolizeivdS_EW;
+    public static BufferedImage autopolizeivdS_NS;
+    public static BufferedImage autopolizeivdS_SN;
     public static BufferedImage autopolizeivdS_WE;
     public static BufferedImage autopolizeivO_EW;
     public static BufferedImage autopolizeivO_NS;
@@ -194,6 +196,14 @@ public final class Images {
      *
      */
     public static BufferedImage baum9;
+    public static BufferedImage billiardtisch_EW;
+    public static BufferedImage billiardtisch_NS;
+    public static BufferedImage billiardtisch_SN;
+    public static BufferedImage billiardtisch_WE;
+    public static BufferedImage billiardtisch2_EW;
+    public static BufferedImage billiardtisch2_NS;
+    public static BufferedImage billiardtisch2_SN;
+    public static BufferedImage billiardtisch2_WE;
     public static BufferedImage bodenbeige;
     public static BufferedImage bodenblau;
     public static BufferedImage bodendunkelgrau;
@@ -254,7 +264,14 @@ public final class Images {
      * Offene Tuer in Nord-Sued-Ausrichtung.
      */
     public static BufferedImage doorOpenNS;
+
     public static BufferedImage elster;
+    public static BufferedImage elster_EW;
+    public static BufferedImage elster_NS;
+    public static BufferedImage elster_SN;
+
+    public static BufferedImage elster_WE;
+
     public static BufferedImage faehre;
     public static BufferedImage faehre_EW;
     public static BufferedImage faehre_NS;
@@ -268,25 +285,30 @@ public final class Images {
      * Feueranimationsbilder.
      */
     public static BufferedImage[] fire;
+    public static BufferedImage fischerboot_EW;
+    public static BufferedImage fischerboot_NS;
+    public static BufferedImage fischerboot_SN;
+    public static BufferedImage fischerboot_WE;
     public static BufferedImage foo = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+
     public static BufferedImage grammophonvdS;
-    
     public static BufferedImage grammophonvO_EW;
     public static BufferedImage grammophonvO_NS;
     public static BufferedImage grammophonvO_SN;
-    public static BufferedImage grammophonvO_WE;
 
+    public static BufferedImage grammophonvO_WE;
     /**
      *
      */
     public static BufferedImage gras;
-
     /**
     *
     */
     public static BufferedImage haus1_EW;
     public static BufferedImage haus1_NS;
+
     public static BufferedImage haus1_SN;
+
     public static BufferedImage haus1_WE;
     /**
     *
@@ -294,6 +316,7 @@ public final class Images {
     public static BufferedImage haus2_EW;
     public static BufferedImage haus2_NS;
     public static BufferedImage haus2_SN;
+
     public static BufferedImage haus2_WE;
     /**
     *
@@ -301,41 +324,91 @@ public final class Images {
     public static BufferedImage haus3_EW;
     public static BufferedImage haus3_NS;
     public static BufferedImage haus3_SN;
+
     public static BufferedImage haus3_WE;
 
     /**
     *
     */
     public static BufferedImage haus4_EW;
+
     public static BufferedImage haus4_NS;
+
     public static BufferedImage haus4_SN;
+
     public static BufferedImage haus4_WE;
 
     /**
     *
     */
     public static BufferedImage haus5ecke_ES;
-    public static BufferedImage haus5ecke_NE;
-    public static BufferedImage haus5ecke_SW;
-    public static BufferedImage haus5ecke_WN;
 
+    public static BufferedImage haus5ecke_NE;
+
+    public static BufferedImage haus5ecke_SW;
+
+    public static BufferedImage haus5ecke_WN;
     /**
     *
     */
     public static BufferedImage haus6;
-
     /**
     *
     */
     public static BufferedImage haus7ecke_ES;
     public static BufferedImage haus7ecke_NE;
+
     public static BufferedImage haus7ecke_SW;
+
     public static BufferedImage haus7ecke_WN;
-    
+
+    public static BufferedImage haus8_EW;
+
+    public static BufferedImage haus8_NS;
+
+    public static BufferedImage haus8_SN;
+
+    public static BufferedImage haus8_WE;
+
+    public static BufferedImage hausmitInnenhof_EW;
+
+    public static BufferedImage hausmitInnenhof_NS;
+
+    public static BufferedImage hausmitInnenhof_SN;
+
+    public static BufferedImage hausmitInnenhof_WE;
+
+    public static BufferedImage hausschloss_EW;
+
+    public static BufferedImage hausschloss_NS;
+
+    public static BufferedImage hausschloss_SN;
+
+    public static BufferedImage hausschloss_WE;
+
     public static BufferedImage hauswelldach_EW;
+
     public static BufferedImage hauswelldach_NS;
+
     public static BufferedImage hauswelldach_SN;
+
     public static BufferedImage hauswelldach_WE;
+
+    public static BufferedImage hauszelt1_EW;
+
+    public static BufferedImage hauszelt1_NS;
+
+    public static BufferedImage hauszelt1_SN;
+
+    public static BufferedImage hauszelt1_WE;
+
+    public static BufferedImage hauszelt2_EW;
+
+    public static BufferedImage hauszelt2_NS;
+
+    public static BufferedImage hauszelt2_SN;
+
+    public static BufferedImage hauszelt2_WE;
 
     /**
      *
@@ -350,35 +423,28 @@ public final class Images {
      * Item_42-Bild.
      */
     public static BufferedImage item42;
-
     public static BufferedImage jojo;
-
     public static BufferedImage jojokaputt;
-
     public static BufferedImage kaugummigelb;
 
     public static BufferedImage kaugummirot;
-
     /**
      * Schluesselbild.
      */
     public static BufferedImage key;
-
     /**
      * Kistenbild.
      */
     public static BufferedImage kiste;
-
     public static BufferedImage klavier_EW;
     public static BufferedImage klavier_NS;
+
     public static BufferedImage klavier_SN;
     public static BufferedImage klavier_WE;
-
     /**
      *
      */
     public static BufferedImage kreuzung;
-
     /**
      *
      */
@@ -398,17 +464,14 @@ public final class Images {
     *
     */
     public static BufferedImage kreuzungT_SN;
-
     /**
     *
     */
     public static BufferedImage kreuzungT_WE;
-
     /**
     *
     */
     public static BufferedImage ladyvO_EW;
-
     /**
     *
     */
@@ -513,17 +576,24 @@ public final class Images {
     *
     */
     public static BufferedImage lasterschwarzmitAnhaengervO_EW;
+
     public static BufferedImage lasterschwarzmitAnhaengervO_NS;
+
     public static BufferedImage lasterschwarzmitAnhaengervO_SN;
+
     public static BufferedImage lasterschwarzmitAnhaengervO_WE;
 
     /**
     *
     */
     public static BufferedImage lasterschwarzvO_EW;
+
     public static BufferedImage lasterschwarzvO_NS;
+
     public static BufferedImage lasterschwarzvO_SN;
+
     public static BufferedImage lasterschwarzvO_WE;
+
     /**
     *
     */
@@ -533,8 +603,11 @@ public final class Images {
     *
     */
     public static BufferedImage lasterweissvO_EW;
+
     public static BufferedImage lasterweissvO_NS;
+
     public static BufferedImage lasterweissvO_SN;
+
     public static BufferedImage lasterweissvO_WE;
 
     /**
@@ -551,8 +624,11 @@ public final class Images {
      *
      */
     public static BufferedImage lordS_EW;
+
     public static BufferedImage lordS_NS;
+
     public static BufferedImage lordS_SN;
+
     public static BufferedImage lordS_WE;
 
     /**
@@ -618,6 +694,54 @@ public final class Images {
     public static BufferedImage pflaster;
 
     public static BufferedImage pflaster2;
+
+    public static BufferedImage pokerchipshaufen;
+
+    public static BufferedImage pokerchipsstapelvdS;
+
+    public static BufferedImage pokerchipsstapelvO;
+
+    public static BufferedImage pokerkartenblatt;
+
+    public static BufferedImage pokerkartenfaecher;
+
+    public static BufferedImage pokerkartenfaecher_EW;
+
+    public static BufferedImage pokerkartenfaecher_NS;
+
+    public static BufferedImage pokerkartenfaecher_SN;
+
+    public static BufferedImage pokerkartenfaecher_WE;
+
+    public static BufferedImage pokerkartenstapel;
+
+    public static BufferedImage pokerkartenstapel_NS;
+
+    public static BufferedImage pokerkartenstapel_WE;
+
+    public static BufferedImage pokerkofferoffen_EW;
+
+    public static BufferedImage pokerkofferoffen_NS;
+
+    public static BufferedImage pokerkofferoffen_SN;
+
+    public static BufferedImage pokerkofferoffen_WE;
+
+    public static BufferedImage pokerkofferzuvO;
+
+    public static BufferedImage pokerkofferzuvO_EW;
+
+    public static BufferedImage pokerkofferzuvO_NS;
+
+    public static BufferedImage pokerkofferzuvO_SN;
+
+    public static BufferedImage pokerkofferzuvO_WE;
+
+    public static BufferedImage pokerkofferzuvV;
+
+    public static BufferedImage pokertisch;
+
+    public static BufferedImage pokertisch2;
 
     /**
      * Rasenbild.
@@ -816,6 +940,8 @@ public final class Images {
 
     public static BufferedImage typvOrAho_NS;
 
+    public static BufferedImage typvOrAho_SN;
+
     public static BufferedImage typvOrAho_WE;
 
     public static BufferedImage typvOrAo_EW;
@@ -839,6 +965,10 @@ public final class Images {
 
     public static BufferedImage weibvO_EW;
 
+    public static BufferedImage weibvO_NS;
+
+    public static BufferedImage weibvO_SN;
+
     public static BufferedImage weibvO_SO;
 
     public static BufferedImage weibvO_WE;
@@ -856,143 +986,13 @@ public final class Images {
     public static BufferedImage weibvVbAo;
 
     public static BufferedImage weibvVrAho;
-
-    public static BufferedImage elster_EW;
-
-    public static BufferedImage elster_NS;
-
-    public static BufferedImage elster_SN;
-
-    public static BufferedImage elster_WE;
-
-    public static BufferedImage billiardtisch_EW;
-
-    public static BufferedImage billiardtisch_SN;
-
-    public static BufferedImage billiardtisch_NS;
-
-    public static BufferedImage billiardtisch_WE;
-
-    public static BufferedImage billiardtisch2_EW;
-
-    public static BufferedImage billiardtisch2_WE;
-
-    public static BufferedImage billiardtisch2_NS;
-
-    public static BufferedImage billiardtisch2_SN;
-
-    public static BufferedImage pokertisch;
-
-    public static BufferedImage pokertisch2;
-
-    public static BufferedImage pokerchipshaufen;
-
-    public static BufferedImage pokerkartenstapel;
-
-    public static BufferedImage pokerchipsstapelvO;
-
-    public static BufferedImage pokerchipsstapelvdS;
-
-    public static BufferedImage pokerkartenfaecher;
-
-    public static BufferedImage pokerkartenblatt;
-
-    public static BufferedImage pokerkofferzuvO;
-
-    public static BufferedImage pokerkofferzuvV;
-
-    public static BufferedImage pokerkofferoffen_EW;
-
-    public static BufferedImage pokerkofferoffen_SN;
-
-    public static BufferedImage pokerkofferoffen_WE;
-
-    public static BufferedImage pokerkofferoffen_NS;
-
-    public static BufferedImage pokerkofferzuvO_NS;
-
-    public static BufferedImage pokerkofferzuvO_EW;
-
-    public static BufferedImage pokerkofferzuvO_SN;
-
-    public static BufferedImage pokerkofferzuvO_WE;
-
-    public static BufferedImage pokerkartenstapel_WE;
-
-    public static BufferedImage pokerkartenstapel_NS;
-
-    public static BufferedImage pokerkartenfaecher_NS;
-
-    public static BufferedImage pokerkartenfaecher_WE;
-
-    public static BufferedImage pokerkartenfaecher_EW;
-
-    public static BufferedImage pokerkartenfaecher_SN;
-
-    public static BufferedImage hausmitInnenhof_NS;
-
-    public static BufferedImage hausmitInnenhof_EW;
-
-    public static BufferedImage hausmitInnenhof_SN;
-
-    public static BufferedImage hausmitInnenhof_WE;
-
-    public static BufferedImage hauszelt1_NS;
-
-    public static BufferedImage hauszelt1_EW;
-
-    public static BufferedImage hauszelt1_SN;
-
-    public static BufferedImage hauszelt1_WE;
-
-    public static BufferedImage hauszelt2_NS;
-
-    public static BufferedImage hauszelt2_EW;
-
-    public static BufferedImage hauszelt2_SN;
-
-    public static BufferedImage haus8_WE;
-
-    public static BufferedImage haus8_NS;
-
-    public static BufferedImage haus8_EW;
-
-    public static BufferedImage haus8_SN;
-
-    public static BufferedImage hauszelt2_WE;
-
-    public static BufferedImage hausschloss_NS;
-
-    public static BufferedImage hausschloss_EW;
-
-    public static BufferedImage hausschloss_WE;
-
-    public static BufferedImage hausschloss_SN;
-    
-    public static BufferedImage typvOrAho_SN;
-    
-    public static BufferedImage weibvO_NS;
-    
-    public static BufferedImage weibvO_SN;
-    
-    public static BufferedImage autopolizeivdS_NS;
-    
-    public static BufferedImage autopolizeivdS_SN;
-    
-    public static BufferedImage fischerboot_EW;
-    
-    public static BufferedImage fischerboot_SN;
-    
-    public static BufferedImage fischerboot_WE;
-    
-	public static BufferedImage fischerboot_NS;
-	private static BufferedImage auto_w2_SN;
-	private static BufferedImage auto_w2_WE;
-	private static BufferedImage hausschlossmB_NS;
-	private static BufferedImage hausschlossmB_EW;
-	private static BufferedImage hausschlossmB_SN;
-	private static BufferedImage hausschlossmB_WE;
-	private static BufferedImage pokerwuerfel;
+    private static BufferedImage auto_w2_SN;
+    private static BufferedImage auto_w2_WE;
+    private static BufferedImage hausschlossmB_EW;
+    private static BufferedImage hausschlossmB_NS;
+    private static BufferedImage hausschlossmB_SN;
+    private static BufferedImage hausschlossmB_WE;
+    private static BufferedImage pokerwuerfel;
 
     public static void flushAll() {
         for (BufferedImage img : MAPPINGS.values()) {
@@ -1059,7 +1059,6 @@ public final class Images {
         buttonHighlight = loadImage("button_highlight", "button_highlight.png");
 
         buttonDisabled = loadImage("button_disabled", "button_disabled.png");
-
 
         auto_do_NS = loadImage("auto_do_NS", "AutoMitOffenerTuerFahrerDraussen1.png");
         auto_do_EW = loadImageRotate90("auto_do_EW", "AutoMitOffenerTuerFahrerDraussen1.png");
@@ -1143,7 +1142,7 @@ public final class Images {
         autopolizeivdS_NS = loadImageRotate90("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
         autopolizeivdS_EW = loadImageRotate180("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
         autopolizeivdS_SN = loadImageRotate270("autopolizeivdS_EW", "BullenAutoVonDerSeite1.png");
-        
+
         baum1 = loadImage("Baum1", "Baum1.png");
 
         baum2 = loadImage("Baum2", "Baum2.png");
@@ -1224,7 +1223,7 @@ public final class Images {
         fischerboot_SN = loadImageRotate90("fischerboot_SN", "Fischerboot.png");
         fischerboot_WE = loadImageRotate180("fischerboot_WE", "Fischerboot.png");
         fischerboot_NS = loadImageRotate270("fischerboot_NS", "Fischerboot.png");
-        
+
         grammophonvdS = loadImage("grammophonvdS", "Grammophon5.png");
 
         grammophonvO_WE = loadImage("grammophonvO_WE", "Grammophon2.png");
@@ -1286,7 +1285,6 @@ public final class Images {
         hausschlossmB_SN = loadImageRotate180("hausschloss_SN", "VillaMitB�ume.png");
         hausschlossmB_WE = loadImageRotate270("hausschloss_WE", "VillaMitB�ume.png");
 
-        
         hauszelt1_NS = loadImage("hauszelt1_NS", "Zelt.png");
         hauszelt1_EW = loadImageRotate90("hauszelt1_EW", "Zelt.png");
         hauszelt1_SN = loadImageRotate180("hauszelt1_SN", "Zelt.png");
@@ -1299,7 +1297,6 @@ public final class Images {
 
         // sieht scheisse aus!!! haus8 = 1oadImage("haus8", "Haus8.png");
 
-       
         jojo = loadImage("jojo", ".png");// TODO: Pic missing
 
         jojokaputt = loadImage("jojokaputt", ".png");// TODO: Pic missing
@@ -1362,7 +1359,7 @@ public final class Images {
         lasterschwarzmitAnhaengervO_WE = loadImage("lasterschwarzmitAnhaengervO_WE", "Lastwagen1.4.2.png");
         lasterschwarzmitAnhaengervO_NS = loadImageRotate90("lasterschwarzmitAnhaengervO_NS", "Lastwagen1.4.2.png");
 
-        lasterweissvO_NS = loadImage("lasterweissvO_NS", "FliegendeZahnpastaTube1.0.png");//FIXME: Remark
+        lasterweissvO_NS = loadImage("lasterweissvO_NS", "FliegendeZahnpastaTube1.0.png");// FIXME: Remark
         lasterweissvO_EW = loadImageRotate90("lasterweissvO_EW", "FliegendeZahnpastaTube1.0.png");
 
         lasterweissvV = loadImage("lasterweissvV", "FliegendeZahnpastaTube1.2.png");
@@ -1435,8 +1432,8 @@ public final class Images {
         pokertisch = loadImage("pokertisch", "Spielbrett.png");
 
         pokertisch2 = loadImage("pokertisch2", "SpielBrett2.png");
-        
-        pokerwuerfel = loadImage("pokerwuerfel","W�rfel(1).png");
+
+        pokerwuerfel = loadImage("pokerwuerfel", "W�rfel(1).png");
 
         rasen2 = loadImage("rasen2", "Wiese.png");
 
@@ -1550,7 +1547,7 @@ public final class Images {
         typvOrAho_NS = loadImageRotate90("typvOrAho_NS", "Typ1.4.png");
         typvOrAho_EW = loadImageRotate180("typvOrAho_EW", "Typ1.4.png");
         typvOrAho_SN = loadImageRotate270("typvOrAho_SN", "Typ1.4.png");
-        
+
         typvOrAo_WE = loadImage("typvOrAo_WE", "Typ1.5.png");
         typvOrAo_NS = loadImageRotate90("typvOrAo_NS", "Typ1.5.png");
         typvOrAo_EW = loadImageRotate180("typvOrAo_EW", "Typ1.5.png");

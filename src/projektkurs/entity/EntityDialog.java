@@ -11,7 +11,7 @@ public abstract class EntityDialog extends Entity implements ITalkable {
 
     /**
      * Konstruktor.
-     * 
+     *
      * @param map
      *            Spielfeld
      */

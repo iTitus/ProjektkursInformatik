@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.entity.Entity;
+import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
@@ -57,6 +58,7 @@ public final class Entities {
         registerEntity(EntityPlayer.class);
         registerEntity(EntityItem.class);
         registerEntity(EntityRedNPC.class);
+        registerEntity(EntityFerry.class);
     }
 
     /**
