@@ -109,8 +109,9 @@ public class Level implements IUpdatable {
      *            Screen
      */
     public void render(Screen s) {
-        if (getMap() != null)
+        if (getMap() != null) {
             getMap().render(s);
+        }
     }
 
     /**
@@ -133,7 +134,8 @@ public class Level implements IUpdatable {
 
     @Override
     public void update() {
-        if (getMap() != null)
+        if (getMap() != null) {
             getMap().update();
+        }
     }
 }

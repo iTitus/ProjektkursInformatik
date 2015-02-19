@@ -172,7 +172,7 @@ public class Font {
         return width;
     }
 
-    @Init(state = State.RESOURCES)
+    @Init(State.RESOURCES)
     public static void init() {
 
         fontSheet = new SpriteSheet("font", "font.png");

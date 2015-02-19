@@ -211,7 +211,7 @@ public final class Sounds {
     /**
      * Initialisiert alle Sounds.
      */
-    @Init(state = State.RESOURCES)
+    @Init(State.RESOURCES)
     public static void init() {
 
         explosion = new Sound("explosion", "boom.wav");

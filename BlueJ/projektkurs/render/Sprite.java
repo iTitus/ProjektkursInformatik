@@ -110,6 +110,42 @@ public class Sprite {
         return sizeY;
     }
 
+    public Sprite rescale(String name, double factorX, double factorY) {
+
+        int newSizeX = MathUtil.floorMul(sizeX, factorX);
+        int newSizeY = MathUtil.floorMul(sizeY, factorY);
+
+        int[] pixels = new int[newSizeX * newSizeY];
+
+        for (int x = 0; x < newSizeX; x++) {
+            for (int y = 0; y < newSizeY; y++) {
+                int xx = getPixel(MathUtil.floor(x / factorX), MathUtil.floor(y / factorY));
+                int xx_r = RenderUtil.getRed(xx);
+                int xx_g = RenderUtil.getGreen(xx);
+                int xx_b = RenderUtil.getBlue(xx);
+                int xy = getPixel(MathUtil.floor(x / factorX), MathUtil.ceil(y / factorY));
+                int xy_r = RenderUtil.getRed(xy);
+                int xy_g = RenderUtil.getGreen(xy);
+                int xy_b = RenderUtil.getBlue(xy);
+                int yx = getPixel(MathUtil.ceil(x / factorX), MathUtil.floor(y / factorY));
+                int yx_r = RenderUtil.getRed(yx);
+                int yx_g = RenderUtil.getGreen(yx);
+                int yx_b = RenderUtil.getBlue(yx);
+                int yy = getPixel(MathUtil.ceil(x / factorX), MathUtil.ceil(y / factorY));
+                int yy_r = RenderUtil.getRed(yy);
+                int yy_g = RenderUtil.getGreen(yy);
+                int yy_b = RenderUtil.getBlue(yy);
+
+                pixels[x + y * newSizeX] = RenderUtil.isTransparent(xx) && RenderUtil.isTransparent(xy) && RenderUtil.isTransparent(yx) && RenderUtil.isTransparent(yy) ? Integers.TRANSPARENCY : RenderUtil.getColor(
+                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_r, RenderUtil.isTransparent(xy) ? 0 : xy_r, RenderUtil.isTransparent(yx) ? 0 : yx_r, RenderUtil.isTransparent(yy) ? 0 : yy_r, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_g, RenderUtil.isTransparent(xy) ? 0 : xy_g, RenderUtil.isTransparent(yx) ? 0 : yx_g, RenderUtil.isTransparent(yy) ? 0 : yy_g, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_b, RenderUtil.isTransparent(xy) ? 0 : xy_b, RenderUtil.isTransparent(yx) ? 0 : yx_b, RenderUtil.isTransparent(yy) ? 0 : yy_b, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
+            }
+        }
+
+        return new Sprite(name, pixels, newSizeX, newSizeY);
+    }
+
     public int[] rotate(double angle) {
 
         angle = Math.toRadians(angle - 90);
@@ -161,4 +197,7 @@ public class Sprite {
         return "Sprite [" + name + "]";
     }
 
+    private int linEx(int xx, int xy, int yx, int yy, double x, double y) {
+        return MathUtil.floor(xx * (1 - x) * (1 - y) + yx * x * (1 - y) + xy * (1 - x) * y + yy * x * y);
+    }
 }

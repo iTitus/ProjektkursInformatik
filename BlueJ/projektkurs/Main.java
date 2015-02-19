@@ -206,7 +206,7 @@ public final class Main {
     /**
      * Interne Methode um alle Felder(Variablen) zu initialisieren.
      */
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void initFields() {
         inputManager = new InputManager();
         level = null;
@@ -227,7 +227,7 @@ public final class Main {
     /**
      * Interne Methode, um die Threads (Timer fuer die Ticks) zu starten.
      */
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void initThreads() {
         gameThread = new GameThread();
         gameThread.start();
@@ -321,7 +321,7 @@ public final class Main {
             initMethods.addAll(ReflectionUtil.getMethodsInClassesWithAnnotation(ReflectionUtil.getClasses(Main.class.getPackage().getName()), Init.class, Modifier.PUBLIC, Modifier.STATIC));
         }
         for (Method m : initMethods) {
-            if (m.getAnnotation(Init.class).state().equals(state)) {
+            if (m.getAnnotation(Init.class).value().equals(state)) {
                 Logger.info("Invoking @" + state + ": " + m.toString());
                 try {
                     m.invoke(null);

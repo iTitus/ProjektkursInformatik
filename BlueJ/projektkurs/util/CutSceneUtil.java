@@ -18,7 +18,7 @@ public final class CutSceneUtil {
         return TREES[MathUtil.nextInt(TREES.length)];
     }
 
-    @Init(state = State.PRE)
+    @Init(State.PRE)
     public static void init() {
         TREES = new BufferedImage[] { Images.baum1, Images.baum2, Images.baum3, Images.baum4, Images.baum5, Images.baum6, Images.baum7, Images.baum8, Images.baum9, Images.baum10, Images.baum11, Images.baum12, Images.baum13 };
     }

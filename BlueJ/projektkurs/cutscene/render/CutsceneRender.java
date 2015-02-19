@@ -11,6 +11,7 @@ import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.RenderUtil;
@@ -97,11 +98,10 @@ public class CutsceneRender extends Canvas implements IUpdatable {
             pixels[i] = screen.getPixel(i);
         }
 
+        Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0xFFFFFF);
+
         Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
         RenderUtil.drawImage(g, image, 0, 0, Integers.windowX, Integers.windowY);
-
-        g.drawString("FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y);
-
         g.dispose();
         strategy.show();
     }
