@@ -1,5 +1,7 @@
 package projektkurs.world.builder;
 
+import projektkurs.entity.Entity;
+import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.inventory.Inventory;
@@ -11,10 +13,12 @@ import projektkurs.lib.Scripts;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.ExtraInformationDoor;
+import projektkurs.story.StoryManager;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
+import projektkurs.story.trigger.Trigger;
 import projektkurs.util.Direction;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
@@ -125,7 +129,7 @@ public final class MapBuilder {
         map.spawn(new EntityItem(map, 5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
 
         // STORYMAGER!
-        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 1);
+        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
 
     }
 
@@ -155,7 +159,7 @@ public final class MapBuilder {
         }
 
         // STORYMANAGER!
-        map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
+        map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 0);
     }
 
     /**
@@ -165,10 +169,17 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
-
-        for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int y = 0; y < 20; y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen);
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+
+        // EntityFerry ferry = new EntityFerry(map, 10, 12);
+
+        for (int y = 21; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
             }
         }
 
@@ -181,6 +192,14 @@ public final class MapBuilder {
             map.setRasterAt(0, y, Raster.wall);
             map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
         }
+
+        StoryManager st = map.getStoryManager();
+        AreaTrigger area = new AreaTrigger(40, 0, 5, 10);
+        PosTrigger pt = new PosTrigger(20, 20);
+        CombinedAndTrigger trigger = new CombinedAndTrigger(new PosTrigger(30, 30), new AreaTrigger(30, 30, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.earrings)));
+        st.registerTrigger(pt, ReflectionUtil.getMethod(Scripts.class, "test", Entity.class, Spielfeld.class, Trigger.class), new EntityFerry(map, 20, 20), map, trigger);
+        st.registerTrigger(area, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+
     }
 
     /**

@@ -81,22 +81,22 @@ public final class Raster {
      */
     public static final AbstractRaster[] RASTER = new AbstractRaster[Integers.MAX_RASTER_NUMBER];
     public static AbstractRaster street_asphalt;
-    public static AbstractRaster street_l_b_1;
-    public static AbstractRaster street_l_b_2;
-    public static AbstractRaster street_l_b_3;
-    public static AbstractRaster street_l_b_4;
-    public static AbstractRaster street_l_b_5;
-    public static AbstractRaster street_l_b_6;
-    public static AbstractRaster street_l_b_7;
-    public static AbstractRaster street_l_b_8;
-    public static AbstractRaster street_l_t_1;
-    public static AbstractRaster street_l_t_2;
-    public static AbstractRaster street_l_t_3;
-    public static AbstractRaster street_l_t_4;
-    public static AbstractRaster street_l_t_5;
-    public static AbstractRaster street_l_t_6;
-    public static AbstractRaster street_l_t_7;
-    public static AbstractRaster street_l_t_8;
+    public static AbstractRaster street_l_b_1_wage;
+    public static AbstractRaster street_l_b_2_wage;
+    public static AbstractRaster street_l_b_3_wage;
+    public static AbstractRaster street_l_b_4_wage;
+    public static AbstractRaster street_l_b_5_wage;
+    public static AbstractRaster street_l_b_6_wage;
+    public static AbstractRaster street_l_b_7_wage;
+    public static AbstractRaster street_l_b_8_wage;
+    public static AbstractRaster street_l_t_1_wage;
+    public static AbstractRaster street_l_t_2_wage;
+    public static AbstractRaster street_l_t_3_wage;
+    public static AbstractRaster street_l_t_4_wage;
+    public static AbstractRaster street_l_t_5_wage;
+    public static AbstractRaster street_l_t_6_wage;
+    public static AbstractRaster street_l_t_7_wage;
+    public static AbstractRaster street_l_t_8_wage;
     public static AbstractRaster tree_10ne;
     public static AbstractRaster tree_10nw;
     public static AbstractRaster tree_10se;
@@ -371,53 +371,53 @@ public final class Raster {
         street_asphalt = new SimpleRaster(65, "street_asphalt", Sprites.street_asphalt);
         registerRaster(street_asphalt);
 
-        street_l_t_1 = new SimpleRaster(66, "street_l_t_1", Sprites.street_l_t_1);
-        registerRaster(street_l_t_1);
+        street_l_t_1_wage = new SimpleRaster(66, "street_l_t_1_wage", Sprites.street_l_t_1_wage);
+        registerRaster(street_l_t_1_wage);
 
-        street_l_t_2 = new SimpleRaster(67, "street_l_t_2", Sprites.street_l_t_2);
-        registerRaster(street_l_t_2);
+        street_l_t_2_wage = new SimpleRaster(67, "street_l_t_2_wage", Sprites.street_l_t_2_wage);
+        registerRaster(street_l_t_2_wage);
 
-        street_l_t_3 = new SimpleRaster(68, "street_l_t_3", Sprites.street_l_t_3);
-        registerRaster(street_l_t_3);
+        street_l_t_3_wage = new SimpleRaster(68, "street_l_t_3_wage", Sprites.street_l_t_3_wage);
+        registerRaster(street_l_t_3_wage);
 
-        street_l_t_4 = new SimpleRaster(69, "street_l_t_4", Sprites.street_l_t_4);
-        registerRaster(street_l_t_4);
+        street_l_t_4_wage = new SimpleRaster(69, "street_l_t_4_wage", Sprites.street_l_t_4_wage);
+        registerRaster(street_l_t_4_wage);
 
-        street_l_t_5 = new SimpleRaster(70, "street_l_t_5", Sprites.street_l_t_5);
-        registerRaster(street_l_t_5);
+        street_l_t_5_wage = new SimpleRaster(70, "street_l_t_5_wage", Sprites.street_l_t_5_wage);
+        registerRaster(street_l_t_5_wage);
 
-        street_l_t_6 = new SimpleRaster(71, "street_l_t_6", Sprites.street_l_t_6);
-        registerRaster(street_l_t_6);
+        street_l_t_6_wage = new SimpleRaster(71, "street_l_t_6_wage", Sprites.street_l_t_6_wage);
+        registerRaster(street_l_t_6_wage);
 
-        street_l_t_7 = new SimpleRaster(72, "street_l_t_7", Sprites.street_l_t_7);
-        registerRaster(street_l_t_7);
+        street_l_t_7_wage = new SimpleRaster(72, "street_l_t_7_wage", Sprites.street_l_t_7_wage);
+        registerRaster(street_l_t_7_wage);
 
-        street_l_t_8 = new SimpleRaster(73, "street_l_t_8", Sprites.street_l_t_8);
-        registerRaster(street_l_t_8);
+        street_l_t_8_wage = new SimpleRaster(73, "street_l_t_8_wage", Sprites.street_l_t_8_wage);
+        registerRaster(street_l_t_8_wage);
 
-        street_l_b_1 = new SimpleRaster(74, "street_l_b_1", Sprites.street_l_b_1);
-        registerRaster(street_l_b_1);
+        street_l_b_1_wage = new SimpleRaster(74, "street_l_b_1_wage", Sprites.street_l_b_1_wage);
+        registerRaster(street_l_b_1_wage);
 
-        street_l_b_2 = new SimpleRaster(75, "street_l_b_2", Sprites.street_l_b_2);
-        registerRaster(street_l_b_2);
+        street_l_b_2_wage = new SimpleRaster(75, "street_l_b_2_wage", Sprites.street_l_b_2_wage);
+        registerRaster(street_l_b_2_wage);
 
-        street_l_b_3 = new SimpleRaster(76, "street_l_b_3", Sprites.street_l_b_3);
-        registerRaster(street_l_b_3);
+        street_l_b_3_wage = new SimpleRaster(76, "street_l_b_3_wage", Sprites.street_l_b_3_wage);
+        registerRaster(street_l_b_3_wage);
 
-        street_l_b_4 = new SimpleRaster(77, "street_l_b_4", Sprites.street_l_b_4);
-        registerRaster(street_l_b_4);
+        street_l_b_4_wage = new SimpleRaster(77, "street_l_b_4_wage", Sprites.street_l_b_4_wage);
+        registerRaster(street_l_b_4_wage);
 
-        street_l_b_5 = new SimpleRaster(78, "street_l_b_5", Sprites.street_l_b_5);
-        registerRaster(street_l_b_5);
+        street_l_b_5_wage = new SimpleRaster(78, "street_l_b_5_wage", Sprites.street_l_b_5_wage);
+        registerRaster(street_l_b_5_wage);
 
-        street_l_b_6 = new SimpleRaster(79, "street_l_b_6", Sprites.street_l_b_6);
-        registerRaster(street_l_b_6);
+        street_l_b_6_wage = new SimpleRaster(79, "street_l_b_6_wage", Sprites.street_l_b_6_wage);
+        registerRaster(street_l_b_6_wage);
 
-        street_l_b_7 = new SimpleRaster(80, "street_l_b_7", Sprites.street_l_b_7);
-        registerRaster(street_l_b_7);
+        street_l_b_7_wage = new SimpleRaster(80, "street_l_b_7_wage", Sprites.street_l_b_7_wage);
+        registerRaster(street_l_b_7_wage);
 
-        street_l_b_8 = new SimpleRaster(81, "street_l_b_8", Sprites.street_l_b_8);
-        registerRaster(street_l_b_8);
+        street_l_b_8_wage = new SimpleRaster(81, "street_l_b_8_wage", Sprites.street_l_b_8_wage);
+        registerRaster(street_l_b_8_wage);
 
         floor_1 = new SimpleRaster(82, "floor_1", Sprites.floor_1);
         registerRaster(floor_1);
@@ -461,19 +461,19 @@ public final class Raster {
         chair_2 = new SolidRaster(95, "chair_2", Sprites.chair_2);
         registerRaster(chair_2);
 
-        chair_3 = new SolidRaster(96, "chair_2", Sprites.chair_3);
+        chair_3 = new SolidRaster(96, "chair_3", Sprites.chair_3);
         registerRaster(chair_3);
 
-        chair_4 = new SolidRaster(97, "chair_3", Sprites.chair_4);
+        chair_4 = new SolidRaster(97, "chair_4", Sprites.chair_4);
         registerRaster(chair_4);
 
-        chair_5 = new SolidRaster(98, "chair_4", Sprites.chair_5);
+        chair_5 = new SolidRaster(98, "chair_5", Sprites.chair_5);
         registerRaster(chair_5);
 
-        chair_6 = new SolidRaster(99, "chair_5", Sprites.chair_6);
+        chair_6 = new SolidRaster(99, "chair_6", Sprites.chair_6);
         registerRaster(chair_6);
 
-        chair_7 = new SolidRaster(100, "chair_6", Sprites.chair_7);
+        chair_7 = new SolidRaster(100, "chair_7", Sprites.chair_7);
         registerRaster(chair_7);
 
     }
