@@ -18,6 +18,10 @@ import projektkurs.util.Pair;
 public final class Items {
 
     /**
+     * Ohrringe
+     */
+    public static Item earrings;
+    /**
      * Gesundheitstrank.
      */
     public static Item healthPotion;
@@ -34,6 +38,10 @@ public final class Items {
      */
     public static Item key;
     /**
+     * Messer
+     */
+    public static Item knife;
+    /**
      * Mappings.
      */
     public static final HashMap<String, Item> MAPPINGS = new HashMap<String, Item>();
@@ -41,6 +49,18 @@ public final class Items {
      * Atombombe.
      */
     public static Item nuke;
+    /**
+     * Steinschleuder
+     */
+    public static Item stonecatapult;
+    /**
+     * Teddybaer
+     */
+    public static Item teddy;
+    /**
+     * Faden
+     */
+    public static Item thread;
 
     /**
      * Das Pair, das alle Items enthaelt.
@@ -67,6 +87,21 @@ public final class Items {
 
         healthPotion = new ItemHealthPotion(4);
         registerItem(healthPotion);
+
+        thread = new BaseItem(5, "thread", Sprites.thread);
+        registerItem(thread);
+
+        knife = new BaseItem(6, "knife", Sprites.knife);
+        registerItem(knife);
+
+        earrings = new BaseItem(7, "earrings", Sprites.earrings);
+        registerItem(earrings);
+
+        teddy = new BaseItem(8, "teddy", Sprites.teddy);
+        registerItem(teddy);
+
+        stonecatapult = new BaseItem(9, "stonecatapult", Sprites.stonecatapult);
+        registerItem(stonecatapult);
     }
 
     /**

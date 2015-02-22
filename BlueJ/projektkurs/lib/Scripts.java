@@ -26,7 +26,7 @@ public final class Scripts {
      * @param i
      *            Spielfeld
      */
-    public static void switchMap(Integer i) {
+    public static void switchMap(int i) {
         Main.getLevel().setMap(i);
     }
 

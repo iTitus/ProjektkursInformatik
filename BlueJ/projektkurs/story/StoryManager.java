@@ -15,6 +15,8 @@ import projektkurs.util.MethodInvoker;
  */
 public class StoryManager implements IUpdatable {
 
+    private int progress;
+
     /**
      * Alle Trigger.
      */
@@ -25,11 +27,24 @@ public class StoryManager implements IUpdatable {
      */
     public StoryManager() {
         triggerMap = new HashMap<Trigger, MethodInvoker>();
+        progress = 0;
+    }
+
+    public void addProgress() {
+        incrementProgress(1);
     }
 
     @Override
     public boolean canUpdate() {
         return true;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void incrementProgress(int by) {
+        progress += by;
     }
 
     /**
@@ -58,6 +73,10 @@ public class StoryManager implements IUpdatable {
      */
     public void removeTrigger(Trigger trigger) {
         triggerMap.remove(trigger);
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     /**
