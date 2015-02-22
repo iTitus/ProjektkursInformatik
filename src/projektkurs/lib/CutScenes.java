@@ -127,10 +127,10 @@ public final class CutScenes {
         CutSceneObject[] baeumehafen2 = new CutSceneObject[8];
 
         for (int l = 0; l < baeumehafen1.length; l++) {
-            baeumehafen1[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l * 5 + 1, 2, 2);
+            baeumehafen1[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l + 1, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumehafen1[l]));
 
-            baeumehafen2[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l * 5 + 12, 2, 2);
+            baeumehafen2[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l + 12, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumehafen2[l]));
         }
 

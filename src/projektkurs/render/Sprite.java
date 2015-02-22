@@ -9,11 +9,15 @@ import projektkurs.util.RenderUtil;
 
 public class Sprite {
 
+    // private static final int[] MAGIC_NUMBERS = { 1234, 2234, 1334, 3344, 1244, 2244, 1144, 4444, 1231, 2233, 1133, 3333, 1122, 2222, 1111, 0000 };
+    private static final int[][] MORE_MAGIC_NUMBERS = { { 0, 1, 2, 3 }, { 1, 1, 2, 3 }, { 0, 2, 2, 3 }, { 2, 2, 3, 3 }, { 0, 1, 3, 3 }, { 1, 1, 3, 3 }, { 0, 0, 3, 3 }, { 3, 3, 3, 3 }, { 0, 1, 2, 0 }, { 1, 2, 2, 1 }, { 0, 2, 2, 0 }, { 2, 2, 2, 2 }, { 0, 1, 1, 0 }, { 1, 1, 1, 1 }, { 0, 0, 0, 0 }, { -1, -1, -1, -1 } };
     private final String name;
     private final int[] pixels;
     private final int sizeX;
+
     private final int sizeY;
 
+    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     public Sprite(String name, BufferedImage image) {
         this.name = name;
         pixels = new int[image.getWidth() * image.getHeight()];
@@ -110,7 +114,7 @@ public class Sprite {
         return sizeY;
     }
 
-    public Sprite rescale(String name, double factorX, double factorY) {
+    public int[] rescale(double factorX, double factorY) {
 
         int newSizeX = MathUtil.floorMul(sizeX, factorX);
         int newSizeY = MathUtil.floorMul(sizeY, factorY);
@@ -135,14 +139,26 @@ public class Sprite {
                 int yy_r = RenderUtil.getRed(yy);
                 int yy_g = RenderUtil.getGreen(yy);
                 int yy_b = RenderUtil.getBlue(yy);
+                int[] r = { xx_r, xy_r, yx_r, yy_r };
+                int[] g = { xx_g, xy_g, yx_g, yy_g };
+                int[] b = { xx_b, xy_b, yx_b, yy_b };
 
-                pixels[x + y * newSizeX] = RenderUtil.isTransparent(xx) && RenderUtil.isTransparent(xy) && RenderUtil.isTransparent(yx) && RenderUtil.isTransparent(yy) ? Integers.TRANSPARENCY : RenderUtil.getColor(
-                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_r, RenderUtil.isTransparent(xy) ? 0 : xy_r, RenderUtil.isTransparent(yx) ? 0 : yx_r, RenderUtil.isTransparent(yy) ? 0 : yy_r, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
-                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_g, RenderUtil.isTransparent(xy) ? 0 : xy_g, RenderUtil.isTransparent(yx) ? 0 : yx_g, RenderUtil.isTransparent(yy) ? 0 : yy_g, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
-                        linEx(RenderUtil.isTransparent(xx) ? 0 : xx_b, RenderUtil.isTransparent(xy) ? 0 : xy_b, RenderUtil.isTransparent(yx) ? 0 : yx_b, RenderUtil.isTransparent(yy) ? 0 : yy_b, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
+                boolean xx_t = RenderUtil.isTransparent(xx);
+                boolean xy_t = RenderUtil.isTransparent(xy);
+                boolean yx_t = RenderUtil.isTransparent(yx);
+                boolean yy_t = RenderUtil.isTransparent(yy);
+                int all = (xx_t ? 0b0001 : 0b0000) | (xy_t ? 0b0010 : 0b0000) | (yx_t ? 0b0100 : 0b0000) | (yy_t ? 0b1000 : 0b0000);
+
+                pixels[x + y * newSizeX] = all != 0 ? Integers.TRANSPARENCY : RenderUtil.getColor(linEx(r[MORE_MAGIC_NUMBERS[all][0]], r[MORE_MAGIC_NUMBERS[all][1]], r[MORE_MAGIC_NUMBERS[all][2]], r[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                        linEx(g[MORE_MAGIC_NUMBERS[all][0]], g[MORE_MAGIC_NUMBERS[all][1]], g[MORE_MAGIC_NUMBERS[all][2]], g[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                        linEx(b[MORE_MAGIC_NUMBERS[all][0]], b[MORE_MAGIC_NUMBERS[all][1]], b[MORE_MAGIC_NUMBERS[all][2]], b[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
             }
         }
-        return new Sprite(name, pixels, newSizeX, newSizeY);
+        return pixels;
+    }
+
+    public Sprite rescale(String name, double factorX, double factorY) {
+        return new Sprite(name, rescale(factorX, factorY), MathUtil.floorMul(sizeX, factorX), MathUtil.floorMul(sizeY, factorY));
     }
 
     public int[] rotate(double angle) {

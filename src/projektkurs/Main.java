@@ -227,7 +227,6 @@ public final class Main {
     /**
      * Interne Methode, um die Threads (Timer fuer die Ticks) zu starten.
      */
-    @Init(State.PRE)
     public static void initThreads() {
         gameThread = new GameThread();
         gameThread.start();
@@ -366,20 +365,21 @@ public final class Main {
         // Load from disk
         init(State.PRE);
 
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                mainFrame.setVisible(true);
-            }
-
-        });
-
         // Init
         init(State.INIT);
 
         // PostInit
         init(State.POST);
+
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                initThreads();
+                mainFrame.setVisible(true);
+            }
+
+        });
 
         Logger.info("Finished loading!");
 

@@ -197,6 +197,14 @@ public final class MathUtil {
     }
 
     /**
+     * @param b
+     * @return
+     */
+    public static int getBit(boolean b) {
+        return b ? 1 : 0;
+    }
+
+    /**
      * Prueft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
      *
      * @param i
