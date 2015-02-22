@@ -38,6 +38,14 @@ public final class CutScenes {
      * CutScene No. 1
      */
     public static CutScene one;
+    /**
+     * CutScene No. 3
+     */
+    public static CutScene three;
+    /**
+     * CutScene No. 2
+     */
+    public static CutScene two;
 
     /**
      * Das Pair, das alle CutScenes enthaelt.
@@ -51,7 +59,6 @@ public final class CutScenes {
     /**
      * Initialisiert alle CutScenes.
      */
-    @SuppressWarnings("deprecation")
     @Init
     public static void init() {
         one = new CutScene("one");
@@ -120,12 +127,14 @@ public final class CutScenes {
         CutSceneObject[] baeumehafen2 = new CutSceneObject[8];
 
         for (int l = 0; l < baeumehafen1.length; l++) {
-            baeumehafen1[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l + 1, 2, 2);
+            baeumehafen1[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l * 5 + 1, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumehafen1[l]));
 
-            baeumehafen2[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l + 12, 2, 2);
+            baeumehafen2[l] = new CutSceneObject(CutSceneUtil.getRandomTree(), 54, l * 5 + 12, 2, 2);
             one.registerStartupAction(new SpawnAction(baeumehafen2[l]));
         }
+
+        // one.registerStartupAction(new SpawnAction(new CutSceneObject(Images.baum1, 20, 20, 4, 4)));
 
         one.registerStartupAction(new SpawnAction(strasseHorizontal));
 
@@ -151,7 +160,7 @@ public final class CutScenes {
 
         registerMapping(one);
 
-        CutScene two = new CutScene("two");
+        two = new CutScene("two");
 
         CutSceneObject fischerboot = new CutSceneObject(Images.foo, 10, 10, 9, 6);
 
@@ -163,7 +172,8 @@ public final class CutScenes {
 
         registerMapping(two);
 
-        CutScene three = new CutScene("three");
+        three = new CutScene("three");
+
         CutSceneObject player = new CutSceneObject(Images.lordvO_EW, 0, 0, 0, 0);
         CutSceneObject faehre2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
         CutSceneObject auto2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
@@ -178,8 +188,7 @@ public final class CutScenes {
         CutSceneObject typ71 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
         // CutSceneObject typ81 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
 
-        @SuppressWarnings("unused")
-        int line = 0;// FIXME:
+        // int line = 0;
 
         three.registerStartupAction(new EntityToCutSceneObjectAction(false));
 

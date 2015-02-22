@@ -21,7 +21,7 @@ public class Sprite {
         sizeY = image.getHeight();
         for (int y = 0; y < image.getHeight(); y++) {
             for (int x = 0; x < image.getWidth(); x++) {
-                pixels[x + y * image.getWidth()] = ((image.getRGB(x,y) & 0xff000000) >> 24) == 0? 0xFFFFFF & image.getRGB(x, y) : Integers.TRANSPARENCY;
+                pixels[x + y * image.getWidth()] = (image.getRGB(x, y) & 0xff000000) >> 24 != 0 ? 0xFFFFFF & image.getRGB(x, y) : Integers.TRANSPARENCY;
             }
         }
     }
@@ -142,7 +142,6 @@ public class Sprite {
                         linEx(RenderUtil.isTransparent(xx) ? 0 : xx_b, RenderUtil.isTransparent(xy) ? 0 : xy_b, RenderUtil.isTransparent(yx) ? 0 : yx_b, RenderUtil.isTransparent(yy) ? 0 : yy_b, x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
             }
         }
-
         return new Sprite(name, pixels, newSizeX, newSizeY);
     }
 

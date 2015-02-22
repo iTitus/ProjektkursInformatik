@@ -21,7 +21,7 @@ public class Sprite {
         sizeY = image.getHeight();
         for (int y = 0; y < image.getHeight(); y++) {
             for (int x = 0; x < image.getWidth(); x++) {
-                pixels[x + y * image.getWidth()] = ((image.getRGB(x, y) & 0xff000000) >> 24) == 0 ? 0xFFFFFF & image.getRGB(x, y) : Integers.TRANSPARENCY;
+                pixels[x + y * image.getWidth()] = (image.getRGB(x, y) & 0xff000000) >> 24 != 0 ? 0xFFFFFF & image.getRGB(x, y) : Integers.TRANSPARENCY;
             }
         }
     }

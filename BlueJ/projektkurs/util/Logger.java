@@ -1,7 +1,6 @@
 package projektkurs.util;
 
 import java.io.File;
-import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.text.DateFormat;
@@ -21,39 +20,15 @@ public final class Logger {
         /**
          * Debug.
          */
-        DEBUG(System.out),
+        DEBUG,
         /**
          * Information.
          */
-        INFO(System.out),
+        INFO,
         /**
          * Warnungen.
          */
-        WARN(System.err);
-
-        /**
-         * Der PrintStream.
-         */
-        private final PrintStream stream;
-
-        /**
-         * Privater Konstruktor.
-         *
-         * @param stream
-         *            der zu benutzende PrintStream.
-         */
-        private LogLevel(PrintStream stream) {
-            this.stream = stream;
-        }
-
-        /**
-         * Der PrintStream.
-         *
-         * @return PrintStream
-         */
-        public PrintStream getPrintStream() {
-            return stream;
-        }
+        WARN
     }
 
     /**
@@ -128,21 +103,25 @@ public final class Logger {
             synchronized (SIMPLE_DATE) {
                 String out1 = String.format("[%s] [%s]: %s", SIMPLE_DATE.format(new Date()), level.toString(), msg);
                 LOG.add(out1);
-                level.getPrintStream().println(out1);
-                level.getPrintStream().flush();
-                if (objs != null && objs.length > 0) {
-                    int i = 1;
-                    for (Object o : objs) {
-                        String oStr = o != null ? o.toString() : "null";
-                        if (oStr == null) {
-                            oStr = "null";
-                        }
+                synchronized (System.out) {
+                    System.out.println(out1);
+                }
+            }
+            if (objs != null && objs.length > 0) {
+                int i = 1;
+                for (Object o : objs) {
+                    String oStr = o != null ? o.toString() : "null";
+                    if (oStr == null) {
+                        oStr = "null";
+                    }
+                    synchronized (SIMPLE_DATE) {
                         String out2 = String.format("[%s] [%s]: %d) %s", SIMPLE_DATE.format(new Date()), level.toString(), i++, oStr);
                         LOG.add(out2);
-                        level.getPrintStream().println(out2);
+                        synchronized (System.out) {
+                            System.out.println(out2);
+                        }
                     }
                 }
-                level.getPrintStream().flush();
             }
         }
     }

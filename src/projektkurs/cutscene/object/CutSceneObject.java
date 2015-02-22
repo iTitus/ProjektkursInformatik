@@ -52,8 +52,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      *            Hoehe
      */
     public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
-        // sprite = image != null ? new Sprite(Images.BACK_MAPPINGS.get(image), image) : Sprites.MISSING_ICON;
-        sprite = image != null ? new Sprite(Images.BACK_MAPPINGS.get(image), image).rescale(Images.BACK_MAPPINGS.get(image), (sizeX * Integers.RASTER_SIZE) / image.getWidth(), (sizeY * Integers.RASTER_SIZE) / image.getHeight()) : Sprites.MISSING_ICON;
+        sprite = image != null ? new Sprite("", image).rescale(Images.BACK_MAPPINGS.get(image), sizeX * Integers.RASTER_SIZE / (double) image.getWidth(), sizeY * Integers.RASTER_SIZE / (double) image.getHeight()) : Sprites.MISSING_ICON;
         setPosition(posX, posY);
         this.sizeX = sizeX;
         this.sizeY = sizeY;
