@@ -25,7 +25,7 @@ public class InventoryHasItemStackTrigger extends Trigger {
 
     @Override
     public boolean isTriggerActive() {
-        return Main.getPlayer().getInventory().containsIgnoreStackSize(stack);
+        return Main.getPlayer().getInventory().getNumberOfItemsInInventory(stack) >= stack.getStackSize();
     }
 
 }

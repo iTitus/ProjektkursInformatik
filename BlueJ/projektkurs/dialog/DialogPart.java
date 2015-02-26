@@ -38,6 +38,19 @@ public class DialogPart implements Iterable<String> {
     private final int valueChange;
 
     /**
+     * Konstruktor
+     *
+     * @param name
+     *            Anzeigename
+     * @param talkLength
+     *            Laenge des weiterfuehrenden Gespraechs
+     */
+
+    public DialogPart(String name, int talkLength) {
+        this(name, 0, 0, true, talkLength);
+    }
+
+    /**
      * Konstruktor.
      *
      * @param name
@@ -70,7 +83,7 @@ public class DialogPart implements Iterable<String> {
      * @return Anzeigename
      */
     public String getName() {
-        return name;
+        return "dialog.part." + name + ".name";
     }
 
     /**

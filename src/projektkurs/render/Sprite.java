@@ -9,7 +9,6 @@ import projektkurs.util.RenderUtil;
 
 public class Sprite {
 
-    // private static final int[] MAGIC_NUMBERS = { 1234, 2234, 1334, 3344, 1244, 2244, 1144, 4444, 1231, 2233, 1133, 3333, 1122, 2222, 1111, 0000 };
     private static final int[][] MORE_MAGIC_NUMBERS = { { 0, 1, 2, 3 }, { 1, 1, 2, 3 }, { 0, 2, 2, 3 }, { 2, 2, 3, 3 }, { 0, 1, 3, 3 }, { 1, 1, 3, 3 }, { 0, 0, 3, 3 }, { 3, 3, 3, 3 }, { 0, 1, 2, 0 }, { 1, 2, 2, 1 }, { 0, 2, 2, 0 }, { 2, 2, 2, 2 }, { 0, 1, 1, 0 }, { 1, 1, 1, 1 }, { 0, 0, 0, 0 }, { -1, -1, -1, -1 } };
     private final String name;
     private final int[] pixels;
@@ -17,7 +16,6 @@ public class Sprite {
 
     private final int sizeY;
 
-    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     public Sprite(String name, BufferedImage image) {
         this.name = name;
         pixels = new int[image.getWidth() * image.getHeight()];
