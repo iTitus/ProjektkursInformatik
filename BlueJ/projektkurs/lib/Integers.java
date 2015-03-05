@@ -42,11 +42,11 @@ public final class Integers {
     /**
      * Maximale Anzahl an Items.
      */
-    public static final int MAX_ITEM_NUMBER = Byte.MAX_VALUE;
+    public static final int MAX_ITEM_NUMBER = 255;
     /**
      * Maximale Anzahl an Rastern.
      */
-    public static final int MAX_RASTER_NUMBER = Byte.MAX_VALUE;
+    public static final int MAX_RASTER_NUMBER = 255;
     /**
      * Updates pro Bewegungsupdate.
      */

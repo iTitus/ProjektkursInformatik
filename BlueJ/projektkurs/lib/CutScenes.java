@@ -39,13 +39,13 @@ public final class CutScenes {
      */
     public static CutScene one;
     /**
-     * CutScene No. 3
-     */
-    public static CutScene three;
-    /**
      * CutScene No. 2
      */
     public static CutScene two;
+    /**
+     * CutScene No. 3
+     */
+    public static CutScene three;
 
     /**
      * Das Pair, das alle CutScenes enthaelt.
@@ -59,6 +59,7 @@ public final class CutScenes {
     /**
      * Initialisiert alle CutScenes.
      */
+    @SuppressWarnings("deprecation")
     @Init
     public static void init() {
         one = new CutScene("one");
@@ -134,8 +135,6 @@ public final class CutScenes {
             one.registerStartupAction(new SpawnAction(baeumehafen2[l]));
         }
 
-        // one.registerStartupAction(new SpawnAction(new CutSceneObject(Images.baum1, 20, 20, 4, 4)));
-
         one.registerStartupAction(new SpawnAction(strasseHorizontal));
 
         one.registerStartupAction(new SpawnAction(strasseVertikal));
@@ -173,28 +172,25 @@ public final class CutScenes {
         registerMapping(two);
 
         three = new CutScene("three");
+        // CutSceneObject player = new CutSceneObject(Images.lordvO_EW, 0, 0, 0, 0);
+        CutSceneObject faehre2 = new CutSceneObject(Sprites.ferry, 10, 12, 4, 8);
+        CutSceneObject auto2 = new CutSceneObject(Sprites.car_lord_frauV_N, 11, 25, 2, 4);
 
-        CutSceneObject player = new CutSceneObject(Images.lordvO_EW, 0, 0, 0, 0);
-        CutSceneObject faehre2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
-        CutSceneObject auto2 = new CutSceneObject(Images.foo, 0, 0, 0, 0);
+        CutSceneObject typ11 = new CutSceneObject(Images.auto_di4_EW, 11, 25, 2, 4);
+        CutSceneObject typ21 = new CutSceneObject(Images.auto_di3_EW, 11, 25, 2, 4);
+        CutSceneObject typ31 = new CutSceneObject(Images.auto_di2_EW, 11, 25, 2, 4);
+        CutSceneObject typ41 = new CutSceneObject(Images.auto_di_EW, 11, 25, 2, 4);
 
-        CutSceneObject typ11 = new CutSceneObject(Images.auto_di4_EW, 40, 10, 4, 2);
-        CutSceneObject typ21 = new CutSceneObject(Images.auto_di3_EW, 40, 10, 4, 2);
-        CutSceneObject typ31 = new CutSceneObject(Images.auto_di2_EW, 40, 10, 4, 2);
-        CutSceneObject typ41 = new CutSceneObject(Images.auto_di_EW, 40, 10, 4, 2);
-
-        CutSceneObject typ51 = new CutSceneObject(Images.auto_do_EW, 40, 10, 4, 2);
-        CutSceneObject typ61 = new CutSceneObject(Images.auto_do2_EW, 40, 10, 4, 2);
-        CutSceneObject typ71 = new CutSceneObject(Images.auto_do3_EW, 40, 10, 4, 2);
+        CutSceneObject typ51 = new CutSceneObject(Images.auto_do_EW, 11, 25, 2, 4);
+        CutSceneObject typ61 = new CutSceneObject(Images.auto_do2_EW, 11, 25, 2, 4);
+        CutSceneObject typ71 = new CutSceneObject(Images.auto_do3_EW, 11, 25, 2, 4);
         // CutSceneObject typ81 = new CutSceneObject(Images.auto_do4_EW, 40, 10, 4, 2);
-
-        // int line = 0;
 
         three.registerStartupAction(new EntityToCutSceneObjectAction(false));
 
         CutSceneUtil.registerAnimation(three, 20, new TrueCondition(), auto2, typ71, typ61, typ51, typ41, typ31, typ21, typ11);
 
-        three.registerStartupAction(new SpawnAction(player));
+        // three.registerStartupAction(new SpawnAction(player));
         three.registerStartupAction(new EntityToCutSceneObjectAction());
         three.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 140), new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(auto2, 30, 10, 30, 10)), faehre2, 1, 0));
         three.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 140), new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(faehre2, 0, 0, 40, 20)), 1, 0));

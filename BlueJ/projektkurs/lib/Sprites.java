@@ -21,6 +21,7 @@ public final class Sprites {
     public static Sprite car_empty_N;
     public static Sprite car_empty_S;
     public static Sprite car_empty_W;
+    public static Sprite car_frauV;
     public static Sprite car_lord_E;
     public static Sprite car_lord_frauV_E;
     public static Sprite car_lord_frauV_N;
@@ -29,6 +30,7 @@ public final class Sprites {
     public static Sprite car_lord_N;
     public static Sprite car_lord_S;
     public static Sprite car_lord_W;
+    public static Sprite cards;
     public static Sprite chair_1;
     public static Sprite chair_2;
     public static Sprite chair_3;
@@ -45,7 +47,19 @@ public final class Sprites {
     public static Sprite door_open_WE;
     public static Sprite door_WE;
     public static Sprite earrings;
+    public static Sprite faden;
     public static Sprite ferry;
+    public static Sprite ferryhouse;
+    public static Sprite ferryhouse_door;
+    public static Sprite ferryhouse_ecke_ne;
+    public static Sprite ferryhouse_ecke_nw;
+    public static Sprite ferryhouse_ecke_se;
+    public static Sprite ferryhouse_ecke_sw;
+    public static Sprite ferryhouse_wall_e;
+    public static Sprite ferryhouse_wall_n;
+    public static Sprite ferryhouse_wall_s;
+    public static Sprite ferryhouse_wall_w;
+
     public static Sprite finish;
     public static Sprite[] fire;
     public static Sprite fisherboat;
@@ -59,22 +73,24 @@ public final class Sprites {
     public static Sprite floor_5;
     public static Sprite floor_6;
     public static Sprite floor_7;
-
     public static Sprite floor_8;
     public static Sprite floor_9;
     public static Sprite frauV_E;
     public static Sprite frauV_N;
     public static Sprite frauV_S;
     public static Sprite frauV_W;
+    public static Sprite grammophon;
     public static Sprite grass;
-    public static Sprite guy0_E;
-    public static Sprite guy0_N;
-    public static Sprite guy0_S;
-    public static Sprite guy0_W;
+    public static Sprite guy0;
+    public static Sprite guy1;
     public static Sprite healthpotion;
     public static Sprite item42;
+
+    public static Sprite jojo;
+    public static Sprite kaugummi;
     public static Sprite key;
     public static Sprite knife;
+    public static Sprite koffer;
     public static Sprite lordvO_N;
     public static Sprite lordvO_O;
     public static Sprite lordvO_S;
@@ -85,28 +101,45 @@ public final class Sprites {
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
     public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
     public static Sprite nuke;
-
     public static Sprite rasen_2;
     public static Sprite redNPC;
+    public static Sprite schranke;
     public static Sprite slot;
     public static Sprite slot_highlight;
     public static Sprite stonecatapult;
     public static Sprite street_asphalt;
+    public static Sprite street_l_b_1_senk;
     public static Sprite street_l_b_1_wage;
+    public static Sprite street_l_b_2_senk;
     public static Sprite street_l_b_2_wage;
+    public static Sprite street_l_b_3_senk;
+
     public static Sprite street_l_b_3_wage;
+    public static Sprite street_l_b_4_senk;
     public static Sprite street_l_b_4_wage;
+    public static Sprite street_l_b_5_senk;
     public static Sprite street_l_b_5_wage;
+    public static Sprite street_l_b_6_senk;
     public static Sprite street_l_b_6_wage;
+    public static Sprite street_l_b_7_senk;
     public static Sprite street_l_b_7_wage;
+    public static Sprite street_l_b_8_senk;
     public static Sprite street_l_b_8_wage;
+    public static Sprite street_l_t_1_senk;
     public static Sprite street_l_t_1_wage;
+    public static Sprite street_l_t_2_senk;
     public static Sprite street_l_t_2_wage;
+    public static Sprite street_l_t_3_senk;
     public static Sprite street_l_t_3_wage;
+    public static Sprite street_l_t_4_senk;
     public static Sprite street_l_t_4_wage;
+    public static Sprite street_l_t_5_senk;
     public static Sprite street_l_t_5_wage;
+    public static Sprite street_l_t_6_senk;
     public static Sprite street_l_t_6_wage;
+    public static Sprite street_l_t_7_senk;
     public static Sprite street_l_t_7_wage;
+    public static Sprite street_l_t_8_senk;
     public static Sprite street_l_t_8_wage;
     public static Sprite teddy;
     public static Sprite thread;
@@ -144,9 +177,13 @@ public final class Sprites {
     public static Sprite tree_4se;
     public static Sprite tree_4sw;
     public static Sprite tree_5ne;
+    public static Sprite tree_5ne_water;
     public static Sprite tree_5nw;
+    public static Sprite tree_5nw_water;
     public static Sprite tree_5se;
+    public static Sprite tree_5se_water;
     public static Sprite tree_5sw;
+    public static Sprite tree_5sw_water;
     public static Sprite tree_6ne;
     public static Sprite tree_6nw;
     public static Sprite tree_6se;
@@ -160,12 +197,18 @@ public final class Sprites {
     public static Sprite tree_8se;
     public static Sprite tree_8sw;
     public static Sprite tree_9ne;
+    public static Sprite tree_9ne_water;
     public static Sprite tree_9nw;
+    public static Sprite tree_9nw_water;
     public static Sprite tree_9se;
+
+    public static Sprite tree_9se_water;
     public static Sprite tree_9sw;
+    public static Sprite tree_9sw_water;
     public static Sprite wall;
     public static Sprite water;
     public static Sprite women0_E;
+
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
@@ -274,6 +317,18 @@ public final class Sprites {
         tree_5sw = new Sprite("tree_5sw", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(tree_5sw);
 
+        tree_5nw_water = new Sprite("tree_5nw_water", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(tree_5nw_water);
+
+        tree_5ne_water = new Sprite("tree_5ne_water", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(tree_5ne_water);
+
+        tree_5se_water = new Sprite("tree_5se_water", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_5se_water);
+
+        tree_5sw_water = new Sprite("tree_5sw_water", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_5sw_water);
+
         tree_6nw = new Sprite("tree_6nw", Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
         registerSprite(tree_6nw);
 
@@ -321,6 +376,18 @@ public final class Sprites {
 
         tree_9sw = new Sprite("tree_9sw", Integers.RASTER_SIZE, 14 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(tree_9sw);
+
+        tree_9nw_water = new Sprite("tree_9nw_water", Integers.RASTER_SIZE, 18 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(tree_9nw_water);
+
+        tree_9ne_water = new Sprite("tree_9ne_water", Integers.RASTER_SIZE, 19 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        registerSprite(tree_9ne_water);
+
+        tree_9se_water = new Sprite("tree_9se_water", Integers.RASTER_SIZE, 19 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_9se_water);
+
+        tree_9sw_water = new Sprite("tree_9sw_water", Integers.RASTER_SIZE, 18 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(tree_9sw_water);
 
         tree_10nw = new Sprite("tree_10nw", Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(tree_10nw);
@@ -391,53 +458,101 @@ public final class Sprites {
         street_asphalt = new Sprite("street_asphalt", Integers.RASTER_SIZE, 0, 4 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_asphalt);
 
-        street_l_t_1_wage = new Sprite("street_l_t_1_wage", Integers.RASTER_SIZE, 0, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_1_wage = new Sprite("street_l_t_1_wage", Integers.RASTER_SIZE, 0, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_1_wage);
 
-        street_l_t_2_wage = new Sprite("street_l_t_2_wage", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_2_wage = new Sprite("street_l_t_2_wage", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_2_wage);
 
-        street_l_t_3_wage = new Sprite("street_l_t_3_wage", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_3_wage = new Sprite("street_l_t_3_wage", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_3_wage);
 
-        street_l_t_4_wage = new Sprite("street_l_t_4_wage", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_4_wage = new Sprite("street_l_t_4_wage", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_4_wage);
 
-        street_l_t_5_wage = new Sprite("street_l_t_5_wage", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_5_wage = new Sprite("street_l_t_5_wage", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_5_wage);
 
-        street_l_t_6_wage = new Sprite("street_l_t_6_wage", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_6_wage = new Sprite("street_l_t_6_wage", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_6_wage);
 
-        street_l_t_7_wage = new Sprite("street_l_t_7_wage", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_7_wage = new Sprite("street_l_t_7_wage", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_7_wage);
 
-        street_l_t_8_wage = new Sprite("street_l_t_8_wage", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_t_8_wage = new Sprite("street_l_t_8_wage", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_t_8_wage);
 
-        street_l_b_1_wage = new Sprite("street_l_b_1_wage", Integers.RASTER_SIZE, 0, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_1_wage = new Sprite("street_l_b_1_wage", Integers.RASTER_SIZE, 0, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_1_wage);
 
-        street_l_b_2_wage = new Sprite("street_l_b_2_wage", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_2_wage = new Sprite("street_l_b_2_wage", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_2_wage);
 
-        street_l_b_3_wage = new Sprite("street_l_b_3_wage", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_3_wage = new Sprite("street_l_b_3_wage", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_3_wage);
 
-        street_l_b_4_wage = new Sprite("street_l_b_4_wage", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_4_wage = new Sprite("street_l_b_4_wage", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_4_wage);
 
-        street_l_b_5_wage = new Sprite("street_l_b_5_wage", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_5_wage = new Sprite("street_l_b_5_wage", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_5_wage);
 
-        street_l_b_6_wage = new Sprite("street_l_b_6_wage", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_6_wage = new Sprite("street_l_b_6_wage", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_6_wage);
 
-        street_l_b_7_wage = new Sprite("street_l_b_7_wage", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_7_wage = new Sprite("street_l_b_7_wage", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_7_wage);
 
-        street_l_b_8_wage = new Sprite("street_l_b_8_wage", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        street_l_b_8_wage = new Sprite("street_l_b_8_wage", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(street_l_b_8_wage);
+
+        street_l_b_1_senk = street_l_b_1_wage.rotate("street_l_b_1_senk", 90);
+        registerSprite(street_l_b_1_senk);
+
+        street_l_b_2_senk = street_l_b_2_wage.rotate("street_l_b_2_senk", 90);
+        registerSprite(street_l_b_2_senk);
+
+        street_l_b_3_senk = street_l_b_3_wage.rotate("street_l_b_3_senk", 90);
+        registerSprite(street_l_b_3_senk);
+
+        street_l_b_4_senk = street_l_b_4_wage.rotate("street_l_b_4_senk", 90);
+        registerSprite(street_l_b_4_senk);
+
+        street_l_b_5_senk = street_l_b_5_wage.rotate("street_l_b_5_senk", 90);
+        registerSprite(street_l_b_5_senk);
+
+        street_l_b_6_senk = street_l_b_6_wage.rotate("street_l_b_6_senk", 90);
+        registerSprite(street_l_b_6_senk);
+
+        street_l_b_7_senk = street_l_b_7_wage.rotate("street_l_b_7_senk", 90);
+        registerSprite(street_l_b_7_senk);
+
+        street_l_b_8_senk = street_l_b_8_wage.rotate("street_l_b_8_senk", 90);
+        registerSprite(street_l_b_8_senk);
+
+        street_l_t_1_senk = street_l_t_1_wage.rotate("street_l_t_1_senk", 90);
+        registerSprite(street_l_t_1_senk);
+
+        street_l_t_2_senk = street_l_t_2_wage.rotate("street_l_t_2_senk", 90);
+        registerSprite(street_l_t_2_senk);
+
+        street_l_t_3_senk = street_l_t_3_wage.rotate("street_l_t_3_senk", 90);
+        registerSprite(street_l_t_3_senk);
+
+        street_l_t_4_senk = street_l_t_4_wage.rotate("street_l_t_4_senk", 90);
+        registerSprite(street_l_t_4_senk);
+
+        street_l_t_5_senk = street_l_t_5_wage.rotate("street_l_t_5_senk", 90);
+        registerSprite(street_l_t_5_senk);
+
+        street_l_t_6_senk = street_l_t_6_wage.rotate("street_l_t_6_senk", 90);
+        registerSprite(street_l_t_6_senk);
+
+        street_l_t_7_senk = street_l_t_7_wage.rotate("street_l_t_7_senk", 90);
+        registerSprite(street_l_t_7_senk);
+
+        street_l_t_8_senk = street_l_t_8_wage.rotate("street_l_t_8_senk", 90);
+        registerSprite(street_l_t_8_senk);
 
         floor_1 = new Sprite("floor_1", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(floor_1);
@@ -550,17 +665,11 @@ public final class Sprites {
         frauV_W = frauV_N.rotate("frauV_W", 270);
         registerSprite(frauV_W);
 
-        guy0_N = new Sprite("guy0_N", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
-        registerSprite(guy0_N);
+        guy0 = new Sprite("guy0", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(guy0);
 
-        guy0_E = guy0_N.rotate("guy0_E", 90);
-        registerSprite(guy0_E);
-
-        guy0_S = guy0_N.rotate("guy0_S", 180);
-        registerSprite(guy0_S);
-
-        guy0_W = guy0_N.rotate("guy0_W", 270);
-        registerSprite(guy0_W);
+        guy1 = new Sprite("guy1", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9, SpriteSheets.entities);
+        registerSprite(guy1);
 
         women0_N = new Sprite("women0_N", Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(women0_N);
@@ -616,20 +725,74 @@ public final class Sprites {
         fisherboat = new Sprite("fisherboat", 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(fisherboat);
 
+        faden = new Sprite("faden", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(faden);
+
+        knife = new Sprite("knife", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(knife);
+
         thread = new Sprite("thread", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(thread);
 
-        knife = new Sprite("knife", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(knife);
-
-        teddy = new Sprite("teddy", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        teddy = new Sprite("teddy", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(teddy);
 
-        earrings = new Sprite("earrings", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        earrings = new Sprite("earrings", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(earrings);
 
-        stonecatapult = new Sprite("stonecatapult", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        stonecatapult = new Sprite("stonecatapult", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(stonecatapult);
+
+        grammophon = new Sprite("grammophon", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(grammophon);
+
+        jojo = new Sprite("jojo", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(jojo);
+
+        koffer = new Sprite("koffer", Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(koffer);
+
+        cards = new Sprite("cards", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(cards);
+
+        kaugummi = new Sprite("kaugummi", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(kaugummi);
+
+        ferryhouse_wall_w = new Sprite("ferryhouse_wall_w", Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(ferryhouse_wall_w);
+
+        ferryhouse_wall_s = ferryhouse_wall_w.rotate("ferryhouse_wall_s", 270);
+        registerSprite(ferryhouse_wall_s);
+
+        ferryhouse_wall_n = ferryhouse_wall_w.rotate("ferryhouse_wall_n", 90);
+        registerSprite(ferryhouse_wall_n);
+
+        ferryhouse_wall_e = ferryhouse_wall_w.rotate("ferryhouse_wall_e", 180);
+        registerSprite(ferryhouse_wall_e);
+
+        ferryhouse_ecke_sw = new Sprite("ferryhouse_ecke_sw", Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(ferryhouse_ecke_sw);
+
+        ferryhouse_ecke_nw = ferryhouse_ecke_sw.rotate("ferryhouse_ecke_nw", 90);
+        registerSprite(ferryhouse_ecke_nw);
+
+        ferryhouse_ecke_ne = ferryhouse_ecke_sw.rotate("ferryhouse_ecke_ne", 180);
+        registerSprite(ferryhouse_ecke_ne);
+
+        ferryhouse_ecke_se = ferryhouse_ecke_sw.rotate("ferryhouse_ecke_se", 270);
+        registerSprite(ferryhouse_ecke_se);
+
+        ferryhouse_door = new Sprite("ferryhouse_door", Integers.RASTER_SIZE, 12 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(ferryhouse_door);
+
+        car_frauV = new Sprite("car_frauV", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(car_frauV);
+
+        schranke = new Sprite("schranke", 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(schranke);
+
+        ferryhouse = new Sprite("ferryhouse", 6 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(ferryhouse);
 
     }
 

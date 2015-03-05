@@ -47,4 +47,5 @@ public class AreaTrigger extends Trigger {
     public boolean isTriggerActive() {
         return Main.getPlayer().isInside(posX, posY, sizeX, sizeY);
     }
+
 }

@@ -59,7 +59,7 @@ public final class Levels {
         level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
         registerMapping(level0);
 
-        level1 = new Level("Level1", new Spielfeld(50, 50, 10, 10));
+        level1 = new Level("Level1", new Spielfeld(70, 70, 10, 26));
         registerMapping(level1);
 
     }

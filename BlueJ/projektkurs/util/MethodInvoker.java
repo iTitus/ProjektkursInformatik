@@ -19,4 +19,10 @@ public class MethodInvoker extends MethodInvokerWithReturn<Void> {
         super(m, objects);
     }
 
+    @Override
+    public Void invoke() {
+        ReflectionUtil.invokeStatic(m, objects);
+        return null;
+    }
+
 }

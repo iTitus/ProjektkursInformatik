@@ -5,14 +5,14 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityVilleCar extends EntityDialog {
+public class EntityFerryman extends EntityDialog {
 
-    public EntityVilleCar(Spielfeld map) {
+    public EntityFerryman(Spielfeld map) {
         super(map);
     }
 
-    public EntityVilleCar(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 2, 4, Sprites.car_frauV);
+    public EntityFerryman(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, 1, 1, Sprites.guy0);
     }
 
     @Override
