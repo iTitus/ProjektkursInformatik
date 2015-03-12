@@ -66,11 +66,11 @@ public class SimulationBoard extends Element {
         if (boardX >= 0 && boardY >= 0 && boardX < board.getSizeX() && boardY < board.getSizeY()) {
             if (e.isShiftDown()) {
                 if (oldX >= 0 && oldX < sizeX && oldY >= 0 && oldY < sizeY) {
-                    if (index == 1) {
+                    if (index == 4) {
                         for (int i = oldX < boardX ? oldX : boardX; i <= (oldX < boardX ? boardX : oldX); i++) {
                             setRule(new SimpleWireRule(true), i, oldY);
                         }
-                    } else if (index == 2) {
+                    } else if (index == 5) {
                         for (int i = oldY < boardY ? oldY : boardY; i <= (oldY < boardY ? boardY : oldY); i++) {
                             setRule(new SimpleWireRule(false), oldX, i);
                         }
