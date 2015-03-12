@@ -3,6 +3,11 @@ package projektkurs.simulation;
 public class OmniSourceRule extends Rule {
 
     @Override
+    public Rule copy() {
+        return new OmniSourceRule();
+    }
+
+    @Override
     public int getColor(Board b, int x, int y) {
         return 0xFF01FF;
     }

@@ -3,13 +3,13 @@ package projektkurs.simulation;
 public class OmniDirWireRule extends Rule {
 
     @Override
+    public Rule copy() {
+        return new OmniDirWireRule();
+    }
+
+    @Override
     public int getColor(Board b, int x, int y) {
-        switch (b.getFlow(x, y)) {
-            case 0:
-                return 0x000000;
-            default:
-                return 0xDD00DD;
-        }
+        return b.getFlow(x, y) != 0 ? 0xDD00DD : 0;
     }
 
     @Override

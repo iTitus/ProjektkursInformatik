@@ -5,10 +5,15 @@ public class SimpleWireRule extends Rule {
     /**
      * true: WE; false: NS
      */
-    private final boolean dir;
+    private final boolean orientation;
 
     public SimpleWireRule(boolean dir) {
-        this.dir = dir;
+        orientation = dir;
+    }
+
+    @Override
+    public Rule copy() {
+        return new SimpleWireRule(orientation);
     }
 
     @Override
@@ -25,7 +30,7 @@ public class SimpleWireRule extends Rule {
 
     @Override
     public String getName() {
-        return "Wire: " + (dir ? "WE" : "NS");
+        return "Wire: " + (orientation ? "WE" : "NS");
     }
 
     @Override
@@ -34,7 +39,7 @@ public class SimpleWireRule extends Rule {
 
         int ret = 0;
 
-        if (dir) {
+        if (orientation) {
             int i = b.getFlow(x + 1, y);
             int j = b.getFlow(x - 1, y);
             if (j == -1 && i == -1) {

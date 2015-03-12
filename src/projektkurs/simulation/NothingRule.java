@@ -5,6 +5,11 @@ import projektkurs.lib.Integers;
 public class NothingRule extends Rule {
 
     @Override
+    public Rule copy() {
+        return new NothingRule();
+    }
+
+    @Override
     public int getColor(Board b, int x, int y) {
         return Integers.TRANSPARENCY;
     }

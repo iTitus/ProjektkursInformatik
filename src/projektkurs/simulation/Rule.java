@@ -2,6 +2,8 @@ package projektkurs.simulation;
 
 public abstract class Rule {
 
+    public abstract Rule copy();
+
     public abstract int getColor(Board b, int x, int y);
 
     public abstract String getName();

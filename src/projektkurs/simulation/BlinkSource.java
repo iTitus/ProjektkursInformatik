@@ -2,9 +2,6 @@ package projektkurs.simulation;
 
 import projektkurs.Main;
 
-/**
- *
- */
 public class BlinkSource extends Rule {
 
     private final int durationOn, durationOff;
@@ -12,6 +9,11 @@ public class BlinkSource extends Rule {
     public BlinkSource(int durationOn, int durationOff) {
         this.durationOn = durationOn;
         this.durationOff = durationOff;
+    }
+
+    @Override
+    public Rule copy() {
+        return new BlinkSource(durationOn, durationOff);
     }
 
     @Override
