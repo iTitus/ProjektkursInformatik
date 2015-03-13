@@ -12,7 +12,7 @@ public class EntityVilleCar extends EntityDialog {
     }
 
     public EntityVilleCar(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 4, 8, Sprites.car_empty_N);
+        super(map, posX, posY, 2, 4, Sprites.car_frauV);
     }
 
     @Override

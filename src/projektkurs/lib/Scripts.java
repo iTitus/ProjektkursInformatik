@@ -1,15 +1,25 @@
 package projektkurs.lib;
 
+import java.lang.reflect.Method;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import projektkurs.Main;
+import projektkurs.entity.EntityFerryhouse;
+import projektkurs.story.trigger.AreaTrigger;
+import projektkurs.story.trigger.InvertedTrigger;
 import projektkurs.util.I18n;
+import projektkurs.util.ReflectionUtil;
+import projektkurs.world.Spielfeld;
 
 /**
  * Diverse Skripte.
  */
 public final class Scripts {
+
+    public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
+    public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
 
     /**
      * Verliert das Spiel.
@@ -20,13 +30,25 @@ public final class Scripts {
         Main.exit();
     }
 
+    public static void removeFerryHouse(EntityFerryhouse e, Spielfeld map) {
+        map.deSpawn(e);
+        InvertedTrigger invtrig = new InvertedTrigger(new AreaTrigger(20, 21, 13, 14));
+        map.getStoryManager().registerTrigger(invtrig, SPAWN_ENTITY, e, map);
+    }
+
+    public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
+        map.spawn(e);
+        AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
+        map.getStoryManager().registerTrigger(area, REMOVE_ENTITY, e, map);
+    }
+
     /**
      * Aendert das Spielfeld.
      *
      * @param i
      *            Spielfeld
      */
-    public static void switchMap(int i) {
+    public static void switchMap(Integer i) {
         Main.getLevel().setMap(i);
     }
 

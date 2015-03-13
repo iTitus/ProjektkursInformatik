@@ -312,11 +312,11 @@ public final class RenderUtil {
      *            Y-Koordinate
      */
     public static void drawTooltip(Screen screen, String str, int x, int y) {
-        int height = Font.getStringHeight(str);
-        int width = Font.getStringWidth(str);
-        drawFilledRectangle(screen, x, y - height, width + 4, height, TOOLTIP_COLOR);
-        drawRectangle(screen, x, y - height, width + 4, height);
-        Font.drawCenteredStringInRect(screen, str, x, y - height, width + 4, height);
+        int height = Font.getStringHeight(str) + 2;
+        int width = Font.getStringWidth(str) + 4;
+        drawFilledRectangle(screen, x, y - height, width, height, TOOLTIP_COLOR);
+        drawRectangle(screen, x, y - height, width, height);
+        Font.drawString(screen, str, x - 7, y - height - 1);
     }
 
     public static int getBlue(int color) {

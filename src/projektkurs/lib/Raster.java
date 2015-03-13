@@ -47,6 +47,15 @@ public final class Raster {
      * Tuer.
      */
     public static AbstractRaster door;
+    public static AbstractRaster ferryhouse_door;
+    public static AbstractRaster ferryhouse_ecke_ne;
+    public static AbstractRaster ferryhouse_ecke_nw;
+    public static AbstractRaster ferryhouse_ecke_se;
+    public static AbstractRaster ferryhouse_ecke_sw;
+    public static AbstractRaster ferryhouse_wall_e;
+    public static AbstractRaster ferryhouse_wall_n;
+    public static AbstractRaster ferryhouse_wall_s;
+    public static AbstractRaster ferryhouse_wall_w;
     /**
      * Ziel.
      */
@@ -81,21 +90,37 @@ public final class Raster {
      */
     public static final AbstractRaster[] RASTER = new AbstractRaster[Integers.MAX_RASTER_NUMBER];
     public static AbstractRaster street_asphalt;
+    public static AbstractRaster street_l_b_1_senk;
     public static AbstractRaster street_l_b_1_wage;
+    public static AbstractRaster street_l_b_2_senk;
     public static AbstractRaster street_l_b_2_wage;
+    public static AbstractRaster street_l_b_3_senk;
     public static AbstractRaster street_l_b_3_wage;
+    public static AbstractRaster street_l_b_4_senk;
     public static AbstractRaster street_l_b_4_wage;
+    public static AbstractRaster street_l_b_5_senk;
     public static AbstractRaster street_l_b_5_wage;
+    public static AbstractRaster street_l_b_6_senk;
     public static AbstractRaster street_l_b_6_wage;
+    public static AbstractRaster street_l_b_7_senk;
     public static AbstractRaster street_l_b_7_wage;
+    public static AbstractRaster street_l_b_8_senk;
     public static AbstractRaster street_l_b_8_wage;
+    public static AbstractRaster street_l_t_1_senk;
     public static AbstractRaster street_l_t_1_wage;
+    public static AbstractRaster street_l_t_2_senk;
     public static AbstractRaster street_l_t_2_wage;
+    public static AbstractRaster street_l_t_3_senk;
     public static AbstractRaster street_l_t_3_wage;
+    public static AbstractRaster street_l_t_4_senk;
     public static AbstractRaster street_l_t_4_wage;
+    public static AbstractRaster street_l_t_5_senk;
     public static AbstractRaster street_l_t_5_wage;
+    public static AbstractRaster street_l_t_6_senk;
     public static AbstractRaster street_l_t_6_wage;
+    public static AbstractRaster street_l_t_7_senk;
     public static AbstractRaster street_l_t_7_wage;
+    public static AbstractRaster street_l_t_8_senk;
     public static AbstractRaster street_l_t_8_wage;
     public static AbstractRaster tree_10ne;
     public static AbstractRaster tree_10nw;
@@ -104,8 +129,10 @@ public final class Raster {
     public static AbstractRaster tree_11ne;
     public static AbstractRaster tree_11nw;
     public static AbstractRaster tree_11se;
+
     public static AbstractRaster tree_11sw;
     public static AbstractRaster tree_12ne;
+
     public static AbstractRaster tree_12nw;
     public static AbstractRaster tree_12se;
     public static AbstractRaster tree_12sw;
@@ -113,10 +140,8 @@ public final class Raster {
     public static AbstractRaster tree_13nw;
     public static AbstractRaster tree_13se;
     public static AbstractRaster tree_13sw;
-
     public static AbstractRaster tree_14ne;
     public static AbstractRaster tree_14nw;
-
     public static AbstractRaster tree_14se;
     public static AbstractRaster tree_14sw;
     public static AbstractRaster tree_2ne;
@@ -125,6 +150,7 @@ public final class Raster {
     public static AbstractRaster tree_2sw;
     public static AbstractRaster tree_3ne;
     public static AbstractRaster tree_3nw;
+
     public static AbstractRaster tree_3se;
     public static AbstractRaster tree_3sw;
     public static AbstractRaster tree_4ne;
@@ -132,10 +158,14 @@ public final class Raster {
     public static AbstractRaster tree_4se;
     public static AbstractRaster tree_4sw;
     public static AbstractRaster tree_5ne;
+    public static AbstractRaster tree_5ne_water;
     public static AbstractRaster tree_5nw;
+    public static AbstractRaster tree_5nw_water;
     public static AbstractRaster tree_5se;
+    public static AbstractRaster tree_5se_water;
 
     public static AbstractRaster tree_5sw;
+    public static AbstractRaster tree_5sw_water;
     public static AbstractRaster tree_6ne;
     public static AbstractRaster tree_6nw;
     public static AbstractRaster tree_6se;
@@ -147,12 +177,15 @@ public final class Raster {
     public static AbstractRaster tree_8ne;
     public static AbstractRaster tree_8nw;
     public static AbstractRaster tree_8se;
-
     public static AbstractRaster tree_8sw;
     public static AbstractRaster tree_9ne;
+    public static AbstractRaster tree_9ne_water;
     public static AbstractRaster tree_9nw;
+    public static AbstractRaster tree_9nw_water;
     public static AbstractRaster tree_9se;
+    public static AbstractRaster tree_9se_water;
     public static AbstractRaster tree_9sw;
+    public static AbstractRaster tree_9sw_water;
     /**
      * Wand.
      */
@@ -446,7 +479,7 @@ public final class Raster {
         floor_9 = new SimpleRaster(90, "floor_9", Sprites.floor_9);
         registerRaster(floor_9);
 
-        floor_10 = new SimpleRaster(91, "floor_10", Sprites.floor_10);
+        floor_10 = new SolidRaster(91, "floor_10", Sprites.floor_10);
         registerRaster(floor_10);
 
         floor_11 = new SimpleRaster(92, "floor_11", Sprites.floor_11);
@@ -476,6 +509,105 @@ public final class Raster {
         chair_7 = new SolidRaster(100, "chair_7", Sprites.chair_7);
         registerRaster(chair_7);
 
+        street_l_t_1_senk = new SimpleRaster(101, "street_l_t_1_senk", Sprites.street_l_t_1_senk);
+        registerRaster(street_l_t_1_senk);
+
+        street_l_t_2_senk = new SimpleRaster(102, "street_l_t_2_senk", Sprites.street_l_t_2_senk);
+        registerRaster(street_l_t_2_senk);
+
+        street_l_t_3_senk = new SimpleRaster(103, "street_l_t_3_senk", Sprites.street_l_t_3_senk);
+        registerRaster(street_l_t_3_senk);
+
+        street_l_t_4_senk = new SimpleRaster(104, "street_l_t_4_senk", Sprites.street_l_t_4_senk);
+        registerRaster(street_l_t_4_senk);
+
+        street_l_t_5_senk = new SimpleRaster(105, "street_l_t_5_senk", Sprites.street_l_t_5_senk);
+        registerRaster(street_l_t_5_senk);
+
+        street_l_t_6_senk = new SimpleRaster(106, "street_l_t_6_senk", Sprites.street_l_t_6_senk);
+        registerRaster(street_l_t_6_senk);
+
+        street_l_t_7_senk = new SimpleRaster(107, "street_l_t_7_senk", Sprites.street_l_t_7_senk);
+        registerRaster(street_l_t_7_senk);
+
+        street_l_t_8_senk = new SimpleRaster(108, "street_l_t_8_senk", Sprites.street_l_t_8_senk);
+        registerRaster(street_l_t_8_senk);
+
+        street_l_b_1_senk = new SimpleRaster(109, "street_l_b_1_senk", Sprites.street_l_b_1_senk);
+        registerRaster(street_l_b_1_senk);
+
+        street_l_b_2_senk = new SimpleRaster(110, "street_l_b_2_senk", Sprites.street_l_b_2_senk);
+        registerRaster(street_l_b_2_senk);
+
+        street_l_b_3_senk = new SimpleRaster(111, "street_l_b_3_senk", Sprites.street_l_b_3_senk);
+        registerRaster(street_l_b_3_senk);
+
+        street_l_b_4_senk = new SimpleRaster(112, "street_l_b_4_senk", Sprites.street_l_b_4_senk);
+        registerRaster(street_l_b_4_senk);
+
+        street_l_b_5_senk = new SimpleRaster(113, "street_l_b_5_senk", Sprites.street_l_b_5_senk);
+        registerRaster(street_l_b_5_senk);
+
+        street_l_b_6_senk = new SimpleRaster(114, "street_l_b_6_senk", Sprites.street_l_b_6_senk);
+        registerRaster(street_l_b_6_senk);
+
+        street_l_b_7_senk = new SimpleRaster(115, "street_l_b_7_senk", Sprites.street_l_b_7_senk);
+        registerRaster(street_l_b_7_senk);
+
+        street_l_b_8_senk = new SimpleRaster(116, "street_l_b_8_senk", Sprites.street_l_b_8_senk);
+        registerRaster(street_l_b_8_senk);
+
+        tree_5nw_water = new SolidRaster(117, "tree_5nw_water", Sprites.tree_5nw_water);
+        registerRaster(tree_5nw_water);
+
+        tree_5ne_water = new SolidRaster(118, "tree_5ne_water", Sprites.tree_5ne_water);
+        registerRaster(tree_5ne_water);
+
+        tree_5se_water = new SolidRaster(119, "tree_5se_water", Sprites.tree_5se_water);
+        registerRaster(tree_5se_water);
+
+        tree_5sw_water = new SolidRaster(120, "tree_5sw_water", Sprites.tree_5sw_water);
+        registerRaster(tree_5sw_water);
+
+        tree_9nw_water = new SolidRaster(121, "tree_9nw_water", Sprites.tree_9nw_water);
+        registerRaster(tree_9nw_water);
+
+        tree_9ne_water = new SolidRaster(122, "tree_9ne_water", Sprites.tree_9ne_water);
+        registerRaster(tree_9ne_water);
+
+        tree_9se_water = new SolidRaster(123, "tree_9se_water", Sprites.tree_9se_water);
+        registerRaster(tree_9se_water);
+
+        tree_9sw_water = new SolidRaster(124, "tree_9sw_water", Sprites.tree_9sw_water);
+        registerRaster(tree_9sw_water);
+
+        ferryhouse_wall_e = new SolidRaster(125, "ferryhouse_wall_e", Sprites.ferryhouse_wall_e);
+        registerRaster(ferryhouse_wall_e);
+
+        ferryhouse_wall_s = new SolidRaster(126, "ferryhouse_wall_s", Sprites.ferryhouse_wall_s);
+        registerRaster(ferryhouse_wall_s);
+
+        ferryhouse_wall_w = new SolidRaster(127, "ferryhouse_wall_w", Sprites.ferryhouse_wall_w);
+        registerRaster(ferryhouse_wall_w);
+
+        ferryhouse_wall_n = new SolidRaster(128, "ferryhouse_wall_n", Sprites.ferryhouse_wall_n);
+        registerRaster(ferryhouse_wall_n);
+
+        ferryhouse_door = new SolidRaster(129, "ferryhouse_door", Sprites.ferryhouse_door);
+        registerRaster(ferryhouse_door);
+
+        ferryhouse_ecke_sw = new SolidRaster(130, "ferryhouse_ecke_sw", Sprites.ferryhouse_ecke_sw);
+        registerRaster(ferryhouse_ecke_sw);
+
+        ferryhouse_ecke_nw = new SolidRaster(131, "ferryhouse_ecke_nw", Sprites.ferryhouse_ecke_nw);
+        registerRaster(ferryhouse_ecke_nw);
+
+        ferryhouse_ecke_se = new SolidRaster(132, "ferryhouse_ecke_se", Sprites.ferryhouse_ecke_se);
+        registerRaster(ferryhouse_ecke_se);
+
+        ferryhouse_ecke_ne = new SolidRaster(133, "ferryhouse_ecke_ne", Sprites.ferryhouse_ecke_ne);
+        registerRaster(ferryhouse_ecke_ne);
+
     }
 
     /**
@@ -485,6 +617,17 @@ public final class Raster {
      *            Raster
      */
     private static void registerRaster(AbstractRaster r) {
+        if (r == null) {
+            Logger.warn("NULL");
+        }
+        if (MAPPINGS.containsKey(r.getName())) {
+            Logger.warn("Name schon vergeben");
+        }
+        if (r.getID() < 0 || r.getID() >= RASTER.length) {
+            Logger.warn("ID out of bounds");
+        } else if (RASTER[r.getID()] != null) {
+            Logger.warn("ID schon besetzt");
+        }
         if (r != null && !MAPPINGS.containsKey(r.getName()) && r.getID() > 0 && r.getID() < RASTER.length && RASTER[r.getID()] == null) {
             MAPPINGS.put(r.getName(), r);
             RASTER[r.getID()] = r;

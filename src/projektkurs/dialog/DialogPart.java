@@ -19,19 +19,15 @@ public class DialogPart implements Iterable<String> {
     /**
      * Ist dieser DialogPart gut. Wenn ja muss man ueber dem benoetigten Wert liegen, wenn nein darunter.
      */
-   /*
-    *  private final boolean isGood;
-    *  /**
+    private final boolean isGood;
+    /**
      * Anzeigename.
      */
-    
-    private int valueDialogPart;
-    
     private final String name;
     /**
      * Benoetigter Wert.
      */
-   // private final int necessaryValue;
+    private final int necessaryValue;
     /**
      * Enthaelt das Gespraech, jeweils ein String pro Person und Sprechpart.
      */
@@ -40,21 +36,19 @@ public class DialogPart implements Iterable<String> {
      * Aenderung des Wertes.
      */
     private final int valueChange;
-    
-    
 
     /**
      * Konstruktor
-     * 
+     *
      * @param name
      *            Anzeigename
      * @param talkLength
      *            Laenge des weiterfuehrenden Gespraechs
      */
 
-    //public DialogPart(String name, int talkLength) {
-      //  this(name, 0, 0, true, talkLength);
-    //}
+    public DialogPart(String name, int talkLength) {
+        this(name, 0, 0, true, talkLength);
+    }
 
     /**
      * Konstruktor.
@@ -63,19 +57,18 @@ public class DialogPart implements Iterable<String> {
      *            Anzeigename
      * @param valueChange
      *            Wertaenderung
+     * @param necessaryValue
+     *            benoetigter Wert
      * @param isGood
      *            ist dieser DialogPart gut
      * @param talkLength
      *            Laenge des weiterfuehrenden Gespraechs
      */
-    public DialogPart(String name, int valueChange,  int talkLength, int valueDialog, Dialog d) {
+    public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, int talkLength) {
         this.name = name;
         this.valueChange = valueChange;
-        valueDialogPart = 0;
-        this.valueDialogPart = d.getValueDialog();
-        d.setValueDialog(valueChange + valueDialogPart);
-        //this.necessaryValue = necessaryValue;
-       // this.isGood = isGood;
+        this.necessaryValue = necessaryValue;
+        this.isGood = isGood;
         talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
             talk[i] = "dialog.part." + name + "." + i;

@@ -178,6 +178,25 @@ public class Inventory {
     }
 
     /**
+     * Zahl aller Items im Inventar.
+     *
+     * @param stack
+     *            ItemStack
+     * @return Zahl.
+     */
+    public int getNumberOfItemsInInventory(ItemStack stack) {
+        int i = 0;
+        ItemStack stack1;
+        for (int j = 0; j < stacks.length; j++) {
+            stack1 = getItemStackAt(j);
+            if (stack1 != null && stack1.itemAndDamageEquals(stack)) {
+                i += stack1.getStackSize();
+            }
+        }
+        return i;
+    }
+
+    /**
      * Zahl aller ItemStacks im Inventar.
      *
      * @return Zahl.

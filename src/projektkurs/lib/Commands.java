@@ -8,6 +8,7 @@ import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
 import projektkurs.command.CommandOpenSimulation;
+import projektkurs.command.CommandReload;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
 import projektkurs.util.Init;
@@ -35,6 +36,10 @@ public final class Commands {
      * Die Mappings.
      */
     public static final HashMap<String, Command> MAPPINGS = new HashMap<String, Command>();
+    /**
+     * Reload-Kommando.
+     */
+    public static Command reload;
     /**
      * Raster-Setz-Kommando.
      */
@@ -80,6 +85,9 @@ public final class Commands {
 
         simulation = new CommandOpenSimulation();
         registerMapping(simulation);
+
+        reload = new CommandReload();
+        registerMapping(reload);
 
     }
 
