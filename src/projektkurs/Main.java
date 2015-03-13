@@ -14,7 +14,6 @@ import projektkurs.gui.GuiMainMenu;
 import projektkurs.io.InputManager;
 import projektkurs.level.Level;
 import projektkurs.lib.Images;
-import projektkurs.lib.Integers;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
@@ -24,7 +23,6 @@ import projektkurs.thread.GameThread;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
-import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
 
 /**
@@ -299,7 +297,6 @@ public final class Main {
     public static void startLevel(Level l) {
         if (l != null) {
             level = l;
-            renderHelper.setSight(level.getMap().getSpawnX() - MathUtil.floorDiv(Integers.sightX, 2), level.getMap().getSpawnY() - MathUtil.floorDiv(Integers.sightY, 2));
             player = new EntityPlayer(level.getMap(), level.getMap().getSpawnX(), level.getMap().getSpawnY(), Sprites.lordvO_N, Sprites.lordvO_O, Sprites.lordvO_S, Sprites.lordvO_W);
             l.generateAndPopulateAll();
             level.getMap().spawn(player);

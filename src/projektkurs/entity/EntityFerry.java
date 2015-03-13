@@ -6,7 +6,12 @@ import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
 public class EntityFerry extends EntityDialog {
-
+    /**
+     * Konstruktor.
+     *
+     * @param map
+     *            Spielfeld
+     */
     public EntityFerry(Spielfeld map) {
         super(map);
     }

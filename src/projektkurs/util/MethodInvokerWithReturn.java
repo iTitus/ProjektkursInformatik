@@ -13,11 +13,11 @@ public class MethodInvokerWithReturn<T> {
     /**
      * Methode.
      */
-    protected final Method m;
+    private final Method m;
     /**
      * Eventuelle Parameter.
      */
-    protected final Object[] objects;
+    private final Object[] objects;
 
     /**
      * Konstruktor.

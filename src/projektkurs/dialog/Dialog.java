@@ -15,6 +15,10 @@ public class Dialog {
      * Alle DialogParts in diesem Dialog.
      */
     private final DialogPart[] parts;
+    
+    
+    
+    private int valueDialog;
 
     /**
      * Konstruktor.
@@ -24,9 +28,10 @@ public class Dialog {
      * @param parts
      *            alle DialogParts
      */
-    public Dialog(String name, DialogPart... parts) {
+    public Dialog(String name, int valueDialog,DialogPart... parts ) {
         this.name = name;
         this.parts = parts;
+        this.valueDialog = valueDialog;
     }
 
     public int getMaxDialogParts() {
@@ -55,6 +60,14 @@ public class Dialog {
             }
         }
         return list;
+    }
+    
+    public int getValueDialog() {
+        return valueDialog;
+    }
+    
+    public void setValueDialog(int valueDialog){
+        this.valueDialog = valueDialog;
     }
 
 }
