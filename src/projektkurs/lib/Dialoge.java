@@ -14,6 +14,19 @@ import projektkurs.util.Pair;
  */
 public final class Dialoge {
 
+    public static Dialog LVmFaehrmann;
+    public static Dialog LVmFaehrmannOne;
+    public static Dialog LVmFaehrmannTwo;
+    public static Dialog LVmFischer;
+    public static Dialog LVmFrau;
+    public static Dialog LVmFrauOne;
+    public static Dialog LVmFrauThree;
+    public static Dialog LVmFrauTwo;
+    public static Dialog LVmHexerzirkel;
+    public static Dialog LVmHexerzirkelOne;
+    public static Dialog LVmJungeAmWegesrand;
+    public static Dialog LVmJungeAmWegesrandOne;
+    public static Dialog LVmJungeAmWegesrandTwo;
     /**
      * Die Mappings.
      */
@@ -22,19 +35,6 @@ public final class Dialoge {
      * Test-Dialog.
      */
     public static Dialog test;
-    public static Dialog LVmFischer;
-    public static Dialog LVmHexerzirkel;
-    public static Dialog LVmFrau;
-    public static Dialog LVmFrauOne;
-    public static Dialog LVmFrauTwo;
-    public static Dialog LVmFrauThree;
-    public static Dialog LVmFaehrmann;
-    public static Dialog LVmFaehrmannOne;
-    public static Dialog LVmFaehrmannTwo;
-    public static Dialog LVmHexerzirkelOne;
-    public static Dialog LVmJungeAmWegesrand;
-    public static Dialog LVmJungeAmWegesrandOne;
-    public static Dialog LVmJungeAmWegesrandTwo;
 
     /**
      * Das Pair, das alle Dialoge enthaelt.
