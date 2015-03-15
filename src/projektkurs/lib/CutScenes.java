@@ -39,13 +39,13 @@ public final class CutScenes {
      */
     public static CutScene one;
     /**
-     * CutScene No. 2
-     */
-    public static CutScene two;
-    /**
      * CutScene No. 3
      */
     public static CutScene three;
+    /**
+     * CutScene No. 2
+     */
+    public static CutScene two;
 
     /**
      * Das Pair, das alle CutScenes enthaelt.

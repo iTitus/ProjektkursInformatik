@@ -155,8 +155,6 @@ public abstract class Gui implements IUpdatable {
         if (hovered != null) {
             hovered.renderTooltip(screen);
         }
-
-        // RenderUtil.drawSprite((new Sprite("",Images.ladyvO_EW)).rescale("", factorX, factorY), sprite, x, y);
     }
 
     @Override

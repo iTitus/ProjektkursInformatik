@@ -192,7 +192,6 @@ public class TextField extends Element {
 
     @Override
     public void render(Screen screen) {
-        screen.drawRect(posX, posY, sizeX, sizeY);
         RenderUtil.drawRectangle(screen, posX, posY, sizeX, sizeY);
         Font.drawCenteredStringInRect(screen, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
     }
