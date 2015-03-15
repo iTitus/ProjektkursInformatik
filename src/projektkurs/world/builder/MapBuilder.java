@@ -3,8 +3,6 @@ package projektkurs.world.builder;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
-import projektkurs.entity.EntityFisher;
-import projektkurs.entity.EntityFisherboat;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntitySchranke;
@@ -50,7 +48,7 @@ public final class MapBuilder {
             }
         }
 
-        // BAeUME!
+        // BAEUME!
         for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.baum);
         }
@@ -61,7 +59,7 @@ public final class MapBuilder {
         }
         map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
 
-        // WAeNDE!
+        // WAENDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             map.setRasterAt(x, 0, Raster.wall);
             map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
@@ -74,7 +72,7 @@ public final class MapBuilder {
         // Animationen
         map.setRasterAt(3, 1, Raster.fire);
 
-        // TUeREN!
+        // TUEREN!
         for (int y = 20; y < 25; y++) {
             for (int x = 18; x < 23; x++) {
                 map.setRasterAt(x, y, Raster.rasen);
@@ -168,22 +166,23 @@ public final class MapBuilder {
         map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
 
-    
     /**
-     * It was hard to write, so it should be hard to understand!
+     * Level 1 - Spielfeld 0.
+     *
      * @param map
+     *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
-    	
-    	// Faehrman
+
+        // Faehrman
         map.spawn(new EntityFerryman(map, 26, 26));
-        
+
         // Ferry
         map.spawn(new EntityFerry(map, 10, 12));
 
-//        // Fishership
-//
-//        map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
+        // // Fishership
+        //
+        // map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
 
         // Auto
         map.spawn(new EntityVilleCar(map, 11, 25));
@@ -202,7 +201,6 @@ public final class MapBuilder {
         // Faehrhaus
         EntityFerryhouse fhouse = new EntityFerryhouse(map, 24, 24);
         map.spawn(fhouse);
-        
 
         // Water
 
@@ -212,11 +210,9 @@ public final class MapBuilder {
             }
         }
 
-        
-
         // Fisher
 
-//        map.spawn(new EntityFisher(map, 60, 47));
+        // map.spawn(new EntityFisher(map, 60, 47));
         // Insel im Fluss
         int inttemp = 4;
         int inttemp2 = 0;
@@ -284,7 +280,6 @@ public final class MapBuilder {
                 map.setRasterAt(map.getMapSizeX() - x, y, Raster.rasen_2);
             }
         }
-        
 
         // B�ume an der Stra�e
 
@@ -399,8 +394,6 @@ public final class MapBuilder {
             }
         }
 
-       
-
         // Strand am Boot
 
         for (int y = 36; y < 54; y++) {
@@ -428,8 +421,8 @@ public final class MapBuilder {
         map.setRasterAt(64, 51, Raster.water);
 
         map.setRasterAt(62, 49, Raster.water);
-        
-     // Water
+
+        // Water
 
         for (int y = 0; y < 20; y++) {
 
@@ -451,57 +444,56 @@ public final class MapBuilder {
                 map.setRasterAt(map.getMapSizeX() - x, 50 + y, Raster.water);
             }
         }
-        //Rasen unter dem Boot
-        
+        // Rasen unter dem Boot
+
         for (int x = 68; x < 72; x++) {
-            map.setRasterAt(x,55, Raster.rasen_2);
+            map.setRasterAt(x, 55, Raster.rasen_2);
         }
-        
+
         for (int x = 65; x < 76; x++) {
-            map.setRasterAt(x,56, Raster.rasen_2);
+            map.setRasterAt(x, 56, Raster.rasen_2);
         }
-        
+
         for (int y = 57; y < 62; y++) {
 
             for (int x = 65; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x,y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.rasen_2);
             }
         }
-        
-        
+
         for (int y = 62; y < 64; y++) {
 
             for (int x = 66; x < 74; x++) {
-                map.setRasterAt(x,y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.rasen_2);
             }
         }
-        
+
         for (int y = 62; y < 66; y++) {
 
             for (int x = 66; x < 68; x++) {
-                map.setRasterAt(x,y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.rasen_2);
             }
         }
-        //Sand Kurve unterm Boot
+        // Sand Kurve unterm Boot
         for (int x = 65; x < 72; x++) {
-            map.setRasterAt(x,55, Raster.floor_4);
+            map.setRasterAt(x, 55, Raster.floor_4);
         }
-        
+
         for (int x = 69; x < 76; x++) {
-            map.setRasterAt(x,56, Raster.floor_4);
+            map.setRasterAt(x, 56, Raster.floor_4);
         }
-        
+
         for (int x = 74; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x,57, Raster.floor_4);
+            map.setRasterAt(x, 57, Raster.floor_4);
         }
-        
+
         for (int x = 82; x < map.getMapSizeX(); x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            setTree( x, 60, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, 60, temp[0], temp[1], temp[2], temp[3], map);
         }
-        
+
         map.setRasterAt(64, 52, Raster.water);
-        
+
         // Baeume am Wasser
 
         setTree(42, 19, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
@@ -545,7 +537,7 @@ public final class MapBuilder {
         // map.setRasterAt(27, 17, Raster.ferryhouse_door);
 
         for (int i = 0; i < 8; i++) {
-            setstreet(10, 20 + i * 8, map);
+            setStreet(10, 20 + i * 8, map);
         }
 
         // Hafenbegrenzung
@@ -577,15 +569,29 @@ public final class MapBuilder {
         AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
         st.registerTrigger(area, Scripts.REMOVE_ENTITY, fhouse, map);
         // mapwechsel
-         AreaTrigger mapswitch = new AreaTrigger(58, 69, 6, 1);
-        st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE),1);
-        
-        //Cutscenestart
-        
+        AreaTrigger mapswitch = new AreaTrigger(58, 69, 6, 1);
+        st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+
+        // Cutscenestart
 
     }
 
-    private static void setstreet(int x, int y, Spielfeld map) {
+    /**
+     * Level 1 - Spielfeld 1.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
+            }
+        }
+
+    }
+
+    private static void setStreet(int x, int y, Spielfeld map) {
         map.setRasterAt(x + 1, y, Raster.street_l_b_1_senk);
         map.setRasterAt(x + 1, y + 1, Raster.street_l_b_2_senk);
         map.setRasterAt(x + 1, y + 2, Raster.street_l_b_3_senk);
@@ -609,30 +615,12 @@ public final class MapBuilder {
 
     }
 
-    /**
-     * Level 1 - Spielfeld 0.
-     *
-     * @param map
-     *            Spielfeld
-     */
-
     private static void setTree(int x, int y, AbstractRaster one, AbstractRaster two, AbstractRaster three, AbstractRaster four, Spielfeld map) {
 
         map.setRasterAt(x, y, one);
         map.setRasterAt(x + 1, y, two);
         map.setRasterAt(x + 1, y + 1, three);
         map.setRasterAt(x, y + 1, four);
-    }
-    
-    public static void generateAndPopulateLevel1Map1(Spielfeld map){
-    	for (int y = 0; y < map.getMapSizeY(); y++) {
-            for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
-            }
-        }
-    	
-    	
-
     }
 
     /**

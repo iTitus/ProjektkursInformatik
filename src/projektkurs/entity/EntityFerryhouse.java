@@ -13,5 +13,4 @@ public class EntityFerryhouse extends Entity {
         super(map, posX, posY, 6, 7, Sprites.ferryhouse);
     }
 
-   
 }

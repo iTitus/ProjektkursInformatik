@@ -3,8 +3,6 @@ package projektkurs.world.builder;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
-import projektkurs.entity.EntityFisher;
-import projektkurs.entity.EntityFisherboat;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntitySchranke;
@@ -50,7 +48,7 @@ public final class MapBuilder {
             }
         }
 
-        // BAeUME!
+        // BAEUME!
         for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.baum);
         }
@@ -61,7 +59,7 @@ public final class MapBuilder {
         }
         map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
 
-        // WAeNDE!
+        // WAENDE!
         for (int x = 0; x < map.getMapSizeX(); x++) {
             map.setRasterAt(x, 0, Raster.wall);
             map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
@@ -74,7 +72,7 @@ public final class MapBuilder {
         // Animationen
         map.setRasterAt(3, 1, Raster.fire);
 
-        // TUeREN!
+        // TUEREN!
         for (int y = 20; y < 25; y++) {
             for (int x = 18; x < 23; x++) {
                 map.setRasterAt(x, y, Raster.rasen);
@@ -168,14 +166,23 @@ public final class MapBuilder {
         map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.class), 0);
     }
 
+    /**
+     * Level 1 - Spielfeld 0.
+     *
+     * @param map
+     *            Spielfeld
+     */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+
+        // Faehrman
+        map.spawn(new EntityFerryman(map, 26, 26));
 
         // Ferry
         map.spawn(new EntityFerry(map, 10, 12));
 
-        // Fishership
-
-        map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
+        // // Fishership
+        //
+        // map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
 
         // Auto
         map.spawn(new EntityVilleCar(map, 11, 25));
@@ -191,9 +198,9 @@ public final class MapBuilder {
             }
         }
 
-        // F�hrhaus
+        // Faehrhaus
         EntityFerryhouse fhouse = new EntityFerryhouse(map, 24, 24);
-        // map.spawn(fhouse);
+        map.spawn(fhouse);
 
         // Water
 
@@ -203,12 +210,9 @@ public final class MapBuilder {
             }
         }
 
-        // F�hrman
-        map.spawn(new EntityFerryman(map, 29, 25));
-
         // Fisher
 
-        map.spawn(new EntityFisher(map, 60, 47));
+        // map.spawn(new EntityFisher(map, 60, 47));
         // Insel im Fluss
         int inttemp = 4;
         int inttemp2 = 0;
@@ -265,9 +269,9 @@ public final class MapBuilder {
 
         map.setRasterAt(38, 11, Raster.floor_4);
 
-        settree(35, 10, Raster.tree_4nw, Raster.tree_4ne, Raster.tree_4se, Raster.tree_4sw, map);
+        setTree(35, 10, Raster.tree_4nw, Raster.tree_4ne, Raster.tree_4se, Raster.tree_4sw, map);
 
-        settree(39, 9, Raster.tree_4nw, Raster.tree_4ne, Raster.tree_4se, Raster.tree_4sw, map);
+        setTree(39, 9, Raster.tree_4nw, Raster.tree_4ne, Raster.tree_4se, Raster.tree_4sw, map);
         // Boden
 
         for (int y = 0; y < 8; y++) {
@@ -276,56 +280,34 @@ public final class MapBuilder {
                 map.setRasterAt(map.getMapSizeX() - x, y, Raster.rasen_2);
             }
         }
-        // Water
-
-        for (int y = 0; y < 20; y++) {
-
-            for (int x = 0; x < 20 - y; x++) {
-                map.setRasterAt(map.getMapSizeX() - x, 20 + y, Raster.water);
-            }
-        }
-
-        for (int y = 30; y < 50; y++) {
-
-            for (int x = map.getMapSizeX() - 8; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.water);
-            }
-        }
-
-        for (int y = 0; y < 8; y++) {
-
-            for (int x = 0; x < 8 - y; x++) {
-                map.setRasterAt(map.getMapSizeX() - x, 50 + y, Raster.water);
-            }
-        }
 
         // B�ume an der Stra�e
 
         for (int y = 21; y < map.getMapSizeY() - 2; y = y + 7) {
-            settree(7, y, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
-            settree(15, y + 3, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
+            setTree(7, y, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
+            setTree(15, y + 3, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
         }
 
         // B�ume linke Seite
         for (int x = 2; x < 10; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int x = 2; x < 8; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(x, map.getMapSizeY() - 4, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, map.getMapSizeY() - 4, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int y = 22; y < map.getMapSizeY(); y = y + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(0, y, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(0, y, temp[0], temp[1], temp[2], temp[3], map);
 
         }
 
         for (int y = 48; y < map.getMapSizeY() - 4; y = y + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(2, y, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(2, y, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         // Baumfeld in der Mitte
@@ -333,7 +315,7 @@ public final class MapBuilder {
         for (int y = 0; y < 28; y = y + 2) {
             for (int x = 0; x < 10; x = x + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
-                settree(40 + x, 28 + y, temp[0], temp[1], temp[2], temp[3], map);
+                setTree(40 + x, 28 + y, temp[0], temp[1], temp[2], temp[3], map);
 
             }
 
@@ -342,7 +324,7 @@ public final class MapBuilder {
         for (int y = 0; y < 22; y = y + 2) {
             for (int x = 0; x < 6; x = x + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
-                settree(34 + x, 33 + y, temp[0], temp[1], temp[2], temp[3], map);
+                setTree(34 + x, 33 + y, temp[0], temp[1], temp[2], temp[3], map);
 
             }
 
@@ -351,7 +333,7 @@ public final class MapBuilder {
         for (int y = 0; y < 12; y = y + 2) {
             for (int x = 0; x < 4; x = x + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
-                settree(30 + x, 38 + y, temp[0], temp[1], temp[2], temp[3], map);
+                setTree(30 + x, 38 + y, temp[0], temp[1], temp[2], temp[3], map);
 
             }
 
@@ -359,7 +341,7 @@ public final class MapBuilder {
 
         for (int y = 35; y < 53; y = y + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(50, y, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(50, y, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int y = 54; y < 58; y++) {
@@ -369,33 +351,33 @@ public final class MapBuilder {
         }
 
         // Baum oben rechts
-        settree(map.getMapSizeX() - 3, 1, Raster.tree_3nw, Raster.tree_3ne, Raster.tree_3se, Raster.tree_3sw, map);
+        setTree(map.getMapSizeX() - 3, 1, Raster.tree_3nw, Raster.tree_3ne, Raster.tree_3se, Raster.tree_3sw, map);
 
         // Baumreihe ganz unten
         for (int x = 14; x < map.getMapSizeX(); x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int x = 22; x < map.getMapSizeX(); x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(x, map.getMapSizeY() - 4, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, map.getMapSizeY() - 4, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int x = 30; x < 52; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(x, map.getMapSizeY() - 6, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(x, map.getMapSizeY() - 6, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int x = 0; x < 8; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
-            settree(34 + x, map.getMapSizeY() - 8, temp[0], temp[1], temp[2], temp[3], map);
+            setTree(34 + x, map.getMapSizeY() - 8, temp[0], temp[1], temp[2], temp[3], map);
         }
 
         for (int y = 56; y < map.getMapSizeY() - 4; y = y + 2) {
             for (int x = 66; x < map.getMapSizeX(); x = x + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
-                settree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
 
             }
         }
@@ -411,28 +393,6 @@ public final class MapBuilder {
                 map.setRasterAt(x, y, Raster.rasen_2);
             }
         }
-
-        // B�ume am Wasser
-
-        settree(42, 19, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
-
-        settree(53, 23, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
-
-        settree(51, 23, Raster.tree_5nw, Raster.tree_5ne, Raster.tree_5se, Raster.tree_5sw, map);
-
-        settree(51, 21, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se_water, Raster.tree_5sw, map);
-
-        settree(48, 24, Raster.tree_6nw, Raster.tree_6ne, Raster.tree_6se, Raster.tree_6sw, map);
-
-        settree(49, 22, Raster.tree_5nw, Raster.tree_5ne, Raster.tree_5se, Raster.tree_5sw, map);
-
-        settree(47, 21, Raster.tree_6nw, Raster.tree_6ne, Raster.tree_6se, Raster.tree_6sw, map);
-
-        settree(47, 19, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
-
-        map.setRasterAt(49, 20, Raster.water);
-
-        map.setRasterAt(50, 20, Raster.water);
 
         // Strand am Boot
 
@@ -462,6 +422,100 @@ public final class MapBuilder {
 
         map.setRasterAt(62, 49, Raster.water);
 
+        // Water
+
+        for (int y = 0; y < 20; y++) {
+
+            for (int x = 0; x < 40 - y; x++) {
+                map.setRasterAt(map.getMapSizeX() - x, 20 + y, Raster.water);
+            }
+        }
+
+        for (int y = 30; y < 50; y++) {
+
+            for (int x = map.getMapSizeX() - 28; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+
+        for (int y = 0; y < 12; y++) {
+
+            for (int x = 0; x < 28 - y; x++) {
+                map.setRasterAt(map.getMapSizeX() - x, 50 + y, Raster.water);
+            }
+        }
+        // Rasen unter dem Boot
+
+        for (int x = 68; x < 72; x++) {
+            map.setRasterAt(x, 55, Raster.rasen_2);
+        }
+
+        for (int x = 65; x < 76; x++) {
+            map.setRasterAt(x, 56, Raster.rasen_2);
+        }
+
+        for (int y = 57; y < 62; y++) {
+
+            for (int x = 65; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
+            }
+        }
+
+        for (int y = 62; y < 64; y++) {
+
+            for (int x = 66; x < 74; x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
+            }
+        }
+
+        for (int y = 62; y < 66; y++) {
+
+            for (int x = 66; x < 68; x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
+            }
+        }
+        // Sand Kurve unterm Boot
+        for (int x = 65; x < 72; x++) {
+            map.setRasterAt(x, 55, Raster.floor_4);
+        }
+
+        for (int x = 69; x < 76; x++) {
+            map.setRasterAt(x, 56, Raster.floor_4);
+        }
+
+        for (int x = 74; x < map.getMapSizeX(); x++) {
+            map.setRasterAt(x, 57, Raster.floor_4);
+        }
+
+        for (int x = 82; x < map.getMapSizeX(); x = x + 2) {
+            AbstractRaster[] temp = MapUtil.getRanTree();
+            setTree(x, 60, temp[0], temp[1], temp[2], temp[3], map);
+        }
+
+        map.setRasterAt(64, 52, Raster.water);
+
+        // Baeume am Wasser
+
+        setTree(42, 19, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
+
+        setTree(53, 23, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
+
+        setTree(51, 23, Raster.tree_5nw, Raster.tree_5ne, Raster.tree_5se, Raster.tree_5sw, map);
+
+        setTree(51, 21, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se_water, Raster.tree_5sw, map);
+
+        setTree(48, 24, Raster.tree_6nw, Raster.tree_6ne, Raster.tree_6se, Raster.tree_6sw, map);
+
+        setTree(49, 22, Raster.tree_5nw, Raster.tree_5ne, Raster.tree_5se, Raster.tree_5sw, map);
+
+        setTree(47, 21, Raster.tree_6nw, Raster.tree_6ne, Raster.tree_6se, Raster.tree_6sw, map);
+
+        setTree(47, 19, Raster.tree_5nw_water, Raster.tree_5ne_water, Raster.tree_5se, Raster.tree_5sw, map);
+
+        map.setRasterAt(49, 20, Raster.water);
+
+        map.setRasterAt(50, 20, Raster.water);
+
         // Haus
 
         for (int y = 25; y < 30; y++) {
@@ -483,7 +537,7 @@ public final class MapBuilder {
         // map.setRasterAt(27, 17, Raster.ferryhouse_door);
 
         for (int i = 0; i < 8; i++) {
-            setstreet(10, 20 + i * 8, map);
+            setStreet(10, 20 + i * 8, map);
         }
 
         // Hafenbegrenzung
@@ -511,16 +565,33 @@ public final class MapBuilder {
         // 30), new AreaTrigger(30, 30, 10, 10),
         // new InventoryHasItemStackTrigger(new ItemStack(Items.earrings)));
 
-        // F�hrhaus spawnen/despawnen
+        // Faehrhaus spawnen/despawnen
         AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
         st.registerTrigger(area, Scripts.REMOVE_ENTITY, fhouse, map);
         // mapwechsel
-        // AreaTrigger mapswitch = new AreaTrigger(58, 69, 6, 1);
-        // st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integers.class),1);
+        AreaTrigger mapswitch = new AreaTrigger(58, 69, 6, 1);
+        st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+
+        // Cutscenestart
 
     }
 
-    public static void setstreet(int x, int y, Spielfeld map) {
+    /**
+     * Level 1 - Spielfeld 1.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.rasen_2);
+            }
+        }
+
+    }
+
+    private static void setStreet(int x, int y, Spielfeld map) {
         map.setRasterAt(x + 1, y, Raster.street_l_b_1_senk);
         map.setRasterAt(x + 1, y + 1, Raster.street_l_b_2_senk);
         map.setRasterAt(x + 1, y + 2, Raster.street_l_b_3_senk);
@@ -544,14 +615,7 @@ public final class MapBuilder {
 
     }
 
-    /**
-     * Level 1 - Spielfeld 0.
-     *
-     * @param map
-     *            Spielfeld
-     */
-
-    public static void settree(int x, int y, AbstractRaster one, AbstractRaster two, AbstractRaster three, AbstractRaster four, Spielfeld map) {
+    private static void setTree(int x, int y, AbstractRaster one, AbstractRaster two, AbstractRaster three, AbstractRaster four, Spielfeld map) {
 
         map.setRasterAt(x, y, one);
         map.setRasterAt(x + 1, y, two);

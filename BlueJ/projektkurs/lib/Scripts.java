@@ -6,9 +6,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import projektkurs.Main;
+import projektkurs.cutscene.CutScene;
+import projektkurs.cutscene.CutSceneManager;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.InvertedTrigger;
+import projektkurs.story.trigger.Trigger;
 import projektkurs.util.I18n;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
@@ -20,6 +23,11 @@ public final class Scripts {
 
     public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
     public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
+
+    public static void cutscenestart(CutScene c, Spielfeld map, Trigger t) {
+        CutSceneManager.startCutScene(c);
+        map.getStoryManager().removeTrigger(t);
+    }
 
     /**
      * Verliert das Spiel.
@@ -38,7 +46,7 @@ public final class Scripts {
 
     public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
         map.spawn(e);
-        AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
+        AreaTrigger area = new AreaTrigger(20, 21, 13, 14);
         map.getStoryManager().registerTrigger(area, REMOVE_ENTITY, e, map);
     }
 
@@ -48,7 +56,7 @@ public final class Scripts {
      * @param i
      *            Spielfeld
      */
-    public static void switchMap(Integer i) {
+    public static void switchMap(int i) {
         Main.getLevel().setMap(i);
     }
 

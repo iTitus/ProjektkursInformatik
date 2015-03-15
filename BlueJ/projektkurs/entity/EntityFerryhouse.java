@@ -1,11 +1,9 @@
 package projektkurs.entity;
 
-import projektkurs.dialog.Dialog;
-import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityFerryhouse extends EntityDialog {
+public class EntityFerryhouse extends Entity {
 
     public EntityFerryhouse(Spielfeld map) {
         super(map);
@@ -15,8 +13,4 @@ public class EntityFerryhouse extends EntityDialog {
         super(map, posX, posY, 6, 7, Sprites.ferryhouse);
     }
 
-    @Override
-    public Dialog getDialog() {
-        return Dialoge.test;
-    }
 }

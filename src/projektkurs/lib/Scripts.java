@@ -24,6 +24,11 @@ public final class Scripts {
     public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
     public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
 
+    public static void cutscenestart(CutScene c, Spielfeld map, Trigger t) {
+        CutSceneManager.startCutScene(c);
+        map.getStoryManager().removeTrigger(t);
+    }
+
     /**
      * Verliert das Spiel.
      */
@@ -53,11 +58,6 @@ public final class Scripts {
      */
     public static void switchMap(int i) {
         Main.getLevel().setMap(i);
-    }
-    
-    public static void cutscenestart(CutScene c, Spielfeld map, Trigger t){
-    	CutSceneManager.startCutScene(c);
-    	map.getStoryManager().removeTrigger(t);
     }
 
     /**
