@@ -51,10 +51,8 @@ public final class Dialoge {
     @Init
     public static void init() {
 
-        /*
-         * test = new Dialog("testDialog", new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
-         */
-        registerMapping(test);
+        // test = new Dialog("testDialog", new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
+        // registerMapping(test);
 
         // Neuer Dialog (Fischer) //[3]
 

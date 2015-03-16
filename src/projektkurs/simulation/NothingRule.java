@@ -24,4 +24,9 @@ public class NothingRule extends Rule {
         return 0;
     }
 
+    @Override
+    public EnumConnectionType getConnectionType(Board b, int x, int y) {
+        return EnumConnectionType.DISCONNECTED;
+    }
+
 }

@@ -115,11 +115,7 @@ public class SimulationBoard extends Element {
 
     @Override
     public void render(Screen screen) {
-        for (int y = 0; y < board.getSizeY(); y++) {
-            for (int x = 0; x < board.getSizeX(); x++) {
-                RenderUtil.drawFilledRectangle(screen, x * SIZE + posX, y * SIZE + posY, SIZE, SIZE, getRule(x, y).getColor(board, x, y));
-            }
-        }
+        board.render(screen, posX, posY);
         RenderUtil.drawRectangle(screen, posX, posY, sizeX, sizeY);
         Font.drawString(screen, "Current Rule: " + index + " (" + TYPES[index].getName() + ")", posX, posY);
     }

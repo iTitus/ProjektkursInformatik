@@ -1,5 +1,6 @@
 package projektkurs.simulation;
 
+import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 
 public class Board implements IUpdatable {
@@ -51,12 +52,6 @@ public class Board implements IUpdatable {
     @Override
     public void update() {
         int[][] temp = new int[sizeX + 2][sizeY + 2];
-        for (int x = 0; x < temp.length; x++) {
-            for (int y = 0; y < temp[x].length; y++) {
-                temp[x][y] = boardFlows[x][y];
-            }
-        }
-
         for (int x = 0; x < boardRules.length; x++) {
             for (int y = 0; y < boardRules[x].length; y++) {
                 temp[x + 1][y + 1] = boardRules[x][y].nextInt(this, x, y);
@@ -64,4 +59,13 @@ public class Board implements IUpdatable {
         }
         boardFlows = temp;
     }
+
+    public void render(Screen screen, int offsetX, int offsetY) {
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
+                getRule(x, y).render(screen, this, x, y, offsetX, offsetY);
+            }
+        }
+    }
+
 }
