@@ -35,6 +35,7 @@ public class SimpleWireRule extends Rule {
 
     @Override
     public EnumConnectionType getConnectionType(Board b, int x, int y, Direction direction) {
+        System.out.println(direction);
         if (orientation) {
             return direction == Direction.LEFT || direction == Direction.RIGHT ? EnumConnectionType.BOTH : EnumConnectionType.DISCONNECTED;
         }
@@ -107,29 +108,33 @@ public class SimpleWireRule extends Rule {
     @Override
     public void render(Screen screen, Board board, int x, int y, int offsetX, int offsetY) {
         RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 6, y * SimulationBoard.SIZE + offsetY + 6, 4, 4, getColor(board, x, y));
-        EnumFlow flow = EnumFlow.NORTH;
-        EnumConnectionType type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
-        if (type != EnumConnectionType.DISCONNECTED) {
-            RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 6, y * SimulationBoard.SIZE + offsetY + 0, 4, 6, getColor(board, x, y));
+
+        if (orientation) {
+            EnumFlow flow = EnumFlow.EAST;
+            EnumConnectionType type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
+            if (type != EnumConnectionType.DISCONNECTED) {
+                RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 10, y * SimulationBoard.SIZE + offsetY + 6, 6, 4, getColor(board, x, y));
+            }
+
+            flow = EnumFlow.WEST;
+            type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
+            if (type != EnumConnectionType.DISCONNECTED) {
+                RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 0, y * SimulationBoard.SIZE + offsetY + 6, 6, 4, getColor(board, x, y));
+            }
+        } else {
+            EnumFlow flow = EnumFlow.NORTH;
+            EnumConnectionType type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
+            if (type != EnumConnectionType.DISCONNECTED) {
+                RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 6, y * SimulationBoard.SIZE + offsetY + 0, 4, 6, getColor(board, x, y));
+            }
+
+            flow = EnumFlow.SOUTH;
+            type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
+            if (type != EnumConnectionType.DISCONNECTED) {
+                RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 6, y * SimulationBoard.SIZE + offsetY + 10, 4, 6, getColor(board, x, y));
+            }
         }
 
-        flow = EnumFlow.EAST;
-        type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
-        if (type != EnumConnectionType.DISCONNECTED) {
-            RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 10, y * SimulationBoard.SIZE + offsetY + 6, 6, 4, getColor(board, x, y));
-        }
-
-        flow = EnumFlow.SOUTH;
-        type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
-        if (type != EnumConnectionType.DISCONNECTED) {
-            RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 6, y * SimulationBoard.SIZE + offsetY + 10, 4, 6, getColor(board, x, y));
-        }
-
-        flow = EnumFlow.WEST;
-        type = board.getRule(x + flow.getOffsetX(), y + flow.getOffsetY()).getConnectionType(board, x + flow.getOffsetX(), y + flow.getOffsetY(), flow.getOpposite().getDirection());
-        if (type != EnumConnectionType.DISCONNECTED) {
-            RenderUtil.drawFilledRectangle(screen, x * SimulationBoard.SIZE + offsetX + 0, y * SimulationBoard.SIZE + offsetY + 6, 6, 4, getColor(board, x, y));
-        }
     }
 
 }

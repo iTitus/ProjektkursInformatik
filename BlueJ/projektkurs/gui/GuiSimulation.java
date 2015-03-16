@@ -34,6 +34,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
     public void initGui() {
         super.initGui();
         board = new SimulationBoard(64, 64, 96, 48, 0, this);
+
         board.setRule(new OmniSourceRule(), 2, 2);
         board.setRule(new OmniSourceRule(), 93, 2);
         for (int i = 3; i <= 92; i++) {
