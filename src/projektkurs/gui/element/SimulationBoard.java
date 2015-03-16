@@ -9,6 +9,7 @@ import projektkurs.render.Screen;
 import projektkurs.simulation.AndGateRule;
 import projektkurs.simulation.BlinkSource;
 import projektkurs.simulation.Board;
+import projektkurs.simulation.EnumFlow;
 import projektkurs.simulation.NotGateRule;
 import projektkurs.simulation.NothingRule;
 import projektkurs.simulation.OmniDirWireRule;
@@ -26,9 +27,9 @@ import projektkurs.util.RenderUtil;
 public class SimulationBoard extends Element {
 
     public static final int SIZE = 16;
-    private static final Rule[] TYPES = { new OmniSourceRule(), new BlinkSource(1, 4), new BlinkSource(1, 1), new BlinkSource(2, 2), new SimpleWireRule(true), new SimpleWireRule(false), new OneWayWireRule(1), new OneWayWireRule(2), new OneWayWireRule(3), new OneWayWireRule(4), new OmniDirWireRule(),
-            new NotGateRule(1), new NotGateRule(2), new NotGateRule(3), new NotGateRule(4), new AndGateRule(1), new AndGateRule(2), new AndGateRule(3), new AndGateRule(4), new OrGateRule(1), new OrGateRule(2), new OrGateRule(3), new OrGateRule(4), new XOrGateRule(1), new XOrGateRule(2), new XOrGateRule(3),
-            new XOrGateRule(4) };
+    private static final Rule[] TYPES = { new OmniSourceRule(), new BlinkSource(1, 4), new BlinkSource(1, 1), new BlinkSource(2, 2), new SimpleWireRule(true), new SimpleWireRule(false), new OneWayWireRule(EnumFlow.NORTH), new OneWayWireRule(EnumFlow.EAST), new OneWayWireRule(EnumFlow.SOUTH),
+            new OneWayWireRule(EnumFlow.WEST), new OmniDirWireRule(), new NotGateRule(EnumFlow.NORTH), new NotGateRule(EnumFlow.EAST), new NotGateRule(EnumFlow.SOUTH), new NotGateRule(EnumFlow.WEST), new AndGateRule(EnumFlow.NORTH), new AndGateRule(EnumFlow.EAST), new AndGateRule(EnumFlow.SOUTH),
+            new AndGateRule(EnumFlow.WEST), new OrGateRule(EnumFlow.NORTH), new OrGateRule(EnumFlow.EAST), new OrGateRule(EnumFlow.SOUTH), new OrGateRule(EnumFlow.WEST), new XOrGateRule(EnumFlow.NORTH), new XOrGateRule(EnumFlow.EAST), new XOrGateRule(EnumFlow.SOUTH), new XOrGateRule(EnumFlow.WEST) };
     private final Board board;
     private int index, oldX = -1, oldY = -1;
 
@@ -46,7 +47,7 @@ public class SimulationBoard extends Element {
         return board;
     }
 
-    public int getFlow(int x, int y) {
+    public EnumFlow getFlow(int x, int y) {
         return board.getFlow(x, y);
     }
 
@@ -117,6 +118,7 @@ public class SimulationBoard extends Element {
     public void render(Screen screen) {
         board.render(screen, posX, posY);
         RenderUtil.drawRectangle(screen, posX, posY, sizeX, sizeY);
+        RenderUtil.drawRectangle(screen, SIZE * ((Main.getInputManager().getMouseX() - posX) / SIZE) + posX, SIZE * ((Main.getInputManager().getMouseY() - posY) / SIZE) + posY, SIZE, SIZE);
         Font.drawString(screen, "Current Rule: " + index + " (" + TYPES[index].getName() + ")", posX, posY);
     }
 

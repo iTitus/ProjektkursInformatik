@@ -1,10 +1,12 @@
 package projektkurs.simulation;
 
+import projektkurs.util.Direction;
+
 public abstract class GateRule extends Rule {
 
-    protected int outputFlowDirection;
+    protected EnumFlow outputFlowDirection;
 
-    public GateRule(int outputFlowDirection) {
+    public GateRule(EnumFlow outputFlowDirection) {
         this.outputFlowDirection = outputFlowDirection;
     }
 
@@ -14,7 +16,12 @@ public abstract class GateRule extends Rule {
 
     @Override
     public int getColor(Board b, int x, int y) {
-        return b.getFlow(x, y) != 0 ? getActivatedColor() : getDeactivatedColor();
+        return b.getFlow(x, y) != EnumFlow.NONE ? getActivatedColor() : getDeactivatedColor();
+    }
+
+    @Override
+    public EnumConnectionType getConnectionType(Board b, int x, int y, Direction direction) {
+        return super.getConnectionType(b, x, y, direction);
     }
 
     public int getDeactivatedColor() {
@@ -25,24 +32,7 @@ public abstract class GateRule extends Rule {
 
     @Override
     public String getName() {
-        String s = "";
-        switch (outputFlowDirection) {
-            case 1:
-                s = "N";
-                break;
-            case 2:
-                s = "E";
-                break;
-            case 3:
-                s = "S";
-                break;
-            case 4:
-                s = "W";
-                break;
-            default:
-                break;
-        }
-        return getGateName() + ": " + s;
+        return getGateName() + ": " + outputFlowDirection.getName();
     }
 
 }

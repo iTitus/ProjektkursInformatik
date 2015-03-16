@@ -1,5 +1,7 @@
 package projektkurs.simulation;
 
+import projektkurs.util.Direction;
+
 public class OmniSourceRule extends Rule {
 
     @Override
@@ -13,13 +15,18 @@ public class OmniSourceRule extends Rule {
     }
 
     @Override
+    public EnumConnectionType getConnectionType(Board b, int x, int y, Direction direction) {
+        return EnumConnectionType.OUTPUT_ONLY;
+    }
+
+    @Override
     public String getName() {
         return "OmniSource";
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        return -1;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        return EnumFlow.OMNI_DIRECTIONAL;
     }
 
 }

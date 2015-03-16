@@ -5,7 +5,7 @@ public class AndGateRule extends GateRule {
     private static final int[] TABLE_X = { 1, 0, -1, 0 };
     private static final int[] TABLE_Y = { 0, 1, 0, -1 };
 
-    public AndGateRule(int outputFlowDirection) {
+    public AndGateRule(EnumFlow outputFlowDirection) {
         super(outputFlowDirection);
     }
 
@@ -20,10 +20,10 @@ public class AndGateRule extends GateRule {
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        int flow1 = b.getFlow(x + TABLE_X[outputFlowDirection - 1], y + TABLE_Y[outputFlowDirection - 1]);
-        int flow2 = b.getFlow(x - TABLE_X[outputFlowDirection - 1], y - TABLE_Y[outputFlowDirection - 1]);
-        return (flow1 == -1 || flow1 == (4 + outputFlowDirection - 2) % 4 + 1) && (flow2 == -1 || flow2 == (4 + outputFlowDirection) % 4 + 1) ? outputFlowDirection : 0;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        EnumFlow flow1 = b.getFlow(x + TABLE_X[outputFlowDirection.getIndex() - 1], y + TABLE_Y[outputFlowDirection.getIndex() - 1]);
+        EnumFlow flow2 = b.getFlow(x - TABLE_X[outputFlowDirection.getIndex() - 1], y - TABLE_Y[outputFlowDirection.getIndex() - 1]);
+        return (flow1 == EnumFlow.OMNI_DIRECTIONAL || flow1.getIndex() == (4 + outputFlowDirection.getIndex() - 2) % 4 + 1) && (flow2 == EnumFlow.OMNI_DIRECTIONAL || flow2.getIndex() == (4 + outputFlowDirection.getIndex()) % 4 + 1) ? outputFlowDirection : EnumFlow.NONE;
     }
 
 }

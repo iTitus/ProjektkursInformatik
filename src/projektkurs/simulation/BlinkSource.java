@@ -1,6 +1,7 @@
 package projektkurs.simulation;
 
 import projektkurs.Main;
+import projektkurs.util.Direction;
 
 public class BlinkSource extends Rule {
 
@@ -22,13 +23,18 @@ public class BlinkSource extends Rule {
     }
 
     @Override
+    public EnumConnectionType getConnectionType(Board b, int x, int y, Direction direction) {
+        return EnumConnectionType.OUTPUT_ONLY;
+    }
+
+    @Override
     public String getName() {
         return "BlinkSource[ON: " + durationOn + "; OFF:" + durationOff + "]";
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        return Main.getTicks() % (durationOn + durationOff) < durationOn ? -1 : 0;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        return Main.getTicks() % (durationOn + durationOff) < durationOn ? EnumFlow.OMNI_DIRECTIONAL : EnumFlow.NONE;
     }
 
 }

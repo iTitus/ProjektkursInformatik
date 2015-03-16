@@ -4,6 +4,7 @@ import projektkurs.gui.element.ISimulationBoardListener;
 import projektkurs.gui.element.SimulationBoard;
 import projektkurs.render.Screen;
 import projektkurs.simulation.AndGateRule;
+import projektkurs.simulation.EnumFlow;
 import projektkurs.simulation.NotGateRule;
 import projektkurs.simulation.OmniSourceRule;
 import projektkurs.simulation.OrGateRule;
@@ -38,7 +39,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
         for (int i = 3; i <= 92; i++) {
             board.setRule(new SimpleWireRule(true), i, 2);
         }
-        board.setRule(new AndGateRule(3), 15, 2);
+        board.setRule(new AndGateRule(EnumFlow.SOUTH), 15, 2);
         for (int i = 3; i <= 30; i++) {
             board.setRule(new SimpleWireRule(false), 15, i);
         }
@@ -48,7 +49,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
         for (int i = 19; i <= 24; i++) {
             board.setRule(new SimpleWireRule(true), i, 16);
         }
-        board.setRule(new NotGateRule(2), 25, 16);
+        board.setRule(new NotGateRule(EnumFlow.EAST), 25, 16);
         for (int i = 26; i <= 32; i++) {
             board.setRule(new SimpleWireRule(true), i, 16);
         }
@@ -58,7 +59,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
         for (int i = 19; i <= 24; i++) {
             board.setRule(new SimpleWireRule(true), i, 20);
         }
-        board.setRule(new OrGateRule(3), 25, 20);
+        board.setRule(new OrGateRule(EnumFlow.SOUTH), 25, 20);
         for (int i = 26; i <= 31; i++) {
             board.setRule(new SimpleWireRule(true), i, 20);
         }
@@ -72,7 +73,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
         for (int i = 19; i <= 24; i++) {
             board.setRule(new SimpleWireRule(true), i, 26);
         }
-        board.setRule(new AndGateRule(3), 25, 26);
+        board.setRule(new AndGateRule(EnumFlow.SOUTH), 25, 26);
         for (int i = 26; i <= 31; i++) {
             board.setRule(new SimpleWireRule(true), i, 26);
         }
@@ -86,7 +87,7 @@ public class GuiSimulation extends Gui implements ISimulationBoardListener {
         for (int i = 19; i <= 24; i++) {
             board.setRule(new SimpleWireRule(true), i, 32);
         }
-        board.setRule(new XOrGateRule(3), 25, 32);
+        board.setRule(new XOrGateRule(EnumFlow.SOUTH), 25, 32);
         for (int i = 26; i <= 31; i++) {
             board.setRule(new SimpleWireRule(true), i, 32);
         }

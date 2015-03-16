@@ -5,7 +5,7 @@ public class NotGateRule extends GateRule {
     private static final int[] TABLE_X = { 0, -1, 0, 1 };
     private static final int[] TABLE_Y = { 1, 0, -1, 0 };
 
-    public NotGateRule(int outputFlowDirection) {
+    public NotGateRule(EnumFlow outputFlowDirection) {
         super(outputFlowDirection);
     }
 
@@ -20,8 +20,8 @@ public class NotGateRule extends GateRule {
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        return b.getFlow(x + NotGateRule.TABLE_X[outputFlowDirection - 1], y + NotGateRule.TABLE_Y[outputFlowDirection - 1]) != 0 ? 0 : outputFlowDirection;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        return b.getFlow(x + NotGateRule.TABLE_X[outputFlowDirection.getIndex() - 1], y + NotGateRule.TABLE_Y[outputFlowDirection.getIndex() - 1]) != EnumFlow.NONE ? EnumFlow.NONE : outputFlowDirection;
     }
 
 }

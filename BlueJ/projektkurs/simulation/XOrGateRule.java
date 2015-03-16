@@ -2,10 +2,9 @@ package projektkurs.simulation;
 
 public class XOrGateRule extends GateRule {
 
-    private final AndGateRule andGate;
-    private final OrGateRule orGate;
+    private final Rule andGate, orGate;
 
-    public XOrGateRule(int outputFlowDirection) {
+    public XOrGateRule(EnumFlow outputFlowDirection) {
         super(outputFlowDirection);
         andGate = new AndGateRule(outputFlowDirection);
         orGate = new OrGateRule(outputFlowDirection);
@@ -22,8 +21,8 @@ public class XOrGateRule extends GateRule {
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        return andGate.nextInt(b, x, y) == 0 && orGate.nextInt(b, x, y) != 0 ? outputFlowDirection : 0;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        return andGate.getNextFlow(b, x, y) == EnumFlow.NONE && orGate.getNextFlow(b, x, y) != EnumFlow.NONE ? outputFlowDirection : EnumFlow.NONE;
     }
 
 }

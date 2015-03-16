@@ -93,7 +93,6 @@ public enum Direction {
      * X-Offset.
      */
     private final int offsetX;
-
     /**
      * Y-Offset.
      */

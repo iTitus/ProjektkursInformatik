@@ -1,6 +1,7 @@
 package projektkurs.simulation;
 
 import projektkurs.lib.Integers;
+import projektkurs.util.Direction;
 
 public class NothingRule extends Rule {
 
@@ -15,18 +16,18 @@ public class NothingRule extends Rule {
     }
 
     @Override
+    public EnumConnectionType getConnectionType(Board b, int x, int y, Direction direction) {
+        return EnumConnectionType.DISCONNECTED;
+    }
+
+    @Override
     public String getName() {
         return null;
     }
 
     @Override
-    public int nextInt(Board b, int x, int y) {
-        return 0;
-    }
-
-    @Override
-    public EnumConnectionType getConnectionType(Board b, int x, int y) {
-        return EnumConnectionType.DISCONNECTED;
+    public EnumFlow getNextFlow(Board b, int x, int y) {
+        return EnumFlow.NONE;
     }
 
 }
