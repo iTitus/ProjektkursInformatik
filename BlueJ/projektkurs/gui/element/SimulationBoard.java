@@ -118,7 +118,9 @@ public class SimulationBoard extends Element {
     public void render(Screen screen) {
         board.render(screen, posX, posY);
         RenderUtil.drawRectangle(screen, posX, posY, sizeX, sizeY);
-        RenderUtil.drawRectangle(screen, SIZE * ((Main.getInputManager().getMouseX() - posX) / SIZE) + posX, SIZE * ((Main.getInputManager().getMouseY() - posY) / SIZE) + posY, SIZE, SIZE);
+        if (isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
+            RenderUtil.drawRectangle(screen, SIZE * ((Main.getInputManager().getMouseX() - posX) / SIZE) + posX, SIZE * ((Main.getInputManager().getMouseY() - posY) / SIZE) + posY, SIZE, SIZE);
+        }
         Font.drawString(screen, "Current Rule: " + index + " (" + TYPES[index].getName() + ")", posX, posY);
     }
 
