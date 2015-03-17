@@ -7,7 +7,8 @@ import projektkurs.command.Command;
 import projektkurs.command.CommandCutScene;
 import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
-import projektkurs.command.CommandOpenSimulation;
+import projektkurs.command.CommandOpenGameOfLife;
+import projektkurs.command.CommandOpenLogicBoard;
 import projektkurs.command.CommandReload;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
@@ -33,6 +34,14 @@ public final class Commands {
      */
     public static Command item;
     /**
+     * GoL-Simulations-Kommando.
+     */
+    public static Command life;
+    /**
+     * Logik-Simulations-Kommando.
+     */
+    public static Command logic;
+    /**
      * Die Mappings.
      */
     public static final HashMap<String, Command> MAPPINGS = new HashMap<String, Command>();
@@ -44,10 +53,6 @@ public final class Commands {
      * Raster-Setz-Kommando.
      */
     public static Command setraster;
-    /**
-     * Simulations-Kommando.
-     */
-    public static Command simulation;
     /**
      * Switch-Level-Kommando.
      */
@@ -83,8 +88,11 @@ public final class Commands {
         switchLevel = new CommandSwitch();
         registerMapping(switchLevel);
 
-        simulation = new CommandOpenSimulation();
-        registerMapping(simulation);
+        logic = new CommandOpenLogicBoard();
+        registerMapping(logic);
+
+        life = new CommandOpenGameOfLife();
+        registerMapping(life);
 
         reload = new CommandReload();
         registerMapping(reload);
