@@ -1,8 +1,8 @@
 package projektkurs.entity;
 
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Strings;
 import projektkurs.render.Sprite;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

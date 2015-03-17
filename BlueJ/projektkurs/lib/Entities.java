@@ -8,11 +8,11 @@ import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

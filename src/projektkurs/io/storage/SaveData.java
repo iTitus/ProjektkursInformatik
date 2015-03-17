@@ -1,7 +1,9 @@
-package projektkurs.util;
+package projektkurs.io.storage;
 
 import java.io.Serializable;
 import java.util.HashMap;
+
+import projektkurs.util.Logger;
 
 /**
  * Eine SaveData.

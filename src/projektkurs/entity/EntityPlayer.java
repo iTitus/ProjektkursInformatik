@@ -6,12 +6,12 @@ import projektkurs.Main;
 import projektkurs.dialog.DialogManager;
 import projektkurs.dialog.ITalkable;
 import projektkurs.inventory.PlayerInventory;
+import projektkurs.io.storage.SaveData;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Scripts;
 import projektkurs.lib.Strings;
 import projektkurs.render.Sprite;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

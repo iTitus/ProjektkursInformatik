@@ -3,6 +3,7 @@ package projektkurs.lib;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import projektkurs.io.storage.SaveData;
 import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.ExtraInformationDoor;
@@ -11,7 +12,6 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
-import projektkurs.util.SaveData;
 
 /**
  * Alle ExtraInformationstypen.

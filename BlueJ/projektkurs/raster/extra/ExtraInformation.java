@@ -1,10 +1,10 @@
 package projektkurs.raster.extra;
 
+import projektkurs.io.storage.ISaveable;
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Strings;
 import projektkurs.util.IHasPosition;
-import projektkurs.util.ISaveable;
 import projektkurs.util.IUpdatable;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

@@ -2,10 +2,10 @@ package projektkurs.raster.extra;
 
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityLiving;
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Strings;
 import projektkurs.raster.AbstractRaster;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

@@ -1,9 +1,9 @@
 package projektkurs.item;
 
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Items;
 import projektkurs.lib.Strings;
 import projektkurs.render.Sprite;
-import projektkurs.util.SaveData;
 
 /**
  * Ein Itemhaufen.

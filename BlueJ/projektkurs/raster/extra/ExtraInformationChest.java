@@ -1,9 +1,9 @@
 package projektkurs.raster.extra;
 
 import projektkurs.inventory.Inventory;
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

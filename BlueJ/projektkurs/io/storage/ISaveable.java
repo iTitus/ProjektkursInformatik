@@ -1,4 +1,4 @@
-package projektkurs.util;
+package projektkurs.io.storage;
 
 /**
  * Mit diesem Interface koennen Objekte gespeichert und geladen werden.

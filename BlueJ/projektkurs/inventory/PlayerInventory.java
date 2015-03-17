@@ -1,10 +1,10 @@
 package projektkurs.inventory;
 
+import projektkurs.io.storage.SaveData;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Strings;
 import projektkurs.util.MathUtil;
-import projektkurs.util.SaveData;
 
 /**
  * Das PlayerInventory.

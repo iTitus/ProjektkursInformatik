@@ -7,6 +7,8 @@ import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviour;
+import projektkurs.io.storage.ISaveable;
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
@@ -15,12 +17,10 @@ import projektkurs.render.Screen;
 import projektkurs.render.Sprite;
 import projektkurs.util.Direction;
 import projektkurs.util.IHasPositionAndSize;
-import projektkurs.util.ISaveable;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
-import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**

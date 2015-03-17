@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
+import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sprites;
@@ -15,7 +16,6 @@ import projektkurs.story.StoryManager;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
-import projektkurs.util.SaveData;
 
 /**
  * Ein Spielfeld.
