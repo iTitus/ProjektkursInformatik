@@ -12,7 +12,7 @@ public final class DialogManager {
     /**
      * Der aktuelle Wert der Dialoge.
      */
-    private static int value;
+    private static long value;
 
     /**
      * Aendert den Wert der Dialoge.
@@ -20,8 +20,8 @@ public final class DialogManager {
      * @param by
      *            Aenderung
      */
-    public static void changeValue(int by) {
-        value += by;
+    public static void changeValue(long by) {
+        value |= by;
     }
 
     /**
@@ -29,7 +29,7 @@ public final class DialogManager {
      *
      * @return Wert
      */
-    public static int getValue() {
+    public static long getValue() {
         return value;
     }
 

@@ -17,17 +17,13 @@ public class DialogPart implements Iterable<String> {
      */
     private int index;
     /**
-     * Ist dieser DialogPart gut. Wenn ja muss man ueber dem benoetigten Wert liegen, wenn nein darunter.
-     */
-    private final boolean isGood;
-    /**
      * Anzeigename.
      */
     private final String name;
     /**
      * Benoetigter Wert.
      */
-    private final int necessaryValue;
+    private final long necessaryValue;
     /**
      * Enthaelt das Gespraech, jeweils ein String pro Person und Sprechpart.
      */
@@ -47,7 +43,7 @@ public class DialogPart implements Iterable<String> {
      */
 
     public DialogPart(String name, int talkLength) {
-        this(name, 0, 0, true, talkLength);
+        this(name, 0, 0, talkLength);
     }
 
     /**
@@ -59,16 +55,13 @@ public class DialogPart implements Iterable<String> {
      *            Wertaenderung
      * @param necessaryValue
      *            benoetigter Wert
-     * @param isGood
-     *            ist dieser DialogPart gut
      * @param talkLength
      *            Laenge des weiterfuehrenden Gespraechs
      */
-    public DialogPart(String name, int valueChange, int necessaryValue, boolean isGood, int talkLength) {
+    public DialogPart(String name, int valueChange, int necessaryValue, int talkLength) {
         this.name = name;
         this.valueChange = valueChange;
         this.necessaryValue = necessaryValue;
-        this.isGood = isGood;
         talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
             talk[i] = "dialog.part." + name + "." + i;
@@ -91,7 +84,7 @@ public class DialogPart implements Iterable<String> {
      *
      * @return benoetigter Wert
      */
-    public int getNecessaryValue() {
+    public long getNecessaryValue() {
         return necessaryValue;
     }
 
@@ -182,7 +175,7 @@ public class DialogPart implements Iterable<String> {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldShowUp() {
-        return activated && (isGood ? necessaryValue <= DialogManager.getValue() : necessaryValue >= DialogManager.getValue());
+        return necessaryValue == (necessaryValue & DialogManager.getValue());
     }
 
 }

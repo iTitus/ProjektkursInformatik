@@ -16,7 +16,7 @@ public class CommandOpenGameOfLife extends Command {
 
     @Override
     public String getCommand() {
-        return "logic";
+        return "life";
     }
 
 }

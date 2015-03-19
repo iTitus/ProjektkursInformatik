@@ -30,6 +30,8 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
             Main.openGui(new GuiIngameMenu());
         } else if (e.getKeyCode() == KeyBindings.KEY_CONSOLE) {
             Main.openGui(new GuiConsole());
+        } else if (e.getKeyCode() == KeyBindings.KEY_INVENTORY) {
+            Main.openGui(new GuiPlayerInventory(Main.getPlayer().getInventory()));
         }
     }
 

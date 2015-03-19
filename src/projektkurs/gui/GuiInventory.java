@@ -32,6 +32,10 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
         this.inv = inv;
     }
 
+    public Inventory getInventory() {
+        return inv;
+    }
+
     @Override
     public void initGui() {
         super.initGui();

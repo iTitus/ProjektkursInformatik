@@ -1,14 +1,17 @@
 package projektkurs.world.builder;
 
+import projektkurs.cutscene.CutScene;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
+import projektkurs.entity.EntityGrammophon;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntitySchranke;
 import projektkurs.entity.EntityVilleCar;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
+import projektkurs.lib.CutScenes;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
@@ -22,6 +25,7 @@ import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
+import projektkurs.story.trigger.Trigger;
 import projektkurs.util.Direction;
 import projektkurs.util.MapUtil;
 import projektkurs.util.MathUtil;
@@ -176,6 +180,10 @@ public final class MapBuilder {
 
         // Faehrman
         map.spawn(new EntityFerryman(map, 26, 26));
+
+        // Grammophone
+
+        map.spawn(new EntityGrammophon(map, 26, 28));
 
         // Ferry
         map.spawn(new EntityFerry(map, 10, 12));
@@ -573,6 +581,8 @@ public final class MapBuilder {
         st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
 
         // Cutscenestart
+        AreaTrigger dia1 = new AreaTrigger(10, 22, 6, 1);
+        st.registerTrigger(dia1, ReflectionUtil.getMethod(Scripts.class, "cutscenestart", CutScene.class, Spielfeld.class, Trigger.class), CutScenes.one, map, dia1);
 
     }
 

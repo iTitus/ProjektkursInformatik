@@ -38,7 +38,6 @@ public class SimpleWireRule extends Rule {
 
     @Override
     public EnumConnectionType getConnectionType(LogicBoard b, int x, int y, Direction direction) {
-        System.out.println(direction);
         if (orientation) {
             return direction == Direction.LEFT || direction == Direction.RIGHT ? EnumConnectionType.BOTH : EnumConnectionType.DISCONNECTED;
         }

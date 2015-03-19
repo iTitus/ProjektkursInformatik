@@ -28,6 +28,10 @@ public final class KeyBindings {
      */
     public static final int KEY_DOWN = KeyEvent.VK_S;
     /**
+     * Taste, um das Inventar zu �ffnen.
+     */
+    public static final int KEY_INVENTORY = KeyEvent.VK_I;
+    /**
      * Taste, um nach links zu gehen.
      */
     public static final int KEY_LEFT = KeyEvent.VK_A;

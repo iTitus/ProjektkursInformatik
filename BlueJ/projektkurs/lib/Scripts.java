@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import projektkurs.Main;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.CutSceneManager;
+import projektkurs.dialog.DialogManager;
+import projektkurs.entity.Entity;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.InvertedTrigger;
@@ -27,6 +29,10 @@ public final class Scripts {
     public static void cutscenestart(CutScene c, Spielfeld map, Trigger t) {
         CutSceneManager.startCutScene(c);
         map.getStoryManager().removeTrigger(t);
+    }
+
+    public static void dialogstart(projektkurs.dialog.Dialog d, Entity e) {
+        DialogManager.startDialog(d, e);
     }
 
     /**
