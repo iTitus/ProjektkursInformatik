@@ -59,6 +59,7 @@ public final class CutScenes {
     /**
      * Initialisiert alle CutScenes.
      */
+    @SuppressWarnings("deprecation")
     @Init
     public static void init() {
         one = new CutScene("one");

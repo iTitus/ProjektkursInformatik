@@ -17,6 +17,7 @@ import projektkurs.util.Pair;
 /**
  * Alle Bilder.
  */
+@Deprecated
 public final class Images {
 
     public static BufferedImage auto_dc_EW;

@@ -207,6 +207,10 @@ public class Sprite {
         return new Sprite(name, rotate(angle), sizeX, sizeY);
     }
 
+    public BufferedImage toBufferedImage() {
+        return new BufferedImage(sizeX, sizeY, BufferedImage.TYPE_INT_RGB);
+    }
+
     @Override
     public String toString() {
         return "Sprite [" + name + "]";

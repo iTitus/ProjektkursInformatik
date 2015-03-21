@@ -30,6 +30,7 @@ import projektkurs.util.ReflectionUtil;
 /**
  * Die Hauptklasse.
  */
+@SuppressWarnings("deprecation")
 public final class Main {
 
     /**
@@ -89,8 +90,11 @@ public final class Main {
      */
     public static void closeGui() {
         if (level != null && player != null) {
-            Main.gui = ingameGui;
-            Main.gui.initGui();
+            if (gui != null) {
+                gui.onGuiClosed();
+            }
+            gui = ingameGui;
+            gui.initGui();
         }
     }
 
@@ -214,7 +218,7 @@ public final class Main {
         level = null;
         player = null;
         mainFrame = new JFrame(Strings.NAME + " " + Strings.VERSION);
-        mainFrame.setIconImage(Images.item42);
+        mainFrame.setIconImage(Sprites.item42.toBufferedImage());
         mainFrame.setUndecorated(true);
         mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -241,7 +245,6 @@ public final class Main {
      *            Konsolenargumente
      */
     public static void main(String[] args) {
-
         try {
             startGame();
         } catch (Throwable t) {
@@ -257,6 +260,9 @@ public final class Main {
      */
     public static void openGui(Gui gui) {
         if (gui != null) {
+            if (Main.gui != null) {
+                Main.gui.onGuiClosed();
+            }
             Main.gui = gui;
             Main.gui.initGui();
         } else {

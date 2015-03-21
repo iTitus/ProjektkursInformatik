@@ -10,6 +10,7 @@ import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.lib.Images;
 import projektkurs.util.Init.State;
 
+@SuppressWarnings("deprecation")
 public final class CutSceneUtil {
 
     private static BufferedImage[] TREES;

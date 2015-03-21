@@ -5,6 +5,7 @@ import projektkurs.render.Screen;
 
 public class CombinationElement extends Element {
 
+    @SuppressWarnings("unused")
     private final Inventory combinationInventory;
 
     public CombinationElement(int posX, int posY, int sizeX, int sizeY, int id, IElementListener listener) {
@@ -14,7 +15,7 @@ public class CombinationElement extends Element {
 
     @Override
     public void render(Screen screen) {
-
+        // TODO
     }
 
 }

@@ -25,6 +25,7 @@ import projektkurs.util.RenderUtil;
 /**
  * Informations-GUI.
  */
+@SuppressWarnings("deprecation")
 public class GuiInfo extends Gui {
 
     /**

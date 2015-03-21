@@ -5,8 +5,8 @@ import javax.swing.WindowConstants;
 
 import projektkurs.Main;
 import projektkurs.cutscene.render.CutsceneRender;
-import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
+import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
 import projektkurs.render.RenderHelper;
 import projektkurs.util.Logger;
@@ -142,7 +142,7 @@ public final class CutSceneManager {
             map = Main.getLevel().getMap().copy();
 
             cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + " - CutScene");
-            cutSceneFrame.setIconImage(Images.item42);
+            cutSceneFrame.setIconImage(Sprites.item42.toBufferedImage());
             cutSceneFrame.setUndecorated(true);
             cutSceneFrame.setResizable(false);
             cutSceneFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

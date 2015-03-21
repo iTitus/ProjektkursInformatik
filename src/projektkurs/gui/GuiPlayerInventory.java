@@ -11,6 +11,7 @@ import projektkurs.util.RenderUtil;
 
 public class GuiPlayerInventory extends Gui implements IInventoryElementListener {
 
+    @SuppressWarnings("unused")
     private CombinationElement combinationElement;
     private final PlayerInventory inventory;
 
@@ -31,12 +32,12 @@ public class GuiPlayerInventory extends Gui implements IInventoryElementListener
 
     @Override
     public void onSlotLeftClick(int slotIndex, InventoryElement invE, MouseEvent e) {
-
+        // TODO
     }
 
     @Override
     public void onSlotRightClick(int slotIndex, InventoryElement invE, MouseEvent e) {
-
+        // TODO
     }
 
     @Override

@@ -75,6 +75,10 @@ public abstract class Gui implements IUpdatable {
         guiElements.clear();
     }
 
+    public void onGuiClosed() {
+        // NO-OP
+    }
+
     /**
      * Wird aufgerufen, wenn eine Taste gedrueckt wird.
      *

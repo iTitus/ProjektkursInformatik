@@ -9,6 +9,7 @@ import projektkurs.command.CommandDialog;
 import projektkurs.command.CommandItem;
 import projektkurs.command.CommandOpenGameOfLife;
 import projektkurs.command.CommandOpenLogicBoard;
+import projektkurs.command.CommandOpenUlam;
 import projektkurs.command.CommandReload;
 import projektkurs.command.CommandSetRaster;
 import projektkurs.command.CommandSwitch;
@@ -57,6 +58,10 @@ public final class Commands {
      * Switch-Level-Kommando.
      */
     public static Command switchLevel;
+    /**
+     * Ulam-Simulations-Kommando.
+     */
+    public static Command ulam;
 
     /**
      * Das Pair, das alle Kommandos enthaelt.
@@ -93,6 +98,9 @@ public final class Commands {
 
         life = new CommandOpenGameOfLife();
         registerMapping(life);
+
+        ulam = new CommandOpenUlam();
+        registerMapping(ulam);
 
         reload = new CommandReload();
         registerMapping(reload);

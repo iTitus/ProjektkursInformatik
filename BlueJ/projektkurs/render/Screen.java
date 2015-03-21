@@ -48,11 +48,13 @@ public class Screen {
     }
 
     public void setColor(int color) {
-        Arrays.fill(pixels, color);
+        if (color != Integers.TRANSPARENCY) {
+            Arrays.fill(pixels, color);
+        }
     }
 
     public void setPixel(int color, int index) {
-        if (MathUtil.isInArray(index, pixels.length)) {
+        if (color != Integers.TRANSPARENCY && MathUtil.isInArray(index, pixels.length)) {
             pixels[index] = color;
         }
     }

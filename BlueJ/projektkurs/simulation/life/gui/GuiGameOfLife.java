@@ -2,7 +2,6 @@ package projektkurs.simulation.life.gui;
 
 import projektkurs.gui.Gui;
 import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 /**
  * Ein Logik-Simulations-GUI.
@@ -20,13 +19,14 @@ public class GuiGameOfLife extends Gui {
     @Override
     public void initGui() {
         super.initGui();
-        gameOfLifeElement = new ElementGameOfLife(64, 64, 384, 192, 0);
+        gameOfLifeElement = new ElementGameOfLife(64, 64, 128, 64, 0);
         addElement(gameOfLifeElement);
     }
 
     @Override
     public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
+        screen.setColor(0xAAAAAA);
         super.render(screen);
     }
+
 }

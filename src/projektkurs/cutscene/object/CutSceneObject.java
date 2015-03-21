@@ -14,6 +14,7 @@ import projektkurs.util.RenderUtil;
 /**
  * Ein Objekt in einer CutScene.
  */
+@SuppressWarnings("deprecation")
 public class CutSceneObject implements IHasPositionAndSize {
 
     /**
@@ -51,6 +52,7 @@ public class CutSceneObject implements IHasPositionAndSize {
      * @param sizeY
      *            Hoehe
      */
+    @Deprecated
     public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
         sprite = image != null ? new Sprite("", image).rescale(Images.BACK_MAPPINGS.get(image), sizeX * Integers.RASTER_SIZE / (double) image.getWidth(), sizeY * Integers.RASTER_SIZE / (double) image.getHeight()) : Sprites.MISSING_ICON;
         setPosition(posX, posY);
