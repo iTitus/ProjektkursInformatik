@@ -26,7 +26,7 @@ public class ItemHealthPotion extends BaseItem {
     public void onLeftClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
         if (e instanceof EntityLiving) {
             EntityLiving l = (EntityLiving) e;
-            if (l.getHealth() < l.getMaxHealth()) {
+            if (stack.getDamage() < 0 && l.getHealth() > 0 || stack.getDamage() > 0 && l.getHealth() < l.getMaxHealth()) {
                 l.heal(stack.getDamage());
                 stack.decrStackSize(1);
             }

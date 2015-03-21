@@ -1,5 +1,7 @@
 package projektkurs.render;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
@@ -17,7 +19,6 @@ public class Sprite {
 
     private final int sizeY;
 
-    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     public Sprite(String name, BufferedImage image) {
         this.name = name;
         pixels = new int[image.getWidth() * image.getHeight()];
@@ -208,7 +209,17 @@ public class Sprite {
     }
 
     public BufferedImage toBufferedImage() {
-        return new BufferedImage(sizeX, sizeY, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(sizeX, sizeY, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = image.createGraphics();
+        for (int x = 0; x < sizeX; x++) {
+            for (int y = 0; y < sizeY; y++) {
+                int c = getPixel(x, y);
+                g.setColor(new Color(c, c == Integers.TRANSPARENCY));
+                g.drawLine(x, y, x, y);
+            }
+        }
+        g.dispose();
+        return image;
     }
 
     @Override
