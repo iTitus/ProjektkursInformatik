@@ -166,6 +166,10 @@ public class ItemStack implements IGuiTooltipProvider {
         stackSize += by;
     }
 
+    public String getName() {
+        return item.getName(this);
+    }
+
     /**
      * Ist der Itemtyp und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Groesse des ItemStacks
      *

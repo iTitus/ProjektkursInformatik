@@ -1,5 +1,7 @@
 package projektkurs.entity;
 
+import java.util.List;
+
 import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Strings;
 import projektkurs.render.Sprite;
@@ -128,6 +130,11 @@ public abstract class EntityLiving extends Entity {
         super.write(data);
         data.set(Strings.ENTITY_HEALTH, health);
         data.set(Strings.ENTITY_MAX_HEALTH, health);
+    }
+
+    @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName() + " - " + getHealth() + "/" + getMaxHealth());
     }
 
 }

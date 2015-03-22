@@ -1,5 +1,7 @@
 package projektkurs.entity;
 
+import java.util.List;
+
 import projektkurs.io.storage.SaveData;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Strings;
@@ -65,6 +67,11 @@ public class EntityItem extends Entity {
     public void write(SaveData data) {
         super.write(data);
         data.set(Strings.ENTITY_ITEM, stack.write());
+    }
+
+    @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName() + " - " + stack.getName());
     }
 
 }
