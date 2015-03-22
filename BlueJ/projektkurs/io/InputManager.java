@@ -182,6 +182,10 @@ public class InputManager implements KeyListener, MouseInputListener, MouseWheel
         return keysPressed[keyCode];
     }
 
+    public boolean isShiftDown() {
+        return isKeyPressed(KeyEvent.VK_SHIFT);
+    }
+
     /**
      * Wird von Java ausgefuehrt, wenn eine Taste heruntergedrueckt wird/ist.
      *

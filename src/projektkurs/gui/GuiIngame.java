@@ -3,8 +3,10 @@ package projektkurs.gui;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.List;
 
 import projektkurs.Main;
+import projektkurs.entity.Entity;
 import projektkurs.gui.element.IPlayerInventoryElementListener;
 import projektkurs.gui.element.InventoryElement;
 import projektkurs.gui.element.PlayerInventoryElement;
@@ -19,6 +21,27 @@ import projektkurs.util.MathUtil;
 public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
 
     @Override
+    public void addTooltip(int mouseX, int mouseY, List<String> tooltip) {
+        super.addTooltip(mouseX, mouseY, tooltip);
+
+        int rX = MathUtil.floorDiv(mouseX - Integers.WINDOW_HUD_X, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightX();
+        int rY = MathUtil.floorDiv(mouseY - Integers.WINDOW_HUD_Y, Integers.RASTER_SIZE) + Main.getRenderHelper().getSightY();
+
+        List<Entity> list = Main.getLevel().getMap().getEntitiesAt(rX, rY);
+        if (list != null) {
+            for (Entity e : list) {
+                e.addTooltip(Main.getLevel().getMap(), rX, rY, tooltip);
+            }
+        }
+
+        AbstractRaster r = Main.getLevel().getMap().getRasterAt(rX, rY);
+        if (r != null && Main.getRenderHelper().isInSight(rX, rY)) {
+            r.addTooltip(Main.getLevel().getMap(), rX, rY, tooltip);
+        }
+
+    }
+
+    @Override
     public void initGui() {
         super.initGui();
         addElement(new PlayerInventoryElement(MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), 0, this, Main.getPlayer().getInventory()));
@@ -31,7 +54,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         } else if (e.getKeyCode() == KeyBindings.KEY_CONSOLE) {
             Main.openGui(new GuiConsole());
         } else if (e.getKeyCode() == KeyBindings.KEY_INVENTORY) {
-            Main.openGui(new GuiPlayerInventory(Main.getPlayer().getInventory()));
+            Main.openGui(new GuiPlayerInventory());
         }
     }
 

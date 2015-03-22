@@ -1,8 +1,9 @@
 package projektkurs.gui.element;
 
 import java.awt.event.MouseEvent;
+import java.util.List;
 
-import projektkurs.Main;
+import projektkurs.gui.Gui;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
@@ -77,6 +78,14 @@ public class InventoryElement extends Element {
         this.inv = inv;
     }
 
+    @Override
+    public void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip) {
+        ItemStack hovered = inv.getItemStackAt(MathUtil.floorDiv(mouseX - posX, Integers.SLOT_SIZE));
+        if (hovered != null) {
+            hovered.addTooltip(gui, mouseX, mouseY, tooltip);
+        }
+    }
+
     /**
      * Das Inventory.
      *
@@ -115,14 +124,6 @@ public class InventoryElement extends Element {
                 RenderUtil.drawSprite(screen, stack.getSprite(), i * Integers.SLOT_SIZE + posX + 1, posY + 1);
                 Font.drawString(screen, stack.getStackSize() + "", i * Integers.SLOT_SIZE + posX + 1, posY + 11);
             }
-        }
-    }
-
-    @Override
-    public void renderTooltip(Screen screen) {
-        ItemStack hovered = inv.getItemStackAt(MathUtil.floorDiv(Main.getInputManager().getMouseX() - posX, Integers.SLOT_SIZE));
-        if (hovered != null) {
-            RenderUtil.drawTooltip(screen, hovered.getName(), Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
         }
     }
 

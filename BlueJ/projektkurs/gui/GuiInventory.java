@@ -44,11 +44,6 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
     }
 
     @Override
-    public void onLeftClick(int screenX, int screenY, MouseEvent e) {
-        super.onLeftClick(screenX, screenY, e);
-    }
-
-    @Override
     public void onSlotLeftClick(int slotIndex, InventoryElement invE, MouseEvent e) {
         if (invE.getID() == 0) {
             if (Main.getPlayer().getInventory().addItemStack(inv.getItemStackAt(slotIndex))) {

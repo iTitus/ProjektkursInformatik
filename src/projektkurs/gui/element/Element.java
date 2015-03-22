@@ -3,21 +3,23 @@ package projektkurs.gui.element;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.List;
 
+import projektkurs.gui.Gui;
 import projektkurs.render.Screen;
+import projektkurs.util.IGuiTooltipProvider;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.IUpdatable;
 
 /**
  * Ein GUI-Element.
  */
-public abstract class Element implements IHasPositionAndSize, IUpdatable {
+public abstract class Element implements IHasPositionAndSize, IUpdatable, IGuiTooltipProvider {
 
     /**
      * Der Listener dieses Elements.
      */
     private final IElementListener listener;
-
     /**
      * Nummer.
      */
@@ -63,6 +65,11 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
         this.sizeY = sizeY;
         this.id = id;
         this.listener = listener;
+    }
+
+    @Override
+    public void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip) {
+        // NO-OP
     }
 
     @Override
@@ -208,16 +215,6 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable {
      *            Screen
      */
     public abstract void render(Screen screen);
-
-    /**
-     * Rendert einen Tooltip.
-     *
-     * @param screen
-     *            Screen
-     */
-    public void renderTooltip(Screen screen) {
-        // NO-OP
-    }
 
     @Override
     public void setPosition(int x, int y) {

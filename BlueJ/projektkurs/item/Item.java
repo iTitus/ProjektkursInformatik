@@ -1,8 +1,11 @@
 package projektkurs.item;
 
 import java.awt.event.MouseEvent;
+import java.util.List;
 
+import projektkurs.Main;
 import projektkurs.entity.Entity;
+import projektkurs.gui.Gui;
 import projektkurs.render.Sprite;
 import projektkurs.util.I18n;
 import projektkurs.world.Spielfeld;
@@ -39,6 +42,13 @@ public abstract class Item {
         this.id = id;
         this.name = name;
         image = sprite;
+    }
+
+    public void addTooltip(Gui gui, int mouseX, int mouseY, ItemStack stack, List<String> tooltip) {
+        tooltip.add(getName());
+        if (Main.getInputManager().isShiftDown()) {
+            tooltip.add(I18n.getStringFormatted("tooltip.item.damage", stack.getDamage()));
+        }
     }
 
     /**

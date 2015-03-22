@@ -1,14 +1,19 @@
 package projektkurs.item;
 
+import java.util.List;
+
+import projektkurs.gui.Gui;
 import projektkurs.io.storage.SaveData;
+import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Strings;
 import projektkurs.render.Sprite;
+import projektkurs.util.IGuiTooltipProvider;
 
 /**
  * Ein Itemhaufen.
  */
-public class ItemStack {
+public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Laedt einen ItemStack aus der gegebenen SaveData.
@@ -81,6 +86,11 @@ public class ItemStack {
         this.damage = damage;
     }
 
+    @Override
+    public void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip) {
+        item.addTooltip(gui, mouseX, mouseY, this, tooltip);
+    }
+
     /**
      * Kopiert den ItemStack.
      *
@@ -129,15 +139,6 @@ public class ItemStack {
     }
 
     /**
-     * Der Name dieses ItemStacks.
-     *
-     * @return Name
-     */
-    public String getName() {
-        return String.format("%d x %s:%d", stackSize, item.getName(this), damage);
-    }
-
-    /**
      * Das Bild dieses ItemStacks.
      *
      * @return Bild
@@ -173,7 +174,7 @@ public class ItemStack {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean itemAndDamageEquals(ItemStack other) {
-        return other.damage == damage && (other.item == null && item == null || other.item != null && item != null && other.item.equals(item));
+        return (other.damage == damage || damage == Integers.WILDCARD_VALUE || other.damage == Integers.WILDCARD_VALUE) && (other.item == null && item == null || other.item != null && item != null && other.item.equals(item));
     }
 
     /**
@@ -255,7 +256,7 @@ public class ItemStack {
 
     @Override
     public String toString() {
-        return String.format("ItemStack {%s}", getName());
+        return String.format("ItemStack {%s}", String.format("%d x %s:%d", stackSize, item.getInternalName(), damage));
     }
 
     /**

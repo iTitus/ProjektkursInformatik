@@ -2,8 +2,10 @@ package projektkurs.simulation.logic.gui;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.List;
 
 import projektkurs.Main;
+import projektkurs.gui.Gui;
 import projektkurs.gui.element.Element;
 import projektkurs.render.Font;
 import projektkurs.render.Screen;
@@ -37,6 +39,17 @@ public class ElementLogicBoard extends Element {
     public ElementLogicBoard(int posX, int posY, int sizeX, int sizeY, int id) {
         super(posX, posY, sizeX * SIZE, sizeY * SIZE, id, null);
         logicBoard = new LogicBoard(sizeX, sizeY);
+    }
+
+    @Override
+    public void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip) {
+        Rule hovered = getRule((mouseX - posX) / SIZE, (mouseY - posY) / SIZE);
+        if (hovered != null) {
+            String name = hovered.getName();
+            if (name != null && name.length() > 0) {
+                tooltip.add(name);
+            }
+        }
     }
 
     @Override
@@ -118,17 +131,6 @@ public class ElementLogicBoard extends Element {
             RenderUtil.drawRectangle(screen, SIZE * ((Main.getInputManager().getMouseX() - posX) / SIZE) + posX, SIZE * ((Main.getInputManager().getMouseY() - posY) / SIZE) + posY, SIZE, SIZE);
         }
         Font.drawString(screen, "Current Rule: " + index + " (" + TYPES[index].getName() + ")", posX, posY);
-    }
-
-    @Override
-    public void renderTooltip(Screen screen) {
-        Rule hovered = getRule((Main.getInputManager().getMouseX() - posX) / SIZE, (Main.getInputManager().getMouseY() - posY) / SIZE);
-        if (hovered != null) {
-            String name = hovered.getName();
-            if (name != null && name.length() > 0) {
-                RenderUtil.drawTooltip(screen, name, Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
-            }
-        }
     }
 
     public void setRule(Rule rule, int x, int y) {

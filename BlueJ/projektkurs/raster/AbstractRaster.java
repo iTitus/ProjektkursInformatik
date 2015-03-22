@@ -1,17 +1,20 @@
 package projektkurs.raster;
 
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import projektkurs.entity.Entity;
 import projektkurs.render.Screen;
 import projektkurs.util.Direction;
+import projektkurs.util.I18n;
+import projektkurs.util.IWorldTooltipProvider;
 import projektkurs.util.Logger;
 import projektkurs.world.Spielfeld;
 
 /**
  * Woraus die Welt besteht: Das abstrakte Raster.
  */
-public abstract class AbstractRaster {
+public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * ID.
@@ -33,6 +36,11 @@ public abstract class AbstractRaster {
     public AbstractRaster(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName());
     }
 
     /**
@@ -69,7 +77,7 @@ public abstract class AbstractRaster {
      * @return Name
      */
     public String getName() {
-        return name;
+        return I18n.getString("raster." + name + ".name");
     }
 
     /**
@@ -166,7 +174,6 @@ public abstract class AbstractRaster {
 
     @Override
     public String toString() {
-        return "Raster[" + getID() + ", " + getName() + "]";
+        return "Raster[" + id + ", " + name + "]";
     }
-
 }

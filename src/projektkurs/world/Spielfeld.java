@@ -1,6 +1,7 @@
 package projektkurs.world;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
@@ -128,7 +129,7 @@ public class Spielfeld implements IUpdatable {
      *            Y-Koordinate
      * @return gefundener Entity
      */
-    public ArrayList<Entity> getEntitiesAt(int x, int y) {
+    public List<Entity> getEntitiesAt(int x, int y) {
         ArrayList<Entity> ret = new ArrayList<Entity>();
         ret.addAll(getEntitiesInRect(x, y, 1, 1));
         return ret;

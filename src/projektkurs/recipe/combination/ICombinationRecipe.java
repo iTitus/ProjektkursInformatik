@@ -4,7 +4,7 @@ import projektkurs.item.ItemStack;
 
 public interface ICombinationRecipe {
 
-    boolean areValidInputs(ItemStack stack1, ItemStack stack2);
+    boolean areValidInputs(ItemStack input1, ItemStack input2);
 
     ItemStack getOutput(ItemStack stack1, ItemStack stack2);
 

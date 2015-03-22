@@ -9,6 +9,7 @@ import projektkurs.Main;
 import projektkurs.entity.behaviour.Behaviour;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
+import projektkurs.lib.Entities;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
 import projektkurs.lib.Strings;
@@ -16,8 +17,10 @@ import projektkurs.raster.AbstractRaster;
 import projektkurs.render.Screen;
 import projektkurs.render.Sprite;
 import projektkurs.util.Direction;
+import projektkurs.util.I18n;
 import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.IWorldTooltipProvider;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
@@ -26,7 +29,7 @@ import projektkurs.world.Spielfeld;
 /**
  * Ein Entity.
  */
-public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSize {
+public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSize, IWorldTooltipProvider {
 
     /**
      * Alle Behaviours dieses Entities.
@@ -133,6 +136,11 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
         this(map, posX, posY, 1, 1, sprites);
     }
 
+    @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName());
+    }
+
     /**
      * Kann sich der Entity an die gegebene Stelle bewegen.
      *
@@ -211,7 +219,7 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      * @return Interner Name
      */
     public final String getInternalName() {
-        return getClass().getName();
+        return Entities.BACK_MAPPINGS.get(getClass());
     }
 
     /**
@@ -221,6 +229,10 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
      */
     public Spielfeld getMap() {
         return map;
+    }
+
+    public String getName() {
+        return I18n.getString("entity." + getInternalName() + ".name");
     }
 
     @Override

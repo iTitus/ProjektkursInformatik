@@ -99,6 +99,7 @@ public final class Integers {
      * Updates pro Sekunde.
      */
     public static final int UPS = 20;
+    public static final int WILDCARD_VALUE = Integer.MAX_VALUE;
     /**
      * Die Breite des Fensterrandes.
      */

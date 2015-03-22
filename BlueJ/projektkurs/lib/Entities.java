@@ -20,6 +20,7 @@ import projektkurs.world.Spielfeld;
  */
 public final class Entities {
 
+    public static final HashMap<Class<? extends Entity>, String> BACK_MAPPINGS = new HashMap<Class<? extends Entity>, String>();
     /**
      * Mappings.
      */
@@ -55,10 +56,10 @@ public final class Entities {
      */
     @Init
     public static void init() {
-        registerEntity(EntityPlayer.class);
-        registerEntity(EntityItem.class);
-        registerEntity(EntityRedNPC.class);
-        registerEntity(EntityFerry.class);
+        registerEntity(EntityPlayer.class, "player");
+        registerEntity(EntityItem.class, "item");
+        registerEntity(EntityRedNPC.class, "redNPC");
+        registerEntity(EntityFerry.class, "ferry");
     }
 
     /**
@@ -103,9 +104,10 @@ public final class Entities {
      * @param cls
      *            Entity-Klasse
      */
-    private static void registerEntity(Class<? extends Entity> cls) {
+    private static void registerEntity(Class<? extends Entity> cls, String name) {
         if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
-            MAPPINGS.put(cls.getName(), cls);
+            MAPPINGS.put(name, cls);
+            BACK_MAPPINGS.put(cls, name);
         } else {
             Logger.warn("Unable to register Entity", cls);
             throw new IllegalArgumentException("Unable to register Entity " + cls);

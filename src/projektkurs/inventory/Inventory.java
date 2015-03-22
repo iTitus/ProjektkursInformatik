@@ -356,13 +356,13 @@ public class Inventory {
             ItemStack stack;
             s += "[";
             stack = getItemStackAt(0);
-            s += stack != null ? stack.getName() : "";
+            s += stack != null ? stack.toString() : "";
 
             if (getSize() > 1) {
                 for (int i = 1; i < stacks.length; i++) {
                     stack = getItemStackAt(i);
                     if (stack != null) {
-                        s += ", " + stack.getName();
+                        s += ", " + stack.toString();
                     }
                 }
             }

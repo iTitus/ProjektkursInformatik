@@ -16,9 +16,9 @@ public class StaticCombinationRecipe implements ICombinationRecipe {
     public boolean areValidInputs(ItemStack stack1, ItemStack stack2) {
         if (stack1 != null && stack2 != null) {
             if (input1.itemAndDamageEquals(stack1) && input2.itemAndDamageEquals(stack2)) {
-                return stack1.getStackSize() >= input1.getStackSize() && stack2.getStackSize() >= input2.getStackSize();
+                return true;
             } else if (input2.itemAndDamageEquals(stack1) && input1.itemAndDamageEquals(stack2)) {
-                return stack1.getStackSize() >= input2.getStackSize() && stack2.getStackSize() >= input1.getStackSize();
+                return true;
             }
         }
         return false;

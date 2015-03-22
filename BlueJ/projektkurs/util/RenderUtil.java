@@ -2,6 +2,7 @@ package projektkurs.util;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
@@ -311,12 +312,20 @@ public final class RenderUtil {
      * @param y
      *            Y-Koordinate
      */
-    public static void drawTooltip(Screen screen, String str, int x, int y) {
-        int height = Font.getStringHeight(str) + 2;
-        int width = Font.getStringWidth(str) + 4;
+    public static void drawTooltip(Screen screen, List<String> tooltip, int x, int y) {
+        int height = 0;
+        int width = 0;
+        for (String string : tooltip) {
+            height += Font.getStringHeight(string) + 2;
+            width = Math.max(width, Font.getStringWidth(string) + 4);
+        }
         drawFilledRectangle(screen, x, y - height, width, height, TOOLTIP_COLOR);
         drawRectangle(screen, x, y - height, width, height);
-        Font.drawString(screen, str, x - 7, y - height - 1);
+        int offsetY = 0;
+        for (String string : tooltip) {
+            Font.drawString(screen, string, x - 7, y - height - 1 + offsetY);
+            offsetY += Font.getStringHeight(string) + 2;
+        }
     }
 
     public static int getBlue(int color) {

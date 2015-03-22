@@ -12,6 +12,7 @@ import projektkurs.gui.element.Element;
 import projektkurs.lib.KeyBindings;
 import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.RenderUtil;
 
 /**
  * Ein Graphical User Interface (GUI).
@@ -22,6 +23,7 @@ public abstract class Gui implements IUpdatable {
      * Alle Elements in diesem Gui.
      */
     private final ArrayList<Element> guiElements;
+    private Element hovered;
     /**
      * Eltern-Gui.
      */
@@ -43,6 +45,12 @@ public abstract class Gui implements IUpdatable {
     public Gui(Gui parent) {
         guiElements = new ArrayList<Element>();
         this.parent = parent;
+    }
+
+    public void addTooltip(int mouseX, int mouseY, List<String> tooltip) {
+        if (hovered != null) {
+            hovered.addTooltip(this, mouseX, mouseY, tooltip);
+        }
     }
 
     @Override
@@ -149,15 +157,17 @@ public abstract class Gui implements IUpdatable {
      *            Screen
      */
     public void render(Screen screen) {
-        Element hovered = null;
+        hovered = null;
         for (Element el : guiElements) {
             el.render(screen);
             if (el.isInside(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY())) {
                 hovered = el;
             }
         }
-        if (hovered != null) {
-            hovered.renderTooltip(screen);
+        List<String> tooltip = new ArrayList<String>();
+        addTooltip(Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY(), tooltip);
+        if (!tooltip.isEmpty()) {
+            RenderUtil.drawTooltip(screen, tooltip, Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
         }
     }
 
