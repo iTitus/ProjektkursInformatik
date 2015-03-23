@@ -44,6 +44,11 @@ public class EntityItem extends Entity {
     }
 
     @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName() + " - " + stack.getName());
+    }
+
+    @Override
     public Sprite getSprite() {
         return stack.getItem().getSprite(stack);
     }
@@ -67,11 +72,6 @@ public class EntityItem extends Entity {
     public void write(SaveData data) {
         super.write(data);
         data.set(Strings.ENTITY_ITEM, stack.write());
-    }
-
-    @Override
-    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
-        tooltip.add(getName() + " - " + stack.getName());
     }
 
 }

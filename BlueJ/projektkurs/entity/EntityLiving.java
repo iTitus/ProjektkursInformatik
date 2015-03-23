@@ -73,6 +73,11 @@ public abstract class EntityLiving extends Entity {
         this(map, posX, posY, 1, 1, maxHealth, sprites);
     }
 
+    @Override
+    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
+        tooltip.add(getName() + " - " + getHealth() + "/" + getMaxHealth());
+    }
+
     /**
      * Schadet um die gegebene Menge an Gesundheit.
      *
@@ -130,11 +135,6 @@ public abstract class EntityLiving extends Entity {
         super.write(data);
         data.set(Strings.ENTITY_HEALTH, health);
         data.set(Strings.ENTITY_MAX_HEALTH, health);
-    }
-
-    @Override
-    public void addTooltip(Spielfeld map, int x, int y, List<String> tooltip) {
-        tooltip.add(getName() + " - " + getHealth() + "/" + getMaxHealth());
     }
 
 }

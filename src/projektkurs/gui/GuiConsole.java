@@ -3,6 +3,7 @@ package projektkurs.gui;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import projektkurs.Main;
 import projektkurs.command.Command;
@@ -14,7 +15,6 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.render.Screen;
 import projektkurs.util.I18n;
-import projektkurs.util.I18n.SupportedLocales;
 import projektkurs.util.Logger;
 import projektkurs.util.RenderUtil;
 
@@ -94,7 +94,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
             }
             partList.removeAll(toRemove);
             String[] parts = partList.toArray(new String[partList.size()]);
-            String command = parts[0].toLowerCase(SupportedLocales.DEFAULT.getLocale());
+            String command = parts[0].toLowerCase(Locale.ENGLISH);
             Command c = Commands.MAPPINGS.get(command);
             if (c != null) {
                 String[] args = new String[parts.length - 1];

@@ -138,6 +138,10 @@ public class ItemStack implements IGuiTooltipProvider {
         return item;
     }
 
+    public String getName() {
+        return item.getName(this);
+    }
+
     /**
      * Das Bild dieses ItemStacks.
      *
@@ -164,10 +168,6 @@ public class ItemStack implements IGuiTooltipProvider {
      */
     public void incrStackSize(int by) {
         stackSize += by;
-    }
-
-    public String getName() {
-        return item.getName(this);
     }
 
     /**
