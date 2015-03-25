@@ -12,6 +12,7 @@ public class UlamBoard {
 
     private volatile AtomicIntegerArray board;
     private final int[][] count;
+    private boolean first = true;
     private final PrimeSearchThread primeSearchThread;
     private final int size;
 
@@ -53,11 +54,16 @@ public class UlamBoard {
                 } else {
                     RenderUtil.drawFilledRectangle(screen, offsetX + x * ElementUlamBoard.SIZE, offsetY + y * ElementUlamBoard.SIZE, ElementUlamBoard.SIZE, ElementUlamBoard.SIZE, 0x000000);
                 }
-                this.count[x][y] = count;
+                if (first) {
+                    this.count[x][y] = count;
+                }
                 x += d.getOffsetX();
                 y += d.getOffsetY();
             }
             d = d.rotate(true, false);
+        }
+        if (first) {
+            first = false;
         }
         RenderUtil.drawFilledRectangle(screen, offsetX + MathUtil.floorDiv(size, 2) * ElementUlamBoard.SIZE, offsetY + MathUtil.floorDiv(size, 2) * ElementUlamBoard.SIZE, ElementUlamBoard.SIZE, ElementUlamBoard.SIZE, 0);
     }

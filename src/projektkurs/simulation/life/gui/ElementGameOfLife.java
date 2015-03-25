@@ -14,7 +14,7 @@ import projektkurs.util.RenderUtil;
 
 public class ElementGameOfLife extends Element {
 
-    public static final int SIZE = 1;
+    public static final int SIZE = 8;
     private boolean grid = true;
     private final GameOfLifeBoard lifeBoard;
     private double speed = 10;

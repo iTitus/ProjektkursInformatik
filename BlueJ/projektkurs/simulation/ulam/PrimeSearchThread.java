@@ -66,9 +66,7 @@ public class PrimeSearchThread extends Thread {
             return true;
         } else {
             for (int prime : primeSet) {
-                int k = i / prime;
-                double d = (double) i / prime;
-                if (Math.abs(k - d) <= Double.MIN_NORMAL) {
+                if (i % prime == 0) {
                     return false;
                 }
             }

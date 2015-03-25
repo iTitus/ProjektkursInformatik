@@ -6,7 +6,7 @@ import projektkurs.Main;
 import projektkurs.gui.Gui;
 import projektkurs.simulation.life.gui.GuiGameOfLife;
 import projektkurs.simulation.logic.gui.GuiLogicBoard;
-import projektkurs.simulation.pacman.gui.GuiPacMan;
+import projektkurs.simulation.mandelbrot.gui.GuiMandelbrotSet;
 import projektkurs.simulation.ulam.gui.GuiUlam;
 
 public class CommandOpenSimulation extends Command {
@@ -37,8 +37,10 @@ public class CommandOpenSimulation extends Command {
                 return new GuiGameOfLife();
             case "ulam":
                 return new GuiUlam();
-            case "pacman":
-                return new GuiPacMan();
+            case "mandelbrot":
+            case "mb":
+            case "brot":
+                return new GuiMandelbrotSet();
             default:
                 return null;
         }

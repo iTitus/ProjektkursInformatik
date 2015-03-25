@@ -30,9 +30,7 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         List<Entity> list = Main.getLevel().getMap().getEntitiesAt(rX, rY);
         if (list != null) {
             for (Entity e : list) {
-                if (e != null && !e.shouldDeSpawn()) {
-                    e.addTooltip(Main.getLevel().getMap(), rX, rY, tooltip);
-                }
+                e.addTooltip(Main.getLevel().getMap(), rX, rY, tooltip);
             }
         }
 
