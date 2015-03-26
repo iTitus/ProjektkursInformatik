@@ -15,6 +15,7 @@ public final class RecipeManager {
     @Init(State.INIT)
     public static void init() {
         combination = new CombinationRecipeManager();
+
         combination.addCombinationRecipe(new ItemStack(Items.item42, 1, Integers.WILDCARD_VALUE), new ItemStack(Items.item42, 1, Integers.WILDCARD_VALUE), new ItemStack(Items.nuke, 16));
     }
 

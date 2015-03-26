@@ -50,4 +50,9 @@ public class Pair<A, B> {
         return valueB;
     }
 
+    @Override
+    public String toString() {
+        return "Pair[" + valueA + "|" + valueB + "]";
+    }
+
 }

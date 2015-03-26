@@ -1,5 +1,6 @@
 package projektkurs.simulation.mandelbrot;
 
+@SuppressWarnings("unused")
 public class MandelbrotIteratorThread extends Thread {
 
     private static final int MAX_ITERATIONS = 32;
