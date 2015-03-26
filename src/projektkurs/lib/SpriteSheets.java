@@ -35,7 +35,7 @@ public final class SpriteSheets {
     /**
      * Initialisiert alle SpriteSheets.
      */
-    @Init(State.RESOURCES_PRE)
+    @Init(State.RESOURCES)
     public static void init() {
         raster = new SpriteSheet("raster", "rasterSheet.png");
         registerSpriteSheet(raster);

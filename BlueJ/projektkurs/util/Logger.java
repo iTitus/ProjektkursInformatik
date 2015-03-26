@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import projektkurs.io.Directories;
+
 /**
  * Logger.
  */
@@ -168,7 +170,7 @@ public final class Logger {
     public static void saveLog() {
         synchronized (EXTENDED_DATE) {
             try {
-                Files.write(new File("log_" + EXTENDED_DATE.format(new Date()) + ".txt").toPath(), LOG, Charset.defaultCharset());
+                Files.write(new File(Directories.getLogDir(), "log_" + EXTENDED_DATE.format(new Date()) + ".txt").toPath(), LOG, Charset.defaultCharset());
             } catch (Throwable t) {
                 Logger.logThrowable("Unable to save log", t);
             }
