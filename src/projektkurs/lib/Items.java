@@ -146,7 +146,7 @@ public final class Items {
      *            Item
      */
     private static void registerItem(Item i) {
-        if (i != null && !MAPPINGS.containsKey(i.getName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {
+        if (i != null && !MAPPINGS.containsKey(i.getInternalName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {
             MAPPINGS.put(i.getInternalName(), i);
             ITEMS[i.getID()] = i;
         } else {

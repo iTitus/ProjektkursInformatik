@@ -100,7 +100,6 @@ public final class Sprites {
     public static Sprite nest;
     public static Sprite trashcan;
 
-    
     /**
      * Die Mappings.
      */
@@ -219,7 +218,7 @@ public final class Sprites {
     public static Sprite women0_S;
     public static Sprite women0_W;
     public static Sprite grammophonEntity;
-    
+
     /**
      * Das Pair, das alle Sprites enthaelt.
      *
@@ -232,7 +231,7 @@ public final class Sprites {
     /**
      * Initialisiert alle Sprites.
      */
-    @Init(State.RESOURCES)
+    @Init(State.RESOURCES_POST)
     public static void init() {
         wall = new Sprite("wall", Integers.RASTER_SIZE, 0, 0, SpriteSheets.raster);
         registerSprite(wall);
@@ -812,7 +811,7 @@ public final class Sprites {
 
         nest = new Sprite("nest", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(nest);
-        
+
         trashcan = new Sprite("trashcan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(trashcan);
     }
