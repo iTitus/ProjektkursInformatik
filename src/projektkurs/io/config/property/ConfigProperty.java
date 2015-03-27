@@ -1,8 +1,11 @@
 package projektkurs.io.config.property;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import projektkurs.io.config.Config;
 
 public abstract class ConfigProperty<T> {
 
@@ -63,6 +66,23 @@ public abstract class ConfigProperty<T> {
 
     public void setValue(T value) {
         this.value = value;
+    }
+
+    public void write(PrintWriter writer, int indent) {
+        String indentation = "";
+        for (int i = 0; i < indent; i++) {
+            indentation += "\t";
+        }
+        List<String> propertyComments = getAllComments();
+        if (propertyComments != null && !propertyComments.isEmpty()) {
+            writer.println();
+            for (String propertyComment : propertyComments) {
+                if (propertyComment != null && propertyComment.length() > 0) {
+                    writer.println(indentation + Config.COMMENT_START + " " + propertyComment);
+                }
+            }
+        }
+        writer.println(indentation + key + " " + Config.ASSIGNMENT + " " + value);
     }
 
 }

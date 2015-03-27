@@ -1,5 +1,6 @@
 package projektkurs.io.config;
 
+import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -16,18 +17,30 @@ public final class ConfigCategory {
         }
 
     };
+    private final Set<ConfigCategory> childCategories;
     private final String comment;
     private final String name;
+    private ConfigCategory parent;
     private final Set<ConfigProperty<?>> properties;
 
     public ConfigCategory(String name, String comment) {
         this.name = name.trim();
         this.comment = comment;
         properties = new TreeSet<ConfigProperty<?>>(ConfigProperty.COMPARATOR);
+        childCategories = new TreeSet<ConfigCategory>(COMPARATOR);
+    }
+
+    public void addChildCategory(ConfigCategory category) {
+        if (category != null && category != this && !childCategories.contains(category)) {
+            category.parent = this;
+            childCategories.add(category);
+        }
     }
 
     public void addProperty(ConfigProperty<?> property) {
-        properties.add(property);
+        if (property != null && !properties.contains(property)) {
+            properties.add(property);
+        }
     }
 
     @Override
@@ -35,11 +48,26 @@ public final class ConfigCategory {
         return obj != null && obj instanceof ConfigCategory && name != null && name.equalsIgnoreCase(((ConfigCategory) obj).name);
     }
 
+    public Set<ConfigCategory> getChildCategories() {
+        return childCategories;
+    }
+
+    public ConfigCategory getChildCategory(String categoryName) {
+        if (categoryName != null && !categoryName.isEmpty() && !childCategories.isEmpty()) {
+            for (ConfigCategory childCategory : childCategories) {
+                if (childCategory != null && categoryName.equalsIgnoreCase(childCategory.name)) {
+                    return childCategory;
+                }
+            }
+        }
+        return null;
+    }
+
     public String getComment() {
         return comment;
     }
 
-    public ConfigProperty<?> getConfigCategory(String key) {
+    public ConfigProperty<?> getConfigProperty(String key) {
         if (key != null && key.length() > 0) {
             for (ConfigProperty<?> property : properties) {
                 if (property != null && key.equalsIgnoreCase(property.getKey())) {
@@ -54,6 +82,10 @@ public final class ConfigCategory {
         return name;
     }
 
+    public ConfigCategory getParent() {
+        return parent;
+    }
+
     public Set<ConfigProperty<?>> getProperties() {
         return properties;
     }
@@ -63,9 +95,51 @@ public final class ConfigCategory {
         return name.hashCode();
     }
 
+    public boolean hasParent() {
+        return parent != null;
+    }
+
+    public boolean isParent() {
+        return !childCategories.isEmpty();
+    }
+
     @Override
     public String toString() {
         return "ConfigCategory[" + name + "]";
+    }
+
+    public void write(PrintWriter writer, int indent) {
+        String indentation = "";
+        for (int i = 0; i < indent; i++) {
+            indentation += "\t";
+        }
+        writer.println();
+        if (comment != null && !comment.isEmpty()) {
+            String row = "";
+            if (comment != null) {
+                for (int i = 0; i < comment.length() + 2 * Config.COMMENT_START.length() + 2; i++) {
+                    row += Config.COMMENT_START;
+                }
+            }
+            writer.println(indentation + row);
+            writer.println(indentation + Config.COMMENT_START + " " + comment + " " + Config.COMMENT_START);
+            writer.println(indentation + row);
+        }
+        writer.println(indentation + name + " " + Config.CATEGORY_OPEN);
+        for (ConfigProperty<?> property : properties) {
+            if (property != null) {
+                property.write(writer, indent + 1);
+            }
+        }
+        if (isParent()) {
+            for (ConfigCategory childCategory : childCategories) {
+                if (childCategory != null) {
+                    childCategory.write(writer, indent + 1);
+                }
+            }
+        }
+        writer.println();
+        writer.println(indentation + Config.CATEGORY_CLOSE);
     }
 
 }
