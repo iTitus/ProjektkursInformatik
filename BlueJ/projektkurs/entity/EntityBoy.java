@@ -5,13 +5,13 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityJunge extends EntityDialog {
-    public EntityJunge(Spielfeld map) {
+public class EntityBoy extends EntityDialog {
+    public EntityBoy(Spielfeld map) {
         super(map);
     }
 
-    public EntityJunge(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.junge);
+    public EntityBoy(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, 1, 1, Sprites.boy);
     }
 
     @Override

@@ -20,10 +20,6 @@ import projektkurs.util.Pair;
  */
 public final class Raster {
 
-    /**
-     * Baum.
-     */
-    public static AbstractRaster baum;
     public static AbstractRaster chair_1;
     public static AbstractRaster chair_2;
     public static AbstractRaster chair_3;
@@ -37,7 +33,6 @@ public final class Raster {
     public static AbstractRaster chest;
     public static AbstractRaster cobbles_1;
     public static AbstractRaster cobbles_2;
-
     /**
      * Zerstoerter Boden.
      */
@@ -47,6 +42,7 @@ public final class Raster {
      * Tuer.
      */
     public static AbstractRaster door;
+
     public static AbstractRaster ferryhouse_door;
     public static AbstractRaster ferryhouse_ecke_ne;
     public static AbstractRaster ferryhouse_ecke_nw;
@@ -77,14 +73,14 @@ public final class Raster {
     public static AbstractRaster floor_8;
     public static AbstractRaster floor_9;
     /**
+     * Rasen.
+     */
+    public static AbstractRaster grass;
+    public static AbstractRaster grass_2;
+    /**
      * Mappings.
      */
     public static final HashMap<String, AbstractRaster> MAPPINGS = new HashMap<String, AbstractRaster>();
-    /**
-     * Rasen.
-     */
-    public static AbstractRaster rasen;
-    public static AbstractRaster rasen_2;
     /**
      * Array aller Raster nach ihrer ID.
      */
@@ -122,6 +118,10 @@ public final class Raster {
     public static AbstractRaster street_l_t_7_wage;
     public static AbstractRaster street_l_t_8_senk;
     public static AbstractRaster street_l_t_8_wage;
+    /**
+     * Baum.
+     */
+    public static AbstractRaster tree;
     public static AbstractRaster tree_10ne;
     public static AbstractRaster tree_10nw;
     public static AbstractRaster tree_10se;
@@ -212,11 +212,11 @@ public final class Raster {
         wall = new SolidRaster(1, "wall", Sprites.wall);
         registerRaster(wall);
 
-        rasen = new SimpleRaster(2, "grass", Sprites.grass);
-        registerRaster(rasen);
+        grass = new SimpleRaster(2, "grass", Sprites.grass);
+        registerRaster(grass);
 
-        baum = new SolidRaster(3, "tree", Sprites.tree);
-        registerRaster(baum);
+        tree = new SolidRaster(3, "tree", Sprites.tree);
+        registerRaster(tree);
 
         chest = new ChestRaster(4);
         registerRaster(chest);
@@ -236,8 +236,8 @@ public final class Raster {
         water = new SolidRaster(9, "water", Sprites.water);
         registerRaster(water);
 
-        rasen_2 = new SimpleRaster(10, "rasen_2", Sprites.rasen_2);
-        registerRaster(rasen_2);
+        grass_2 = new SimpleRaster(10, "grass_2", Sprites.grass_2);
+        registerRaster(grass_2);
 
         tree_2nw = new SolidRaster(11, "tree_2nw", Sprites.tree_2nw);
         registerRaster(tree_2nw);

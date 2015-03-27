@@ -12,7 +12,7 @@ public class EntityFerryman extends EntityDialog {
     }
 
     public EntityFerryman(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.junge);
+        super(map, posX, posY, 1, 1, Sprites.boy);
     }
 
     @Override

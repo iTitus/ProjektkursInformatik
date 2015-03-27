@@ -1,15 +1,15 @@
 package projektkurs.world.builder;
 
 import projektkurs.cutscene.CutScene;
+import projektkurs.entity.EntityBoomBarrier;
+import projektkurs.entity.EntityBoy;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityFisher;
-import projektkurs.entity.EntityGrammophon;
+import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
-import projektkurs.entity.EntityJunge;
 import projektkurs.entity.EntityRedNPC;
-import projektkurs.entity.EntitySchranke;
 import projektkurs.entity.EntityVilleCar;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
@@ -50,13 +50,13 @@ public final class MapBuilder {
         // RASEN!
         for (int y = 0; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen);
+                map.setRasterAt(x, y, Raster.grass);
             }
         }
 
         // BAEUME!
         for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
-            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.baum);
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.tree);
         }
 
         // KISTEN!
@@ -81,24 +81,24 @@ public final class MapBuilder {
         // TUEREN!
         for (int y = 20; y < 25; y++) {
             for (int x = 18; x < 23; x++) {
-                map.setRasterAt(x, y, Raster.rasen);
+                map.setRasterAt(x, y, Raster.grass);
             }
         }
-        map.setRasterAt(20, 18, Raster.baum);
-        map.setRasterAt(21, 18, Raster.baum);
+        map.setRasterAt(20, 18, Raster.tree);
+        map.setRasterAt(21, 18, Raster.tree);
         // map.setRasterAt(22, 18, Raster.baum);
-        map.setRasterAt(23, 18, Raster.baum);
-        map.setRasterAt(24, 18, Raster.baum);
-        map.setRasterAt(24, 19, Raster.baum);
-        map.setRasterAt(24, 20, Raster.baum);
-        map.setRasterAt(24, 21, Raster.baum);
-        map.setRasterAt(24, 22, Raster.baum);
-        map.setRasterAt(20, 19, Raster.baum);
-        map.setRasterAt(20, 21, Raster.baum);
-        map.setRasterAt(20, 22, Raster.baum);
-        map.setRasterAt(21, 22, Raster.baum);
-        map.setRasterAt(22, 22, Raster.baum);
-        map.setRasterAt(23, 22, Raster.baum);
+        map.setRasterAt(23, 18, Raster.tree);
+        map.setRasterAt(24, 18, Raster.tree);
+        map.setRasterAt(24, 19, Raster.tree);
+        map.setRasterAt(24, 20, Raster.tree);
+        map.setRasterAt(24, 21, Raster.tree);
+        map.setRasterAt(24, 22, Raster.tree);
+        map.setRasterAt(20, 19, Raster.tree);
+        map.setRasterAt(20, 21, Raster.tree);
+        map.setRasterAt(20, 22, Raster.tree);
+        map.setRasterAt(21, 22, Raster.tree);
+        map.setRasterAt(22, 22, Raster.tree);
+        map.setRasterAt(23, 22, Raster.tree);
         map.setRasterAt(22, 20, Raster.finish);
 
         map.setRasterAt(20, 20, Raster.door);
@@ -185,7 +185,7 @@ public final class MapBuilder {
 
         // Grammophone
 
-        map.spawn(new EntityGrammophon(map, 26, 28));
+        map.spawn(new EntityGramophone(map, 26, 28));
 
         // Ferry
         map.spawn(new EntityFerry(map, 11, 12));
@@ -198,13 +198,13 @@ public final class MapBuilder {
         map.spawn(new EntityVilleCar(map, 12, 25));
 
         // Schranke
-        map.spawn(new EntitySchranke(map, 11, 20));
+        map.spawn(new EntityBoomBarrier(map, 11, 20));
 
         // Boden
 
         for (int y = 20; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
@@ -225,7 +225,7 @@ public final class MapBuilder {
         map.spawn(new EntityFisher(map, 60, 47));
 
         // Junge
-        map.spawn(new EntityJunge(map, 33, 52));
+        map.spawn(new EntityBoy(map, 33, 52));
         // Insel im Fluss
         int inttemp = 4;
         int inttemp2 = 0;
@@ -267,7 +267,7 @@ public final class MapBuilder {
 
         for (int y = 8; y < 12; y++) {
             for (int x = 35; x < 43; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
         map.setRasterAt(35, 8, Raster.floor_4);
@@ -290,7 +290,7 @@ public final class MapBuilder {
         for (int y = 0; y < 8; y++) {
 
             for (int x = 0; x < 8 - y; x++) {
-                map.setRasterAt(map.getMapSizeX() - x, y, Raster.rasen_2);
+                map.setRasterAt(map.getMapSizeX() - x, y, Raster.grass_2);
             }
         }
 
@@ -359,7 +359,7 @@ public final class MapBuilder {
 
         for (int y = 54; y < 58; y++) {
             for (int x = 44; x < 50; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
@@ -397,13 +397,13 @@ public final class MapBuilder {
 
         for (int y = map.getMapSizeY() - 2; y < map.getMapSizeY(); y++) {
             for (int x = 58; x < 64; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
         for (int y = map.getMapSizeY() - 4; y < map.getMapSizeY() - 2; y++) {
             for (int x = 56; x < 66; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
@@ -460,31 +460,31 @@ public final class MapBuilder {
         // Rasen unter dem Boot
 
         for (int x = 68; x < 72; x++) {
-            map.setRasterAt(x, 55, Raster.rasen_2);
+            map.setRasterAt(x, 55, Raster.grass_2);
         }
 
         for (int x = 65; x < 76; x++) {
-            map.setRasterAt(x, 56, Raster.rasen_2);
+            map.setRasterAt(x, 56, Raster.grass_2);
         }
 
         for (int y = 57; y < 62; y++) {
 
             for (int x = 65; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
         for (int y = 62; y < 64; y++) {
 
             for (int x = 66; x < 74; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
         for (int y = 62; y < 66; y++) {
 
             for (int x = 66; x < 68; x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
         // Sand Kurve unterm Boot
@@ -533,12 +533,12 @@ public final class MapBuilder {
         for (int x = 58; x < 64; x++) {
             map.setRasterAt(x, 69, Raster.cobbles_1);
         }
-        map.setRasterAt(59, 69, Raster.rasen_2);
+        map.setRasterAt(59, 69, Raster.grass_2);
 
         for (int x = 58; x < 62; x++) {
             map.setRasterAt(x, 68, Raster.cobbles_1);
         }
-        map.setRasterAt(59, 68, Raster.rasen_2);
+        map.setRasterAt(59, 68, Raster.grass_2);
         for (int x = 61; x < 63; x++) {
             map.setRasterAt(x, 67, Raster.cobbles_1);
         }
@@ -626,7 +626,7 @@ public final class MapBuilder {
     public static void generateAndPopulateLevel1Map1(Spielfeld map) {
         for (int y = 0; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.rasen_2);
+                map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 

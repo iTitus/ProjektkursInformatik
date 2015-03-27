@@ -19,7 +19,7 @@ public class ItemHealthPotion extends BaseItem {
      *            ID
      */
     public ItemHealthPotion(int id) {
-        super(id, "potion.health", Sprites.healthpotion);
+        super(id, "potion.health", Sprites.healthPotion);
     }
 
     @Override

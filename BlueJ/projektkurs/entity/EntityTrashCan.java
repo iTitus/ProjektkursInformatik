@@ -5,18 +5,17 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntitySchranke extends EntityDialog {
-    public EntitySchranke(Spielfeld map) {
+public class EntityTrashCan extends EntityDialog {
+    public EntityTrashCan(Spielfeld map) {
         super(map);
     }
 
-    public EntitySchranke(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 4, 2, Sprites.schranke);
+    public EntityTrashCan(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, 2, 2, Sprites.trashCan);
     }
 
     @Override
     public Dialog getDialog() {
         return Dialoge.test;
     }
-
 }

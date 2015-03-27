@@ -4,10 +4,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import projektkurs.entity.Entity;
+import projektkurs.entity.EntityBoomBarrier;
+import projektkurs.entity.EntityBoomBarrierOpen;
+import projektkurs.entity.EntityBoy;
 import projektkurs.entity.EntityFerry;
+import projektkurs.entity.EntityFerryhouse;
+import projektkurs.entity.EntityFerryman;
+import projektkurs.entity.EntityFisher;
+import projektkurs.entity.EntityFisherboat;
+import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
+import projektkurs.entity.EntityNest;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.entity.EntityTest;
+import projektkurs.entity.EntityTrashCan;
+import projektkurs.entity.EntityVilleCar;
+import projektkurs.entity.EntityWitchCauldron;
 import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
@@ -60,6 +73,19 @@ public final class Entities {
         registerEntity(EntityItem.class, "item");
         registerEntity(EntityRedNPC.class, "redNPC");
         registerEntity(EntityFerry.class, "ferry");
+        registerEntity(EntityFerryhouse.class, "ferryHouse");
+        registerEntity(EntityFerryman.class, "ferryMan");
+        registerEntity(EntityFisher.class, "fisher");
+        registerEntity(EntityFisherboat.class, "fisherBoat");
+        registerEntity(EntityGramophone.class, "gramophone");
+        registerEntity(EntityBoy.class, "boy");
+        registerEntity(EntityNest.class, "nest");
+        registerEntity(EntityBoomBarrier.class, "boomBarrier");
+        registerEntity(EntityBoomBarrierOpen.class, "boomBarrierOpen");
+        registerEntity(EntityTrashCan.class, "trashCan");
+        registerEntity(EntityVilleCar.class, "villeCar");
+        registerEntity(EntityTest.class, "test");
+        registerEntity(EntityWitchCauldron.class, "witchCauldron");
     }
 
     /**

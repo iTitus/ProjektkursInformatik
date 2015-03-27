@@ -22,17 +22,17 @@ public final class Items {
      */
     public static Item cards;
     /**
+     * Das Kaugummi
+     */
+    public static Item chewingGum;
+    /**
      * Ohrringe
      */
     public static Item earrings;
     /**
-     * Faden
-     */
-    public static Item faden;
-    /**
      * Das Grammophon
      */
-    public static Item grammophonItem;
+    public static Item gramophoneItem;
     /**
      * Gesundheitstrank.
      */
@@ -46,14 +46,6 @@ public final class Items {
      */
     public static final Item[] ITEMS = new Item[Integers.MAX_ITEM_NUMBER];
     /**
-     * Das Jojo
-     */
-    public static Item jojo;
-    /**
-     * Das Kaugummi
-     */
-    public static Item kaugummi;
-    /**
      * Schluessel.
      */
     public static Item key;
@@ -61,10 +53,6 @@ public final class Items {
      * Messer
      */
     public static Item knife;
-    /**
-     * Der Koffer
-     */
-    public static Item koffer;
     /**
      * Mappings.
      */
@@ -76,11 +64,23 @@ public final class Items {
     /**
      * Steinschleuder
      */
-    public static Item stonecatapult;
+    public static Item stoneCatapult;
+    /**
+     * Faden
+     */
+    public static Item string;
+    /**
+     * Der Koffer
+     */
+    public static Item suitCase;
     /**
      * Teddybaer
      */
     public static Item teddy;
+    /**
+     * Das Jojo
+     */
+    public static Item yoyo;
 
     /**
      * Das Pair, das alle Items enthaelt.
@@ -108,8 +108,8 @@ public final class Items {
         healthPotion = new ItemHealthPotion(4);
         registerItem(healthPotion);
 
-        faden = new BaseItem(5, "faden", Sprites.faden);
-        registerItem(faden);
+        string = new BaseItem(5, "string", Sprites.string);
+        registerItem(string);
 
         knife = new BaseItem(6, "knife", Sprites.knife);
         registerItem(knife);
@@ -120,20 +120,20 @@ public final class Items {
         teddy = new BaseItem(8, "teddy", Sprites.teddy);
         registerItem(teddy);
 
-        stonecatapult = new BaseItem(9, "stonecatapult", Sprites.stonecatapult);
-        registerItem(stonecatapult);
+        stoneCatapult = new BaseItem(9, "stoneCatapult", Sprites.stoneCatapult);
+        registerItem(stoneCatapult);
 
-        jojo = new BaseItem(10, "jojo", Sprites.jojo);
-        registerItem(jojo);
+        yoyo = new BaseItem(10, "yoyo", Sprites.yoyo);
+        registerItem(yoyo);
 
-        koffer = new BaseItem(11, "koffer", Sprites.koffer);
-        registerItem(koffer);
+        suitCase = new BaseItem(11, "suitCase", Sprites.suitCase);
+        registerItem(suitCase);
 
-        grammophonItem = new BaseItem(12, "grammophonItem", Sprites.grammophonItem);
-        registerItem(grammophonItem);
+        gramophoneItem = new BaseItem(12, "gramophoneItem", Sprites.gramophoneItem);
+        registerItem(gramophoneItem);
 
-        kaugummi = new BaseItem(13, "kaugummi", Sprites.kaugummi);
-        registerItem(kaugummi);
+        chewingGum = new BaseItem(13, "chewingGum", Sprites.chewingGum);
+        registerItem(chewingGum);
 
         cards = new BaseItem(14, "cards", Sprites.cards);
         registerItem(cards);

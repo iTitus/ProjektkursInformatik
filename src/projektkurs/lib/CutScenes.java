@@ -64,7 +64,7 @@ public final class CutScenes {
     public static void init() {
         one = new CutScene("one");
 
-        one.registerStartupAction(new ConditionedClearMapAction(null, Raster.rasen));
+        one.registerStartupAction(new ConditionedClearMapAction(null, Raster.grass));
         CutSceneObject strasseHorizontal = new CutSceneObject(Images.strasse_EW, 0, 8, 2, 4);
 
         CutSceneObject strasseVertikal = new CutSceneObject(Images.strasse_NS, 45, 0, 4, 8);

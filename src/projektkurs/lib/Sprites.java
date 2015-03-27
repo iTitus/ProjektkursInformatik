@@ -14,6 +14,9 @@ import projektkurs.util.Pair;
  */
 public final class Sprites {
 
+    public static Sprite boomBarrier;
+    public static Sprite boomBarrierOpen;
+    public static Sprite boy;
     public static Sprite button;
     public static Sprite button_disabled;
     public static Sprite button_highlight;
@@ -39,6 +42,7 @@ public final class Sprites {
     public static Sprite chair_6;
     public static Sprite chair_7;
     public static Sprite chest;
+    public static Sprite chewingGum;
     public static Sprite cobbles_1;
     public static Sprite cobbles_2;
     public static Sprite destroyed;
@@ -47,7 +51,6 @@ public final class Sprites {
     public static Sprite door_open_WE;
     public static Sprite door_WE;
     public static Sprite earrings;
-    public static Sprite faden;
     public static Sprite ferry;
     public static Sprite ferryhouse;
     public static Sprite ferryhouse_door;
@@ -56,13 +59,13 @@ public final class Sprites {
     public static Sprite ferryhouse_ecke_se;
     public static Sprite ferryhouse_ecke_sw;
     public static Sprite ferryhouse_wall_e;
+
     public static Sprite ferryhouse_wall_n;
     public static Sprite ferryhouse_wall_s;
     public static Sprite ferryhouse_wall_w;
-
     public static Sprite finish;
     public static Sprite[] fire;
-    public static Sprite fischer;
+    public static Sprite fisher;
     public static Sprite fisherboat;
     public static Sprite floor_1;
     public static Sprite floor_10;
@@ -80,19 +83,15 @@ public final class Sprites {
     public static Sprite frauV_N;
     public static Sprite frauV_S;
     public static Sprite frauV_W;
-    public static Sprite grammophonEntity;
-    public static Sprite grammophonItem;
-    public static Sprite grass;
-    public static Sprite healthpotion;
-    public static Sprite hexenkessel;
+    public static Sprite gramophoneEntity;
+    public static Sprite gramophoneItem;
 
+    public static Sprite grass;
+    public static Sprite grass_2;
+    public static Sprite healthPotion;
     public static Sprite item42;
-    public static Sprite jojo;
-    public static Sprite junge;
-    public static Sprite kaugummi;
     public static Sprite key;
     public static Sprite knife;
-    public static Sprite koffer;
     public static Sprite lordvO_N;
     public static Sprite lordvO_O;
     public static Sprite lordvO_S;
@@ -102,27 +101,24 @@ public final class Sprites {
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
     public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
-
     public static Sprite nest;
+
     public static Sprite nuke;
-    public static Sprite rasen_2;
     public static Sprite redNPC;
-    public static Sprite schranke;
-    public static Sprite schrankeOffen;
     public static Sprite slot;
     public static Sprite slot_highlight;
-    public static Sprite stonecatapult;
+    public static Sprite stoneCatapult;
     public static Sprite street_asphalt;
     public static Sprite street_l_b_1_senk;
     public static Sprite street_l_b_1_wage;
     public static Sprite street_l_b_2_senk;
     public static Sprite street_l_b_2_wage;
     public static Sprite street_l_b_3_senk;
-
     public static Sprite street_l_b_3_wage;
     public static Sprite street_l_b_4_senk;
     public static Sprite street_l_b_4_wage;
     public static Sprite street_l_b_5_senk;
+
     public static Sprite street_l_b_5_wage;
     public static Sprite street_l_b_6_senk;
     public static Sprite street_l_b_6_wage;
@@ -146,9 +142,11 @@ public final class Sprites {
     public static Sprite street_l_t_7_wage;
     public static Sprite street_l_t_8_senk;
     public static Sprite street_l_t_8_wage;
+    public static Sprite string;
+    public static Sprite suitCase;
     public static Sprite teddy;
     public static Sprite thread;
-    public static Sprite trashcan;
+    public static Sprite trashCan;
     public static Sprite tree;
     public static Sprite tree_10ne;
     public static Sprite tree_10nw;
@@ -206,18 +204,20 @@ public final class Sprites {
     public static Sprite tree_9ne_water;
     public static Sprite tree_9nw;
     public static Sprite tree_9nw_water;
-
     public static Sprite tree_9se;
     public static Sprite tree_9se_water;
+
     public static Sprite tree_9sw;
     public static Sprite tree_9sw_water;
     public static Sprite wall;
     public static Sprite water;
-
+    public static Sprite witchCauldron;
     public static Sprite women0_E;
+
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
+    public static Sprite yoyo;
 
     /**
      * Das Pair, das alle Sprites enthaelt.
@@ -272,8 +272,8 @@ public final class Sprites {
         water = new Sprite("water", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(water);
 
-        rasen_2 = new Sprite("rasen_2", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
-        registerSprite(rasen_2);
+        grass_2 = new Sprite("rasen_2", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(grass_2);
 
         tree_2nw = new Sprite("tree_2nw", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(tree_2nw);
@@ -626,8 +626,8 @@ public final class Sprites {
         key = new Sprite("key", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
         registerSprite(key);
 
-        healthpotion = new Sprite("healthpotion", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(healthpotion);
+        healthPotion = new Sprite("healthPotion", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(healthPotion);
 
         button = new Sprite("button", Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, 0, 0, SpriteSheets.guis);
         registerSprite(button);
@@ -671,11 +671,11 @@ public final class Sprites {
         frauV_W = frauV_N.rotate("frauV_W", 270);
         registerSprite(frauV_W);
 
-        junge = new Sprite("junge", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(junge);
+        boy = new Sprite("junge", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(boy);
 
-        fischer = new Sprite("fischer", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(fischer);
+        fisher = new Sprite("fischer", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(fisher);
 
         women0_N = new Sprite("women0_N", Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(women0_N);
@@ -731,8 +731,8 @@ public final class Sprites {
         fisherboat = new Sprite("fisherboat", 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(fisherboat);
 
-        faden = new Sprite("faden", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(faden);
+        string = new Sprite("string", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(string);
 
         knife = new Sprite("knife", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
         registerSprite(knife);
@@ -746,26 +746,26 @@ public final class Sprites {
         earrings = new Sprite("earrings", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(earrings);
 
-        stonecatapult = new Sprite("stonecatapult", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
-        registerSprite(stonecatapult);
+        stoneCatapult = new Sprite("stoneCatapult", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(stoneCatapult);
 
-        grammophonItem = new Sprite("grammophonItem", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(grammophonItem);
+        gramophoneItem = new Sprite("gramophoneItem", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(gramophoneItem);
 
-        grammophonEntity = new Sprite("grammophonEntity", 1 * Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(grammophonEntity);
+        gramophoneEntity = new Sprite("gramophoneEntity", 1 * Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(gramophoneEntity);
 
-        jojo = new Sprite("jojo", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(jojo);
+        yoyo = new Sprite("yoyo", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(yoyo);
 
-        koffer = new Sprite("koffer", Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
-        registerSprite(koffer);
+        suitCase = new Sprite("suitCase", Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(suitCase);
 
         cards = new Sprite("cards", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(cards);
 
-        kaugummi = new Sprite("kaugummi", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
-        registerSprite(kaugummi);
+        chewingGum = new Sprite("chewingGum", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(chewingGum);
 
         ferryhouse_wall_w = new Sprite("ferryhouse_wall_w", Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(ferryhouse_wall_w);
@@ -797,23 +797,23 @@ public final class Sprites {
         car_frauV = new Sprite("car_frauV", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(car_frauV);
 
-        schranke = new Sprite("schranke", 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
-        registerSprite(schranke);
+        boomBarrier = new Sprite("boomBarrier", 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(boomBarrier);
 
         ferryhouse = new Sprite("ferryhouse", 6 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(ferryhouse);
 
-        schrankeOffen = new Sprite("schrankeOffen", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(schrankeOffen);
+        boomBarrierOpen = new Sprite("boomBarrierOpen", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(boomBarrierOpen);
 
-        hexenkessel = new Sprite("hexenkessel", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(hexenkessel);
+        witchCauldron = new Sprite("witchCauldron", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(witchCauldron);
 
         nest = new Sprite("nest", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(nest);
 
-        trashcan = new Sprite("trashcan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(trashcan);
+        trashCan = new Sprite("trashCan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(trashCan);
     }
 
     /**
