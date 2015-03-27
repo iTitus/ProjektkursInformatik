@@ -5,14 +5,13 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityFerryman extends EntityDialog {
-
-    public EntityFerryman(Spielfeld map) {
+public class Entitytrashcan extends EntityDialog {
+    public Entitytrashcan(Spielfeld map) {
         super(map);
     }
 
-    public EntityFerryman(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.junge);
+    public Entitytrashcan(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, 2, 2, Sprites.trashcan);
     }
 
     @Override

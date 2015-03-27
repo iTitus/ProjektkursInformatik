@@ -10,7 +10,7 @@ public class EntityGrammophon extends Entity {
     }
 
     public EntityGrammophon(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.grammophon);
+        super(map, posX, posY, 1, 1, Sprites.grammophonEntity);
     }
 
 }

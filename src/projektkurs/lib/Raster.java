@@ -617,6 +617,17 @@ public final class Raster {
      *            Raster
      */
     private static void registerRaster(AbstractRaster r) {
+        if (r == null) {
+            Logger.warn("NULL");
+        }
+        if (MAPPINGS.containsKey(r.getName())) {
+            Logger.warn("Name schon vergeben");
+        }
+        if (r.getID() < 0 || r.getID() >= RASTER.length) {
+            Logger.warn("ID out of bounds");
+        } else if (RASTER[r.getID()] != null) {
+            Logger.warn("ID schon besetzt");
+        }
         if (r != null && !MAPPINGS.containsKey(r.getName()) && r.getID() > 0 && r.getID() < RASTER.length && RASTER[r.getID()] == null) {
             MAPPINGS.put(r.getName(), r);
             RASTER[r.getID()] = r;

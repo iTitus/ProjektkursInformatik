@@ -1,11 +1,9 @@
 package projektkurs.entity;
 
-import projektkurs.dialog.Dialog;
-import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityFisherboat extends EntityDialog {
+public class EntityFisherboat extends Entity {
 
     /**
      * Konstruktor.
@@ -30,11 +28,6 @@ public class EntityFisherboat extends EntityDialog {
 
     public EntityFisherboat(Spielfeld map, int posX, int posY) {
         super(map, posX, posY, 6, 6, Sprites.fisherboat);
-    }
-
-    @Override
-    public Dialog getDialog() {
-        return Dialoge.test;
     }
 
 }

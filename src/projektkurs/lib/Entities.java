@@ -8,11 +8,11 @@ import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
-import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
+import projektkurs.util.SaveData;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -20,7 +20,6 @@ import projektkurs.world.Spielfeld;
  */
 public final class Entities {
 
-    public static final HashMap<Class<? extends Entity>, String> BACK_MAPPINGS = new HashMap<Class<? extends Entity>, String>();
     /**
      * Mappings.
      */
@@ -56,10 +55,10 @@ public final class Entities {
      */
     @Init
     public static void init() {
-        registerEntity(EntityPlayer.class, "player");
-        registerEntity(EntityItem.class, "item");
-        registerEntity(EntityRedNPC.class, "redNPC");
-        registerEntity(EntityFerry.class, "ferry");
+        registerEntity(EntityPlayer.class);
+        registerEntity(EntityItem.class);
+        registerEntity(EntityRedNPC.class);
+        registerEntity(EntityFerry.class);
     }
 
     /**
@@ -104,10 +103,9 @@ public final class Entities {
      * @param cls
      *            Entity-Klasse
      */
-    private static void registerEntity(Class<? extends Entity> cls, String name) {
+    private static void registerEntity(Class<? extends Entity> cls) {
         if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
-            MAPPINGS.put(name, cls);
-            BACK_MAPPINGS.put(cls, name);
+            MAPPINGS.put(cls.getName(), cls);
         } else {
             Logger.warn("Unable to register Entity", cls);
             throw new IllegalArgumentException("Unable to register Entity " + cls);
