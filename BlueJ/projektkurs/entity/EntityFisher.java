@@ -12,7 +12,7 @@ public class EntityFisher extends EntityDialog {
     }
 
     public EntityFisher(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.guy1);
+        super(map, posX, posY, 1, 1, Sprites.fischer);
     }
 
     @Override

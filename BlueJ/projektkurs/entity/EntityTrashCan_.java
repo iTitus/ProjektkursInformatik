@@ -5,12 +5,12 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class Entitytrashcan extends EntityDialog {
-    public Entitytrashcan(Spielfeld map) {
+public class EntityTrashCan_ extends EntityDialog {
+    public EntityTrashCan_(Spielfeld map) {
         super(map);
     }
 
-    public Entitytrashcan(Spielfeld map, int posX, int posY) {
+    public EntityTrashCan_(Spielfeld map, int posX, int posY) {
         super(map, posX, posY, 2, 2, Sprites.trashcan);
     }
 

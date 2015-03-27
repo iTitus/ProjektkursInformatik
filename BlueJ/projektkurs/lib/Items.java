@@ -32,7 +32,7 @@ public final class Items {
     /**
      * Das Grammophon
      */
-    public static Item grammophon;
+    public static Item grammophonItem;
     /**
      * Gesundheitstrank.
      */
@@ -129,8 +129,8 @@ public final class Items {
         koffer = new BaseItem(11, "koffer", Sprites.koffer);
         registerItem(koffer);
 
-        grammophon = new BaseItem(12, "grammophon", Sprites.grammophon);
-        registerItem(grammophon);
+        grammophonItem = new BaseItem(12, "grammophonItem", Sprites.grammophonItem);
+        registerItem(grammophonItem);
 
         kaugummi = new BaseItem(13, "kaugummi", Sprites.kaugummi);
         registerItem(kaugummi);

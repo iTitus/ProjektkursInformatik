@@ -22,11 +22,11 @@ public final class Sprites {
     public static Sprite car_empty_S;
     public static Sprite car_empty_W;
     public static Sprite car_frauV;
-    public static Sprite car_lord_frauV_E;
     public static Sprite car_frauV_E;
     public static Sprite car_frauV_N;
     public static Sprite car_frauV_S;
     public static Sprite car_frauV_W;
+    public static Sprite car_lord_frauV_E;
     public static Sprite car_lord_frauV_N;
     public static Sprite car_lord_frauV_S;
     public static Sprite car_lord_frauV_W;
@@ -62,6 +62,7 @@ public final class Sprites {
 
     public static Sprite finish;
     public static Sprite[] fire;
+    public static Sprite fischer;
     public static Sprite fisherboat;
     public static Sprite floor_1;
     public static Sprite floor_10;
@@ -79,14 +80,15 @@ public final class Sprites {
     public static Sprite frauV_N;
     public static Sprite frauV_S;
     public static Sprite frauV_W;
+    public static Sprite grammophonEntity;
     public static Sprite grammophonItem;
     public static Sprite grass;
-    public static Sprite junge;
-    public static Sprite fischer;
     public static Sprite healthpotion;
-    public static Sprite item42;
+    public static Sprite hexenkessel;
 
+    public static Sprite item42;
     public static Sprite jojo;
+    public static Sprite junge;
     public static Sprite kaugummi;
     public static Sprite key;
     public static Sprite knife;
@@ -95,20 +97,18 @@ public final class Sprites {
     public static Sprite lordvO_O;
     public static Sprite lordvO_S;
     public static Sprite lordvO_W;
-    public static Sprite schrankeOffen;
-    public static Sprite hexenkessel;
-    public static Sprite nest;
-    public static Sprite trashcan;
-
     /**
      * Die Mappings.
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
     public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
+
+    public static Sprite nest;
     public static Sprite nuke;
     public static Sprite rasen_2;
     public static Sprite redNPC;
     public static Sprite schranke;
+    public static Sprite schrankeOffen;
     public static Sprite slot;
     public static Sprite slot_highlight;
     public static Sprite stonecatapult;
@@ -148,6 +148,7 @@ public final class Sprites {
     public static Sprite street_l_t_8_wage;
     public static Sprite teddy;
     public static Sprite thread;
+    public static Sprite trashcan;
     public static Sprite tree;
     public static Sprite tree_10ne;
     public static Sprite tree_10nw;
@@ -205,19 +206,18 @@ public final class Sprites {
     public static Sprite tree_9ne_water;
     public static Sprite tree_9nw;
     public static Sprite tree_9nw_water;
-    public static Sprite tree_9se;
 
+    public static Sprite tree_9se;
     public static Sprite tree_9se_water;
     public static Sprite tree_9sw;
     public static Sprite tree_9sw_water;
     public static Sprite wall;
     public static Sprite water;
-    public static Sprite women0_E;
 
+    public static Sprite women0_E;
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
-    public static Sprite grammophonEntity;
 
     /**
      * Das Pair, das alle Sprites enthaelt.

@@ -22,14 +22,14 @@ public final class Sprites {
     public static Sprite car_empty_S;
     public static Sprite car_empty_W;
     public static Sprite car_frauV;
-    public static Sprite car_lord_E;
+    public static Sprite car_frauV_E;
+    public static Sprite car_frauV_N;
+    public static Sprite car_frauV_S;
+    public static Sprite car_frauV_W;
     public static Sprite car_lord_frauV_E;
     public static Sprite car_lord_frauV_N;
     public static Sprite car_lord_frauV_S;
     public static Sprite car_lord_frauV_W;
-    public static Sprite car_lord_N;
-    public static Sprite car_lord_S;
-    public static Sprite car_lord_W;
     public static Sprite cards;
     public static Sprite chair_1;
     public static Sprite chair_2;
@@ -62,6 +62,7 @@ public final class Sprites {
 
     public static Sprite finish;
     public static Sprite[] fire;
+    public static Sprite fischer;
     public static Sprite fisherboat;
     public static Sprite floor_1;
     public static Sprite floor_10;
@@ -79,14 +80,15 @@ public final class Sprites {
     public static Sprite frauV_N;
     public static Sprite frauV_S;
     public static Sprite frauV_W;
-    public static Sprite grammophon;
+    public static Sprite grammophonEntity;
+    public static Sprite grammophonItem;
     public static Sprite grass;
-    public static Sprite guy0;
-    public static Sprite guy1;
     public static Sprite healthpotion;
-    public static Sprite item42;
+    public static Sprite hexenkessel;
 
+    public static Sprite item42;
     public static Sprite jojo;
+    public static Sprite junge;
     public static Sprite kaugummi;
     public static Sprite key;
     public static Sprite knife;
@@ -100,10 +102,13 @@ public final class Sprites {
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
     public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
+
+    public static Sprite nest;
     public static Sprite nuke;
     public static Sprite rasen_2;
     public static Sprite redNPC;
     public static Sprite schranke;
+    public static Sprite schrankeOffen;
     public static Sprite slot;
     public static Sprite slot_highlight;
     public static Sprite stonecatapult;
@@ -143,6 +148,7 @@ public final class Sprites {
     public static Sprite street_l_t_8_wage;
     public static Sprite teddy;
     public static Sprite thread;
+    public static Sprite trashcan;
     public static Sprite tree;
     public static Sprite tree_10ne;
     public static Sprite tree_10nw;
@@ -200,15 +206,15 @@ public final class Sprites {
     public static Sprite tree_9ne_water;
     public static Sprite tree_9nw;
     public static Sprite tree_9nw_water;
-    public static Sprite tree_9se;
 
+    public static Sprite tree_9se;
     public static Sprite tree_9se_water;
     public static Sprite tree_9sw;
     public static Sprite tree_9sw_water;
     public static Sprite wall;
     public static Sprite water;
-    public static Sprite women0_E;
 
+    public static Sprite women0_E;
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
@@ -665,11 +671,11 @@ public final class Sprites {
         frauV_W = frauV_N.rotate("frauV_W", 270);
         registerSprite(frauV_W);
 
-        guy0 = new Sprite("guy0", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
-        registerSprite(guy0);
+        junge = new Sprite("junge", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(junge);
 
-        guy1 = new Sprite("guy1", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9, SpriteSheets.entities);
-        registerSprite(guy1);
+        fischer = new Sprite("fischer", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(fischer);
 
         women0_N = new Sprite("women0_N", Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(women0_N);
@@ -698,19 +704,7 @@ public final class Sprites {
         car_empty_W = car_empty_N.rotate("car_empty_W", 270);
         registerSprite(car_empty_W);
 
-        car_lord_N = new Sprite("car_lord_N", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
-        registerSprite(car_lord_N);
-
-        car_lord_E = car_lord_N.rotate("car_lord_E", 90);
-        registerSprite(car_lord_E);
-
-        car_lord_S = car_lord_N.rotate("car_lord_S", 180);
-        registerSprite(car_lord_S);
-
-        car_lord_W = car_lord_N.rotate("car_lord_W", 270);
-        registerSprite(car_lord_W);
-
-        car_lord_frauV_N = new Sprite("car_lord_frauV_N", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        car_lord_frauV_N = new Sprite("car_lord_frauV_N", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
         registerSprite(car_lord_frauV_N);
 
         car_lord_frauV_E = car_lord_frauV_N.rotate("car_lord_frauV_E", 90);
@@ -721,6 +715,18 @@ public final class Sprites {
 
         car_lord_frauV_W = car_lord_frauV_N.rotate("car_lord_frauV_W", 270);
         registerSprite(car_lord_frauV_W);
+
+        car_frauV_N = new Sprite("car_frauV_N", 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, 0, SpriteSheets.entities);
+        registerSprite(car_frauV_N);
+
+        car_frauV_E = car_frauV_N.rotate("car_frauV_E", 90);
+        registerSprite(car_frauV_E);
+
+        car_frauV_S = car_frauV_N.rotate("car_frauV_S", 180);
+        registerSprite(car_frauV_S);
+
+        car_frauV_W = car_frauV_N.rotate("car_frauV_W", 270);
+        registerSprite(car_frauV_W);
 
         fisherboat = new Sprite("fisherboat", 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(fisherboat);
@@ -743,8 +749,11 @@ public final class Sprites {
         stonecatapult = new Sprite("stonecatapult", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(stonecatapult);
 
-        grammophon = new Sprite("grammophon", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(grammophon);
+        grammophonItem = new Sprite("grammophonItem", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(grammophonItem);
+
+        grammophonEntity = new Sprite("grammophonEntity", 1 * Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(grammophonEntity);
 
         jojo = new Sprite("jojo", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
         registerSprite(jojo);
@@ -794,6 +803,17 @@ public final class Sprites {
         ferryhouse = new Sprite("ferryhouse", 6 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(ferryhouse);
 
+        schrankeOffen = new Sprite("schrankeOffen", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(schrankeOffen);
+
+        hexenkessel = new Sprite("hexenkessel", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(hexenkessel);
+
+        nest = new Sprite("nest", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(nest);
+
+        trashcan = new Sprite("trashcan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(trashcan);
     }
 
     /**

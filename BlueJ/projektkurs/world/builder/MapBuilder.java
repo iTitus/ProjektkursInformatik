@@ -4,8 +4,10 @@ import projektkurs.cutscene.CutScene;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
+import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityGrammophon;
 import projektkurs.entity.EntityItem;
+import projektkurs.entity.EntityJunge;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntitySchranke;
 import projektkurs.entity.EntityVilleCar;
@@ -186,17 +188,17 @@ public final class MapBuilder {
         map.spawn(new EntityGrammophon(map, 26, 28));
 
         // Ferry
-        map.spawn(new EntityFerry(map, 10, 12));
+        map.spawn(new EntityFerry(map, 11, 12));
 
         // // Fishership
         //
         // map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
 
         // Auto
-        map.spawn(new EntityVilleCar(map, 11, 25));
+        map.spawn(new EntityVilleCar(map, 12, 25));
 
         // Schranke
-        map.spawn(new EntitySchranke(map, 10, 20));
+        map.spawn(new EntitySchranke(map, 11, 20));
 
         // Boden
 
@@ -220,7 +222,10 @@ public final class MapBuilder {
 
         // Fisher
 
-        // map.spawn(new EntityFisher(map, 60, 47));
+        map.spawn(new EntityFisher(map, 60, 47));
+
+        // Junge
+        map.spawn(new EntityJunge(map, 33, 52));
         // Insel im Fluss
         int inttemp = 4;
         int inttemp2 = 0;
@@ -289,14 +294,14 @@ public final class MapBuilder {
             }
         }
 
-        // B�ume an der Stra�e
+        // Bï¿½ume an der Straï¿½e
 
         for (int y = 21; y < map.getMapSizeY() - 2; y = y + 7) {
             setTree(7, y, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
             setTree(15, y + 3, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
         }
 
-        // B�ume linke Seite
+        // Bï¿½ume linke Seite
         for (int x = 2; x < 10; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
             setTree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
@@ -523,7 +528,33 @@ public final class MapBuilder {
         map.setRasterAt(49, 20, Raster.water);
 
         map.setRasterAt(50, 20, Raster.water);
+        // Steine am Anfang zum nächsen Level
 
+        for (int x = 58; x < 64; x++) {
+            map.setRasterAt(x, 69, Raster.cobbles_1);
+        }
+        map.setRasterAt(59, 69, Raster.rasen_2);
+
+        for (int x = 58; x < 62; x++) {
+            map.setRasterAt(x, 68, Raster.cobbles_1);
+        }
+        map.setRasterAt(59, 68, Raster.rasen_2);
+        for (int x = 61; x < 63; x++) {
+            map.setRasterAt(x, 67, Raster.cobbles_1);
+        }
+        map.setRasterAt(59, 67, Raster.cobbles_1);
+        map.setRasterAt(58, 66, Raster.cobbles_1);
+        map.setRasterAt(60, 66, Raster.cobbles_1);
+        map.setRasterAt(61, 66, Raster.cobbles_1);
+        map.setRasterAt(64, 66, Raster.cobbles_1);
+        map.setRasterAt(64, 67, Raster.cobbles_1);
+        map.setRasterAt(56, 65, Raster.cobbles_1);
+        map.setRasterAt(63, 65, Raster.cobbles_1);
+        map.setRasterAt(63, 64, Raster.cobbles_1);
+        map.setRasterAt(62, 64, Raster.cobbles_1);
+        map.setRasterAt(59, 64, Raster.cobbles_1);
+        map.setRasterAt(58, 63, Raster.cobbles_1);
+        map.setRasterAt(65, 63, Raster.cobbles_1);
         // Haus
 
         for (int y = 25; y < 30; y++) {
