@@ -12,6 +12,10 @@ public abstract class ConfigPropertyWithBounds<T extends Comparable<T>> extends 
         this.maxValue = maxValue;
     }
 
+    public ConfigPropertyWithBounds(String key, T defaultValue, T minValue, T maxValue) {
+        this(key, null, defaultValue, minValue, maxValue);
+    }
+
     @Override
     public List<String> getAllComments() {
         List<String> list = super.getAllComments();

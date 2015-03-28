@@ -2,6 +2,10 @@ package projektkurs.io.config.property;
 
 public class ConfigPropertyString extends ConfigProperty<String> {
 
+    public ConfigPropertyString(String key, String defaultValue) {
+        this(key, null, defaultValue);
+    }
+
     public ConfigPropertyString(String key, String comment, String defaultValue) {
         super(key, comment, defaultValue);
     }

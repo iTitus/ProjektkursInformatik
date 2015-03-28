@@ -23,6 +23,10 @@ public final class ConfigCategory {
     private ConfigCategory parent;
     private final Set<ConfigProperty<?>> properties;
 
+    public ConfigCategory(String name) {
+        this(name, null);
+    }
+
     public ConfigCategory(String name, String comment) {
         this.name = name.trim();
         this.comment = comment;

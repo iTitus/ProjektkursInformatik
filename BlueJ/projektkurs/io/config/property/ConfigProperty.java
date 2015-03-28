@@ -29,6 +29,10 @@ public abstract class ConfigProperty<T> {
         value = defaultValue;
     }
 
+    public ConfigProperty(String key, T defaultValue) {
+        this(key, null, defaultValue);
+    }
+
     @Override
     public boolean equals(Object obj) {
         return obj != null && obj instanceof ConfigProperty<?> && key != null && key.equalsIgnoreCase(((ConfigProperty<?>) obj).key);
