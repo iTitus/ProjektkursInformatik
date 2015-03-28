@@ -20,10 +20,12 @@ public class ConfigPropertyDouble extends ConfigPropertyWithBounds<Double> {
 
     @Override
     public void parseValue(String value) {
-        try {
-            setValue(Double.valueOf(value));
-        } catch (NumberFormatException e) {
-            // NO-OP
+        if (value != null && !value.isEmpty()) {
+            try {
+                setValue(Double.valueOf(value));
+            } catch (NumberFormatException e) {
+                // NO-OP
+            }
         }
     }
 

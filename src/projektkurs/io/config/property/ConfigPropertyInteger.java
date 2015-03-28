@@ -20,10 +20,12 @@ public class ConfigPropertyInteger extends ConfigPropertyWithBounds<Integer> {
 
     @Override
     public void parseValue(String value) {
-        try {
-            setValue(Integer.valueOf(value));
-        } catch (NumberFormatException e) {
-            // NO-OP
+        if (value != null && !value.isEmpty()) {
+            try {
+                setValue(Integer.valueOf(value));
+            } catch (NumberFormatException e) {
+                // NO-OP
+            }
         }
     }
 

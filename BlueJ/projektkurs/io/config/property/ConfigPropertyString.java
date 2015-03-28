@@ -12,7 +12,9 @@ public class ConfigPropertyString extends ConfigProperty<String> {
 
     @Override
     public void parseValue(String value) {
-        setValue(value);
+        if (value != null && !value.isEmpty()) {
+            setValue(value);
+        }
     }
 
 }
