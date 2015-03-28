@@ -43,7 +43,6 @@ public class SpeicherDatei {
 
     public void save(String name) {
         this.name = name;
-
         saveInfoList();
         saveEntitiesList();
         saveTriggerList();
@@ -70,35 +69,23 @@ public class SpeicherDatei {
         this.triggerList = triggerList;
     }
 
-    /**
-     * Speichert die Entities Liste
-     */
     private void saveEntitiesList() {
         saveList("entities", entitiesList);
     }
 
+    // TODO
     private void saveFeld() {
-        // String s = "";
-        // for (int i = 0; i < felder.length; i++) {
-        // s += felder[i];
-        // }
-        // TODO
+        String s = "";
+        for (Feld element : felder) {
+            s += element;
+        }
     }
 
-    /**
-     * Speichert die Info Liste
-     */
     private void saveInfoList() {
         saveList("info", infoList);
 
     }
 
-    /**
-     * @param art
-     *            Art der Liste
-     * @param List
-     *            Welche Liste
-     */
     private void saveList(String art, List<SaveData> List) {
 
         try (FileOutputStream fileOut = new FileOutputStream(art + name + ".txt"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
@@ -108,9 +95,6 @@ public class SpeicherDatei {
         }
     }
 
-    /**
-     * Speichert die Trigger List
-     */
     private void saveTriggerList() {
         saveList("trigger", triggerList);
     }
