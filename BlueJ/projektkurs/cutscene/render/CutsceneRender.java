@@ -13,8 +13,11 @@ import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
 import projektkurs.render.Font;
 import projektkurs.render.Screen;
+import projektkurs.util.I18n;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
+import projektkurs.util.StringUtil;
 
 /**
  * CutScene-Renderklasse.
@@ -94,11 +97,14 @@ public class CutsceneRender extends Canvas implements IUpdatable {
 
         RenderUtil.drawBorder(screen);
 
+        Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
+        if (StringUtil.isNotNullOrEmpty(CutSceneManager.getCutScene().getCaptionString())) {
+            Font.drawCenteredString(screen, I18n.getString(CutSceneManager.getCutScene().getCaptionString()), MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.WINDOW_HUD_Y, 2), 0x0000FF);
+        }
+
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.getPixel(i);
         }
-
-        Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0xFFFFFF);
 
         Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
         RenderUtil.drawImage(g, image, 0, 0, Integers.windowX, Integers.windowY);

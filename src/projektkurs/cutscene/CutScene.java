@@ -21,6 +21,7 @@ public final class CutScene implements IUpdatable {
      * Eventuelles Hintergrundbild.
      */
     private Sprite background;
+    private String captionString;
     /**
      * Bereits vergangene Ticks.
      */
@@ -100,6 +101,10 @@ public final class CutScene implements IUpdatable {
         return background;
     }
 
+    public String getCaptionString() {
+        return captionString;
+    }
+
     /**
      * Alle CutSceneObjects in der CutScene.
      *
@@ -173,6 +178,10 @@ public final class CutScene implements IUpdatable {
      */
     public void setBackground(Sprite background) {
         this.background = background;
+    }
+
+    public void setCaptionString(String captionString) {
+        this.captionString = captionString;
     }
 
     /**
