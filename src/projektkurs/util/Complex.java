@@ -1,4 +1,4 @@
-package projektkurs.simulation.mandelbrot;
+package projektkurs.util;
 
 public class Complex {
 

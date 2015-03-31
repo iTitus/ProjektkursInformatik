@@ -23,8 +23,20 @@ public final class StringUtil {
         return out;
     }
 
+    public static String trimToNull(String s) {
+        String s2 = null;
+        if (s != null) {
+            s2 = s.trim();
+        } else {
+            return null;
+        }
+        if (isNullOrEmpty(s2)) {
+            return null;
+        }
+        return s2;
+    }
+
     private StringUtil() {
         // NO-OP
     }
-
 }

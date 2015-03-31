@@ -3,25 +3,24 @@ package projektkurs.command;
 import java.util.Locale;
 
 import projektkurs.Main;
-import projektkurs.gui.Gui;
 import projektkurs.simulation.life.gui.GuiGameOfLife;
 import projektkurs.simulation.logic.gui.GuiLogicBoard;
 import projektkurs.simulation.mandelbrot.gui.GuiMandelbrotSet;
 import projektkurs.simulation.ulam.gui.GuiUlam;
+import projektkurs.util.StringUtil;
 
 public class CommandOpenSimulation extends Command {
 
     @Override
     public EnumCommandResult execute(String[] args) {
-        if (args.length != 1 || args[0] == null || args[0].trim().isEmpty()) {
+        if (args.length < 1 || args[0] == null || args[0].trim().isEmpty()) {
             return EnumCommandResult.WRONG_USAGE;
         }
-        Gui gui = getGui(args[0].trim().toLowerCase(Locale.ENGLISH));
-        if (gui == null) {
-            return EnumCommandResult.OBJECT_NOT_FOUND;
+        String[] subArgs = new String[args.length > 1 ? args.length - 1 : 0];
+        for (int i = 0; i < subArgs.length; i++) {
+            subArgs[i] = StringUtil.trimToNull(args[i + 1]);
         }
-        Main.openGui(gui);
-        return EnumCommandResult.SUCCESS;
+        return executeSubCommand(args[0].trim().toLowerCase(Locale.ENGLISH), subArgs);
     }
 
     @Override
@@ -29,20 +28,44 @@ public class CommandOpenSimulation extends Command {
         return "simulation";
     }
 
-    private Gui getGui(String subCommand) {
+    private EnumCommandResult executeSubCommand(String subCommand, String[] subArgs) {
         switch (subCommand) {
             case "logic":
-                return new GuiLogicBoard();
+                Main.openGui(new GuiLogicBoard());
+                break;
             case "life":
-                return new GuiGameOfLife();
+                Main.openGui(new GuiGameOfLife());
+                break;
             case "ulam":
-                return new GuiUlam();
+                Main.openGui(new GuiUlam());
+                break;
             case "mandelbrot":
             case "mb":
             case "brot":
-                return new GuiMandelbrotSet();
+                Main.openGui(new GuiMandelbrotSet(0, 0, true));
+                break;
+            case "julia":
+                if (subArgs.length != 2 || subArgs[0] == null || subArgs[1] == null) {
+                    return EnumCommandResult.WRONG_USAGE;
+                }
+                String s1 = subArgs[0].trim();
+                String s2 = subArgs[1].trim();
+                if (s1.isEmpty() || s2.isEmpty()) {
+                    return EnumCommandResult.WRONG_USAGE;
+                }
+                double d1;
+                double d2;
+                try {
+                    d1 = Double.valueOf(s1);
+                    d2 = Double.valueOf(s2);
+                } catch (NumberFormatException e) {
+                    return EnumCommandResult.NUMBER_PARSING;
+                }
+                Main.openGui(new GuiMandelbrotSet(d1, d2, false));
+                break;
             default:
-                return null;
+                return EnumCommandResult.OBJECT_NOT_FOUND;
         }
+        return EnumCommandResult.SUCCESS;
     }
 }

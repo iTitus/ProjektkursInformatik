@@ -1,12 +1,16 @@
 package projektkurs.simulation.mandelbrot.gui;
 
 import projektkurs.gui.Gui;
+import projektkurs.lib.Integers;
 import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 public class GuiMandelbrotSet extends Gui {
 
-    private ElementMandelbrotSet elementMandelbrotSet;
+    private final ElementMandelbrotSet elementMandelbrotSet;
+
+    public GuiMandelbrotSet(double c_r, double c_i, boolean brot) {
+        elementMandelbrotSet = new ElementMandelbrotSet(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, Integers.windowY - 2 * Integers.WINDOW_HUD_Y, 0, c_r, c_i, brot);
+    }
 
     @Override
     public boolean canUpdate() {
@@ -16,7 +20,6 @@ public class GuiMandelbrotSet extends Gui {
     @Override
     public void initGui() {
         super.initGui();
-        elementMandelbrotSet = new ElementMandelbrotSet(64, 64, 1024, 768, 0, 2, 1);
         addElement(elementMandelbrotSet);
         elementMandelbrotSet.start();
     }
@@ -28,7 +31,7 @@ public class GuiMandelbrotSet extends Gui {
 
     @Override
     public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
+        screen.setColor(0);
         super.render(screen);
     }
 

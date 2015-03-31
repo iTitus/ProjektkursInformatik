@@ -15,6 +15,17 @@ public final class MathUtil {
     /**
      * Betrag der gegebenen Zahl.
      *
+     * @param d
+     *            Zahl
+     * @return Betrag
+     */
+    public static double abs(double d) {
+        return d < 0 ? -d : d;
+    }
+
+    /**
+     * Betrag der gegebenen Zahl.
+     *
      * @param i
      *            Zahl
      * @return Betrag
@@ -228,6 +239,10 @@ public final class MathUtil {
      */
     public static boolean isNotInArray(int i, int length) {
         return i < 0 || i >= length;
+    }
+
+    public static double nextGaussian() {
+        return RANDOM.nextGaussian();
     }
 
     /**
