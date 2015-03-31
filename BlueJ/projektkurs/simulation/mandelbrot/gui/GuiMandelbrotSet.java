@@ -13,11 +13,6 @@ public class GuiMandelbrotSet extends Gui {
     }
 
     @Override
-    public boolean canUpdate() {
-        return false;
-    }
-
-    @Override
     public void initGui() {
         super.initGui();
         addElement(elementMandelbrotSet);

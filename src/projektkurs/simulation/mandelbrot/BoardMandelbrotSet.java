@@ -25,6 +25,10 @@ public class BoardMandelbrotSet {
         this.brot = brot;
     }
 
+    public void decreaseZoom(double by) {
+        mandelbrotIteratorThread.decreaseZoom(by);
+    }
+
     public int get(int x, int y) {
         return board.get(x + y * sizeX);
     }
@@ -37,6 +41,34 @@ public class BoardMandelbrotSet {
         return c_r;
     }
 
+    public int getIteration() {
+        return mandelbrotIteratorThread.getIteration();
+    }
+
+    public double getMaxX() {
+        return mandelbrotIteratorThread.getMaxX();
+    }
+
+    public double getMaxY() {
+        return mandelbrotIteratorThread.getMaxY();
+    }
+
+    public double getMinX() {
+        return mandelbrotIteratorThread.getMinX();
+    }
+
+    public double getMinY() {
+        return mandelbrotIteratorThread.getMinY();
+    }
+
+    public double getPosX() {
+        return mandelbrotIteratorThread.getPosX();
+    }
+
+    public double getPosY() {
+        return mandelbrotIteratorThread.getPosY();
+    }
+
     public int getSizeX() {
         return sizeX;
     }
@@ -45,8 +77,20 @@ public class BoardMandelbrotSet {
         return sizeY;
     }
 
+    public double getZoom() {
+        return mandelbrotIteratorThread.getZoom();
+    }
+
+    public void increaseZoom(double by) {
+        mandelbrotIteratorThread.increaseZoom(by);
+    }
+
     public boolean isBrot() {
         return brot;
+    }
+
+    public void move(double dX, double dY) {
+        mandelbrotIteratorThread.move(dX, dY);
     }
 
     public void render(Screen screen, int offsetX, int offsetY) {
@@ -60,11 +104,31 @@ public class BoardMandelbrotSet {
         int centerY = (int) (MathUtil.abs(mandelbrotIteratorThread.getMaxY()) / (MathUtil.abs(mandelbrotIteratorThread.getMinY()) + MathUtil.abs(mandelbrotIteratorThread.getMaxY())) * sizeY);
         RenderUtil.drawLine(screen, offsetX + centerX, offsetY, offsetX + centerX, offsetY + sizeY, 0xFF0000);
         RenderUtil.drawLine(screen, offsetX, offsetY + centerY, offsetX + sizeX, offsetY + centerY, 0xFF0000);
-        Font.drawString(screen, "Iteration: " + mandelbrotIteratorThread.getIteration(), offsetX, offsetY, 0x0000DD);
+        Font.drawString(screen, String.format("Iteration: %d | X: %.2f | Y: %.2f | Zoom: %.2f", mandelbrotIteratorThread.getIteration(), mandelbrotIteratorThread.getPosX(), mandelbrotIteratorThread.getPosY(), mandelbrotIteratorThread.getZoom()), offsetX, offsetY, 0x0000DD);
     }
 
     public void set(int x, int y, int i) {
         board.lazySet(x + y * sizeX, i);
+    }
+
+    public void setIteration(int i) {
+        mandelbrotIteratorThread.setIteration(i);
+    }
+
+    public void setPos(double posX, double posY) {
+        mandelbrotIteratorThread.setPos(posX, posY);
+    }
+
+    public void setPosX(double posX) {
+        mandelbrotIteratorThread.setPosX(posX);
+    }
+
+    public void setPosY(double posY) {
+        mandelbrotIteratorThread.setPosY(posY);
+    }
+
+    public void setZoom(double zoom) {
+        mandelbrotIteratorThread.setZoom(zoom);
     }
 
     public void start() {
@@ -74,4 +138,5 @@ public class BoardMandelbrotSet {
     public void stop() {
         mandelbrotIteratorThread.requestStop();
     }
+
 }

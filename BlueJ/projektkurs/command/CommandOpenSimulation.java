@@ -6,6 +6,7 @@ import projektkurs.Main;
 import projektkurs.simulation.life.gui.GuiGameOfLife;
 import projektkurs.simulation.logic.gui.GuiLogicBoard;
 import projektkurs.simulation.mandelbrot.gui.GuiMandelbrotSet;
+import projektkurs.simulation.pacman.gui.GuiPacman;
 import projektkurs.simulation.ulam.gui.GuiUlam;
 import projektkurs.util.StringUtil;
 
@@ -62,6 +63,9 @@ public class CommandOpenSimulation extends Command {
                     return EnumCommandResult.NUMBER_PARSING;
                 }
                 Main.openGui(new GuiMandelbrotSet(d1, d2, false));
+                break;
+            case "pacman":
+                Main.openGui(new GuiPacman());
                 break;
             default:
                 return EnumCommandResult.OBJECT_NOT_FOUND;
