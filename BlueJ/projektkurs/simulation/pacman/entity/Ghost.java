@@ -3,12 +3,12 @@ package projektkurs.simulation.pacman.entity;
 import projektkurs.render.Screen;
 import projektkurs.simulation.pacman.PacmanBoard;
 import projektkurs.simulation.pacman.gui.ElementPacmanBoard;
+import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
 public abstract class Ghost extends PacmanEntity {
 
-    private static final int GHOST_POINTS = 100;
-    private PacmanEntity ground = new EmptySpace(board, x, y);
+    public static final int POINTS = 100;
     protected int targetX, targetY;
 
     public Ghost(PacmanBoard board, int x, int y) {
@@ -22,54 +22,52 @@ public abstract class Ghost extends PacmanEntity {
 
     public abstract int getColor();
 
-    public PacmanEntity getGround() {
-        return ground;
+    public int getTargetX() {
+        return targetX;
+    }
+
+    public int getTargetY() {
+        return targetY;
+    }
+
+    public void moveTarget(int dtargetX, int dtargetY) {
+        targetX += dtargetX;
+        targetY += dtargetY;
     }
 
     @Override
-    public int getPosX() {
-        return x;
-    }
-
-    @Override
-    public int getPosY() {
-        return y;
+    public void onCollide(PacmanEntity e) {
+        if (board.isSuperMode()) {
+            onDeath();
+        } else {
+            e.onDeath();
+        }
     }
 
     @Override
     public void onDeath() {
-        board.increaseScore(GHOST_POINTS * board.getMultiplicator());
+        board.increaseScore(POINTS * board.getMultiplicator());
         board.increaseMultiplicator();
-        if (ground != null) {
-            board.setPacmanEntity(ground);
-        }
         targetX = board.getGhostSpawnX();
         targetY = board.getGhostSpawnY();
     }
 
     @Override
     public void render(Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawRectangle(screen, offsetX + 1 + ElementPacmanBoard.SIZE * x, offsetY + 1 + ElementPacmanBoard.SIZE * y, ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
+        RenderUtil.drawRectangle(screen, offsetX + 1 + ElementPacmanBoard.SIZE * MathUtil.round(x), offsetY + 1 + ElementPacmanBoard.SIZE * MathUtil.round(y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
     }
 
-    public void setGround(PacmanEntity ground) {
-        this.ground = ground;
+    public void setTarget(int targetX, int targetY) {
+        this.targetX = targetX;
+        this.targetY = targetY;
     }
 
-    @Override
-    public void setPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void setTargetX(int targetX) {
+        this.targetX = targetX;
     }
 
-    @Override
-    public boolean tryWalkOn(PacmanEntity e) {
-        if (board.isSuperMode()) {
-            onDeath();
-        } else {
-            e.onDeath();
-        }
-        return false;
+    public void setTargetY(int targetY) {
+        this.targetY = targetY;
     }
 
     @Override

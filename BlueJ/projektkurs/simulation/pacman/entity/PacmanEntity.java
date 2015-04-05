@@ -1,17 +1,15 @@
 package projektkurs.simulation.pacman.entity;
 
 import projektkurs.render.Screen;
-import projektkurs.simulation.pacman.IMortal;
 import projektkurs.simulation.pacman.PacmanBoard;
-import projektkurs.util.IHasPosition;
 import projektkurs.util.IUpdatable;
 
-public abstract class PacmanEntity implements IUpdatable, IMortal, IHasPosition {
+public abstract class PacmanEntity implements IUpdatable {
 
     protected PacmanBoard board;
-    protected int x, y;
+    protected double x, y;
 
-    public PacmanEntity(PacmanBoard board, int x, int y) {
+    public PacmanEntity(PacmanBoard board, double x, double y) {
         this.board = board;
         this.x = x;
         this.y = y;
@@ -22,30 +20,33 @@ public abstract class PacmanEntity implements IUpdatable, IMortal, IHasPosition 
         return false;
     }
 
-    @Override
-    public int getPosX() {
+    public double getPosX() {
         return x;
     }
 
-    @Override
-    public int getPosY() {
+    public double getPosY() {
         return y;
     }
 
-    @Override
+    public void move(double dx, double dy) {
+        x += dx;
+        y += dy;
+    }
+
+    public void onCollide(PacmanEntity e) {
+        // NO-OP
+    }
+
     public void onDeath() {
         // NO-OP
     }
 
     public abstract void render(Screen screen, int offsetX, int offsetY);
 
-    @Override
-    public void setPosition(int x, int y) {
+    public void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
     }
-
-    public abstract boolean tryWalkOn(PacmanEntity e);
 
     @Override
     public void update() {

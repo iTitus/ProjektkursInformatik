@@ -15,6 +15,7 @@ public class Ghost_0 extends Ghost {
 
     @Override
     public void update() {
+        // TODO Auto-generated method stub
 
     }
 

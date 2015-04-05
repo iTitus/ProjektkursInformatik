@@ -1,14 +1,18 @@
 package projektkurs.simulation.pacman;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import projektkurs.render.Screen;
-import projektkurs.simulation.pacman.entity.EmptySpace;
 import projektkurs.simulation.pacman.entity.Pacman;
 import projektkurs.simulation.pacman.entity.PacmanEntity;
+import projektkurs.simulation.pacman.raster.PacmanRaster;
 import projektkurs.util.IUpdatable;
 
 public class PacmanBoard implements IUpdatable {
 
-    private final PacmanEntity[][] board;
+    private final PacmanRaster[][] board;
+    private final List<PacmanEntity> entities;
     private int multiplicator;
     private final Pacman pacman;
     private int score;
@@ -18,10 +22,11 @@ public class PacmanBoard implements IUpdatable {
     public PacmanBoard(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        board = new PacmanEntity[sizeX][sizeY];
+        board = new PacmanRaster[sizeX][sizeY];
+        entities = new ArrayList<PacmanEntity>();
         generateMaze();
         pacman = new Pacman(this, 0, 0);
-        setPacmanEntity(pacman);
+        addPacmanEntity(pacman);
     }
 
     public void activateSuperMode() {
@@ -29,6 +34,12 @@ public class PacmanBoard implements IUpdatable {
             multiplicator = 1;
         }
         superMode = true;
+    }
+
+    public void addPacmanEntity(PacmanEntity e) {
+        if (e != null && e.getPosX() >= 0 && e.getPosX() < sizeX && e.getPosY() >= 0 && e.getPosY() < sizeY && !entities.contains(e)) {
+            entities.add(e);
+        }
     }
 
     @Override
@@ -61,11 +72,22 @@ public class PacmanBoard implements IUpdatable {
         return pacman;
     }
 
-    public PacmanEntity getPacmanEntity(int x, int y) {
+    public List<PacmanEntity> getPacmanEntities(double x, double y) {
+        return getPacmanEntities(x, y, 1, 1);
+    }
+
+    public List<PacmanEntity> getPacmanEntities(double x, double y, double width, double height) {
+        if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
+            // TODO
+        }
+        return null;
+    }
+
+    public PacmanRaster getPacmanRaster(int x, int y) {
         if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
             return board[x][y];
         }
-        return null;
+        return PacmanRaster.emptySpace;
     }
 
     public int getScore() {
@@ -92,26 +114,25 @@ public class PacmanBoard implements IUpdatable {
         return superMode;
     }
 
-    public void makeDead(int x, int y) {
-        if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
-            board[x][y].onDeath();
-        }
-    }
-
     public void render(Screen screen, int posX, int posY) {
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY; y++) {
-                PacmanEntity e = board[x][y];
-                if (e != null) {
-                    e.render(screen, posX, posY);
+                PacmanRaster r = board[x][y];
+                if (r != null) {
+                    r.render(this, x, y, screen, posX, posY);
                 }
+            }
+        }
+        for (PacmanEntity e : entities) {
+            if (e != null) {
+                e.render(screen, posX, posY);
             }
         }
     }
 
-    public void setPacmanEntity(PacmanEntity e) {
-        if (e != null && e.getPosX() >= 0 && e.getPosX() < sizeX && e.getPosY() >= 0 && e.getPosY() < sizeY) {
-            board[e.getPosX()][e.getPosY()] = e;
+    public void setPacmanRaster(int x, int y, PacmanRaster raster) {
+        if (raster != null && x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
+            board[x][y] = raster;
         }
     }
 
@@ -121,12 +142,9 @@ public class PacmanBoard implements IUpdatable {
 
     @Override
     public void update() {
-        for (int x = 0; x < sizeX; x++) {
-            for (int y = 0; y < sizeY; y++) {
-                PacmanEntity e = board[x][y];
-                if (e != null && e.canUpdate()) {
-                    e.update();
-                }
+        for (PacmanEntity e : entities) {
+            if (e != null && e.canUpdate()) {
+                e.update();
             }
         }
     }
@@ -134,7 +152,7 @@ public class PacmanBoard implements IUpdatable {
     private void generateMaze() {
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY; y++) {
-                setPacmanEntity(new EmptySpace(this, x, y));
+                setPacmanRaster(x, y, PacmanRaster.emptySpace);
             }
         }
     }
