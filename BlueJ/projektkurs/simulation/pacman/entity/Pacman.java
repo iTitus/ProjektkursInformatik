@@ -17,7 +17,7 @@ public class Pacman extends PacmanEntity {
     private Direction nextDirection = Direction.UNKNOWN;
 
     public Pacman(PacmanBoard board, double x, double y) {
-        super(board, x, y);
+        super(board, x, y, 1, 1);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Pacman extends PacmanEntity {
 
     @Override
     public void render(Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.round(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.round(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, 0xFFFF00);
+        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, 0xFFFF00);
     }
 
     public void setNextDirection(Direction nextDirection) {
@@ -59,24 +59,28 @@ public class Pacman extends PacmanEntity {
     @Override
     public void update() {
         if (nextDirection != Direction.UNKNOWN) {
-            System.out.println(nextDirection);
-            int rX = MathUtil.round(x) + nextDirection.getOffsetX();
-            int rY = MathUtil.round(y) + nextDirection.getOffsetY();
+            int rX = MathUtil.floor(x + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rY = MathUtil.floor(y + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
             PacmanRaster r = board.getPacmanRaster(rX, rY);
-            System.out.println(rX + "|" + rY + " - " + r);
-            if (!r.isSolid()) {
+            int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rY2 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
+            if ((r == null || !r.isSolid()) && (r2 == null || !r2.isSolid())) {
                 direction = nextDirection;
             }
+            nextDirection = Direction.UNKNOWN;
         }
         if (direction != Direction.UNKNOWN) {
-            System.out.println("direction = " + direction);
-            int rX = MathUtil.round(x) + direction.getOffsetX();
-            int rY = MathUtil.round(y) + direction.getOffsetY();
+            int rX = MathUtil.floor(x + direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rY = MathUtil.floor(y + direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
             PacmanRaster r = board.getPacmanRaster(rX, rY);
-            if (!r.isSolid()) {
+            int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rY2 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
+            if ((r == null || !r.isSolid()) && (r2 == null || !r2.isSolid())) {
                 move(direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE), direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
                 r.onWalkOn(board, rX, rY, this);
-                List<PacmanEntity> entities = board.getPacmanEntities(rX, rY);
+                List<PacmanEntity> entities = board.getPacmanEntities(rX, rY, sizeX, sizeY);
                 if (entities != null) {
                     for (PacmanEntity e : entities) {
                         if (e != null) {
@@ -87,5 +91,4 @@ public class Pacman extends PacmanEntity {
             }
         }
     }
-
 }

@@ -6,13 +6,17 @@ import projektkurs.util.IUpdatable;
 
 public abstract class PacmanEntity implements IUpdatable {
 
+    private boolean isDead = false;
     protected PacmanBoard board;
+    protected final double sizeX, sizeY;
     protected double x, y;
 
-    public PacmanEntity(PacmanBoard board, double x, double y) {
+    public PacmanEntity(PacmanBoard board, double x, double y, double sizeX, double sizeY) {
         this.board = board;
         this.x = x;
         this.y = y;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
     }
 
     @Override
@@ -26,6 +30,18 @@ public abstract class PacmanEntity implements IUpdatable {
 
     public double getPosY() {
         return y;
+    }
+
+    public double getSizeX() {
+        return sizeX;
+    }
+
+    public double getSizeY() {
+        return sizeY;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
     public void move(double dx, double dy) {
@@ -42,6 +58,10 @@ public abstract class PacmanEntity implements IUpdatable {
     }
 
     public abstract void render(Screen screen, int offsetX, int offsetY);
+
+    public void setDead() {
+        isDead = true;
+    }
 
     public void setPosition(double x, double y) {
         this.x = x;

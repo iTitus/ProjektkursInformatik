@@ -1,8 +1,10 @@
 package projektkurs.simulation.pacman;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.simulation.pacman.entity.Pacman;
 import projektkurs.simulation.pacman.entity.PacmanEntity;
@@ -87,7 +89,7 @@ public class PacmanBoard implements IUpdatable {
         if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
             return board[x][y];
         }
-        return PacmanRaster.obstacle;
+        return null;
     }
 
     public int getScore() {
@@ -128,6 +130,7 @@ public class PacmanBoard implements IUpdatable {
                 e.render(screen, posX, posY);
             }
         }
+        Font.drawString(screen, String.format("%.2f | %.2f", pacman.getPosX(), pacman.getPosY()), posX, posY, 0xFF0000);
     }
 
     public void setPacmanRaster(int x, int y, PacmanRaster raster) {
@@ -142,9 +145,15 @@ public class PacmanBoard implements IUpdatable {
 
     @Override
     public void update() {
-        for (PacmanEntity e : entities) {
-            if (e != null && e.canUpdate()) {
-                e.update();
+        for (Iterator<PacmanEntity> iterator = entities.iterator(); iterator.hasNext();) {
+            PacmanEntity e = iterator.next();
+            if (e != null) {
+                if (e.canUpdate()) {
+                    e.update();
+                }
+                if (e.isDead()) {
+                    iterator.remove();
+                }
             }
         }
     }
@@ -159,7 +168,7 @@ public class PacmanBoard implements IUpdatable {
                 }
             }
         }
-        for (int y = 1; y < sizeY - 2; y++) {
+        for (int y = 3; y < sizeY - 2; y++) {
             setPacmanRaster(2, y, PacmanRaster.obstacle);
         }
     }

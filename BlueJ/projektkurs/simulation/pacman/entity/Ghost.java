@@ -12,7 +12,7 @@ public abstract class Ghost extends PacmanEntity {
     protected int targetX, targetY;
 
     public Ghost(PacmanBoard board, double x, double y) {
-        super(board, x, y);
+        super(board, x, y, 1, 1);
     }
 
     @Override
@@ -54,7 +54,7 @@ public abstract class Ghost extends PacmanEntity {
 
     @Override
     public void render(Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.round(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.round(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
+        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
     }
 
     public void setTarget(int targetX, int targetY) {

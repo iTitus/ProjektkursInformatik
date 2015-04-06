@@ -81,8 +81,8 @@ public class GameOfLifeBoard implements IUpdatable {
         generation++;
         life = 0;
         int[][] temp = new int[sizeX][sizeY];
-        for (int x = 1; x < temp.length; x++) {
-            for (int y = 1; y < temp[x].length; y++) {
+        for (int x = 0; x < temp.length; x++) {
+            for (int y = 0; y < temp[x].length; y++) {
                 int i = 0;
                 for (Direction d : Direction.VALID_DIRECTIONS) {
                     if (isAlive(x + d.getOffsetX(), y + d.getOffsetY())) {
