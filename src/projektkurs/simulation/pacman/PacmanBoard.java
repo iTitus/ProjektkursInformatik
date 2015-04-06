@@ -25,7 +25,7 @@ public class PacmanBoard implements IUpdatable {
         board = new PacmanRaster[sizeX][sizeY];
         entities = new ArrayList<PacmanEntity>();
         generateMaze();
-        pacman = new Pacman(this, 0, 0);
+        pacman = new Pacman(this, 1, 1);
         addPacmanEntity(pacman);
     }
 
@@ -87,7 +87,7 @@ public class PacmanBoard implements IUpdatable {
         if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
             return board[x][y];
         }
-        return PacmanRaster.emptySpace;
+        return PacmanRaster.obstacle;
     }
 
     public int getScore() {
@@ -152,8 +152,15 @@ public class PacmanBoard implements IUpdatable {
     private void generateMaze() {
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY; y++) {
-                setPacmanRaster(x, y, PacmanRaster.emptySpace);
+                if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1) {
+                    setPacmanRaster(x, y, PacmanRaster.obstacle);
+                } else {
+                    setPacmanRaster(x, y, PacmanRaster.emptySpace);
+                }
             }
+        }
+        for (int y = 1; y < sizeY - 2; y++) {
+            setPacmanRaster(2, y, PacmanRaster.obstacle);
         }
     }
 }

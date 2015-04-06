@@ -215,6 +215,10 @@ public final class MathUtil {
         return b ? 1 : 0;
     }
 
+    public static double inverse(double d) {
+        return 1 / d;
+    }
+
     /**
      * Prueft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
      *

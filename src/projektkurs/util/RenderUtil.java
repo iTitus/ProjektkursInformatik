@@ -110,6 +110,24 @@ public final class RenderUtil {
     }
 
     /**
+     * Malt ein gefuelltes Rechteck in schwarz.
+     *
+     * @param screen
+     *            Screen
+     * @param x
+     *            X-Koordinate der linken oberen Ecke
+     * @param y
+     *            Y-Koordinate der linken oberen Ecke
+     * @param width
+     *            Breite
+     * @param height
+     *            Hoehe
+     */
+    public static void drawFilledRectangle(Screen screen, int x, int y, int width, int height) {
+        drawFilledRectangle(screen, x, y, width, height, 0);
+    }
+
+    /**
      * Malt ein gefuelltes Rechteck.
      *
      * @param screen

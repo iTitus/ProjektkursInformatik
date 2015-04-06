@@ -7,6 +7,7 @@ import projektkurs.simulation.pacman.entity.PacmanEntity;
 public abstract class PacmanRaster {
 
     public static final PacmanRaster emptySpace = new EmptySpace();
+    public static final PacmanRaster obstacle = new Obstacle();
 
     private boolean isSolid = false;
 

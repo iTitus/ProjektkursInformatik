@@ -18,7 +18,7 @@ public class SmallCoin extends PacmanRaster {
 
     @Override
     public void render(PacmanBoard board, int x, int y, Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawRectangle(screen, offsetX + ElementPacmanBoard.SIZE * x, offsetY + ElementPacmanBoard.SIZE * y, ElementPacmanBoard.SIZE, ElementPacmanBoard.SIZE);
-        RenderUtil.drawRectangle(screen, offsetX + 7 + ElementPacmanBoard.SIZE * x, offsetY + 7 + ElementPacmanBoard.SIZE * y, 2, 2, 0xFFFF00);
+        RenderUtil.drawFilledRectangle(screen, offsetX + ElementPacmanBoard.SIZE * x, offsetY + ElementPacmanBoard.SIZE * y, ElementPacmanBoard.SIZE, ElementPacmanBoard.SIZE);
+        RenderUtil.drawFilledRectangle(screen, offsetX + 7 + ElementPacmanBoard.SIZE * x, offsetY + 7 + ElementPacmanBoard.SIZE * y, 2, 2, 0xFFFF00);
     }
 }

@@ -13,9 +13,10 @@ import projektkurs.util.RenderUtil;
 
 public class Pacman extends PacmanEntity {
 
-    private Direction d = Direction.UNKNOWN;
+    private Direction direction = Direction.UNKNOWN;
+    private Direction nextDirection = Direction.UNKNOWN;
 
-    public Pacman(PacmanBoard board, int x, int y) {
+    public Pacman(PacmanBoard board, double x, double y) {
         super(board, x, y);
     }
 
@@ -25,7 +26,11 @@ public class Pacman extends PacmanEntity {
     }
 
     public Direction getDirection() {
-        return d;
+        return direction;
+    }
+
+    public Direction getNextDirection() {
+        return nextDirection;
     }
 
     @Override
@@ -44,25 +49,39 @@ public class Pacman extends PacmanEntity {
 
     @Override
     public void render(Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawRectangle(screen, offsetX + 1 + ElementPacmanBoard.SIZE * MathUtil.round(x), offsetY + 1 + ElementPacmanBoard.SIZE * MathUtil.round(y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, 0xFFFF00);
+        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.round(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.round(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, 0xFFFF00);
     }
 
-    public void setDirection(Direction direction) {
-        d = direction;
+    public void setNextDirection(Direction nextDirection) {
+        this.nextDirection = nextDirection;
     }
 
     @Override
     public void update() {
-        int rX = MathUtil.round(x) + d.getOffsetX();
-        int rY = MathUtil.round(y) + d.getOffsetY();
-        PacmanRaster r = board.getPacmanRaster(rX, rY);
-        if (!r.isSolid()) {
-            r.onWalkOn(board, rX, rY, this);
-            List<PacmanEntity> entities = board.getPacmanEntities(x + d.getOffsetX(), y + d.getOffsetY());
-            if (entities != null) {
-                for (PacmanEntity e : entities) {
-                    if (e != null) {
-                        e.onCollide(this);
+        if (nextDirection != Direction.UNKNOWN) {
+            System.out.println(nextDirection);
+            int rX = MathUtil.round(x) + nextDirection.getOffsetX();
+            int rY = MathUtil.round(y) + nextDirection.getOffsetY();
+            PacmanRaster r = board.getPacmanRaster(rX, rY);
+            System.out.println(rX + "|" + rY + " - " + r);
+            if (!r.isSolid()) {
+                direction = nextDirection;
+            }
+        }
+        if (direction != Direction.UNKNOWN) {
+            System.out.println("direction = " + direction);
+            int rX = MathUtil.round(x) + direction.getOffsetX();
+            int rY = MathUtil.round(y) + direction.getOffsetY();
+            PacmanRaster r = board.getPacmanRaster(rX, rY);
+            if (!r.isSolid()) {
+                move(direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE), direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+                r.onWalkOn(board, rX, rY, this);
+                List<PacmanEntity> entities = board.getPacmanEntities(rX, rY);
+                if (entities != null) {
+                    for (PacmanEntity e : entities) {
+                        if (e != null) {
+                            e.onCollide(this);
+                        }
                     }
                 }
             }

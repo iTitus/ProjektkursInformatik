@@ -9,6 +9,6 @@ public class EmptySpace extends PacmanRaster {
 
     @Override
     public void render(PacmanBoard board, int x, int y, Screen screen, int offsetX, int offsetY) {
-        RenderUtil.drawRectangle(screen, offsetX + ElementPacmanBoard.SIZE * x, offsetY + ElementPacmanBoard.SIZE * y, ElementPacmanBoard.SIZE, ElementPacmanBoard.SIZE);
+        RenderUtil.drawFilledRectangle(screen, offsetX + ElementPacmanBoard.SIZE * x, offsetY + ElementPacmanBoard.SIZE * y, ElementPacmanBoard.SIZE, ElementPacmanBoard.SIZE);
     }
 }

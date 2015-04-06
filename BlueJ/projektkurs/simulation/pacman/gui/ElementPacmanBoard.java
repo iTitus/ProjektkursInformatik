@@ -28,13 +28,13 @@ public class ElementPacmanBoard extends Element {
     @Override
     public void onKeyTyped(char keyChar, KeyEvent e) {
         if (e.getKeyCode() == KeyBindings.KEY_UP) {
-            board.getPacman().setDirection(Direction.UP);
+            board.getPacman().setNextDirection(Direction.UP);
         } else if (e.getKeyCode() == KeyBindings.KEY_LEFT) {
-            board.getPacman().setDirection(Direction.LEFT);
+            board.getPacman().setNextDirection(Direction.LEFT);
         } else if (e.getKeyCode() == KeyBindings.KEY_DOWN) {
-            board.getPacman().setDirection(Direction.DOWN);
+            board.getPacman().setNextDirection(Direction.DOWN);
         } else if (e.getKeyCode() == KeyBindings.KEY_RIGHT) {
-            board.getPacman().setDirection(Direction.RIGHT);
+            board.getPacman().setNextDirection(Direction.RIGHT);
         }
     }
 
