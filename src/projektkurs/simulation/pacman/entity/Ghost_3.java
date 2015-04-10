@@ -4,8 +4,8 @@ import projektkurs.simulation.pacman.PacmanBoard;
 
 public class Ghost_3 extends Ghost {
 
-    public Ghost_3(PacmanBoard board, double x, double y) {
-        super(board, x, y);
+    public Ghost_3(PacmanBoard board) {
+        super(board);
     }
 
     @Override

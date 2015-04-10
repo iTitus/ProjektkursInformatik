@@ -6,8 +6,13 @@ import java.util.List;
 
 import projektkurs.render.Font;
 import projektkurs.render.Screen;
+import projektkurs.simulation.pacman.entity.Ghost_0;
+import projektkurs.simulation.pacman.entity.Ghost_1;
+import projektkurs.simulation.pacman.entity.Ghost_2;
+import projektkurs.simulation.pacman.entity.Ghost_3;
 import projektkurs.simulation.pacman.entity.Pacman;
 import projektkurs.simulation.pacman.entity.PacmanEntity;
+import projektkurs.simulation.pacman.entity.SmallCoin;
 import projektkurs.simulation.pacman.raster.PacmanRaster;
 import projektkurs.util.IUpdatable;
 
@@ -15,6 +20,10 @@ public class PacmanBoard implements IUpdatable {
 
     private final PacmanRaster[][] board;
     private final List<PacmanEntity> entities;
+    private final Ghost_0 ghost0;
+    private final Ghost_1 ghost1;
+    private final Ghost_2 ghost2;
+    private final Ghost_3 ghost3;
     private int multiplicator;
     private final Pacman pacman;
     private int score;
@@ -28,7 +37,16 @@ public class PacmanBoard implements IUpdatable {
         entities = new ArrayList<PacmanEntity>();
         generateMaze();
         pacman = new Pacman(this, 1, 1);
+        ghost0 = new Ghost_0(this);
+        ghost1 = new Ghost_1(this);
+        ghost2 = new Ghost_2(this);
+        ghost3 = new Ghost_3(this);
         addPacmanEntity(pacman);
+        addPacmanEntity(ghost0);
+        addPacmanEntity(ghost1);
+        addPacmanEntity(ghost2);
+        addPacmanEntity(ghost3);
+        addCoins();
     }
 
     public void activateSuperMode() {
@@ -58,12 +76,28 @@ public class PacmanBoard implements IUpdatable {
         score -= by;
     }
 
+    public Ghost_0 getGhost0() {
+        return ghost0;
+    }
+
+    public Ghost_1 getGhost1() {
+        return ghost1;
+    }
+
+    public Ghost_2 getGhost2() {
+        return ghost2;
+    }
+
+    public Ghost_3 getGhost3() {
+        return ghost3;
+    }
+
     public int getGhostSpawnX() {
-        return 0;
+        return 15;
     }
 
     public int getGhostSpawnY() {
-        return 0;
+        return 15;
     }
 
     public int getMultiplicator() {
@@ -158,6 +192,16 @@ public class PacmanBoard implements IUpdatable {
                 }
                 if (e.isDead()) {
                     iterator.remove();
+                }
+            }
+        }
+    }
+
+    private void addCoins() {
+        for (int x = 0; x < sizeX; x++) {
+            for (int y = 0; y < sizeY; y++) {
+                if (getPacmanRaster(x, y) == PacmanRaster.emptySpace) {
+                    addPacmanEntity(new SmallCoin(this, x + 0.25, y + 0.25));
                 }
             }
         }

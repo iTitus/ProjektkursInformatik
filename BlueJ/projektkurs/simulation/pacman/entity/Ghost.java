@@ -11,8 +11,8 @@ public abstract class Ghost extends PacmanEntity {
     public static final int POINTS = 100;
     protected int targetX, targetY;
 
-    public Ghost(PacmanBoard board, double x, double y) {
-        super(board, x, y, 1, 1);
+    public Ghost(PacmanBoard board) {
+        super(board, board.getGhostSpawnX(), board.getGhostSpawnY(), 1, 1);
     }
 
     @Override
