@@ -98,13 +98,13 @@ public class Pacman extends PacmanEntity {
                 if (r1 != null) {
                     r1.onWalkOn(board, rX1, rY1, this);
                 }
-                if (r2 != null) {
+                if (r2 != null && (rX2 != rX1 || rY2 != rY1)) {
                     r2.onWalkOn(board, rX2, rY2, this);
                 }
-                if (r3 != null) {
+                if (r3 != null && (rX3 != rX1 || rY3 != rY1) && (rX3 != rX2 || rY3 != rY2)) {
                     r3.onWalkOn(board, rX3, rY3, this);
                 }
-                if (r4 != null) {
+                if (r4 != null && (rX4 != rX1 || rY4 != rY1) && (rX4 != rX2 || rY4 != rY2) && (rX4 != rX3 || rY4 != rY3)) {
                     r4.onWalkOn(board, rX4, rY4, this);
                 }
                 List<PacmanEntity> entities = board.getPacmanEntities(x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY);
