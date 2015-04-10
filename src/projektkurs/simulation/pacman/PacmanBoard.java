@@ -79,10 +79,15 @@ public class PacmanBoard implements IUpdatable {
     }
 
     public List<PacmanEntity> getPacmanEntities(double x, double y, double width, double height) {
+        List<PacmanEntity> list = new ArrayList<PacmanEntity>();
         if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
-            // TODO
+            for (PacmanEntity e : entities) {
+                if (e != null && e.isInside(x, y, width, height)) {
+                    list.add(e);
+                }
+            }
         }
-        return null;
+        return list;
     }
 
     public PacmanRaster getPacmanRaster(int x, int y) {
@@ -130,7 +135,7 @@ public class PacmanBoard implements IUpdatable {
                 e.render(screen, posX, posY);
             }
         }
-        Font.drawString(screen, String.format("%.2f | %.2f", pacman.getPosX(), pacman.getPosY()), posX, posY, 0xFF0000);
+        Font.drawString(screen, String.format("X: %.2f | Y: %.2f | Dir: %s | Next Dir: %s | Score: %d", pacman.getPosX(), pacman.getPosY(), pacman.getDirection(), pacman.getNextDirection(), score), posX, posY, 0xFF0000);
     }
 
     public void setPacmanRaster(int x, int y, PacmanRaster raster) {

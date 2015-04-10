@@ -13,6 +13,8 @@ import projektkurs.util.RenderUtil;
 
 public class Pacman extends PacmanEntity {
 
+    private static final double SPEED = MathUtil.inverse(ElementPacmanBoard.SIZE);
+
     private Direction direction = Direction.UNKNOWN;
     private Direction nextDirection = Direction.UNKNOWN;
 
@@ -35,10 +37,12 @@ public class Pacman extends PacmanEntity {
 
     @Override
     public void onCollide(PacmanEntity e) {
-        if (board.isSuperMode()) {
-            e.onDeath();
-        } else {
-            onDeath();
+        if (e instanceof Ghost) {
+            if (board.isSuperMode()) {
+                e.setDead();
+            } else {
+                setDead();
+            }
         }
     }
 
@@ -59,28 +63,51 @@ public class Pacman extends PacmanEntity {
     @Override
     public void update() {
         if (nextDirection != Direction.UNKNOWN) {
-            int rX = MathUtil.floor(x + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            int rY = MathUtil.floor(y + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            PacmanRaster r = board.getPacmanRaster(rX, rY);
-            int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            int rY2 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rX1 = MathUtil.floor(x + nextDirection.getOffsetX() * SPEED);
+            int rY1 = MathUtil.floor(y + nextDirection.getOffsetY() * SPEED);
+            PacmanRaster r1 = board.getPacmanRaster(rX1, rY1);
+            int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * SPEED);
+            int rY2 = MathUtil.floor(y + nextDirection.getOffsetY() * SPEED);
             PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
-            if ((r == null || !r.isSolid()) && (r2 == null || !r2.isSolid())) {
+            int rX3 = MathUtil.floor(x + nextDirection.getOffsetX() * SPEED);
+            int rY3 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * SPEED);
+            PacmanRaster r3 = board.getPacmanRaster(rX3, rY3);
+            int rX4 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * SPEED);
+            int rY4 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * SPEED);
+            PacmanRaster r4 = board.getPacmanRaster(rX4, rY4);
+            if ((r1 == null || !r1.isSolid()) && (r2 == null || !r2.isSolid()) && (r3 == null || !r3.isSolid()) && (r4 == null || !r4.isSolid())) {
                 direction = nextDirection;
             }
             nextDirection = Direction.UNKNOWN;
         }
         if (direction != Direction.UNKNOWN) {
-            int rX = MathUtil.floor(x + direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            int rY = MathUtil.floor(y + direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            PacmanRaster r = board.getPacmanRaster(rX, rY);
-            int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-            int rY2 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
+            int rX1 = MathUtil.floor(x + direction.getOffsetX() * SPEED);
+            int rY1 = MathUtil.floor(y + direction.getOffsetY() * SPEED);
+            PacmanRaster r1 = board.getPacmanRaster(rX1, rY1);
+            int rX2 = MathUtil.floor(x + sizeX + direction.getOffsetX() * SPEED);
+            int rY2 = MathUtil.floor(y + direction.getOffsetY() * SPEED);
             PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
-            if ((r == null || !r.isSolid()) && (r2 == null || !r2.isSolid())) {
-                move(direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE), direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE));
-                r.onWalkOn(board, rX, rY, this);
-                List<PacmanEntity> entities = board.getPacmanEntities(rX, rY, sizeX, sizeY);
+            int rX3 = MathUtil.floor(x + direction.getOffsetX() * SPEED);
+            int rY3 = MathUtil.floor(y + sizeY + direction.getOffsetY() * SPEED);
+            PacmanRaster r3 = board.getPacmanRaster(rX3, rY3);
+            int rX4 = MathUtil.floor(x + sizeX + direction.getOffsetX() * SPEED);
+            int rY4 = MathUtil.floor(y + sizeY + direction.getOffsetY() * SPEED);
+            PacmanRaster r4 = board.getPacmanRaster(rX4, rY4);
+            if ((r1 == null || !r1.isSolid()) && (r2 == null || !r2.isSolid()) && (r3 == null || !r3.isSolid()) && (r4 == null || !r4.isSolid())) {
+                move(direction.getOffsetX() * SPEED, direction.getOffsetY() * SPEED);
+                if (r1 != null) {
+                    r1.onWalkOn(board, rX1, rY1, this);
+                }
+                if (r2 != null) {
+                    r2.onWalkOn(board, rX2, rY2, this);
+                }
+                if (r3 != null) {
+                    r3.onWalkOn(board, rX3, rY3, this);
+                }
+                if (r4 != null) {
+                    r4.onWalkOn(board, rX4, rY4, this);
+                }
+                List<PacmanEntity> entities = board.getPacmanEntities(x + direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE), y + direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE), sizeX, sizeY);
                 if (entities != null) {
                     for (PacmanEntity e : entities) {
                         if (e != null) {

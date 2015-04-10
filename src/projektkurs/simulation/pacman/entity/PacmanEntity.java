@@ -44,6 +44,10 @@ public abstract class PacmanEntity implements IUpdatable {
         return isDead;
     }
 
+    public boolean isInside(double posX, double posY, double sizeX, double sizeY) {
+        return Math.max(posX, x) < Math.min(posX + sizeX, x + this.sizeX) && Math.max(posY, y) < Math.min(posY + sizeY, y + this.sizeY);
+    }
+
     public void move(double dx, double dy) {
         x += dx;
         y += dy;
@@ -61,6 +65,7 @@ public abstract class PacmanEntity implements IUpdatable {
 
     public void setDead() {
         isDead = true;
+        onDeath();
     }
 
     public void setPosition(double x, double y) {
