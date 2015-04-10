@@ -107,7 +107,7 @@ public class Pacman extends PacmanEntity {
                 if (r4 != null) {
                     r4.onWalkOn(board, rX4, rY4, this);
                 }
-                List<PacmanEntity> entities = board.getPacmanEntities(x + direction.getOffsetX() * MathUtil.inverse(ElementPacmanBoard.SIZE), y + direction.getOffsetY() * MathUtil.inverse(ElementPacmanBoard.SIZE), sizeX, sizeY);
+                List<PacmanEntity> entities = board.getPacmanEntities(x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY);
                 if (entities != null) {
                     for (PacmanEntity e : entities) {
                         if (e != null) {
