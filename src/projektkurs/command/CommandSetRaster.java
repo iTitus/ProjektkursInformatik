@@ -39,6 +39,11 @@ public class CommandSetRaster extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "setr", "set" };
+    }
+
+    @Override
     public String getCommand() {
         return "setraster";
     }

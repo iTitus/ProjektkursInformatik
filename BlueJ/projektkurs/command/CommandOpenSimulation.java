@@ -25,6 +25,11 @@ public class CommandOpenSimulation extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "startsimulation", "startsm", "starts", "opensimulation", "opensm", "opens", "sm", "s" };
+    }
+
+    @Override
     public String getCommand() {
         return "simulation";
     }
@@ -65,6 +70,7 @@ public class CommandOpenSimulation extends Command {
                 Main.openGui(new GuiMandelbrotSet(d1, d2, false));
                 break;
             case "pacman":
+            case "pm":
                 Main.openGui(new GuiPacman());
                 break;
             default:

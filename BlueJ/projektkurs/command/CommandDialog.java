@@ -28,6 +28,11 @@ public class CommandDialog extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "startdialog", "startd", "d" };
+    }
+
+    @Override
     public String getCommand() {
         return "dialog";
     }

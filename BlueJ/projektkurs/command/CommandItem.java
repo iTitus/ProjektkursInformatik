@@ -49,6 +49,11 @@ public class CommandItem extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "giveitem", "givei", "give", "i" };
+    }
+
+    @Override
     public String getCommand() {
         return "item";
     }

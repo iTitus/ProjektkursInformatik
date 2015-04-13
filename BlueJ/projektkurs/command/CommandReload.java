@@ -13,6 +13,11 @@ public class CommandReload extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "r" };
+    }
+
+    @Override
     public String getCommand() {
         return "reload";
     }

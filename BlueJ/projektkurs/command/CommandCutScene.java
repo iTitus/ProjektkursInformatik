@@ -27,6 +27,11 @@ public class CommandCutScene extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "cs", "c" };
+    }
+
+    @Override
     public String getCommand() {
         return "cutscene";
     }

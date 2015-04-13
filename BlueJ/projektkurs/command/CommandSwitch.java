@@ -32,6 +32,11 @@ public class CommandSwitch extends Command {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[] { "switchlevel", "switchl", "sw" };
+    }
+
+    @Override
     public String getCommand() {
         return "switch";
     }

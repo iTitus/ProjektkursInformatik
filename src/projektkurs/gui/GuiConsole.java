@@ -17,6 +17,7 @@ import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.Logger;
 import projektkurs.util.RenderUtil;
+import projektkurs.util.StringUtil;
 
 /**
  * Konsolen-GUI.
@@ -74,6 +75,28 @@ public class GuiConsole extends Gui implements ITextFieldListener {
         super.render(screen);
     }
 
+    private Command getCommand(String command) {
+        if (StringUtil.isNullOrEmpty(command)) {
+            return null;
+        }
+        for (Command c : Commands.MAPPINGS.values()) {
+            if (c != null) {
+                if (command.equalsIgnoreCase(c.getCommand())) {
+                    return c;
+                }
+                String[] aliases = c.getAliases();
+                if (aliases != null && aliases.length > 0) {
+                    for (String alias : aliases) {
+                        if (command.equalsIgnoreCase(alias)) {
+                            return c;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * Wird ausgefuehrt, wenn die Enter-Taste gedrueckt wird.
      *
@@ -94,8 +117,8 @@ public class GuiConsole extends Gui implements ITextFieldListener {
             }
             partList.removeAll(toRemove);
             String[] parts = partList.toArray(new String[partList.size()]);
-            String command = parts[0].toLowerCase(Locale.ENGLISH);
-            Command c = Commands.MAPPINGS.get(command);
+            String commandString = parts[0].toLowerCase(Locale.ENGLISH);
+            Command c = getCommand(commandString);
             if (c != null) {
                 String[] args = new String[parts.length - 1];
                 for (int i = 0; i < args.length; i++) {
@@ -105,7 +128,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                 try {
                     result = c.execute(args);
                 } catch (Throwable t) {
-                    Logger.logThrowable("Unable to execute command '" + command + "' with the aruments " + partList, t);
+                    Logger.logThrowable("Unable to execute command '" + commandString + "' with the aruments " + partList, t);
                     result = EnumCommandResult.GENERAL_FAILURE;
                 }
                 if (result == null) {
@@ -113,7 +136,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                 }
                 switch (result) {
                     case GENERAL_FAILURE:
-                        field.setText(I18n.getStringFormatted("command.failure.general", command));
+                        field.setText(I18n.getStringFormatted("command.failure.general", commandString));
                         break;
                     case NO_SUCCESS:
                     case SUCCESS:
@@ -131,7 +154,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                         field.setText(I18n.getString("command.failure.bounds"));
                         break;
                     case WRONG_USAGE:
-                        field.setText(I18n.getStringFormatted("command.usage", I18n.getString("command." + command + ".usage")));
+                        field.setText(I18n.getStringFormatted("command.usage", I18n.getString("command." + commandString + ".usage")));
                         break;
                     default:
                         break;
@@ -140,7 +163,5 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                 field.setText(I18n.getString("command.notFound"));
             }
         }
-
     }
-
 }
