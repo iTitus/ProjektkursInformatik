@@ -28,7 +28,7 @@ public class Players {
     }
 
     public void writeTXTDatei(String s) {
-        try (FileWriter SavedataÖffnen = new FileWriter("allPlayers.txt"); BufferedWriter SavedataSchreiben = new BufferedWriter(SavedataÖffnen)) {
+        try (FileWriter SavedataOeffnen = new FileWriter("allPlayers.txt"); BufferedWriter SavedataSchreiben = new BufferedWriter(SavedataOeffnen)) {
             SavedataSchreiben.write(s);
         } catch (Exception e) {
             Logger.logThrowable("Unable to write data", e);

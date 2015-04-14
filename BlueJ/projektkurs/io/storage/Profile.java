@@ -276,7 +276,7 @@ public class Profile {
     }
 
     private void writeSaveableTXTDatei(String n, int l) {
-        try (FileWriter savedataÖffnen = new FileWriter(name + name); BufferedWriter savedataSchreiben = new BufferedWriter(savedataÖffnen)) {
+        try (FileWriter savedataOeffnen = new FileWriter(name + name); BufferedWriter savedataSchreiben = new BufferedWriter(savedataOeffnen)) {
             savedataSchreiben.write(n + " " + l);
         } catch (Exception e) {
             Logger.logThrowable("Unable to write data", e);

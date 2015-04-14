@@ -19,7 +19,7 @@ public class Pacman extends PacmanEntity {
     private Direction nextDirection = Direction.UNKNOWN;
 
     public Pacman(PacmanBoard board, double x, double y) {
-        super(board, x, y, 1, 1);
+        super(board, x, y, 1 - SPEED, 1 - SPEED);
     }
 
     @Override
@@ -63,13 +63,13 @@ public class Pacman extends PacmanEntity {
     @Override
     public void update() {
         if (nextDirection != Direction.UNKNOWN) {
-            int rX1 = MathUtil.floor(x + nextDirection.getOffsetX() * SPEED);
-            int rY1 = MathUtil.floor(y + nextDirection.getOffsetY() * SPEED);
+            int rX1 = MathUtil.ceil(x + nextDirection.getOffsetX() * SPEED);
+            int rY1 = MathUtil.ceil(y + nextDirection.getOffsetY() * SPEED);
             PacmanRaster r1 = board.getPacmanRaster(rX1, rY1);
             int rX2 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * SPEED);
-            int rY2 = MathUtil.floor(y + nextDirection.getOffsetY() * SPEED);
+            int rY2 = MathUtil.ceil(y + nextDirection.getOffsetY() * SPEED);
             PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
-            int rX3 = MathUtil.floor(x + nextDirection.getOffsetX() * SPEED);
+            int rX3 = MathUtil.ceil(x + nextDirection.getOffsetX() * SPEED);
             int rY3 = MathUtil.floor(y + sizeY + nextDirection.getOffsetY() * SPEED);
             PacmanRaster r3 = board.getPacmanRaster(rX3, rY3);
             int rX4 = MathUtil.floor(x + sizeX + nextDirection.getOffsetX() * SPEED);
@@ -81,13 +81,13 @@ public class Pacman extends PacmanEntity {
             nextDirection = Direction.UNKNOWN;
         }
         if (direction != Direction.UNKNOWN) {
-            int rX1 = MathUtil.floor(x + direction.getOffsetX() * SPEED);
-            int rY1 = MathUtil.floor(y + direction.getOffsetY() * SPEED);
+            int rX1 = MathUtil.ceil(x + direction.getOffsetX() * SPEED);
+            int rY1 = MathUtil.ceil(y + direction.getOffsetY() * SPEED);
             PacmanRaster r1 = board.getPacmanRaster(rX1, rY1);
             int rX2 = MathUtil.floor(x + sizeX + direction.getOffsetX() * SPEED);
-            int rY2 = MathUtil.floor(y + direction.getOffsetY() * SPEED);
+            int rY2 = MathUtil.ceil(y + direction.getOffsetY() * SPEED);
             PacmanRaster r2 = board.getPacmanRaster(rX2, rY2);
-            int rX3 = MathUtil.floor(x + direction.getOffsetX() * SPEED);
+            int rX3 = MathUtil.ceil(x + direction.getOffsetX() * SPEED);
             int rY3 = MathUtil.floor(y + sizeY + direction.getOffsetY() * SPEED);
             PacmanRaster r3 = board.getPacmanRaster(rX3, rY3);
             int rX4 = MathUtil.floor(x + sizeX + direction.getOffsetX() * SPEED);

@@ -50,6 +50,7 @@ public class CommandOpenSimulation extends Command {
             case "brot":
                 Main.openGui(new GuiMandelbrotSet(0, 0, true));
                 break;
+            case "j":
             case "julia":
                 if (subArgs.length != 2 || subArgs[0] == null || subArgs[1] == null) {
                     return EnumCommandResult.WRONG_USAGE;

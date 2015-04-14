@@ -15,7 +15,7 @@ public abstract class Command {
     public abstract EnumCommandResult execute(String[] args);
 
     /**
-     * Alle möglichen Kommandonamen.
+     * Alle moeglichen Kommandonamen.
      *
      * @return Kommandonamen
      */
