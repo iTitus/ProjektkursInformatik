@@ -68,7 +68,7 @@ public final class Items {
     /**
      * Faden
      */
-    public static Item string;
+    public static Item fishnetString;
     /**
      * Der Koffer
      */
@@ -76,11 +76,25 @@ public final class Items {
     /**
      * Teddybaer
      */
-    public static Item teddy;
+    public static Item teddydefault;
+
+    public static Item teddyWithEarrings;
+
+    public static Item teddyWithFishnetString;
+
+    public static Item fishnet;
+
+    public static Item stone;
+
+    public static Item teddyVoodoo;
+
+    public static Item stoneCatapultwithStone;
     /**
      * Das Jojo
      */
-    public static Item yoyo;
+    public static Item yoyoFixed;
+
+    public static Item yoyoBroken;
 
     /**
      * Das Pair, das alle Items enthaelt.
@@ -108,8 +122,8 @@ public final class Items {
         healthPotion = new ItemHealthPotion(4);
         registerItem(healthPotion);
 
-        string = new BaseItem(5, "string", Sprites.string);
-        registerItem(string);
+        fishnetString = new BaseItem(5, "fishnetString", Sprites.fishnetString);
+        registerItem(fishnetString);
 
         knife = new BaseItem(6, "knife", Sprites.knife);
         registerItem(knife);
@@ -117,14 +131,14 @@ public final class Items {
         earrings = new BaseItem(7, "earrings", Sprites.earrings);
         registerItem(earrings);
 
-        teddy = new BaseItem(8, "teddy", Sprites.teddy);
-        registerItem(teddy);
+        teddydefault = new BaseItem(8, "teddydefault", Sprites.teddydefault);
+        registerItem(teddydefault);
 
         stoneCatapult = new BaseItem(9, "stoneCatapult", Sprites.stoneCatapult);
         registerItem(stoneCatapult);
 
-        yoyo = new BaseItem(10, "yoyo", Sprites.yoyo);
-        registerItem(yoyo);
+        yoyoFixed = new BaseItem(10, "yoyoFixed", Sprites.yoyoFixed);
+        registerItem(yoyoFixed);
 
         suitCase = new BaseItem(11, "suitCase", Sprites.suitCase);
         registerItem(suitCase);
@@ -137,6 +151,28 @@ public final class Items {
 
         cards = new BaseItem(14, "cards", Sprites.cards);
         registerItem(cards);
+
+        teddyWithEarrings = new BaseItem(15, "teddyWithEarrings", Sprites.teddyWithEarrings);
+        registerItem(teddyWithEarrings);
+
+        teddyWithFishnetString = new BaseItem(16, "teddyWithFishnetString", Sprites.teddyWithFishnetString);
+        registerItem(teddyWithFishnetString);
+
+        fishnet = new BaseItem(17, "fishnet", Sprites.fishnet);
+        registerItem(fishnet);
+
+        stone = new BaseItem(18, "stone", Sprites.stone);
+        registerItem(stone);
+
+        teddyVoodoo = new BaseItem(19, "teddyVoodoo", Sprites.teddyVoodoo);
+        registerItem(teddyVoodoo);
+
+        stoneCatapultwithStone = new BaseItem(20, "stoneCatapultwithStone", Sprites.stoneCatapultwithStone);
+        registerItem(stoneCatapultwithStone);
+
+        yoyoBroken = new BaseItem(21, "yoyoBroken", Sprites.yoyoBroken);
+        registerItem(yoyoBroken);
+
     }
 
     /**

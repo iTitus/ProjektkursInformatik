@@ -142,9 +142,9 @@ public final class Sprites {
     public static Sprite street_l_t_7_wage;
     public static Sprite street_l_t_8_senk;
     public static Sprite street_l_t_8_wage;
-    public static Sprite string;
+    public static Sprite fishnetString;
     public static Sprite suitCase;
-    public static Sprite teddy;
+    public static Sprite teddydefault;
     public static Sprite thread;
     public static Sprite trashCan;
     public static Sprite tree;
@@ -217,7 +217,15 @@ public final class Sprites {
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
-    public static Sprite yoyo;
+    public static Sprite yoyoFixed;
+    public static Sprite yoyoBroken;
+
+    public static Sprite teddyWithEarrings;
+    public static Sprite teddyWithFishnetString;
+    public static Sprite fishnet;
+    public static Sprite stone;
+    public static Sprite teddyVoodoo;
+    public static Sprite stoneCatapultwithStone;
 
     /**
      * Das Pair, das alle Sprites enthaelt.
@@ -731,8 +739,8 @@ public final class Sprites {
         fisherboat = new Sprite("fisherboat", 6 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(fisherboat);
 
-        string = new Sprite("string", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(string);
+        fishnetString = new Sprite("fishnetString", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(fishnetString);
 
         knife = new Sprite("knife", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
         registerSprite(knife);
@@ -740,8 +748,8 @@ public final class Sprites {
         thread = new Sprite("thread", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(thread);
 
-        teddy = new Sprite("teddy", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
-        registerSprite(teddy);
+        teddydefault = new Sprite("teddydefault", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(teddydefault);
 
         earrings = new Sprite("earrings", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(earrings);
@@ -749,14 +757,14 @@ public final class Sprites {
         stoneCatapult = new Sprite("stoneCatapult", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(stoneCatapult);
 
-        gramophoneItem = new Sprite("gramophoneItem", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        gramophoneItem = new Sprite("gramophonItem", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
         registerSprite(gramophoneItem);
 
-        gramophoneEntity = new Sprite("gramophoneEntity", 1 * Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        gramophoneEntity = new Sprite("gramophonEntity", 1 * Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(gramophoneEntity);
 
-        yoyo = new Sprite("yoyo", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
-        registerSprite(yoyo);
+        yoyoFixed = new Sprite("yoyoFixed", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 0, SpriteSheets.items);
+        registerSprite(yoyoFixed);
 
         suitCase = new Sprite("suitCase", Integers.RASTER_SIZE, 0, Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(suitCase);
@@ -814,6 +822,28 @@ public final class Sprites {
 
         trashCan = new Sprite("trashCan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(trashCan);
+
+        teddyWithEarrings = new Sprite("teddyWithEarrings", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(teddyWithEarrings);
+
+        teddyWithFishnetString = new Sprite("teddyWithFishnetString", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(teddyWithFishnetString);
+
+        fishnet = new Sprite("fishnet", Integers.RASTER_SIZE, 0, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(fishnet);
+
+        stone = new Sprite("stone", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(stone);
+
+        teddyVoodoo = new Sprite("teddyVoodoo", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(teddyVoodoo);
+
+        stoneCatapultwithStone = new Sprite("stoneCatapultwithStone", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(stoneCatapultwithStone);
+
+        yoyoBroken = new Sprite("yoyoBroken", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
+        registerSprite(yoyoBroken);
+
     }
 
     /**
