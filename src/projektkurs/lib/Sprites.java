@@ -67,6 +67,8 @@ public final class Sprites {
     public static Sprite[] fire;
     public static Sprite fisher;
     public static Sprite fisherboat;
+    public static Sprite fishnet;
+    public static Sprite fishnetString;
     public static Sprite floor_1;
     public static Sprite floor_10;
     public static Sprite floor_11;
@@ -83,9 +85,9 @@ public final class Sprites {
     public static Sprite frauV_N;
     public static Sprite frauV_S;
     public static Sprite frauV_W;
+
     public static Sprite gramophoneEntity;
     public static Sprite gramophoneItem;
-
     public static Sprite grass;
     public static Sprite grass_2;
     public static Sprite healthPotion;
@@ -100,25 +102,27 @@ public final class Sprites {
      * Die Mappings.
      */
     public static final HashMap<String, Sprite> MAPPINGS = new HashMap<String, Sprite>();
+
     public static final Sprite MISSING_ICON = new Sprite("MISSING_ICON", 16, 0, 0xFF01FF, 0, 0xFF01FF);
     public static Sprite nest;
-
     public static Sprite nuke;
     public static Sprite redNPC;
     public static Sprite slot;
     public static Sprite slot_highlight;
+    public static Sprite stone;
     public static Sprite stoneCatapult;
+    public static Sprite stoneCatapultwithStone;
     public static Sprite street_asphalt;
     public static Sprite street_l_b_1_senk;
     public static Sprite street_l_b_1_wage;
     public static Sprite street_l_b_2_senk;
     public static Sprite street_l_b_2_wage;
     public static Sprite street_l_b_3_senk;
+
     public static Sprite street_l_b_3_wage;
     public static Sprite street_l_b_4_senk;
     public static Sprite street_l_b_4_wage;
     public static Sprite street_l_b_5_senk;
-
     public static Sprite street_l_b_5_wage;
     public static Sprite street_l_b_6_senk;
     public static Sprite street_l_b_6_wage;
@@ -142,9 +146,11 @@ public final class Sprites {
     public static Sprite street_l_t_7_wage;
     public static Sprite street_l_t_8_senk;
     public static Sprite street_l_t_8_wage;
-    public static Sprite fishnetString;
     public static Sprite suitCase;
     public static Sprite teddydefault;
+    public static Sprite teddyVoodoo;
+    public static Sprite teddyWithEarrings;
+    public static Sprite teddyWithFishnetString;
     public static Sprite thread;
     public static Sprite trashCan;
     public static Sprite tree;
@@ -200,6 +206,7 @@ public final class Sprites {
     public static Sprite tree_8nw;
     public static Sprite tree_8se;
     public static Sprite tree_8sw;
+
     public static Sprite tree_9ne;
     public static Sprite tree_9ne_water;
     public static Sprite tree_9nw;
@@ -212,20 +219,13 @@ public final class Sprites {
     public static Sprite wall;
     public static Sprite water;
     public static Sprite witchCauldron;
-    public static Sprite women0_E;
 
+    public static Sprite women0_E;
     public static Sprite women0_N;
     public static Sprite women0_S;
     public static Sprite women0_W;
-    public static Sprite yoyoFixed;
     public static Sprite yoyoBroken;
-
-    public static Sprite teddyWithEarrings;
-    public static Sprite teddyWithFishnetString;
-    public static Sprite fishnet;
-    public static Sprite stone;
-    public static Sprite teddyVoodoo;
-    public static Sprite stoneCatapultwithStone;
+    public static Sprite yoyoFixed;
 
     /**
      * Das Pair, das alle Sprites enthaelt.

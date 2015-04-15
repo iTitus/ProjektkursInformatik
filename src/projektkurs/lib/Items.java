@@ -29,6 +29,11 @@ public final class Items {
      * Ohrringe
      */
     public static Item earrings;
+    public static Item fishnet;
+    /**
+     * Faden
+     */
+    public static Item fishnetString;
     /**
      * Das Grammophon
      */
@@ -61,40 +66,35 @@ public final class Items {
      * Atombombe.
      */
     public static Item nuke;
+    public static Item stone;
     /**
      * Steinschleuder
      */
     public static Item stoneCatapult;
-    /**
-     * Faden
-     */
-    public static Item fishnetString;
+
+    public static Item stoneCatapultwithStone;
+
     /**
      * Der Koffer
      */
     public static Item suitCase;
+
     /**
      * Teddybaer
      */
     public static Item teddydefault;
 
+    public static Item teddyVoodoo;
+
     public static Item teddyWithEarrings;
 
     public static Item teddyWithFishnetString;
+    public static Item yoyoBroken;
 
-    public static Item fishnet;
-
-    public static Item stone;
-
-    public static Item teddyVoodoo;
-
-    public static Item stoneCatapultwithStone;
     /**
      * Das Jojo
      */
     public static Item yoyoFixed;
-
-    public static Item yoyoBroken;
 
     /**
      * Das Pair, das alle Items enthaelt.
