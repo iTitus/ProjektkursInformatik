@@ -86,7 +86,7 @@ public final class MapBuilder {
         }
         map.setRasterAt(20, 18, Raster.tree);
         map.setRasterAt(21, 18, Raster.tree);
-        // map.setRasterAt(22, 18, Raster.baum);
+        // map.setRasterAt(22, 18, Raster.tree);
         map.setRasterAt(23, 18, Raster.tree);
         map.setRasterAt(24, 18, Raster.tree);
         map.setRasterAt(24, 19, Raster.tree);
@@ -600,9 +600,7 @@ public final class MapBuilder {
 
         StoryManager st = map.getStoryManager();
 
-        // CombinedAndTrigger trigger = new CombinedAndTrigger(new PosTrigger(30,
-        // 30), new AreaTrigger(30, 30, 10, 10),
-        // new InventoryHasItemStackTrigger(new ItemStack(Items.earrings)));
+        // CombinedAndTrigger trigger = new CombinedAndTrigger(new PosTrigger(30, 30), new AreaTrigger(30, 30, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.earrings)));
 
         // Faehrhaus spawnen/despawnen
         AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
@@ -624,12 +622,420 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map1(Spielfeld map) {
+
+        int inttemp;
+        int inttemp2;
+
+        // Rasen
         for (int y = 0; y < map.getMapSizeY(); y++) {
             for (int x = 0; x < map.getMapSizeX(); x++) {
                 map.setRasterAt(x, y, Raster.grass_2);
             }
         }
 
+        // WALD
+
+        /*
+         * Traditioneller Wald
+         */
+        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * Waldflächen (nicht genutzt!): inttemp = 1; for (int x = 0; x < map.getMapSizeX(); x = x + 2) { for (int y = 0; y < map.getMapSizeY(); y = y + 2) { inttemp2 = MathUtil.randomInt(45); if(inttemp == inttemp2){ for (int xx = x; xx < x+16; xx = xx + 2) { for (int yy = y; yy < y+16; yy = yy + 2) { AbstractRaster[]
+         * temp = MapUtil.getRanTree(); setTree(xx, yy, temp[0], temp[1], temp[2], temp[3], map); } } } } }
+         */
+
+        /*
+         * Löcher im Wald
+         */
+        inttemp = 2;
+        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                    map.setRasterAt(x + 1, y, Raster.grass_2);
+                    map.setRasterAt(x, y + 1, Raster.grass_2);
+                    map.setRasterAt(x + 1, y + 1, Raster.grass_2);
+                }
+            }
+        }
+
+        for (int x = 0; x < map.getMapSizeX(); x = x + 4) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 4) {
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    for (int xx = x; xx < x + 4; xx++) {
+                        for (int yy = y; yy < y + 4; yy++) {
+                            map.setRasterAt(xx, yy, Raster.grass_2);
+                        }
+                    }
+                }
+            }
+        }
+
+        /*
+         * Waldring um den See
+         */
+        for (int x = 12; x < 38; x = x + 2) {
+            for (int y = 12; y < 26; y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * WaldGrenze Oben
+         */
+        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = 0; y < 2; y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * WaldGrenze Rechts
+         */
+        for (int x = map.getMapSizeX() - 2; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * WaldGrenze Links
+         */
+        for (int x = 0; x < 2; x = x + 2) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * WaldGrenze Unten
+         */
+        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = map.getMapSizeY() - 2; y < map.getMapSizeY(); y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        // Weg
+
+        inttemp = 1;
+
+        /*
+         * Eingangsweg Runter
+         */
+        for (int x = 10; x < 12; x++) {
+            for (int y = 0; y < 28; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(10);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+        /*
+         * Ecke Eingangsweg/Unterer Weg
+         */
+        for (int x = 12; x < 14; x++) {
+            for (int y = 24; y < 26; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(4);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Unterer Weg am See
+         */
+        for (int x = 10; x < 40; x++) {
+            for (int y = 26; y < 28; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Rechter Weg am See
+         */
+        for (int x = 38; x < 40; x++) {
+            for (int y = 12; y < 28; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Oberer Weg am See
+         */
+        for (int x = 10; x < 38; x++) {
+            for (int y = 10; y < 12; y++) {
+
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(4);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Ecke Oberer Weg/Eingangsweg
+         */
+        for (int x = 12; x < 14; x++) {
+            for (int y = 8; y < 14; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(4);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Ecke Oberer weg/Rechter Weg
+         */
+        for (int x = 36; x < 38; x++) {
+            for (int y = 12; y < 14; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(4);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Lücke zum See
+         */
+        for (int x = 12; x < 14; x++) {
+            for (int y = 14; y < 16; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        /*
+         * Weg runter zur Lichtung
+         */
+        for (int x = 38; x < 40; x++) {
+            for (int y = 28; y < 40; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(1);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        for (int x = 38; x < 40; x++) {
+            for (int y = 40; y < 46; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        /*
+         * Ecke Weg runter zur Lichtung/ Unterer Weg am See
+         */
+        for (int x = 36; x < 38; x++) {
+            for (int y = 28; y < 32; y++) {
+                map.setRasterAt(x, y, Raster.cobbles_1);
+                inttemp2 = MathUtil.randomInt(4);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                }
+            }
+        }
+
+        /*
+         * Lücke zur Lichtung
+         */
+        for (int x = 40; x < 42; x++) {
+            for (int y = 44; y < 46; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        // See + Sand
+        for (int x = 15; x < 35; x++) {
+            for (int y = 15; y < 23; y++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+
+        inttemp = 5;
+
+        for (int x = 14; x < 36; x++) {
+            for (int y = 14; y < 15; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        for (int x = 14; x < 36; x++) {
+            for (int y = 23; y < 24; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        for (int x = 14; x < 15; x++) {
+            for (int y = 14; y < 24; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        for (int x = 35; x < 36; x++) {
+            for (int y = 14; y < 24; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        for (int x = 35; x < 36; x++) {
+            for (int y = 14; y < 24; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        inttemp = 20;
+        for (int y = 14; y < 20; y++) {
+            for (int x = 14; x < inttemp; x++) {
+
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+            inttemp--;
+        }
+
+        inttemp = 32;
+        for (int y = 14; y < 18; y++) {
+            for (int x = inttemp; x < 36; x++) {
+
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+            inttemp++;
+        }
+
+        inttemp = 18;
+        inttemp2 = 24;
+        for (int y = 22; y > 20; y--) {
+            for (int x = inttemp; x < inttemp2; x++) {
+
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+            inttemp++;
+            inttemp2--;
+        }
+
+        for (int x = 31; x < 36; x++) {
+            for (int y = 22; y < 24; y++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+
+        for (int x = 30; x < 37; x++) {
+            for (int y = 24; y < 26; y++) {
+                map.setRasterAt(x, y, Raster.floor_4);
+            }
+        }
+
+        map.setRasterAt(28, 24, Raster.floor_4);
+        map.setRasterAt(29, 24, Raster.floor_4);
+        map.setRasterAt(29, 25, Raster.floor_4);
+        map.setRasterAt(28, 25, Raster.grass_2);
+        map.setRasterAt(36, 20, Raster.grass_2);
+
+        for (int y = 21; y < 24; y++) {
+            map.setRasterAt(36, y, Raster.floor_4);
+        }
+
+        for (int y = 20; y < 26; y++) {
+            map.setRasterAt(37, y, Raster.grass_2);
+        }
+
+        map.setRasterAt(14, 14, Raster.grass_2);
+        map.setRasterAt(14, 15, Raster.grass_2);
+        map.setRasterAt(15, 14, Raster.grass_2);
+
+        for (int y = 20; y < 22; y++) {
+            map.setRasterAt(15, y, Raster.floor_4);
+        }
+
+        for (int x = 19; x < 22; x++) {
+            map.setRasterAt(x, 23, Raster.grass_2);
+        }
+
+        map.setRasterAt(21, 22, Raster.grass_2);
+        map.setRasterAt(35, 14, Raster.grass_2);
+
+        for (int x = 18; x < 24; x++) {
+            map.setRasterAt(x, 12, Raster.grass_2);
+        }
+
+        for (int x = 18; x < 24; x++) {
+            map.setRasterAt(x, 13, Raster.floor_4);
+        }
+
+        // Lichtung
+
+        for (int x = 42; x < 60; x++) {
+            for (int y = 40; y < 60; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        inttemp = 52;
+        for (int y = 58; y > 50; y = y - 2) {
+            for (int x = inttemp; x < 60; x = x + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+            inttemp = inttemp + 2;
+        }
+
+        inttemp = 52;
+        for (int y = 40; y < 46; y = y + 2) {
+            for (int x = inttemp; x < 60; x = x + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+            inttemp = inttemp + 2;
+        }
+
+        inttemp = 49;
+        for (int y = 58; y > 48; y = y - 2) {
+            for (int x = 42; x < inttemp; x = x + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+            inttemp = inttemp - 2;
+        }
+
+        inttemp = 42;
+        for (int y = 40; y < 45; y = y + 2) {
+            for (int x = inttemp; x < 52; x = x + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+            inttemp = inttemp + 4;
+        }
+
+        // ENDE Lvl1 Map1
     }
 
     private static void setStreet(int x, int y, Spielfeld map) {
