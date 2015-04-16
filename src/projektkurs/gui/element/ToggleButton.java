@@ -58,9 +58,10 @@ public class ToggleButton extends Button {
     public void onLeftClick(int x, int y, MouseEvent e) {
         if (names != null && names.length > 1 && isInside(x, y)) {
             if (e.isShiftDown()) {
-                setIndex(Math.min(names.length, index + 10));
+                setIndex(index + 10);
+            } else {
+                setIndex(index + 1);
             }
-            setIndex(index + 1);
             getListener().onButtonLeftClick(this, e);
         }
     }
@@ -69,9 +70,10 @@ public class ToggleButton extends Button {
     public void onRightClick(int x, int y, MouseEvent e) {
         if (names != null && names.length > 2 && isInside(x, y)) {
             if (e.isShiftDown()) {
-                setIndex(Math.max(-1, index - 10));
+                setIndex(index - 10);
+            } else {
+                setIndex(index - 1);
             }
-            setIndex(index - 1);
             getListener().onButtonRightClick(this, e);
         }
     }
@@ -83,12 +85,12 @@ public class ToggleButton extends Button {
      *            Namensindex
      */
     public void setIndex(int index) {
-        this.index = index;
-        if (this.index < 0) {
-            this.index = names.length - 1;
-        }
-        if (this.index >= names.length) {
+        if (index >= names.length) {
             this.index = 0;
+        } else if (index < 0) {
+            this.index = names.length - 1;
+        } else {
+            this.index = index;
         }
         name = names[this.index];
     }
