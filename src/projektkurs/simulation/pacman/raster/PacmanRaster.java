@@ -25,4 +25,9 @@ public abstract class PacmanRaster {
         this.isSolid = isSolid;
     }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
+
 }

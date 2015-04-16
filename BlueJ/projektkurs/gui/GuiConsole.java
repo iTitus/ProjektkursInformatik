@@ -41,7 +41,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
     @Override
     public void initGui() {
         super.initGui();
-        field = new TextField(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, 256, 64, 0, this);
+        field = new TextField(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, 64, 0, this);
         field.setFocused(true);
         addElement(field);
     }
@@ -128,7 +128,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                 try {
                     result = c.execute(args);
                 } catch (Throwable t) {
-                    Logger.logThrowable("Unable to execute command '" + commandString + "' with the aruments " + partList, t);
+                    Logger.logThrowable("Unable to execute command '" + commandString + "' with the arguments " + partList, t);
                     result = EnumCommandResult.GENERAL_FAILURE;
                 }
                 if (result == null) {
@@ -154,7 +154,7 @@ public class GuiConsole extends Gui implements ITextFieldListener {
                         field.setText(I18n.getString("command.failure.bounds"));
                         break;
                     case WRONG_USAGE:
-                        field.setText(I18n.getStringFormatted("command.usage", I18n.getString("command." + commandString + ".usage")));
+                        field.setText(I18n.getStringFormatted("command.usage", I18n.getString("command." + c.getCommand() + ".usage")));
                         break;
                     default:
                         break;

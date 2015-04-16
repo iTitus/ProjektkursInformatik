@@ -10,7 +10,7 @@ import projektkurs.world.Spielfeld;
 /**
  * Eine ExtraInformation.
  */
-public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPosition {
+public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPosition<Integer> {
 
     /**
      * Spielfeld.
@@ -59,12 +59,12 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
     }
 
     @Override
-    public int getPosX() {
+    public Integer getPosX() {
         return posX;
     }
 
     @Override
-    public int getPosY() {
+    public Integer getPosY() {
         return posY;
     }
 
@@ -75,7 +75,7 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
     }
 
     @Override
-    public void setPosition(int x, int y) {
+    public void setPosition(Integer x, Integer y) {
         posX = x;
         posY = y;
     }

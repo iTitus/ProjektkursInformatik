@@ -2,13 +2,16 @@ package projektkurs.simulation.pacman.entity;
 
 import projektkurs.render.Screen;
 import projektkurs.simulation.pacman.PacmanBoard;
+import projektkurs.util.IHasPositionAndSize;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.MathUtil;
 
-public abstract class PacmanEntity implements IUpdatable {
+public abstract class PacmanEntity implements IUpdatable, IHasPositionAndSize<Double, Double> {
 
     private boolean isDead = false;
     protected PacmanBoard board;
-    protected final double sizeX, sizeY;
+    protected double sizeX;
+    protected double sizeY;
     protected double x, y;
 
     public PacmanEntity(PacmanBoard board, double x, double y, double sizeX, double sizeY) {
@@ -24,19 +27,23 @@ public abstract class PacmanEntity implements IUpdatable {
         return false;
     }
 
-    public double getPosX() {
+    @Override
+    public Double getPosX() {
         return x;
     }
 
-    public double getPosY() {
+    @Override
+    public Double getPosY() {
         return y;
     }
 
-    public double getSizeX() {
+    @Override
+    public Double getSizeX() {
         return sizeX;
     }
 
-    public double getSizeY() {
+    @Override
+    public Double getSizeY() {
         return sizeY;
     }
 
@@ -44,8 +51,8 @@ public abstract class PacmanEntity implements IUpdatable {
         return isDead;
     }
 
-    public boolean isInside(double posX, double posY, double sizeX, double sizeY) {
-        return Math.max(posX, x) < Math.min(posX + sizeX, x + this.sizeX) && Math.max(posY, y) < Math.min(posY + sizeY, y + this.sizeY);
+    public boolean isInside(double x, double y, double sizeX, double sizeY) {
+        return MathUtil.isInside(this.x, this.y, this.sizeX, this.sizeY, x, y, sizeX, sizeY);
     }
 
     public void move(double dx, double dy) {
@@ -68,9 +75,16 @@ public abstract class PacmanEntity implements IUpdatable {
         onDeath();
     }
 
-    public void setPosition(double x, double y) {
+    @Override
+    public void setPosition(Double x, Double y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public void setSize(Double sizeX, Double sizeY) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
     }
 
     @Override

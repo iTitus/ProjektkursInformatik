@@ -14,7 +14,7 @@ import projektkurs.util.IUpdatable;
 /**
  * Ein GUI-Element.
  */
-public abstract class Element implements IHasPositionAndSize, IUpdatable, IGuiTooltipProvider {
+public abstract class Element implements IHasPositionAndSize<Integer, Integer>, IUpdatable, IGuiTooltipProvider {
 
     /**
      * Der Listener dieses Elements.
@@ -96,22 +96,22 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable, IGuiTo
     }
 
     @Override
-    public int getPosX() {
+    public Integer getPosX() {
         return posX;
     }
 
     @Override
-    public int getPosY() {
+    public Integer getPosY() {
         return posY;
     }
 
     @Override
-    public int getSizeX() {
+    public Integer getSizeX() {
         return sizeX;
     }
 
     @Override
-    public int getSizeY() {
+    public Integer getSizeY() {
         return sizeY;
     }
 
@@ -217,13 +217,13 @@ public abstract class Element implements IHasPositionAndSize, IUpdatable, IGuiTo
     public abstract void render(Screen screen);
 
     @Override
-    public void setPosition(int x, int y) {
+    public void setPosition(Integer x, Integer y) {
         posX = x;
         posY = y;
     }
 
     @Override
-    public void setSize(int sizeX, int sizeY) {
+    public void setSize(Integer sizeX, Integer sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
     }

@@ -1,6 +1,7 @@
 package projektkurs.simulation.pacman.entity;
 
 import projektkurs.render.Screen;
+import projektkurs.simulation.pacman.GhostMode;
 import projektkurs.simulation.pacman.PacmanBoard;
 import projektkurs.simulation.pacman.gui.ElementPacmanBoard;
 import projektkurs.util.MathUtil;
@@ -9,6 +10,7 @@ import projektkurs.util.RenderUtil;
 public abstract class Ghost extends PacmanEntity {
 
     public static final int POINTS = 100;
+    private GhostMode mode = GhostMode.IDLE;
     protected int targetX, targetY;
 
     public Ghost(PacmanBoard board) {
@@ -20,7 +22,17 @@ public abstract class Ghost extends PacmanEntity {
         return true;
     }
 
+    public abstract void findTargetPosition();
+
     public abstract int getColor();
+
+    public double getEffectiveSpeed() {
+        return Pacman.SPEED * mode.getSpeedModifier();
+    }
+
+    public GhostMode getMode() {
+        return mode;
+    }
 
     public int getTargetX() {
         return targetX;
@@ -37,10 +49,12 @@ public abstract class Ghost extends PacmanEntity {
 
     @Override
     public void onCollide(PacmanEntity e) {
-        if (board.isSuperMode()) {
-            onDeath();
-        } else {
-            e.onDeath();
+        if (mode != GhostMode.RETURNING_HOME && e instanceof Pacman) {
+            if (mode == GhostMode.FRIGHTENED) {
+                setDead();
+            } else {
+                e.setDead();
+            }
         }
     }
 
@@ -50,11 +64,21 @@ public abstract class Ghost extends PacmanEntity {
         board.increaseMultiplicator();
         targetX = board.getGhostSpawnX();
         targetY = board.getGhostSpawnY();
+        mode = GhostMode.RETURNING_HOME;
     }
 
     @Override
     public void render(Screen screen, int offsetX, int offsetY) {
         RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
+    }
+
+    @Override
+    public void setDead() {
+        onDeath();
+    }
+
+    public void setMode(GhostMode mode) {
+        this.mode = mode;
     }
 
     public void setTarget(int targetX, int targetY) {
@@ -71,5 +95,12 @@ public abstract class Ghost extends PacmanEntity {
     }
 
     @Override
-    public abstract void update();
+    public void update() {
+        if (mode != GhostMode.RETURNING_HOME) {
+            findTargetPosition();
+        } else if (Math.floor(x) == targetX && Math.floor(y) == targetY) {
+            mode = GhostMode.IDLE;
+        }
+        // TODO Pathfinding
+    }
 }

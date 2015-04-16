@@ -71,6 +71,7 @@ public class GuiDialog extends Gui implements IButtonListener {
                 button.setName("button.dialog.exit");
             }
         } else {
+            dialogPart.onFinish();
             Main.openGui(getParent());
         }
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import projektkurs.Main;
 import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.simulation.pacman.entity.Ghost_0;
@@ -28,7 +29,6 @@ public class PacmanBoard implements IUpdatable {
     private final Pacman pacman;
     private int score;
     private final int sizeX, sizeY;
-    private boolean superMode;
 
     public PacmanBoard(int sizeX, int sizeY) {
         this.sizeX = sizeX;
@@ -36,7 +36,7 @@ public class PacmanBoard implements IUpdatable {
         board = new PacmanRaster[sizeX][sizeY];
         entities = new ArrayList<PacmanEntity>();
         generateMaze();
-        pacman = new Pacman(this, 1, 1);
+        pacman = new Pacman(this, 9, 9);
         ghost0 = new Ghost_0(this);
         ghost1 = new Ghost_1(this);
         ghost2 = new Ghost_2(this);
@@ -47,13 +47,6 @@ public class PacmanBoard implements IUpdatable {
         addPacmanEntity(ghost2);
         addPacmanEntity(ghost3);
         addCoins();
-    }
-
-    public void activateSuperMode() {
-        if (!superMode) {
-            multiplicator = 1;
-        }
-        superMode = true;
     }
 
     public void addPacmanEntity(PacmanEntity e) {
@@ -67,9 +60,13 @@ public class PacmanBoard implements IUpdatable {
         return true;
     }
 
-    public void deactivateSuperMode() {
-        multiplicator = 0;
-        superMode = false;
+    public <T extends PacmanEntity> boolean containsEntityOfType(double x, double y, double width, double height, Class<T> clazz) {
+        for (PacmanEntity e : entities) {
+            if (e != null && clazz.isInstance(e) && e.isInside(x, y, width, height)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void decreaseScore(int by) {
@@ -108,10 +105,6 @@ public class PacmanBoard implements IUpdatable {
         return pacman;
     }
 
-    public List<PacmanEntity> getPacmanEntities(double x, double y) {
-        return getPacmanEntities(x, y, 1, 1);
-    }
-
     public List<PacmanEntity> getPacmanEntities(double x, double y, double width, double height) {
         List<PacmanEntity> list = new ArrayList<PacmanEntity>();
         if (x >= 0 && x < sizeX && y >= 0 && y < sizeY) {
@@ -119,6 +112,16 @@ public class PacmanBoard implements IUpdatable {
                 if (e != null && e.isInside(x, y, width, height)) {
                     list.add(e);
                 }
+            }
+        }
+        return list;
+    }
+
+    public <T extends PacmanEntity> List<T> getPacmanEntitiesOfType(double x, double y, double width, double height, Class<T> clazz) {
+        List<T> list = new ArrayList<T>();
+        for (PacmanEntity e : entities) {
+            if (e != null && clazz.isInstance(e) && e.isInside(x, y, width, height)) {
+                list.add(clazz.cast(e));
             }
         }
         return list;
@@ -151,10 +154,6 @@ public class PacmanBoard implements IUpdatable {
         score += by;
     }
 
-    public boolean isSuperMode() {
-        return superMode;
-    }
-
     public void render(Screen screen, int posX, int posY) {
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY; y++) {
@@ -165,7 +164,7 @@ public class PacmanBoard implements IUpdatable {
             }
         }
         for (PacmanEntity e : entities) {
-            if (e != null) {
+            if (e != null && !e.isDead()) {
                 e.render(screen, posX, posY);
             }
         }
@@ -195,6 +194,9 @@ public class PacmanBoard implements IUpdatable {
                 }
             }
         }
+        if (!containsEntityOfType(0, 0, sizeX, sizeY, SmallCoin.class)) {
+            Main.closeGui();
+        }
     }
 
     private void addCoins() {
@@ -217,7 +219,7 @@ public class PacmanBoard implements IUpdatable {
                 }
             }
         }
-        for (int y = 3; y < sizeY - 2; y++) {
+        for (int y = 5; y < sizeY - 2; y++) {
             setPacmanRaster(2, y, PacmanRaster.obstacle);
         }
     }

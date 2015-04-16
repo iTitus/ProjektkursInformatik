@@ -3,21 +3,21 @@ package projektkurs.util;
 /**
  * Interface fuer Objekte, die eine Position haben.
  */
-public interface IHasPosition {
+public interface IHasPosition<P extends Number> {
 
     /**
      * Die X-Koordinate.
      *
      * @return X-Koordinate.
      */
-    int getPosX();
+    P getPosX();
 
     /**
      * Die Y-Koordinate.
      *
      * @return Y-Koordinate.
      */
-    int getPosY();
+    P getPosY();
 
     /**
      * Setzt die Positon.
@@ -27,6 +27,6 @@ public interface IHasPosition {
      * @param y
      *            Y-Koordinate
      */
-    void setPosition(int x, int y);
+    void setPosition(P x, P y);
 
 }

@@ -56,25 +56,6 @@ public final class CutScene implements IUpdatable {
         this.name = name;
     }
 
-    /**
-     * CutScene mit Custom Background.
-     *
-     * @param name
-     *            Name
-     * @param background
-     *            Hintergrundbild
-     */
-    public CutScene(String name, Sprite background) {
-        actionQueue = new Queue<Action>();
-        startupQueue = new Queue<Action>();
-        tempQueue = new Queue<Action>();
-        elapsedTicks = 0;
-        isFinished = false;
-        objects = new ArrayList<CutSceneObject>();
-        this.name = name;
-        this.background = background;
-    }
-
     @Override
     public boolean canUpdate() {
         return true;
@@ -168,6 +149,12 @@ public final class CutScene implements IUpdatable {
      */
     public void registerTickAction(Action action) {
         actionQueue.enQueue(action);
+    }
+
+    public void reset() {
+        elapsedTicks = 0;
+        isFinished = false;
+        objects.clear();
     }
 
     /**

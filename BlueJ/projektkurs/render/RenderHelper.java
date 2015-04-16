@@ -42,7 +42,7 @@ public class RenderHelper {
      *            IHasPosition
      * @return true, wenn ja; false, wenn nein
      */
-    public boolean isInSight(IHasPosition iHasPosition) {
+    public boolean isInSight(IHasPosition<Integer> iHasPosition) {
         return iHasPosition.getPosX() >= sightX && iHasPosition.getPosY() >= sightY && iHasPosition.getPosX() < sightX + Integers.sightX && iHasPosition.getPosY() < sightY + Integers.sightY;
     }
 

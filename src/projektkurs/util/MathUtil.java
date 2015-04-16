@@ -232,6 +232,14 @@ public final class MathUtil {
         return i >= 0 && i < length;
     }
 
+    public static boolean isInside(IHasPositionAndSize<? extends Number, ? extends Number> o1, IHasPositionAndSize<? extends Number, ? extends Number> o2) {
+        return isInside(o1.getPosX(), o1.getPosY(), o1.getSizeX(), o1.getSizeY(), o2.getPosX(), o2.getPosY(), o2.getSizeX(), o2.getSizeY());
+    }
+
+    public static <P1 extends Number, S1 extends Number, P2 extends Number, S2 extends Number> boolean isInside(P1 x1, P1 y1, S1 sizeX1, S1 sizeY1, P2 x2, P2 y2, S2 sizeX2, S2 sizeY2) {
+        return Math.max(x2.doubleValue(), x1.doubleValue()) < Math.min(x2.doubleValue() + sizeX2.doubleValue(), x1.doubleValue() + sizeX1.doubleValue()) && Math.max(y2.doubleValue(), y1.doubleValue()) < Math.min(y2.doubleValue() + sizeY2.doubleValue(), y1.doubleValue() + sizeY1.doubleValue());
+    }
+
     /**
      * Prueft, ob der gegebenen Index ausserhalb der Grenzen des gegebenen Arrays ist.
      *

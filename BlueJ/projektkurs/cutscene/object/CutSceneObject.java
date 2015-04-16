@@ -15,7 +15,7 @@ import projektkurs.util.RenderUtil;
  * Ein Objekt in einer CutScene.
  */
 @SuppressWarnings("deprecation")
-public class CutSceneObject implements IHasPositionAndSize {
+public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * X-Position.
@@ -80,22 +80,22 @@ public class CutSceneObject implements IHasPositionAndSize {
     }
 
     @Override
-    public int getPosX() {
+    public Integer getPosX() {
         return posX;
     }
 
     @Override
-    public int getPosY() {
+    public Integer getPosY() {
         return posY;
     }
 
     @Override
-    public int getSizeX() {
+    public Integer getSizeX() {
         return sizeX;
     }
 
     @Override
-    public int getSizeY() {
+    public Integer getSizeY() {
         return sizeY;
     }
 
@@ -161,13 +161,13 @@ public class CutSceneObject implements IHasPositionAndSize {
     }
 
     @Override
-    public void setPosition(int posX, int posY) {
+    public void setPosition(Integer posX, Integer posY) {
         this.posX = posX;
         this.posY = posY;
     }
 
     @Override
-    public void setSize(int sizeX, int sizeY) {
+    public void setSize(Integer sizeX, Integer sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
     }

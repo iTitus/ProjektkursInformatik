@@ -1,7 +1,10 @@
 package projektkurs.dialog;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import projektkurs.util.MethodInvoker;
 
 /**
  * Ein Teil des Dialoges.
@@ -16,6 +19,7 @@ public class DialogPart implements Iterable<String> {
      * Aktueller Index.
      */
     private int index;
+    private MethodInvoker methodInvoker;
     /**
      * Anzeigename.
      */
@@ -159,6 +163,12 @@ public class DialogPart implements Iterable<String> {
         };
     }
 
+    public void onFinish() {
+        if (methodInvoker != null) {
+            methodInvoker.invoke();
+        }
+    }
+
     /**
      * Setzt den Anzeigenstatus.
      *
@@ -167,6 +177,11 @@ public class DialogPart implements Iterable<String> {
      */
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    public DialogPart setEndAction(Method m, Object... objects) {
+        methodInvoker = new MethodInvoker(m, objects);
+        return this;
     }
 
     /**

@@ -9,14 +9,14 @@ public class Ghost_1 extends Ghost {
     }
 
     @Override
-    public int getColor() {
-        return 0xFFB8FF;
+    public void findTargetPosition() {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
-    public void update() {
-        // TODO Auto-generated method stub
-
+    public int getColor() {
+        return 0xFFB8FF;
     }
 
 }

@@ -201,6 +201,7 @@ public final class CutSceneManager {
             }
 
             cutSceneFrame.dispose();
+            cutScene.reset();
             cutScene = null;
             cutSceneFrame = null;
             cutSceneRenderHelper = null;
