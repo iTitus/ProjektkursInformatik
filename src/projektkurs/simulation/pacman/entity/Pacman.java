@@ -110,7 +110,7 @@ public class Pacman extends PacmanEntity {
                 List<PacmanEntity> entities = board.getPacmanEntities(x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY);
                 if (entities != null) {
                     for (PacmanEntity e : entities) {
-                        if (e != null) {
+                        if (e != null && e != this) {
                             e.onCollide(this);
                         }
                     }
