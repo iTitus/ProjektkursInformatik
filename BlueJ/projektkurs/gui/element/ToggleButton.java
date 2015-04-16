@@ -56,9 +56,9 @@ public class ToggleButton extends Button {
 
     @Override
     public void onLeftClick(int x, int y, MouseEvent e) {
-        if (isInside(x, y)) {
+        if (names != null && names.length > 1 && isInside(x, y)) {
             if (e.isShiftDown()) {
-                setIndex(index + 10);
+                setIndex(Math.min(names.length, index + 10));
             }
             setIndex(index + 1);
             getListener().onButtonLeftClick(this, e);
@@ -67,9 +67,9 @@ public class ToggleButton extends Button {
 
     @Override
     public void onRightClick(int x, int y, MouseEvent e) {
-        if (isInside(x, y)) {
+        if (names != null && names.length > 2 && isInside(x, y)) {
             if (e.isShiftDown()) {
-                setIndex(index - 10);
+                setIndex(Math.max(-1, index - 10));
             }
             setIndex(index - 1);
             getListener().onButtonRightClick(this, e);
