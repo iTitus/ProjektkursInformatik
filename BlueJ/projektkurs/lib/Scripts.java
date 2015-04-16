@@ -50,6 +50,10 @@ public final class Scripts {
         map.getStoryManager().registerTrigger(invtrig, SPAWN_ENTITY, e, map);
     }
 
+    public static void setBitInValue(int pos) {
+        DialogManager.changeValue(DialogManager.getValue() | 1 << pos - 1);
+    }
+
     public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
         map.spawn(e);
         AreaTrigger area = new AreaTrigger(20, 21, 13, 14);

@@ -24,9 +24,9 @@ public final class Dialoge {
     public static Dialog LVmFrauTwo;
     public static Dialog LVmHexerzirkel;
     public static Dialog LVmHexerzirkelOne;
+    public static Dialog LVmHexerzirkelTwo;
     public static Dialog LVmJungeAmWegesrand;
     public static Dialog LVmJungeAmWegesrandOne;
-    public static Dialog LVmJungeAmWegesrandTwo;
     /**
      * Die Mappings.
      */
@@ -51,76 +51,46 @@ public final class Dialoge {
     @Init
     public static void init() {
 
-        // test = new Dialog("testDialog", new DialogPart("test1.good", 10, 0, true, 3), new DialogPart("test2.bad", -10, 0, false, 1));
-        // registerMapping(test);
-
-        // Neuer Dialog (Fischer) //[3]
-
-        // LVmFischer = new Dialog("LVmFischer",#, new DialoPart("LVmFischer",5), new DialogPart("LVmFischerZwei",5 ), new DialogPart("LVmFischerDrei",2 ), new DialogPart("LVmFischerVier",2 ), new DialogPart("LVmFischerFuenf", 2 ), new DialogPart("LVmFischerSechs", 1 ));
-        LVmFischer = new Dialog("LVmFischer", new DialogPart("LVmFischer", 5), new DialogPart("LVmFischerZwei", 5), new DialogPart("LVmFischerDrei", 2), new DialogPart("LVmFischerVier", 2), new DialogPart("LVmFischerFuenf", 2), new DialogPart("LVmFischerSechs", 1));
-        registerMapping(LVmFischer);
-
-        // Neuer Dialog (Hexerzirkel) #TODO: Wenn Teddy(vollstuendig im Inventar, dann LVmHexerzirkelOne) // [4]
-
-        LVmHexerzirkel = new Dialog("LVmHexerzirkel", new DialogPart("LVmHexerzirkelEins", 2), new DialogPart("LVmHexerzirkelZwei", 4), new DialogPart("LVmHexerzirkelDrei", 5));
-        registerMapping(LVmHexerzirkel);
-
-        // #TODO: // InventoryhasItemStack
-
-        LVmHexerzirkelOne = new Dialog("LVmHexerzirkelOne", new DialogPart("LVmHexerzirkelOne", 1));
-        registerMapping(LVmHexerzirkelOne);
-
-        // Neuer Dialog (Frau) // [2]
-
-        // LVmFrau = new Dialog("LVmFrau", 1 ,new DialogPart("LVmFrauEins",1,2,1), new DialogPart("LVmFrauZwei", 2), new DialogPart("LVmFrauDrei", 2), new DialogPart("LVmFrauVier", 1));
-        LVmFrau = new Dialog("LVmFrau", new DialogPart("LVmFrauEins", 2), new DialogPart("LVmFrauZwei", 2), new DialogPart("LVmFrauDrei", 2), new DialogPart("LVmFrauVier", 1));
-        registerMapping(LVmFrau);
-
-        // TODO: Besonders Neuer Trigger von Noeten. Einer der prueft, ob Dialog bereits durchgefuehrt --> Neuen Dialog ueberschreiben
-
-        LVmFrauOne = new Dialog("LVmFrauOne", new DialogPart("LVmFrauOneEins", 3));
-        registerMapping(LVmFrauOne);
-
-        // TODO: Aehnlich wie im Comment ueber diesem hier
-
-        LVmFrauTwo = new Dialog("LVmFrauTwo", new DialogPart("LVmFrauTwoEins", 4));
-        registerMapping(LVmFrauTwo);
-
-        // InventoryHasItemStack_Trigger benoetigt (Einsammeln von Ohrringen) um naechsten Dialog zu ermoeglichen #FIXME
-
-        LVmFrauThree = new Dialog("LVmFrauThree", new DialogPart("LVmFrauThree", 1));
-        registerMapping(LVmFrauThree);
-
-        // Neuer Dialog (Faehrmann) // [1]
-
-        // LVmFaehrmann = new Dialog("LVmFaehrmann", 0 ,new DialogPart("LVmFaehrmannEins",1, 2, 0 ));
-        LVmFaehrmann = new Dialog("LVmFaehrmann", new DialogPart("LVmFaehrmannEins", 2));
+        LVmFaehrmann = new Dialog("LVmFaehrmann", new DialogPart("LVmFaehrmannEins", 1, 0, 2));
         registerMapping(LVmFaehrmann);
 
-        // Auch hier wieder Super-Dupa "Dialog schon abgespielt, spiel einen neuen rueber-" Trigger nuetig !! Bis dato hier auch schon mal der Dialog an sich. #FIXME
-
-        LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOne", 2));
+        LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOne", 0, 1, 2));
         registerMapping(LVmFaehrmannOne);
 
-        // TODO: Sobald Grammophon im Inventar (InventoryHasItemStack-Trigger)
-
-        LVmFaehrmannTwo = new Dialog("LVmFaehramnnTwo", new DialogPart("LVmFaehrmannTwo", 2));
+        LVmFaehrmannTwo = new Dialog("LVmFaehramnnTwo", new DialogPart("LVmFaehrmannTwo", 1 << 19, 1 << 18, 2));
         registerMapping(LVmFaehrmannTwo);
 
-        // Neuer Dialog (JungeAmWegesrand) // [5]
-
-        LVmJungeAmWegesrand = new Dialog("JungeAmWegesrand", new DialogPart("JungeAmWegesrandEins", 2));
+        LVmJungeAmWegesrand = new Dialog("JungeAmWegesrand", new DialogPart("JungeAmWegesrandEins", 0b10, 0, 2));
         registerMapping(LVmJungeAmWegesrand);
 
-        // Dialog ausfuehren; ausgefuehrt ? ; Trigger setzt ein; Neuer Dialog mit JungeAmWegesrand
-
-        LVmJungeAmWegesrandOne = new Dialog("JungeAmWegesrandOne", new DialogPart("JungeAmWegesrandOneEins", 6));
+        LVmJungeAmWegesrandOne = new Dialog("JungeAmWegesrandOne", new DialogPart("JungeAmWegesrandOneEins", 1 << 16, 1 << 13 | 1 << 12 | 1 << 14, 6));
         registerMapping(LVmJungeAmWegesrandOne);
 
-        // Wenn vollstaendiges Jojo im Inventar, dann neuer Dialog mit JungeAmWegesrand
+        LVmFrau = new Dialog("LVmFrau", new DialogPart("LVmFrauEins", 0b100, 1, 2), new DialogPart("LVmFrauZwei", 0b1000, 1, 2), new DialogPart("LVmFrauDrei", 1 << 4, 1, 2), new DialogPart("LVmFrauVier", 1 << 5, 1, 1));
+        registerMapping(LVmFrau);
 
-        LVmJungeAmWegesrandTwo = new Dialog("JungeAmWegesrandTwo", new DialogPart("JungeAmWegesrandTwo", 1));
-        registerMapping(LVmJungeAmWegesrandTwo);
+        LVmFrauOne = new Dialog("LVmFrauOne", new DialogPart("LVmFrauOneEins", 0, 0b100 | 0b1000 | 1 << 4 | 1 << 5, 3));
+        registerMapping(LVmFrauOne);
+
+        LVmFrauTwo = new Dialog("LVmFrauTwo", new DialogPart("LVmFrauTwoEins", 1 << 15, 1 << 12 | 1 << 13 | 1 << 14, 4));
+        registerMapping(LVmFrauTwo);
+
+        LVmFrauThree = new Dialog("LVmFrauThree", new DialogPart("LVmFrauThree", 0, 1 << 19, 1));
+        registerMapping(LVmFrauThree);
+
+        LVmFischer = new Dialog("LVmFischer", new DialogPart("LVmFischer", 1 << 6, 1 | 2 | 4, 5), new DialogPart("LVmFischerZwei", 1 << 7, 1 | 2 | 4, 5), new DialogPart("LVmFischerDrei", 1 << 8, 1 | 2 | 4, 2), new DialogPart("LVmFischerVier", 1 << 9, 1 | 2 | 4, 2), new DialogPart("LVmFischerFuenf", 1 << 10, 1 | 2 | 4,
+                2), new DialogPart("LVmFischerSechs", 1 << 11, 1 | 2 | 4, 1));
+        registerMapping(LVmFischer);
+
+        LVmHexerzirkel = new Dialog("LVmHexerzirkel", new DialogPart("LVmHexerzirkelEins", 1 << 12, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 2), new DialogPart("LVmHexerzirkelZwei", 1 << 13, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 4), new DialogPart("LVmHexerzirkelDrei", 1 << 14, 1 << 6
+                | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 5));
+        registerMapping(LVmHexerzirkel);
+
+        LVmHexerzirkelOne = new Dialog("LVmHexerzirkelOne", new DialogPart("LVmHexerzirkelOne", 1 << 17, 1 << 12 | 1 << 13 | 1 << 14, 1));
+        registerMapping(LVmHexerzirkelOne);
+
+        LVmHexerzirkelTwo = new Dialog("LVmHexerzirkelTwo", new DialogPart("LVmHexerzirkelTwo", 1 << 18, 1 << 15 | 1 << 16 | 1 << 17, 1));
+        registerMapping(LVmHexerzirkelTwo);
 
     }
 
