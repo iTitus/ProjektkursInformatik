@@ -95,7 +95,7 @@ public final class Commands {
      * Registriert ein Mapping.
      *
      * @param c
-     *            ICommand
+     *            Command
      */
     private static void registerMapping(Command c) {
         if (c != null && !MAPPINGS.containsKey(c.getCommand())) {

@@ -36,6 +36,7 @@ public class GuiOption extends Gui implements IButtonListener {
         addElement(soundButton);
         addElement(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT * 3, 2, this, "button.info"));
         addElement(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT * 4, 3, this, "button.lang"));
+        addElement(new Button(MathUtil.ceilDiv(Integers.windowX, 2) - MathUtil.ceilDiv(Integers.DEFAULT_BUTTON_WIDTH, 2), Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT * 5, 4, this, "button.reloadConfig"));
     }
 
     @Override
@@ -53,6 +54,9 @@ public class GuiOption extends Gui implements IButtonListener {
                 break;
             case 3:
                 Main.openGui(new GuiLangChooser(this));
+                break;
+            case 4:
+                Configs.reloadConfigs();
                 break;
             default:
                 break;
