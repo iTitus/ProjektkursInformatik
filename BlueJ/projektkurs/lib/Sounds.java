@@ -97,7 +97,7 @@ public final class Sounds {
          *            Wiederholungszahl
          */
         public void loop(int count) {
-            if (clip != null && !isMuted()) {
+            if (clip != null && !Configs.soundsMuted.getValue()) {
                 clip.loop(count);
             }
         }
@@ -106,7 +106,7 @@ public final class Sounds {
          * Spielt den Sound in einer Endlosschleife ab.
          */
         public void loopContinuosly() {
-            if (clip != null && !isMuted()) {
+            if (clip != null && !Configs.soundsMuted.getValue()) {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
         }
@@ -127,7 +127,7 @@ public final class Sounds {
          * Spielt den Sound ab.
          */
         public void play() {
-            if (clip != null && !isMuted()) {
+            if (clip != null && !Configs.soundsMuted.getValue()) {
                 clip.start();
             }
         }
@@ -139,7 +139,7 @@ public final class Sounds {
          *            Frame-Zahl
          */
         public void play(int frames) {
-            if (clip != null && !isMuted()) {
+            if (clip != null && !Configs.soundsMuted.getValue()) {
                 clip.setFramePosition(frames);
             }
             play();
@@ -185,10 +185,6 @@ public final class Sounds {
      * Mappings.
      */
     public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
-    /**
-     * Sind alle Sounds gemutet.
-     */
-    private static boolean mute = false;
 
     /**
      * Befreit alle Sounds.
@@ -217,26 +213,6 @@ public final class Sounds {
         explosion = new Sound("explosion", "boom.wav");
         registerSound(explosion);
 
-    }
-
-    /**
-     * Sind alle Sounds gemuted.
-     *
-     * @return true, wenm ja; false, wenn nein
-     */
-    public static boolean isMuted() {
-        return mute;
-    }
-
-    /**
-     * Muted alle Sounds.
-     *
-     * @param mute
-     *            true, wenn sie gemuted werden sollen; false wenn nicht
-     */
-    public static void mute(boolean mute) {
-        Sounds.mute = mute;
-        pause(Sounds.mute);
     }
 
     /**
