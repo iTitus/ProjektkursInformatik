@@ -1,6 +1,7 @@
 package projektkurs.entity;
 
 import projektkurs.dialog.Dialog;
+import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
@@ -17,6 +18,11 @@ public class EntityFerryman extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        return Dialoge.test;
+        if (1 << 18 == (DialogManager.getValue() & 1 << 18)) {
+            return Dialoge.LVmFaehrmannTwo;
+        } else if (1 == (DialogManager.getValue() & 1)) {
+            return Dialoge.LVmFaehrmannOne;
+        }
+        return Dialoge.LVmFaehrmann;
     }
 }

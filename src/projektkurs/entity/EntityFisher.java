@@ -1,6 +1,7 @@
 package projektkurs.entity;
 
 import projektkurs.dialog.Dialog;
+import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
@@ -17,6 +18,9 @@ public class EntityFisher extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        return Dialoge.test;
+        if ((1 | 2 | 4) == (DialogManager.getValue() & 1 | 2 | 4)) {
+            return Dialoge.LVmFischer;
+        }
+        return null;
     }
 }
