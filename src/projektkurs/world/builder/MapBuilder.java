@@ -606,8 +606,10 @@ public final class MapBuilder {
         AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
         st.registerTrigger(area, Scripts.REMOVE_ENTITY, fhouse, map);
         // mapwechsel
-        AreaTrigger mapswitch = new AreaTrigger(58, 69, 6, 1);
-        st.registerTrigger(mapswitch, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+        Trigger setmapswitch = new AreaTrigger(58, 68, 6, 1).setMultipleTimeTrigger();
+        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class), 1, new AreaTrigger(58, 69, 6, 1));
+
+        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);
 
         // Cutscenestart
         AreaTrigger dia1 = new AreaTrigger(10, 22, 6, 1);
@@ -1053,6 +1055,9 @@ public final class MapBuilder {
         }
 
         // ENDE Lvl1 Map1
+        StoryManager st = map.getStoryManager();
+        Trigger setmapswitch = new AreaTrigger(10, 1, 2, 1);
+        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class), 0, new AreaTrigger(10, 0, 2, 1));
     }
 
     private static void setStreet(int x, int y, Spielfeld map) {

@@ -8,6 +8,7 @@ import projektkurs.dialog.DialogPart;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
+import projektkurs.util.ReflectionUtil;
 
 /**
  * Alle Dialoge.
@@ -51,7 +52,7 @@ public final class Dialoge {
     @Init
     public static void init() {
 
-        LVmFaehrmann = new Dialog("LVmFaehrmann", new DialogPart("LVmFaehrmannEins", 1, 0, 2));
+        LVmFaehrmann = new Dialog("LVmFaehrmann", new DialogPart("LVmFaehrmannEins", 1, 0, 2).setEndAction(ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 0));
         registerMapping(LVmFaehrmann);
 
         LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOne", 0, 1, 2));
