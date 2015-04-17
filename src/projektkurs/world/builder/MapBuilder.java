@@ -646,6 +646,43 @@ public final class MapBuilder {
         }
 
         /*
+         * Wege im Wald
+         */
+        inttemp = 1;
+
+        for (int z = 0; z < map.getMapSizeX(); z = z + 20) {
+            for (int zz = 0; zz < map.getMapSizeY(); zz = zz + 20) {
+                int X = z;
+                int Y = zz;
+                for (int x = X + 10; x < X + 12; x = x + 1) {
+                    for (int y = Y; y < Y + 20; y = y + 1) {
+                        map.setRasterAt(x, y, Raster.grass_2);
+                    }
+                }
+
+                X = z;
+                Y = zz;
+                for (int x = X; x < X + 20; x = x + 1) {
+                    for (int y = Y + 10; y < Y + 12; y = y + 1) {
+                        map.setRasterAt(x, y, Raster.grass_2);
+                    }
+                }
+
+                if (inttemp == MathUtil.randomInt(1)) {
+                    inttemp2 = 0;
+                    for (int x = X + inttemp2; x < X + 1 + inttemp2; x = x + 1) {
+                        for (int y = Y + inttemp2; y < Y + 1 + inttemp2; y = y + 1) {
+                            map.setRasterAt(x, y, Raster.grass_2);
+                            if (inttemp2 < 21) {
+                                inttemp2++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /*
          * Waldflächen (nicht genutzt!): inttemp = 1; for (int x = 0; x < map.getMapSizeX(); x = x + 2) { for (int y = 0; y < map.getMapSizeY(); y = y + 2) { inttemp2 = MathUtil.randomInt(45); if(inttemp == inttemp2){ for (int xx = x; xx < x+16; xx = xx + 2) { for (int yy = y; yy < y+16; yy = yy + 2) { AbstractRaster[]
          * temp = MapUtil.getRanTree(); setTree(xx, yy, temp[0], temp[1], temp[2], temp[3], map); } } } } }
          */
@@ -653,31 +690,11 @@ public final class MapBuilder {
         /*
          * Löcher im Wald
          */
-        inttemp = 2;
-        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
-            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
-                inttemp2 = MathUtil.randomInt(2);
-                if (inttemp == inttemp2) {
-                    map.setRasterAt(x, y, Raster.grass_2);
-                    map.setRasterAt(x + 1, y, Raster.grass_2);
-                    map.setRasterAt(x, y + 1, Raster.grass_2);
-                    map.setRasterAt(x + 1, y + 1, Raster.grass_2);
-                }
-            }
-        }
-
-        for (int x = 0; x < map.getMapSizeX(); x = x + 4) {
-            for (int y = 0; y < map.getMapSizeY(); y = y + 4) {
-                inttemp2 = MathUtil.randomInt(2);
-                if (inttemp == inttemp2) {
-                    for (int xx = x; xx < x + 4; xx++) {
-                        for (int yy = y; yy < y + 4; yy++) {
-                            map.setRasterAt(xx, yy, Raster.grass_2);
-                        }
-                    }
-                }
-            }
-        }
+        /*
+         * inttemp = 2; for (int x = 0; x < map.getMapSizeX(); x = x + 2) { for (int y = 0; y < map.getMapSizeY(); y = y + 2) { inttemp2=MathUtil.randomInt(2); if(inttemp == inttemp2){ map.setRasterAt(x,y,Raster.rasen_2); map.setRasterAt(x+1,y,Raster.rasen_2); map.setRasterAt(x,y+1,Raster.rasen_2);
+         * map.setRasterAt(x+1,y+1,Raster.rasen_2); } } } for (int x = 0; x < map.getMapSizeX(); x = x + 4) { for (int y = 0; y < map.getMapSizeY(); y = y + 4) { inttemp2=MathUtil.randomInt(2); if(inttemp == inttemp2){ for (int xx = x; xx < x + 4; xx++){ for (int yy = y; yy < y + 4; yy++){
+         * map.setRasterAt(xx,yy,Raster.rasen_2); } } } } }
+         */
 
         /*
          * Waldring um den See
