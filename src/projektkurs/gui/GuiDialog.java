@@ -53,7 +53,7 @@ public class GuiDialog extends Gui implements IButtonListener {
         this.dialogPart = dialogPart;
         this.entity1 = entity1;
         this.entity2 = entity2;
-        text = new TextView(34, 34, 256, 64, 0, dialogPart.getNextString());
+        text = new TextView(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, 64, 0, dialogPart.getNextString());
     }
 
     @Override
