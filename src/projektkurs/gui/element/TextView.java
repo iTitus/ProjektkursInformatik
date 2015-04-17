@@ -54,6 +54,11 @@ public class TextView extends TextField {
         // NO-OP
     }
 
+    @Override
+    public void setText(String text) {
+        setText(text, new Object[0]);
+    }
+
     public void setText(String text, Object... objects) {
         if (objects != null) {
             if (text == null && objects.length > 0) {
@@ -69,11 +74,6 @@ public class TextView extends TextField {
         } else {
             this.text = I18n.getString(text);
         }
-    }
-
-    @Override
-    public void setText(String text) {
-        setText(text, new Object[0]);
     }
 
 }

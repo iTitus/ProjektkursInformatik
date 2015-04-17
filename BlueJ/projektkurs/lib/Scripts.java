@@ -54,6 +54,15 @@ public final class Scripts {
         DialogManager.changeValue(DialogManager.getValue() | 1 << pos - 1);
     }
 
+    public static void setSpawn(int x, int y) {
+        Main.getLevel().getMap().setSpawn(x, y);
+    }
+
+    public static void setSwitchMapTrigger(int i, Trigger t) {
+
+        Main.getLevel().getMap().getStoryManager().registerTrigger(t, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), i);
+    }
+
     public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
         map.spawn(e);
         AreaTrigger area = new AreaTrigger(20, 21, 13, 14);
