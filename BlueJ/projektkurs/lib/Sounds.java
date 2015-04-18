@@ -90,6 +90,13 @@ public final class Sounds {
             return pausing;
         }
 
+        public boolean isRunning() {
+            if (clip != null) {
+                return clip.isRunning();
+            }
+            return false;
+        }
+
         /**
          * Spielt den Sound sooft ab wie angegeben.
          *
@@ -237,7 +244,7 @@ public final class Sounds {
      * @param s
      *            Sound
      */
-    private static void registerSound(Sound s) {
+    public static void registerSound(Sound s) {
         if (s != null && !MAPPINGS.containsKey(s.getName())) {
             MAPPINGS.put(s.getName(), s);
         } else {
