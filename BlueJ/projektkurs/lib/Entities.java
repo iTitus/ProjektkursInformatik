@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityBoomBarrier;
@@ -60,8 +61,8 @@ public final class Entities {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.entities", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.entities", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

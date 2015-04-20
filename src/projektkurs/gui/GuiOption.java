@@ -50,7 +50,7 @@ public class GuiOption extends Gui implements IButtonListener {
                 Configs.generalConfig.writeConfig();
                 break;
             case 2:
-                Main.openGui(new GuiInfo(this));
+                Main.openGui(new GuiInfoChooser(this));
                 break;
             case 3:
                 Main.openGui(new GuiLangChooser(this));

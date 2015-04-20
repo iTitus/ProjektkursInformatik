@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.action.ConditionedExitAction;
@@ -47,8 +48,8 @@ public final class CutScenes {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.cutscenes", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.cutscenes", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

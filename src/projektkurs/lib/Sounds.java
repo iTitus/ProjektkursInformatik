@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -207,8 +208,8 @@ public final class Sounds {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.sounds", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.sounds", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

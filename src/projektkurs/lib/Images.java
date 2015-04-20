@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -946,8 +947,8 @@ public final class Images {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.images", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.images", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

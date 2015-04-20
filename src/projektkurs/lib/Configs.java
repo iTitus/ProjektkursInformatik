@@ -1,6 +1,8 @@
 package projektkurs.lib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import projektkurs.io.config.Config;
 import projektkurs.io.config.ConfigCategory;
@@ -8,6 +10,7 @@ import projektkurs.io.config.property.ConfigPropertyBoolean;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
+import projektkurs.util.Pair;
 
 /**
  * Alle Konfig-Optionen.
@@ -21,6 +24,15 @@ public final class Configs {
     public static final HashMap<String, Config> MAPPINGS = new HashMap<String, Config>();
     public static ConfigCategory sounds;
     public static ConfigPropertyBoolean soundsMuted;
+
+    /**
+     * Das Pair, das alle Konfigs enthaelt.
+     *
+     * @return Pair
+     */
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.configs", new ArrayList<String>(MAPPINGS.keySet()));
+    }
 
     /**
      * Initialisiert alle Konfig-Optionen.

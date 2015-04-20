@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import projektkurs.item.BaseItem;
 import projektkurs.item.Item;
@@ -101,8 +102,8 @@ public final class Items {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.items", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.items", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**
