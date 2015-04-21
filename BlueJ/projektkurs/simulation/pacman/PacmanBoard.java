@@ -168,7 +168,7 @@ public class PacmanBoard implements IUpdatable {
                 e.render(screen, posX, posY);
             }
         }
-        Font.drawString(screen, String.format("X: %.2f | Y: %.2f | Dir: %s | Next Dir: %s | Score: %d", pacman.getPosX(), pacman.getPosY(), pacman.getDirection(), pacman.getNextDirection(), score), posX, posY, 0xFF0000);
+        Font.drawString(screen, String.format("X: %.2f | Y: %.2f | Score: %d", pacman.getPosX(), pacman.getPosY(), score), posX, posY, 0xFF0000);
     }
 
     public void setPacmanRaster(int x, int y, PacmanRaster raster) {

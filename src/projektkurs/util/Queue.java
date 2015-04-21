@@ -13,11 +13,11 @@ public class Queue<T> {
     /**
      * Kopf der Queue.
      */
-    private Node<T> head;
+    private QueueNode<T> head;
     /**
      * Schwanz der Queue.
      */
-    private Node<T> tail;
+    private QueueNode<T> tail;
 
     /**
      * Konstruktor.
@@ -63,7 +63,7 @@ public class Queue<T> {
      *            neues Objekt
      */
     public void enQueue(T toEnq) {
-        Node<T> node = new Node<T>(toEnq);
+        QueueNode<T> node = new QueueNode<T>(toEnq);
         if (empty()) {
             head = node;
         } else {
@@ -97,9 +97,9 @@ public class Queue<T> {
 
     @Override
     public String toString() {
-        ArrayList<Node<T>> nodes = new ArrayList<Node<T>>();
+        ArrayList<QueueNode<T>> nodes = new ArrayList<QueueNode<T>>();
 
-        Node<T> node = head;
+        QueueNode<T> node = head;
         while (node != null) {
             nodes.add(node);
             node = node.getNext();

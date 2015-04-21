@@ -35,7 +35,6 @@ public class ElementPianoButton extends Element {
 
     @Override
     public void onKeyTyped(char keyChar, KeyEvent e) {
-        System.out.println(e.getKeyCode());
         if (e.getKeyCode() == mnemonic) {
             sound.playFromStart();
         }
