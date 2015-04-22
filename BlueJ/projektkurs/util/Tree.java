@@ -60,6 +60,14 @@ public class Tree<T> {
         return root;
     }
 
+    public boolean hasCurrentFalseChild() {
+        return current.getFalseChild() != null;
+    }
+
+    public boolean hasCurrentTrueChild() {
+        return current.getTrueChild() != null;
+    }
+
     public boolean isEmpty() {
         return root == null;
     }
@@ -69,7 +77,28 @@ public class Tree<T> {
     }
 
     public void next(boolean b) {
-        current = b ? current.getTrueChild() : current.getFalseChild();
+        if (isLeaf()) {
+            throw new NullPointerException("Current Node is a leaf");
+        }
+        if (b) {
+            if (!hasCurrentTrueChild()) {
+                throw new NullPointerException("True Child doesn't exist");
+            }
+            current = current.getTrueChild();
+        } else {
+            if (!hasCurrentFalseChild()) {
+                throw new NullPointerException("False Child doesn't exist");
+            }
+            current = current.getFalseChild();
+        }
+    }
+
+    public void remove(boolean b) {
+        if (b) {
+            current.setTrueChild(null);
+        } else {
+            current.setFalseChild(null);
+        }
     }
 
     public void setCurrent(TreeNode<T> current) {
