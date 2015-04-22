@@ -34,6 +34,24 @@ public final class TreeUtil {
         doBalance(tree, new MyComparator<T>(comparator));
     }
 
+    public static void main(String[] args) {
+        Tree<Integer> testTree = new Tree<Integer>(10);
+
+        testTree.forceAdd(true, 5);
+        testTree.next(true);
+        testTree.forceAdd(true, 2);
+        testTree.forceAdd(false, 7);
+
+        testTree.toRoot();
+        testTree.forceAdd(false, 11);
+        testTree.next(false);
+        testTree.forceAdd(false, 12);
+        testTree.next(false);
+        testTree.forceAdd(false, 13);
+        testTree.next(false);
+        testTree.forceAdd(false, 14);
+    }
+
     private static <T> void doBalance(Tree<? extends T> tree, MyComparator<T> comparator) {
         // TODO
     }
