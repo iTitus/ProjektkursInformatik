@@ -15,10 +15,12 @@ public class DialogPart implements Iterable<String> {
      * Ist dieser DialogPart aktivert.
      */
     private boolean activated;
+
     /**
      * Aktueller Index.
      */
     private int index;
+
     private MethodInvoker methodInvoker;
     /**
      * Anzeigename.
@@ -35,7 +37,7 @@ public class DialogPart implements Iterable<String> {
     /**
      * Aenderung des Wertes.
      */
-    private static int valueChange;
+    private final int valueChange;
 
     /**
      * Konstruktor
@@ -64,7 +66,7 @@ public class DialogPart implements Iterable<String> {
      */
     public DialogPart(String name, int valueChange, int necessaryValue, int talkLength) {
         this.name = name;
-        DialogPart.valueChange = valueChange;
+        this.valueChange = valueChange;
         this.necessaryValue = necessaryValue;
         talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
@@ -106,7 +108,7 @@ public class DialogPart implements Iterable<String> {
      *
      * @return Wertaenderung
      */
-    public static int getValueChange() {
+    public int getValueChange() {
         return valueChange;
     }
 

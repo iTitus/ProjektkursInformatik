@@ -18,7 +18,7 @@ public class EntityVilleCar extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-    	
+
         if (1 << 19 == (DialogManager.getValue() & 1 << 19)) {
             return Dialoge.LVmFrauThree;
         } else if ((1 << 12 | 1 << 13 | 1 << 14) == (DialogManager.getValue() & 1 << 12 | 1 << 13 | 1 << 14)) {
@@ -26,28 +26,14 @@ public class EntityVilleCar extends EntityDialog {
         } else if ((0b100 | 0b1000 | 1 << 4 | 1 << 5) == (DialogManager.getValue() & 0b100 | 0b1000 | 1 << 4 | 1 << 5)) {
             return Dialoge.LVmFrauOne;
         }
-        {return Dialoge.LVmFrau;} // DialogValueChange
-        
+        {
+            return Dialoge.LVmFrau;
+        } // DialogValueChange
+
     }
-    
+
     /*
-     * @Override
-     * 
-     * 
-     * public Dialog getDialog() {
-     * 
-     * if (){
-     * }else if {
-     * }else {}
-     * DialogManager.changeValue(DialogPart.getNecessaryValue)
-     * {}
-     * 	
-     * 
-     * }
-     * 
-     * --> DialogPart ||| public long getNecessaryValue |||| public void set
-     * 
-     * 
-     * */
+     * @Override public Dialog getDialog() { if (){ }else if { }else {} DialogManager.changeValue(DialogPart.getNecessaryValue) {} } --> DialogPart ||| public long getNecessaryValue |||| public void set
+     */
 
 }

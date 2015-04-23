@@ -15,18 +15,18 @@ public class EntityWitchCauldron extends EntityDialog {
     public EntityWitchCauldron(Spielfeld map, int posX, int posY) {
         super(map, posX, posY, 4, 4, Sprites.witchCauldron);
     }
-    
-    
-    // Sollte vielleicht später in EntityWarlorcks, ggbf. In Bilddatei dem Cauldron Warlorcks hinzufügen
+
+    // Sollte vielleicht spï¿½ter in EntityWarlorcks, ggbf. In Bilddatei dem Cauldron Warlorcks hinzufï¿½gen
     @Override
-	public Dialog getDialog() {
-    	if ( (1 << 15 | 1 << 16 | 1 << 17) == ( 1 << 15 | 1 << 16 | 1 << 17 & DialogManager.getValue())){
-    		return Dialoge.LVmHexerzirkelTwo;
-    	} else if ((1 << 12 | 1 << 13 | 1 << 14) == (1 << 12 | 1 << 13 | 1 << 14 & DialogManager.getValue())) {
-    		return Dialoge.LVmHexerzirkelOne;
-    	} else return Dialoge.LVmHexerzirkel;
-    	
-    	
+    public Dialog getDialog() {
+        if ((1 << 15 | 1 << 16 | 1 << 17) == (1 << 15 | 1 << 16 | 1 << 17 & DialogManager.getValue())) {
+            return Dialoge.LVmHexerzirkelTwo;
+        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (1 << 12 | 1 << 13 | 1 << 14 & DialogManager.getValue())) {
+            return Dialoge.LVmHexerzirkelOne;
+        } else {
+            return Dialoge.LVmHexerzirkel;
+        }
+
     }
 
 }

@@ -2,6 +2,7 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import projektkurs.render.Sprite;
 import projektkurs.util.Init;
@@ -232,8 +233,8 @@ public final class Sprites {
      *
      * @return Pair
      */
-    public static Pair<String, ArrayList<String>> getPair() {
-        return new Pair<String, ArrayList<String>>("info.sprites", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, List<String>> getPair() {
+        return new Pair<String, List<String>>("info.sprites", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**

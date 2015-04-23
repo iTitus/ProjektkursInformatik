@@ -5,7 +5,6 @@ import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-
 public class EntityBoomBarrier extends EntityDialog {
     public EntityBoomBarrier(Spielfeld map) {
         super(map);
@@ -17,7 +16,7 @@ public class EntityBoomBarrier extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-    	return Dialoge.LVmSchranke;
+        return Dialoge.LVmSchranke;
     }
 
 }
