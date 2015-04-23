@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import projektkurs.Main;
+import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.dialog.DialogManager;
 import projektkurs.entity.Entity;
@@ -28,6 +29,15 @@ public final class Scripts {
 
     public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
     public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
+
+    public static void cutsceneOne() {
+        CutSceneManager.startCutScene(CutScenes.one);
+    }
+
+    public static void cutscenestart(CutScene c, Spielfeld map, Trigger t) {
+        CutSceneManager.startCutScene(c);
+        map.getStoryManager().removeTrigger(t);
+    }
 
     public static void cutsceneThree() {
         CutSceneManager.startCutScene(CutScenes.three);
@@ -66,13 +76,12 @@ public final class Scripts {
     }
 
     /**
-     * Removed ein Item aus dem Inventar des Spielers
+     * Entfernt ein Item aus dem Inventar des Spielers
      *
      * @param r
      *            Der Index des zu enfernenden Items
      */
     public static void removeItem(int r) {
-
         Main.getPlayer().getInventory().removeItemStack(r);
     }
 
@@ -84,8 +93,12 @@ public final class Scripts {
         Main.getLevel().getMap().setSpawn(x, y);
     }
 
+    public static void setSwitchMapTrigger(int i, Trigger t) {
+        Main.getLevel().getMap().getStoryManager().registerTrigger(t, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), i);
+    }
+
     /**
-     * Trigger ab wo die map ge�ndert wird
+     * Trigger ab wo die Map geaendert wird
      *
      * @param i
      *            map
@@ -96,7 +109,6 @@ public final class Scripts {
      */
 
     public static void setSwitchMapTrigger(int i, Trigger t1, Trigger t2) {
-
         Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, Trigger.class, Trigger.class), i, t1, t2);
     }
 
@@ -129,9 +141,12 @@ public final class Scripts {
      * @param r
      */
     public static void spawnItemRemoveItem(int posx, int posy, ItemStack i, int r) {
-
         Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), posx, posy, i));
         Main.getPlayer().getInventory().removeItemStack(r);
+    }
+
+    public static void switchMap(int i) {
+        Main.getLevel().setMap(i);
     }
 
     /**
@@ -140,12 +155,11 @@ public final class Scripts {
      * @param i
      *            Spielfeld
      * @param t1
-     *            �bergangstrigger
+     *            Uebergangstrigger
      * @param t2
-     *            Triggerf�r�bergangstrigger
+     *            Trigger fuer Ubergangstrigger
      */
     public static void switchMap(int i, Trigger t1, Trigger t2) {
-
         Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), i, t1, t2);
         Main.getLevel().setMap(i);
     }
@@ -153,7 +167,6 @@ public final class Scripts {
     public static void thrashcanscript() {
         Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 45, 22, new ItemStack(Items.stone, 1, 100)));
         Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 44, 22, new ItemStack(Items.chewingGum, 1, 100)));
-
     }
 
     /**

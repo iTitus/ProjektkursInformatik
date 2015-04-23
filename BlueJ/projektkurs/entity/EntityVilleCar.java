@@ -18,6 +18,7 @@ public class EntityVilleCar extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
+
         if (1 << 19 == (DialogManager.getValue() & 1 << 19)) {
             return Dialoge.LVmFrauThree;
         } else if ((1 << 12 | 1 << 13 | 1 << 14) == (DialogManager.getValue() & 1 << 12 | 1 << 13 | 1 << 14)) {
@@ -26,6 +27,7 @@ public class EntityVilleCar extends EntityDialog {
             return Dialoge.LVmFrauOne;
         }
         return Dialoge.LVmFrau;
+
     }
 
 }

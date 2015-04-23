@@ -16,7 +16,7 @@ public class EntityBoomBarrier extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        return Dialoge.test;
+        return Dialoge.LVmSchranke;
     }
 
 }

@@ -15,12 +15,10 @@ public class DialogPart implements Iterable<String> {
      * Ist dieser DialogPart aktivert.
      */
     private boolean activated;
-
     /**
      * Aktueller Index.
      */
     private int index;
-
     private MethodInvoker methodInvoker;
     /**
      * Anzeigename.

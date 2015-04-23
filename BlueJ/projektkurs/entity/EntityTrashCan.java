@@ -16,6 +16,6 @@ public class EntityTrashCan extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        return Dialoge.test;
+        return Dialoge.LVmTrashCan;
     }
 }
