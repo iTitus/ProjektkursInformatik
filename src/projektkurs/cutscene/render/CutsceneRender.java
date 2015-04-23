@@ -99,7 +99,7 @@ public class CutsceneRender extends Canvas implements IUpdatable {
 
         Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
         if (StringUtil.isNotNullOrEmpty(CutSceneManager.getCutScene().getCaptionString())) {
-            Font.drawCenteredString(screen, I18n.getString(CutSceneManager.getCutScene().getCaptionString()), MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.WINDOW_HUD_Y, 2), 0x0000FF);
+            Font.drawCenteredString(screen, I18n.getString(CutSceneManager.getCutScene().getCaptionString()), MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.WINDOW_HUD_Y, 2), 0xFFFFFF);
         }
 
         for (int i = 0; i < pixels.length; i++) {
