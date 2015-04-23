@@ -85,10 +85,6 @@ public final class Scripts {
         Main.getPlayer().getInventory().removeItemStack(r);
     }
 
-    public static void setBitInValue(int pos) {
-        DialogManager.changeValue(DialogManager.getValue() | 1 << pos - 1);
-    }
-
     public static void setSpawn(int x, int y) {
         Main.getLevel().getMap().setSpawn(x, y);
     }

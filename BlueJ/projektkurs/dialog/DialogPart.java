@@ -167,6 +167,8 @@ public class DialogPart implements Iterable<String> {
         if (methodInvoker != null) {
             methodInvoker.invoke();
         }
+        index = 0;
+        DialogManager.setValue(DialogManager.getValue() | valueChange);
     }
 
     /**

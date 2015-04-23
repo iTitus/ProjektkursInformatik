@@ -121,12 +121,12 @@ public final class ConfigCategory {
         if (comment != null && !comment.isEmpty()) {
             String row = "";
             if (comment != null) {
-                for (int i = 0; i < comment.length() + 2 * Config.COMMENT_START.length() + 2; i++) {
-                    row += Config.COMMENT_START;
+                for (int i = 0; i < comment.length() + 2 * Config.A_COMMENT_START.length() + 2; i++) {
+                    row += Config.A_COMMENT_START;
                 }
             }
             writer.println(indentation + row);
-            writer.println(indentation + Config.COMMENT_START + " " + comment + " " + Config.COMMENT_START);
+            writer.println(indentation + Config.A_COMMENT_START + " " + comment + " " + Config.A_COMMENT_START);
             writer.println(indentation + row);
         }
         writer.println(indentation + name + " " + Config.CATEGORY_OPEN);

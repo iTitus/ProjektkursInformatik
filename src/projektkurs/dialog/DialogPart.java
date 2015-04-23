@@ -168,6 +168,7 @@ public class DialogPart implements Iterable<String> {
             methodInvoker.invoke();
         }
         index = 0;
+        DialogManager.setValue(DialogManager.getValue() | valueChange);
     }
 
     /**
