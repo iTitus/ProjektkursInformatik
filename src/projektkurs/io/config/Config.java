@@ -17,14 +17,14 @@ import projektkurs.util.Logger;
 
 public class Config {
 
+    public static final String A_COMMENT_START = "#";
     public static final String ASSIGNMENT = "=";
     public static final String CATEGORY_CLOSE = "}";
     public static final String CATEGORY_OPEN = "{";
-    public static final String COMMENT_START = "#";
-    private static final Pattern CATEGORY_CLOSE_PATTERN = Pattern.compile("^\\" + CATEGORY_CLOSE + "((\\s)*)(" + COMMENT_START + "(?<comment>.*))?$");
-    private static final Pattern CATEGORY_OPEN_PATTERN = Pattern.compile("^(?<name>[\\S^" + COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE + "]{1,})((\\s)?)\\" + CATEGORY_OPEN + "((\\s)*)(" + COMMENT_START + "(?<comment>.*))?$");
-    private static final Pattern LINE_PATTERN = Pattern.compile("^((\\s)*)(?<content>(?<key>[\\S^" + COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE + "]{1,})((\\s)?)" + ASSIGNMENT + "((\\s)?)(?<value>[\\S^" + COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE
-            + "]{1,}))((\\s)*)(" + COMMENT_START + "(?<comment>.*))?$");
+    private static final Pattern CATEGORY_CLOSE_PATTERN = Pattern.compile("^\\" + CATEGORY_CLOSE + "((\\s)*)(" + A_COMMENT_START + "(?<comment>.*))?$");
+    private static final Pattern CATEGORY_OPEN_PATTERN = Pattern.compile("^(?<name>[\\S^" + A_COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE + "]{1,})((\\s)?)\\" + CATEGORY_OPEN + "((\\s)*)(" + A_COMMENT_START + "(?<comment>.*))?$");
+    private static final Pattern LINE_PATTERN = Pattern.compile("^((\\s)*)(?<content>(?<key>[\\S^" + A_COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE + "]{1,})((\\s)?)" + ASSIGNMENT + "((\\s)?)(?<value>[\\S^" + A_COMMENT_START + ASSIGNMENT + "\\" + CATEGORY_OPEN + "\\" + CATEGORY_CLOSE
+            + "]{1,}))((\\s)*)(" + A_COMMENT_START + "(?<comment>.*))?$");
 
     private final Set<ConfigCategory> categories;
     private final File configFile;
@@ -128,7 +128,7 @@ public class Config {
     }
 
     public void write(PrintWriter writer) {
-        writer.println(COMMENT_START + " Configuration file: " + configName);
+        writer.println(A_COMMENT_START + " Configuration file: " + configName);
         for (ConfigCategory category : categories) {
             if (category != null) {
                 category.write(writer, 0);

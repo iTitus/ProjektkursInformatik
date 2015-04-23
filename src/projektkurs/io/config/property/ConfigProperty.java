@@ -82,7 +82,7 @@ public abstract class ConfigProperty<T> {
             writer.println();
             for (String propertyComment : propertyComments) {
                 if (propertyComment != null && propertyComment.length() > 0) {
-                    writer.println(indentation + Config.COMMENT_START + " " + propertyComment);
+                    writer.println(indentation + Config.A_COMMENT_START + " " + propertyComment);
                 }
             }
         }
