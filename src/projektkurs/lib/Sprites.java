@@ -2,7 +2,6 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import projektkurs.render.Sprite;
 import projektkurs.util.Init;
@@ -233,8 +232,8 @@ public final class Sprites {
      *
      * @return Pair
      */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.sprites", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.sprites", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**
@@ -254,7 +253,7 @@ public final class Sprites {
         chest = new Sprite("chest", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
         registerSprite(chest);
 
-        door_NS = new Sprite("door_NS", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 0, SpriteSheets.raster);
+        door_NS = new Sprite("door_NS", Integers.RASTER_SIZE, 12 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster);
         registerSprite(door_NS);
 
         door_WE = door_NS.rotate("door_WE", 90);
@@ -680,7 +679,7 @@ public final class Sprites {
         frauV_W = frauV_N.rotate("frauV_W", 270);
         registerSprite(frauV_W);
 
-        boy = new Sprite("junge", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        boy = new Sprite("boy", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 11 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(boy);
 
         fisher = new Sprite("fischer", Integers.RASTER_SIZE, Integers.RASTER_SIZE, 0, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
@@ -815,13 +814,13 @@ public final class Sprites {
         boomBarrierOpen = new Sprite("boomBarrierOpen", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(boomBarrierOpen);
 
-        witchCauldron = new Sprite("witchCauldron", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 0, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        witchCauldron = new Sprite("witchCauldron", 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(witchCauldron);
 
         nest = new Sprite("nest", Integers.RASTER_SIZE, Integers.RASTER_SIZE, Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(nest);
 
-        trashCan = new Sprite("trashCan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        trashCan = new Sprite("trashCan", 2 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(trashCan);
 
         teddyWithEarrings = new Sprite("teddyWithEarrings", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, Integers.RASTER_SIZE, SpriteSheets.items);

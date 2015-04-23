@@ -1,16 +1,32 @@
 package projektkurs.entity;
 
+import projektkurs.dialog.Dialog;
+import projektkurs.dialog.DialogManager;
+import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityWitchCauldron extends Entity {
+public class EntityWitchCauldron extends EntityDialog {
 
     public EntityWitchCauldron(Spielfeld map) {
         super(map);
     }
 
     public EntityWitchCauldron(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 6, 7, Sprites.witchCauldron);
+        super(map, posX, posY, 4, 4, Sprites.witchCauldron);
+    }
+    
+    
+    // Sollte vielleicht später in EntityWarlorcks, ggbf. In Bilddatei dem Cauldron Warlorcks hinzufügen
+    @Override
+	public Dialog getDialog() {
+    	if ( (1 << 15 | 1 << 16 | 1 << 17) == ( 1 << 15 | 1 << 16 | 1 << 17 & DialogManager.getValue())){
+    		return Dialoge.LVmHexerzirkelTwo;
+    	} else if ((1 << 12 | 1 << 13 | 1 << 14) == (1 << 12 | 1 << 13 | 1 << 14 & DialogManager.getValue())) {
+    		return Dialoge.LVmHexerzirkelOne;
+    	} else return Dialoge.LVmHexerzirkel;
+    	
+    	
     }
 
 }

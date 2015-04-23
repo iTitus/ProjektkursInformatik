@@ -35,7 +35,7 @@ public class DialogPart implements Iterable<String> {
     /**
      * Aenderung des Wertes.
      */
-    private final int valueChange;
+    private static int valueChange;
 
     /**
      * Konstruktor
@@ -64,7 +64,7 @@ public class DialogPart implements Iterable<String> {
      */
     public DialogPart(String name, int valueChange, int necessaryValue, int talkLength) {
         this.name = name;
-        this.valueChange = valueChange;
+        DialogPart.valueChange = valueChange;
         this.necessaryValue = necessaryValue;
         talk = new String[talkLength];
         for (int i = 0; i < talk.length; i++) {
@@ -106,7 +106,7 @@ public class DialogPart implements Iterable<String> {
      *
      * @return Wertaenderung
      */
-    public int getValueChange() {
+    public static int getValueChange() {
         return valueChange;
     }
 

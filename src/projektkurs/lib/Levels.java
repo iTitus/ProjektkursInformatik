@@ -2,7 +2,6 @@ package projektkurs.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import projektkurs.level.Level;
 import projektkurs.util.Init;
@@ -49,8 +48,8 @@ public final class Levels {
      *
      * @return Pair
      */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.levels", new ArrayList<String>(MAPPINGS.keySet()));
+    public static Pair<String, ArrayList<String>> getPair() {
+        return new Pair<String, ArrayList<String>>("info.levels", new ArrayList<String>(MAPPINGS.keySet()));
     }
 
     /**
@@ -61,7 +60,7 @@ public final class Levels {
         level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
         registerMapping(level0);
 
-        level1 = new Level("Level1", new Spielfeld(90, 70, 11, 26), new Spielfeld(70, 70, 10, 0));
+        level1 = new Level("Level1", new Spielfeld(90, 70, 10, 26), new Spielfeld(70, 70, 10, 0));
         registerMapping(level1);
 
     }
