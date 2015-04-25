@@ -1,19 +1,20 @@
 package projektkurs.world.builder;
 
-import projektkurs.cutscene.CutScene;
 import projektkurs.entity.EntityBoomBarrier;
 import projektkurs.entity.EntityBoy;
+import projektkurs.entity.EntityDoor;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
-import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
+import projektkurs.entity.EntityNest;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
+import projektkurs.entity.EntityWitchCauldron;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.CutScenes;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
@@ -179,6 +180,14 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+        // JoJo
+        map.spawn(new EntityItem(map, 4, 65, new ItemStack(Items.yoyoBroken, 1, 100)));
+
+        // Muelltonne
+        map.spawn(new EntityTrashCan(map, 46, 23));
+
+        // Tür Faehrhaus
+        map.spawn(new EntityDoor(map, 24, 27));
 
         // Faehrman
         map.spawn(new EntityFerryman(map, 26, 26));
@@ -189,10 +198,6 @@ public final class MapBuilder {
 
         // Ferry
         map.spawn(new EntityFerry(map, 11, 12));
-
-        // // Fishership
-        //
-        // map.spawn(new EntityFisherboat(map, map.getMapSizeX() - 9, 40));
 
         // Auto
         map.spawn(new EntityVilleCar(map, 12, 25));
@@ -220,12 +225,9 @@ public final class MapBuilder {
             }
         }
 
-        // Fisher
-
-        map.spawn(new EntityFisher(map, 60, 47));
-
         // Junge
         map.spawn(new EntityBoy(map, 33, 52));
+
         // Insel im Fluss
         int inttemp = 4;
         int inttemp2 = 0;
@@ -294,14 +296,14 @@ public final class MapBuilder {
             }
         }
 
-        // Bï¿½ume an der Straï¿½e
+        // BÃ¯Â¿Â½ume an der StraÃ¯Â¿Â½e
 
         for (int y = 21; y < map.getMapSizeY() - 2; y = y + 7) {
             setTree(7, y, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
             setTree(15, y + 3, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
         }
 
-        // Bï¿½ume linke Seite
+        // BÃ¯Â¿Â½ume linke Seite
         for (int x = 2; x < 10; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
             setTree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
@@ -528,7 +530,7 @@ public final class MapBuilder {
         map.setRasterAt(49, 20, Raster.water);
 
         map.setRasterAt(50, 20, Raster.water);
-        // Steine am Anfang zum nächsen Level
+        // Steine am Anfang zum nÃ¤chsen Level
 
         for (int x = 58; x < 64; x++) {
             map.setRasterAt(x, 69, Raster.cobbles_1);
@@ -573,8 +575,6 @@ public final class MapBuilder {
 
         map.setRasterAt(26, 27, Raster.chair_2);
 
-        // map.setRasterAt(27, 17, Raster.ferryhouse_door);
-
         for (int i = 0; i < 8; i++) {
             setStreet(10, 20 + i * 8, map);
         }
@@ -605,15 +605,14 @@ public final class MapBuilder {
         // Faehrhaus spawnen/despawnen
         AreaTrigger area = new AreaTrigger(19, 20, 15, 16);
         st.registerTrigger(area, Scripts.REMOVE_ENTITY, fhouse, map);
+
         // mapwechsel
-        Trigger setmapswitch = new AreaTrigger(58, 68, 6, 1).setMultipleTimeTrigger();
-        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class), 1, new AreaTrigger(58, 69, 6, 1));
 
-        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);
+        // st.registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
+        //
 
-        // Cutscenestart
-        AreaTrigger dia1 = new AreaTrigger(10, 22, 6, 1);
-        st.registerTrigger(dia1, ReflectionUtil.getMethod(Scripts.class, "cutscenestart", CutScene.class, Spielfeld.class, Trigger.class), CutScenes.one, map, dia1);
+        Trigger setSpawn = new AreaTrigger(56, 67, 10, 1);
+        st.registerTrigger(setSpawn, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);
 
     }
 
@@ -627,6 +626,10 @@ public final class MapBuilder {
 
         int inttemp;
         int inttemp2;
+
+        map.spawn(new EntityNest(map, 8, 60));
+
+        map.spawn(new EntityWitchCauldron(map, 49, 48));
 
         // Rasen
         for (int y = 0; y < map.getMapSizeY(); y++) {
@@ -644,83 +647,6 @@ public final class MapBuilder {
             for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
                 setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
-            }
-        }
-
-        /*
-         * Wege im Wald
-         */
-        // inttemp = 1;
-        // for (int z = 0; z < map.getMapSizeX(); z = z + 20) {
-        // for (int zz = 0; zz < map.getMapSizeY(); zz = zz + 20) {
-        // int X = z;
-        // int Y = zz;
-        // for (int x = X + 10; x < X + 12; x = x + 1) {
-        // for (int y = Y; y < Y + 20; y = y + 1) {
-        // map.setRasterAt(x, y, Raster.grass_2);
-        // }
-        // }
-        // X = z;
-        // Y = zz;
-        // for (int x = X; x < X + 20; x = x + 1) {
-        // for (int y = Y + 10; y < Y + 12; y = y + 1) {
-        // map.setRasterAt(x, y, Raster.grass_2);
-        // }
-        // }
-        // if (inttemp == MathUtil.randomInt(1)) {
-        // inttemp2 = 0;
-        // for (int x = X + inttemp2; x < X + 1 + inttemp2; x = x + 1) {
-        // for (int y = Y + inttemp2; y < Y + 1 + inttemp2; y = y + 1) {
-        // map.setRasterAt(x, y, Raster.grass_2);
-        // if (inttemp2 < 21) {
-        // inttemp2++;
-        // }
-        // }
-        // }
-        // }
-        // }
-        // }
-        // Waldflächen (nicht genutzt!):
-        // inttemp = 1;
-        // for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
-        // for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
-        // inttemp2 = MathUtil.randomInt(45);
-        // if (inttemp == inttemp2) {
-        // for (int xx = x; xx < x + 16; xx = xx + 2) {
-        // for (int yy = y; yy < y + 16; yy = yy + 2) {
-        // AbstractRaster[] temp = MapUtil.getRanTree();
-        // setTree(xx, yy, temp[0], temp[1], temp[2], temp[3], map);
-        // }
-        // }
-        // }
-        // }
-        // }
-
-        /*
-         * Löcher im Wald
-         */
-        inttemp = 2;
-        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
-            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
-                inttemp2 = MathUtil.randomInt(2);
-                if (inttemp == inttemp2) {
-                    map.setRasterAt(x, y, Raster.grass_2);
-                    map.setRasterAt(x + 1, y, Raster.grass_2);
-                    map.setRasterAt(x, y + 1, Raster.grass_2);
-                    map.setRasterAt(x + 1, y + 1, Raster.grass_2);
-                }
-            }
-        }
-        for (int x = 0; x < map.getMapSizeX(); x = x + 4) {
-            for (int y = 0; y < map.getMapSizeY(); y = y + 4) {
-                inttemp2 = MathUtil.randomInt(2);
-                if (inttemp == inttemp2) {
-                    for (int xx = x; xx < x + 4; xx++) {
-                        for (int yy = y; yy < y + 4; yy++) {
-                            map.setRasterAt(xx, yy, Raster.grass_2);
-                        }
-                    }
-                }
             }
         }
 
@@ -870,7 +796,7 @@ public final class MapBuilder {
         }
 
         /*
-         * Lücke zum See
+         * LÃ¼cke zum See
          */
         for (int x = 12; x < 14; x++) {
             for (int y = 14; y < 16; y++) {
@@ -911,7 +837,7 @@ public final class MapBuilder {
         }
 
         /*
-         * Lücke zur Lichtung
+         * LÃ¼cke zur Lichtung
          */
         for (int x = 40; x < 42; x++) {
             for (int y = 44; y < 46; y++) {
@@ -1082,8 +1008,8 @@ public final class MapBuilder {
 
         // ENDE Lvl1 Map1
         StoryManager st = map.getStoryManager();
-        Trigger setmapswitch = new AreaTrigger(10, 1, 2, 1);
-        st.registerTrigger(setmapswitch, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class), 0, new AreaTrigger(10, 0, 2, 1));
+
+        st.registerTrigger(new AreaTrigger(10, 1, 2, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 0, new AreaTrigger(10, 1, 2, 1), new AreaTrigger(10, 0, 2, 1));
     }
 
     private static void setStreet(int x, int y, Spielfeld map) {
