@@ -105,8 +105,10 @@ public class Pacman extends PacmanEntity {
 
             double dx = 0;
             double dy = 0;
-            if ((r1 == null || !(r1.isSolid() && MathUtil.isInside(rX1, rY1, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY(), sizeX, sizeY))) && (r2 == null || !(r2.isSolid() && MathUtil.isInside(rX2, rY2, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY(), sizeX, sizeY)))
-                    && (r3 == null || !(r3.isSolid() && MathUtil.isInside(rX3, rY3, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY(), sizeX, sizeY))) && (r4 == null || !(r4.isSolid() && MathUtil.isInside(rX4, rY4, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY(), sizeX, sizeY)))) {
+            if ((r1 == null || !(r1.isSolid() && MathUtil.isInside(rX1, rY1, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY)))
+                    && (r2 == null || !(r2.isSolid() && MathUtil.isInside(rX2, rY2, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY)))
+                    && (r3 == null || !(r3.isSolid() && MathUtil.isInside(rX3, rY3, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY)))
+                    && (r4 == null || !(r4.isSolid() && MathUtil.isInside(rX4, rY4, 1, 1, x + direction.getOffsetX() * SPEED, y + direction.getOffsetY() * SPEED, sizeX, sizeY)))) {
                 dx = direction.getOffsetX() * SPEED;
                 dy = direction.getOffsetY() * SPEED;
             } else {
