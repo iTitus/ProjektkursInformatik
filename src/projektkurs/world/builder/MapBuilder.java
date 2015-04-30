@@ -180,13 +180,14 @@ public final class MapBuilder {
      *            Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+
         // JoJo
         map.spawn(new EntityItem(map, 4, 65, new ItemStack(Items.yoyoBroken, 1, 100)));
 
         // Muelltonne
         map.spawn(new EntityTrashCan(map, 46, 23));
 
-        // Tür Faehrhaus
+        // T�r Faehrhaus
         map.spawn(new EntityDoor(map, 24, 27));
 
         // Faehrman
@@ -296,14 +297,14 @@ public final class MapBuilder {
             }
         }
 
-        // BÃ¯Â¿Â½ume an der StraÃ¯Â¿Â½e
+        // Bï¿½ume an der Straï¿½e
 
         for (int y = 21; y < map.getMapSizeY() - 2; y = y + 7) {
             setTree(7, y, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
             setTree(15, y + 3, Raster.tree_11nw, Raster.tree_11ne, Raster.tree_11se, Raster.tree_11sw, map);
         }
 
-        // BÃ¯Â¿Â½ume linke Seite
+        // Bï¿½ume linke Seite
         for (int x = 2; x < 10; x = x + 2) {
             AbstractRaster[] temp = MapUtil.getRanTree();
             setTree(x, map.getMapSizeY() - 2, temp[0], temp[1], temp[2], temp[3], map);
@@ -530,7 +531,7 @@ public final class MapBuilder {
         map.setRasterAt(49, 20, Raster.water);
 
         map.setRasterAt(50, 20, Raster.water);
-        // Steine am Anfang zum nÃ¤chsen Level
+        // Steine am Anfang zum nächsen Level
 
         for (int x = 58; x < 64; x++) {
             map.setRasterAt(x, 69, Raster.cobbles_1);
@@ -611,6 +612,8 @@ public final class MapBuilder {
         // st.registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
         //
 
+        // st.registerTrigger(new PosTrigger(10, 26), ReflectionUtil.getMethod(Scripts.class, "cutsceneOne"));
+
         Trigger setSpawn = new AreaTrigger(56, 67, 10, 1);
         st.registerTrigger(setSpawn, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);
 
@@ -647,6 +650,83 @@ public final class MapBuilder {
             for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
                 AbstractRaster[] temp = MapUtil.getRanTree();
                 setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+
+        /*
+         * Wege im Wald
+         */
+        // inttemp = 1;
+        // for (int z = 0; z < map.getMapSizeX(); z = z + 20) {
+        // for (int zz = 0; zz < map.getMapSizeY(); zz = zz + 20) {
+        // int X = z;
+        // int Y = zz;
+        // for (int x = X + 10; x < X + 12; x = x + 1) {
+        // for (int y = Y; y < Y + 20; y = y + 1) {
+        // map.setRasterAt(x, y, Raster.grass_2);
+        // }
+        // }
+        // X = z;
+        // Y = zz;
+        // for (int x = X; x < X + 20; x = x + 1) {
+        // for (int y = Y + 10; y < Y + 12; y = y + 1) {
+        // map.setRasterAt(x, y, Raster.grass_2);
+        // }
+        // }
+        // if (inttemp == MathUtil.randomInt(1)) {
+        // inttemp2 = 0;
+        // for (int x = X + inttemp2; x < X + 1 + inttemp2; x = x + 1) {
+        // for (int y = Y + inttemp2; y < Y + 1 + inttemp2; y = y + 1) {
+        // map.setRasterAt(x, y, Raster.grass_2);
+        // if (inttemp2 < 21) {
+        // inttemp2++;
+        // }
+        // }
+        // }
+        // }
+        // }
+        // }
+        // Waldflächen (nicht genutzt!):
+        // inttemp = 1;
+        // for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+        // for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+        // inttemp2 = MathUtil.randomInt(45);
+        // if (inttemp == inttemp2) {
+        // for (int xx = x; xx < x + 16; xx = xx + 2) {
+        // for (int yy = y; yy < y + 16; yy = yy + 2) {
+        // AbstractRaster[] temp = MapUtil.getRanTree();
+        // setTree(xx, yy, temp[0], temp[1], temp[2], temp[3], map);
+        // }
+        // }
+        // }
+        // }
+        // }
+
+        /*
+         * Löcher im Wald
+         */
+        inttemp = 2;
+        for (int x = 0; x < map.getMapSizeX(); x = x + 2) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 2) {
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                    map.setRasterAt(x + 1, y, Raster.grass_2);
+                    map.setRasterAt(x, y + 1, Raster.grass_2);
+                    map.setRasterAt(x + 1, y + 1, Raster.grass_2);
+                }
+            }
+        }
+        for (int x = 0; x < map.getMapSizeX(); x = x + 4) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 4) {
+                inttemp2 = MathUtil.randomInt(2);
+                if (inttemp == inttemp2) {
+                    for (int xx = x; xx < x + 4; xx++) {
+                        for (int yy = y; yy < y + 4; yy++) {
+                            map.setRasterAt(xx, yy, Raster.grass_2);
+                        }
+                    }
+                }
             }
         }
 
@@ -796,7 +876,7 @@ public final class MapBuilder {
         }
 
         /*
-         * LÃ¼cke zum See
+         * Lücke zum See
          */
         for (int x = 12; x < 14; x++) {
             for (int y = 14; y < 16; y++) {
@@ -837,7 +917,7 @@ public final class MapBuilder {
         }
 
         /*
-         * LÃ¼cke zur Lichtung
+         * Lücke zur Lichtung
          */
         for (int x = 40; x < 42; x++) {
             for (int y = 44; y < 46; y++) {
@@ -1005,6 +1085,57 @@ public final class MapBuilder {
             }
             inttemp = inttemp + 4;
         }
+        // Weg zum Nest
+        for (int y = 57; y < 68; y++) {
+            for (int x = 48; x < 50; x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int x = 47; x > 27; x--) {
+            for (int y = 66; y < 68; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int y = 58; y < 66; y++) {
+            for (int x = 28; x < 30; x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int x = 18; x < 29; x++) {
+            for (int y = 58; y < 60; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int y = 54; y < 58; y++) {
+            for (int x = 18; x < 20; x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int x = 2; x < 19; x++) {
+            for (int y = 54; y < 56; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int y = 56; y < 62; y++) {
+            for (int x = 2; x < 4; x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        for (int x = 4; x < 8; x++) {
+            for (int y = 60; y < 62; y++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+        }
+
+        AbstractRaster[] temp = MapUtil.getRanTree();
+        setTree(8, 60, temp[0], temp[1], temp[2], temp[3], map);
 
         // ENDE Lvl1 Map1
         StoryManager st = map.getStoryManager();
