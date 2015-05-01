@@ -281,6 +281,10 @@ public final class MathUtil {
         return randomInt(min, max - 1);
     }
 
+    public static boolean randomBoolean() {
+        return RANDOM.nextBoolean();
+    }
+
     /**
      * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
      *
