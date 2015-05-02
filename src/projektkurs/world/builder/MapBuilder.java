@@ -612,7 +612,7 @@ public final class MapBuilder {
         // st.registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
         //
 
-        // st.registerTrigger(new PosTrigger(10, 26), ReflectionUtil.getMethod(Scripts.class, "cutsceneOne"));
+        st.registerTrigger(new PosTrigger(10, 26), ReflectionUtil.getMethod(Scripts.class, "cutsceneOne"));
 
         Trigger setSpawn = new AreaTrigger(56, 67, 10, 1);
         st.registerTrigger(setSpawn, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);

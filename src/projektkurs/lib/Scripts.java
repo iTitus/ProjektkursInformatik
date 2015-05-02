@@ -30,6 +30,8 @@ public final class Scripts {
     public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
     public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
 
+    public static boolean thrashCan = false, woman = false, junge = false, fisher = false;
+
     public static void cutsceneOne() {
         CutSceneManager.startCutScene(CutScenes.one);
     }
@@ -44,7 +46,7 @@ public final class Scripts {
     }
 
     public static void cutscenetwo() {
-        // CutSceneManager.startCutScene(CutScenes.two);
+        CutSceneManager.startCutScene(CutScenes.two);
         Main.getLevel().getMap().spawn(new EntityFisherboat(Main.getLevel().getMap(), 61, 40));
         Main.getLevel().getMap().spawn(new EntityFisher(Main.getLevel().getMap(), 61, 47));
     }
@@ -79,24 +81,25 @@ public final class Scripts {
     }
 
     public static void scriptFisher() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.fishnet, 1, 100)) == false && Main.getPlayer().getInventory().contains(new ItemStack(Items.fishnetString, 1, 100)) == false && Main.getPlayer().getInventory().contains(new ItemStack(Items.teddyWithFishnetString, 1, 100)) == false
-                && Main.getPlayer().getInventory().contains(new ItemStack(Items.teddyVoodoo, 1, 100)) == false) {
+        if (fisher == false) {
 
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 60, 48, new ItemStack(Items.chewingGum, 1, 100)));
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 60, 49, new ItemStack(Items.fishnet, 1, 100)));
             Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
+            fisher = true;
         }
     }
 
     public static void scriptJunge() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.yoyoFixed, 1, 100)) == true || Main.getPlayer().getInventory().contains(new ItemStack(Items.yoyoBroken, 1, 100)) == true) {
-            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 46, 47, new ItemStack(Items.stoneCatapult)));
+        if (Main.getPlayer().getInventory().containsIgnoreStackSize(new ItemStack(Items.yoyoFixed)) == true) {
+            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 32, 51, new ItemStack(Items.stoneCatapult)));
             Main.getPlayer().getInventory().removeItemStack(new ItemStack(Items.yoyoFixed));
+            junge = true;
         }
     }
 
     public static void scriptNest() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.stoneCatapultwithStone, 1, 100)) == true) {
+        if (Main.getPlayer().getInventory().containsIgnoreStackSize(new ItemStack(Items.stoneCatapultwithStone)) == true) {
 
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 7, 61, new ItemStack(Items.teddydefault, 1, 100)));
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 6, 61, new ItemStack(Items.stoneCatapult, 1, 100)));
@@ -104,18 +107,26 @@ public final class Scripts {
         }
     }
 
+    public static void scriptThrashCan() {
+        if (thrashCan == false) {
+            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 45, 22, new ItemStack(Items.stone, 1, 100)));
+            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 44, 22, new ItemStack(Items.knife, 2, 100)));
+            thrashCan = true;
+        }
+
+    }
+
     public static void scriptWitchCoul() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.gramophoneItem, 1, 100)) == false) {
+        if (Main.getPlayer().getInventory().containsIgnoreStackSize(new ItemStack(Items.teddyVoodoo)) == true) {
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 46, 47, new ItemStack(Items.gramophoneItem)));
             Main.getPlayer().getInventory().removeItemStack(new ItemStack(Items.teddyVoodoo));
         }
     }
 
     public static void scriptWoman() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.gramophoneItem, 1, 100)) == false || Main.getPlayer().getInventory().contains(new ItemStack(Items.earrings, 1, 100)) == false || Main.getPlayer().getInventory().contains(new ItemStack(Items.teddyWithEarrings, 1, 100)) == false
-                || Main.getPlayer().getInventory().contains(new ItemStack(Items.teddyVoodoo, 1, 100)) == false) {
-
+        if (woman == false) {
             Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 15, 26, new ItemStack(Items.earrings, 1, 100)));
+            woman = true;
         }
     }
 
@@ -194,14 +205,6 @@ public final class Scripts {
     public static void switchMap(int i, Trigger t1, Trigger t2) {
         Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), i, t1, t2);
         Main.getLevel().setMap(i);
-    }
-
-    public static void thrashcanscript() {
-        if (Main.getPlayer().getInventory().contains(new ItemStack(Items.knife, 1, 100)) == false) {
-            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 45, 22, new ItemStack(Items.stone, 1, 100)));
-            Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 44, 22, new ItemStack(Items.knife, 1, 100)));
-        }
-
     }
 
     /**

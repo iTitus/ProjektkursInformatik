@@ -6,6 +6,7 @@ import java.util.List;
 
 import projektkurs.dialog.Dialog;
 import projektkurs.dialog.DialogPart;
+import projektkurs.item.ItemStack;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
@@ -73,7 +74,7 @@ public final class Dialoge {
         LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOneNull", 0, 1, 2));
         registerMapping(LVmFaehrmannOne);
 
-        LVmFaehrmannTwo = new Dialog("LVmFaehramnnTwo", new DialogPart("LVmFaehrmannTwoNull", 0, 1 << 19, 2));
+        LVmFaehrmannTwo = new Dialog("LVmFaehramnnTwo", new DialogPart("LVmFaehrmannTwoNull", 0, 1 << 19, 2).setEndAction(ReflectionUtil.getMethod(Scripts.class, "removeItem", ItemStack.class), new ItemStack(Items.gramophoneItem)));
         registerMapping(LVmFaehrmannTwo);
 
         LVmJungeAmWegesrand = new Dialog("LVmJungeAmWegesrand", new DialogPart("LVmJungeAmWegesrandNull", 0b10, 0, 2));
@@ -108,7 +109,7 @@ public final class Dialoge {
         LVmHexerzirkelTwo = new Dialog("LVmHexerzirkelTwo", new DialogPart("LVmHexerzirkelTwoNull", 1 << 18, 1 << 15 | 1 << 16 | 1 << 17, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWitchCoul")));
         registerMapping(LVmHexerzirkelTwo);
 
-        LVmTrashCan = new Dialog("LVmTrashCan", new DialogPart("LVmTrashCanNull", 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "thrashcanscript")));
+        LVmTrashCan = new Dialog("LVmTrashCan", new DialogPart("LVmTrashCanNull", 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptThrashCan")));
         registerMapping(LVmTrashCan);
         // Gleichzusetzten mit neccValue von Hexerzirkel, da DialogValue Sich im Laufe ver�ndert // Testweise, da VilleCar sich auf Stumm gestellt hat
         LVmNest = new Dialog("LVmNest", new DialogPart("LVmNestNull", 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptNest")));
