@@ -10,8 +10,6 @@ import projektkurs.entity.Entity;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.DialogButton;
 import projektkurs.gui.element.IButtonListener;
-import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Dialog GUI.
@@ -89,9 +87,4 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
         // NO-OP
     }
 
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
-    }
 }

@@ -8,9 +8,7 @@ import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.ToggleButton;
 import projektkurs.lib.Configs;
 import projektkurs.lib.Integers;
-import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
-import projektkurs.util.RenderUtil;
 
 /**
  * Optionen-GUI.
@@ -66,12 +64,6 @@ public class GuiOption extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

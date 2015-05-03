@@ -6,9 +6,7 @@ import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
-import projektkurs.render.Screen;
 import projektkurs.util.I18n;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Sprachauswahl-GUI.
@@ -48,12 +46,6 @@ public class GuiLangChooser extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

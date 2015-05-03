@@ -10,8 +10,6 @@ import projektkurs.gui.element.InventoryElement;
 import projektkurs.gui.element.SlotElement;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 public class GuiPlayerInventory extends Gui implements IInventoryElementListener, ISlotElementListener {
 
@@ -72,12 +70,6 @@ public class GuiPlayerInventory extends Gui implements IInventoryElementListener
                 combinationSlotElement.onInputSlotChanged();
             }
         }
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

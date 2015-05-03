@@ -22,7 +22,7 @@ public abstract class Gui implements IUpdatable {
     /**
      * Alle Elements in diesem Gui.
      */
-    private final ArrayList<Element> guiElements;
+    private final List<Element> guiElements;
     private Element hovered;
     /**
      * Eltern-Gui.
@@ -157,6 +157,9 @@ public abstract class Gui implements IUpdatable {
      *            Screen
      */
     public void render(Screen screen) {
+        if (shouldDrawDefaultBackground()) {
+            RenderUtil.drawDefaultBackground(screen);
+        }
         hovered = null;
         for (Element el : guiElements) {
             el.render(screen);
@@ -169,6 +172,10 @@ public abstract class Gui implements IUpdatable {
         if (!tooltip.isEmpty()) {
             RenderUtil.drawTooltip(screen, tooltip, Main.getInputManager().getMouseX(), Main.getInputManager().getMouseY());
         }
+    }
+
+    public boolean shouldDrawDefaultBackground() {
+        return true;
     }
 
     @Override

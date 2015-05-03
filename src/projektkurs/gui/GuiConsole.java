@@ -13,10 +13,8 @@ import projektkurs.gui.element.TextField;
 import projektkurs.lib.Commands;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
-import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.Logger;
-import projektkurs.util.RenderUtil;
 import projektkurs.util.StringUtil;
 
 /**
@@ -67,12 +65,6 @@ public class GuiConsole extends Gui implements ITextFieldListener {
     @Override
     public void onTextChanged(TextField field) {
         // NO-OP
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
     private Command getCommand(String command) {

@@ -5,8 +5,6 @@ import java.awt.event.MouseEvent;
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
-import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Menue, das im Spiele aufgerufen werden kann.
@@ -38,12 +36,6 @@ public class GuiIngameMenu extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

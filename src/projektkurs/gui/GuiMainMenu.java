@@ -7,10 +7,6 @@ import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Levels;
-import projektkurs.render.Font;
-import projektkurs.render.Screen;
-import projektkurs.util.MathUtil;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Hauptmenue.
@@ -22,8 +18,9 @@ public class GuiMainMenu extends Gui implements IButtonListener {
         super.initGui();
         addElement(new Button(64, 64, 0, this, "Level0"));
         addElement(new Button(64, 128, 1, this, "Level1"));
-        addElement(new Button(64, 192, 2, this, "Options"));
+        addElement(new Button(64, 192, 2, this, "button.options"));
         addElement(new Button(64, 256, 3, this, "button.exit"));
+        addElement(new Button(Integers.WINDOW_HUD_X, Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT, 42, this, "Alternative Main Menu"));
     }
 
     @Override
@@ -41,6 +38,9 @@ public class GuiMainMenu extends Gui implements IButtonListener {
             case 3:
                 Main.exit();
                 break;
+            case 42:
+                Main.openGui(new GuiMainMenuAlt());
+                break;
             default:
                 break;
         }
@@ -51,10 +51,4 @@ public class GuiMainMenu extends Gui implements IButtonListener {
         // NO-OP
     }
 
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
-        Font.drawCenteredString(screen, "MAIN MENU", MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2));
-    }
 }

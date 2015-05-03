@@ -103,4 +103,9 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         // NO-OP
     }
 
+    @Override
+    public boolean shouldDrawDefaultBackground() {
+        return false;
+    }
+
 }

@@ -22,10 +22,8 @@ import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.SpriteSheets;
 import projektkurs.lib.Sprites;
-import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
-import projektkurs.util.RenderUtil;
 
 @SuppressWarnings("deprecation")
 public class GuiInfoChooser extends Gui implements IButtonListener {
@@ -56,12 +54,6 @@ public class GuiInfoChooser extends Gui implements IButtonListener {
     @Override
     public void onButtonRightClick(Button button, MouseEvent e) {
         // NO-OP
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

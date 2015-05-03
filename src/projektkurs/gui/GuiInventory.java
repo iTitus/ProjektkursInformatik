@@ -8,9 +8,7 @@ import projektkurs.gui.element.InventoryElement;
 import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
 import projektkurs.lib.Integers;
-import projektkurs.render.Screen;
 import projektkurs.util.MathUtil;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Invetar-GUI.
@@ -68,12 +66,6 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
                 Main.getPlayer().getInventory().decrStackSize(slotIndex, 1);
             }
         }
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        super.render(screen);
     }
 
 }

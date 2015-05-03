@@ -11,8 +11,6 @@ import projektkurs.gui.element.Element;
 import projektkurs.gui.element.IButtonListener;
 import projektkurs.gui.element.TextView;
 import projektkurs.lib.Integers;
-import projektkurs.render.Screen;
-import projektkurs.util.RenderUtil;
 
 /**
  * Das Dialogs-GUI.
@@ -88,26 +86,5 @@ public class GuiDialog extends Gui implements IButtonListener {
         for (Element el : getGuiElements()) {
             el.onKeyTyped(keyChar, e);
         }
-    }
-
-    @Override
-    public void render(Screen screen) {
-        RenderUtil.drawDefaultBackground(screen);
-        // if (dialogPart.isNPCSpeaking()) {
-        // if (entity2 != null) {
-        // RenderUtil.drawSprite(screen, entity2.getSprite(), 34 + 256, 34);
-        // }
-        // if (entity1 != null) {
-        // RenderUtil.drawSprite(screen, entity1.getSprite(), 34, Integers.windowY - 34 - entity1.getSizeY() * Integers.RASTER_SIZE);
-        // }
-        // } else {
-        // if (entity1 != null) {
-        // RenderUtil.drawSprite(screen, entity1.getSprite(), 34 + 256, 34);
-        // }
-        // if (entity2 != null) {
-        // RenderUtil.drawSprite(screen, entity2.getSprite(), Integers.windowX - 34 - entity2.getSizeX() * Integers.RASTER_SIZE, Integers.windowY - 34 - entity2.getSizeY() * Integers.RASTER_SIZE);
-        // }
-        // }
-        super.render(screen);
     }
 }
