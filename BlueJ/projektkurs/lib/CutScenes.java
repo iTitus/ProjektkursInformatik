@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import projektkurs.cutscene.CutScene;
+import projektkurs.cutscene.action.CaptionChangeAction;
 import projektkurs.cutscene.action.ConditionedExitAction;
 import projektkurs.cutscene.action.ConditionedMoveAction;
 import projektkurs.cutscene.action.ConditionedMoveSightAction;
@@ -63,16 +64,25 @@ public final class CutScenes {
         CutSceneObject auto = new CutSceneObject(Sprites.car_lord_frauV_N, 12, 66, 4, 8);
         CutSceneObject schranke = new CutSceneObject(Sprites.boomBarrier, 11, 21, 4, 1);
         CutSceneObject faehre = new CutSceneObject(Sprites.ferry, 11, 12, 4, 8);
+        CutSceneObject haus = new CutSceneObject(Sprites.ferryhouse, 24, 24, 6, 7);
 
         one.registerStartupAction(new EntityToCutSceneObjectAction());
         one.registerStartupAction(new SpawnAction(auto));
         one.registerStartupAction(new SetSightAction(0, 53));
         one.registerStartupAction(new SpawnAction(schranke));
         one.registerStartupAction(new SpawnAction(faehre));
-
+        one.registerStartupAction(new SpawnAction(haus));
+        // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+        int[] times = { 80, 100, 140, 80, 140, 90, 130, 120, 100, 120, 150, 150, 50, 120, 140, 80, 80, 140, 120 };
+        int bar = 0;
+        one.registerStartupAction(new CaptionChangeAction("dialog.part.CS_LVmFrauNull.0"));
+        for (int i = 1; i < times.length; i++) {
+            bar += times[i - 1];
+            one.registerTickAction(new CaptionChangeAction(new TickCondition(TickConditionType.GREATER, bar), "dialog.part.CS_LVmFrauNull." + i));
+        }
         one.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickCondition(TickConditionType.LESSER, 400)), auto, 0, -1));
         one.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(20, 400)), 0, -1));
-        one.registerTickAction(new ConditionedExitAction(new TickCondition(TickConditionType.GREATER, 450)));
+        one.registerTickAction(new ConditionedExitAction(new TickCondition(TickConditionType.GREATER, 2320)));
 
         registerMapping(one);
 
@@ -190,6 +200,8 @@ public final class CutScenes {
         CutSceneObject faehre2 = new CutSceneObject(Sprites.ferry, 11, 12, 4, 8);
         CutSceneObject auto2 = new CutSceneObject(Sprites.car_lord_frauV_N, 12, 25, 4, 8);
         CutSceneObject schranke21 = new CutSceneObject(Sprites.boomBarrierOpen, 13, 21, 4, 1);
+        CutSceneObject haus2 = new CutSceneObject(Sprites.ferryhouse, 24, 24, 6, 7);
+
         // CutSceneObject typ11 = new CutSceneObject(Images.auto_di4_SN, 11, 25, 2, 4);
         // CutSceneObject typ21 = new CutSceneObject(Images.auto_di3_SN, 11, 25, 2, 4);
         // CutSceneObject typ31 = new CutSceneObject(Images.auto_di2_SN, 11, 25, 2, 4);
@@ -204,7 +216,7 @@ public final class CutScenes {
 
         three.registerStartupAction(new SpawnAction(spieler));
         three.registerStartupAction(new SpawnAction(schranke21));
-
+        one.registerStartupAction(new SpawnAction(haus2));
         three.registerStartupAction(new SpawnAction(faehre2));
         three.registerStartupAction(new SpawnAction(auto2));
         // three.registerStartupAction(new SpawnAction(typ11));
