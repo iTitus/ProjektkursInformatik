@@ -19,6 +19,8 @@ public class Button extends Element {
      * Ist der Knopf aktiviert.
      */
     protected boolean enabled;
+    protected boolean localized;
+
     /**
      * Der Name des Knopfes.
      */
@@ -39,9 +41,14 @@ public class Button extends Element {
      *            Name
      */
     public Button(int posX, int posY, int id, IButtonListener listener, String name) {
+        this(posX, posY, id, listener, name, true);
+    }
+
+    public Button(int posX, int posY, int id, IButtonListener listener, String name, boolean localized) {
         super(posX, posY, Integers.DEFAULT_BUTTON_WIDTH, Integers.DEFAULT_BUTTON_HEIGHT, id, listener);
         this.name = name;
         enabled = true;
+        this.localized = localized;
     }
 
     @Override
@@ -65,6 +72,10 @@ public class Button extends Element {
      */
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public boolean isLocalized() {
+        return localized;
     }
 
     @Override
@@ -92,7 +103,7 @@ public class Button extends Element {
         } else {
             RenderUtil.drawSprite(screen, Sprites.button_disabled, posX, posY);
         }
-        Font.drawCenteredStringInRect(screen, I18n.getString(name), posX, posY, sizeX, sizeY);
+        Font.drawCenteredStringInRect(screen, localized ? I18n.getString(name) : name, posX, posY, sizeX, sizeY);
     }
 
     /**
@@ -105,6 +116,10 @@ public class Button extends Element {
         this.enabled = enabled;
     }
 
+    public void setLocalized(boolean localized) {
+        this.localized = localized;
+    }
+
     /**
      * Setzt den Namen dieses Knopfes.
      *
@@ -114,4 +129,5 @@ public class Button extends Element {
     public void setName(String name) {
         this.name = name;
     }
+
 }

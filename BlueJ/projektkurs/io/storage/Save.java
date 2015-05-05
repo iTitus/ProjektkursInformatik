@@ -1,22 +1,30 @@
 package projektkurs.io.storage;
 
-import java.io.File;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Save {
 
-    private String name;
-    private final File saveDir;
+    private String displayName, folderName;
 
-    public Save(File saveDir) {
-        this.saveDir = saveDir;
-        loadSave();
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public String getName() {
-        return name;
+    public String getFolderName() {
+        return folderName;
     }
 
-    private void loadSave() {
-        name = saveDir.getName();
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
+
+    public void setFolderName(String folderName) {
+        this.folderName = folderName;
+    }
+
+    public void start() {
+        // TODO
+    }
+
 }
