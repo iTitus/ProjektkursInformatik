@@ -2,12 +2,16 @@ package projektkurs.io.storage;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import projektkurs.util.Logger;
 
 /**
  * Eine SaveData.
  */
+@XmlRootElement
 public final class SaveData implements Serializable {
 
     /**
@@ -17,7 +21,7 @@ public final class SaveData implements Serializable {
     /**
      * Interne HashMap.
      */
-    private final HashMap<String, Object> dataMap;
+    private Map<String, Object> dataMap;
 
     /**
      * Konstruktor.
@@ -39,6 +43,10 @@ public final class SaveData implements Serializable {
             return (boolean) o;
         }
         return false;
+    }
+
+    public Map<String, Object> getDataMap() {
+        return dataMap;
     }
 
     /**
@@ -121,6 +129,10 @@ public final class SaveData implements Serializable {
         } else {
             Logger.warn("Unable to set '" + key + "' -> '" + o + "'");
         }
+    }
+
+    public void setDataMap(Map<String, Object> dataMap) {
+        this.dataMap = dataMap;
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.entity.Entity;
+import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
@@ -21,7 +22,7 @@ import projektkurs.util.RenderUtil;
 /**
  * Ein Spielfeld.
  */
-public class Spielfeld implements IUpdatable {
+public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Alle Entities.
@@ -301,6 +302,11 @@ public class Spielfeld implements IUpdatable {
         return false;
     }
 
+    @Override
+    public void load(SaveData data) {
+        // TODO
+    }
+
     /**
      * Entfernt eine ExtraInformation von dieser Map.
      *
@@ -427,7 +433,7 @@ public class Spielfeld implements IUpdatable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public void write(SaveData data) {
+        // TODO
     }
 }

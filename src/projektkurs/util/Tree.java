@@ -44,15 +44,15 @@ public class Tree<T> {
         return current;
     }
 
-    public T getCurrentContent() {
-        return current.get();
-    }
-
     public TreeNode<T> getCurrentChild(boolean b) {
         if (b) {
             return getCurrentTrueChild();
         }
         return getCurrentFalseChild();
+    }
+
+    public T getCurrentContent() {
+        return current.get();
     }
 
     public TreeNode<T> getCurrentFalseChild() {

@@ -45,6 +45,10 @@ public final class SaveData implements Serializable {
         return false;
     }
 
+    public Map<String, Object> getDataMap() {
+        return dataMap;
+    }
+
     /**
      * Gibt den Integer zurueck, der mit dem gegebenen Key verbunden ist.
      *
@@ -127,6 +131,10 @@ public final class SaveData implements Serializable {
         }
     }
 
+    public void setDataMap(Map<String, Object> dataMap) {
+        this.dataMap = dataMap;
+    }
+
     @Override
     public String toString() {
         String s = "SaveData {";
@@ -141,13 +149,5 @@ public final class SaveData implements Serializable {
 
         s += " }";
         return s;
-    }
-
-    public Map<String, Object> getDataMap() {
-        return dataMap;
-    }
-
-    public void setDataMap(Map<String, Object> dataMap) {
-        this.dataMap = dataMap;
     }
 }

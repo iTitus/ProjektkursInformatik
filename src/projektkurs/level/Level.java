@@ -1,6 +1,8 @@
 package projektkurs.level;
 
 import projektkurs.Main;
+import projektkurs.io.storage.ISaveable;
+import projektkurs.io.storage.SaveData;
 import projektkurs.render.Screen;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
@@ -12,7 +14,7 @@ import projektkurs.world.builder.MapBuilder;
 /**
  * Ein Level.
  */
-public class Level implements IUpdatable {
+public class Level implements IUpdatable, ISaveable {
 
     /**
      * Aktueller Spielfeld-Index.
@@ -102,6 +104,11 @@ public class Level implements IUpdatable {
         return name;
     }
 
+    @Override
+    public void load(SaveData data) {
+        // TODO
+    }
+
     /**
      * Rendert das Level.
      *
@@ -137,5 +144,10 @@ public class Level implements IUpdatable {
         if (getMap() != null) {
             getMap().update();
         }
+    }
+
+    @Override
+    public void write(SaveData data) {
+        // TODO
     }
 }
