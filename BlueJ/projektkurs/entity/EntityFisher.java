@@ -20,7 +20,8 @@ public class EntityFisher extends EntityDialog {
     public Dialog getDialog() {
         if ((1 | 2 | 4) == (DialogManager.getValue() & 1 | 2 | 4)) {
             return Dialoge.LVmFischer;
+        } else {
+            return Dialoge.LVmFischerOne;
         }
-        return null;
     }
 }

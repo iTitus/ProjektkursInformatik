@@ -1,6 +1,7 @@
 package projektkurs.entity;
 
 import projektkurs.dialog.Dialog;
+import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
@@ -17,7 +18,9 @@ public class EntityNest extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
+        if (1 << 16 == (DialogManager.getValue() & 1 << 16)) {
+            return Dialoge.LVmNestOne;
+        }
         return Dialoge.LVmNest;
     }
-
 }
