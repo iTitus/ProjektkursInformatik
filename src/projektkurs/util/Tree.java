@@ -48,6 +48,13 @@ public class Tree<T> {
         return current.get();
     }
 
+    public TreeNode<T> getCurrentChild(boolean b) {
+        if (b) {
+            return getCurrentTrueChild();
+        }
+        return getCurrentFalseChild();
+    }
+
     public TreeNode<T> getCurrentFalseChild() {
         return current.getFalseChild();
     }
@@ -58,6 +65,13 @@ public class Tree<T> {
 
     public TreeNode<T> getRoot() {
         return root;
+    }
+
+    public boolean hasCurrentChild(boolean b) {
+        if (b) {
+            return hasCurrentTrueChild();
+        }
+        return hasCurrentFalseChild();
     }
 
     public boolean hasCurrentFalseChild() {
