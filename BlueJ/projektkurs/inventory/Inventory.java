@@ -74,6 +74,19 @@ public class Inventory {
         return false;
     }
 
+    public boolean canBeAdded(ItemStack newStack) {
+        if (newStack != null) {
+            ItemStack stack;
+            for (int i = 0; i < stacks.length; i++) {
+                stack = getItemStackAt(i);
+                if (stack == null || stack.itemAndDamageEquals(newStack)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * Ist der gegebene ItemStack im Inventar enthalten? - Streng.
      *

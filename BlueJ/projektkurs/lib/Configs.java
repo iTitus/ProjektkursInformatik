@@ -22,8 +22,8 @@ public final class Configs {
      * Die Mappings.
      */
     public static final HashMap<String, Config> MAPPINGS = new HashMap<String, Config>();
-    public static ConfigCategory sounds;
-    public static ConfigPropertyBoolean soundsMuted;
+    public static ConfigCategory sounds, debug, ui;
+    public static ConfigPropertyBoolean soundsMuted, debugMode, showFPSUPS;
 
     /**
      * Das Pair, das alle Konfigs enthaelt.
@@ -47,6 +47,18 @@ public final class Configs {
 
         soundsMuted = new ConfigPropertyBoolean("soundsMuted", "Whether all sounds are muted", false);
         sounds.addProperty(soundsMuted);
+
+        debug = new ConfigCategory("debug", "Debug stuff");
+        generalConfig.addCategory(debug);
+
+        debugMode = new ConfigPropertyBoolean("debugMode", "Whether debugging mode is enabled", false);
+        debug.addProperty(debugMode);
+
+        ui = new ConfigCategory("ui", "All about the user interface");
+        generalConfig.addCategory(ui);
+
+        showFPSUPS = new ConfigPropertyBoolean("showFPSUPS", "Whether the FPS and UPS should be shown", false);
+        ui.addProperty(showFPSUPS);
 
         reloadConfigs();
     }

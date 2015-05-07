@@ -9,6 +9,7 @@ import java.awt.image.DataBufferInt;
 import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.object.CutSceneObject;
+import projektkurs.lib.Configs;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Sprites;
 import projektkurs.render.Font;
@@ -96,8 +97,9 @@ public class CutsceneRender extends Canvas implements IUpdatable {
         }
 
         RenderUtil.drawBorder(screen);
-
-        Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
+        if (Configs.showFPSUPS.getValue() || Configs.debugMode.getValue()) {
+            Font.drawString(screen, "FPS: " + CutSceneManager.getFPS() + " - UPS: " + CutSceneManager.getUPS(), Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
+        }
         if (StringUtil.isNotNullOrEmpty(CutSceneManager.getCutScene().getCaptionString())) {
             Font.drawCenteredString(screen, I18n.getString(CutSceneManager.getCutScene().getCaptionString()), MathUtil.floorDiv(Integers.windowX, 2), Integers.windowY - MathUtil.floorDiv(Integers.WINDOW_HUD_Y, 2), 0xFFFFFF);
         }

@@ -10,6 +10,7 @@ import projektkurs.entity.Entity;
 import projektkurs.gui.element.IPlayerInventoryElementListener;
 import projektkurs.gui.element.InventoryElement;
 import projektkurs.gui.element.PlayerInventoryElement;
+import projektkurs.lib.Configs;
 import projektkurs.lib.Integers;
 import projektkurs.lib.KeyBindings;
 import projektkurs.raster.AbstractRaster;
@@ -52,7 +53,9 @@ public class GuiIngame extends Gui implements IPlayerInventoryElementListener {
         if (e.getKeyCode() == KeyBindings.KEY_MENU) {
             Main.openGui(new GuiIngameMenu());
         } else if (e.getKeyCode() == KeyBindings.KEY_CONSOLE) {
-            Main.openGui(new GuiConsole());
+            if (Configs.debugMode.getValue()) {
+                Main.openGui(new GuiConsole());
+            }
         } else if (e.getKeyCode() == KeyBindings.KEY_INVENTORY) {
             Main.openGui(new GuiPlayerInventory());
         }

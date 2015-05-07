@@ -132,4 +132,5 @@ public class PlayerInventory extends Inventory {
         data.set(Strings.INV_SELECTED, selectedItemStack);
         return data;
     }
+
 }

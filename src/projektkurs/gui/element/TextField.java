@@ -39,10 +39,12 @@ public class TextField extends Element {
             // NO-OP
         }
     };
+    protected int backgroundColor, textColor;
     /**
      * Ist dieses Textfeld aktiviert.
      */
     protected boolean enabled;
+
     /**
      * Ist dieses Textfeld fokussiert.
      */
@@ -96,6 +98,12 @@ public class TextField extends Element {
         this.text = text;
         focussed = false;
         enabled = true;
+        backgroundColor = 0xFFFFFF;
+        textColor = 0x0;
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
     }
 
     @Override
@@ -110,6 +118,10 @@ public class TextField extends Element {
      */
     public String getText() {
         return text;
+    }
+
+    public int getTextColor() {
+        return textColor;
     }
 
     /**
@@ -192,8 +204,13 @@ public class TextField extends Element {
 
     @Override
     public void render(Screen screen) {
+        RenderUtil.drawFilledRectangle(screen, posX, posY, sizeX, sizeY, backgroundColor);
         RenderUtil.drawRectangle(screen, posX, posY, sizeX, sizeY);
-        Font.drawCenteredStringInRect(screen, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY);
+        Font.drawCenteredStringInRect(screen, text + (focussed && Main.getTicks() % Integers.CURSOR_BLINK_TIME > MathUtil.floorDiv(Integers.CURSOR_BLINK_TIME, 2) ? "|" : ""), posX, posY, sizeX, sizeY, textColor);
+    }
+
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 
     /**
@@ -237,6 +254,10 @@ public class TextField extends Element {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
     }
 
 }

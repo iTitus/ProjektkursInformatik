@@ -10,7 +10,7 @@ public final class Integers {
     /**
      * Groesse des Kisteninventars.
      */
-    public static final int CHEST_SIZE = 3;
+    public static final int CHEST_SIZE = 24;
     /**
      * Ticks, die der Cursor zum Blinken braucht.
      */
@@ -66,7 +66,7 @@ public final class Integers {
     /**
      * Groesse des Spielerinventars.
      */
-    public static final int PLAYER_INVENTORY_SIZE = 7;
+    public static final int PLAYER_INVENTORY_SIZE = 12;
     /**
      * Rastergroesse in Pixeln.
      */

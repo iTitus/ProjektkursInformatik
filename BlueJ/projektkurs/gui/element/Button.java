@@ -20,11 +20,12 @@ public class Button extends Element {
      */
     protected boolean enabled;
     protected boolean localized;
-
     /**
      * Der Name des Knopfes.
      */
     protected String name;
+
+    protected int textColor;
 
     /**
      * Konstruktor.
@@ -49,6 +50,7 @@ public class Button extends Element {
         this.name = name;
         enabled = true;
         this.localized = localized;
+        textColor = 0xFFFFFF;
     }
 
     @Override
@@ -63,6 +65,10 @@ public class Button extends Element {
      */
     public String getName() {
         return name;
+    }
+
+    public int getTextColor() {
+        return textColor;
     }
 
     /**
@@ -103,7 +109,7 @@ public class Button extends Element {
         } else {
             RenderUtil.drawSprite(screen, Sprites.button_disabled, posX, posY);
         }
-        Font.drawCenteredStringInRect(screen, localized ? I18n.getString(name) : name, posX, posY, sizeX, sizeY);
+        Font.drawCenteredStringInRect(screen, localized ? I18n.getString(name) : name, posX, posY, sizeX, sizeY, textColor);
     }
 
     /**
@@ -128,6 +134,10 @@ public class Button extends Element {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
     }
 
 }

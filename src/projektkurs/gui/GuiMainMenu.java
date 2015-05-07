@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import projektkurs.Main;
 import projektkurs.gui.element.Button;
 import projektkurs.gui.element.IButtonListener;
+import projektkurs.lib.Configs;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Levels;
 
@@ -16,11 +17,15 @@ public class GuiMainMenu extends Gui implements IButtonListener {
     @Override
     public void initGui() {
         super.initGui();
-        addElement(new Button(64, 64, 0, this, "Level0"));
-        addElement(new Button(64, 128, 1, this, "Level1"));
+        if (Configs.debugMode.getValue()) {
+            addElement(new Button(64, 64, 0, this, "Level0"));
+        }
+        addElement(new Button(64, 128, 1, this, "button.startLevel1"));
         addElement(new Button(64, 192, 2, this, "button.options"));
         addElement(new Button(64, 256, 3, this, "button.exit"));
-        addElement(new Button(Integers.WINDOW_HUD_X, Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT, 42, this, "Alternative Main Menu"));
+        if (Configs.debugMode.getValue()) {
+            addElement(new Button(Integers.WINDOW_HUD_X, Integers.windowY - Integers.WINDOW_HUD_Y - Integers.DEFAULT_BUTTON_HEIGHT, 42, this, "Alternative Main Menu"));
+        }
     }
 
     @Override

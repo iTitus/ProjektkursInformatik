@@ -54,6 +54,8 @@ public class GuiDialog extends Gui implements IButtonListener {
         this.entity1 = entity1;
         this.entity2 = entity2;
         text = new TextView(Integers.WINDOW_HUD_X, Integers.WINDOW_HUD_Y, Integers.windowX - 2 * Integers.WINDOW_HUD_X, 64, 0, dialogPart.getNextString());
+        text.setBackgroundColor(0x0);
+        text.setTextColor(0xFFFFFF);
     }
 
     @Override

@@ -3,6 +3,7 @@ package projektkurs.gui;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
+import projektkurs.entity.EntityItem;
 import projektkurs.gui.element.CombinationSlotElement;
 import projektkurs.gui.element.IInventoryElementListener;
 import projektkurs.gui.element.ISlotElementListener;
@@ -18,6 +19,19 @@ public class GuiPlayerInventory extends Gui implements IInventoryElementListener
     private SlotElement input1, input2;
 
     @Override
+    public boolean canGuiBeClosed() {
+        if (combinationInputInventory.isInventoryEmpty()) {
+            return true;
+        }
+        for (ItemStack stack : combinationInputInventory.getItems()) {
+            if (stack != null && !Main.getPlayer().getInventory().canBeAdded(stack)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public void initGui() {
         super.initGui();
         addElement(new InventoryElement(0, this, Main.getPlayer().getInventory()));
@@ -28,6 +42,15 @@ public class GuiPlayerInventory extends Gui implements IInventoryElementListener
         addElement(input1);
         addElement(input2);
         addElement(combinationSlotElement);
+    }
+
+    @Override
+    public void onGuiClosed() {
+        for (ItemStack stack : combinationInputInventory.getItems()) {
+            if (stack != null && !Main.getPlayer().getInventory().addItemStack(stack)) {
+                Main.getPlayer().getMap().spawn(new EntityItem(Main.getPlayer().getMap(), Main.getPlayer().getPosY(), Main.getPlayer().getPosX(), stack));
+            }
+        }
     }
 
     @Override

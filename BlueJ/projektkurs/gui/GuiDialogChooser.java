@@ -78,7 +78,7 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
         if (button instanceof DialogButton) {
             DialogPart part = ((DialogButton) button).getDialogPart();
             part.setActivated(false);
-            Main.openGui(new GuiDialog(this, part, entity1, entity2));
+            Main.openGui(new GuiDialog(getParent(), part, entity1, entity2));
         }
     }
 

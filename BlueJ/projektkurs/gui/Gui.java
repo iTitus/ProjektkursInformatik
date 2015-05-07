@@ -53,6 +53,10 @@ public abstract class Gui implements IUpdatable {
         }
     }
 
+    public boolean canGuiBeClosed() {
+        return true;
+    }
+
     @Override
     public boolean canUpdate() {
         return !guiElements.isEmpty();
@@ -99,7 +103,7 @@ public abstract class Gui implements IUpdatable {
         for (Element el : guiElements) {
             el.onKeyTyped(keyChar, e);
         }
-        if (keyChar == KeyBindings.KEY_MENU) {
+        if (keyChar == KeyBindings.KEY_MENU && canGuiBeClosed()) {
             Main.openGui(parent);
         }
     }

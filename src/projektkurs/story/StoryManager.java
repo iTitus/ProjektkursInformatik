@@ -1,9 +1,11 @@
 package projektkurs.story;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import projektkurs.story.trigger.Trigger;
 import projektkurs.util.IUpdatable;
@@ -15,20 +17,18 @@ import projektkurs.util.MethodInvoker;
  */
 public class StoryManager implements IUpdatable {
 
-    private int progress;
-
     /**
      * Alle Trigger.
      */
-    private final HashMap<Trigger, MethodInvoker> triggerMap;
+    private final Map<Trigger, MethodInvoker> triggerMap;
     /**
      * Hinzuzufuegende Trigger.
      */
-    private final HashMap<Trigger, MethodInvoker> triggerToAddMap;
+    private final Map<Trigger, MethodInvoker> triggerToAddMap;
     /**
      * Zu loeschende Trigger.
      */
-    private final ArrayList<Trigger> triggerToRemove;
+    private final Set<Trigger> triggerToRemove;
 
     /**
      * Konstruktor.
@@ -36,12 +36,7 @@ public class StoryManager implements IUpdatable {
     public StoryManager() {
         triggerMap = new HashMap<Trigger, MethodInvoker>();
         triggerToAddMap = new HashMap<Trigger, MethodInvoker>();
-        triggerToRemove = new ArrayList<Trigger>();
-        progress = 0;
-    }
-
-    public void addProgress() {
-        incrementProgress(1);
+        triggerToRemove = new HashSet<Trigger>();
     }
 
     @Override
@@ -49,16 +44,8 @@ public class StoryManager implements IUpdatable {
         return true;
     }
 
-    public int getProgress() {
-        return progress;
-    }
-
-    public HashMap<Trigger, MethodInvoker> getTriggerMap() {
+    public Map<Trigger, MethodInvoker> getTriggerMap() {
         return triggerMap;
-    }
-
-    public void incrementProgress(int by) {
-        progress += by;
     }
 
     /**
@@ -86,11 +73,7 @@ public class StoryManager implements IUpdatable {
      *            zu entfernender Trigger.
      */
     public void removeTrigger(Trigger trigger) {
-        triggerToRemove.remove(trigger);
-    }
-
-    public void setProgress(int progress) {
-        this.progress = progress;
+        triggerToRemove.add(trigger);
     }
 
     /**
@@ -104,7 +87,7 @@ public class StoryManager implements IUpdatable {
             if (entry.getKey().isTriggerActive()) {
                 entry.getValue().invoke();
                 if (entry.getKey().shouldRemove()) {
-                    triggerToRemove.add(entry.getKey());
+                    removeTrigger(entry.getKey());
                 }
             }
         }
