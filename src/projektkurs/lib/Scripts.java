@@ -30,7 +30,7 @@ public final class Scripts {
     public static final Method REMOVE_ENTITY = ReflectionUtil.getMethod(Scripts.class, "removeFerryHouse", EntityFerryhouse.class, Spielfeld.class);
     public static final Method SPAWN_ENTITY = ReflectionUtil.getMethod(Scripts.class, "spawnFerryHouse", EntityFerryhouse.class, Spielfeld.class);
 
-    public static boolean thrashCan = false, woman = false, junge = false, fisher = false;
+    public static boolean thrashCan = false, woman = false, junge = false, fisher = false, cutscenetwo = false;
 
     public static void cutsceneOne() {
         CutSceneManager.startCutScene(CutScenes.one);
@@ -46,9 +46,12 @@ public final class Scripts {
     }
 
     public static void cutscenetwo() {
+        if(cutscenetwo == false){
         CutSceneManager.startCutScene(CutScenes.two);
         Main.getLevel().getMap().spawn(new EntityFisherboat(Main.getLevel().getMap(), 61, 40));
         Main.getLevel().getMap().spawn(new EntityFisher(Main.getLevel().getMap(), 61, 47));
+        cutscenetwo = true;
+        }
     }
 
     public static void dialogstart(projektkurs.dialog.Dialog d, Entity e) {
