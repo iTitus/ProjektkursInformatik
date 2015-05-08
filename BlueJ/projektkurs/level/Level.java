@@ -1,6 +1,7 @@
 package projektkurs.level;
 
 import projektkurs.Main;
+import projektkurs.dialog.DialogManager;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
 import projektkurs.render.Screen;
@@ -21,6 +22,10 @@ public class Level implements IUpdatable, ISaveable {
      */
     private int currentMap;
     /**
+     * Der Dialogmanger.
+     */
+    private final DialogManager dialogManager;
+    /**
      * Alle Spielfelder.
      */
     private final Spielfeld[] maps;
@@ -39,8 +44,16 @@ public class Level implements IUpdatable, ISaveable {
      */
     public Level(String name, Spielfeld... maps) {
         this.maps = maps;
+        if (maps != null) {
+            for (Spielfeld map : maps) {
+                if (map != null) {
+                    map.setLevel(this);
+                }
+            }
+        }
         currentMap = 0;
         this.name = name;
+        dialogManager = new DialogManager();
     }
 
     @Override
@@ -60,6 +73,10 @@ public class Level implements IUpdatable, ISaveable {
             methodName += i;
             ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps[i]);
         }
+    }
+
+    public DialogManager getDialogManager() {
+        return dialogManager;
     }
 
     /**

@@ -2,7 +2,6 @@ package projektkurs.command;
 
 import projektkurs.Main;
 import projektkurs.dialog.Dialog;
-import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 
 /**
@@ -22,7 +21,7 @@ public class CommandDialog extends Command {
             return EnumCommandResult.OBJECT_NOT_FOUND;
         }
 
-        DialogManager.startDialog(dialog, Main.getPlayer());
+        Main.getLevel().getDialogManager().startDialog(dialog, Main.getPlayer());
 
         return EnumCommandResult.SUCCESS;
     }

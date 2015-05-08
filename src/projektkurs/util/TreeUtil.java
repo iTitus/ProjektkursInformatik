@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 public final class TreeUtil {
 
+    @SuppressWarnings("unused")
     private static class MyComparator<T> {
 
         private final Comparator<T> comparator;

@@ -12,19 +12,19 @@ public final class DialogManager {
     /**
      * Der aktuelle Wert der Dialoge.
      */
-    private static int value;
+    private int value;
 
     /**
      * Der Wert der Dialoge.
      *
      * @return Wert
      */
-    public static int getValue() {
+    public int getValue() {
         return value;
     }
 
-    public static void setValue(int i) {
-        DialogManager.value = i;
+    public void setValue(int value) {
+        this.value = value;
     }
 
     /**
@@ -33,7 +33,7 @@ public final class DialogManager {
      * @param d
      *            Dialog
      */
-    public static void startDialog(Dialog d, Entity e) {
+    public void startDialog(Dialog d, Entity e) {
         startDialog(d, Main.getPlayer(), e);
     }
 
@@ -43,13 +43,7 @@ public final class DialogManager {
      * @param d
      *            Dialog
      */
-    public static void startDialog(Dialog d, Entity e1, Entity e2) {
+    public void startDialog(Dialog d, Entity e1, Entity e2) {
         Main.openGui(new GuiDialogChooser(d, e1, e2));
-    }
-
-    /**
-     * Konstruktor.
-     */
-    private DialogManager() {
     }
 }

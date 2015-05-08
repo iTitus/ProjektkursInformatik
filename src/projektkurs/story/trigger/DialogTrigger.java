@@ -1,6 +1,6 @@
 package projektkurs.story.trigger;
 
-import projektkurs.dialog.DialogManager;
+import projektkurs.Main;
 
 public class DialogTrigger extends Trigger {
 
@@ -12,6 +12,6 @@ public class DialogTrigger extends Trigger {
 
     @Override
     public boolean isTriggerActive() {
-        return DialogManager.getValue() == value;
+        return Main.getLevel().getDialogManager().getValue() == value;
     }
 }

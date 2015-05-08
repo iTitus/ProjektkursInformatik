@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import projektkurs.Main;
 import projektkurs.util.MethodInvoker;
 
 /**
@@ -168,7 +169,7 @@ public class DialogPart implements Iterable<String> {
             methodInvoker.invoke();
         }
         index = 0;
-        DialogManager.setValue(DialogManager.getValue() | valueChange);
+        Main.getLevel().getDialogManager().setValue(Main.getLevel().getDialogManager().getValue() | valueChange);
     }
 
     /**
@@ -192,7 +193,7 @@ public class DialogPart implements Iterable<String> {
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldShowUp() {
-        return necessaryValue == (necessaryValue & DialogManager.getValue());
+        return necessaryValue == (necessaryValue & Main.getLevel().getDialogManager().getValue());
     }
 
 }

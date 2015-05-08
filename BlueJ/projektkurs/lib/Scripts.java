@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import projektkurs.Main;
 import projektkurs.cutscene.CutScene;
 import projektkurs.cutscene.CutSceneManager;
-import projektkurs.dialog.DialogManager;
+import projektkurs.dialog.Dialog;
 import projektkurs.entity.Entity;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFisher;
@@ -54,8 +54,8 @@ public final class Scripts {
         }
     }
 
-    public static void dialogstart(projektkurs.dialog.Dialog d, Entity e) {
-        DialogManager.startDialog(d, e);
+    public static void dialogstart(Dialog d, Entity e) {
+        Main.getLevel().getDialogManager().startDialog(d, e);
     }
 
     /**

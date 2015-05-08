@@ -12,6 +12,7 @@ import projektkurs.gui.Gui;
 import projektkurs.gui.GuiIngame;
 import projektkurs.gui.GuiMainMenu;
 import projektkurs.io.InputManager;
+import projektkurs.io.storage.Save;
 import projektkurs.level.Level;
 import projektkurs.lib.Images;
 import projektkurs.lib.Integers;
@@ -73,6 +74,10 @@ public final class Main {
      * Der RenderHelper.
      */
     private static RenderHelper renderHelper;
+    /**
+     * Der aktuelle Save
+     */
+    private static Save save;
     /**
      * Die Ticks.
      */
@@ -182,6 +187,13 @@ public final class Main {
      */
     public static RenderHelper getRenderHelper() {
         return renderHelper;
+    }
+
+    /**
+     * @return the save
+     */
+    public static Save getSave() {
+        return save;
     }
 
     /**

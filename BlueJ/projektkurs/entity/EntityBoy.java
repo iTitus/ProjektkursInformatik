@@ -1,7 +1,6 @@
 package projektkurs.entity;
 
 import projektkurs.dialog.Dialog;
-import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
@@ -17,11 +16,11 @@ public class EntityBoy extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if (1 << 17 == (DialogManager.getValue() & 1 << 17)) {
+        if (1 << 17 == (map.getLevel().getDialogManager().getValue() & 1 << 17)) {
             return Dialoge.LVmJungeAmWegesrandThree;
-        } else if (1 << 16 == (DialogManager.getValue() & 1 << 16)) {
+        } else if (1 << 16 == (map.getLevel().getDialogManager().getValue() & 1 << 16)) {
             return Dialoge.LVmJungeAmWegesrandTwo;
-        } else if ((1 << 13 | 1 << 12 | 1 << 14) == (DialogManager.getValue() & 1 << 13 | 1 << 12 | 1 << 14)) {
+        } else if ((1 << 13 | 1 << 12 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & 1 << 13 | 1 << 12 | 1 << 14)) {
             return Dialoge.LVmJungeAmWegesrandOne;
         }
         return Dialoge.LVmJungeAmWegesrand;

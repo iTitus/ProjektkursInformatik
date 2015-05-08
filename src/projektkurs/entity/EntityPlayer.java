@@ -3,7 +3,6 @@ package projektkurs.entity;
 import java.awt.event.MouseEvent;
 
 import projektkurs.Main;
-import projektkurs.dialog.DialogManager;
 import projektkurs.dialog.ITalkable;
 import projektkurs.inventory.PlayerInventory;
 import projektkurs.io.storage.SaveData;
@@ -81,7 +80,7 @@ public class EntityPlayer extends EntityLiving {
         if (e instanceof ITalkable) {
             ITalkable talkable = (ITalkable) e;
             if (talkable.shouldStartDialog()) {
-                DialogManager.startDialog(talkable.getDialog(), e);
+                map.getLevel().getDialogManager().startDialog(talkable.getDialog(), e);
             }
         }
         if (e instanceof EntityItem) {

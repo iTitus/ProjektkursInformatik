@@ -1,7 +1,6 @@
 package projektkurs.entity;
 
 import projektkurs.dialog.Dialog;
-import projektkurs.dialog.DialogManager;
 import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
@@ -18,9 +17,9 @@ public class EntityWitchCauldron extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if ((1 << 15 | 1 << 16 | 1 << 17) == (1 << 15 | 1 << 16 | 1 << 17 & DialogManager.getValue())) {
+        if ((1 << 15 | 1 << 16 | 1 << 17) == (1 << 15 | 1 << 16 | 1 << 17 & map.getLevel().getDialogManager().getValue())) {
             return Dialoge.LVmHexerzirkelTwo;
-        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (1 << 12 | 1 << 13 | 1 << 14 & DialogManager.getValue())) {
+        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (1 << 12 | 1 << 13 | 1 << 14 & map.getLevel().getDialogManager().getValue())) {
             return Dialoge.LVmHexerzirkelOne;
         }
         return Dialoge.LVmHexerzirkel;

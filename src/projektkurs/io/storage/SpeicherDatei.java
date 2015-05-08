@@ -74,6 +74,7 @@ public class SpeicherDatei {
     }
 
     // TODO
+    @SuppressWarnings("unused")
     private void saveFeld() {
         String s = "";
         for (Feld element : felder) {

@@ -7,6 +7,7 @@ import projektkurs.Main;
 import projektkurs.entity.Entity;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
+import projektkurs.level.Level;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sprites;
@@ -27,15 +28,16 @@ public class Spielfeld implements IUpdatable, ISaveable {
     /**
      * Alle Entities.
      */
-    private final ArrayList<Entity> entities;
+    private final List<Entity> entities;
     /**
      * Alle ExtraInformationen.
      */
-    private final ArrayList<ExtraInformation> extras;
+    private final List<ExtraInformation> extras;
+    private Level level;
     /**
      * Alle Raster.
      */
-    private final int[] map;
+    private final int[] raster;
     /**
      * Spielfeldbreite.
      */
@@ -74,7 +76,7 @@ public class Spielfeld implements IUpdatable, ISaveable {
         this.sizeY = sizeY;
         this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
         this.spawnY = MathUtil.clampToArray(spawnY, sizeY);
-        map = new int[sizeX * sizeY];
+        raster = new int[sizeX * sizeY];
         extras = new ArrayList<ExtraInformation>();
         entities = new ArrayList<Entity>();
         storyManager = new StoryManager();
@@ -166,7 +168,7 @@ public class Spielfeld implements IUpdatable, ISaveable {
      *
      * @return alle Entities
      */
-    public ArrayList<Entity> getEntityList() {
+    public List<Entity> getEntityList() {
         return entities;
     }
 
@@ -195,8 +197,12 @@ public class Spielfeld implements IUpdatable, ISaveable {
      *
      * @return alle ExtraInformationen
      */
-    public ArrayList<ExtraInformation> getExtraInformationList() {
+    public List<ExtraInformation> getExtraInformationList() {
         return extras;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     /**
@@ -228,7 +234,7 @@ public class Spielfeld implements IUpdatable, ISaveable {
      */
     public AbstractRaster getRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return Raster.RASTER[map[x + y * sizeX]];
+            return Raster.RASTER[raster[x + y * sizeX]];
         }
         return null;
     }
@@ -297,7 +303,7 @@ public class Spielfeld implements IUpdatable, ISaveable {
      */
     public boolean isRasterAt(int x, int y) {
         if (isInMap(x, y)) {
-            return map[x + y * sizeX] > 0;
+            return raster[x + y * sizeX] > 0;
         }
         return false;
     }
@@ -341,6 +347,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
         }
     }
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
     /**
      * Setzt ein Raster und seine ExtraInformation an die gegebene Position.
      *
@@ -358,14 +368,14 @@ public class Spielfeld implements IUpdatable, ISaveable {
                 removeExtraInformation(oldExtra);
             }
             if (r != null) {
-                map[x + y * sizeX] = r.getID();
+                raster[x + y * sizeX] = r.getID();
                 if (r instanceof IHasExtraInformation) {
                     ExtraInformation newExtra = ((IHasExtraInformation) r).createExtraInformation(this, x, y);
                     getExtraInformationList().add(newExtra);
 
                 }
             } else {
-                map[x + y * sizeX] = 0;
+                raster[x + y * sizeX] = 0;
             }
         }
     }
