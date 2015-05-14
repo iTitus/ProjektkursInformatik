@@ -6,28 +6,28 @@ import projektkurs.simulation.pacman.entity.PacmanEntity;
 
 public abstract class PacmanRaster {
 
-    public static final PacmanRaster emptySpace = new EmptySpace();
-    public static final PacmanRaster obstacle = new Obstacle();
+	public static final PacmanRaster emptySpace = new EmptySpace();
+	public static final PacmanRaster obstacle = new Obstacle();
 
-    private boolean isSolid = false;
+	private boolean isSolid = false;
 
-    public boolean isSolid() {
-        return isSolid;
-    }
+	public boolean isSolid() {
+		return isSolid;
+	}
 
-    public void onWalkOn(PacmanBoard board, int x, int y, PacmanEntity e) {
-        // NO-OP
-    }
+	public void setSolid(boolean isSolid) {
+		this.isSolid = isSolid;
+	}
 
-    public abstract void render(PacmanBoard board, int x, int y, Screen screen, int offsetX, int offsetY);
+	public void onWalkOn(PacmanBoard board, int x, int y, PacmanEntity e) {
+		// NO-OP
+	}
 
-    public void setSolid(boolean isSolid) {
-        this.isSolid = isSolid;
-    }
+	public abstract void render(PacmanBoard board, int x, int y, Screen screen, int offsetX, int offsetY);
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
+	@Override
+	public String toString() {
+		return getClass().getSimpleName();
+	}
 
 }

@@ -11,126 +11,121 @@ import projektkurs.util.MathUtil;
  */
 public class PlayerInventory extends Inventory {
 
-    /**
-     * Laedt ein PlayerInventory aus der gegebenen SaveData.
-     *
-     * @param data
-     *            SaveData
-     * @return PlayerInventory
-     */
-    public static PlayerInventory load(SaveData data) {
-        PlayerInventory inv = new PlayerInventory();
+	/**
+	 * Ausgewaehlter Index.
+	 */
+	private int selectedItemStack;
 
-        inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
+	/**
+	 * Konstruktor.
+	 *
+	 * @param size Groesse
+	 */
+	public PlayerInventory(int size) {
+		this(size, -1);
+	}
 
-        for (int i = 0; i < inv.stacks.length; i++) {
-            inv.setItemStackInSlot(i, ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
-        }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param size              Groesse
+	 * @param selectedItemStack auszuwaehlender Index
+	 */
+	public PlayerInventory(int size, int selectedItemStack) {
+		super(size);
+		this.selectedItemStack = selectedItemStack;
+	}
 
-        inv.setSelectedItemStack(data.getInteger(Strings.INV_SELECTED));
+	/**
+	 * Konstruktor.
+	 */
+	private PlayerInventory() {
+		super();
+	}
 
-        return inv;
-    }
+	/**
+	 * Laedt ein PlayerInventory aus der gegebenen SaveData.
+	 *
+	 * @param data SaveData
+	 * @return PlayerInventory
+	 */
+	public static PlayerInventory load(SaveData data) {
+		PlayerInventory inv = new PlayerInventory();
 
-    /**
-     * Ausgewaehlter Index.
-     */
-    private int selectedItemStack;
+		inv.stacks = new ItemStack[data.getInteger(Strings.INV_SIZE)];
 
-    /**
-     * Konstruktor.
-     *
-     * @param size
-     *            Groesse
-     */
-    public PlayerInventory(int size) {
-        this(size, -1);
-    }
+		for (int i = 0; i < inv.stacks.length; i++) {
+			inv.setItemStackInSlot(i, ItemStack.load(data.getSaveData(Strings.INV_SLOT + i)));
+		}
 
-    /**
-     * Konstruktor.
-     *
-     * @param size
-     *            Groesse
-     * @param selectedItemStack
-     *            auszuwaehlender Index
-     */
-    public PlayerInventory(int size, int selectedItemStack) {
-        super(size);
-        this.selectedItemStack = selectedItemStack;
-    }
+		inv.setSelectedItemStack(data.getInteger(Strings.INV_SELECTED));
 
-    /**
-     * Konstruktor.
-     */
-    private PlayerInventory() {
-        super();
-    }
+		return inv;
+	}
 
-    /**
-     * X-Koordinate auf dem Bildschirmkoordinaten.
-     *
-     * @return X-Koordinate auf dem Bildschirm
-     */
-    public int getRenderX() {
-        return MathUtil.roundDiv(Integers.windowX, 2) - MathUtil.roundDiv(Integers.SLOT_SIZE * getSize(), 2);
-    }
+	/**
+	 * X-Koordinate auf dem Bildschirmkoordinaten.
+	 *
+	 * @return X-Koordinate auf dem Bildschirm
+	 */
+	public int getRenderX() {
+		return MathUtil.roundDiv(Integers.windowX, 2) - MathUtil.roundDiv(Integers.SLOT_SIZE * getSize(), 2);
+	}
 
-    /**
-     * Y-Koordinate auf dem Bildschirmkoordinaten.
-     *
-     * @return Y-Koordinate auf dem Bildschirm
-     */
-    public int getRenderY() {
-        return Integers.windowY - Integers.WINDOW_HUD_Y;
-    }
+	/**
+	 * Y-Koordinate auf dem Bildschirmkoordinaten.
+	 *
+	 * @return Y-Koordinate auf dem Bildschirm
+	 */
+	public int getRenderY() {
+		return Integers.windowY - Integers.WINDOW_HUD_Y;
+	}
 
-    /**
-     * Ausgewaehlter Index.
-     *
-     * @return Index
-     */
-    public int getSelectedIndex() {
-        return selectedItemStack;
-    }
+	/**
+	 * Ausgewaehlter Index.
+	 *
+	 * @return Index
+	 */
+	public int getSelectedIndex() {
+		return selectedItemStack;
+	}
 
-    /**
-     * Ausgewaehlter ItemStack.
-     *
-     * @return ItemStack
-     */
-    public ItemStack getSelectedItemStack() {
-        return getItemStackAt(selectedItemStack);
-    }
+	/**
+	 * Ausgewaehlter ItemStack.
+	 *
+	 * @return ItemStack
+	 */
+	public ItemStack getSelectedItemStack() {
+		return getItemStackAt(selectedItemStack);
+	}
 
-    /**
-     * Ist ein ItemStack ausgewaehlt.
-     *
-     * @return true, wenn ja; false, wenn nein
-     */
-    public boolean hasItemStackSelected() {
-        return selectedItemStack < 0;
-    }
+	/**
+	 * Waehlt den ItemStack am Index aus.
+	 *
+	 * @param index Index; -1, um keinen ItemStack auszuwaehlen
+	 */
+	public void setSelectedItemStack(int index) {
+		if (MathUtil.isInArray(index, stacks.length)) {
+			selectedItemStack = index;
+		} else {
+			selectedItemStack = -1;
+		}
+	}
 
-    /**
-     * Waehlt den ItemStack am Index aus.
-     *
-     * @param index
-     *            Index; -1, um keinen ItemStack auszuwaehlen
-     */
-    public void setSelectedItemStack(int index) {
-        if (MathUtil.isInArray(index, stacks.length)) {
-            selectedItemStack = index;
-        } else {
-            selectedItemStack = -1;
-        }
-    }
+	/**
+	 * Ist ein ItemStack ausgewaehlt.
+	 *
+	 * @return true, wenn ja; false, wenn nein
+	 */
+	public boolean hasItemStackSelected() {
+		return selectedItemStack < 0;
+	}
 
-    @Override
-    public SaveData write() {
-        SaveData data = super.write();
-        data.set(Strings.INV_SELECTED, selectedItemStack);
-        return data;
-    }
+	@Override
+	public SaveData write() {
+		SaveData data = super.write();
+		data.set(Strings.INV_SELECTED, selectedItemStack);
+		return data;
+	}
 
 }

@@ -3,7 +3,6 @@ package projektkurs.lib;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -18,246 +17,240 @@ import projektkurs.util.Pair;
  */
 public final class Sounds {
 
-    /**
-     * Die Klasse fuer ein Sound-Objekt.
-     */
-    public static class Sound {
+	/**
+	 * Zurueck-Mappings.
+	 */
+	public static final HashMap<Sound, String> BACK_MAPPINGS = new HashMap<Sound, String>();
+	/**
+	 * Mappings.
+	 */
+	public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
+	/**
+	 * Explosionsgeraeusch.
+	 */
+	public static Sound explosion;
 
-        /**
-         * Der Audio-Clip.
-         */
-        private Clip clip;
-        /**
-         * Name.
-         */
-        private final String name;
-        /**
-         * Pausiert dieser Sound gerade.
-         */
-        private boolean pausing;
+	/**
+	 * Nicht instanziierbar.
+	 */
+	private Sounds() {
+	}
 
-        /**
-         * Konstruktor.
-         *
-         * @param name
-         *            Name
-         * @param fileName
-         *            Dateiname
-         */
-        public Sound(String name, String fileName) {
-            this.name = name;
-            pausing = false;
-            try {
-                clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(Main.class.getResource("resources/sounds/" + fileName)));
-                Logger.info("Successfully loaded sound: " + fileName);
-            } catch (Throwable t1) {
-                try {
-                    clip = AudioSystem.getClip();
-                    clip.open(AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("resources/sounds/" + fileName)));
-                    Logger.info("Successfully loaded sound: " + fileName);
-                } catch (Throwable t2) {
-                    Logger.logThrowable("Unable to load sound '" + fileName + "'", t2);
-                }
-            }
+	/**
+	 * Befreit alle Sounds.
+	 */
+	public static void closeAll() {
+		for (Sound s : MAPPINGS.values()) {
+			s.close();
+		}
+	}
 
-        }
+	/**
+	 * Das Pair, das alle Sounds enthaelt.
+	 *
+	 * @return Pair
+	 */
+	public static Pair<String, List<String>> getPair() {
+		return new Pair<String, List<String>>("info.sounds", new ArrayList<String>(MAPPINGS.keySet()));
+	}
 
-        /**
-         * Befreit die Resourcen.
-         */
-        public void close() {
-            stop();
-            if (clip != null) {
-                clip.close();
-            }
-        }
+	/**
+	 * Initialisiert alle Sounds.
+	 */
+	@Init(State.RESOURCES)
+	public static void init() {
 
-        /**
-         * Name.
-         *
-         * @return Name
-         */
-        public String getName() {
-            return name;
-        }
+		explosion = new Sound("explosion", "boom.wav");
+		registerSound(explosion);
 
-        /**
-         * Ist der Sound am pausieren.
-         *
-         * @return true, wenn ja; false, wenn nein
-         */
-        public boolean isPausing() {
-            return pausing;
-        }
+	}
 
-        public boolean isRunning() {
-            if (clip != null) {
-                return clip.isRunning();
-            }
-            return false;
-        }
+	/**
+	 * Setzt den Pausenstatus jedes Sounds.
+	 *
+	 * @param pause true, wenn pausiert werden soll; false, wenn nicht.
+	 */
+	public static void pause(boolean pause) {
+		for (Sound s : MAPPINGS.values()) {
+			if (pause) {
+				s.pause();
+			} else if (s.isPausing()) {
+				s.play();
+			}
+		}
+	}
 
-        /**
-         * Spielt den Sound sooft ab wie angegeben.
-         *
-         * @param count
-         *            Wiederholungszahl
-         */
-        public void loop(int count) {
-            if (clip != null && !Configs.soundsMuted.getValue()) {
-                clip.loop(count);
-            }
-        }
+	/**
+	 * Registriert ein Mapping.
+	 *
+	 * @param s Sound
+	 */
+	public static void registerSound(Sound s) {
+		if (s != null && !MAPPINGS.containsKey(s.getName())) {
+			MAPPINGS.put(s.getName(), s);
+		} else {
+			Logger.warn("Unable to register Sound", s);
+			throw new IllegalArgumentException("Unable to register Sound " + s);
+		}
+	}
 
-        /**
-         * Spielt den Sound in einer Endlosschleife ab.
-         */
-        public void loopContinuosly() {
-            if (clip != null && !Configs.soundsMuted.getValue()) {
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-        }
+	/**
+	 * Die Klasse fuer ein Sound-Objekt.
+	 */
+	public static class Sound {
 
-        /**
-         * Pausiert den Sound.
-         */
-        public void pause() {
-            if (clip != null) {
-                if (clip.isRunning()) {
-                    pausing = true;
-                }
-                clip.stop();
-            }
-        }
+		/**
+		 * Name.
+		 */
+		private final String name;
+		/**
+		 * Der Audio-Clip.
+		 */
+		private Clip clip;
+		/**
+		 * Pausiert dieser Sound gerade.
+		 */
+		private boolean pausing;
 
-        /**
-         * Spielt den Sound ab.
-         */
-        public void play() {
-            if (clip != null && !Configs.soundsMuted.getValue()) {
-                clip.start();
-            }
-        }
+		/**
+		 * Konstruktor.
+		 *
+		 * @param name     Name
+		 * @param fileName Dateiname
+		 */
+		public Sound(String name, String fileName) {
+			this.name = name;
+			pausing = false;
+			try {
+				clip = AudioSystem.getClip();
+				clip.open(AudioSystem.getAudioInputStream(Main.class.getResource("resources/sounds/" + fileName)));
+				Logger.info("Successfully loaded sound: " + fileName);
+			} catch (Throwable t1) {
+				try {
+					clip = AudioSystem.getClip();
+					clip.open(AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("resources/sounds/" + fileName)));
+					Logger.info("Successfully loaded sound: " + fileName);
+				} catch (Throwable t2) {
+					Logger.logThrowable("Unable to load sound '" + fileName + "'", t2);
+				}
+			}
 
-        /**
-         * Spielt den Sound von einer gegebenen Frame-Zahl ab.
-         *
-         * @param frames
-         *            Frame-Zahl
-         */
-        public void play(int frames) {
-            if (clip != null && !Configs.soundsMuted.getValue()) {
-                clip.setFramePosition(frames);
-            }
-            play();
-        }
+		}
 
-        /**
-         * Spielt einen Sound von vorne.
-         */
-        public void playFromStart() {
-            reset();
-            play();
-        }
+		/**
+		 * Befreit die Resourcen.
+		 */
+		public void close() {
+			stop();
+			if (clip != null) {
+				clip.close();
+			}
+		}
 
-        /**
-         * Resettet den Sound.
-         */
-        public void reset() {
-            if (clip != null) {
-                clip.setFramePosition(0);
-            }
-            pausing = false;
-        }
+		/**
+		 * Name.
+		 *
+		 * @return Name
+		 */
+		public String getName() {
+			return name;
+		}
 
-        /**
-         * Stoppt und resettet den Sound.
-         */
-        public void stop() {
-            pause();
-            reset();
-        }
+		/**
+		 * Ist der Sound am pausieren.
+		 *
+		 * @return true, wenn ja; false, wenn nein
+		 */
+		public boolean isPausing() {
+			return pausing;
+		}
 
-    }
+		public boolean isRunning() {
+			if (clip != null) {
+				return clip.isRunning();
+			}
+			return false;
+		}
 
-    /**
-     * Zurueck-Mappings.
-     */
-    public static final HashMap<Sound, String> BACK_MAPPINGS = new HashMap<Sound, String>();
-    /**
-     * Explosionsgeraeusch.
-     */
-    public static Sound explosion;
-    /**
-     * Mappings.
-     */
-    public static final HashMap<String, Sound> MAPPINGS = new HashMap<String, Sound>();
+		/**
+		 * Spielt den Sound sooft ab wie angegeben.
+		 *
+		 * @param count Wiederholungszahl
+		 */
+		public void loop(int count) {
+			if (clip != null && !Configs.soundsMuted.getValue()) {
+				clip.loop(count);
+			}
+		}
 
-    /**
-     * Befreit alle Sounds.
-     */
-    public static void closeAll() {
-        for (Sound s : MAPPINGS.values()) {
-            s.close();
-        }
-    }
+		/**
+		 * Spielt den Sound in einer Endlosschleife ab.
+		 */
+		public void loopContinuosly() {
+			if (clip != null && !Configs.soundsMuted.getValue()) {
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			}
+		}
 
-    /**
-     * Das Pair, das alle Sounds enthaelt.
-     *
-     * @return Pair
-     */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.sounds", new ArrayList<String>(MAPPINGS.keySet()));
-    }
+		/**
+		 * Pausiert den Sound.
+		 */
+		public void pause() {
+			if (clip != null) {
+				if (clip.isRunning()) {
+					pausing = true;
+				}
+				clip.stop();
+			}
+		}
 
-    /**
-     * Initialisiert alle Sounds.
-     */
-    @Init(State.RESOURCES)
-    public static void init() {
+		/**
+		 * Spielt den Sound ab.
+		 */
+		public void play() {
+			if (clip != null && !Configs.soundsMuted.getValue()) {
+				clip.start();
+			}
+		}
 
-        explosion = new Sound("explosion", "boom.wav");
-        registerSound(explosion);
+		/**
+		 * Spielt den Sound von einer gegebenen Frame-Zahl ab.
+		 *
+		 * @param frames Frame-Zahl
+		 */
+		public void play(int frames) {
+			if (clip != null && !Configs.soundsMuted.getValue()) {
+				clip.setFramePosition(frames);
+			}
+			play();
+		}
 
-    }
+		/**
+		 * Spielt einen Sound von vorne.
+		 */
+		public void playFromStart() {
+			reset();
+			play();
+		}
 
-    /**
-     * Setzt den Pausenstatus jedes Sounds.
-     *
-     * @param pause
-     *            true, wenn pausiert werden soll; false, wenn nicht.
-     */
-    public static void pause(boolean pause) {
-        for (Sound s : MAPPINGS.values()) {
-            if (pause) {
-                s.pause();
-            } else if (s.isPausing()) {
-                s.play();
-            }
-        }
-    }
+		/**
+		 * Resettet den Sound.
+		 */
+		public void reset() {
+			if (clip != null) {
+				clip.setFramePosition(0);
+			}
+			pausing = false;
+		}
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param s
-     *            Sound
-     */
-    public static void registerSound(Sound s) {
-        if (s != null && !MAPPINGS.containsKey(s.getName())) {
-            MAPPINGS.put(s.getName(), s);
-        } else {
-            Logger.warn("Unable to register Sound", s);
-            throw new IllegalArgumentException("Unable to register Sound " + s);
-        }
-    }
+		/**
+		 * Stoppt und resettet den Sound.
+		 */
+		public void stop() {
+			pause();
+			reset();
+		}
 
-    /**
-     * Nicht instanziierbar.
-     */
-    private Sounds() {
-    }
+	}
 
 }

@@ -9,27 +9,25 @@ import projektkurs.cutscene.object.CutSceneObject;
  */
 public class ConditionedDeSpawnAction extends Action {
 
-    /**
-     * CutSceneObject, das verscwinden soll.
-     */
-    private final CutSceneObject cutSceneObject;
+	/**
+	 * CutSceneObject, das verscwinden soll.
+	 */
+	private final CutSceneObject cutSceneObject;
 
-    /**
-     * Konstruktor.
-     *
-     * @param condition
-     *            Bedingung
-     * @param cutSceneObject
-     *            CutSceneObject
-     */
-    public ConditionedDeSpawnAction(Condition condition, CutSceneObject cutSceneObject) {
-        super(condition);
-        this.cutSceneObject = cutSceneObject;
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param condition      Bedingung
+	 * @param cutSceneObject CutSceneObject
+	 */
+	public ConditionedDeSpawnAction(Condition condition, CutSceneObject cutSceneObject) {
+		super(condition);
+		this.cutSceneObject = cutSceneObject;
+	}
 
-    @Override
-    public void doAction(CutScene cutScene) {
-        cutScene.deSpawn(cutSceneObject);
-    }
+	@Override
+	public void doAction(CutScene cutScene) {
+		cutScene.deSpawn(cutSceneObject);
+	}
 
 }

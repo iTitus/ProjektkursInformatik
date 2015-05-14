@@ -8,19 +8,18 @@ import projektkurs.cutscene.condition.Condition;
  */
 public class ConditionedTalkAction extends Action {
 
-    /**
-     * Konstruktor.
-     *
-     * @param condition
-     *            Ausfuehrbedingung
-     */
-    public ConditionedTalkAction(Condition condition) {
-        super(condition);
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param condition Ausfuehrbedingung
+	 */
+	public ConditionedTalkAction(Condition condition) {
+		super(condition);
+	}
 
-    @Override
-    public void doAction(CutScene cutScene) {
-        // Dialog
-    }
+	@Override
+	public void doAction(CutScene cutScene) {
+		// Dialog
+	}
 
 }

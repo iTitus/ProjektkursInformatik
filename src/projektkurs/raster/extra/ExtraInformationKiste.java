@@ -11,53 +11,52 @@ import projektkurs.world.Spielfeld;
  */
 public class ExtraInformationKiste extends ExtraInformation {
 
-    /**
-     * Das Inventar.
-     */
-    private Inventory inventar;
+	/**
+	 * Das Inventar.
+	 */
+	private Inventory inventar;
 
-    /**
-     * Konstruktor.
-     */
-    public ExtraInformationKiste(Spielfeld map, int x, int y) {
-        super(map, x, y);
-        inventar = new Inventory(Integers.CHEST_SIZE);
-    }
+	/**
+	 * Konstruktor.
+	 */
+	public ExtraInformationKiste(Spielfeld map, int x, int y) {
+		super(map, x, y);
+		inventar = new Inventory(Integers.CHEST_SIZE);
+	}
 
-    @Override
-    public String getInternalName() {
-        return "chest";
-    }
+	@Override
+	public String getInternalName() {
+		return "chest";
+	}
 
-    /**
-     * Das Inventar der Kiste.
-     *
-     * @return Inventar.
-     */
-    public Inventory getInventar() {
-        return inventar;
-    }
+	/**
+	 * Das Inventar der Kiste.
+	 *
+	 * @return Inventar.
+	 */
+	public Inventory getInventar() {
+		return inventar;
+	}
 
-    @Override
-    public void load(SaveData data) {
-        super.load(data);
-        inventar = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
-    }
+	/**
+	 * Setzt das Inventar der Kiste.
+	 *
+	 * @param inventar Inventar
+	 */
+	public void setInventar(Inventory inventar) {
+		this.inventar = inventar;
+	}
 
-    /**
-     * Setzt das Inventar der Kiste.
-     *
-     * @param inventar
-     *            Inventar
-     */
-    public void setInventar(Inventory inventar) {
-        this.inventar = inventar;
-    }
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		inventar = Inventory.load(data.getSaveData(Strings.EXTRA_INV));
+	}
 
-    @Override
-    public void write(SaveData data) {
-        super.write(data);
-        data.set(Strings.EXTRA_INV, inventar.write());
-    }
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set(Strings.EXTRA_INV, inventar.write());
+	}
 
 }

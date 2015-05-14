@@ -9,31 +9,31 @@ import projektkurs.lib.Dialoge;
  */
 public class CommandDialog extends Command {
 
-    @Override
-    public EnumCommandResult execute(String[] args) {
+	@Override
+	public EnumCommandResult execute(String[] args) {
 
-        if (args.length != 1) {
-            return EnumCommandResult.WRONG_USAGE;
-        }
+		if (args.length != 1) {
+			return EnumCommandResult.WRONG_USAGE;
+		}
 
-        Dialog dialog = Dialoge.MAPPINGS.get(args[0]);
-        if (dialog == null) {
-            return EnumCommandResult.OBJECT_NOT_FOUND;
-        }
+		Dialog dialog = Dialoge.MAPPINGS.get(args[0]);
+		if (dialog == null) {
+			return EnumCommandResult.OBJECT_NOT_FOUND;
+		}
 
-        Main.getLevel().getDialogManager().startDialog(dialog, Main.getPlayer());
+		Main.getLevel().getDialogManager().startDialog(dialog, Main.getPlayer());
 
-        return EnumCommandResult.SUCCESS;
-    }
+		return EnumCommandResult.SUCCESS;
+	}
 
-    @Override
-    public String[] getAliases() {
-        return new String[] { "startdialog", "startd", "d" };
-    }
+	@Override
+	public String[] getAliases() {
+		return new String[]{"startdialog", "startd", "d"};
+	}
 
-    @Override
-    public String getCommand() {
-        return "dialog";
-    }
+	@Override
+	public String getCommand() {
+		return "dialog";
+	}
 
 }

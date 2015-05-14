@@ -15,59 +15,58 @@ import projektkurs.util.Pair;
  */
 public final class SpriteSheets {
 
-    public static SpriteSheet entities;
-    public static SpriteSheet guis;
-    public static SpriteSheet items;
-    /**
-     * Die Mappings.
-     */
-    public static final HashMap<String, SpriteSheet> MAPPINGS = new HashMap<String, SpriteSheet>();
-    public static SpriteSheet raster;
+	/**
+	 * Die Mappings.
+	 */
+	public static final HashMap<String, SpriteSheet> MAPPINGS = new HashMap<String, SpriteSheet>();
+	public static SpriteSheet entities;
+	public static SpriteSheet guis;
+	public static SpriteSheet items;
+	public static SpriteSheet raster;
 
-    /**
-     * Das Pair, das alle SpriteSheets enthaelt.
-     *
-     * @return Pair
-     */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.spritesheets", new ArrayList<String>(MAPPINGS.keySet()));
-    }
+	private SpriteSheets() {
+	}
 
-    /**
-     * Initialisiert alle SpriteSheets.
-     */
-    @Init(State.RESOURCES)
-    public static void init() {
-        raster = new SpriteSheet("raster", "rasterSheet.png");
-        registerSpriteSheet(raster);
+	/**
+	 * Das Pair, das alle SpriteSheets enthaelt.
+	 *
+	 * @return Pair
+	 */
+	public static Pair<String, List<String>> getPair() {
+		return new Pair<String, List<String>>("info.spritesheets", new ArrayList<String>(MAPPINGS.keySet()));
+	}
 
-        items = new SpriteSheet("items", "itemSheet.png");
-        registerSpriteSheet(items);
+	/**
+	 * Initialisiert alle SpriteSheets.
+	 */
+	@Init(State.RESOURCES)
+	public static void init() {
+		raster = new SpriteSheet("raster", "rasterSheet.png");
+		registerSpriteSheet(raster);
 
-        guis = new SpriteSheet("guis", "guiSheet.png");
-        registerSpriteSheet(guis);
+		items = new SpriteSheet("items", "itemSheet.png");
+		registerSpriteSheet(items);
 
-        entities = new SpriteSheet("entities", "entitySheet.png");
-        registerSpriteSheet(entities);
+		guis = new SpriteSheet("guis", "guiSheet.png");
+		registerSpriteSheet(guis);
 
-    }
+		entities = new SpriteSheet("entities", "entitySheet.png");
+		registerSpriteSheet(entities);
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param s
-     *            SpriteSheet
-     */
-    public static void registerSpriteSheet(SpriteSheet s) {
-        if (s != null && !MAPPINGS.containsKey(s.getName())) {
-            MAPPINGS.put(s.getName(), s);
-        } else {
-            Logger.warn("Unable to register SpriteSheet", s);
-            throw new IllegalArgumentException("Unable to register SpriteSheet " + s);
-        }
-    }
+	}
 
-    private SpriteSheets() {
-    }
+	/**
+	 * Registriert ein Mapping.
+	 *
+	 * @param s SpriteSheet
+	 */
+	public static void registerSpriteSheet(SpriteSheet s) {
+		if (s != null && !MAPPINGS.containsKey(s.getName())) {
+			MAPPINGS.put(s.getName(), s);
+		} else {
+			Logger.warn("Unable to register SpriteSheet", s);
+			throw new IllegalArgumentException("Unable to register SpriteSheet " + s);
+		}
+	}
 
 }

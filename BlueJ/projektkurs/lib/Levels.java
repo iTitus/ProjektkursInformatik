@@ -17,73 +17,71 @@ import projektkurs.world.Spielfeld;
  */
 public final class Levels {
 
-    /**
-     * Die Zurueck-Mappings.
-     */
-    public static final HashMap<Level, String> BACK_MAPPINGS = new HashMap<Level, String>();
-    /**
-     * Das erste Level.
-     */
-    public static Level level0;
-    /**
-     * Das zweite Level.
-     */
-    public static Level level1;
+	/**
+	 * Die Zurueck-Mappings.
+	 */
+	public static final HashMap<Level, String> BACK_MAPPINGS = new HashMap<Level, String>();
+	/**
+	 * Die Mappings.
+	 */
+	public static final HashMap<String, Level> MAPPINGS = new HashMap<String, Level>();
+	/**
+	 * Das erste Level.
+	 */
+	public static Level level0;
+	/**
+	 * Das zweite Level.
+	 */
+	public static Level level1;
 
-    /**
-     * Die Mappings.
-     */
-    public static final HashMap<String, Level> MAPPINGS = new HashMap<String, Level>();
+	/**
+	 * Konstruktor.
+	 */
+	private Levels() {
+	}
 
-    /**
-     * Generiert alle Level.
-     */
-    public static void generateAndPopulateAllLevels() {
-        for (Level l : MAPPINGS.values()) {
-            l.generateAndPopulateAll();
-        }
-    }
+	/**
+	 * Generiert alle Level.
+	 */
+	public static void generateAndPopulateAllLevels() {
+		for (Level l : MAPPINGS.values()) {
+			l.generateAndPopulateAll();
+		}
+	}
 
-    /**
-     * Das Pair, das alle Levels enthaelt.
-     *
-     * @return Pair
-     */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.levels", new ArrayList<String>(MAPPINGS.keySet()));
-    }
+	/**
+	 * Das Pair, das alle Levels enthaelt.
+	 *
+	 * @return Pair
+	 */
+	public static Pair<String, List<String>> getPair() {
+		return new Pair<String, List<String>>("info.levels", new ArrayList<String>(MAPPINGS.keySet()));
+	}
 
-    /**
-     * Initialisiert alle Level.
-     */
-    @Init(State.PRE)
-    public static void init() {
-        level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
-        registerMapping(level0);
+	/**
+	 * Initialisiert alle Level.
+	 */
+	@Init(State.PRE)
+	public static void init() {
+		level0 = new Level("Level0", new Spielfeld(100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)), new Spielfeld(20, 10, 1, 1));
+		registerMapping(level0);
 
-        level1 = new Level("Level1", new Spielfeld(90, 70, 10, 26), new Spielfeld(70, 70, 10, 0));
-        registerMapping(level1);
+		level1 = new Level("Level1", new Spielfeld(90, 70, 10, 26), new Spielfeld(70, 70, 10, 0));
+		registerMapping(level1);
 
-    }
+	}
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param l
-     *            Level
-     */
-    private static void registerMapping(Level l) {
-        if (l != null && !MAPPINGS.containsKey(l.getName())) {
-            MAPPINGS.put(l.getName(), l);
-        } else {
-            Logger.warn("Unable to register Level", l);
-            throw new IllegalArgumentException("Unable to register Level " + l);
-        }
-    }
-
-    /**
-     * Konstruktor.
-     */
-    private Levels() {
-    }
+	/**
+	 * Registriert ein Mapping.
+	 *
+	 * @param l Level
+	 */
+	private static void registerMapping(Level l) {
+		if (l != null && !MAPPINGS.containsKey(l.getName())) {
+			MAPPINGS.put(l.getName(), l);
+		} else {
+			Logger.warn("Unable to register Level", l);
+			throw new IllegalArgumentException("Unable to register Level " + l);
+		}
+	}
 }

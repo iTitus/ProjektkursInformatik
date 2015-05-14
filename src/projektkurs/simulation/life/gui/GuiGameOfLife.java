@@ -8,25 +8,25 @@ import projektkurs.render.Screen;
  */
 public class GuiGameOfLife extends Gui {
 
-    private ElementGameOfLife gameOfLifeElement;
+	private ElementGameOfLife gameOfLifeElement;
 
-    /**
-     * Konstruktor.
-     */
-    public GuiGameOfLife() {
-    }
+	/**
+	 * Konstruktor.
+	 */
+	public GuiGameOfLife() {
+	}
 
-    @Override
-    public void initGui() {
-        super.initGui();
-        gameOfLifeElement = new ElementGameOfLife(64, 64, 128, 64, 0);
-        addElement(gameOfLifeElement);
-    }
+	@Override
+	public void initGui() {
+		super.initGui();
+		gameOfLifeElement = new ElementGameOfLife(64, 64, 128, 64, 0);
+		addElement(gameOfLifeElement);
+	}
 
-    @Override
-    public void render(Screen screen) {
-        screen.setColor(0xAAAAAA);
-        super.render(screen);
-    }
+	@Override
+	public void render(Screen screen) {
+		screen.setColor(0xAAAAAA);
+		super.render(screen);
+	}
 
 }

@@ -8,24 +8,23 @@ import projektkurs.item.ItemStack;
  */
 public class InventoryHasItemStackTrigger extends Trigger {
 
-    /**
-     * Der ItemStack.
-     */
-    private final ItemStack stack;
+	/**
+	 * Der ItemStack.
+	 */
+	private final ItemStack stack;
 
-    /**
-     * Konstruktor.
-     *
-     * @param stack
-     *            zu pruefender ItemStack.
-     */
-    public InventoryHasItemStackTrigger(ItemStack stack) {
-        this.stack = stack;
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param stack zu pruefender ItemStack.
+	 */
+	public InventoryHasItemStackTrigger(ItemStack stack) {
+		this.stack = stack;
+	}
 
-    @Override
-    public boolean isTriggerActive() {
-        return Main.getPlayer().getInventory().getNumberOfItemsInInventory(stack) >= stack.getStackSize();
-    }
+	@Override
+	public boolean isTriggerActive() {
+		return Main.getPlayer().getInventory().getNumberOfItemsInInventory(stack) >= stack.getStackSize();
+	}
 
 }

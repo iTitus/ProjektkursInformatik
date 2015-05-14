@@ -7,19 +7,19 @@ import projektkurs.world.Spielfeld;
 
 public class EntityFisher extends EntityDialog {
 
-    public EntityFisher(Spielfeld map) {
-        super(map);
-    }
+	public EntityFisher(Spielfeld map) {
+		super(map);
+	}
 
-    public EntityFisher(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 1, 1, Sprites.fisher);
-    }
+	public EntityFisher(Spielfeld map, int posX, int posY) {
+		super(map, posX, posY, 1, 1, Sprites.fisher);
+	}
 
-    @Override
-    public Dialog getDialog() {
-        if ((1 | 2 | 4) == (map.getLevel().getDialogManager().getValue() & 1 | 2 | 4)) {
-            return Dialoge.LVmFischer;
-        }
-        return Dialoge.LVmFischerOne;
-    }
+	@Override
+	public Dialog getDialog() {
+		if ((1 | 2 | 4) == (map.getLevel().getDialogManager().getValue() & 1 | 2 | 4)) {
+			return Dialoge.LVmFischer;
+		}
+		return Dialoge.LVmFischerOne;
+	}
 }

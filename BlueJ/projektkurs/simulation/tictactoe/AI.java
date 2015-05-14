@@ -4,53 +4,52 @@ import projektkurs.util.MathUtil;
 
 public class AI {
 
-    private class AIThread extends Thread {
+	private final TicTacToeBoard board;
+	private AIThread calcThread;
 
-        volatile boolean finished = false, stop = false;
-        volatile int x, y;
+	public AI(TicTacToeBoard board) {
+		this.board = board;
+	}
 
-        @Override
-        public void run() {
-            int x, y;
-            do {
-                if (stop) {
-                    return;
-                }
-                x = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
-                y = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
-            } while (board.getSign(x, y) != null);
-            this.x = x;
-            this.y = y;
-            finished = true;
+	public TicTacToeBoard getBoard() {
+		return board;
+	}
 
-        }
-    }
+	public boolean update() {
+		if (calcThread == null) {
+			calcThread = new AIThread();
+			calcThread.start();
+			return false;
+		}
+		if (calcThread.finished) {
+			board.setSign(calcThread.x, calcThread.y, EnumBoardSign.CIRCLE);
+			calcThread.stop = true;
+			calcThread = null;
+			return true;
+		}
+		return false;
+	}
 
-    private final TicTacToeBoard board;
+	private class AIThread extends Thread {
 
-    private AIThread calcThread;
+		volatile boolean finished = false, stop = false;
+		volatile int x, y;
 
-    public AI(TicTacToeBoard board) {
-        this.board = board;
-    }
+		@Override
+		public void run() {
+			int x, y;
+			do {
+				if (stop) {
+					return;
+				}
+				x = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
+				y = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
+			} while (board.getSign(x, y) != null);
+			this.x = x;
+			this.y = y;
+			finished = true;
 
-    public TicTacToeBoard getBoard() {
-        return board;
-    }
-
-    public boolean update() {
-        if (calcThread == null) {
-            calcThread = new AIThread();
-            calcThread.start();
-            return false;
-        }
-        if (calcThread.finished) {
-            board.setSign(calcThread.x, calcThread.y, EnumBoardSign.CIRCLE);
-            calcThread.stop = true;
-            calcThread = null;
-            return true;
-        }
-        return false;
-    }
+		}
+	}
 
 }

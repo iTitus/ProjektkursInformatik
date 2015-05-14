@@ -17,154 +17,149 @@ import projektkurs.world.builder.MapBuilder;
  */
 public class Level implements IUpdatable, ISaveable {
 
-    /**
-     * Aktueller Spielfeld-Index.
-     */
-    private int currentMap;
-    /**
-     * Der Dialogmanger.
-     */
-    private final DialogManager dialogManager;
-    /**
-     * Alle Spielfelder.
-     */
-    private final Spielfeld[] maps;
-    /**
-     * Name dieses Levels.
-     */
-    private final String name;
+	/**
+	 * Der Dialogmanger.
+	 */
+	private final DialogManager dialogManager;
+	/**
+	 * Alle Spielfelder.
+	 */
+	private final Spielfeld[] maps;
+	/**
+	 * Name dieses Levels.
+	 */
+	private final String name;
+	/**
+	 * Aktueller Spielfeld-Index.
+	 */
+	private int currentMap;
 
-    /**
-     * Konstruktor.
-     *
-     * @param name
-     *            Name
-     * @param maps
-     *            alle Spielfelder
-     */
-    public Level(String name, Spielfeld... maps) {
-        this.maps = maps;
-        if (maps != null) {
-            for (Spielfeld map : maps) {
-                if (map != null) {
-                    map.setLevel(this);
-                }
-            }
-        }
-        currentMap = 0;
-        this.name = name;
-        dialogManager = new DialogManager();
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param name Name
+	 * @param maps alle Spielfelder
+	 */
+	public Level(String name, Spielfeld... maps) {
+		this.maps = maps;
+		if (maps != null) {
+			for (Spielfeld map : maps) {
+				if (map != null) {
+					map.setLevel(this);
+				}
+			}
+		}
+		currentMap = 0;
+		this.name = name;
+		dialogManager = new DialogManager();
+	}
 
-    @Override
-    public boolean canUpdate() {
-        return getMap().canUpdate();
-    }
+	@Override
+	public boolean canUpdate() {
+		return getMap().canUpdate();
+	}
 
-    /**
-     * Generiert alle Spielfelder.
-     */
-    public void generateAndPopulateAll() {
-        String methodName;
-        for (int i = 0; i < maps.length; i++) {
-            methodName = "generateAndPopulate";
-            methodName += name;
-            methodName += "Map";
-            methodName += i;
-            ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps[i]);
-        }
-    }
+	/**
+	 * Generiert alle Spielfelder.
+	 */
+	public void generateAndPopulateAll() {
+		String methodName;
+		for (int i = 0; i < maps.length; i++) {
+			methodName = "generateAndPopulate";
+			methodName += name;
+			methodName += "Map";
+			methodName += i;
+			ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps[i]);
+		}
+	}
 
-    public DialogManager getDialogManager() {
-        return dialogManager;
-    }
+	public DialogManager getDialogManager() {
+		return dialogManager;
+	}
 
-    /**
-     * Das aktuelle Spielfeld.
-     *
-     * @return Spielfeld
-     */
-    public Spielfeld getMap() {
-        return maps[currentMap];
-    }
+	/**
+	 * Das aktuelle Spielfeld.
+	 *
+	 * @return Spielfeld
+	 */
+	public Spielfeld getMap() {
+		return maps[currentMap];
+	}
 
-    /**
-     * Das Spielfeld am gegebenen Index.
-     *
-     * @param i
-     *            Index
-     * @return Spielfeld
-     */
-    public Spielfeld getMapAt(int i) {
-        if (MathUtil.isInArray(i, maps.length)) {
-            return maps[i];
-        }
-        Logger.logThrowable("Unable to get map", new ArrayIndexOutOfBoundsException(i));
-        return null;
-    }
+	/**
+	 * Waehlt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
+	 *
+	 * @param i Index
+	 */
+	public void setMap(int i) {
+		if (MathUtil.isInArray(i, maps.length)) {
+			getMap().deSpawn(Main.getPlayer());
+			currentMap = i;
+			Main.getPlayer().setMap(getMap());
+			Main.getPlayer().setPosition(getMap().getSpawnX(), getMap().getSpawnY());
+			getMap().spawn(Main.getPlayer());
+		} else {
+			Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
+		}
+	}
 
-    /**
-     * Anzahl der Maps.
-     *
-     * @return Anzahl
-     */
-    public int getMapCount() {
-        return maps.length;
-    }
+	/**
+	 * Das Spielfeld am gegebenen Index.
+	 *
+	 * @param i Index
+	 * @return Spielfeld
+	 */
+	public Spielfeld getMapAt(int i) {
+		if (MathUtil.isInArray(i, maps.length)) {
+			return maps[i];
+		}
+		Logger.logThrowable("Unable to get map", new ArrayIndexOutOfBoundsException(i));
+		return null;
+	}
 
-    /**
-     * Name.
-     *
-     * @return Name
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Anzahl der Maps.
+	 *
+	 * @return Anzahl
+	 */
+	public int getMapCount() {
+		return maps.length;
+	}
 
-    @Override
-    public void load(SaveData data) {
-        // TODO
-    }
+	/**
+	 * Name.
+	 *
+	 * @return Name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Rendert das Level.
-     *
-     * @param g
-     *            Screen
-     */
-    public void render(Screen s) {
-        if (getMap() != null) {
-            getMap().render(s);
-        }
-    }
+	@Override
+	public void load(SaveData data) {
+		// TODO
+	}
 
-    /**
-     * Waehlt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
-     *
-     * @param i
-     *            Index
-     */
-    public void setMap(int i) {
-        if (MathUtil.isInArray(i, maps.length)) {
-            getMap().deSpawn(Main.getPlayer());
-            currentMap = i;
-            Main.getPlayer().setMap(getMap());
-            Main.getPlayer().setPosition(getMap().getSpawnX(), getMap().getSpawnY());
-            getMap().spawn(Main.getPlayer());
-        } else {
-            Logger.logThrowable("Unable to set map", new ArrayIndexOutOfBoundsException(i));
-        }
-    }
+	/**
+	 * Rendert das Level.
+	 *
+	 * @param g Screen
+	 */
+	public void render(Screen s) {
+		if (getMap() != null) {
+			getMap().render(s);
+		}
+	}
 
-    @Override
-    public void update() {
-        if (getMap() != null) {
-            getMap().update();
-        }
-    }
+	@Override
+	public void update() {
+		if (getMap() != null) {
+			getMap().update();
+		}
+	}
 
-    @Override
-    public void write(SaveData data) {
-        // TODO
-    }
+	@Override
+	public void write(SaveData data) {
+		// TODO
+	}
 }

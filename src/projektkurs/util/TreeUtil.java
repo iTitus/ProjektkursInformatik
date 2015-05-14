@@ -4,61 +4,61 @@ import java.util.Comparator;
 
 public final class TreeUtil {
 
-    @SuppressWarnings("unused")
-    private static class MyComparator<T> {
+	private TreeUtil() {
+		// NO-OP
+	}
 
-        private final Comparator<T> comparator;
+	public static <T extends Comparable<T>> void balance(Tree<? extends T> tree) {
+		doBalance(tree, new MyComparator<T>());
+	}
 
-        public MyComparator() {
-            this.comparator = null;
-        }
+	public static <T> void balance(Tree<? extends T> tree, Comparator<T> comparator) {
+		doBalance(tree, new MyComparator<T>(comparator));
+	}
 
-        public MyComparator(Comparator<T> comparator) {
-            this.comparator = comparator;
-        }
+	public static void main(String[] args) {
+		Tree<Integer> testTree = new Tree<Integer>(10);
 
-        public int compare(Comparable<T> object1, T object2) {
-            return object1.compareTo(object2);
-        }
+		testTree.forceAdd(true, 5);
+		testTree.next(true);
+		testTree.forceAdd(true, 2);
+		testTree.forceAdd(false, 7);
 
-        public int compare(T object1, T object2) {
-            return comparator.compare(object1, object2);
-        }
+		testTree.toRoot();
+		testTree.forceAdd(false, 11);
+		testTree.next(false);
+		testTree.forceAdd(false, 12);
+		testTree.next(false);
+		testTree.forceAdd(false, 13);
+		testTree.next(false);
+		testTree.forceAdd(false, 14);
+	}
 
-    }
+	private static <T> void doBalance(Tree<? extends T> tree, MyComparator<T> comparator) {
+		// TODO
+	}
 
-    public static <T extends Comparable<T>> void balance(Tree<? extends T> tree) {
-        doBalance(tree, new MyComparator<T>());
-    }
+	@SuppressWarnings("unused")
+	private static class MyComparator<T> {
 
-    public static <T> void balance(Tree<? extends T> tree, Comparator<T> comparator) {
-        doBalance(tree, new MyComparator<T>(comparator));
-    }
+		private final Comparator<T> comparator;
 
-    public static void main(String[] args) {
-        Tree<Integer> testTree = new Tree<Integer>(10);
+		public MyComparator() {
+			this.comparator = null;
+		}
 
-        testTree.forceAdd(true, 5);
-        testTree.next(true);
-        testTree.forceAdd(true, 2);
-        testTree.forceAdd(false, 7);
+		public MyComparator(Comparator<T> comparator) {
+			this.comparator = comparator;
+		}
 
-        testTree.toRoot();
-        testTree.forceAdd(false, 11);
-        testTree.next(false);
-        testTree.forceAdd(false, 12);
-        testTree.next(false);
-        testTree.forceAdd(false, 13);
-        testTree.next(false);
-        testTree.forceAdd(false, 14);
-    }
+		public int compare(Comparable<T> object1, T object2) {
+			return object1.compareTo(object2);
+		}
 
-    private static <T> void doBalance(Tree<? extends T> tree, MyComparator<T> comparator) {
-        // TODO
-    }
+		public int compare(T object1, T object2) {
+			return comparator.compare(object1, object2);
+		}
 
-    private TreeUtil() {
-        // NO-OP
-    }
+	}
 
 }

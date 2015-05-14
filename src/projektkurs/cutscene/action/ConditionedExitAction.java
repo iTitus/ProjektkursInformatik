@@ -8,19 +8,18 @@ import projektkurs.cutscene.condition.Condition;
  */
 public class ConditionedExitAction extends Action {
 
-    /**
-     * Konstruktor.
-     *
-     * @param condition
-     *            Ausfuehrbedingung
-     */
-    public ConditionedExitAction(Condition condition) {
-        super(condition);
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param condition Ausfuehrbedingung
+	 */
+	public ConditionedExitAction(Condition condition) {
+		super(condition);
+	}
 
-    @Override
-    public void doAction(CutScene cutScene) {
-        cutScene.setFinished();
-    }
+	@Override
+	public void doAction(CutScene cutScene) {
+		cutScene.setFinished();
+	}
 
 }

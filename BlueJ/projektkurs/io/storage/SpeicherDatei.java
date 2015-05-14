@@ -8,96 +8,96 @@ import projektkurs.util.Logger;
 
 public class SpeicherDatei {
 
-    private List<SaveData> entitiesList;
-    private Feld[] felder;
-    private List<SaveData> infoList;
-    private String name;
-    private List<SaveData> triggerList;
+	private List<SaveData> entitiesList;
+	private Feld[] felder;
+	private List<SaveData> infoList;
+	private String name;
+	private List<SaveData> triggerList;
 
-    public SpeicherDatei(Feld[] felder, List<SaveData> infoList, List<SaveData> entitiesList, List<SaveData> triggerList) {
-        this.felder = felder;
-        this.infoList = infoList;
-        this.entitiesList = entitiesList;
-        this.triggerList = triggerList;
-    }
+	public SpeicherDatei(Feld[] felder, List<SaveData> infoList, List<SaveData> entitiesList, List<SaveData> triggerList) {
+		this.felder = felder;
+		this.infoList = infoList;
+		this.entitiesList = entitiesList;
+		this.triggerList = triggerList;
+	}
 
-    public List<SaveData> getEntitiesList() {
-        return entitiesList;
-    }
+	public List<SaveData> getEntitiesList() {
+		return entitiesList;
+	}
 
-    public Feld[] getFelder() {
-        return felder;
-    }
+	public void setEntitiesList(List<SaveData> entitiesList) {
+		this.entitiesList = entitiesList;
+	}
 
-    public List<SaveData> getInfoList() {
-        return infoList;
-    }
+	public Feld[] getFelder() {
+		return felder;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setFelder(Feld[] felder) {
+		this.felder = felder;
+	}
 
-    public List<SaveData> getTriggerList() {
-        return triggerList;
-    }
+	public List<SaveData> getInfoList() {
+		return infoList;
+	}
 
-    public void save(String name) {
-        this.name = name;
-        saveInfoList();
-        saveEntitiesList();
-        saveTriggerList();
-        saveFeld();
-    }
+	public void setInfoList(List<SaveData> infoList) {
+		this.infoList = infoList;
+	}
 
-    public void setEntitiesList(List<SaveData> entitiesList) {
-        this.entitiesList = entitiesList;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setFelder(Feld[] felder) {
-        this.felder = felder;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setInfoList(List<SaveData> infoList) {
-        this.infoList = infoList;
-    }
+	public List<SaveData> getTriggerList() {
+		return triggerList;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setTriggerList(List<SaveData> triggerList) {
+		this.triggerList = triggerList;
+	}
 
-    public void setTriggerList(List<SaveData> triggerList) {
-        this.triggerList = triggerList;
-    }
+	public void save(String name) {
+		this.name = name;
+		saveInfoList();
+		saveEntitiesList();
+		saveTriggerList();
+		saveFeld();
+	}
 
-    private void saveEntitiesList() {
-        saveList("entities", entitiesList);
-    }
+	private void saveEntitiesList() {
+		saveList("entities", entitiesList);
+	}
 
-    // TODO
-    @SuppressWarnings("unused")
-    private void saveFeld() {
-        String s = "";
-        for (Feld element : felder) {
-            s += element;
-        }
-    }
+	// TODO
+	@SuppressWarnings("unused")
+	private void saveFeld() {
+		String s = "";
+		for (Feld element : felder) {
+			s += element;
+		}
+	}
 
-    private void saveInfoList() {
-        saveList("info", infoList);
+	private void saveInfoList() {
+		saveList("info", infoList);
 
-    }
+	}
 
-    private void saveList(String art, List<SaveData> List) {
+	private void saveList(String art, List<SaveData> List) {
 
-        try (FileOutputStream fileOut = new FileOutputStream(art + name + ".txt"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(List);
-        } catch (Throwable t) {
-            Logger.logThrowable("Unable to save data", t);
-        }
-    }
+		try (FileOutputStream fileOut = new FileOutputStream(art + name + ".txt"); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+			out.writeObject(List);
+		} catch (Throwable t) {
+			Logger.logThrowable("Unable to save data", t);
+		}
+	}
 
-    private void saveTriggerList() {
-        saveList("trigger", triggerList);
-    }
+	private void saveTriggerList() {
+		saveList("trigger", triggerList);
+	}
 
 }

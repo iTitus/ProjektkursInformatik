@@ -13,24 +13,24 @@ import projektkurs.util.Init.State;
 @SuppressWarnings("deprecation")
 public final class CutSceneUtil {
 
-    private static BufferedImage[] TREES;
+	private static BufferedImage[] TREES;
 
-    public static BufferedImage getRandomTree() {
-        return TREES[MathUtil.nextInt(TREES.length)];
-    }
+	private CutSceneUtil() {
+	}
 
-    @Init(State.PRE)
-    public static void init() {
-        TREES = new BufferedImage[] { Images.baum1, Images.baum2, Images.baum3, Images.baum4, Images.baum5, Images.baum6, Images.baum7, Images.baum8, Images.baum9, Images.baum10, Images.baum11, Images.baum12, Images.baum13 };
-    }
+	public static BufferedImage getRandomTree() {
+		return TREES[MathUtil.nextInt(TREES.length)];
+	}
 
-    public static void registerAnimation(CutScene cutScene, int difTime, Condition condition, CutSceneObject... objects) {
-        for (int i = 0; i < objects.length - 1; i++) {
-            cutScene.registerTickAction(new ConditionedDeSpawnAction(new DelayedCondition(condition, i * 8), objects[i]));
-            cutScene.registerTickAction(new ConditionedDeSpawnAction(new DelayedCondition(condition, i * 8), objects[i + 1]));
-        }
-    }
+	@Init(State.PRE)
+	public static void init() {
+		TREES = new BufferedImage[]{Images.baum1, Images.baum2, Images.baum3, Images.baum4, Images.baum5, Images.baum6, Images.baum7, Images.baum8, Images.baum9, Images.baum10, Images.baum11, Images.baum12, Images.baum13};
+	}
 
-    private CutSceneUtil() {
-    }
+	public static void registerAnimation(CutScene cutScene, int difTime, Condition condition, CutSceneObject... objects) {
+		for (int i = 0; i < objects.length - 1; i++) {
+			cutScene.registerTickAction(new ConditionedDeSpawnAction(new DelayedCondition(condition, i * 8), objects[i]));
+			cutScene.registerTickAction(new ConditionedDeSpawnAction(new DelayedCondition(condition, i * 8), objects[i + 1]));
+		}
+	}
 }

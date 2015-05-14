@@ -7,26 +7,26 @@ import projektkurs.world.Spielfeld;
 
 public class EntityVilleCar extends EntityDialog {
 
-    public EntityVilleCar(Spielfeld map) {
-        super(map);
-    }
+	public EntityVilleCar(Spielfeld map) {
+		super(map);
+	}
 
-    public EntityVilleCar(Spielfeld map, int posX, int posY) {
-        super(map, posX, posY, 2, 4, Sprites.car_frauV);
-    }
+	public EntityVilleCar(Spielfeld map, int posX, int posY) {
+		super(map, posX, posY, 2, 4, Sprites.car_frauV);
+	}
 
-    @Override
-    public Dialog getDialog() {
+	@Override
+	public Dialog getDialog() {
 
-        if (1 << 19 == (map.getLevel().getDialogManager().getValue() & 1 << 19)) {
-            return Dialoge.LVmFrauThree;
-        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & 1 << 12 | 1 << 13 | 1 << 14)) {
-            return Dialoge.LVmFrauTwo;
-        } else if ((0b100 | 0b1000 | 1 << 4 | 1 << 5) == (map.getLevel().getDialogManager().getValue() & 0b100 | 0b1000 | 1 << 4 | 1 << 5)) {
-            return Dialoge.LVmFrauOne;
-        }
-        return Dialoge.LVmFrau;
+		if (1 << 19 == (map.getLevel().getDialogManager().getValue() & 1 << 19)) {
+			return Dialoge.LVmFrauThree;
+		} else if ((1 << 12 | 1 << 13 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & 1 << 12 | 1 << 13 | 1 << 14)) {
+			return Dialoge.LVmFrauTwo;
+		} else if ((0b100 | 0b1000 | 1 << 4 | 1 << 5) == (map.getLevel().getDialogManager().getValue() & 0b100 | 0b1000 | 1 << 4 | 1 << 5)) {
+			return Dialoge.LVmFrauOne;
+		}
+		return Dialoge.LVmFrau;
 
-    }
+	}
 
 }

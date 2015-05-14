@@ -7,54 +7,52 @@ import java.util.ArrayList;
  */
 public class Dialog {
 
-    /**
-     * Name.
-     */
-    private final String name;
-    /**
-     * Alle DialogParts in diesem Dialog.
-     */
-    private final DialogPart[] parts;
+	/**
+	 * Name.
+	 */
+	private final String name;
+	/**
+	 * Alle DialogParts in diesem Dialog.
+	 */
+	private final DialogPart[] parts;
 
-    /**
-     * Konstruktor.
-     *
-     * @param name
-     *            Name
-     * @param parts
-     *            alle DialogParts
-     */
-    public Dialog(String name, DialogPart... parts) {
-        this.name = name;
-        this.parts = parts;
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param name  Name
+	 * @param parts alle DialogParts
+	 */
+	public Dialog(String name, DialogPart... parts) {
+		this.name = name;
+		this.parts = parts;
+	}
 
-    public int getMaxDialogParts() {
-        return parts.length;
-    }
+	public int getMaxDialogParts() {
+		return parts.length;
+	}
 
-    /**
-     * Der Name des Dialogs.
-     *
-     * @return Name
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Der Name des Dialogs.
+	 *
+	 * @return Name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Alle DialogParts die sich zeigen koennen.
-     *
-     * @return alle DialogParts
-     */
-    public ArrayList<DialogPart> getShownParts() {
-        ArrayList<DialogPart> list = new ArrayList<DialogPart>();
-        for (DialogPart part : parts) {
-            if (part.shouldShowUp()) {
-                list.add(part);
-            }
-        }
-        return list;
-    }
+	/**
+	 * Alle DialogParts die sich zeigen koennen.
+	 *
+	 * @return alle DialogParts
+	 */
+	public ArrayList<DialogPart> getShownParts() {
+		ArrayList<DialogPart> list = new ArrayList<DialogPart>();
+		for (DialogPart part : parts) {
+			if (part.shouldShowUp()) {
+				list.add(part);
+			}
+		}
+		return list;
+	}
 
 }

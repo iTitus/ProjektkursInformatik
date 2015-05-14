@@ -17,80 +17,79 @@ import projektkurs.util.Pair;
  */
 public final class Configs {
 
-    public static Config generalConfig;
-    /**
-     * Die Mappings.
-     */
-    public static final HashMap<String, Config> MAPPINGS = new HashMap<String, Config>();
-    public static ConfigCategory sounds, debug, ui;
-    public static ConfigPropertyBoolean soundsMuted, debugMode, showFPSUPS;
+	/**
+	 * Die Mappings.
+	 */
+	public static final HashMap<String, Config> MAPPINGS = new HashMap<String, Config>();
+	public static Config generalConfig;
+	public static ConfigCategory sounds, debug, ui;
+	public static ConfigPropertyBoolean soundsMuted, debugMode, showFPSUPS;
 
-    /**
-     * Das Pair, das alle Konfigs enthaelt.
-     *
-     * @return Pair
-     */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.configs", new ArrayList<String>(MAPPINGS.keySet()));
-    }
+	/**
+	 * Nicht instanziierbar.
+	 */
+	private Configs() {
+		// NO-OP
+	}
 
-    /**
-     * Initialisiert alle Konfig-Optionen.
-     */
-    @Init(State.RESOURCES)
-    public static void init() {
-        generalConfig = new Config("general");
-        registerMapping(generalConfig);
+	/**
+	 * Das Pair, das alle Konfigs enthaelt.
+	 *
+	 * @return Pair
+	 */
+	public static Pair<String, List<String>> getPair() {
+		return new Pair<String, List<String>>("info.configs", new ArrayList<String>(MAPPINGS.keySet()));
+	}
 
-        sounds = new ConfigCategory("sounds", "All about sounds");
-        generalConfig.addCategory(sounds);
+	/**
+	 * Initialisiert alle Konfig-Optionen.
+	 */
+	@Init(State.RESOURCES)
+	public static void init() {
+		generalConfig = new Config("general");
+		registerMapping(generalConfig);
 
-        soundsMuted = new ConfigPropertyBoolean("soundsMuted", "Whether all sounds are muted", false);
-        sounds.addProperty(soundsMuted);
+		sounds = new ConfigCategory("sounds", "All about sounds");
+		generalConfig.addCategory(sounds);
 
-        debug = new ConfigCategory("debug", "Debug stuff");
-        generalConfig.addCategory(debug);
+		soundsMuted = new ConfigPropertyBoolean("soundsMuted", "Whether all sounds are muted", false);
+		sounds.addProperty(soundsMuted);
 
-        debugMode = new ConfigPropertyBoolean("debugMode", "Whether debugging mode is enabled", false);
-        debug.addProperty(debugMode);
+		debug = new ConfigCategory("debug", "Debug stuff");
+		generalConfig.addCategory(debug);
 
-        ui = new ConfigCategory("ui", "All about the user interface");
-        generalConfig.addCategory(ui);
+		debugMode = new ConfigPropertyBoolean("debugMode", "Whether debugging mode is enabled", false);
+		debug.addProperty(debugMode);
 
-        showFPSUPS = new ConfigPropertyBoolean("showFPSUPS", "Whether the FPS and UPS should be shown", false);
-        ui.addProperty(showFPSUPS);
+		ui = new ConfigCategory("ui", "All about the user interface");
+		generalConfig.addCategory(ui);
 
-        reloadConfigs();
-    }
+		showFPSUPS = new ConfigPropertyBoolean("showFPSUPS", "Whether the FPS and UPS should be shown", false);
+		ui.addProperty(showFPSUPS);
 
-    public static void reloadConfigs() {
-        for (Config c : MAPPINGS.values()) {
-            if (c != null) {
-                c.readConfig();
-            }
-        }
-    }
+		reloadConfigs();
+	}
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param c
-     *            Config
-     */
-    private static void registerMapping(Config c) {
-        if (c != null && !MAPPINGS.containsKey(c.getConfigName())) {
-            MAPPINGS.put(c.getConfigName(), c);
-        } else {
-            Logger.warn("Unable to register config", c);
-            throw new IllegalArgumentException("Unable to register config " + c);
-        }
-    }
+	public static void reloadConfigs() {
+		for (Config c : MAPPINGS.values()) {
+			if (c != null) {
+				c.readConfig();
+			}
+		}
+	}
 
-    /**
-     * Nicht instanziierbar.
-     */
-    private Configs() {
-        // NO-OP
-    }
+	/**
+	 * Registriert ein Mapping.
+	 *
+	 * @param c Config
+	 */
+	private static void registerMapping(Config c) {
+		if (c != null && !MAPPINGS.containsKey(c.getConfigName())) {
+			MAPPINGS.put(c.getConfigName(), c);
+		} else {
+			Logger.warn("Unable to register config", c);
+			throw new IllegalArgumentException("Unable to register config " + c);
+		}
+	}
 
 }

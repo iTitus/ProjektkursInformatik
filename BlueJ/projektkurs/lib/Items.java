@@ -18,184 +18,183 @@ import projektkurs.util.Pair;
  */
 public final class Items {
 
-    /**
-     * Die Karten
-     */
-    public static Item cards;
-    /**
-     * Das Kaugummi
-     */
-    public static Item chewingGum;
-    /**
-     * Ohrringe
-     */
-    public static Item earrings;
-    public static Item fishnet;
-    /**
-     * Faden
-     */
-    public static Item fishnetString;
-    /**
-     * Das Grammophon
-     */
-    public static Item gramophoneItem;
-    /**
-     * Gesundheitstrank.
-     */
-    public static Item healthPotion;
-    /**
-     * Item No. 42.
-     */
-    public static Item item42;
-    /**
-     * Array aller Items nach ihrer ID.
-     */
-    public static final Item[] ITEMS = new Item[Integers.MAX_ITEM_NUMBER];
-    /**
-     * Schluessel.
-     */
-    public static Item key;
-    /**
-     * Messer
-     */
-    public static Item knife;
-    /**
-     * Mappings.
-     */
-    public static final HashMap<String, Item> MAPPINGS = new HashMap<String, Item>();
-    /**
-     * Atombombe.
-     */
-    public static Item nuke;
-    public static Item stone;
-    /**
-     * Steinschleuder
-     */
-    public static Item stoneCatapult;
+	/**
+	 * Array aller Items nach ihrer ID.
+	 */
+	public static final Item[] ITEMS = new Item[Integers.MAX_ITEM_NUMBER];
+	/**
+	 * Mappings.
+	 */
+	public static final HashMap<String, Item> MAPPINGS = new HashMap<String, Item>();
+	/**
+	 * Die Karten
+	 */
+	public static Item cards;
+	/**
+	 * Das Kaugummi
+	 */
+	public static Item chewingGum;
+	/**
+	 * Ohrringe
+	 */
+	public static Item earrings;
+	public static Item fishnet;
+	/**
+	 * Faden
+	 */
+	public static Item fishnetString;
+	/**
+	 * Das Grammophon
+	 */
+	public static Item gramophoneItem;
+	/**
+	 * Gesundheitstrank.
+	 */
+	public static Item healthPotion;
+	/**
+	 * Item No. 42.
+	 */
+	public static Item item42;
+	/**
+	 * Schluessel.
+	 */
+	public static Item key;
+	/**
+	 * Messer
+	 */
+	public static Item knife;
+	/**
+	 * Atombombe.
+	 */
+	public static Item nuke;
+	public static Item stone;
+	/**
+	 * Steinschleuder
+	 */
+	public static Item stoneCatapult;
 
-    public static Item stoneCatapultwithStone;
+	public static Item stoneCatapultwithStone;
 
-    /**
-     * Der Koffer
-     */
-    public static Item suitCase;
+	/**
+	 * Der Koffer
+	 */
+	public static Item suitCase;
 
-    /**
-     * Teddybaer
-     */
-    public static Item teddydefault;
+	/**
+	 * Teddybaer
+	 */
+	public static Item teddydefault;
 
-    public static Item teddyVoodoo;
+	public static Item teddyVoodoo;
 
-    public static Item teddyWithEarrings;
+	public static Item teddyWithEarrings;
 
-    public static Item teddyWithFishnetString;
-    public static Item yoyoBroken;
+	public static Item teddyWithFishnetString;
+	public static Item yoyoBroken;
 
-    /**
-     * Das Jojo
-     */
-    public static Item yoyoFixed;
+	/**
+	 * Das Jojo
+	 */
+	public static Item yoyoFixed;
 
-    /**
-     * Das Pair, das alle Items enthaelt.
-     *
-     * @return Pair
-     */
-    public static Pair<String, List<String>> getPair() {
-        return new Pair<String, List<String>>("info.items", new ArrayList<String>(MAPPINGS.keySet()));
-    }
+	/**
+	 * Nicht instanziierbar.
+	 */
+	private Items() {
+	}
 
-    /**
-     * Initialisiert alle Items.
-     */
-    @Init(State.PRE)
-    public static void init() {
-        item42 = new BaseItem(1, "42", Sprites.item42);
-        registerItem(item42);
+	/**
+	 * Das Pair, das alle Items enthaelt.
+	 *
+	 * @return Pair
+	 */
+	public static Pair<String, List<String>> getPair() {
+		return new Pair<String, List<String>>("info.items", new ArrayList<String>(MAPPINGS.keySet()));
+	}
 
-        nuke = new ItemNuke(2);
-        registerItem(nuke);
+	/**
+	 * Initialisiert alle Items.
+	 */
+	@Init(State.PRE)
+	public static void init() {
+		item42 = new BaseItem(1, "42", Sprites.item42);
+		registerItem(item42);
 
-        key = new BaseItem(3, "key", Sprites.key);
-        registerItem(key);
+		nuke = new ItemNuke(2);
+		registerItem(nuke);
 
-        healthPotion = new ItemHealthPotion(4);
-        registerItem(healthPotion);
+		key = new BaseItem(3, "key", Sprites.key);
+		registerItem(key);
 
-        fishnetString = new BaseItem(5, "fishnetString", Sprites.fishnetString);
-        registerItem(fishnetString);
+		healthPotion = new ItemHealthPotion(4);
+		registerItem(healthPotion);
 
-        knife = new BaseItem(6, "knife", Sprites.knife);
-        registerItem(knife);
+		fishnetString = new BaseItem(5, "fishnetString", Sprites.fishnetString);
+		registerItem(fishnetString);
 
-        earrings = new BaseItem(7, "earrings", Sprites.earrings);
-        registerItem(earrings);
+		knife = new BaseItem(6, "knife", Sprites.knife);
+		registerItem(knife);
 
-        teddydefault = new BaseItem(8, "teddydefault", Sprites.teddydefault);
-        registerItem(teddydefault);
+		earrings = new BaseItem(7, "earrings", Sprites.earrings);
+		registerItem(earrings);
 
-        stoneCatapult = new BaseItem(9, "stoneCatapult", Sprites.stoneCatapult);
-        registerItem(stoneCatapult);
+		teddydefault = new BaseItem(8, "teddydefault", Sprites.teddydefault);
+		registerItem(teddydefault);
 
-        yoyoFixed = new BaseItem(10, "yoyoFixed", Sprites.yoyoFixed);
-        registerItem(yoyoFixed);
+		stoneCatapult = new BaseItem(9, "stoneCatapult", Sprites.stoneCatapult);
+		registerItem(stoneCatapult);
 
-        suitCase = new BaseItem(11, "suitCase", Sprites.suitCase);
-        registerItem(suitCase);
+		yoyoFixed = new BaseItem(10, "yoyoFixed", Sprites.yoyoFixed);
+		registerItem(yoyoFixed);
 
-        gramophoneItem = new BaseItem(12, "gramophoneItem", Sprites.gramophoneItem);
-        registerItem(gramophoneItem);
+		suitCase = new BaseItem(11, "suitCase", Sprites.suitCase);
+		registerItem(suitCase);
 
-        chewingGum = new BaseItem(13, "chewingGum", Sprites.chewingGum);
-        registerItem(chewingGum);
+		gramophoneItem = new BaseItem(12, "gramophoneItem", Sprites.gramophoneItem);
+		registerItem(gramophoneItem);
 
-        cards = new BaseItem(14, "cards", Sprites.cards);
-        registerItem(cards);
+		chewingGum = new BaseItem(13, "chewingGum", Sprites.chewingGum);
+		registerItem(chewingGum);
 
-        teddyWithEarrings = new BaseItem(15, "teddyWithEarrings", Sprites.teddyWithEarrings);
-        registerItem(teddyWithEarrings);
+		cards = new BaseItem(14, "cards", Sprites.cards);
+		registerItem(cards);
 
-        teddyWithFishnetString = new BaseItem(16, "teddyWithFishnetString", Sprites.teddyWithFishnetString);
-        registerItem(teddyWithFishnetString);
+		teddyWithEarrings = new BaseItem(15, "teddyWithEarrings", Sprites.teddyWithEarrings);
+		registerItem(teddyWithEarrings);
 
-        fishnet = new BaseItem(17, "fishnet", Sprites.fishnet);
-        registerItem(fishnet);
+		teddyWithFishnetString = new BaseItem(16, "teddyWithFishnetString", Sprites.teddyWithFishnetString);
+		registerItem(teddyWithFishnetString);
 
-        stone = new BaseItem(18, "stone", Sprites.stone);
-        registerItem(stone);
+		fishnet = new BaseItem(17, "fishnet", Sprites.fishnet);
+		registerItem(fishnet);
 
-        teddyVoodoo = new BaseItem(19, "teddyVoodoo", Sprites.teddyVoodoo);
-        registerItem(teddyVoodoo);
+		stone = new BaseItem(18, "stone", Sprites.stone);
+		registerItem(stone);
 
-        stoneCatapultwithStone = new BaseItem(20, "stoneCatapultwithStone", Sprites.stoneCatapultwithStone);
-        registerItem(stoneCatapultwithStone);
+		teddyVoodoo = new BaseItem(19, "teddyVoodoo", Sprites.teddyVoodoo);
+		registerItem(teddyVoodoo);
 
-        yoyoBroken = new BaseItem(21, "yoyoBroken", Sprites.yoyoBroken);
-        registerItem(yoyoBroken);
+		stoneCatapultwithStone = new BaseItem(20, "stoneCatapultwithStone", Sprites.stoneCatapultwithStone);
+		registerItem(stoneCatapultwithStone);
 
-    }
+		yoyoBroken = new BaseItem(21, "yoyoBroken", Sprites.yoyoBroken);
+		registerItem(yoyoBroken);
 
-    /**
-     * Registriert ein Mapping.
-     *
-     * @param i
-     *            Item
-     */
-    private static void registerItem(Item i) {
-        if (i != null && !MAPPINGS.containsKey(i.getInternalName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {
-            MAPPINGS.put(i.getInternalName(), i);
-            ITEMS[i.getID()] = i;
-        } else {
-            Logger.warn("Unable to register Item", i);
-            throw new IllegalArgumentException("Unable to register Item " + i);
-        }
-    }
+	}
 
-    /**
-     * Nicht instanziierbar.
-     */
-    private Items() {
-    }
+	/**
+	 * Registriert ein Mapping.
+	 *
+	 * @param i Item
+	 */
+	private static void registerItem(Item i) {
+		if (i != null && !MAPPINGS.containsKey(i.getInternalName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {
+			MAPPINGS.put(i.getInternalName(), i);
+			ITEMS[i.getID()] = i;
+		} else {
+			Logger.warn("Unable to register Item", i);
+			throw new IllegalArgumentException("Unable to register Item " + i);
+		}
+	}
 
 }

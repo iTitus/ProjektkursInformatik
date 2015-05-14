@@ -10,22 +10,19 @@ import projektkurs.cutscene.object.CutSceneObject;
  */
 public class RelativeWindowPositionCondition extends PositionCondition {
 
-    /**
-     * Konstruktor.
-     *
-     * @param object
-     *            CutSceneObject, dessen Position ueberprueft werden sollo
-     * @param x
-     *            X-Koordinate
-     * @param y
-     *            Y-Koordinate
-     */
-    public RelativeWindowPositionCondition(CutSceneObject object, int x, int y) {
-        super(object, x, y);
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param object CutSceneObject, dessen Position ueberprueft werden sollo
+	 * @param x      X-Koordinate
+	 * @param y      Y-Koordinate
+	 */
+	public RelativeWindowPositionCondition(CutSceneObject object, int x, int y) {
+		super(object, x, y);
+	}
 
-    @Override
-    public boolean isTrue(Action action, CutScene cutScene) {
-        return getCutSceneObject().getPosX() - CutSceneManager.getCutSceneRenderHelper().getSightX() == getX() && getCutSceneObject().getPosY() - CutSceneManager.getCutSceneRenderHelper().getSightY() == getY();
-    }
+	@Override
+	public boolean isTrue(Action action, CutScene cutScene) {
+		return getCutSceneObject().getPosX() - CutSceneManager.getCutSceneRenderHelper().getSightX() == getX() && getCutSceneObject().getPosY() - CutSceneManager.getCutSceneRenderHelper().getSightY() == getY();
+	}
 }

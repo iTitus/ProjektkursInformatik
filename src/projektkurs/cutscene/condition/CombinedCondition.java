@@ -5,19 +5,18 @@ package projektkurs.cutscene.condition;
  */
 public abstract class CombinedCondition extends Condition {
 
-    /**
-     * Die Conditions.
-     */
-    protected final Condition[] conditions;
+	/**
+	 * Die Conditions.
+	 */
+	protected final Condition[] conditions;
 
-    /**
-     * Konstruktor.
-     *
-     * @param conditions
-     *            Zu pruefende Conditions.
-     */
-    public CombinedCondition(Condition... conditions) {
-        this.conditions = conditions;
-    }
+	/**
+	 * Konstruktor.
+	 *
+	 * @param conditions Zu pruefende Conditions.
+	 */
+	public CombinedCondition(Condition... conditions) {
+		this.conditions = conditions;
+	}
 
 }
