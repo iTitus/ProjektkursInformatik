@@ -318,7 +318,7 @@ public final class Main {
 	/**
 	 * Startet das gegebene Level und resettet es dabei.
 	 *
-	 * @param Level
+	 * @param l
 	 */
 	public static void startLevel(Level l) {
 		if (l != null) {
