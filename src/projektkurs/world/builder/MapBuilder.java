@@ -799,7 +799,7 @@ public final class MapBuilder {
 			}
 		}
 		/*
-         * Ecke Eingangsweg/Unterer Weg
+		 * Ecke Eingangsweg/Unterer Weg
          */
 		for (int x = 12; x < 14; x++) {
 			for (int y = 24; y < 26; y++) {

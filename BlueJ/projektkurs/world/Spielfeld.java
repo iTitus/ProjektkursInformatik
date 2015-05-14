@@ -8,6 +8,8 @@ import projektkurs.entity.Entity;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
 import projektkurs.level.Level;
+import projektkurs.lib.Entities;
+import projektkurs.lib.ExtraInformationen;
 import projektkurs.lib.Integers;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Sprites;
@@ -25,31 +27,31 @@ import projektkurs.util.RenderUtil;
  */
 public class Spielfeld implements IUpdatable, ISaveable {
 
+	private final Level level;
 	/**
 	 * Alle Entities.
 	 */
-	private final List<Entity> entities;
+	private List<Entity> entities;
 	/**
 	 * Alle ExtraInformationen.
 	 */
-	private final List<ExtraInformation> extras;
+	private List<ExtraInformation> extras;
 	/**
 	 * Alle Raster.
 	 */
-	private final int[] raster;
+	private int[] raster;
 	/**
 	 * Spielfeldbreite.
 	 */
-	private final int sizeX;
+	private int sizeX;
 	/**
 	 * Spielfeldhoehe.
 	 */
-	private final int sizeY;
+	private int sizeY;
 	/**
 	 * Der Storymanger.
 	 */
-	private final StoryManager storyManager;
-	private Level level;
+	private StoryManager storyManager;
 	/**
 	 * X-Koordinate des Spielererscheinungsortes.
 	 */
@@ -59,6 +61,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 	 */
 	private int spawnY;
 
+	public Spielfeld(Level level) {
+		this.level = level;
+	}
+
 	/**
 	 * Konstrukor.
 	 *
@@ -67,7 +73,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
 	 * @param spawnX X-Koordinate des Spielererscheinungsortes
 	 * @param spawnY Y-Koordinate des Spielererscheinungsortes
 	 */
-	public Spielfeld(int sizeX, int sizeY, int spawnX, int spawnY) {
+	public Spielfeld(Level level, int sizeX, int sizeY, int spawnX, int spawnY) {
+		this.level = level;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		this.spawnX = MathUtil.clampToArray(spawnX, sizeX);
@@ -88,8 +95,9 @@ public class Spielfeld implements IUpdatable, ISaveable {
 	 *
 	 * @return Spielfeld
 	 */
+
 	public Spielfeld copy() {
-		Spielfeld world = new Spielfeld(sizeX, sizeY, spawnX, spawnY);
+		Spielfeld world = new Spielfeld(level, sizeX, sizeY, spawnX, spawnY);
 
 		for (int y = 0; y < sizeY; y++) {
 			for (int x = 0; x < sizeX; x++) {
@@ -192,10 +200,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 		return level;
 	}
 
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
 	/**
 	 * Breite der Map.
 	 *
@@ -289,11 +293,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 			return raster[x + y * sizeX] > 0;
 		}
 		return false;
-	}
-
-	@Override
-	public void load(SaveData data) {
-		// TODO
 	}
 
 	/**
@@ -413,8 +412,72 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
 	}
 
+
+	@Override
+	public void load(SaveData data) {
+		sizeX = data.getInteger("sizeX");
+		sizeY = data.getInteger("sizeY");
+		spawnX = data.getInteger("spawnX");
+		spawnY = data.getInteger("spawnY");
+		SaveData rasterData = data.getSaveData("raster");
+		raster = new int[sizeX * sizeY];
+		for (int i = 0; i < raster.length; i++) {
+			raster[i] = rasterData.getInteger("raster" + i);
+		}
+		SaveData entityData = data.getSaveData("entities");
+		entities = new ArrayList<Entity>();
+		int entityCount = entityData.getInteger("entityCount");
+		for (int i = 0; i < entityCount; i++) {
+			Entity e = Entities.loadEntity(this, entityData.getSaveData("entity" + i));
+			if (e != null) {
+				entities.add(e);
+			}
+		}
+		SaveData extraData = data.getSaveData("extras");
+		extras = new ArrayList<ExtraInformation>();
+		int extraCount = extraData.getInteger("extraCount");
+		for (int i = 0; i < extraCount; i++) {
+			ExtraInformation extra = ExtraInformationen.loadExtraInformation(this, extraData.getSaveData("extra" + i));
+			if (extra != null) {
+				extras.add(extra);
+			}
+		}
+		storyManager = new StoryManager();
+		storyManager.load(data.getSaveData("storyManager"));
+	}
+
 	@Override
 	public void write(SaveData data) {
-		// TODO
+		data.set("sizeX", sizeX);
+		data.set("sizeY", sizeY);
+		data.set("spawnX", spawnX);
+		data.set("spawnY", spawnY);
+		SaveData rasterData = new SaveData();
+		for (int i = 0; i < raster.length; i++) {
+			rasterData.set("raster" + i, raster[i]);
+		}
+		data.set("raster", rasterData);
+		SaveData entityData = new SaveData();
+		entityData.set("entityCount", entities.size());
+		for (int i = 0; i < entities.size(); i++) {
+			Entity e = entities.get(i);
+			if (e != null) {
+				entityData.set("entity" + i, Entities.writeEntity(e));
+			}
+		}
+		data.set("entities", entityData);
+		SaveData extraData = new SaveData();
+		extraData.set("extraCount", extras.size());
+		for (int i = 0; i < extras.size(); i++) {
+			ExtraInformation extra = extras.get(i);
+			if (extra != null) {
+				extraData.set("extra" + i, ExtraInformationen.writeExtraInformation(extra));
+			}
+		}
+		data.set("extras", extraData);
+		SaveData storyManagerData = new SaveData();
+		storyManager.write(storyManagerData);
+		data.set("storyManager", storyManager);
 	}
+
 }

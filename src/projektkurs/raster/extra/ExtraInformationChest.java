@@ -16,6 +16,10 @@ public class ExtraInformationChest extends ExtraInformation {
 	 */
 	private Inventory inventory;
 
+	public ExtraInformationChest(Spielfeld map) {
+		super(map);
+	}
+
 	/**
 	 * Konstruktor.
 	 *

@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import projektkurs.io.storage.ISaveable;
+import projektkurs.io.storage.SaveData;
 import projektkurs.story.trigger.Trigger;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
@@ -15,7 +17,7 @@ import projektkurs.util.MethodInvoker;
 /**
  * Der Storymanager.
  */
-public class StoryManager implements IUpdatable {
+public class StoryManager implements IUpdatable, ISaveable {
 
 	/**
 	 * Alle Trigger.
@@ -91,7 +93,15 @@ public class StoryManager implements IUpdatable {
 			triggerMap.remove(toRemove);
 		}
 		triggerToRemove.clear();
-
 	}
 
+	@Override
+	public void write(SaveData data) {
+		//TODO
+	}
+
+	@Override
+	public void load(SaveData data) {
+		//TODO
+	}
 }

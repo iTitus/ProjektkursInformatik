@@ -3,6 +3,7 @@ package projektkurs.lib;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import projektkurs.io.storage.SaveData;
 import projektkurs.raster.extra.ExtraInformation;
@@ -13,6 +14,7 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
+import projektkurs.world.Spielfeld;
 
 /**
  * Alle ExtraInformationstypen.
@@ -22,7 +24,7 @@ public final class ExtraInformationen {
 	/**
 	 * Mappings.
 	 */
-	public static final HashMap<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
+	public static final Map<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
 
 	/**
 	 * Nicht instanziierbar.
@@ -52,13 +54,14 @@ public final class ExtraInformationen {
 	/**
 	 * Laedt einen ExtraInformation aus einem SaveData-Objekt.
 	 *
+	 * @param map  Spielfeld
 	 * @param data SaveData
 	 * @return ExtraInformation
 	 */
-	public static ExtraInformation loadExtraInformation(SaveData data) {
+	public static ExtraInformation loadExtraInformation(Spielfeld map, SaveData data) {
 		ExtraInformation extra = null;
 		try {
-			extra = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.EXTRA_ID)));
+			extra = ReflectionUtil.newInstance(MAPPINGS.get(data.getString(Strings.EXTRA_ID)), map);
 			extra.load(data);
 		} catch (Throwable t) {
 			Logger.logThrowable("Unable to load ExtraInformation from " + data, t);

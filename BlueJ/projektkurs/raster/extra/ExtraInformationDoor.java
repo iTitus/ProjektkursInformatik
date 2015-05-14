@@ -27,6 +27,10 @@ public class ExtraInformationDoor extends ExtraInformation {
 	 */
 	private int openingKey;
 
+	public ExtraInformationDoor(Spielfeld map) {
+		super(map);
+	}
+
 	/**
 	 * Konstruktor.
 	 *

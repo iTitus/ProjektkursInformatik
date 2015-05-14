@@ -20,19 +20,23 @@ public class Level implements IUpdatable, ISaveable {
 	/**
 	 * Der Dialogmanger.
 	 */
-	private final DialogManager dialogManager;
+	private DialogManager dialogManager;
 	/**
 	 * Alle Spielfelder.
 	 */
-	private final Spielfeld[] maps;
+	private Spielfeld[] maps;
 	/**
 	 * Name dieses Levels.
 	 */
-	private final String name;
+	private String name;
 	/**
 	 * Aktueller Spielfeld-Index.
 	 */
 	private int currentMap;
+
+	public Level() {
+		//NO-OP
+	}
 
 	/**
 	 * Konstruktor.
@@ -42,13 +46,6 @@ public class Level implements IUpdatable, ISaveable {
 	 */
 	public Level(String name, Spielfeld... maps) {
 		this.maps = maps;
-		if (maps != null) {
-			for (Spielfeld map : maps) {
-				if (map != null) {
-					map.setLevel(this);
-				}
-			}
-		}
 		currentMap = 0;
 		this.name = name;
 		dialogManager = new DialogManager();
@@ -137,13 +134,21 @@ public class Level implements IUpdatable, ISaveable {
 
 	@Override
 	public void load(SaveData data) {
-		// TODO
+		name = data.getString("name");
+		currentMap = data.getInteger("currentMap");
+		maps = new Spielfeld[data.getInteger("mapCount")];
+		for (int i = 0; i < maps.length; i++) {
+			maps[i] = new Spielfeld(this);
+			maps[i].load(data.getSaveData("map" + i));
+		}
+		dialogManager = new DialogManager();
+		dialogManager.load(data.getSaveData("dialogManager"));
 	}
 
 	/**
 	 * Rendert das Level.
 	 *
-	 * @param g Screen
+	 * @param s Screen
 	 */
 	public void render(Screen s) {
 		if (getMap() != null) {
@@ -160,6 +165,16 @@ public class Level implements IUpdatable, ISaveable {
 
 	@Override
 	public void write(SaveData data) {
-		// TODO
+		data.set("name", name);
+		data.set("currentMap", currentMap);
+		data.set("mapCount", maps.length);
+		for (int i = 0; i < maps.length; i++) {
+			SaveData saveData = new SaveData();
+			maps[i].write(saveData);
+			data.set("map" + i, saveData);
+		}
+		SaveData dialogManagerData = new SaveData();
+		dialogManager.write(dialogManagerData);
+		data.set("dialogManager", dialogManagerData);
 	}
 }

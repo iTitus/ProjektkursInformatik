@@ -18,6 +18,10 @@ public class ExtraInformationFire extends ExtraInformation {
 	 */
 	private AbstractRaster background;
 
+	public ExtraInformationFire(Spielfeld map) {
+		super(map);
+	}
+
 	/**
 	 * Konstruktor.
 	 *

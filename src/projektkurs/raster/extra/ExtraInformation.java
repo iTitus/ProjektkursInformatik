@@ -25,6 +25,10 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
 	 */
 	protected int posY;
 
+	public ExtraInformation(Spielfeld map) {
+		this.map = map;
+	}
+
 	/**
 	 * Konstruktor.
 	 *
