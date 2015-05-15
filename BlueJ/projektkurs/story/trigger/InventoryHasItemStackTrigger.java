@@ -1,17 +1,18 @@
 package projektkurs.story.trigger;
 
 import projektkurs.Main;
+import projektkurs.io.storage.SaveData;
 import projektkurs.item.ItemStack;
 
 /**
  * Prueft, ob sich ein bestimmter ItemStack im Spielerinventar befindet.
  */
-public class InventoryHasItemStackTrigger extends Trigger {
+public class InventoryHasItemStackTrigger extends AbstractTrigger {
 
 	/**
 	 * Der ItemStack.
 	 */
-	private final ItemStack stack;
+	private ItemStack stack;
 
 	/**
 	 * Konstruktor.
@@ -27,4 +28,15 @@ public class InventoryHasItemStackTrigger extends Trigger {
 		return Main.getPlayer().getInventory().getNumberOfItemsInInventory(stack) >= stack.getStackSize();
 	}
 
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set("stack", stack.write());
+	}
+
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		stack = ItemStack.load(data.getSaveData("stack"));
+	}
 }

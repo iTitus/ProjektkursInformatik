@@ -9,7 +9,7 @@ import java.util.Set;
 
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
-import projektkurs.story.trigger.Trigger;
+import projektkurs.story.trigger.AbstractTrigger;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MethodInvoker;
@@ -22,23 +22,23 @@ public class StoryManager implements IUpdatable, ISaveable {
 	/**
 	 * Alle Trigger.
 	 */
-	private final Map<Trigger, MethodInvoker> triggerMap;
+	private final Map<AbstractTrigger, MethodInvoker> triggerMap;
 	/**
 	 * Hinzuzufuegende Trigger.
 	 */
-	private final Map<Trigger, MethodInvoker> triggerToAddMap;
+	private final Map<AbstractTrigger, MethodInvoker> triggerToAddMap;
 	/**
 	 * Zu loeschende Trigger.
 	 */
-	private final Set<Trigger> triggerToRemove;
+	private final Set<AbstractTrigger> triggerToRemove;
 
 	/**
 	 * Konstruktor.
 	 */
 	public StoryManager() {
-		triggerMap = new HashMap<Trigger, MethodInvoker>();
-		triggerToAddMap = new HashMap<Trigger, MethodInvoker>();
-		triggerToRemove = new HashSet<Trigger>();
+		triggerMap = new HashMap<AbstractTrigger, MethodInvoker>();
+		triggerToAddMap = new HashMap<AbstractTrigger, MethodInvoker>();
+		triggerToRemove = new HashSet<AbstractTrigger>();
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class StoryManager implements IUpdatable, ISaveable {
 		return true;
 	}
 
-	public Map<Trigger, MethodInvoker> getTriggerMap() {
+	public Map<AbstractTrigger, MethodInvoker> getTriggerMap() {
 		return triggerMap;
 	}
 
@@ -57,7 +57,7 @@ public class StoryManager implements IUpdatable, ISaveable {
 	 * @param m       auszufuehrende Methode
 	 * @param objects eventuelle Parameter
 	 */
-	public void registerTrigger(Trigger trigger, Method m, Object... objects) {
+	public void registerTrigger(AbstractTrigger trigger, Method m, Object... objects) {
 		if (triggerMap.containsKey(trigger)) {
 			Logger.logThrowable("Unable to register Trigger '" + trigger.getClass() + "'", new IllegalArgumentException("'" + trigger.getClass() + "' is already registered"));
 		} else {
@@ -70,7 +70,7 @@ public class StoryManager implements IUpdatable, ISaveable {
 	 *
 	 * @param trigger zu entfernender Trigger.
 	 */
-	public void removeTrigger(Trigger trigger) {
+	public void removeTrigger(AbstractTrigger trigger) {
 		triggerToRemove.add(trigger);
 	}
 
@@ -81,7 +81,7 @@ public class StoryManager implements IUpdatable, ISaveable {
 	public void update() {
 		triggerMap.putAll(triggerToAddMap);
 		triggerToAddMap.clear();
-		for (Entry<Trigger, MethodInvoker> entry : triggerMap.entrySet()) {
+		for (Entry<AbstractTrigger, MethodInvoker> entry : triggerMap.entrySet()) {
 			if (entry.getKey().isTriggerActive()) {
 				entry.getValue().invoke();
 				if (entry.getKey().shouldRemove()) {
@@ -89,7 +89,7 @@ public class StoryManager implements IUpdatable, ISaveable {
 				}
 			}
 		}
-		for (Trigger toRemove : triggerToRemove) {
+		for (AbstractTrigger toRemove : triggerToRemove) {
 			triggerMap.remove(toRemove);
 		}
 		triggerToRemove.clear();

@@ -1,16 +1,30 @@
 package projektkurs.story.trigger;
 
-public class InvertedTrigger extends Trigger {
+import projektkurs.io.storage.SaveData;
+import projektkurs.lib.Trigger;
 
-	private final Trigger t;
+public class InvertedTrigger extends AbstractTrigger {
 
-	public InvertedTrigger(Trigger t) {
-		this.t = t;
+	private AbstractTrigger trigger;
+
+	public InvertedTrigger(AbstractTrigger trigger) {
+		this.trigger = trigger;
 	}
 
 	@Override
 	public boolean isTriggerActive() {
-		return !t.isTriggerActive();
+		return !trigger.isTriggerActive();
 	}
 
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set("trigger", Trigger.writeTrigger(trigger));
+	}
+
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		trigger = Trigger.loadTrigger(data.getSaveData("trigger"));
+	}
 }

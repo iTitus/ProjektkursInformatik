@@ -14,6 +14,7 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
+import projektkurs.util.StringUtil;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -25,6 +26,7 @@ public final class ExtraInformationen {
 	 * Mappings.
 	 */
 	public static final Map<String, Class<? extends ExtraInformation>> MAPPINGS = new HashMap<String, Class<? extends ExtraInformation>>();
+	public static final Map<Class<? extends ExtraInformation>, String> BACK_MAPPINGS = new HashMap<Class<? extends ExtraInformation>, String>();
 
 	/**
 	 * Nicht instanziierbar.
@@ -46,9 +48,9 @@ public final class ExtraInformationen {
 	 */
 	@Init
 	public static void init() {
-		registerExtraInformation(ExtraInformationDoor.class);
-		registerExtraInformation(ExtraInformationFire.class);
-		registerExtraInformation(ExtraInformationChest.class);
+		registerExtraInformation(ExtraInformationDoor.class, "door");
+		registerExtraInformation(ExtraInformationFire.class, "fire");
+		registerExtraInformation(ExtraInformationChest.class, "chest");
 	}
 
 	/**
@@ -91,9 +93,10 @@ public final class ExtraInformationen {
 	 *
 	 * @param cls ExtraInformations-Klasse
 	 */
-	private static void registerExtraInformation(Class<? extends ExtraInformation> cls) {
-		if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
-			MAPPINGS.put(cls.getName(), cls);
+	private static void registerExtraInformation(Class<? extends ExtraInformation> cls, String id) {
+		if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {
+			MAPPINGS.put(id, cls);
+			BACK_MAPPINGS.put(cls, id);
 		} else {
 			Logger.warn("Unable to register ExtraInformation", cls);
 			throw new IllegalArgumentException("Unable to register ExtraInformation " + cls);

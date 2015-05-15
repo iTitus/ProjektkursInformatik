@@ -10,13 +10,13 @@ public class CombinedAndTrigger extends CombinedTrigger {
 	 *
 	 * @param trigger die Trigger
 	 */
-	public CombinedAndTrigger(Trigger... trigger) {
+	public CombinedAndTrigger(AbstractTrigger... trigger) {
 		super(trigger);
 	}
 
 	@Override
 	public boolean isTriggerActive() {
-		for (Trigger trigger : triggers) {
+		for (AbstractTrigger trigger : triggers) {
 			if (!trigger.isTriggerActive()) {
 				return false;
 			}

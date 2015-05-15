@@ -32,11 +32,6 @@ public class ExtraInformationChest extends ExtraInformation {
 		inventory = new Inventory(Integers.CHEST_SIZE);
 	}
 
-	@Override
-	public String getInternalName() {
-		return "chest";
-	}
-
 	/**
 	 * Das Inventar der Kiste.
 	 *
@@ -49,7 +44,7 @@ public class ExtraInformationChest extends ExtraInformation {
 	/**
 	 * Setzt das Inventar der Kiste.
 	 *
-	 * @param inventar Inventar
+	 * @param inventory Inventar
 	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;

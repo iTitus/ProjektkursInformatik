@@ -14,9 +14,9 @@ import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
 import projektkurs.entity.EntityItem;
 import projektkurs.item.ItemStack;
+import projektkurs.story.trigger.AbstractTrigger;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.InvertedTrigger;
-import projektkurs.story.trigger.Trigger;
 import projektkurs.util.I18n;
 import projektkurs.util.ReflectionUtil;
 import projektkurs.world.Spielfeld;
@@ -41,7 +41,7 @@ public final class Scripts {
 		CutSceneManager.startCutScene(CutScenes.one);
 	}
 
-	public static void cutscenestart(CutScene c, Spielfeld map, Trigger t) {
+	public static void cutscenestart(CutScene c, Spielfeld map, AbstractTrigger t) {
 		CutSceneManager.startCutScene(c);
 		map.getStoryManager().removeTrigger(t);
 	}
@@ -92,7 +92,7 @@ public final class Scripts {
 
 			Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 60, 48, new ItemStack(Items.chewingGum, 1, 100)));
 			Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), 60, 49, new ItemStack(Items.fishnet, 1, 100)));
-			Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
+			Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(58, 68, 6, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), 1, new AreaTrigger(58, 68, 6, 1), new AreaTrigger(58, 69, 6, 1));
 			fisher = true;
 		}
 	}
@@ -141,7 +141,7 @@ public final class Scripts {
 		Main.getLevel().getMap().setSpawn(x, y);
 	}
 
-	public static void setSwitchMapTrigger(int i, Trigger t) {
+	public static void setSwitchMapTrigger(int i, AbstractTrigger t) {
 		Main.getLevel().getMap().getStoryManager().registerTrigger(t, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), i);
 	}
 
@@ -153,8 +153,8 @@ public final class Scripts {
 	 * @param t2 Stelle von SwitchMap
 	 */
 
-	public static void setSwitchMapTrigger(int i, Trigger t1, Trigger t2) {
-		Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, Trigger.class, Trigger.class), i, t1, t2);
+	public static void setSwitchMapTrigger(int i, AbstractTrigger t1, AbstractTrigger t2) {
+		Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), i, t1, t2);
 	}
 
 	public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
@@ -198,8 +198,8 @@ public final class Scripts {
 	 * @param t1 Uebergangstrigger
 	 * @param t2 Trigger fuer Ubergangstrigger
 	 */
-	public static void switchMap(int i, Trigger t1, Trigger t2) {
-		Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), i, t1, t2);
+	public static void switchMap(int i, AbstractTrigger t1, AbstractTrigger t2) {
+		Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), i, t1, t2);
 		Main.getLevel().setMap(i);
 	}
 

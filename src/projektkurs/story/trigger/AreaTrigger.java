@@ -1,28 +1,29 @@
 package projektkurs.story.trigger;
 
 import projektkurs.Main;
+import projektkurs.io.storage.SaveData;
 
 /**
  * Prueft, ob sich der Spieler in einem gegebenen Rechteck befindet.
  */
-public class AreaTrigger extends Trigger {
+public class AreaTrigger extends AbstractTrigger {
 
 	/**
 	 * X-Koordinate.
 	 */
-	private final int posX;
+	private int posX;
 	/**
 	 * Y-Koordinate.
 	 */
-	private final int posY;
+	private int posY;
 	/**
 	 * Breite.
 	 */
-	private final int sizeX;
+	private int sizeX;
 	/**
 	 * Hoehe.
 	 */
-	private final int sizeY;
+	private int sizeY;
 
 	/**
 	 * Konstruktor.
@@ -44,4 +45,21 @@ public class AreaTrigger extends Trigger {
 		return Main.getPlayer().isInside(posX, posY, sizeX, sizeY);
 	}
 
+	@Override
+	public void write(SaveData data) {
+		super.write(data);
+		data.set("posX", posX);
+		data.set("posY", posY);
+		data.set("sizeX", sizeX);
+		data.set("sizeY", sizeY);
+	}
+
+	@Override
+	public void load(SaveData data) {
+		super.load(data);
+		posX = data.getInteger("posX");
+		posY = data.getInteger("posX");
+		sizeX = data.getInteger("sizeX");
+		sizeY = data.getInteger("sizeY");
+	}
 }

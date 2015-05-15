@@ -61,11 +61,6 @@ public class ExtraInformationDoor extends ExtraInformation {
 		this.direction = direction;
 	}
 
-	@Override
-	public String getInternalName() {
-		return "door";
-	}
-
 	/**
 	 * Das Bild.
 	 *

@@ -58,11 +58,6 @@ public class ExtraInformationFire extends ExtraInformation {
 	}
 
 	@Override
-	public String getInternalName() {
-		return "fire";
-	}
-
-	@Override
 	public void load(SaveData data) {
 		super.load(data);
 		background = Raster.RASTER[data.getInteger(Strings.EXTRA_RASTER)];

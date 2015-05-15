@@ -2,6 +2,7 @@ package projektkurs.raster.extra;
 
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
+import projektkurs.lib.ExtraInformationen;
 import projektkurs.lib.Strings;
 import projektkurs.util.IHasPosition;
 import projektkurs.util.IUpdatable;
@@ -50,7 +51,9 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
 	 *
 	 * @return Interner Name
 	 */
-	public abstract String getInternalName();
+	public final String getInternalName() {
+		return ExtraInformationen.BACK_MAPPINGS.get(getClass());
+	}
 
 	/**
 	 * Das Spielfeld.

@@ -24,11 +24,11 @@ import projektkurs.raster.extra.ExtraInformation;
 import projektkurs.raster.extra.ExtraInformationChest;
 import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.story.StoryManager;
+import projektkurs.story.trigger.AbstractTrigger;
 import projektkurs.story.trigger.AreaTrigger;
 import projektkurs.story.trigger.CombinedAndTrigger;
 import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
-import projektkurs.story.trigger.Trigger;
 import projektkurs.util.Direction;
 import projektkurs.util.MapUtil;
 import projektkurs.util.MathUtil;
@@ -617,7 +617,7 @@ public final class MapBuilder {
 
 		st.registerTrigger(new PosTrigger(10, 26), ReflectionUtil.getMethod(Scripts.class, "cutsceneOne"));
 
-		Trigger setSpawn = new AreaTrigger(56, 67, 10, 1);
+		AbstractTrigger setSpawn = new AreaTrigger(56, 67, 10, 1);
 		st.registerTrigger(setSpawn, ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 60, 69);
 
 	}
@@ -1142,7 +1142,7 @@ public final class MapBuilder {
 		// ENDE Lvl1 Map1
 		StoryManager st = map.getStoryManager();
 
-		st.registerTrigger(new AreaTrigger(10, 1, 2, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, Trigger.class, Trigger.class), 0, new AreaTrigger(10, 1, 2, 1), new AreaTrigger(10, 0, 2, 1));
+		st.registerTrigger(new AreaTrigger(10, 1, 2, 1), ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), 0, new AreaTrigger(10, 1, 2, 1), new AreaTrigger(10, 0, 2, 1));
 	}
 
 	private static void setStreet(int x, int y, Spielfeld map) {

@@ -27,6 +27,7 @@ import projektkurs.util.Init;
 import projektkurs.util.Logger;
 import projektkurs.util.Pair;
 import projektkurs.util.ReflectionUtil;
+import projektkurs.util.StringUtil;
 import projektkurs.world.Spielfeld;
 
 /**
@@ -133,10 +134,10 @@ public final class Entities {
 	 *
 	 * @param cls Entity-Klasse
 	 */
-	private static void registerEntity(Class<? extends Entity> cls, String name) {
-		if (cls != null && !MAPPINGS.containsKey(cls.getName())) {
-			MAPPINGS.put(name, cls);
-			BACK_MAPPINGS.put(cls, name);
+	private static void registerEntity(Class<? extends Entity> cls, String id) {
+		if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {
+			MAPPINGS.put(id, cls);
+			BACK_MAPPINGS.put(cls, id);
 		} else {
 			Logger.warn("Unable to register Entity", cls);
 			throw new IllegalArgumentException("Unable to register Entity " + cls);
