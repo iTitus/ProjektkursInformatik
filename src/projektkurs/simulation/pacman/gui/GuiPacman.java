@@ -6,19 +6,19 @@ import projektkurs.util.RenderUtil;
 
 public class GuiPacman extends Gui {
 
-	private ElementPacmanBoard elementPacmanBoard;
+    private ElementPacmanBoard elementPacmanBoard;
 
-	@Override
-	public void initGui() {
-		super.initGui();
-		elementPacmanBoard = new ElementPacmanBoard(64, 64, 28, 31, 0);
-		addElement(elementPacmanBoard);
-	}
+    @Override
+    public void initGui() {
+        super.initGui();
+        elementPacmanBoard = new ElementPacmanBoard(64, 64, 28, 31, 0);
+        addElement(elementPacmanBoard);
+    }
 
-	@Override
-	public void render(Screen screen) {
-		RenderUtil.drawDefaultBackground(screen);
-		super.render(screen);
-	}
+    @Override
+    public void render(Screen screen) {
+        RenderUtil.drawDefaultBackground(screen);
+        super.render(screen);
+    }
 
 }

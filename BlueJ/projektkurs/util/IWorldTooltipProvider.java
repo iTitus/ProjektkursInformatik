@@ -6,6 +6,6 @@ import projektkurs.world.Spielfeld;
 
 public interface IWorldTooltipProvider {
 
-	void addTooltip(Spielfeld map, int x, int y, List<String> tooltip);
+    void addTooltip(Spielfeld map, int x, int y, List<String> tooltip);
 
 }

@@ -12,38 +12,38 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Init {
 
-	/**
-	 * Startphase, in der diese Methode ausgefuehrt werden soll - default ist INIT.
-	 */
-	State value() default State.INIT;
+    /**
+     * Start-Phasen.
+     */
+    public static enum State {
+        /**
+         * Mittlere Startphase.
+         */
+        INIT,
+        /**
+         * Spaete Startphase.
+         */
+        POST,
+        /**
+         * Fruehe Startphase.
+         */
+        PRE,
+        /**
+         * Mittlere Startphase fuer Resoureceloading.
+         */
+        RESOURCES,
+        /**
+         * Spaete Startphase fuer Resoureceloading.
+         */
+        RESOURCES_POST,
+        /**
+         * Fruehe Startphase fuer Resoureceloading.
+         */
+        RESOURCES_PRE
+    }
 
-	/**
-	 * Start-Phasen.
-	 */
-	public static enum State {
-		/**
-		 * Mittlere Startphase.
-		 */
-		INIT,
-		/**
-		 * Spaete Startphase.
-		 */
-		POST,
-		/**
-		 * Fruehe Startphase.
-		 */
-		PRE,
-		/**
-		 * Mittlere Startphase fuer Resoureceloading.
-		 */
-		RESOURCES,
-		/**
-		 * Spaete Startphase fuer Resoureceloading.
-		 */
-		RESOURCES_POST,
-		/**
-		 * Fruehe Startphase fuer Resoureceloading.
-		 */
-		RESOURCES_PRE
-	}
+    /**
+     * Startphase, in der diese Methode ausgefuehrt werden soll - default ist INIT.
+     */
+    State value() default State.INIT;
 }

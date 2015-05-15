@@ -9,19 +9,20 @@ import projektkurs.util.MathUtil;
  */
 public class BehaviourRunAround extends Behaviour {
 
-	/**
-	 * Konstruktor.
-	 *
-	 * @param entity Entity
-	 */
-	public BehaviourRunAround(Entity entity) {
-		super(entity);
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param entity
+     *            Entity
+     */
+    public BehaviourRunAround(Entity entity) {
+        super(entity);
+    }
 
-	@Override
-	public void update() {
-		if (MathUtil.randomInt(Integers.RUN_AROUND_MOVE_CHANCE) == 0) {
-			entity.moveBy(MathUtil.randomInt(-1, 1), MathUtil.randomInt(-1, 1));
-		}
-	}
+    @Override
+    public void update() {
+        if (MathUtil.randomInt(Integers.RUN_AROUND_MOVE_CHANCE) == 0) {
+            entity.moveBy(MathUtil.randomInt(-1, 1), MathUtil.randomInt(-1, 1));
+        }
+    }
 }

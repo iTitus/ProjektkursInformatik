@@ -9,49 +9,49 @@ import projektkurs.lib.Trigger;
  */
 public abstract class AbstractTrigger implements ISaveable {
 
-	protected boolean shouldRemove;
+    protected boolean shouldRemove;
 
-	public AbstractTrigger() {
-		shouldRemove = true;
-	}
+    public AbstractTrigger() {
+        shouldRemove = true;
+    }
 
-	/**
-	 * Ist dieser Trigger aktiv.
-	 *
-	 * @return true, wenn ja; false, wenn nein
-	 */
-	public abstract boolean isTriggerActive();
+    public final String getInternalName() {
+        return Trigger.BACK_MAPPINGS.get(getClass());
+    }
 
-	public AbstractTrigger setMultipleTimeTrigger() {
-		shouldRemove = false;
-		return this;
-	}
+    /**
+     * Ist dieser Trigger aktiv.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public abstract boolean isTriggerActive();
 
-	public AbstractTrigger setOneTimeTrigger() {
-		shouldRemove = true;
-		return this;
-	}
+    @Override
+    public void load(SaveData data) {
+        shouldRemove = data.getBoolean("shouldRemove");
+    }
 
-	/**
-	 * Soll dieser Trigger entfernt werden.
-	 *
-	 * @return true, wenn ja; false, wenn nein
-	 */
-	public boolean shouldRemove() {
-		return shouldRemove;
-	}
+    public AbstractTrigger setMultipleTimeTrigger() {
+        shouldRemove = false;
+        return this;
+    }
 
-	public final String getInternalName() {
-		return Trigger.BACK_MAPPINGS.get(getClass());
-	}
+    public AbstractTrigger setOneTimeTrigger() {
+        shouldRemove = true;
+        return this;
+    }
 
-	@Override
-	public void write(SaveData data) {
-		data.set("shouldRemove", shouldRemove);
-	}
+    /**
+     * Soll dieser Trigger entfernt werden.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public boolean shouldRemove() {
+        return shouldRemove;
+    }
 
-	@Override
-	public void load(SaveData data) {
-		shouldRemove = data.getBoolean("shouldRemove");
-	}
+    @Override
+    public void write(SaveData data) {
+        data.set("shouldRemove", shouldRemove);
+    }
 }

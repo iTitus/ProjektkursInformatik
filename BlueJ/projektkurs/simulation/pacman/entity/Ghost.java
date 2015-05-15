@@ -9,98 +9,98 @@ import projektkurs.util.RenderUtil;
 
 public abstract class Ghost extends PacmanEntity {
 
-	public static final int POINTS = 100;
-	protected int targetX, targetY;
-	private GhostMode mode = GhostMode.IDLE;
+    public static final int POINTS = 100;
+    private GhostMode mode = GhostMode.IDLE;
+    protected int targetX, targetY;
 
-	public Ghost(PacmanBoard board) {
-		super(board, board.getGhostSpawnX(), board.getGhostSpawnY(), 1, 1);
-	}
+    public Ghost(PacmanBoard board) {
+        super(board, board.getGhostSpawnX(), board.getGhostSpawnY(), 1, 1);
+    }
 
-	@Override
-	public boolean canUpdate() {
-		return true;
-	}
+    @Override
+    public boolean canUpdate() {
+        return true;
+    }
 
-	public abstract void findTargetPosition();
+    public abstract void findTargetPosition();
 
-	public abstract int getColor();
+    public abstract int getColor();
 
-	public double getEffectiveSpeed() {
-		return Pacman.SPEED * mode.getSpeedModifier();
-	}
+    public double getEffectiveSpeed() {
+        return Pacman.SPEED * mode.getSpeedModifier();
+    }
 
-	public GhostMode getMode() {
-		return mode;
-	}
+    public GhostMode getMode() {
+        return mode;
+    }
 
-	public void setMode(GhostMode mode) {
-		this.mode = mode;
-	}
+    public int getTargetX() {
+        return targetX;
+    }
 
-	public int getTargetX() {
-		return targetX;
-	}
+    public int getTargetY() {
+        return targetY;
+    }
 
-	public void setTargetX(int targetX) {
-		this.targetX = targetX;
-	}
+    public void moveTarget(int dtargetX, int dtargetY) {
+        targetX += dtargetX;
+        targetY += dtargetY;
+    }
 
-	public int getTargetY() {
-		return targetY;
-	}
+    @Override
+    public void onCollide(PacmanEntity e) {
+        if (mode != GhostMode.RETURNING_HOME && e instanceof Pacman) {
+            if (mode == GhostMode.FRIGHTENED) {
+                setDead();
+            } else {
+                e.setDead();
+            }
+        }
+    }
 
-	public void setTargetY(int targetY) {
-		this.targetY = targetY;
-	}
+    @Override
+    public void onDeath() {
+        board.increaseScore(POINTS * board.getMultiplicator());
+        board.increaseMultiplicator();
+        targetX = board.getGhostSpawnX();
+        targetY = board.getGhostSpawnY();
+        mode = GhostMode.RETURNING_HOME;
+    }
 
-	public void moveTarget(int dtargetX, int dtargetY) {
-		targetX += dtargetX;
-		targetY += dtargetY;
-	}
+    @Override
+    public void render(Screen screen, int offsetX, int offsetY) {
+        RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
+    }
 
-	@Override
-	public void onCollide(PacmanEntity e) {
-		if (mode != GhostMode.RETURNING_HOME && e instanceof Pacman) {
-			if (mode == GhostMode.FRIGHTENED) {
-				setDead();
-			} else {
-				e.setDead();
-			}
-		}
-	}
+    @Override
+    public void setDead() {
+        onDeath();
+    }
 
-	@Override
-	public void onDeath() {
-		board.increaseScore(POINTS * board.getMultiplicator());
-		board.increaseMultiplicator();
-		targetX = board.getGhostSpawnX();
-		targetY = board.getGhostSpawnY();
-		mode = GhostMode.RETURNING_HOME;
-	}
+    public void setMode(GhostMode mode) {
+        this.mode = mode;
+    }
 
-	@Override
-	public void render(Screen screen, int offsetX, int offsetY) {
-		RenderUtil.drawFilledRectangle(screen, offsetX + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * x), offsetY + 1 + MathUtil.floor(ElementPacmanBoard.SIZE * y), ElementPacmanBoard.SIZE - 2, ElementPacmanBoard.SIZE - 2, getColor());
-	}
+    public void setTarget(int targetX, int targetY) {
+        this.targetX = targetX;
+        this.targetY = targetY;
+    }
 
-	@Override
-	public void setDead() {
-		onDeath();
-	}
+    public void setTargetX(int targetX) {
+        this.targetX = targetX;
+    }
 
-	public void setTarget(int targetX, int targetY) {
-		this.targetX = targetX;
-		this.targetY = targetY;
-	}
+    public void setTargetY(int targetY) {
+        this.targetY = targetY;
+    }
 
-	@Override
-	public void update() {
-		if (mode != GhostMode.RETURNING_HOME) {
-			findTargetPosition();
-		} else if (Math.floor(x) == targetX && Math.floor(y) == targetY) {
-			mode = GhostMode.IDLE;
-		}
-		// TODO Pathfinding
-	}
+    @Override
+    public void update() {
+        if (mode != GhostMode.RETURNING_HOME) {
+            findTargetPosition();
+        } else if (Math.floor(x) == targetX && Math.floor(y) == targetY) {
+            mode = GhostMode.IDLE;
+        }
+        // TODO Pathfinding
+    }
 }

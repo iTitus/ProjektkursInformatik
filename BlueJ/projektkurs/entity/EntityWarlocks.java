@@ -6,17 +6,17 @@ import projektkurs.world.Spielfeld;
 
 public class EntityWarlocks extends EntityDialog {
 
-	public EntityWarlocks(Spielfeld map) {
-		super(map);
-	}
+    public EntityWarlocks(Spielfeld map) {
+        super(map);
+    }
 
-	public EntityWarlocks(Spielfeld map, int posX, int posY) {
-		super(map, posX, posY, 1, 1, Sprites.wall);// Sprites.)
-	}
+    public EntityWarlocks(Spielfeld map, int posX, int posY) {
+        super(map, posX, posY, 1, 1, Sprites.wall);// Sprites.)
+    }
 
-	@Override
-	public Dialog getDialog() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Dialog getDialog() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

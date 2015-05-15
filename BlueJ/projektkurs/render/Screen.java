@@ -7,62 +7,62 @@ import projektkurs.util.MathUtil;
 
 public class Screen {
 
-	private final int[] pixels;
-	private final int sizeX;
-	private final int sizeY;
+    private final int[] pixels;
+    private final int sizeX;
+    private final int sizeY;
 
-	public Screen(int width, int height) {
-		sizeX = width;
-		sizeY = height;
-		pixels = new int[width * height];
-	}
+    public Screen(int width, int height) {
+        sizeX = width;
+        sizeY = height;
+        pixels = new int[width * height];
+    }
 
-	public void clear() {
-		setColor(0);
-	}
+    public void clear() {
+        setColor(0);
+    }
 
-	public int getPixel(int index) {
-		if (MathUtil.isInArray(index, pixels.length)) {
-			return pixels[index];
-		}
-		return 0;
-	}
+    public int getPixel(int index) {
+        if (MathUtil.isInArray(index, pixels.length)) {
+            return pixels[index];
+        }
+        return 0;
+    }
 
-	public int getPixel(int x, int y) {
-		if (MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
-			return pixels[x + y * sizeX];
-		}
-		return 0;
-	}
+    public int getPixel(int x, int y) {
+        if (MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
+            return pixels[x + y * sizeX];
+        }
+        return 0;
+    }
 
-	public int getPixelAmount() {
-		return pixels.length;
-	}
+    public int getPixelAmount() {
+        return pixels.length;
+    }
 
-	public int getSizeX() {
-		return sizeX;
-	}
+    public int getSizeX() {
+        return sizeX;
+    }
 
-	public int getSizeY() {
-		return sizeY;
-	}
+    public int getSizeY() {
+        return sizeY;
+    }
 
-	public void setColor(int color) {
-		if (color != Integers.TRANSPARENCY) {
-			Arrays.fill(pixels, color);
-		}
-	}
+    public void setColor(int color) {
+        if (color != Integers.TRANSPARENCY) {
+            Arrays.fill(pixels, color);
+        }
+    }
 
-	public void setPixel(int color, int index) {
-		if (color != Integers.TRANSPARENCY && MathUtil.isInArray(index, pixels.length)) {
-			pixels[index] = color;
-		}
-	}
+    public void setPixel(int color, int index) {
+        if (color != Integers.TRANSPARENCY && MathUtil.isInArray(index, pixels.length)) {
+            pixels[index] = color;
+        }
+    }
 
-	public void setPixel(int color, int x, int y) {
-		if (color != Integers.TRANSPARENCY && MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
-			pixels[x + y * sizeX] = color;
-		}
-	}
+    public void setPixel(int color, int x, int y) {
+        if (color != Integers.TRANSPARENCY && MathUtil.isInArray(x, sizeX) && MathUtil.isInArray(y, sizeY)) {
+            pixels[x + y * sizeX] = color;
+        }
+    }
 
 }

@@ -4,22 +4,22 @@ import projektkurs.Main;
 
 public class CommandReload extends Command {
 
-	@Override
-	public EnumCommandResult execute(String[] args) {
-		Main.getLevel().getMap().getEntityList().clear();
-		Main.getLevel().getMap().getStoryManager().getTriggerMap().clear();
-		Main.startLevel(Main.getLevel());
-		return EnumCommandResult.SUCCESS;
-	}
+    @Override
+    public EnumCommandResult execute(String[] args) {
+        Main.getLevel().getMap().getEntityList().clear();
+        Main.getLevel().getMap().getStoryManager().getTriggerMap().clear();
+        Main.startLevel(Main.getLevel());
+        return EnumCommandResult.SUCCESS;
+    }
 
-	@Override
-	public String[] getAliases() {
-		return new String[]{"r"};
-	}
+    @Override
+    public String[] getAliases() {
+        return new String[] { "r" };
+    }
 
-	@Override
-	public String getCommand() {
-		return "reload";
-	}
+    @Override
+    public String getCommand() {
+        return "reload";
+    }
 
 }

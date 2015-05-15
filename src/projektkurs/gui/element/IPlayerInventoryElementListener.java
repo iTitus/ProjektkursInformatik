@@ -7,12 +7,14 @@ import java.awt.event.MouseWheelEvent;
  */
 public interface IPlayerInventoryElementListener extends IInventoryElementListener {
 
-	/**
-	 * Wird ausgefuehrt, wenn der ausgewaehlte Slot veraendert wird.
-	 *
-	 * @param invE PlayerInventoryElement
-	 * @param e    MouseWheelEvent
-	 */
-	void onSlotChanged(PlayerInventoryElement invE, MouseWheelEvent e);
+    /**
+     * Wird ausgefuehrt, wenn der ausgewaehlte Slot veraendert wird.
+     *
+     * @param invE
+     *            PlayerInventoryElement
+     * @param e
+     *            MouseWheelEvent
+     */
+    void onSlotChanged(PlayerInventoryElement invE, MouseWheelEvent e);
 
 }

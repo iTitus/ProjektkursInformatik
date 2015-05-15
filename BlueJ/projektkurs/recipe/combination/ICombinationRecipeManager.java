@@ -6,14 +6,14 @@ import projektkurs.item.ItemStack;
 
 public interface ICombinationRecipeManager {
 
-	void addCombinationRecipe(ICombinationRecipe recipe);
+    void addCombinationRecipe(ICombinationRecipe recipe);
 
-	void addCombinationRecipe(ItemStack input1, ItemStack input2, ItemStack output);
+    void addCombinationRecipe(ItemStack input1, ItemStack input2, ItemStack output);
 
-	ICombinationRecipe getRecipe(ItemStack input1, ItemStack input2);
+    ICombinationRecipe getRecipe(ItemStack input1, ItemStack input2);
 
-	Set<ICombinationRecipe> getRecipes();
+    Set<ICombinationRecipe> getRecipes();
 
-	void removeRecipe(ItemStack input1, ItemStack input2);
+    void removeRecipe(ItemStack input1, ItemStack input2);
 
 }

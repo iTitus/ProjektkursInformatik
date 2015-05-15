@@ -9,31 +9,31 @@ import projektkurs.lib.CutScenes;
  */
 public class CommandCutScene extends Command {
 
-	@Override
-	public EnumCommandResult execute(String[] args) {
+    @Override
+    public EnumCommandResult execute(String[] args) {
 
-		if (args.length != 1) {
-			return EnumCommandResult.WRONG_USAGE;
-		}
+        if (args.length != 1) {
+            return EnumCommandResult.WRONG_USAGE;
+        }
 
-		CutScene cutScene = CutScenes.MAPPINGS.get(args[0]);
-		if (cutScene == null) {
-			return EnumCommandResult.OBJECT_NOT_FOUND;
-		}
+        CutScene cutScene = CutScenes.MAPPINGS.get(args[0]);
+        if (cutScene == null) {
+            return EnumCommandResult.OBJECT_NOT_FOUND;
+        }
 
-		CutSceneManager.startCutScene(cutScene);
+        CutSceneManager.startCutScene(cutScene);
 
-		return EnumCommandResult.SUCCESS;
-	}
+        return EnumCommandResult.SUCCESS;
+    }
 
-	@Override
-	public String[] getAliases() {
-		return new String[]{"cs", "c"};
-	}
+    @Override
+    public String[] getAliases() {
+        return new String[] { "cs", "c" };
+    }
 
-	@Override
-	public String getCommand() {
-		return "cutscene";
-	}
+    @Override
+    public String getCommand() {
+        return "cutscene";
+    }
 
 }

@@ -11,49 +11,51 @@ import projektkurs.io.storage.SaveData;
  */
 public final class DialogManager implements ISaveable {
 
-	/**
-	 * Der aktuelle Wert der Dialoge.
-	 */
-	private int value;
+    /**
+     * Der aktuelle Wert der Dialoge.
+     */
+    private int value;
 
-	/**
-	 * Der Wert der Dialoge.
-	 *
-	 * @return Wert
-	 */
-	public int getValue() {
-		return value;
-	}
+    /**
+     * Der Wert der Dialoge.
+     *
+     * @return Wert
+     */
+    public int getValue() {
+        return value;
+    }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+    @Override
+    public void load(SaveData data) {
+        value = data.getInteger("value");
+    }
 
-	/**
-	 * Startet einen Dialog.
-	 *
-	 * @param d Dialog
-	 */
-	public void startDialog(Dialog d, Entity e) {
-		startDialog(d, Main.getPlayer(), e);
-	}
+    public void setValue(int value) {
+        this.value = value;
+    }
 
-	/**
-	 * Startet einen Dialog.
-	 *
-	 * @param d Dialog
-	 */
-	public void startDialog(Dialog d, Entity e1, Entity e2) {
-		Main.openGui(new GuiDialogChooser(d, e1, e2));
-	}
+    /**
+     * Startet einen Dialog.
+     *
+     * @param d
+     *            Dialog
+     */
+    public void startDialog(Dialog d, Entity e) {
+        startDialog(d, Main.getPlayer(), e);
+    }
 
-	@Override
-	public void load(SaveData data) {
-		value = data.getInteger("value");
-	}
+    /**
+     * Startet einen Dialog.
+     *
+     * @param d
+     *            Dialog
+     */
+    public void startDialog(Dialog d, Entity e1, Entity e2) {
+        Main.openGui(new GuiDialogChooser(d, e1, e2));
+    }
 
-	@Override
-	public void write(SaveData data) {
-		data.set("value", value);
-	}
+    @Override
+    public void write(SaveData data) {
+        data.set("value", value);
+    }
 }

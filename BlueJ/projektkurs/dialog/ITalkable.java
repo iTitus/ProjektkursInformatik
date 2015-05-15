@@ -5,8 +5,8 @@ package projektkurs.dialog;
  */
 public interface ITalkable {
 
-	Dialog getDialog();
+    Dialog getDialog();
 
-	boolean shouldStartDialog();
+    boolean shouldStartDialog();
 
 }

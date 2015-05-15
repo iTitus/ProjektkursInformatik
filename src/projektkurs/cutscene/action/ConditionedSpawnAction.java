@@ -9,34 +9,36 @@ import projektkurs.cutscene.object.CutSceneObject;
  */
 public class ConditionedSpawnAction extends Action {
 
-	/**
-	 * CutSceneObject, das gespawnt werden soll.
-	 */
-	private final CutSceneObject object;
+    /**
+     * CutSceneObject, das gespawnt werden soll.
+     */
+    private final CutSceneObject object;
 
-	/**
-	 * Konstruktor.
-	 *
-	 * @param condition Ausfuehrbedingung
-	 * @param object    CutSceneObject, das gespawnt werden soll
-	 */
-	public ConditionedSpawnAction(Condition condition, CutSceneObject object) {
-		super(condition);
-		this.object = object;
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param condition
+     *            Ausfuehrbedingung
+     * @param object
+     *            CutSceneObject, das gespawnt werden soll
+     */
+    public ConditionedSpawnAction(Condition condition, CutSceneObject object) {
+        super(condition);
+        this.object = object;
+    }
 
-	@Override
-	public void doAction(CutScene cutScene) {
-		cutScene.spawn(object);
-	}
+    @Override
+    public void doAction(CutScene cutScene) {
+        cutScene.spawn(object);
+    }
 
-	/**
-	 * Das zu spawnende CutSceneObject.
-	 *
-	 * @return CutSceneObject
-	 */
-	public CutSceneObject getCutSceneObject() {
-		return object;
-	}
+    /**
+     * Das zu spawnende CutSceneObject.
+     *
+     * @return CutSceneObject
+     */
+    public CutSceneObject getCutSceneObject() {
+        return object;
+    }
 
 }

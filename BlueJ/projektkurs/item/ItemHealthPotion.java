@@ -12,23 +12,24 @@ import projektkurs.world.Spielfeld;
  */
 public class ItemHealthPotion extends BaseItem {
 
-	/**
-	 * Konstruktor.
-	 *
-	 * @param id ID
-	 */
-	public ItemHealthPotion(int id) {
-		super(id, "potion.health", Sprites.healthPotion);
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param id
+     *            ID
+     */
+    public ItemHealthPotion(int id) {
+        super(id, "potion.health", Sprites.healthPotion);
+    }
 
-	@Override
-	public void onLeftClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
-		if (e instanceof EntityLiving) {
-			EntityLiving l = (EntityLiving) e;
-			if (stack.getDamage() < 0 && l.getHealth() > 0 || stack.getDamage() > 0 && l.getHealth() < l.getMaxHealth()) {
-				l.heal(stack.getDamage());
-				stack.decrStackSize(1);
-			}
-		}
-	}
+    @Override
+    public void onLeftClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
+        if (e instanceof EntityLiving) {
+            EntityLiving l = (EntityLiving) e;
+            if (stack.getDamage() < 0 && l.getHealth() > 0 || stack.getDamage() > 0 && l.getHealth() < l.getMaxHealth()) {
+                l.heal(stack.getDamage());
+                stack.decrStackSize(1);
+            }
+        }
+    }
 }

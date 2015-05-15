@@ -12,208 +12,215 @@ import projektkurs.util.Init.State;
  */
 public final class I18n {
 
-	/**
-	 * Die aktuelle Sprache.
-	 */
-	private static SupportedLocales currentLocale = SupportedLocales.DEFAULT;
-	/**
-	 * Die Standard-Lokalisierung.
-	 */
-	private static ResourceBundle fallback;
-	/**
-	 * Aktuelle Lokalisation.
-	 */
-	private static ResourceBundle resource;
+    /**
+     * Unterstuetzte Sprachen.
+     */
+    public static enum SupportedLocales {
 
-	/**
-	 * Nicht instanziierbar.
-	 */
-	private I18n() {
-	}
+        /**
+         * Amerikanisches Englisch.
+         */
+        ENGLISH(new Locale("en", "US"), "lang.en_US"),
+        /**
+         * Deutsch.
+         */
+        GERMAN(new Locale("de", "DE"), "lang.de_DE");
 
-	/**
-	 * Aendert die Sprache.
-	 *
-	 * @param locale neue Sprache
-	 */
-	public static void changeLocale(SupportedLocales locale) {
-		if (locale != null) {
-			currentLocale = locale;
-		} else {
-			currentLocale = SupportedLocales.DEFAULT;
-		}
-		init();
-	}
+        /**
+         * Die Standardsprache.
+         */
+        public static final SupportedLocales DEFAULT = GERMAN;
 
-	/**
-	 * Die aktuelle Sprache.
-	 *
-	 * @return aktuelle Sprache.
-	 */
-	public static SupportedLocales getLocale() {
-		return currentLocale;
-	}
+        /**
+         * Die Java-Sprache.
+         */
+        private final Locale locale;
+        /**
+         * Der Name der Sprache.
+         */
+        private final String name;
 
-	/**
-	 * Gibt den uebersetzten String zurueck.
-	 *
-	 * @param key Der Schluessel fuer den String (zB. "item.nuke.name")
-	 * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Uebersetzung gibt
-	 */
-	public static String getString(String key) {
+        /**
+         * Konstruktor.
+         *
+         * @param locale
+         *            die Java-Sprache
+         * @param name
+         *            der Name
+         */
+        private SupportedLocales(Locale locale, String name) {
+            this.locale = locale;
+            this.name = name;
+        }
 
-		try {
-			return resource.getString(key);
-		} catch (Throwable t) {
-			try {
-				return fallback.getString(key);
-			} catch (Throwable t1) {
-				return '!' + key + '!';
-			}
-		}
+        /**
+         * Die Standard-Java-Sprache.
+         *
+         * @return die Standard-Java-Sprache
+         */
+        public Locale getLocale() {
+            return locale;
+        }
 
-	}
+        /**
+         * Der Name der Sprache.
+         *
+         * @return der Name
+         */
+        public String getName() {
+            return getString(name);
+        }
 
-	/**
-	 * Gibt den formatierten uebersetzten String zurueck.
-	 *
-	 * @param key  Der Schluessel fuer den String (zB. "item.nuke.name")
-	 * @param args Formatierungsargumente
-	 * @return der passende String in der aktuellen Sprache oder !key! falls es keine Uebersetzung gibt
-	 */
-	public static String getStringFormatted(String key, Object... args) {
+        /**
+         * Der unlokalisierte Name der Sprache.
+         *
+         * @return unlokalisierter Name der Sprache.
+         */
+        public String getUnlocalizedName() {
+            return name;
+        }
 
-		try {
-			return String.format(resource.getString(key), args);
-		} catch (Throwable t) {
-			try {
-				return String.format(fallback.getString(key), args);
-			} catch (Throwable t1) {
-				return '!' + key + '!';
-			}
-		}
+        @Override
+        public String toString() {
+            return getName();
+        }
+    }
 
-	}
+    /**
+     * Die aktuelle Sprache.
+     */
+    private static SupportedLocales currentLocale = SupportedLocales.DEFAULT;
+    /**
+     * Die Standard-Lokalisierung.
+     */
+    private static ResourceBundle fallback;
 
-	/**
-	 * Alle unterstuetzten Sprachen.
-	 *
-	 * @return alle unterstuetzten Sprachen
-	 */
-	public static SupportedLocales[] getSupportedLocales() {
-		return SupportedLocales.values();
-	}
+    /**
+     * Aktuelle Lokalisation.
+     */
+    private static ResourceBundle resource;
 
-	/**
-	 * Initialisiert die gesetze Sprache und laedt die Lokalisierung.
-	 */
-	@Init(State.RESOURCES)
-	public static void init() {
+    /**
+     * Aendert die Sprache.
+     *
+     * @param locale
+     *            neue Sprache
+     */
+    public static void changeLocale(SupportedLocales locale) {
+        if (locale != null) {
+            currentLocale = locale;
+        } else {
+            currentLocale = SupportedLocales.DEFAULT;
+        }
+        init();
+    }
 
-		ResourceBundle.clearCache();
+    /**
+     * Die aktuelle Sprache.
+     *
+     * @return aktuelle Sprache.
+     */
+    public static SupportedLocales getLocale() {
+        return currentLocale;
+    }
 
-		try {
-			fallback = ResourceBundle.getBundle("projektkurs.resources.lang.lang", SupportedLocales.DEFAULT.getLocale());
-		} catch (Throwable t) {
-			Logger.logThrowable("Unable to load fallback resources", t);
-		}
-		try {
-			resource = ResourceBundle.getBundle("projektkurs.resources.lang.lang", currentLocale.getLocale());
-			Logger.info("Successfully loaded resources for locale '" + currentLocale.getLocale() + "'");
-		} catch (Throwable t) {
-			Logger.logThrowable("Unable to load resources for locale " + currentLocale, t);
-		}
+    /**
+     * Gibt den uebersetzten String zurueck.
+     *
+     * @param key
+     *            Der Schluessel fuer den String (zB. "item.nuke.name")
+     * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Uebersetzung gibt
+     */
+    public static String getString(String key) {
 
-		ArrayList<String> missingResources = null;
-		Enumeration<String> fallbackKeys = fallback.getKeys();
-		String currKey;
-		while (fallbackKeys.hasMoreElements()) {
-			currKey = fallbackKeys.nextElement();
-			try {
-				resource.getString(currKey);
-			} catch (Throwable t) {
-				if (missingResources == null) {
-					missingResources = new ArrayList<String>();
-				}
-				missingResources.add(currKey);
-			}
-		}
-		if (missingResources != null) {
-			Logger.warn("Resources for Locale '" + currentLocale.getLocale() + "' are incomplete. Missing keys are:", missingResources);
-		}
+        try {
+            return resource.getString(key);
+        } catch (Throwable t) {
+            try {
+                return fallback.getString(key);
+            } catch (Throwable t1) {
+                return '!' + key + '!';
+            }
+        }
 
-	}
+    }
 
-	/**
-	 * Unterstuetzte Sprachen.
-	 */
-	public static enum SupportedLocales {
+    /**
+     * Gibt den formatierten uebersetzten String zurueck.
+     *
+     * @param key
+     *            Der Schluessel fuer den String (zB. "item.nuke.name")
+     * @param args
+     *            Formatierungsargumente
+     * @return der passende String in der aktuellen Sprache oder !key! falls es keine Uebersetzung gibt
+     */
+    public static String getStringFormatted(String key, Object... args) {
 
-		/**
-		 * Amerikanisches Englisch.
-		 */
-		ENGLISH(new Locale("en", "US"), "lang.en_US"),
-		/**
-		 * Deutsch.
-		 */
-		GERMAN(new Locale("de", "DE"), "lang.de_DE");
+        try {
+            return String.format(resource.getString(key), args);
+        } catch (Throwable t) {
+            try {
+                return String.format(fallback.getString(key), args);
+            } catch (Throwable t1) {
+                return '!' + key + '!';
+            }
+        }
 
-		/**
-		 * Die Standardsprache.
-		 */
-		public static final SupportedLocales DEFAULT = GERMAN;
+    }
 
-		/**
-		 * Die Java-Sprache.
-		 */
-		private final Locale locale;
-		/**
-		 * Der Name der Sprache.
-		 */
-		private final String name;
+    /**
+     * Alle unterstuetzten Sprachen.
+     *
+     * @return alle unterstuetzten Sprachen
+     */
+    public static SupportedLocales[] getSupportedLocales() {
+        return SupportedLocales.values();
+    }
 
-		/**
-		 * Konstruktor.
-		 *
-		 * @param locale die Java-Sprache
-		 * @param name   der Name
-		 */
-		private SupportedLocales(Locale locale, String name) {
-			this.locale = locale;
-			this.name = name;
-		}
+    /**
+     * Initialisiert die gesetze Sprache und laedt die Lokalisierung.
+     */
+    @Init(State.RESOURCES)
+    public static void init() {
 
-		/**
-		 * Die Standard-Java-Sprache.
-		 *
-		 * @return die Standard-Java-Sprache
-		 */
-		public Locale getLocale() {
-			return locale;
-		}
+        ResourceBundle.clearCache();
 
-		/**
-		 * Der Name der Sprache.
-		 *
-		 * @return der Name
-		 */
-		public String getName() {
-			return getString(name);
-		}
+        try {
+            fallback = ResourceBundle.getBundle("projektkurs.resources.lang.lang", SupportedLocales.DEFAULT.getLocale());
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to load fallback resources", t);
+        }
+        try {
+            resource = ResourceBundle.getBundle("projektkurs.resources.lang.lang", currentLocale.getLocale());
+            Logger.info("Successfully loaded resources for locale '" + currentLocale.getLocale() + "'");
+        } catch (Throwable t) {
+            Logger.logThrowable("Unable to load resources for locale " + currentLocale, t);
+        }
 
-		/**
-		 * Der unlokalisierte Name der Sprache.
-		 *
-		 * @return unlokalisierter Name der Sprache.
-		 */
-		public String getUnlocalizedName() {
-			return name;
-		}
+        ArrayList<String> missingResources = null;
+        Enumeration<String> fallbackKeys = fallback.getKeys();
+        String currKey;
+        while (fallbackKeys.hasMoreElements()) {
+            currKey = fallbackKeys.nextElement();
+            try {
+                resource.getString(currKey);
+            } catch (Throwable t) {
+                if (missingResources == null) {
+                    missingResources = new ArrayList<String>();
+                }
+                missingResources.add(currKey);
+            }
+        }
+        if (missingResources != null) {
+            Logger.warn("Resources for Locale '" + currentLocale.getLocale() + "' are incomplete. Missing keys are:", missingResources);
+        }
 
-		@Override
-		public String toString() {
-			return getName();
-		}
-	}
+    }
+
+    /**
+     * Nicht instanziierbar.
+     */
+    private I18n() {
+    }
 
 }

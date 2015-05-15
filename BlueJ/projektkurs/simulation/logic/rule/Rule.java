@@ -10,20 +10,20 @@ import projektkurs.util.RenderUtil;
 
 public abstract class Rule {
 
-	public abstract Rule copy();
+    public abstract Rule copy();
 
-	public abstract int getColor(LogicBoard b, int x, int y);
+    public abstract int getColor(LogicBoard b, int x, int y);
 
-	public EnumConnectionType getConnectionType(LogicBoard b, int x, int y, Direction direction) {
-		return EnumConnectionType.BOTH;
-	}
+    public EnumConnectionType getConnectionType(LogicBoard b, int x, int y, Direction direction) {
+        return EnumConnectionType.BOTH;
+    }
 
-	public abstract String getName();
+    public abstract String getName();
 
-	public abstract EnumFlow getNextFlow(LogicBoard b, int x, int y);
+    public abstract EnumFlow getNextFlow(LogicBoard b, int x, int y);
 
-	public void render(Screen screen, LogicBoard logicBoard, int x, int y, int offsetX, int offsetY) {
-		RenderUtil.drawFilledRectangle(screen, x * ElementLogicBoard.SIZE + offsetX, y * ElementLogicBoard.SIZE + offsetY, ElementLogicBoard.SIZE, ElementLogicBoard.SIZE, getColor(logicBoard, x, y));
-	}
+    public void render(Screen screen, LogicBoard logicBoard, int x, int y, int offsetX, int offsetY) {
+        RenderUtil.drawFilledRectangle(screen, x * ElementLogicBoard.SIZE + offsetX, y * ElementLogicBoard.SIZE + offsetY, ElementLogicBoard.SIZE, ElementLogicBoard.SIZE, getColor(logicBoard, x, y));
+    }
 
 }

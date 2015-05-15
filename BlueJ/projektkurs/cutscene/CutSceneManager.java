@@ -17,206 +17,207 @@ import projektkurs.world.Spielfeld;
  */
 public final class CutSceneManager {
 
-	/**
-	 * Gerade laufende CutScene.
-	 */
-	private static CutScene cutScene;
-	/**
-	 * Das Fenster der gerade laufenden CutScene.
-	 */
-	private static JFrame cutSceneFrame;
-	/**
-	 * CutsceneRender der gerade laufenden CutScene.
-	 */
-	private static CutsceneRender cutSceneRender;
-	/**
-	 * RenderHelper der gerade laufenden CutScene.
-	 */
-	private static RenderHelper cutSceneRenderHelper;
-	/**
-	 * Partielle Ticks.
-	 */
-	private static double delta;
-	/**
-	 * Frames per second.
-	 */
-	private static int fps;
+    /**
+     * Gerade laufende CutScene.
+     */
+    private static CutScene cutScene;
+    /**
+     * Das Fenster der gerade laufenden CutScene.
+     */
+    private static JFrame cutSceneFrame;
+    /**
+     * CutsceneRender der gerade laufenden CutScene.
+     */
+    private static CutsceneRender cutSceneRender;
+    /**
+     * RenderHelper der gerade laufenden CutScene.
+     */
+    private static RenderHelper cutSceneRenderHelper;
+    /**
+     * Partielle Ticks.
+     */
+    private static double delta;
+    /**
+     * Frames per second.
+     */
+    private static int fps;
 
-	/**
-	 * Spielfeld der gerade laufenden CutScene.
-	 */
-	private static Spielfeld map;
-	/**
-	 * Updates per second.
-	 */
-	private static int ups;
+    /**
+     * Spielfeld der gerade laufenden CutScene.
+     */
+    private static Spielfeld map;
+    /**
+     * Updates per second.
+     */
+    private static int ups;
 
-	/**
-	 * Nicht instanziierbar.
-	 */
-	private CutSceneManager() {
-	}
+    /**
+     * Die aktuelle CutScene.
+     *
+     * @return RenderHelper
+     */
+    public static CutScene getCutScene() {
+        return cutScene;
+    }
 
-	/**
-	 * Die aktuelle CutScene.
-	 *
-	 * @return RenderHelper
-	 */
-	public static CutScene getCutScene() {
-		return cutScene;
-	}
+    /**
+     * Der aktuelle CutsceneRender der CutScene.
+     *
+     * @return CutsceneRender
+     */
+    public static CutsceneRender getCutSceneRender() {
+        return cutSceneRender;
+    }
 
-	/**
-	 * Der aktuelle CutsceneRender der CutScene.
-	 *
-	 * @return CutsceneRender
-	 */
-	public static CutsceneRender getCutSceneRender() {
-		return cutSceneRender;
-	}
+    /**
+     * Der aktuelle RenderHelper der CutScene.
+     *
+     * @return RenderHelper
+     */
+    public static RenderHelper getCutSceneRenderHelper() {
+        return cutSceneRenderHelper;
+    }
 
-	/**
-	 * Der aktuelle RenderHelper der CutScene.
-	 *
-	 * @return RenderHelper
-	 */
-	public static RenderHelper getCutSceneRenderHelper() {
-		return cutSceneRenderHelper;
-	}
+    /**
+     * Die partiellen Ticks.
+     *
+     * @return delta
+     */
+    public static double getDelta() {
+        return delta;
+    }
 
-	/**
-	 * Die partiellen Ticks.
-	 *
-	 * @return delta
-	 */
-	public static double getDelta() {
-		return delta;
-	}
+    /**
+     * Die aktuelle FPS (frames per second).
+     *
+     * @return FPS
+     */
+    public static int getFPS() {
+        return fps;
+    }
 
-	/**
-	 * Die aktuelle FPS (frames per second).
-	 *
-	 * @return FPS
-	 */
-	public static int getFPS() {
-		return fps;
-	}
+    /**
+     * Das aktuelle Spielfeld der CutScene.
+     *
+     * @return Spielfeld
+     */
+    public static Spielfeld getMap() {
+        return map;
+    }
 
-	/**
-	 * Das aktuelle Spielfeld der CutScene.
-	 *
-	 * @return Spielfeld
-	 */
-	public static Spielfeld getMap() {
-		return map;
-	}
+    /**
+     * Die aktuelle UPS (updates per second).
+     *
+     * @return UPS
+     */
+    public static int getUPS() {
+        return ups;
+    }
 
-	/**
-	 * Die aktuelle UPS (updates per second).
-	 *
-	 * @return UPS
-	 */
-	public static int getUPS() {
-		return ups;
-	}
+    /**
+     * Laeuft gerade eine CutScene.
+     *
+     * @return true, wenn ja; false, wenn nein
+     */
+    public static boolean isRunning() {
+        return cutScene != null;
+    }
 
-	/**
-	 * Laeuft gerade eine CutScene.
-	 *
-	 * @return true, wenn ja; false, wenn nein
-	 */
-	public static boolean isRunning() {
-		return cutScene != null;
-	}
+    /**
+     * Fuehrt eine CutScene aus.
+     *
+     * @param cutSceneToStart
+     *            CutScene
+     */
+    public static void startCutScene(CutScene cutSceneToStart) {
 
-	/**
-	 * Fuehrt eine CutScene aus.
-	 *
-	 * @param cutSceneToStart CutScene
-	 */
-	public static void startCutScene(CutScene cutSceneToStart) {
+        if (!isRunning()) {
+            Logger.info("Starting CutScene '" + cutSceneToStart.getName() + "'");
+            Main.pause();
+            Main.hide();
 
-		if (!isRunning()) {
-			Logger.info("Starting CutScene '" + cutSceneToStart.getName() + "'");
-			Main.pause();
-			Main.hide();
+            cutScene = cutSceneToStart;
+            cutSceneRenderHelper = new RenderHelper();
+            cutSceneRender = new CutsceneRender();
+            map = Main.getLevel().getMap().copy();
 
-			cutScene = cutSceneToStart;
-			cutSceneRenderHelper = new RenderHelper();
-			cutSceneRender = new CutsceneRender();
-			map = Main.getLevel().getMap().copy();
+            cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + " - CutScene");
+            cutSceneFrame.setIconImage(Sprites.item42.toBufferedImage());
+            cutSceneFrame.setUndecorated(true);
+            cutSceneFrame.setResizable(false);
+            cutSceneFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            cutSceneFrame.add(cutSceneRender);
+            cutSceneFrame.pack();
+            cutSceneFrame.setVisible(true);
 
-			cutSceneFrame = new JFrame(Strings.NAME + " " + Strings.VERSION + " - CutScene");
-			cutSceneFrame.setIconImage(Sprites.item42.toBufferedImage());
-			cutSceneFrame.setUndecorated(true);
-			cutSceneFrame.setResizable(false);
-			cutSceneFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-			cutSceneFrame.add(cutSceneRender);
-			cutSceneFrame.pack();
-			cutSceneFrame.setVisible(true);
+            final double nsPerTick = Integers.NS_PER_SECOND / (double) Integers.UPS;
+            fps = 0;
+            ups = Integers.UPS;
+            delta = 0D;
 
-			final double nsPerTick = Integers.NS_PER_SECOND / (double) Integers.UPS;
-			fps = 0;
-			ups = Integers.UPS;
-			delta = 0D;
+            int updates = 0;
+            int frames = 0;
 
-			int updates = 0;
-			int frames = 0;
+            long now = 0L;
+            long lastTime = System.nanoTime();
+            long timer = System.nanoTime();
 
-			long now = 0L;
-			long lastTime = System.nanoTime();
-			long timer = System.nanoTime();
+            while (!cutScene.isFinished()) {
+                now = System.nanoTime();
+                delta += (now - lastTime) / nsPerTick;
+                lastTime = now;
+                while (delta >= 1) {
+                    updates++;
+                    if (cutScene.canUpdate()) {
+                        try {
+                            cutScene.update();
+                        } catch (Throwable t) {
+                            Logger.logThrowable("Unable to update the cutscene", t);
+                            Main.exit();
+                        }
+                    }
+                    Main.addTick();
+                    delta--;
+                }
 
-			while (!cutScene.isFinished()) {
-				now = System.nanoTime();
-				delta += (now - lastTime) / nsPerTick;
-				lastTime = now;
-				while (delta >= 1) {
-					updates++;
-					if (cutScene.canUpdate()) {
-						try {
-							cutScene.update();
-						} catch (Throwable t) {
-							Logger.logThrowable("Unable to update the cutscene", t);
-							Main.exit();
-						}
-					}
-					Main.addTick();
-					delta--;
-				}
+                frames++;
+                if (cutSceneRender.canUpdate()) {
+                    try {
+                        cutSceneRender.update();
+                    } catch (Throwable t) {
+                        Logger.logThrowable("Unable to render the cutscene", t);
+                        Main.exit();
+                    }
+                }
 
-				frames++;
-				if (cutSceneRender.canUpdate()) {
-					try {
-						cutSceneRender.update();
-					} catch (Throwable t) {
-						Logger.logThrowable("Unable to render the cutscene", t);
-						Main.exit();
-					}
-				}
+                if (System.nanoTime() - timer >= Integers.NS_PER_SECOND) {
+                    timer += Integers.NS_PER_SECOND;
+                    ups = updates;
+                    fps = frames;
+                    updates = 0;
+                    frames = 0;
+                }
 
-				if (System.nanoTime() - timer >= Integers.NS_PER_SECOND) {
-					timer += Integers.NS_PER_SECOND;
-					ups = updates;
-					fps = frames;
-					updates = 0;
-					frames = 0;
-				}
+            }
 
-			}
+            cutSceneFrame.dispose();
+            cutScene.reset();
+            cutScene = null;
+            cutSceneFrame = null;
+            cutSceneRenderHelper = null;
+            cutSceneRender = null;
+            map = null;
+            Main.show();
+            Main.resume();
+            Logger.info("Finished CutScene");
+        }
 
-			cutSceneFrame.dispose();
-			cutScene.reset();
-			cutScene = null;
-			cutSceneFrame = null;
-			cutSceneRenderHelper = null;
-			cutSceneRender = null;
-			map = null;
-			Main.show();
-			Main.resume();
-			Logger.info("Finished CutScene");
-		}
+    }
 
-	}
+    /**
+     * Nicht instanziierbar.
+     */
+    private CutSceneManager() {
+    }
 
 }

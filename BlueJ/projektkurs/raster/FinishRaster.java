@@ -12,21 +12,22 @@ import projektkurs.world.Spielfeld;
  */
 public class FinishRaster extends SimpleRaster {
 
-	/**
-	 * Konstruktor.
-	 *
-	 * @param id ID
-	 */
-	public FinishRaster(int id) {
-		super(id, "finish", Sprites.finish);
-	}
+    /**
+     * Konstruktor.
+     *
+     * @param id
+     *            ID
+     */
+    public FinishRaster(int id) {
+        super(id, "finish", Sprites.finish);
+    }
 
-	@Override
-	public void onWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction d) {
-		if (entity instanceof EntityPlayer) {
-			Scripts.win();
-		}
-		super.onWalkOnFromDirection(map, x, y, entity, d);
-	}
+    @Override
+    public void onWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction d) {
+        if (entity instanceof EntityPlayer) {
+            Scripts.win();
+        }
+        super.onWalkOnFromDirection(map, x, y, entity, d);
+    }
 
 }

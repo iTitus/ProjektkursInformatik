@@ -6,6 +6,6 @@ import projektkurs.gui.Gui;
 
 public interface IGuiTooltipProvider {
 
-	void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip);
+    void addTooltip(Gui gui, int mouseX, int mouseY, List<String> tooltip);
 
 }
