@@ -17,7 +17,7 @@ public class EntityNest extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if (1 << 16 == (map.getLevel().getDialogManager().getValue() & 1 << 16)) {
+        if (1 << 7 == (map.getLevel().getDialogManager().getValue() & 1 << 7)) {
             return Dialoge.LVmNestOne;
         }
         return Dialoge.LVmNest;

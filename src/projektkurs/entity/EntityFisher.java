@@ -17,9 +17,9 @@ public class EntityFisher extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if ((1 | 2 | 4) == (map.getLevel().getDialogManager().getValue() & 1 | 2 | 4)) {
+        if (1 << 3 == (map.getLevel().getDialogManager().getValue() & 1 << 3)) {
             return Dialoge.LVmFischer;
         }
-        return Dialoge.LVmFischerOne;
+        return Dialoge.LVmFischerStd;
     }
 }

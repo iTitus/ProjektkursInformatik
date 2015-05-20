@@ -17,11 +17,12 @@ public class EntityDoor extends EntityDialog {
     @Override
     public Dialog getDialog() {
 
-        if (1 << 18 == (map.getLevel().getDialogManager().getValue() & 1 << 18)) {
+        if (1 << 9 == (map.getLevel().getDialogManager().getValue() & 1 << 9)) {
             return Dialoge.LVmFaehrmannTwo;
-        } else if (1 == (map.getLevel().getDialogManager().getValue() & 1)) {
+        } else if ((1 << 1 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7 | 1 << 8) == (map.getLevel().getDialogManager().getValue() & (1 << 1 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7 | 1 << 8))) {
             return Dialoge.LVmFaehrmannOne;
+        } else {
+            return Dialoge.LVmFaehrmann;
         }
-        return Dialoge.LVmFaehrmann;
     }
 }
