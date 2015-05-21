@@ -53,8 +53,11 @@ public class CutsceneRender extends Canvas implements IUpdatable {
         addKeyListener(new KeyListener() {
 
             @Override
-            public void keyTyped(KeyEvent e) {
-                // NO-OP
+            public void keyPressed(KeyEvent e) {
+                if (Configs.debugMode.getValue() && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    Logger.debug("Skipping CutScene");
+                    CutSceneManager.getCutScene().setFinished();
+                }
             }
 
             @Override
@@ -63,11 +66,8 @@ public class CutsceneRender extends Canvas implements IUpdatable {
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {
-                if (Configs.debugMode.getValue() && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    Logger.debug("Skipping CutScene");
-                    CutSceneManager.getCutScene().setFinished();
-                }
+            public void keyTyped(KeyEvent e) {
+                // NO-OP
             }
         });
         setFocusable(true);

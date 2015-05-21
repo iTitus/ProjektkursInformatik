@@ -1,5 +1,8 @@
 package projektkurs.level;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import projektkurs.Main;
 import projektkurs.dialog.DialogManager;
 import projektkurs.io.storage.ISaveable;
@@ -28,7 +31,7 @@ public class Level implements IUpdatable, ISaveable {
     /**
      * Alle Spielfelder.
      */
-    private Spielfeld[] maps;
+    private List<Spielfeld> maps;
     /**
      * Name dieses Levels.
      */
@@ -46,11 +49,21 @@ public class Level implements IUpdatable, ISaveable {
      * @param maps
      *            alle Spielfelder
      */
-    public Level(String name, Spielfeld... maps) {
-        this.maps = maps;
+    public Level(String name) {
+        maps = new ArrayList<Spielfeld>();
         currentMap = 0;
         this.name = name;
         dialogManager = new DialogManager();
+    }
+
+    public void addMap(Spielfeld map) {
+        if (map == null) {
+            throw new NullPointerException("Map may not be null");
+        }
+        if (map.getLevel() != this) {
+            throw new IllegalArgumentException("Map is not in this level");
+        }
+        maps.add(map);
     }
 
     @Override
@@ -63,12 +76,12 @@ public class Level implements IUpdatable, ISaveable {
      */
     public void generateAndPopulateAll() {
         String methodName;
-        for (int i = 0; i < maps.length; i++) {
+        for (int i = 0; i < maps.size(); i++) {
             methodName = "generateAndPopulate";
             methodName += name;
             methodName += "Map";
             methodName += i;
-            ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps[i]);
+            ReflectionUtil.invokeStatic(ReflectionUtil.getMethod(MapBuilder.class, methodName, Spielfeld.class), maps.get(i));
         }
     }
 
@@ -82,7 +95,7 @@ public class Level implements IUpdatable, ISaveable {
      * @return Spielfeld
      */
     public Spielfeld getMap() {
-        return maps[currentMap];
+        return maps.get(currentMap);
     }
 
     /**
@@ -93,8 +106,8 @@ public class Level implements IUpdatable, ISaveable {
      * @return Spielfeld
      */
     public Spielfeld getMapAt(int i) {
-        if (MathUtil.isInArray(i, maps.length)) {
-            return maps[i];
+        if (MathUtil.isInArray(i, maps.size())) {
+            return maps.get(i);
         }
         Logger.logThrowable("Unable to get map", new ArrayIndexOutOfBoundsException(i));
         return null;
@@ -106,7 +119,7 @@ public class Level implements IUpdatable, ISaveable {
      * @return Anzahl
      */
     public int getMapCount() {
-        return maps.length;
+        return maps.size();
     }
 
     /**
@@ -122,10 +135,11 @@ public class Level implements IUpdatable, ISaveable {
     public void load(SaveData data) {
         name = data.getString("name");
         currentMap = data.getInteger("currentMap");
-        maps = new Spielfeld[data.getInteger("mapCount")];
-        for (int i = 0; i < maps.length; i++) {
-            maps[i] = new Spielfeld(this);
-            maps[i].load(data.getSaveData("map" + i));
+        int mapCount = data.getInteger("mapCount");
+        maps = new ArrayList<Spielfeld>(mapCount);
+        for (int i = 0; i < mapCount; i++) {
+            maps.set(i, new Spielfeld(this));
+            maps.get(i).load(data.getSaveData("map" + i));
         }
         dialogManager = new DialogManager();
         dialogManager.load(data.getSaveData("dialogManager"));
@@ -150,7 +164,7 @@ public class Level implements IUpdatable, ISaveable {
      *            Index
      */
     public void setMap(int i) {
-        if (MathUtil.isInArray(i, maps.length)) {
+        if (MathUtil.isInArray(i, maps.size())) {
             getMap().deSpawn(Main.getPlayer());
             currentMap = i;
             Main.getPlayer().setMap(getMap());
@@ -172,10 +186,10 @@ public class Level implements IUpdatable, ISaveable {
     public void write(SaveData data) {
         data.set("name", name);
         data.set("currentMap", currentMap);
-        data.set("mapCount", maps.length);
-        for (int i = 0; i < maps.length; i++) {
+        data.set("mapCount", maps.size());
+        for (int i = 0; i < maps.size(); i++) {
             SaveData saveData = new SaveData();
-            maps[i].write(saveData);
+            maps.get(i).write(saveData);
             data.set("map" + i, saveData);
         }
         SaveData dialogManagerData = new SaveData();

@@ -50,7 +50,7 @@ public class Level implements IUpdatable, ISaveable {
      *            alle Spielfelder
      */
     public Level(String name) {
-        this.maps = new ArrayList<Spielfeld>();
+        maps = new ArrayList<Spielfeld>();
         currentMap = 0;
         this.name = name;
         dialogManager = new DialogManager();
