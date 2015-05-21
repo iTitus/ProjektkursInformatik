@@ -2,11 +2,12 @@ package projektkurs.cutscene.render;
 
 import java.awt.Canvas;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
-import projektkurs.Main;
 import projektkurs.cutscene.CutSceneManager;
 import projektkurs.cutscene.object.CutSceneObject;
 import projektkurs.lib.Configs;
@@ -16,6 +17,7 @@ import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.util.I18n;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.StringUtil;
@@ -48,10 +50,26 @@ public class CutsceneRender extends Canvas implements IUpdatable {
     public CutsceneRender() {
         setIgnoreRepaint(true);
         setBounds(0, 0, Integers.windowX, Integers.windowY);
-        addKeyListener(Main.getInputManager());
-        addMouseListener(Main.getInputManager());
-        addMouseMotionListener(Main.getInputManager());
-        addMouseWheelListener(Main.getInputManager());
+        addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // NO-OP
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // NO-OP
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (Configs.debugMode.getValue() && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    Logger.debug("Skipping CutScene");
+                    CutSceneManager.getCutScene().setFinished();
+                }
+            }
+        });
         setFocusable(true);
         requestFocus();
         requestFocusInWindow();

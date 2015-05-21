@@ -1,6 +1,7 @@
 package projektkurs.cutscene;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import projektkurs.cutscene.action.Action;
 import projektkurs.cutscene.object.CutSceneObject;
@@ -37,7 +38,7 @@ public final class CutScene implements IUpdatable {
     /**
      * Alle CutSceneObjects in der CutScene.
      */
-    private final ArrayList<CutSceneObject> objects;
+    private final List<CutSceneObject> objects;
 
     /**
      * Konstruktor fuer eine CutScene.
@@ -91,7 +92,7 @@ public final class CutScene implements IUpdatable {
      *
      * @return ArrayList<CutSceneObject>
      */
-    public ArrayList<CutSceneObject> getCutSceneObjectList() {
+    public List<CutSceneObject> getCutSceneObjectList() {
         return objects;
     }
 
@@ -195,6 +196,10 @@ public final class CutScene implements IUpdatable {
      */
     @Override
     public void update() {
+
+        if (isFinished) {
+            return;
+        }
 
         if (elapsedTicks == 0 && startupQueue != null && !startupQueue.empty()) {
 

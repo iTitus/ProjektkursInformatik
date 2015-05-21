@@ -348,7 +348,7 @@ public final class Main {
             }
             for (Method m : allMethods) {
                 if (m != null) {
-                    Init i = m.getDeclaredAnnotation(Init.class);
+                    Init i = m.getAnnotation(Init.class);
                     if (i != null) {
                         initMethods.get(i.value()).add(m);
                     }
