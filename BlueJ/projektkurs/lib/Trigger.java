@@ -82,5 +82,6 @@ public class Trigger {
     }
 
     private Trigger() {
+        // NO-OP
     }
 }

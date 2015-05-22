@@ -22,6 +22,8 @@ import projektkurs.lib.Raster;
 import projektkurs.lib.Sounds;
 import projektkurs.lib.SpriteSheets;
 import projektkurs.lib.Sprites;
+import projektkurs.lib.StoryActions;
+import projektkurs.lib.Trigger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 
@@ -33,7 +35,8 @@ public class GuiInfoChooser extends Gui implements IButtonListener {
     public GuiInfoChooser(Gui parent) {
         super(parent);
         infos = new ArrayList<Pair<String, List<String>>>();
-        infos.addAll(Arrays.asList(Levels.getPair(), CutScenes.getPair(), Dialoge.getPair(), Raster.getPair(), ExtraInformationen.getPair(), Entities.getPair(), Items.getPair(), Commands.getPair(), Images.getPair(), SpriteSheets.getPair(), Sprites.getPair(), Sounds.getPair(), Configs.getPair()));
+        infos.addAll(Arrays.asList(Levels.getPair(), CutScenes.getPair(), Dialoge.getPair(), Raster.getPair(), ExtraInformationen.getPair(), Entities.getPair(), Items.getPair(), Commands.getPair(), Images.getPair(), SpriteSheets.getPair(), Sprites.getPair(), Sounds.getPair(), Configs.getPair(), Trigger.getPair(),
+                StoryActions.getPair()));
     }
 
     @Override
