@@ -19,6 +19,7 @@ import projektkurs.util.MethodInvoker;
  */
 public class StoryManager implements IUpdatable, ISaveable {
 
+    private final StoryContext storyContext;
     /**
      * Alle Trigger.
      */
@@ -27,6 +28,7 @@ public class StoryManager implements IUpdatable, ISaveable {
      * Hinzuzufuegende Trigger.
      */
     private final Map<AbstractTrigger, MethodInvoker> triggerToAddMap;
+
     /**
      * Zu loeschende Trigger.
      */
@@ -36,6 +38,7 @@ public class StoryManager implements IUpdatable, ISaveable {
      * Konstruktor.
      */
     public StoryManager() {
+        storyContext = new StoryContext(this);
         triggerMap = new HashMap<AbstractTrigger, MethodInvoker>();
         triggerToAddMap = new HashMap<AbstractTrigger, MethodInvoker>();
         triggerToRemove = new HashSet<AbstractTrigger>();
@@ -44,6 +47,10 @@ public class StoryManager implements IUpdatable, ISaveable {
     @Override
     public boolean canUpdate() {
         return true;
+    }
+
+    public StoryContext getStoryContext() {
+        return storyContext;
     }
 
     public Map<AbstractTrigger, MethodInvoker> getTriggerMap() {

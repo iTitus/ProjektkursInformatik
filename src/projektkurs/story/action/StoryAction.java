@@ -3,15 +3,16 @@ package projektkurs.story.action;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
 import projektkurs.lib.StoryActions;
+import projektkurs.story.StoryContext;
 
 public abstract class StoryAction implements ISaveable {
 
     protected StoryAction next;
 
-    public void execute() {
-        doExecute();
+    public void execute(StoryContext storyContext) {
+        doExecute(storyContext);
         if (next != null) {
-            next.execute();
+            next.execute(storyContext);
         }
     }
 
@@ -20,10 +21,6 @@ public abstract class StoryAction implements ISaveable {
     }
 
     public StoryAction getNext() {
-        return next;
-    }
-
-    public StoryAction getNextAction() {
         return next;
     }
 
@@ -53,6 +50,6 @@ public abstract class StoryAction implements ISaveable {
         }
     }
 
-    protected abstract void doExecute();
+    protected abstract void doExecute(StoryContext storyContext);
 
 }
