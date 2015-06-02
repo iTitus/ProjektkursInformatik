@@ -39,6 +39,7 @@ public final class KeyBindings {
      * Taste, um die Menues/Optionen zu oeffnen oder GUIs zu schliessen.
      */
     public static final int KEY_MENU = KeyEvent.VK_ESCAPE;
+    public static final int KEY_QUEST_LOG = KeyEvent.VK_Q;
     /**
      * Taste, um nach rechts zu gehen.
      */
@@ -59,6 +60,7 @@ public final class KeyBindings {
      * Tabulator-Buchstaben.
      */
     public static final int TABULATOR_CHAR = '\t';
+
     /**
      * Unbekannter-Buchstaben-Code (0xFFFF).
      */

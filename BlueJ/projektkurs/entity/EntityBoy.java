@@ -16,13 +16,15 @@ public class EntityBoy extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if (1 << 7 == (map.getLevel().getDialogManager().getValue() & 1 << 7)) {
-            return Dialoge.LVmJungeAmWegesrandTwo;
-        } else if ((1 << 5 | 1 << 6 | 1 << 8) == (map.getLevel().getDialogManager().getValue() & (1 << 5 | 1 << 6 | 1 << 8))) {
+        if (1 << 16 == (map.getLevel().getDialogManager().getValue() & 1 << 16)) {
+            return Dialoge.LVmJungeAmWegesrandStd;
+        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & (1 << 12 | 1 << 13 | 1 << 14))) {
             return Dialoge.LVmJungeAmWegesrandOne;
+        } else if ((1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11) == (map.getLevel().getDialogManager().getValue() & (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11))) {
+            return Dialoge.LVmJungeAmWegesrandNull;
         } else {
-            return Dialoge.LVmJungeAmWegesrand;
+            return Dialoge.test;
         }
-
     }
+
 }

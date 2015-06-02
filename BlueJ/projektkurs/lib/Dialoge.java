@@ -18,26 +18,30 @@ import projektkurs.util.ReflectionUtil;
 public final class Dialoge {
 
     public static Dialog CS_LVmFrau;
-    public static Dialog LVmFaehrmann;
+    public static Dialog LVmFaehrmannEnd;
+    public static Dialog LVmFaehrmannNull;
     public static Dialog LVmFaehrmannOne;
-    public static Dialog LVmFaehrmannTwo;
-    public static Dialog LVmFischer;
+    public static Dialog LVmFischerNull;
     public static Dialog LVmFischerStd;
-    public static Dialog LVmFrau;
-    public static Dialog LVmFrauEnde;
+    public static Dialog LVmFrauEnd;
+    public static Dialog LVmFrauNull;
     public static Dialog LVmFrauOne;
+    public static Dialog LVmFrauStd;
     public static Dialog LVmFrauThree;
     public static Dialog LVmFrauTwo;
-    public static Dialog LVmHexerzirkel;
+    public static Dialog LVmHexerzirkelNull;
     public static Dialog LVmHexerzirkelOne;
+    public static Dialog LVmHexerzirkelStd;
     public static Dialog LVmHexerzirkelTwo;
-    public static Dialog LVmJungeAmWegesrand;
+    public static Dialog LVmJungeAmWegesrandNull;
     public static Dialog LVmJungeAmWegesrandOne;
-    public static Dialog LVmJungeAmWegesrandTwo;
-    public static Dialog LVmNest;
+    public static Dialog LVmJungeAmWegesrandStd;
+    public static Dialog LVmNestNull;
     public static Dialog LVmNestOne;
+    public static Dialog LVmNestStd;
     public static Dialog LVmSchranke;
     public static Dialog LVmTrashCan;
+
     /*
      * public static Dialog LVmKaugummi; public static Dialog LVmMesser; public static Dialog LVmNetz; public static Dialog LVmStein; public static Dialog LVmTeddy; public static Dialog LVmYoyo;
      */
@@ -69,77 +73,77 @@ public final class Dialoge {
         CS_LVmFrau = new Dialog("CS_LVmFrau", new DialogPart("CS_LVmFrauNull", 14));
         registerMapping(CS_LVmFrau);
 
-        LVmFaehrmann = new Dialog("LVmFaehrmann", new DialogPart("LVmFaehrmannNull", 1 << 1, 0 | 1 << 2 | 1 << 3, 4));
-        registerMapping(LVmFaehrmann);
+        LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 | 1 << 1, 0, 4));
+        registerMapping(LVmFaehrmannNull);
 
-        LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOneNull", 1 << 1 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7 | 1 << 8, 2));
-        registerMapping(LVmFaehrmannOne);
+        LVmFrauNull = new Dialog("LVmFrauNull", new DialogPart("LVmFrauNullnull", 0 | 1, 1));
+        registerMapping(LVmFrauNull);
 
-        LVmFaehrmannTwo = new Dialog("LVmFaehramnnTwo", new DialogPart("LVmFaehrmannTwoNull", 1 << 9, 2).setEndAction(ReflectionUtil.getMethod(Scripts.class, "removeItem", ItemStack.class), new ItemStack(Items.gramophoneItem)));
-        registerMapping(LVmFaehrmannTwo);
+        LVmJungeAmWegesrandNull = new Dialog("LVmJungeAmWegesrandNull", new DialogPart("LVmJUngeAmWegesrandNullnull", 0 | 1, 2));
+        registerMapping(LVmJungeAmWegesrandNull);
 
-        LVmJungeAmWegesrand = new Dialog("LVmJungeAmWegesrand", new DialogPart("LVmJungeAmWegesrandNull", 1 << 2, 0 | 1 << 1 | 1 << 3, 2));
-        registerMapping(LVmJungeAmWegesrand);
-
-        LVmJungeAmWegesrandOne = new Dialog("LVmJungeAmWegesrandOne", new DialogPart("LVmJungeAmWegesrandOneNull", 1 << 7, 1 << 5 | 1 << 6 | 1 << 8, 4).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptJunge")));
-        registerMapping(LVmJungeAmWegesrandOne);
-
-        LVmJungeAmWegesrandTwo = new Dialog("LVmJungeAmWegesrandTwo", new DialogPart("LVmJungeAmWegesrandTwoNull", 1 << 7, 1));
-        registerMapping(LVmJungeAmWegesrandTwo);
-
-        LVmFrau = new Dialog("LVmFrau", new DialogPart("LVmFrauNull", 0 | 1 << 1 | 1 << 2, 1)); // );
-        registerMapping(LVmFrau);
-
-        LVmFrauOne = new Dialog("LVmFrauOne", new DialogPart("LVmFrauOneNull", 1 << 3, 1 << 1 | 1 << 4, 3), new DialogPart("LVmFrauOneEins", 1 << 3, 1 << 1 | 1 << 4, 2), new DialogPart("LVmFrauOneZwei", 1 << 3, 1 << 1 | 1 << 4, 2),
-                new DialogPart("LVmFrauOneDrei", 1 << 3, 1 << 1 | 1 << 4, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "cutscenetwo")));
+        LVmFrauOne = new Dialog("LVmFrauOne", new DialogPart("LVmFrauOneNull", 1 << 2, 1 << 0 | 1 << 1, 3), new DialogPart("LVmFrauOneEins", 1 << 3, 1 << 0 | 1 << 1, 2), new DialogPart("LVmFrauOneZwei", 1 << 4, 1 << 0 | 1 << 1, 2),
+                new DialogPart("LVmFrauOneDrei", 1 << 5, 1 << 0 | 1 << 1, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "cutscenetwo")));
         registerMapping(LVmFrauOne);
 
-        LVmFrauTwo = new Dialog("LVmFrauTwo", new DialogPart("LVmFrauTwoNull", 1 << 3 | 1 << 4, 3));
+        LVmFaehrmannOne = new Dialog("LVmFaehrmannOne", new DialogPart("LVmFaehrmannOneNull", 1 << 0 | 1 << 1, 2));
+        registerMapping(LVmFaehrmannOne);
+
+        LVmFischerNull = new Dialog("LVmFischerNull", new DialogPart("LVmFischerNullnull", 1 << 6, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 6), new DialogPart("LVmFischerNullEins", 1 << 7, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5), new DialogPart("LVmFischerNullZwei", 1 << 8, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5),
+                new DialogPart("LVmFischerNullDrei", 1 << 9, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullVier", 1 << 10, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullFuenf", 1 << 11, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 1));
+        registerMapping(LVmFischerNull);
+
+        LVmHexerzirkelNull = new Dialog("LVmHexerzirkelNull", new DialogPart("LVmHexerzirkelNullnull", 1 << 12, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 2), new DialogPart("LVmHexerzirkelNullEins", 1 << 13, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 4), new DialogPart(
+                "LVmHexerzirkelNullZwei", 1 << 14, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 7));
+        registerMapping(LVmHexerzirkelNull);
+
+        LVmNestNull = new Dialog("LVmNestNull", new DialogPart("LVmNestNullnull", 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptFisher")));
+        registerMapping(LVmNestNull);
+
+        LVmFrauTwo = new Dialog("LVmFrauTwo", new DialogPart("LVmFrauTwoNull", 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 3));
         registerMapping(LVmFrauTwo);
 
-        LVmFrauThree = new Dialog("LVmFrauThree", new DialogPart("LVmFrauThreeNull", 1 << 7, 1 << 5 | 1 << 7 | 1 << 8, 9).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWoman")));
-        registerMapping(LVmFrauThree);
-
-        // Neu Frau Dialog
-        LVmFrauEnde = new Dialog("LVmFrauEnde", new DialogPart("LVmFrauEndeNull", 1 << 6 | 1 << 9, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "cutsceneThree")));
-        registerMapping(LVmFrauEnde);
-
-        LVmFischer = new Dialog("LVmFischer", new DialogPart("LVmFischerNull", 1 << 3, 6), new DialogPart("LVmFischerEins", 1 << 3, 5), new DialogPart("LVmFischerZwei", 1 << 3, 5), new DialogPart("LVmFischerDrei", 1 << 3, 2), new DialogPart("LVmFischerVier", 1 << 3, 2), new DialogPart("LVmFischerFuenf", 1 << 4,
-                1 << 3, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptFisher")));
-        registerMapping(LVmFischer);
-
-        // Neu Fischer Dialog
-
-        LVmFischerStd = new Dialog("LVmFischerStd", new DialogPart("LVmFischerStdNull", 1 << 4, 1));
+        LVmFischerStd = new Dialog("LVmFischerStd", new DialogPart("LVmFischerStdNull", 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 1));
         registerMapping(LVmFischerStd);
 
-        LVmHexerzirkel = new Dialog("LVmHexerzirkel", new DialogPart("LVmHexerzirkelNull", 1 << 5, 1 << 4 | 1 << 5, 2), new DialogPart("LVmHexerzirkelEins", 1 << 5, 1 << 4 | 1 << 5, 4), new DialogPart("LVmHexerzirkelZwei", 1 << 5, 1 << 4 | 1 << 5, 7));
-        registerMapping(LVmHexerzirkel);
-
-        LVmHexerzirkelOne = new Dialog("LVmHexerzirkelOne", new DialogPart("LVmHexerzirkelOneNull", 1 << 5 | 1 << 6 | 1 << 7, 2));
+        LVmHexerzirkelOne = new Dialog("LVmHexerzirkelOne", new DialogPart("LVmHexerzirkelOneNull", 1 << 12 | 1 << 13 | 1 << 14, 2));
         registerMapping(LVmHexerzirkelOne);
 
-        LVmHexerzirkelTwo = new Dialog("LVmHexerzirkelTwo", new DialogPart("LVmHexerzirkelTwoNull", 1 << 9, 1 << 8, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWitchCoul")));
+        LVmFrauThree = new Dialog("LVmFrauThree", new DialogPart("LVmFrauThreeNull", 1 << 15, 1 << 12 | 1 << 13 | 1 << 14, 9).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWoman")));
+        registerMapping(LVmFrauThree);
+
+        LVmJungeAmWegesrandOne = new Dialog("LVmJungeAmWegesrandOne", new DialogPart("LVmJungeAmWegesrandOneNull", 1 << 16, 1 << 12 | 1 << 13 | 1 << 14, 5).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptJunge")));
+        registerMapping(LVmJungeAmWegesrandNull);
+
+        LVmNestOne = new Dialog("LVmNestOne", new DialogPart("LVmNestOneNull", 1 << 17, 1 << 15 | 1 << 16, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptNest")));
+        registerMapping(LVmNestOne);
+
+        LVmFrauStd = new Dialog("LVmFrauStd", new DialogPart("LVmFrauStdNull", 1 << 15, 1));
+        registerMapping(LVmFrauStd);
+
+        LVmJungeAmWegesrandStd = new Dialog("LVmJungeAmWegesrandStd", new DialogPart("LVmJungeAmWegesrandStdNull", 1 << 16, 1));
+        registerMapping(LVmJungeAmWegesrandStd);
+
+        LVmHexerzirkelTwo = new Dialog("LVmHexerzirkelTwo", new DialogPart("LVmHexerzirkelTwoNull", 1 << 18, 1 << 17, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWitchCoul")));
         registerMapping(LVmHexerzirkelTwo);
+
+        LVmNestStd = new Dialog("LVmNestStd", new DialogPart("LVmNestStdNuull", 1 << 17, 1));
+        registerMapping(LVmNestStd);
+
+        LVmHexerzirkelStd = new Dialog("LVmHexerzirkelStd", new DialogPart("LVmHexerzirkelStdNull", 1 << 18, 1));
+        registerMapping(LVmHexerzirkelStd);
+
+        LVmFaehrmannEnd = new Dialog("LVmFaehrmannEnd", new DialogPart("LVmFaehrmannEndNull", 1 << 19, 1 << 18, 2).setEndAction(ReflectionUtil.getMethod(Scripts.class, "removeItem", ItemStack.class), new ItemStack(Items.gramophoneItem)));
+        registerMapping(LVmFaehrmannEnd);
+
+        LVmFrauEnd = new Dialog("LVmFrauEnd", new DialogPart("LVmFrauEndNull", 1 << 19, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "cutsceneThree")));
+        registerMapping(LVmFrauEnd);
 
         LVmTrashCan = new Dialog("LVmTrashCan", new DialogPart("LVmTrashCanNull", 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptThrashCan")));
         registerMapping(LVmTrashCan);
 
-        // Gleichzusetzten mit neccValue von Hexerzirkel, da DialogValue Sich im Laufe ver�ndert // Testweise, da VilleCar sich auf Stumm gestellt hatte
-        LVmNest = new Dialog("LVmNest", new DialogPart("LVmNestNull", 1 << 4 | 1 << 5, 1));
-        registerMapping(LVmNest);
-
-        LVmNestOne = new Dialog("LVmNestOne", new DialogPart("LVmNestOneNull", 1 << 8, 1 << 7, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptNest")));
-        registerMapping(LVmNestOne);
-
         LVmSchranke = new Dialog("LVmSchranke", new DialogPart("LVmSchrankeNull", 1));
         registerMapping(LVmSchranke);
-        // LVmStein = new Dialog("LVmStein", new DialogPart("LVmSteinNull",1)); registerMapping(LVmStein);
-        // LVmTeddy = new Dialog("LVmTeddy", new DialogPart("LVmTeddyNull",1)); registerMapping(LVmTeddy);
-        // LVmYoyo = new Dialog("LVmYoyo", new DialogPart("LVmYoyoNull",1)); registerMapping(LVmYoyo);
-        // LVmKaugummi = new Dialog("LVmKaugummi", new DialogPart("LVmKaugummiNull",1)); registerMapping(LVmKaugummi);
-        // LVmNetz = new Dialog("LVmNetz", new DialogPart("LVmNetzNull",1)); registerMapping(LVmNetz);
-        // LVmMesser = new Dialog("LVmMesser", new DialogPart("LVmMesserNull",1)); registerMapping(LVmMesser);
 
     }
 

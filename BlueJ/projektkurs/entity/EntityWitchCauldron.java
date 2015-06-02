@@ -17,12 +17,17 @@ public class EntityWitchCauldron extends EntityDialog {
 
     @Override
     public Dialog getDialog() {
-        if (1 << 8 == (map.getLevel().getDialogManager().getValue() & 1 << 8)) {
-            return Dialoge.LVmJungeAmWegesrandTwo;
-        } else if ((1 << 5 | 1 << 6 | 1 << 7) == (map.getLevel().getDialogManager().getValue() & (1 << 5 | 1 << 6 | 1 << 7))) {
+
+        if (1 << 18 == (map.getLevel().getDialogManager().getValue() & 1 << 18)) {
+            return Dialoge.LVmHexerzirkelStd;
+        } else if (1 << 17 == (map.getLevel().getDialogManager().getValue() & 1 << 17)) {
+            return Dialoge.LVmHexerzirkelTwo;
+        } else if ((1 << 12 | 1 << 13 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & (1 << 12 | 1 << 13 | 1 << 14))) {
             return Dialoge.LVmHexerzirkelOne;
+        } else if ((1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11) == (map.getLevel().getDialogManager().getValue() & (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11))) {
+            return Dialoge.LVmHexerzirkelNull;
         } else {
-            return Dialoge.LVmHexerzirkel;
+            return Dialoge.test;
         }
 
     }

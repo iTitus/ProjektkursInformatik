@@ -49,7 +49,7 @@ public final class RenderUtil {
             }
         }
         for (int y = Integers.windowY - Integers.WINDOW_HUD_Y; y < Integers.windowY; y++) {
-            for (int x = 0; x < Integers.WINDOW_HUD_X; x++) {
+            for (int x = 0; x < Integers.windowX; x++) {
                 screen.setPixel(0, x, y);
             }
         }

@@ -102,10 +102,6 @@ public class Level implements IUpdatable, ISaveable {
         return maps.get(currentMap);
     }
 
-    public QuestManager getQuestManager() {
-        return questManager;
-    }
-
     /**
      * Das Spielfeld am gegebenen Index.
      *
@@ -137,6 +133,10 @@ public class Level implements IUpdatable, ISaveable {
      */
     public String getName() {
         return name;
+    }
+
+    public QuestManager getQuestManager() {
+        return questManager;
     }
 
     @Override

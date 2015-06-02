@@ -8,6 +8,7 @@ import projektkurs.dialog.DialogManager;
 import projektkurs.io.storage.ISaveable;
 import projektkurs.io.storage.SaveData;
 import projektkurs.render.Screen;
+import projektkurs.story.quest.QuestManager;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
@@ -37,6 +38,8 @@ public class Level implements IUpdatable, ISaveable {
      */
     private String name;
 
+    private QuestManager questManager;
+
     public Level() {
         // NO-OP
     }
@@ -54,6 +57,7 @@ public class Level implements IUpdatable, ISaveable {
         currentMap = 0;
         this.name = name;
         dialogManager = new DialogManager();
+        questManager = new QuestManager();
     }
 
     public void addMap(Spielfeld map) {
@@ -131,6 +135,10 @@ public class Level implements IUpdatable, ISaveable {
         return name;
     }
 
+    public QuestManager getQuestManager() {
+        return questManager;
+    }
+
     @Override
     public void load(SaveData data) {
         name = data.getString("name");
@@ -143,6 +151,8 @@ public class Level implements IUpdatable, ISaveable {
         }
         dialogManager = new DialogManager();
         dialogManager.load(data.getSaveData("dialogManager"));
+        questManager = new QuestManager();
+        questManager.load(data.getSaveData("questManager"));
     }
 
     /**
@@ -195,5 +205,8 @@ public class Level implements IUpdatable, ISaveable {
         SaveData dialogManagerData = new SaveData();
         dialogManager.write(dialogManagerData);
         data.set("dialogManager", dialogManagerData);
+        SaveData questManagerData = new SaveData();
+        questManager.write(questManagerData);
+        data.set("questManager", questManagerData);
     }
 }
