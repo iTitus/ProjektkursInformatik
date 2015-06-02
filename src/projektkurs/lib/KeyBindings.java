@@ -64,6 +64,8 @@ public final class KeyBindings {
      */
     public static final int UNKNOWN_CHAR = (1 << 16) - 1;
 
+    public static final int KEY_QUEST_LOG = KeyEvent.VK_Q;
+
     /**
      * Nicht instanziierbar.
      */
