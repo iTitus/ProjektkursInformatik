@@ -76,10 +76,10 @@ public final class Dialoge {
         LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 | 1 << 1, 0, 4));
         registerMapping(LVmFaehrmannNull);
 
-        LVmFrauNull = new Dialog("LVmFrauNull", new DialogPart("LVmFrauNullnull", 0 | 1, 1));
+        LVmFrauNull = new Dialog("LVmFrauNull", new DialogPart("LVmFrauNullnull", 0, 2)); // changed sth.
         registerMapping(LVmFrauNull);
 
-        LVmJungeAmWegesrandNull = new Dialog("LVmJungeAmWegesrandNull", new DialogPart("LVmJUngeAmWegesrandNullnull", 0 | 1, 2));
+        LVmJungeAmWegesrandNull = new Dialog("LVmJungeAmWegesrandNull", new DialogPart("LVmJungeAmWegesrandNullnull", 0, 2));
         registerMapping(LVmJungeAmWegesrandNull);
 
         LVmFrauOne = new Dialog("LVmFrauOne", new DialogPart("LVmFrauOneNull", 1 << 2, 1 << 0 | 1 << 1, 3), new DialogPart("LVmFrauOneEins", 1 << 3, 1 << 0 | 1 << 1, 2), new DialogPart("LVmFrauOneZwei", 1 << 4, 1 << 0 | 1 << 1, 2),
@@ -90,14 +90,15 @@ public final class Dialoge {
         registerMapping(LVmFaehrmannOne);
 
         LVmFischerNull = new Dialog("LVmFischerNull", new DialogPart("LVmFischerNullnull", 1 << 6, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 6), new DialogPart("LVmFischerNullEins", 1 << 7, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5), new DialogPart("LVmFischerNullZwei", 1 << 8, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5),
-                new DialogPart("LVmFischerNullDrei", 1 << 9, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullVier", 1 << 10, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullFuenf", 1 << 11, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 1));
+                new DialogPart("LVmFischerNullDrei", 1 << 9, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullVier", 1 << 10, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullFuenf", 1 << 11, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 1).setEndAction(ReflectionUtil.getMethod(
+                        Scripts.class, "scriptFisher")));
         registerMapping(LVmFischerNull);
 
         LVmHexerzirkelNull = new Dialog("LVmHexerzirkelNull", new DialogPart("LVmHexerzirkelNullnull", 1 << 12, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 2), new DialogPart("LVmHexerzirkelNullEins", 1 << 13, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 4), new DialogPart(
                 "LVmHexerzirkelNullZwei", 1 << 14, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 7));
         registerMapping(LVmHexerzirkelNull);
 
-        LVmNestNull = new Dialog("LVmNestNull", new DialogPart("LVmNestNullnull", 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptFisher")));
+        LVmNestNull = new Dialog("LVmNestNull", new DialogPart("LVmNestNullnull", 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 1));
         registerMapping(LVmNestNull);
 
         LVmFrauTwo = new Dialog("LVmFrauTwo", new DialogPart("LVmFrauTwoNull", 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 3));
@@ -113,7 +114,7 @@ public final class Dialoge {
         registerMapping(LVmFrauThree);
 
         LVmJungeAmWegesrandOne = new Dialog("LVmJungeAmWegesrandOne", new DialogPart("LVmJungeAmWegesrandOneNull", 1 << 16, 1 << 12 | 1 << 13 | 1 << 14, 5).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptJunge")));
-        registerMapping(LVmJungeAmWegesrandNull);
+        registerMapping(LVmJungeAmWegesrandOne);
 
         LVmNestOne = new Dialog("LVmNestOne", new DialogPart("LVmNestOneNull", 1 << 17, 1 << 15 | 1 << 16, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptNest")));
         registerMapping(LVmNestOne);
@@ -127,7 +128,7 @@ public final class Dialoge {
         LVmHexerzirkelTwo = new Dialog("LVmHexerzirkelTwo", new DialogPart("LVmHexerzirkelTwoNull", 1 << 18, 1 << 17, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptWitchCoul")));
         registerMapping(LVmHexerzirkelTwo);
 
-        LVmNestStd = new Dialog("LVmNestStd", new DialogPart("LVmNestStdNuull", 1 << 17, 1));
+        LVmNestStd = new Dialog("LVmNestStd", new DialogPart("LVmNestStdNull", 1 << 17, 1));
         registerMapping(LVmNestStd);
 
         LVmHexerzirkelStd = new Dialog("LVmHexerzirkelStd", new DialogPart("LVmHexerzirkelStdNull", 1 << 18, 1));

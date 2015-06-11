@@ -22,7 +22,7 @@ public class EntityFisher extends EntityDialog {
         } else if ((1 << 2 | 1 << 3 | 1 << 4 | 1 << 5) == (map.getLevel().getDialogManager().getValue() & (1 << 2 | 1 << 3 | 1 << 4 | 1 << 5))) {
             return Dialoge.LVmFischerNull;
         } else {
-            return Dialoge.test;
+            return Dialoge.LVmFischerNull;
         }
     }
 }

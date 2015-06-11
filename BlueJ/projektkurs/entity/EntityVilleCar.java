@@ -21,17 +21,17 @@ public class EntityVilleCar extends EntityDialog {
         if (1 << 19 == (map.getLevel().getDialogManager().getValue() & 1 << 19)) {
             return Dialoge.LVmFrauEnd;
         } else if (1 << 15 == (map.getLevel().getDialogManager().getValue() & 1 << 15)) {
-            return Dialoge.LVmFrauStd;
+            return Dialoge.LVmFrauEnd;
         } else if ((1 << 12 | 1 << 13 | 1 << 14) == (map.getLevel().getDialogManager().getValue() & (1 << 12 | 1 << 13 | 1 << 14))) {
             return Dialoge.LVmFrauThree;
         } else if ((1 << 2 | 1 << 3 | 1 << 4 | 1 << 5) == (map.getLevel().getDialogManager().getValue() & (1 << 2 | 1 << 3 | 1 << 4 | 1 << 5))) {
             return Dialoge.LVmFrauTwo;
         } else if ((1 << 0 | 1 << 1) == (map.getLevel().getDialogManager().getValue() & (1 << 0 | 1 << 1))) {
             return Dialoge.LVmFrauOne;
-        } else if ((0 | 1) == (map.getLevel().getDialogManager().getValue() & (0 | 1))) {
+        } else if (0 == (map.getLevel().getDialogManager().getValue() & 0)) {
             return Dialoge.LVmFrauNull;
         } else {
-            return Dialoge.test;
+            return Dialoge.LVmFrauNull;
         }
 
     }

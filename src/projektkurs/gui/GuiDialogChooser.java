@@ -1,7 +1,7 @@
 package projektkurs.gui;
 
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.List;
 
 import projektkurs.Main;
 import projektkurs.dialog.Dialog;
@@ -28,6 +28,7 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
      * Entity No. 2.
      */
     private final Entity entity2;
+    private List<DialogPart> shownParts;
 
     /**
      * Konstruktor.
@@ -60,14 +61,14 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
     @Override
     public void initGui() {
         super.initGui();
-        ArrayList<DialogPart> parts = dialog.getShownParts();
-        if (parts.size() > 1) {
+        shownParts = dialog.getShownParts();
+        if (shownParts.size() > 1) {
             int id = 0;
-            for (DialogPart shown : parts) {
+            for (DialogPart shown : shownParts) {
                 addElement(new DialogButton(34, 34 + id * 64, id++, this, shown));
             }
-        } else if (parts.size() == 1) {
-            Main.openGui(new GuiDialog(getParent(), parts.get(0), entity1, entity2));
+        } else if (shownParts.size() == 1) {
+            Main.openGui(new GuiDialog(getParent(), shownParts.get(0), entity1, entity2));
         } else {
             Main.openGui(getParent());
         }
@@ -78,7 +79,11 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
         if (button instanceof DialogButton) {
             DialogPart part = ((DialogButton) button).getDialogPart();
             part.setActivated(false);
-            Main.openGui(new GuiDialog(getParent(), part, entity1, entity2));
+            if (shownParts.size() == 1) {
+                Main.openGui(new GuiDialog(getParent(), part, entity1, entity2));
+            } else {
+                Main.openGui(new GuiDialog(this, part, entity1, entity2));
+            }
         }
     }
 

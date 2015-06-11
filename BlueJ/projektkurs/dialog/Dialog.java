@@ -1,6 +1,7 @@
 package projektkurs.dialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Dialog.
@@ -47,7 +48,7 @@ public class Dialog {
      *
      * @return alle DialogParts
      */
-    public ArrayList<DialogPart> getShownParts() {
+    public List<DialogPart> getShownParts() {
         ArrayList<DialogPart> list = new ArrayList<DialogPart>();
         for (DialogPart part : parts) {
             if (part.shouldShowUp()) {

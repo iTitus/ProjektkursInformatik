@@ -27,7 +27,7 @@ public class EntityWitchCauldron extends EntityDialog {
         } else if ((1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11) == (map.getLevel().getDialogManager().getValue() & (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11))) {
             return Dialoge.LVmHexerzirkelNull;
         } else {
-            return Dialoge.test;
+            return Dialoge.LVmHexerzirkelNull;
         }
 
     }

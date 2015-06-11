@@ -23,7 +23,7 @@ public class EntityDoor extends EntityDialog {
         } else if ((0 | 1) == (map.getLevel().getDialogManager().getValue() & (0 | 1))) {
             return Dialoge.LVmFaehrmannNull;
         } else {
-            return Dialoge.test;
+            return Dialoge.LVmFaehrmannNull;
         }
     }
 }
