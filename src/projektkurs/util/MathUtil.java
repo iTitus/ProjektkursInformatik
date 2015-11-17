@@ -391,6 +391,10 @@ public final class MathUtil {
         return i > 0 ? 1 : i < 0 ? -1 : 0;
     }
 
+    public static int signum(double d) {
+        return d > 0 ? 1 : d < 0 ? -1 : 0;
+    }
+
     /**
      * Nicht instanziierbar.
      */

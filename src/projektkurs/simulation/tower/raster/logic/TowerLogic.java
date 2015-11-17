@@ -19,4 +19,12 @@ public abstract class TowerLogic implements IUpdatable {
         return true;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
 }

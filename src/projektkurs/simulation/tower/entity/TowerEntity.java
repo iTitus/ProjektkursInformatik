@@ -67,7 +67,7 @@ public abstract class TowerEntity implements IUpdatable, IHasPositionAndSize<Dou
         // NO-OP
     }
 
-    public abstract void render(Screen screen, int offsetX, int offsetY);
+    public abstract void render(Screen screen, int posX, int posY);
 
     public void setDead() {
         isDead = true;
