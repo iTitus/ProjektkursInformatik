@@ -9,6 +9,7 @@ import projektkurs.simulation.mandelbrot.gui.GuiMandelbrotSet;
 import projektkurs.simulation.pacman.gui.GuiPacman;
 import projektkurs.simulation.piano.gui.GuiPiano;
 import projektkurs.simulation.tictactoe.gui.GuiTicTacToe;
+import projektkurs.simulation.tower.gui.GuiTowerDefense;
 import projektkurs.simulation.ulam.gui.GuiUlam;
 import projektkurs.util.StringUtil;
 
@@ -83,6 +84,12 @@ public class CommandOpenSimulation extends Command {
             case "tictactoe":
             case "ttt":
                 Main.openGui(new GuiTicTacToe());
+                break;
+            case "td":
+            case "tower":
+            case "towerdef":
+            case "towerdefense":
+                Main.openGui(new GuiTowerDefense());
                 break;
             default:
                 return EnumCommandResult.OBJECT_NOT_FOUND;
