@@ -23,14 +23,22 @@ public abstract class TowerRaster {
         return false;
     }
 
+    public boolean canRenderInPass(int pass) {
+        return pass < getRequiredRenderPasses();
+    }
+
     public TowerLogic createLogic(TowerDefenseBoard board, int x, int y) {
         return null;
+    }
+
+    public int getRequiredRenderPasses() {
+        return 1;
     }
 
     public boolean isTower() {
         return false;
     }
 
-    public abstract void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY);
+    public abstract void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY, int pass);
 
 }

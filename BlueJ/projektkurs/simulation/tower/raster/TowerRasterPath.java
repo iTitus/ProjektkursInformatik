@@ -16,7 +16,7 @@ public class TowerRasterPath extends TowerRaster {
     }
 
     @Override
-    public void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY) {
+    public void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY, int pass) {
         RenderUtil.drawFilledRectangle(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * x), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * y), ElementTowerDefenseBoard.SIZE, ElementTowerDefenseBoard.SIZE, 0xDDDAAA);
     }
 

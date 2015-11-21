@@ -56,6 +56,7 @@ public final class StoryActions {
         return data;
     }
 
+    @SuppressWarnings("unused")
     private static void registerStoryAction(Class<? extends StoryAction> cls, String id) {
         if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {
             MAPPINGS.put(id, cls);

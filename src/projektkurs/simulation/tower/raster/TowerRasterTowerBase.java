@@ -11,13 +11,13 @@ public abstract class TowerRasterTowerBase extends TowerRaster {
     public abstract TieredTowerLogic createLogic(TowerDefenseBoard board, int x, int y);
 
     @Override
-    public boolean isTower() {
-        return true;
+    public int getRequiredRenderPasses() {
+        return 2;
     }
 
     @Override
-    public int getRequiredRenderPasses() {
-        return 2;
+    public boolean isTower() {
+        return true;
     }
 
     @Override

@@ -58,7 +58,9 @@ public abstract class TieredTowerLogic extends TowerLogic {
         return towerType.getUpgradeCost(tier);
     }
 
-    public abstract void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY);
+    public abstract void renderBackground(Screen screen, int posX, int posY);
+
+    public abstract void renderOverlay(Screen screen, int posX, int posY);
 
     public void setTier(int tier) {
         this.tier = tier;

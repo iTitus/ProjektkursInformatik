@@ -7,17 +7,13 @@ import java.util.Random;
  */
 public final class MathUtil {
 
-    private static final double DEG_TO_RAD = Math.PI / 180;
-
-    private static final double RAD_TO_DEG = 180 / Math.PI;
-    private static final double radToIndex, degToIndex;
-
+    private static final double DEG_TO_RAD = Math.PI / 180, RAD_TO_DEG = 180 / Math.PI, radToIndex, degToIndex;
     /**
      * Zufallsobjekt.
      */
     private static final Random RANDOM = new Random();
-    private static final double[] sin, cos;
-    private static final int SIN_BITS, SIN_MASK, SIN_COUNT;
+    private static final double[] sin, cos, atan2, atan2_MM, atan2_MP, atan2_PM, atan2_R, atan2_RMM, atan2_RMP, atan2_RPM;
+    private static final int SIN_BITS, SIN_MASK, SIN_COUNT, ATAN2_SIZE, ATAN2_COUNT;
 
     static {
         SIN_BITS = 12;
@@ -38,6 +34,34 @@ public final class MathUtil {
         for (int i = 0; i < 360; i += 90) {
             sin[(int) (i * degToIndex) & SIN_MASK] = Math.sin(toRad(i));
             cos[(int) (i * degToIndex) & SIN_MASK] = Math.cos(toRad(i));
+        }
+
+        ATAN2_SIZE = 100000;
+        ATAN2_COUNT = ATAN2_SIZE + 1;
+
+        atan2 = new double[ATAN2_COUNT];
+        atan2_MM = new double[ATAN2_COUNT];
+        atan2_MP = new double[ATAN2_COUNT];
+        atan2_PM = new double[ATAN2_COUNT];
+        atan2_R = new double[ATAN2_COUNT];
+        atan2_RMM = new double[ATAN2_COUNT];
+        atan2_RMP = new double[ATAN2_COUNT];
+        atan2_RPM = new double[ATAN2_COUNT];
+
+        for (int i = 0; i <= ATAN2_SIZE; i++) {
+            double d = (double) i / ATAN2_SIZE;
+            double x = 1;
+            double y = x * d;
+            double v = Math.atan2(y, x);
+            atan2[i] = v;
+            atan2_PM[i] = Math.PI - v;
+            atan2_MP[i] = -v;
+            atan2_MM[i] = -Math.PI + v;
+
+            atan2_R[i] = Math.PI / 2 - v;
+            atan2_RPM[i] = Math.PI / 2 + v;
+            atan2_RMP[i] = -(Math.PI / 2) + v;
+            atan2_RMM[i] = -(Math.PI / 2) - v;
         }
     }
 
@@ -61,6 +85,38 @@ public final class MathUtil {
      */
     public static int abs(int i) {
         return i < 0 ? -i : i;
+    }
+
+    public static double atan2Deg(double y, double x) {
+        return toDeg(atan2Rad(y, x));
+    }
+
+    public static double atan2Rad(double y, double x) {
+        if (y < 0) {
+            if (x < 0) {
+                // (y < x) because == (-y > -x)
+                if (y < x) {
+                    return atan2_RMM[(int) (x / y * ATAN2_SIZE)];
+                }
+                return atan2_MM[(int) (y / x * ATAN2_SIZE)];
+            }
+            y = -y;
+            if (y > x) {
+                return atan2_RMP[(int) (x / y * ATAN2_SIZE)];
+            }
+            return atan2_MP[(int) (y / x * ATAN2_SIZE)];
+        }
+        if (x < 0) {
+            x = -x;
+            if (y > x) {
+                return atan2_RPM[(int) (x / y * ATAN2_SIZE)];
+            }
+            return atan2_PM[(int) (y / x * ATAN2_SIZE)];
+        }
+        if (y > x) {
+            return atan2_R[(int) (x / y * ATAN2_SIZE)];
+        }
+        return atan2[(int) (y / x * ATAN2_SIZE)];
     }
 
     /**
@@ -173,8 +229,8 @@ public final class MathUtil {
         return clamp(i, 0, length - 1);
     }
 
-    public static double cosDeg(double angle) {
-        return cosRad(toRad(angle));
+    public static double cosDeg(double deg) {
+        return cosRad(toRad(deg));
     }
 
     public static double cosRad(double rad) {
