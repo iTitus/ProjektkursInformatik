@@ -120,21 +120,13 @@ public class TowerDefenseBoard implements IUpdatable {
     }
 
     public void render(Screen screen, int posX, int posY) {
-        int pass = 0;
-        int maxPass = 1;
-        while (pass < maxPass) {
-            for (int y = 0; y < sizeY; y++) {
-                for (int x = 0; x < sizeX; x++) {
-                    TowerRaster towerRaster = getTowerRaster(x, y);
-                    if (towerRaster != null) {
-                        maxPass = Math.max(maxPass, towerRaster.getRequiredRenderPasses());
-                        if (towerRaster.canRenderInPass(pass)) {
-                            towerRaster.render(this, x, y, screen, posX, posY, pass);
-                        }
-                    }
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
+                TowerRaster towerRaster = getTowerRaster(x, y);
+                if (towerRaster != null) {
+                    towerRaster.render(this, x, y, screen, posX, posY);
                 }
             }
-            pass++;
         }
         for (TowerEntity towerEntity : towerEntities) {
             if (towerEntity != null) {

@@ -31,14 +31,6 @@ public abstract class TowerRaster {
         return false;
     }
 
-    public abstract void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY, int pass);
-
-    public boolean canRenderInPass(int pass) {
-        return pass < getRequiredRenderPasses();
-    }
-
-    public int getRequiredRenderPasses() {
-        return 1;
-    }
+    public abstract void render(TowerDefenseBoard board, int x, int y, Screen screen, int posX, int posY);
 
 }

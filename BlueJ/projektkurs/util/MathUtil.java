@@ -7,10 +7,39 @@ import java.util.Random;
  */
 public final class MathUtil {
 
+    private static final double DEG_TO_RAD = Math.PI / 180;
+
+    private static final double RAD_TO_DEG = 180 / Math.PI;
+    private static final double radToIndex, degToIndex;
+
     /**
      * Zufallsobjekt.
      */
     private static final Random RANDOM = new Random();
+    private static final double[] sin, cos;
+    private static final int SIN_BITS, SIN_MASK, SIN_COUNT;
+
+    static {
+        SIN_BITS = 12;
+        SIN_MASK = ~(-1 << SIN_BITS);
+        SIN_COUNT = SIN_MASK + 1;
+
+        radToIndex = SIN_COUNT / (2 * Math.PI);
+        degToIndex = SIN_COUNT / 360D;
+
+        sin = new double[SIN_COUNT];
+        cos = new double[SIN_COUNT];
+
+        for (int i = 0; i < SIN_COUNT; i++) {
+            sin[i] = Math.sin((i + 0.5) / SIN_COUNT * 2 * Math.PI);
+            cos[i] = Math.cos((i + 0.5) / SIN_COUNT * 2 * Math.PI);
+        }
+
+        for (int i = 0; i < 360; i += 90) {
+            sin[(int) (i * degToIndex) & SIN_MASK] = Math.sin(toRad(i));
+            cos[(int) (i * degToIndex) & SIN_MASK] = Math.cos(toRad(i));
+        }
+    }
 
     /**
      * Betrag der gegebenen Zahl.
@@ -144,6 +173,14 @@ public final class MathUtil {
         return clamp(i, 0, length - 1);
     }
 
+    public static double cosDeg(double angle) {
+        return cosRad(toRad(angle));
+    }
+
+    public static double cosRad(double rad) {
+        return cos[(int) (rad * radToIndex) & SIN_MASK];
+    }
+
     /**
      * Abrunden.
      *
@@ -213,6 +250,16 @@ public final class MathUtil {
      */
     public static int getBit(boolean b) {
         return b ? 1 : 0;
+    }
+
+    public static double getDistanceSq(double posX1, double posY1, double posX2, double posY2) {
+        double dx = posX1 - posX2;
+        double dy = posY1 - posY2;
+        return dx * dx + dy * dy;
+    }
+
+    public static double getDistanceSq(IHasPosition<? extends Number> p1, IHasPosition<? extends Number> p2) {
+        return getDistanceSq(p1.getPosX().doubleValue(), p1.getPosY().doubleValue(), p2.getPosX().doubleValue(), p2.getPosY().doubleValue());
     }
 
     public static double inverse(double d) {
@@ -380,6 +427,10 @@ public final class MathUtil {
         return round(a - b);
     }
 
+    public static int signum(double d) {
+        return d > 0 ? 1 : d < 0 ? -1 : 0;
+    }
+
     /**
      * Vorzeichen der gegebenen Zahl.
      *
@@ -389,6 +440,22 @@ public final class MathUtil {
      */
     public static int signum(int i) {
         return i > 0 ? 1 : i < 0 ? -1 : 0;
+    }
+
+    public static double sinDeg(double angle) {
+        return sinRad(toRad(angle));
+    }
+
+    public static double sinRad(double rad) {
+        return sin[(int) (rad * radToIndex) & SIN_MASK];
+    }
+
+    public static double toDeg(double angle) {
+        return angle * RAD_TO_DEG;
+    }
+
+    public static double toRad(double angle) {
+        return angle * DEG_TO_RAD;
     }
 
     /**

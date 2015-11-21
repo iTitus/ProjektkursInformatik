@@ -55,6 +55,18 @@ public final class RenderUtil {
         }
     }
 
+    public static void drawCircle(Screen screen, int x, int y, double radius) {
+        drawCircle(screen, x, y, radius, 0);
+    }
+
+    public static void drawCircle(Screen screen, int x, int y, double radius, int color) {
+        if (!isTransparent(color)) {
+            for (int angle = 0; angle < 360; angle += 2) {
+                drawLine(screen, (int) (x + radius * MathUtil.sinDeg(angle)), (int) (y + radius * MathUtil.cosDeg(angle)), (int) (x + radius * MathUtil.sinDeg(angle + 1)), (int) (y + radius * MathUtil.cosDeg(angle + 1)), color);
+            }
+        }
+    }
+
     /**
      * Malt ein Rasterbild in eine CutScene.
      *
