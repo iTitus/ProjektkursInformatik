@@ -28,7 +28,7 @@ public enum TowerAttackMode implements Comparator<Monster> {
     RANDOM {
         @Override
         public int compare(Monster m1, Monster m2) {
-            return MathUtil.randomInt(-1, 1);
+            return MathUtil.randomIntInc(-1, 1);
         }
     },
     SLOWEST {

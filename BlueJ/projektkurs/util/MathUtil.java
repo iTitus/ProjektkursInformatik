@@ -356,6 +356,14 @@ public final class MathUtil {
         return i < 0 || i >= length;
     }
 
+    public static boolean nextBoolean() {
+        return RANDOM.nextBoolean();
+    }
+
+    public static double nextDouble() {
+        return RANDOM.nextDouble();
+    }
+
     public static double nextGaussian() {
         return RANDOM.nextGaussian();
     }
@@ -368,7 +376,11 @@ public final class MathUtil {
      * @return Zufallszahl
      */
     public static int nextInt(int max) {
-        return randomInt(0, max - 1);
+        return RANDOM.nextInt(max);
+    }
+
+    public static boolean randomBoolean(double chance) {
+        return nextDouble() < chance;
     }
 
     /**
@@ -380,12 +392,8 @@ public final class MathUtil {
      *            Maximum
      * @return Zufallszahl
      */
-    public static int nextInt(int min, int max) {
-        return randomInt(min, max - 1);
-    }
-
-    public static boolean randomBoolean() {
-        return RANDOM.nextBoolean();
+    public static double randomDouble(double min, double max) {
+        return (max - min) * nextDouble() + min;
     }
 
     /**
@@ -396,7 +404,31 @@ public final class MathUtil {
      * @return Zufallszahl
      */
     public static int randomInt(int max) {
-        return randomInt(0, max);
+        return randomIntInc(0, max);
+    }
+
+    /**
+     * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
+     *
+     * @param min
+     *            Minimum
+     * @param max
+     *            Maximum
+     * @return Zufallszahl
+     */
+    public static int randomInt(int min, int max) {
+        return randomIntInc(min, max - 1);
+    }
+
+    /**
+     * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
+     *
+     * @param max
+     *            Zahl
+     * @return Zufallszahl
+     */
+    public static int randomIntInc(int max) {
+        return randomIntInc(0, max);
     }
 
     /**
@@ -408,8 +440,8 @@ public final class MathUtil {
      *            Maximum
      * @return Zufallszahl
      */
-    public static int randomInt(int min, int max) {
-        return RANDOM.nextInt(max - min + 1) + min;
+    public static int randomIntInc(int min, int max) {
+        return nextInt(max - min + 1) + min;
     }
 
     public static double rotX(double angle, double x, double y) {

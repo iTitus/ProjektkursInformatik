@@ -62,8 +62,25 @@ public class Monster extends TowerEntity {
     }
 
     @Override
-    public void render(Screen screen, int posX, int posY) {
-        RenderUtil.drawFilledRectangle(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * x), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * y), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeY), color);
+    public void render(Screen screen, int posX, int posY, int pass) {
+        if (pass == 0) {
+            RenderUtil.drawFilledRectangle(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * x), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * y), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeY), color);
+        } else if (pass == 1) {
+            double hP = health / (double) maxHealth;
+            int boxX = posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * x);
+            int boxY = posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * y) - 4;
+            int boxW = MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX);
+            int boxH = 2;
+            RenderUtil.drawRectangle(screen, boxX - 1, boxY - 1, boxW + 2, boxH + 2);
+            if (hP == 1) {
+                RenderUtil.drawFilledRectangle(screen, boxX, boxY, boxW, boxH, 0x00FF00);
+            } else if (hP == 0) {
+                RenderUtil.drawFilledRectangle(screen, boxX, boxY, boxW, boxH, 0xFF0000);
+            } else {
+                RenderUtil.drawFilledRectangle(screen, boxX, boxY, MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX * hP), boxH, 0x00FF00);
+                RenderUtil.drawFilledRectangle(screen, boxX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX * hP), boxY, boxW - MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX * hP), boxH, 0xFF0000);
+            }
+        }
     }
 
     @Override

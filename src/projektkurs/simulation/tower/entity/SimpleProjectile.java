@@ -8,14 +8,14 @@ import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 import projektkurs.util.Vector2d;
 
-public class Projectile extends TowerEntity {
+public class SimpleProjectile extends TowerEntity {
 
     private final int damage, color;
     private final TieredTowerLogic shooter;
     private Vector2d speed;
     private final Monster target;
 
-    public Projectile(TowerDefenseBoard board, double x, double y, double sizeX, double sizeY, TieredTowerLogic shooter, Monster target) {
+    public SimpleProjectile(TowerDefenseBoard board, double x, double y, double sizeX, double sizeY, TieredTowerLogic shooter, Monster target) {
         super(board, x, y, sizeX, sizeY);
         this.shooter = shooter;
         this.target = target;
@@ -24,12 +24,17 @@ public class Projectile extends TowerEntity {
         speed = new Vector2d(target.getPosX() + target.getSizeX() / 2 - (x + sizeX / 2), target.getPosY() + target.getSizeY() / 2 - (y + sizeY / 2)).normalize().mul(shooter.getSpeed());
     }
 
-    public Projectile(TowerDefenseBoard board, TieredTowerLogic shooter, Monster target) {
+    public SimpleProjectile(TowerDefenseBoard board, TieredTowerLogic shooter, Monster target) {
         this(board, shooter.getX() + 0.5 - 0.125 / 2, shooter.getY() + 0.5 - 0.125 / 2, 0.125, 0.125, shooter, target);
     }
 
     public int getColor() {
         return color;
+    }
+
+    @Override
+    public int getRequiredRenderPasses() {
+        return 1;
     }
 
     public TieredTowerLogic getShooter() {
@@ -45,7 +50,7 @@ public class Projectile extends TowerEntity {
     }
 
     @Override
-    public void render(Screen screen, int posX, int posY) {
+    public void render(Screen screen, int posX, int posY, int pass) {
         RenderUtil.drawFilledRectangle(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * x), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * y), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeY), color);
     }
 
@@ -68,6 +73,8 @@ public class Projectile extends TowerEntity {
         } else {
             y += speed.getY();
         }
+        // TODO: Maybe kill other targets - that happen to be in the way - too
+        // board.getTowerEntities(this);
         if (MathUtil.isInside(this, target)) {
             target.damage(damage);
             setDead();

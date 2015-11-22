@@ -22,7 +22,7 @@ public class BehaviourRunAround extends Behaviour {
     @Override
     public void update() {
         if (MathUtil.randomInt(Integers.RUN_AROUND_MOVE_CHANCE) == 0) {
-            entity.moveBy(MathUtil.randomInt(-1, 1), MathUtil.randomInt(-1, 1));
+            entity.moveBy(MathUtil.randomIntInc(-1, 1), MathUtil.randomIntInc(-1, 1));
         }
     }
 }

@@ -19,7 +19,7 @@ public class TicTacToeBoard implements IUpdatable {
 
     public TicTacToeBoard() {
         board = new EnumBoardSign[SIZE * SIZE];
-        player = MathUtil.randomBoolean();
+        player = MathUtil.nextBoolean();
         ai = new AI(this);
         finished = false;
         finishStartX = -1;
@@ -70,7 +70,7 @@ public class TicTacToeBoard implements IUpdatable {
 
     public void reset() {
         board = new EnumBoardSign[SIZE * SIZE];
-        player = MathUtil.randomBoolean();
+        player = MathUtil.nextBoolean();
         ai = new AI(this);
         finished = false;
         finishStartX = -1;

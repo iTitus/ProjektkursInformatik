@@ -16,8 +16,8 @@ public class AI {
                 if (stop) {
                     return;
                 }
-                x = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
-                y = MathUtil.nextInt(0, TicTacToeBoard.SIZE);
+                x = MathUtil.randomInt(0, TicTacToeBoard.SIZE);
+                y = MathUtil.randomInt(0, TicTacToeBoard.SIZE);
             } while (board.getSign(x, y) != null);
             this.x = x;
             this.y = y;

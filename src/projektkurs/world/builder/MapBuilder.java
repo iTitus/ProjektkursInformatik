@@ -56,12 +56,12 @@ public final class MapBuilder {
         }
 
         // BAEUME!
-        for (int i = 0; i < MathUtil.randomInt(25, 75); i++) {
+        for (int i = 0; i < MathUtil.randomIntInc(25, 75); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.tree);
         }
 
         // KISTEN!
-        for (int i = 0; i < MathUtil.randomInt(10, 15); i++) {
+        for (int i = 0; i < MathUtil.randomIntInc(10, 15); i++) {
             map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.chest);
         }
         map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);

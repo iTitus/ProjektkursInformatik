@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum TowerType {
 
-    SIMPLE_SHOOTER("Simple Shooter", 1, new int[] { 2 }, new int[] { 10 }, new double[] { 2.5 }, new double[] { 0.2 }, new int[] { 2 }, new int[] { 0xFF0000 });
+    SIMPLE_SHOOTER("Simple Shooter", 1, new int[] { 2 }, new int[] { 10 }, new double[] { 2.5 }, new double[] { 0.25 }, new int[] { 2 }, new int[] { 0xFF0000 });
 
     private final int maxTier;
     private final String name;

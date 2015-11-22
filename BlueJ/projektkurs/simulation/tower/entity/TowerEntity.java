@@ -24,6 +24,10 @@ public abstract class TowerEntity implements IUpdatable, IHasPositionAndSize<Dou
         id = nextID++;
     }
 
+    public boolean canRenderInPass(int pass) {
+        return pass < getRequiredRenderPasses();
+    }
+
     @Override
     public boolean canUpdate() {
         return true;
@@ -41,6 +45,10 @@ public abstract class TowerEntity implements IUpdatable, IHasPositionAndSize<Dou
     @Override
     public Double getPosY() {
         return y;
+    }
+
+    public int getRequiredRenderPasses() {
+        return 2;
     }
 
     @Override
@@ -70,7 +78,7 @@ public abstract class TowerEntity implements IUpdatable, IHasPositionAndSize<Dou
         // NO-OP
     }
 
-    public abstract void render(Screen screen, int posX, int posY);
+    public abstract void render(Screen screen, int posX, int posY, int pass);
 
     public void setDead() {
         isDead = true;

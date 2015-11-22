@@ -10,12 +10,14 @@ import java.util.Set;
 import projektkurs.render.Screen;
 import projektkurs.simulation.tower.entity.Monster;
 import projektkurs.simulation.tower.entity.TowerEntity;
+import projektkurs.simulation.tower.gui.ElementTowerDefenseBoard;
 import projektkurs.simulation.tower.raster.TowerRaster;
 import projektkurs.simulation.tower.raster.logic.TieredTowerLogic;
 import projektkurs.simulation.tower.raster.logic.TowerLogic;
 import projektkurs.util.IUpdatable;
 import projektkurs.util.MathUtil;
 import projektkurs.util.Rectangle;
+import projektkurs.util.RenderUtil;
 
 public class TowerDefenseBoard implements IUpdatable {
 
@@ -136,11 +138,20 @@ public class TowerDefenseBoard implements IUpdatable {
             }
             pass++;
         }
-        for (TowerEntity towerEntity : towerEntities) {
-            if (towerEntity != null) {
-                towerEntity.render(screen, posX, posY);
+        pass = 0;
+        maxPass = 1;
+        while (pass < maxPass) {
+            for (TowerEntity towerEntity : towerEntities) {
+                if (towerEntity != null) {
+                    maxPass = Math.max(maxPass, towerEntity.getRequiredRenderPasses());
+                    if (towerEntity.canRenderInPass(pass)) {
+                        towerEntity.render(screen, posX, posY, pass);
+                    }
+                }
             }
+            pass++;
         }
+        RenderUtil.drawLine(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), posY, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeY));
     }
 
     public void setEnd(double endX, double endY) {
@@ -173,6 +184,12 @@ public class TowerDefenseBoard implements IUpdatable {
     @Override
     public void update() {
         ticks++;
+
+        // TODO: Remove
+        if (MathUtil.randomBoolean(0.035)) {
+            spawn(new Monster(this, MathUtil.randomDouble(0.02, 0.2), MathUtil.randomIntInc(0xFFFFFF)));
+        }
+
         for (TowerLogic towerLogic : towerLogics) {
             if (towerLogic != null && towerLogic.canUpdate()) {
                 towerLogic.update();

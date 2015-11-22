@@ -1,6 +1,5 @@
 package projektkurs.simulation.tower;
 
-import projektkurs.simulation.tower.entity.Monster;
 import projektkurs.simulation.tower.raster.TowerRaster;
 import projektkurs.simulation.tower.raster.logic.PathLogic;
 import projektkurs.simulation.tower.raster.logic.TowerLogic;
@@ -8,7 +7,7 @@ import projektkurs.util.Direction;
 
 public enum TowerDefenseBoardType {
 
-    STANDARD(101, 51, 10) {
+    STANDARD(100, 51, 10) {
 
         @Override
         public void generate(TowerDefenseBoard board) {
@@ -47,19 +46,24 @@ public enum TowerDefenseBoardType {
             if (logic instanceof PathLogic) {
                 ((PathLogic) logic).setDirection(Direction.RIGHT);
             }
-
             board.setTowerRaster(50, 23, TowerRaster.path);
             logic = board.getTowerLogic(50, 23);
             if (logic instanceof PathLogic) {
+                ((PathLogic) logic).setDirection(Direction.RIGHT);
+            }
+
+            board.setTowerRaster(51, 23, TowerRaster.path);
+            logic = board.getTowerLogic(51, 23);
+            if (logic instanceof PathLogic) {
                 ((PathLogic) logic).setDirection(Direction.DOWN);
             }
-            board.setTowerRaster(50, 24, TowerRaster.path);
-            logic = board.getTowerLogic(50, 24);
+            board.setTowerRaster(51, 24, TowerRaster.path);
+            logic = board.getTowerLogic(51, 24);
             if (logic instanceof PathLogic) {
                 ((PathLogic) logic).setDirection(Direction.DOWN);
             }
 
-            for (int x = 50; x < board.getSizeX(); x++) {
+            for (int x = 51; x < board.getSizeX(); x++) {
                 board.setTowerRaster(x, 25, TowerRaster.path);
                 logic = board.getTowerLogic(x, 25);
                 if (logic instanceof PathLogic) {
@@ -70,10 +74,8 @@ public enum TowerDefenseBoardType {
             board.setStart(0, 25);
             board.setEnd(board.getSizeX() - 1, 25);
 
-            board.setTowerRaster(5, 24, TowerRaster.simpleShooter);
-
-            Monster m = new Monster(board, 0.025, 0xFF0000);
-            board.spawn(m);
+            board.setTowerRaster(49, 24, TowerRaster.simpleShooter);
+            board.setTowerRaster(50, 24, TowerRaster.simpleShooter);
 
         }
 

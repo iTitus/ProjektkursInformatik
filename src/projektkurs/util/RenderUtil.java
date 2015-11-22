@@ -121,6 +121,22 @@ public final class RenderUtil {
         drawSprite(screen, sprite, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
     }
 
+    public static void drawFilledCircle(Screen screen, int x, int y, double radius) {
+        drawFilledCircle(screen, x, y, radius, 0);
+    }
+
+    public static void drawFilledCircle(Screen screen, int x, int y, double radius, int color) {
+        if (!isTransparent(color)) {
+            for (int y_ = MathUtil.floor(y - radius) - 2; y_ <= MathUtil.floor(y + radius) + 1; y_++) {
+                for (int x_ = MathUtil.floor(x - radius) - 2; x_ <= MathUtil.floor(x + radius) + 1; x_++) {
+                    if (MathUtil.getDistanceSq(x_, y_, x, y) <= radius * radius) {
+                        screen.setPixel(color, x_, y_);
+                    }
+                }
+            }
+        }
+    }
+
     /**
      * Malt ein gefuelltes Rechteck in schwarz.
      *
@@ -299,10 +315,10 @@ public final class RenderUtil {
      */
     public static void drawRectangle(Screen screen, int x, int y, int width, int height, int color) {
         if (!isTransparent(color)) {
-            drawLine(screen, x, y, x + width, y, color);
-            drawLine(screen, x, y + height, x + width, y + height, color);
-            drawLine(screen, x, y, x, y + height, color);
-            drawLine(screen, x + width, y, x + width, y + height, color);
+            drawLine(screen, x, y, x + width - 1, y, color);
+            drawLine(screen, x, y + height - 1, x + width, y + height - 1, color);
+            drawLine(screen, x, y, x, y + height - 1, color);
+            drawLine(screen, x + width - 1, y, x + width - 1, y + height - 1, color);
         }
     }
 

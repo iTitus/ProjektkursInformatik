@@ -1,25 +1,24 @@
 package projektkurs.simulation.tower.raster.logic;
 
-import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.simulation.tower.TowerDefenseBoard;
 import projektkurs.simulation.tower.TowerType;
 import projektkurs.simulation.tower.entity.Monster;
-import projektkurs.simulation.tower.entity.Projectile;
+import projektkurs.simulation.tower.entity.SimpleProjectile;
 import projektkurs.simulation.tower.gui.ElementTowerDefenseBoard;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
 public class SimpleShooterLogic extends TieredTowerLogic {
 
-    private static final double rotationSpeed = 4.5;
+    private static final double rotationSpeed = 3;
 
     private double angle;
     private Monster target;
 
     public SimpleShooterLogic(TowerDefenseBoard board, int x, int y) {
         super(board, x, y, TowerType.SIMPLE_SHOOTER);
-        angle = MathUtil.nextInt(0, 360);
+        angle = MathUtil.randomInt(0, 360);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SimpleShooterLogic extends TieredTowerLogic {
         }
 
         angle = getAngleToTarget();
-        board.spawn(new Projectile(board, this, target));
+        board.spawn(new SimpleProjectile(board, this, target));
 
         return true;
 
@@ -56,7 +55,7 @@ public class SimpleShooterLogic extends TieredTowerLogic {
 
     @Override
     public void renderBackground(Screen screen, int posX, int posY) {
-        RenderUtil.drawFilledRectangle(screen, posX + x * ElementTowerDefenseBoard.SIZE, posY + y * ElementTowerDefenseBoard.SIZE, ElementTowerDefenseBoard.SIZE, ElementTowerDefenseBoard.SIZE, 0xFFFFFF);
+        RenderUtil.drawFilledCircle(screen, posX + MathUtil.floor((x + 0.5) * ElementTowerDefenseBoard.SIZE), posY + MathUtil.floor((y + 0.5) * ElementTowerDefenseBoard.SIZE), ElementTowerDefenseBoard.SIZE / 2 - 1);
     }
 
     @Override
@@ -65,14 +64,18 @@ public class SimpleShooterLogic extends TieredTowerLogic {
         double r = 3;
         double sin = r * MathUtil.sinDeg(deg);
         double cos = r * MathUtil.cosDeg(deg);
-        int cX = (int) (posX + (x + 0.5) * ElementTowerDefenseBoard.SIZE);
-        int cY = (int) (posY + (y + 0.5) * ElementTowerDefenseBoard.SIZE);
-        Font.drawString(screen, String.format("Angle: %.2f", deg), cX - 16, cY - 32);
+        int cX = MathUtil.floor(posX + (x + 0.5) * ElementTowerDefenseBoard.SIZE);
+        int cY = MathUtil.floor(posY + (y + 0.5) * ElementTowerDefenseBoard.SIZE);
+        // Font.drawString(screen, String.format("Angle: %.2f", deg), cX - 16, cY - 32);
 
         // RenderUtil.drawLine(screen, (int) (posX + (x + 0.5 + sin) * ElementTowerDefenseBoard.SIZE), (int) (posY + (y + 0.5 + cos) * ElementTowerDefenseBoard.SIZE), (int) (posX + (x + 0.5 - sin) * ElementTowerDefenseBoard.SIZE), (int) (posY + (y + 0.5 - cos) * ElementTowerDefenseBoard.SIZE));
 
-        RenderUtil.drawLine(screen, cX, cY, cX + (int) (sin * ElementTowerDefenseBoard.SIZE), cY + (int) (cos * ElementTowerDefenseBoard.SIZE), 0xFF0000);
-        RenderUtil.drawLine(screen, cX, cY, cX + (int) (-sin * ElementTowerDefenseBoard.SIZE), cY + (int) (-cos * ElementTowerDefenseBoard.SIZE), 0x0000FF);
+        RenderUtil.drawLine(screen, cX, cY, cX + MathUtil.floor(sin * ElementTowerDefenseBoard.SIZE), cY + MathUtil.floor(cos * ElementTowerDefenseBoard.SIZE), 0xFF0000);
+        RenderUtil.drawLine(screen, cX, cY, cX - MathUtil.floor(sin * ElementTowerDefenseBoard.SIZE), cY - MathUtil.floor(cos * ElementTowerDefenseBoard.SIZE), 0x0000FF);
+
+        RenderUtil.drawFilledRectangle(screen, cX - 1, cY - 1, 3, 3, 0x00FF00);
+        RenderUtil.drawFilledRectangle(screen, cX + MathUtil.floor(sin * ElementTowerDefenseBoard.SIZE) - 1, cY + MathUtil.floor(cos * ElementTowerDefenseBoard.SIZE) - 1, 3, 3, 0xFF0000);
+        RenderUtil.drawFilledRectangle(screen, cX - MathUtil.floor(sin * ElementTowerDefenseBoard.SIZE) - 1, cY - MathUtil.floor(cos * ElementTowerDefenseBoard.SIZE) - 1, 3, 3, 0x0000FF);
     }
 
     private double getAngleToTarget() {
