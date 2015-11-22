@@ -13,7 +13,7 @@ public abstract class TieredTowerLogic extends TowerLogic {
 
     public TieredTowerLogic(TowerDefenseBoard board, int x, int y, TowerType towerType) {
         super(board, x, y);
-        mode = TowerAttackMode.FIRST;
+        mode = TowerAttackMode.RANDOM;
         tier = 1;
         this.towerType = towerType;
     }

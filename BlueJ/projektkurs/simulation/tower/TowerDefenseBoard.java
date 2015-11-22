@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import projektkurs.render.Font;
 import projektkurs.render.Screen;
 import projektkurs.simulation.tower.entity.Monster;
 import projektkurs.simulation.tower.entity.TowerEntity;
@@ -151,6 +152,7 @@ public class TowerDefenseBoard implements IUpdatable {
             }
             pass++;
         }
+        Font.drawString(screen, String.format("Credits: %d    Lives: %d", credits, life), posX, posY);
         RenderUtil.drawLine(screen, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), posY, posX + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeX), posY + MathUtil.floor(ElementTowerDefenseBoard.SIZE * sizeY));
     }
 
