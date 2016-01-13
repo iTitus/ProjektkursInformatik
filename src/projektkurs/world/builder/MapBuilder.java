@@ -9,27 +9,18 @@ import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNest;
-import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
 import projektkurs.entity.EntityWitchCauldron;
-import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
-import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Scripts;
 import projektkurs.raster.AbstractRaster;
-import projektkurs.raster.extra.ExtraInformation;
-import projektkurs.raster.extra.ExtraInformationChest;
-import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.story.StoryManager;
 import projektkurs.story.trigger.AbstractTrigger;
 import projektkurs.story.trigger.AreaTrigger;
-import projektkurs.story.trigger.CombinedAndTrigger;
-import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
-import projektkurs.util.Direction;
 import projektkurs.util.MapUtil;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
@@ -41,12 +32,12 @@ import projektkurs.world.Spielfeld;
 public final class MapBuilder {
 
     /**
-     * Level 0 - Spielfeld 0.
+     * Level 1 - Spielfeld 0.
      *
      * @param map
      *            Spielfeld
      */
-    public static void generateAndPopulateLevel0Map0(Spielfeld map) {
+    public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
         // RASEN!
         for (int y = 0; y < map.getMapSizeY(); y++) {
@@ -54,132 +45,57 @@ public final class MapBuilder {
                 map.setRasterAt(x, y, Raster.grass);
             }
         }
-
-        // BAEUME!
-        for (int i = 0; i < MathUtil.randomIntInc(25, 75); i++) {
-            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.tree);
-        }
-
-        // KISTEN!
-        for (int i = 0; i < MathUtil.randomIntInc(10, 15); i++) {
-            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.chest);
-        }
-        map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
-
-        // WAENDE!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wall);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
-        }
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wall);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
-        }
-
-        // Animationen
-        map.setRasterAt(3, 1, Raster.fire);
-
-        // TUEREN!
-        for (int y = 20; y < 25; y++) {
-            for (int x = 18; x < 23; x++) {
-                map.setRasterAt(x, y, Raster.grass);
+        //See
+        for (int y = 40; y < 70; y++) {
+            for (int x = 30; x < 50; x++) {
+                map.setRasterAt(x, y, Raster.water);
             }
         }
-        map.setRasterAt(20, 18, Raster.tree);
-        map.setRasterAt(21, 18, Raster.tree);
-        // map.setRasterAt(22, 18, Raster.tree);
-        map.setRasterAt(23, 18, Raster.tree);
-        map.setRasterAt(24, 18, Raster.tree);
-        map.setRasterAt(24, 19, Raster.tree);
-        map.setRasterAt(24, 20, Raster.tree);
-        map.setRasterAt(24, 21, Raster.tree);
-        map.setRasterAt(24, 22, Raster.tree);
-        map.setRasterAt(20, 19, Raster.tree);
-        map.setRasterAt(20, 21, Raster.tree);
-        map.setRasterAt(20, 22, Raster.tree);
-        map.setRasterAt(21, 22, Raster.tree);
-        map.setRasterAt(22, 22, Raster.tree);
-        map.setRasterAt(23, 22, Raster.tree);
-        map.setRasterAt(22, 20, Raster.finish);
-
-        map.setRasterAt(20, 20, Raster.door);
-        ExtraInformationDoor door = (ExtraInformationDoor) map.getExtraInformationAt(20, 20);
-        door.setDirection(Direction.LEFT);
-        door.setOpeningKey(1000);
-
-        map.setRasterAt(22, 18, Raster.door);
-        ExtraInformationDoor door2 = (ExtraInformationDoor) map.getExtraInformationAt(22, 18);
-        door2.setDirection(Direction.UP);
-        door2.setOpeningKey(1000);
-
-        // KISTENINHALTE!
-        Inventory inv;
-        ExtraInformation extra;
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            for (int x = 0; x < map.getMapSizeX(); x++) {
-                inv = new Inventory(Integers.CHEST_SIZE);
-                inv.addItemStack(new ItemStack(Items.item42, 42));
-                inv.addItemStack(new ItemStack(Items.nuke));
-                inv.addItemStack(new ItemStack(Items.key));
-                extra = map.getExtraInformationAt(x, y);
-                if (extra instanceof ExtraInformationChest) {
-                    ((ExtraInformationChest) extra).setInventory(inv);
-                }
+        
+        for (int y = 43; y < 67; y++) {
+            for (int x = 26; x < 30; x++) {
+                map.setRasterAt(x, y, Raster.water);
             }
         }
-
-        // ENTITIES!
-        for (int x = 0; x < 3; x++) {
-            map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10));
+        
+        for (int y = 44; y < 68; y++) {
+            for (int x = 50; x < 53; x++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
         }
-
-        // ITEMS
-        map.spawn(new EntityItem(map, 5, 5, new ItemStack(Items.key, 1, 1000)));
-        map.spawn(new EntityItem(map, 5, 6, new ItemStack(Items.item42, 42, 42)));
-        map.spawn(new EntityItem(map, 5, 7, new ItemStack(Items.nuke, 1234)));
-        map.spawn(new EntityItem(map, 5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
-
-        // STORYMAGER!
-        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+        
+        for (int y = 37; y < 40; y++) {
+            for (int x = 32; x < 47; x++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+        
+        for (int y = 70; y < 73; y++) {
+            for (int x = 32; x < 47; x++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+        }
+        for (int y = 45; y < 63; y++) {
+            map.setRasterAt(25, y, Raster.water);
+        }
+        for (int y = 49; y < 65; y++) {
+            map.setRasterAt(53, y, Raster.water);
+        }
+        for (int x = 38; x < 44; x++) {
+            map.setRasterAt(x, 36, Raster.water);
+        }
+        for (int x = 37; x < 43; x++) {
+            map.setRasterAt(x, 73, Raster.water);
+        }
+        map.setRasterAt(29, 42, Raster.water);
+        map.setRasterAt(29, 41, Raster.water);
+        map.setRasterAt(31, 39, Raster.water);
+        map.setRasterAt(31, 38, Raster.water);
 
     }
 
-    /**
-     * Level 0 - Spielfeld 1.
-     *
-     * @param map
-     *            Spielfeld
-     */
-    public static void generateAndPopulateLevel0Map1(Spielfeld map) {
-
-        // DESTROYED-RASTER HINTERGRUND!
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            for (int x = 0; x < map.getMapSizeX(); x++) {
-                map.setRasterAt(x, y, Raster.destroyedRaster);
-            }
-        }
-
-        // WAeNDE!
-        for (int x = 0; x < map.getMapSizeX(); x++) {
-            map.setRasterAt(x, 0, Raster.wall);
-            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
-        }
-        for (int y = 0; y < map.getMapSizeY(); y++) {
-            map.setRasterAt(0, y, Raster.wall);
-            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
-        }
-
-        // STORYMANAGER!
-        map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 0);
-    }
-
-    /**
-     * Level 1 - Spielfeld 0.
-     *
-     * @param map
-     *            Spielfeld
-     */
-    public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+   
+    public static void generateAndPopulateLevel0Map0(Spielfeld map) {
 
         // JoJo
         map.spawn(new EntityItem(map, 4, 65, new ItemStack(Items.yoyoBroken, 1, 100)));
@@ -625,7 +541,7 @@ public final class MapBuilder {
      * @param map
      *            Spielfeld
      */
-    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
+    public static void generateAndPopulateLevel0Map1(Spielfeld map) {
 
         int inttemp;
         int inttemp2;

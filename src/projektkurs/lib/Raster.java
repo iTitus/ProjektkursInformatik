@@ -185,6 +185,9 @@ public final class Raster {
     public static AbstractRaster tree_9se_water;
     public static AbstractRaster tree_9sw;
     public static AbstractRaster tree_9sw_water;
+    public static AbstractRaster markise01_1;
+    public static AbstractRaster markise01_2;
+
     /**
      * Wand.
      */
@@ -606,7 +609,12 @@ public final class Raster {
 
         ferryhouse_ecke_ne = new SolidRaster(133, "ferryhouse_ecke_ne", Sprites.ferryhouse_ecke_ne);
         registerRaster(ferryhouse_ecke_ne);
-
+        
+        markise01_1 = new SolidRaster(134, "markise01_1", Sprites.markise01_1);
+        registerRaster(markise01_1); 
+        
+        markise01_2 = new SolidRaster(135, "markise01_2", Sprites.markise01_2);
+        registerRaster(markise01_2);
     }
 
     /**

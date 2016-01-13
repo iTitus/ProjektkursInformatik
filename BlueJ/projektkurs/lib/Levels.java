@@ -8,7 +8,6 @@ import projektkurs.level.Level;
 import projektkurs.util.Init;
 import projektkurs.util.Init.State;
 import projektkurs.util.Logger;
-import projektkurs.util.MathUtil;
 import projektkurs.util.Pair;
 import projektkurs.world.Spielfeld;
 
@@ -57,15 +56,14 @@ public final class Levels {
      */
     @Init(State.PRE)
     public static void init() {
-        level0 = new Level("Level0");
-        level0.addMap(new Spielfeld(level0, 100, 100, MathUtil.floorDiv(Integers.sightX, 2), MathUtil.floorDiv(Integers.sightY, 2)));
-        level0.addMap(new Spielfeld(level0, 20, 10, 1, 1));
-        registerMapping(level0);
-
         level1 = new Level("Level1");
-        level1.addMap(new Spielfeld(level1, 90, 70, 10, 26));
-        level1.addMap(new Spielfeld(level1, 70, 70, 10, 0));
+        level1.addMap(new Spielfeld(level1, 70, 100, 10, 50));
         registerMapping(level1);
+
+        level0 = new Level("Level0");
+        level0.addMap(new Spielfeld(level0, 90, 70, 10, 26));
+        level0.addMap(new Spielfeld(level0, 70, 70, 10, 0));
+        registerMapping(level0);
 
     }
 

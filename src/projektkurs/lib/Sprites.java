@@ -224,6 +224,10 @@ public final class Sprites {
     public static Sprite women0_W;
     public static Sprite yoyoBroken;
     public static Sprite yoyoFixed;
+    
+    public static Sprite markise01_1;
+    public static Sprite markise01_2;
+
 
     /**
      * Das Pair, das alle Sprites enthaelt.
@@ -841,7 +845,12 @@ public final class Sprites {
 
         yoyoBroken = new Sprite("yoyoBroken", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.items);
         registerSprite(yoyoBroken);
-
+        
+        markise01_1 = new Sprite("markise01_1", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise01_1);
+        
+        markise01_2 = new Sprite("markise01_2", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise01_2);
     }
 
     /**
