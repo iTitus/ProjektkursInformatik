@@ -8,6 +8,7 @@ import projektkurs.simulation.logic.gui.GuiLogicBoard;
 import projektkurs.simulation.mandelbrot.gui.GuiMandelbrotSet;
 import projektkurs.simulation.pacman.gui.GuiPacman;
 import projektkurs.simulation.piano.gui.GuiPiano;
+import projektkurs.simulation.sudoku.gui.GuiSudoku;
 import projektkurs.simulation.tictactoe.gui.GuiTicTacToe;
 import projektkurs.simulation.tower.gui.GuiTowerDefense;
 import projektkurs.simulation.ulam.gui.GuiUlam;
@@ -90,6 +91,11 @@ public class CommandOpenSimulation extends Command {
             case "towerdef":
             case "towerdefense":
                 Main.openGui(new GuiTowerDefense());
+                break;
+            case "s":
+            case "sdk":
+            case "sudoku":
+                Main.openGui(new GuiSudoku());
                 break;
             default:
                 return EnumCommandResult.OBJECT_NOT_FOUND;
