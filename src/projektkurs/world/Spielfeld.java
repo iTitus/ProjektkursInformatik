@@ -19,6 +19,7 @@ import projektkurs.raster.extra.IHasExtraInformation;
 import projektkurs.render.Screen;
 import projektkurs.story.StoryManager;
 import projektkurs.util.IUpdatable;
+import projektkurs.util.Logger;
 import projektkurs.util.MathUtil;
 import projektkurs.util.RenderUtil;
 
@@ -434,7 +435,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
     public void spawn(Entity e) {
         if (e != null) {
             if (!Entities.isRegistered(e)) {
-                throw new RuntimeException("Entity '" + e.getClass() + "' is not registered!");
+                Logger.logThrowable("Entity '" + e.getClass() + "' is not registered, cannot spawn!", new RuntimeException("Entity is not registered!"));
+                Main.exit();
             }
             getEntityList().add(e);
         }
