@@ -35,7 +35,7 @@ public class GuiMainMenu extends Gui implements IButtonListener {
                 Main.startLevel(Levels.level0);
                 break;
             case 1:
-                Main.startLevel(Levels.level1);
+                Main.startLevel(Levels.level2);
                 break;
             case 2:
                 Main.openGui(new GuiOption(this));

@@ -227,7 +227,11 @@ public final class Sprites {
     
     public static Sprite markise01_1;
     public static Sprite markise01_2;
-
+    public static Sprite house_1_4x3;
+    public static Sprite house_2_4x3;
+    public static Sprite house_3_4x3;
+    public static Sprite house_4_4x4;
+    public static Sprite house_3b_3x4;
 
     /**
      * Das Pair, das alle Sprites enthaelt.
@@ -851,6 +855,21 @@ public final class Sprites {
         
         markise01_2 = new Sprite("markise01_2", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, SpriteSheets.raster );
         registerSprite(markise01_2);
+    
+        house_1_4x3 = new Sprite("house_1_4x3", 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, 12 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_1_4x3);
+
+        house_2_4x3 = new Sprite("house_2_4x3", 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_2_4x3);
+        
+        house_3_4x3 = new Sprite("house_3_4x3", 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 12 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_3_4x3);
+        
+        house_4_4x4 = new Sprite("house_4_4x4", 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_4_4x4);
+        
+        house_3b_3x4 = new Sprite("house_3b_3x4", 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_3b_3x4);
     }
 
     /**
