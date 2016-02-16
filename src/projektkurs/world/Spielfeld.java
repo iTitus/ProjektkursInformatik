@@ -433,6 +433,9 @@ public class Spielfeld implements IUpdatable, ISaveable {
      */
     public void spawn(Entity e) {
         if (e != null) {
+            if (!Entities.isRegistered(e)) {
+                throw new RuntimeException("Entity '" + e.getClass() + "' is not registered!");
+            }
             getEntityList().add(e);
         }
     }

@@ -148,4 +148,8 @@ public final class Entities {
     private Entities() {
     }
 
+    public static boolean isRegistered(Entity e) {
+        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
+    }
+
 }
