@@ -9,18 +9,30 @@ import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityNest;
+import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
 import projektkurs.entity.EntityWitchCauldron;
+import projektkurs.entity.Entityhouse_1_4x3;
+import projektkurs.entity.Entityhouse_2_4x3;
+import projektkurs.entity.Entityhouse_3b_3x4;
+import projektkurs.inventory.Inventory;
 import projektkurs.item.ItemStack;
+import projektkurs.lib.Integers;
 import projektkurs.lib.Items;
 import projektkurs.lib.Raster;
 import projektkurs.lib.Scripts;
 import projektkurs.raster.AbstractRaster;
+import projektkurs.raster.extra.ExtraInformation;
+import projektkurs.raster.extra.ExtraInformationChest;
+import projektkurs.raster.extra.ExtraInformationDoor;
 import projektkurs.story.StoryManager;
 import projektkurs.story.trigger.AbstractTrigger;
 import projektkurs.story.trigger.AreaTrigger;
+import projektkurs.story.trigger.CombinedAndTrigger;
+import projektkurs.story.trigger.InventoryHasItemStackTrigger;
 import projektkurs.story.trigger.PosTrigger;
+import projektkurs.util.Direction;
 import projektkurs.util.MapUtil;
 import projektkurs.util.MathUtil;
 import projektkurs.util.ReflectionUtil;
@@ -32,12 +44,530 @@ import projektkurs.world.Spielfeld;
 public final class MapBuilder {
 
     /**
-     * Level 1 - Spielfeld 0.
+     * Level 0 - Spielfeld 0.
      *
      * @param map
      *            Spielfeld
      */
-    public static void generateAndPopulateLevel1Map0(Spielfeld map) {
+    
+	public static void generateAndPopulateLevel2Map0(Spielfeld map) {
+		int inttemp1;
+		int inttemp2;
+		
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+		}
+		//Häuser 
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < 3; x++) {
+                map.setRasterAt(x, y, Raster.street_asphalt);
+            }
+		}
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = map.getMapSizeX()-2; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.street_asphalt);
+            }
+		}
+		for (int y = 0; y < 3; y++) {
+            for (int x = 4; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.street_asphalt);
+            }
+		}
+		
+		for (int y = map.getMapSizeY()-3; y < map.getMapSizeY(); y++) {
+            for (int x = 4; x < map.getMapSizeX()-4; x++) {
+                map.setRasterAt(x, y, Raster.street_asphalt);
+            }
+		}
+		for (int x = 0; x < map.getMapSizeX(); x=x+4) {
+			map.spawn(new Entityhouse_1_4x3(map, x, 0));
+        }
+		
+		for (int x = 0; x < 40; x=x+4) {
+			map.spawn(new Entityhouse_2_4x3(map, x, map.getMapSizeY()-3));
+        }
+		
+		for (int x = 44; x < map.getMapSizeX(); x=x+4) {
+			map.spawn(new Entityhouse_2_4x3(map, x, map.getMapSizeY()-3));
+        }
+		for (int y = 3; y < map.getMapSizeY()-4; y=y+4) {
+			map.spawn(new Entityhouse_3b_3x4(map, 0, y));
+        }
+		
+		for (int y = 3; y < map.getMapSizeY()-4; y=y+4) {
+			map.spawn(new Entityhouse_3b_3x4(map, map.getMapSizeX()-2, y));
+        }
+		
+		//See
+            for (int y = 25; y < 50; y++) {
+                for (int x = 32; x < 48; x++) {
+                    map.setRasterAt(x, y, Raster.water);
+                }
+            }
+        
+            for (int y = 23; y < 25; y++) {
+                for (int x = 35; x < 47; x++) {
+                    map.setRasterAt(x, y, Raster.water);
+                }
+            }
+            
+            for (int y = 50; y < 52; y++) {
+                for (int x = 37; x < 44; x++) {
+                    map.setRasterAt(x, y, Raster.water);
+                }
+            }
+            
+            for (int y = 29; y < 47; y++) {
+               
+                    map.setRasterAt(31, y, Raster.water);
+                
+            }
+            
+            for (int y = 28; y < 43; y++) {
+                for (int x = 48; x < 50; x++) {
+                    map.setRasterAt(x, y, Raster.water);
+                }
+            }
+            for (int y = 33; y < 40; y++) {
+                map.setRasterAt(30, y, Raster.water);
+            }
+            for (int x = 38; x < 42; x++) {
+                map.setRasterAt(x,22, Raster.water);
+            }
+            map.setRasterAt(48,27, Raster.water);
+
+            //Bäume
+            inttemp1 = 4;
+            //Wald oben
+            for (int y = 6; y < 20; y = y + 2) {
+                for (int x = 6; x < 64; x = x + 2) {
+                	inttemp2 = MathUtil.randomInt(9);
+                    if (inttemp1 < inttemp2) {
+                    AbstractRaster[] temp = MapUtil.getRanTree();
+                    setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+                    }
+                }
+            }
+            //wald links
+            for (int y = 20; y < 64; y = y + 2) {
+                for (int x = 6; x < 28; x = x + 2) {
+                	inttemp2 = MathUtil.randomInt(9);
+                    if (inttemp1 < inttemp2) {
+                    AbstractRaster[] temp = MapUtil.getRanTree();
+                    setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+                    }
+                }
+            }
+            //Wald rechts
+            for (int y = 20; y < 64; y = y + 2) {
+                for (int x = 52; x < 64; x = x + 2) {
+                	inttemp2 = MathUtil.randomInt(8);
+                    if (inttemp1 < inttemp2) {
+                    AbstractRaster[] temp = MapUtil.getRanTree();
+                    setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+                    }
+                }
+            }
+            //Wald unten
+            for (int y = 52; y < 64; y = y + 2) {
+                for (int x = 32; x < 48; x = x + 2) {
+                	inttemp2 = MathUtil.randomInt(6);
+                    if (inttemp1 < inttemp2) {
+                    AbstractRaster[] temp = MapUtil.getRanTree();
+                    setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+                    }
+                }
+            }
+            
+          //Weg
+            //um den See
+            for (int y = 20; y < map.getMapSizeY()-3; y++) {
+                for (int x = 29; x < 31; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            
+            for (int y = 20; y < map.getMapSizeY()-3; y++) {
+                for (int x = 49; x < 51; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            for (int y = 20; y < 22; y++) {
+                for (int x = 31; x < 49; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            //Weg unten
+            for (int y = map.getMapSizeY()-5; y < map.getMapSizeY()-3; y++) {
+                for (int x = 3; x < map.getMapSizeX()-2; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            //Weg links
+            
+            
+            for (int y = 2; y <map.getMapSizeY()-5 ; y++) {
+                for (int x = 3; x < 5; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            //Weg rechts
+            for (int y = 2; y <map.getMapSizeY()-5 ; y++) {
+                for (int x = map.getMapSizeX()-4; x < map.getMapSizeX()-2; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            //Weg oben
+            for (int y = 3; y < 4; y++) {
+                for (int x = 4; x < map.getMapSizeX()-4; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            //Weg Ausgang
+            
+            for (int y = map.getMapSizeY() - 3; y < map.getMapSizeY(); y++) {
+                for (int x = 40; x < 44; x++) {
+                    map.setRasterAt(x, y, Raster.cobbles_1);
+                }
+    		}
+            
+            setStreet_2(40, 60, map);
+            setStreet_3(40,55,map);
+	StoryManager st = map.getStoryManager();
+	AbstractTrigger area = new AreaTrigger(40, 69, 4, 1);
+	//st.registerTrigger(area, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
+	//st.registerTrigger(new AreaTrigger(40, 68, 4, 1), ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE ), 41, 68);
+
+    st.registerTrigger(area,ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE,AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE ), 4, new AreaTrigger(40, 68, 4, 1),new AreaTrigger(40, 69, 4, 1), 41, 68);
+
+	}
+	
+	
+	
+	
+	public static void generateAndPopulateLevel2Map1(Spielfeld map) {
+		int inttemp1;
+		int inttemp2;
+		//Holzboden
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+		}
+		
+		for (int y = map.getMapSizeY()-8; y < map.getMapSizeY(); y++) {
+            for (int x = 15; x < 17; x++) {
+                map.setRasterAt(x, y, Raster.floor_12);
+            }
+		}
+		for (int y = 5; y < map.getMapSizeY()-8; y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.floor_12);
+            }
+		}
+		for (int y = 0; y < 5; y++) {
+            for (int x = 26; x < 28; x++) {
+                map.setRasterAt(x, y, Raster.floor_12);
+            }
+		}
+		
+	//Stühle vor der Bar
+		for (int x = 1; x < 13; x = x+2){
+			map.setRasterAt(x, 5, Raster.chair_5);
+		}
+	//Stühle um Tisch
+		//links
+		map.setRasterAt(7, 11, Raster.chair_2);
+		map.setRasterAt(5, 13, Raster.chair_1);
+		map.setRasterAt(9, 13, Raster.chair_3);
+		map.setRasterAt(7, 15, Raster.chair_7);
+
+		//rechts
+		map.setRasterAt(16, 9, Raster.chair_2);
+		map.setRasterAt(14, 11, Raster.chair_1);
+		map.setRasterAt(18, 11, Raster.chair_3);
+		map.setRasterAt(16, 13, Raster.chair_7);
+	//Trigger
+		StoryManager st = map.getStoryManager();
+		AbstractTrigger area = new AreaTrigger(15, 29, 2, 1);
+//		st.registerTrigger(area, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 0);
+		//st.registerTrigger(new AreaTrigger(14, 27, 2, 1), ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE ), 14, 26);
+		//st.registerTrigger(new AreaTrigger(15, 29, 2, 1),ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 15, 28);
+
+		st.registerTrigger(area,ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE,AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE ),0, new AreaTrigger(15, 28, 2, 1),new AreaTrigger(15, 29, 2, 1), 15, 28);
+		//st.registerTrigger(new AreaTrigger(26, 0, 2, 1),ReflectionUtil.getMethod(Scripts.class, "setSpawn", Integer.TYPE, Integer.TYPE), 26, 1);
+
+	    st.registerTrigger(new AreaTrigger(26, 0, 2, 1),ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE,AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE ),2, new AreaTrigger(26, 1, 2, 1),new AreaTrigger(26, 0, 2, 1), 26, 1);
+	    
+	
+	}
+	public static void generateAndPopulateLevel2Map2(Spielfeld map){
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+		}
+	StoryManager st = map.getStoryManager();
+    st.registerTrigger(new AreaTrigger(0, 10, 1, 2),ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE,AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE ),1, new AreaTrigger(1, 10, 1, 2),new AreaTrigger(0, 10, 1, 2), 1, 10);
+
+	}
+public static void generateAndPopulateLevel2Map3(Spielfeld map) {
+		
+		//Rasen
+		for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.grass_2);
+            }
+		}
+		
+		//Bäume
+		for (int x = 0; x < 80; x = x + 2) {
+            for (int y = 0; y < 32; y = y + 2) {
+                AbstractRaster[] temp = MapUtil.getRanTree();
+                setTree(x, y, temp[0], temp[1], temp[2], temp[3], map);
+            }
+        }
+		
+		int EBE;
+		int EBZ;
+		EBE = 2;
+        for (int x = 0; x < 80; x = x + 2) {
+            for (int y = 0; y < 32; y = y + 2) {
+            	EBZ = MathUtil.randomInt(2);
+                if (EBE == EBZ) {
+                    map.setRasterAt(x, y, Raster.grass_2);
+                    map.setRasterAt(x + 1, y, Raster.grass_2);
+                    map.setRasterAt(x, y + 1, Raster.grass_2);
+                    map.setRasterAt(x + 1, y + 1, Raster.grass_2);
+                }
+            }
+        }
+        for (int x = 0; x < map.getMapSizeX(); x = x + 4) {
+            for (int y = 0; y < map.getMapSizeY(); y = y + 4) {
+            	EBZ = MathUtil.randomInt(2);
+                if (EBE == EBZ) {
+                    for (int xx = x; xx < x + 4; xx++) {
+                        for (int yy = y; yy < y + 4; yy++) {
+                            map.setRasterAt(xx, yy, Raster.grass_2);
+                        }
+                    }
+                }
+            }
+        }
+        
+		
+		//Wasser
+		for (int y = 70; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.water);
+            }
+		}
+		
+		//Strasse
+		for (int y = 69; y > 39; y--) {
+			for (int x = 80; x < 84; x++) {
+				map.setRasterAt(x, y, Raster.cobbles_1);
+			}
+		}
+		
+		for (int ESint = 0; ESint < 36; ESint = ESint +8){
+			setStreet(80, ESint, map);
+		}
+		
+		map.setRasterAt(80, 39, Raster.cobbles_1);
+		map.setRasterAt(81, 39, Raster.cobbles_1);
+		map.setRasterAt(83, 39, Raster.cobbles_1);
+		
+		
+		for (int x = 45; x < 80; x++) {
+			map.setRasterAt(x, 32, Raster.cobbles_2);
+		}
+		for (int x = 45; x < 80; x++) {
+			map.setRasterAt(x, 33, Raster.grass);
+		}
+		for (int x = 45; x < 80; x++) {
+			map.setRasterAt(x, 34, Raster.cobbles_2);
+		}
+		map.setRasterAt(80, 32, Raster.cobbles_2);
+		map.setRasterAt(79, 31, Raster.cobbles_2);
+		map.setRasterAt(79, 34, Raster.cobbles_2);
+		map.setRasterAt(78, 34, Raster.cobbles_2);
+		map.setRasterAt(79, 35, Raster.cobbles_2);
+		map.setRasterAt(78, 31, Raster.grass_2);
+		map.setRasterAt(78, 30, Raster.grass_2);
+		map.setRasterAt(79, 30, Raster.grass_2);
+		
+		
+		//Haus
+		for (int y = 16; y < 21; y++) {
+			for (int x = 88 ; x < 92; x++) {
+				map.setRasterAt(x, y, Raster.floor_7);
+			}
+		}
+		
+		for (int y = 18; y < 19; y++) {
+			for (int x = 84 ; x < 88; x++) {
+				map.setRasterAt(x, y, Raster.floor_10);
+			}
+		}
+		
+		//Mühle
+		for (int y = 30; y < 35; y++) {
+			for (int x = 40 ; x < 45; x++) {
+				map.setRasterAt(x, y, Raster.floor_11);
+			}
+		}
+		
+		
+		//Anlegeplatz
+		for (int y = 74; y > 65; y--) {
+			for (int x = 72 ; x < 92; x++) {
+				map.setRasterAt(x, y, Raster.cobbles_2);
+			}
+		}
+		
+		map.setRasterAt(84, 65, Raster.cobbles_2);
+		map.setRasterAt(79, 64, Raster.cobbles_2);
+		map.setRasterAt(79, 65, Raster.cobbles_2);
+		map.setRasterAt(72, 66, Raster.grass_2);
+		map.setRasterAt(73, 66, Raster.grass_2);
+		map.setRasterAt(72, 67, Raster.grass_2);
+		map.setRasterAt(91, 66, Raster.grass_2);
+		map.setRasterAt(90, 66, Raster.grass_2);
+		map.setRasterAt(91, 67, Raster.grass_2);
+		
+		for (int y = 74; y > 70; y--) {
+			for (int x = 78 ; x < 86; x++) {
+				map.setRasterAt(x, y, Raster.water);
+			}
+		}
+		
+		int EZint; 
+		for (int y=70 ; y<75; y++){
+			for (int x = 72 ; x <92; x++){
+				EZint = MathUtil.randomInt(3);
+				if(EZint == 1){
+					map.setRasterAt(x, y, Raster.water);
+				}
+			}
+		}
+		
+		
+		
+		map.setRasterAt(81, 66, Raster.cobbles_1);
+		map.setRasterAt(82, 66, Raster.cobbles_1);
+		map.setRasterAt(83, 66, Raster.cobbles_1);
+		map.setRasterAt(80, 67, Raster.cobbles_1);
+		map.setRasterAt(81, 67, Raster.cobbles_1);
+		map.setRasterAt(82, 68, Raster.cobbles_1);
+		
+		//Fischstand
+		for (int y = 51; y > 47; y--) {
+			for (int x = 87 ; x < 89; x++) {
+				map.setRasterAt(x, y, Raster.floor_5);
+			}
+		}
+		
+		for (int y = 50; y > 48; y--) {
+			for (int x = 84 ; x < 87; x++) {
+				map.setRasterAt(x, y, Raster.cobbles_2);
+			}
+		}
+		
+	}
+public static void generateAndPopulateLevel2Map4(Spielfeld map) {
+	//Hintergrund
+	for (int y = 0; y < map.getMapSizeY(); y++) {
+        for (int x = 0; x < map.getMapSizeX(); x++) {
+            map.setRasterAt(x, y, Raster.street_asphalt);
+        }
+    }
+	for (int y = 96; y > 67; y = y - 4){
+		setStreet_2( 48, y, map);
+	}
+	for (int x = 44; x > 16; x = x - 4){
+		setStreet_3( x, 64, map);
+	}
+	for (int x = 52; x < 80; x = x + 4){
+		setStreet_3( x, 64, map);
+	}
+	//Kreuzung Hafen
+	 for (int y = 65; y < 68; y++) {
+         for (int x = 48; x < 52; x++) {
+             map.setRasterAt(x, y, Raster.street_m_e2_3);
+         }
+     }
+	 for (int x = 48; x < 52; x++) {
+         map.setRasterAt(x, 64, Raster.street_m_wage_e2_1);
+     }
+	 //mehr Straßen
+	 for (int y = 28; y < 61; y = y + 4){
+			setStreet_2( 16, y, map);
+		}
+	 for (int y = 28; y < 61; y = y + 4){
+			setStreet_2( 80, y, map);
+		}
+	 //Kreuzung links unten 
+	 for (int y = 64; y < 67; y++) {
+         for (int x = 17; x < 20; x++) {
+             map.setRasterAt(x, y, Raster.street_m_e2_3);
+         }
+     }
+	 for (int x = 17; x < 20; x++) {
+         map.setRasterAt(x, 67, Raster.street_m_wage_e2_2);
+     }
+	 for (int y = 64; y < 67;y ++){
+         map.setRasterAt(16, y, Raster.street_m_e2_1);
+		}
+	 
+	 //Kreuzung rechts unten
+	 for (int y = 64; y < 67; y++) {
+         for (int x = 80; x < 83; x++) {
+             map.setRasterAt(x, y, Raster.street_m_e2_3);
+         }
+     }
+	 for (int x = 80; x < 83; x++) {
+         map.setRasterAt(x, 67, Raster.street_m_wage_e2_2);
+     }
+
+	 for (int y = 64; y < 67;y ++){
+         map.setRasterAt(83, y, Raster.street_m_e2_4);
+		}
+//Straßen zum Marktplatz
+	 for (int x = 20; x < 29; x = x + 4){
+			setStreet_3( x, 24, map);
+		}
+	 for (int x = 72; x < 80; x = x + 4){
+			setStreet_3( x, 24, map);
+		}
+	 //Kreuzung zum Marktplatz links
+	 for (int y = 24; y < 28; y++) {
+         for (int x = 17; x < 20; x++) {
+             map.setRasterAt(x, y, Raster.street_m_e2_3);
+         }
+     }
+	 for (int y = 24; y < 28;y ++){
+         map.setRasterAt(16, y, Raster.street_m_e2_1);
+		}
+	 //Kreuzung zum Marktplatz rechts
+	 for (int y = 24; y < 28; y++) {
+         for (int x = 80; x < 83; x++) {
+             map.setRasterAt(x, y, Raster.street_m_e2_3);
+         }
+     }
+	 for (int y = 24; y < 28;y ++){
+         map.setRasterAt(83, y, Raster.street_m_e2_4);
+		}
+	 //Marktplatz
+	 for (int y = 20; y < 62; y++) {
+	        for (int x = 32; x < 72; x++) {
+	            map.setRasterAt(x, y, Raster.cobbles_1);
+	        }
+	    }
+}
+	public static void generateAndPopulateLevel0Map0(Spielfeld map) {
 
         // RASEN!
         for (int y = 0; y < map.getMapSizeY(); y++) {
@@ -45,57 +575,133 @@ public final class MapBuilder {
                 map.setRasterAt(x, y, Raster.grass);
             }
         }
-        //See
-        for (int y = 40; y < 70; y++) {
-            for (int x = 30; x < 50; x++) {
-                map.setRasterAt(x, y, Raster.water);
+
+        // BAEUME!
+        for (int i = 0; i < MathUtil.randomIntInc(25, 75); i++) {
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.tree);
+        }
+
+        // KISTEN!
+        for (int i = 0; i < MathUtil.randomIntInc(10, 15); i++) {
+            map.setRasterAt(MathUtil.nextInt(map.getMapSizeX()), MathUtil.nextInt(map.getMapSizeY()), Raster.chest);
+        }
+        map.setRasterAt(MathUtil.floorDiv(Integers.sightX, 2) - 1, MathUtil.floorDiv(Integers.sightY, 2) - 1, Raster.chest);
+
+        // WAENDE!
+        for (int x = 0; x < map.getMapSizeX(); x++) {
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
+        }
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
+        }
+
+        // Animationen
+        map.setRasterAt(3, 1, Raster.fire);
+
+        // TUEREN!
+        for (int y = 20; y < 25; y++) {
+            for (int x = 18; x < 23; x++) {
+                map.setRasterAt(x, y, Raster.grass);
             }
         }
-        
-        for (int y = 43; y < 67; y++) {
-            for (int x = 26; x < 30; x++) {
-                map.setRasterAt(x, y, Raster.water);
+        map.setRasterAt(20, 18, Raster.tree);
+        map.setRasterAt(21, 18, Raster.tree);
+        // map.setRasterAt(22, 18, Raster.tree);
+        map.setRasterAt(23, 18, Raster.tree);
+        map.setRasterAt(24, 18, Raster.tree);
+        map.setRasterAt(24, 19, Raster.tree);
+        map.setRasterAt(24, 20, Raster.tree);
+        map.setRasterAt(24, 21, Raster.tree);
+        map.setRasterAt(24, 22, Raster.tree);
+        map.setRasterAt(20, 19, Raster.tree);
+        map.setRasterAt(20, 21, Raster.tree);
+        map.setRasterAt(20, 22, Raster.tree);
+        map.setRasterAt(21, 22, Raster.tree);
+        map.setRasterAt(22, 22, Raster.tree);
+        map.setRasterAt(23, 22, Raster.tree);
+        map.setRasterAt(22, 20, Raster.finish);
+
+        map.setRasterAt(20, 20, Raster.door);
+        ExtraInformationDoor door = (ExtraInformationDoor) map.getExtraInformationAt(20, 20);
+        door.setDirection(Direction.LEFT);
+        door.setOpeningKey(1000);
+
+        map.setRasterAt(22, 18, Raster.door);
+        ExtraInformationDoor door2 = (ExtraInformationDoor) map.getExtraInformationAt(22, 18);
+        door2.setDirection(Direction.UP);
+        door2.setOpeningKey(1000);
+
+        // KISTENINHALTE!
+        Inventory inv;
+        ExtraInformation extra;
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                inv = new Inventory(Integers.CHEST_SIZE);
+                inv.addItemStack(new ItemStack(Items.item42, 42));
+                inv.addItemStack(new ItemStack(Items.nuke));
+                inv.addItemStack(new ItemStack(Items.key));
+                extra = map.getExtraInformationAt(x, y);
+                if (extra instanceof ExtraInformationChest) {
+                    ((ExtraInformationChest) extra).setInventory(inv);
+                }
             }
         }
-        
-        for (int y = 44; y < 68; y++) {
-            for (int x = 50; x < 53; x++) {
-                map.setRasterAt(x, y, Raster.water);
-            }
+
+        // ENTITIES!
+        for (int x = 0; x < 3; x++) {
+            map.spawn(new EntityRedNPC(map, MathUtil.roundMul(Math.random(), 20) + 10, MathUtil.roundMul(Math.random(), 20) + 10));
         }
-        
-        for (int y = 37; y < 40; y++) {
-            for (int x = 32; x < 47; x++) {
-                map.setRasterAt(x, y, Raster.water);
-            }
-        }
-        
-        for (int y = 70; y < 73; y++) {
-            for (int x = 32; x < 47; x++) {
-                map.setRasterAt(x, y, Raster.water);
-            }
-        }
-        for (int y = 45; y < 63; y++) {
-            map.setRasterAt(25, y, Raster.water);
-        }
-        for (int y = 49; y < 65; y++) {
-            map.setRasterAt(53, y, Raster.water);
-        }
-        for (int x = 38; x < 44; x++) {
-            map.setRasterAt(x, 36, Raster.water);
-        }
-        for (int x = 37; x < 43; x++) {
-            map.setRasterAt(x, 73, Raster.water);
-        }
-        map.setRasterAt(29, 42, Raster.water);
-        map.setRasterAt(29, 41, Raster.water);
-        map.setRasterAt(31, 39, Raster.water);
-        map.setRasterAt(31, 38, Raster.water);
+
+        // ITEMS
+        map.spawn(new EntityItem(map, 5, 5, new ItemStack(Items.key, 1, 1000)));
+        map.spawn(new EntityItem(map, 5, 6, new ItemStack(Items.item42, 42, 42)));
+        map.spawn(new EntityItem(map, 5, 7, new ItemStack(Items.nuke, 1234)));
+        map.spawn(new EntityItem(map, 5, 8, new ItemStack(Items.healthPotion, 1234, 100)));
+
+        // STORYMAGER!
+        map.getStoryManager().registerTrigger(new CombinedAndTrigger(new AreaTrigger(50, 50, 10, 10), new InventoryHasItemStackTrigger(new ItemStack(Items.nuke))), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 1);
 
     }
 
-   
-    public static void generateAndPopulateLevel0Map0(Spielfeld map) {
+    /**
+     * Level 0 - Spielfeld 1.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel0Map1(Spielfeld map) {
+
+        // DESTROYED-RASTER HINTERGRUND!
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            for (int x = 0; x < map.getMapSizeX(); x++) {
+                map.setRasterAt(x, y, Raster.destroyedRaster);
+            }
+        }
+
+        // WAeNDE!
+        for (int x = 0; x < map.getMapSizeX(); x++) {
+            map.setRasterAt(x, 0, Raster.wall);
+            map.setRasterAt(x, map.getMapSizeY() - 1, Raster.wall);
+        }
+        for (int y = 0; y < map.getMapSizeY(); y++) {
+            map.setRasterAt(0, y, Raster.wall);
+            map.setRasterAt(map.getMapSizeX() - 1, y, Raster.wall);
+        }
+
+        // STORYMANAGER!
+        map.getStoryManager().registerTrigger(new PosTrigger(18, 8), ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), 0);
+    
+    }
+
+    /**
+     * Level 1 - Spielfeld 0.
+     *
+     * @param map
+     *            Spielfeld
+     */
+    public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
         // JoJo
         map.spawn(new EntityItem(map, 4, 65, new ItemStack(Items.yoyoBroken, 1, 100)));
@@ -541,7 +1147,7 @@ public final class MapBuilder {
      * @param map
      *            Spielfeld
      */
-    public static void generateAndPopulateLevel0Map1(Spielfeld map) {
+    public static void generateAndPopulateLevel1Map1(Spielfeld map) {
 
         int inttemp;
         int inttemp2;
@@ -1082,7 +1688,35 @@ public final class MapBuilder {
         }
 
     }
+private static void setStreet_2(int x, int y, Spielfeld map){
+	map.setRasterAt(x, y, Raster.street_m_e1_1);
+    map.setRasterAt(x, y + 1, Raster.street_m_e2_1);
+    map.setRasterAt(x, y + 2, Raster.street_m_e3_1);
+    map.setRasterAt(x, y + 3, Raster.street_m_e4_1);
+    map.setRasterAt(x + 3, y, Raster.street_m_e1_4);
+    map.setRasterAt(x + 3, y + 1, Raster.street_m_e2_4);
+    map.setRasterAt(x + 3, y + 2, Raster.street_m_e3_4);
+    map.setRasterAt(x + 3, y + 3, Raster.street_m_e4_4);    
+    for (int i = 0; i < 4; i++) {
+        map.setRasterAt(x + 1, y + i, Raster.street_m_e1_2);
+        map.setRasterAt(x + 2, y + i, Raster.street_m_e1_2);
+    }
+}
 
+private static void setStreet_3(int x, int y, Spielfeld map){
+	map.setRasterAt(x, y, Raster.street_m_wage_e1_1);
+    map.setRasterAt(x + 1, y, Raster.street_m_wage_e2_1);
+    map.setRasterAt(x + 2, y, Raster.street_m_wage_e3_1);
+    map.setRasterAt(x + 3, y, Raster.street_m_wage_e4_1);
+    map.setRasterAt(x, y + 3, Raster.street_m_wage_e1_2);
+    map.setRasterAt(x + 1, y + 3, Raster.street_m_wage_e2_2);
+    map.setRasterAt(x + 2, y + 3, Raster.street_m_wage_e3_2);
+    map.setRasterAt(x + 3, y + 3, Raster.street_m_wage_e4_2);    
+    for (int i = 0; i < 4; i++) {
+        map.setRasterAt(x + i, y + 1, Raster.street_m_e1_2);
+        map.setRasterAt(x + i, y + 2, Raster.street_m_e1_2);
+    }
+}
     private static void setTree(int x, int y, AbstractRaster one, AbstractRaster two, AbstractRaster three, AbstractRaster four, Spielfeld map) {
 
         map.setRasterAt(x, y, one);

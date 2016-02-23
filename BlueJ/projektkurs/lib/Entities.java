@@ -22,6 +22,11 @@ import projektkurs.entity.EntityTest;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
 import projektkurs.entity.EntityWitchCauldron;
+import projektkurs.entity.Entityhouse_1_4x3;
+import projektkurs.entity.Entityhouse_2_4x3;
+import projektkurs.entity.Entityhouse_3_4x3;
+import projektkurs.entity.Entityhouse_3b_3x4;
+import projektkurs.entity.Entityhouse_4_4x4;
 import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
@@ -88,6 +93,13 @@ public final class Entities {
         registerEntity(EntityVilleCar.class, "villeCar");
         registerEntity(EntityTest.class, "test");
         registerEntity(EntityWitchCauldron.class, "witchCauldron");
+        registerEntity(Entityhouse_1_4x3.class, "house_1_4x3");
+        registerEntity(Entityhouse_2_4x3.class, "house_2_4x3");
+        registerEntity(Entityhouse_3_4x3.class, "house_3_4x3");
+        registerEntity(Entityhouse_3b_3x4.class, "house_3b_3x4");
+        registerEntity(Entityhouse_4_4x4.class, "house_4_4x4");
+
+
     }
 
     /**
@@ -124,6 +136,10 @@ public final class Entities {
             Logger.logThrowable("Unable to save Entity '" + e + "' to SaveData", t);
         }
         return data;
+    }
+    
+    public static boolean isRegistered(Entity e) {
+        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
     }
 
     /**
