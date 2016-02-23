@@ -70,8 +70,12 @@ public final class Levels {
         registerMapping(level1);
 
         level2 = new Level("Level2");
-        level2.addMap(new Spielfeld(level2, 68, 70, 34, 63));
-        level2.addMap(new Spielfeld(level2, 30, 30, 15, 40));
+        level2.addMap(new Spielfeld(level2, 68, 70, 41, 68));
+        level2.addMap(new Spielfeld(level2, 30, 30, 15, 28));
+        level2.addMap(new Spielfeld(level2, 30, 20, 1, 10));
+        level2.addMap(new Spielfeld(level2, 100, 100, 1, 80));
+        level2.addMap(new Spielfeld(level2, 100, 100, 50, 99));
+
         registerMapping(level2);
        
     }

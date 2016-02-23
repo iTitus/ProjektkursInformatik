@@ -232,6 +232,52 @@ public final class Sprites {
     public static Sprite house_3_4x3;
     public static Sprite house_4_4x4;
     public static Sprite house_3b_3x4;
+    
+    public static Sprite markise02_1;
+	public static Sprite markise02_2;
+	public static Sprite markise03_1;
+	public static Sprite markise03_2;
+	public static Sprite sonnenschirm01_1;
+	public static Sprite sonnenschirm01_2;
+	public static Sprite sonnenschirm01_3;
+	public static Sprite sonnenschirm01_4;
+	public static Sprite sonnenschirm02_1;
+	public static Sprite sonnenschirm02_2;
+	public static Sprite sonnenschirm02_3;
+	public static Sprite sonnenschirm02_4;
+	public static Sprite sonnenschirm03_1;
+	public static Sprite sonnenschirm03_2;
+	public static Sprite sonnenschirm03_3;
+	public static Sprite sonnenschirm03_4;
+	public static Sprite sonnenschirm04_1;
+	public static Sprite sonnenschirm04_2;
+	public static Sprite sonnenschirm04_3;
+	public static Sprite sonnenschirm04_4;
+	public static Sprite street_m_e1_1;
+	public static Sprite street_m_e1_2;
+	public static Sprite street_m_e1_3;
+	public static Sprite street_m_e1_4;
+	public static Sprite street_m_e2_1;
+	public static Sprite street_m_e2_2;
+	public static Sprite street_m_e2_3;
+	public static Sprite street_m_e2_4;
+	public static Sprite street_m_e3_1;
+	public static Sprite street_m_e3_2;
+	public static Sprite street_m_e3_3;
+	public static Sprite street_m_e3_4;
+	public static Sprite street_m_e4_1;
+	public static Sprite street_m_e4_2;
+	public static Sprite street_m_e4_3;
+	public static Sprite street_m_e4_4;
+	public static Sprite street_m_wage_e1_1;
+	public static Sprite street_m_wage_e2_1;
+	public static Sprite street_m_wage_e3_1;
+	public static Sprite street_m_wage_e4_1;
+	public static Sprite street_m_wage_e1_2;
+	public static Sprite street_m_wage_e2_2;
+	public static Sprite street_m_wage_e3_2;
+	public static Sprite street_m_wage_e4_2;
+
 
     /**
      * Das Pair, das alle Sprites enthaelt.
@@ -870,6 +916,147 @@ public final class Sprites {
         
         house_3b_3x4 = new Sprite("house_3b_3x4", 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(house_3b_3x4);
+    
+        markise02_1 = new Sprite("markise02_1", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise02_1);
+
+markise02_2 = new Sprite("markise02_2", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise02_2);
+
+markise03_1 = new Sprite("markise03_1", Integers.RASTER_SIZE, 18 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise03_1);
+
+markise03_2 = new Sprite("markise03_2", Integers.RASTER_SIZE, 19 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(markise03_2);
+
+
+
+
+        sonnenschirm01_1 = new Sprite("sonnenschirm01_1", Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm01_1);
+
+        sonnenschirm01_2 = new Sprite("sonnenschirm01_2", Integers.RASTER_SIZE, 14 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm01_2);
+
+        sonnenschirm01_3 = new Sprite("sonnenschirm01_3", Integers.RASTER_SIZE, 14 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm01_3);
+
+        sonnenschirm01_4 = new Sprite("sonnenschirm01_4", Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm01_4);
+
+        sonnenschirm02_1 = new Sprite("sonnenschirm02_1", Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm02_1);
+
+        sonnenschirm02_2 = new Sprite("sonnenschirm02_2", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm02_2);
+
+
+        sonnenschirm02_3 = new Sprite("sonnenschirm02_3", Integers.RASTER_SIZE, 16 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm02_3);
+
+
+        sonnenschirm02_4 = new Sprite("sonnenschirm02_4", Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm02_4);
+
+
+        sonnenschirm03_1 = new Sprite("sonnenschirm03_1", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm03_1);
+
+        sonnenschirm03_2 = new Sprite("sonnenschirm03_2", Integers.RASTER_SIZE, 18 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm03_2);
+
+        sonnenschirm03_3 = new Sprite("sonnenschirm03_3", Integers.RASTER_SIZE, 18 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm03_3);
+
+        sonnenschirm03_4 = new Sprite("sonnenschirm03_4", Integers.RASTER_SIZE, 17 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm03_4);
+
+        sonnenschirm04_1 = new Sprite("sonnenschirm04_1", Integers.RASTER_SIZE, 19 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm04_1);
+
+
+        sonnenschirm04_2 = new Sprite("sonnenschirm04_2", Integers.RASTER_SIZE, 20 * Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm04_2);
+
+        sonnenschirm04_3 = new Sprite("sonnenschirm04_3", Integers.RASTER_SIZE, 20 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm04_3);
+
+        sonnenschirm04_4 = new Sprite("sonnenschirm04_4", Integers.RASTER_SIZE, 19 * Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(sonnenschirm04_4);
+
+
+
+        street_m_e1_1 = new Sprite("street_m_e1_1", Integers.RASTER_SIZE, 0 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e1_1);
+
+        street_m_e1_2 = new Sprite("street_m_e1_2", Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e1_2);
+
+        street_m_e1_3 = new Sprite("street_m_e1_3", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e1_3);
+
+        street_m_e1_4 = new Sprite("street_m_e1_4", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e1_4);
+
+        street_m_e2_1 = new Sprite("street_m_e2_1", Integers.RASTER_SIZE, 0 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e2_1);
+
+        street_m_e2_2 = new Sprite("street_m_e2_2", Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e2_2);
+
+        street_m_e2_3 = new Sprite("street_m_e2_3", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e2_3);
+
+        street_m_e2_4 = new Sprite("street_m_e2_4", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e2_4);
+
+        street_m_e3_1 = new Sprite("street_m_e3_1", Integers.RASTER_SIZE, 0 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e3_1);
+
+        street_m_e3_2 = new Sprite("street_m_e3_2", Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e3_2);
+
+        street_m_e3_3 = new Sprite("street_m_e3_3", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e3_3);
+
+        street_m_e3_4 = new Sprite("street_m_e3_4", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e3_4);
+
+        street_m_e4_1 = new Sprite("street_m_e4_1", Integers.RASTER_SIZE, 0 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e4_1);
+
+        street_m_e4_2 = new Sprite("street_m_e4_2", Integers.RASTER_SIZE, 1 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e4_2);
+
+        street_m_e4_3 = new Sprite("street_m_e4_3", Integers.RASTER_SIZE, 2 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e4_3);
+
+        street_m_e4_4 = new Sprite("street_m_e4_4", Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 10 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_e4_4);
+
+        street_m_wage_e1_1 = new Sprite("street_m_wage_e1_1", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e1_1);
+        
+        street_m_wage_e2_1 = new Sprite("street_m_wage_e2_1", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e2_1);
+        
+        street_m_wage_e3_1 = new Sprite("street_m_wage_e3_1", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e3_1);
+        
+        street_m_wage_e4_1 = new Sprite("street_m_wage_e4_1", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e4_1);
+        
+        street_m_wage_e1_2 = new Sprite("street_m_wage_e1_2", Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e1_2);
+        
+        street_m_wage_e2_2 = new Sprite("street_m_wage_e2_2", Integers.RASTER_SIZE, 5 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e2_2);
+        
+        street_m_wage_e3_2 = new Sprite("street_m_wage_e3_2", Integers.RASTER_SIZE, 6 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e3_2);
+        
+        street_m_wage_e4_2 = new Sprite("street_m_wage_e4_2", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
+        registerSprite(street_m_wage_e4_2);
     }
 
     /**

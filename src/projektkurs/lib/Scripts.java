@@ -152,9 +152,7 @@ public final class Scripts {
      *            Stelle von SwitchMap
      */
 
-    public static void setSwitchMapTrigger(int i, AbstractTrigger t1, AbstractTrigger t2) {
-        Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), i, t1, t2);
-    }
+    
 
     public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
         map.spawn(e);
@@ -204,12 +202,18 @@ public final class Scripts {
      *            Uebergangstrigger
      * @param t2
      *            Trigger fuer Ubergangstrigger
+     * @param x X-Koordinate des Spawnpoints
+     * @param y Y-Koordinate des Spawnpoints
      */
-    public static void switchMap(int i, AbstractTrigger t1, AbstractTrigger t2) {
-        Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class), i, t1, t2);
+    public static void switchMap(int i, AbstractTrigger t1, AbstractTrigger t2, int x, int y) {
+        Main.getLevel().getMap().getStoryManager().registerTrigger(t1, ReflectionUtil.getMethod(Scripts.class, "setSwitchMapTrigger", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE), i, t1, t2, x, y);
+        Main.getLevel().getMap().setSpawn(x, y);
         Main.getLevel().setMap(i);
     }
 
+    public static void setSwitchMapTrigger(int i, AbstractTrigger t1, AbstractTrigger t2, int x, int y) {
+        Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE), i, t1, t2, x, y);
+    }    
     /**
      * Gewinnt das Spiel.
      */
