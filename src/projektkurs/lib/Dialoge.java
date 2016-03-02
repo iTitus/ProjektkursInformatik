@@ -73,7 +73,7 @@ public final class Dialoge {
         CS_LVmFrau = new Dialog("CS_LVmFrau", new DialogPart("CS_LVmFrauNull", 14));
         registerMapping(CS_LVmFrau);
 
-        LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 | 1 << 1, 0, 4));
+        LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 << 0 | 1 << 1, 0, 4));
         registerMapping(LVmFaehrmannNull);
 
         LVmFrauNull = new Dialog("LVmFrauNull", new DialogPart("LVmFrauNullnull", 0, 2)); // changed sth.
