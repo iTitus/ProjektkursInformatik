@@ -48,7 +48,7 @@ public class DialogPart implements Iterable<String> {
      */
 
     public DialogPart(String name, int talkLength) {
-        this(name, 0, talkLength);
+        this(name, 0, 0, talkLength);
     }
 
     /**
@@ -62,7 +62,14 @@ public class DialogPart implements Iterable<String> {
      *            Laenge des weiterfuehrenden Gespraechs
      */
     public DialogPart(String name, int necessaryValue, int talkLength) {
-        this(name, 0, necessaryValue, talkLength);
+        this.name = name;
+        this.necessaryValue = necessaryValue;
+        talk = new String[talkLength];
+        for (int i = 0; i < talk.length; i++) {
+            talk[i] = "dialog.part." + name + "." + i;
+        }
+        index = 0;
+        activated = true;
     }
 
     /**

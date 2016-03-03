@@ -41,6 +41,9 @@ public final class Dialoge {
     public static Dialog LVmNestStd;
     public static Dialog LVmSchranke;
     public static Dialog LVmTrashCan;
+    public static Dialog DiaFaehrmann;
+    public static Dialog DiaBarkeeper;
+
 
     /*
      * public static Dialog LVmKaugummi; public static Dialog LVmMesser; public static Dialog LVmNetz; public static Dialog LVmStein; public static Dialog LVmTeddy; public static Dialog LVmYoyo;
@@ -73,7 +76,7 @@ public final class Dialoge {
         CS_LVmFrau = new Dialog("CS_LVmFrau", new DialogPart("CS_LVmFrauNull", 14));
         registerMapping(CS_LVmFrau);
 
-        LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 << 0 | 1 << 1, 0, 4));
+        LVmFaehrmannNull = new Dialog("LVmFaehrmannNull", new DialogPart("LVmFaehrmannNullnull", 1 | 1 << 1, 0, 4));
         registerMapping(LVmFaehrmannNull);
 
         LVmFrauNull = new Dialog("LVmFrauNull", new DialogPart("LVmFrauNullnull", 0, 2)); // changed sth.
@@ -146,6 +149,11 @@ public final class Dialoge {
         LVmSchranke = new Dialog("LVmSchranke", new DialogPart("LVmSchrankeNull", 1));
         registerMapping(LVmSchranke);
 
+        DiaFaehrmann = new Dialog("DiaFaehrmann", new DialogPart("FaehrmannNull", 2));
+        registerMapping(DiaFaehrmann);
+        
+        DiaBarkeeper = new Dialog("DiaBarkeeper", new DialogPart("DiaBarkeeperNull", 2));
+        registerMapping(DiaBarkeeper);
     }
 
     /**

@@ -230,8 +230,10 @@ public final class Sprites {
     public static Sprite house_1_4x3;
     public static Sprite house_2_4x3;
     public static Sprite house_3_4x3;
-    public static Sprite house_4_4x4;
+    public static Sprite house_4_4x3;
     public static Sprite house_3b_3x4;
+    public static Sprite house_4b_3x4;
+    public static Sprite house_2b_3x4;
     
     public static Sprite markise02_1;
 	public static Sprite markise02_2;
@@ -277,6 +279,10 @@ public final class Sprites {
 	public static Sprite street_m_wage_e2_2;
 	public static Sprite street_m_wage_e3_2;
 	public static Sprite street_m_wage_e4_2;
+	public static Sprite windmill;	
+	public static Sprite table_01;
+	public static Sprite table_02;
+	public static Sprite table_03;
 
 
     /**
@@ -908,11 +914,17 @@ public final class Sprites {
         house_2_4x3 = new Sprite("house_2_4x3", 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 0, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(house_2_4x3);
         
+        house_2b_3x4 = new Sprite("house_2b_3x4", 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_2b_3x4);
+        
         house_3_4x3 = new Sprite("house_3_4x3", 4 * Integers.RASTER_SIZE, 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 12 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(house_3_4x3);
         
-        house_4_4x4 = new Sprite("house_4_4x4", 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
-        registerSprite(house_4_4x4);
+        house_4_4x3 = new Sprite("house_4_4x3", 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 15 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_4_4x3);
+        
+        house_4b_3x4 = new Sprite("house_4b_3x4", 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 12 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(house_4b_3x4);
         
         house_3b_3x4 = new Sprite("house_3b_3x4", 3 * Integers.RASTER_SIZE, 4 * Integers.RASTER_SIZE, 9 * Integers.RASTER_SIZE, 13 * Integers.RASTER_SIZE, SpriteSheets.entities);
         registerSprite(house_3b_3x4);
@@ -1057,8 +1069,26 @@ markise03_2 = new Sprite("markise03_2", Integers.RASTER_SIZE, 19 * Integers.RAST
         
         street_m_wage_e4_2 = new Sprite("street_m_wage_e4_2", Integers.RASTER_SIZE, 7 * Integers.RASTER_SIZE, 8 * Integers.RASTER_SIZE, SpriteSheets.raster );
         registerSprite(street_m_wage_e4_2);
+  
+    
+        windmill = new Sprite("windmill", 4 * Integers.RASTER_SIZE, 14*Integers.RASTER_SIZE, 10* Integers.RASTER_SIZE, SpriteSheets.entities);
+        registerSprite(windmill);
+        
+        table_01 = new Sprite("table_01", Integers.RASTER_SIZE, 10* Integers.RASTER_SIZE, 6* Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(table_01);
+    
+        table_02 = new Sprite("table_02", Integers.RASTER_SIZE, 11* Integers.RASTER_SIZE, 6* Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(table_02);
+        
+        table_03 = new Sprite("table_03", Integers.RASTER_SIZE, 12* Integers.RASTER_SIZE, 6* Integers.RASTER_SIZE, SpriteSheets.raster);
+        registerSprite(table_03);
+        
+        
+        
     }
 
+    	
+    
     /**
      * Registriert ein Mapping.
      *

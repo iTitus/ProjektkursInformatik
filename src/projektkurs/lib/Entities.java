@@ -21,12 +21,15 @@ import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntityTest;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
+import projektkurs.entity.EntityWindmill;
 import projektkurs.entity.EntityWitchCauldron;
 import projektkurs.entity.Entityhouse_1_4x3;
 import projektkurs.entity.Entityhouse_2_4x3;
+import projektkurs.entity.Entityhouse_2b_3x4;
 import projektkurs.entity.Entityhouse_3_4x3;
 import projektkurs.entity.Entityhouse_3b_3x4;
-import projektkurs.entity.Entityhouse_4_4x4;
+import projektkurs.entity.Entityhouse_4_4x3;
+import projektkurs.entity.Entityhouse_4b_3x4;
 import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
@@ -97,7 +100,11 @@ public final class Entities {
         registerEntity(Entityhouse_2_4x3.class, "house_2_4x3");
         registerEntity(Entityhouse_3_4x3.class, "house_3_4x3");
         registerEntity(Entityhouse_3b_3x4.class, "house_3b_3x4");
-        registerEntity(Entityhouse_4_4x4.class, "house_4_4x4");
+        registerEntity(Entityhouse_4_4x3.class, "house_4_4x4");
+        registerEntity(Entityhouse_4b_3x4.class, "house_4b_4x4");
+        registerEntity(Entityhouse_2b_3x4.class, "house_2b_3x4");
+        registerEntity(EntityWindmill.class, "windmill");
+
 
 
     }

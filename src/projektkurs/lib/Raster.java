@@ -241,6 +241,9 @@ public final class Raster {
      * Wasser
      */
     public static AbstractRaster water;
+    public static SimpleRaster table_01;
+    public static SimpleRaster table_02;
+    public static SimpleRaster table_03;
 
     /**
      * Das Pair, das alle Raster enthaelt.
@@ -788,6 +791,14 @@ public final class Raster {
         street_m_wage_e4_2 = new SimpleRaster(179, "street_m_wage_e4_2 ", Sprites.street_m_wage_e4_2 );
         registerRaster(street_m_wage_e4_2 );
 
+        table_01 = new SolidRaster(180, "table_01 ", Sprites.table_01 );
+        registerRaster(table_01 );
+        
+        table_02 = new SolidRaster(181, "table_02 ", Sprites.table_02 );
+        registerRaster(table_02 );
+        
+        table_03 = new SolidRaster(182, "table_03 ", Sprites.table_03 );
+        registerRaster(table_03 );
     }
 
     /**
