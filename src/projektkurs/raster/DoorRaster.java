@@ -19,9 +19,8 @@ public class DoorRaster extends AbstractRaster implements IHasExtraInformation {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      */
     public DoorRaster(int id) {
         super(id, "door");

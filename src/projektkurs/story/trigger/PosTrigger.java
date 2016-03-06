@@ -7,11 +7,10 @@ public class PosTrigger extends AreaTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            y-Koordinate
+     * y-Koordinate
      */
     public PosTrigger(int posX, int posY) {
         super(posX, posY, 1, 1);

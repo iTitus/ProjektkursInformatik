@@ -7,7 +7,6 @@ public interface IUpdatable {
 
     /**
      * Kann dieses Objekt jetzt updaten.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     boolean canUpdate();

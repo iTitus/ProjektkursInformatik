@@ -68,15 +68,14 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Konstrukor.
-     *
      * @param sizeX
-     *            Spielfeldbreite
+     * Spielfeldbreite
      * @param sizeY
-     *            Spielfeldhoehe
+     * Spielfeldhoehe
      * @param spawnX
-     *            X-Koordinate des Spielererscheinungsortes
+     * X-Koordinate des Spielererscheinungsortes
      * @param spawnY
-     *            Y-Koordinate des Spielererscheinungsortes
+     * Y-Koordinate des Spielererscheinungsortes
      */
     public Spielfeld(Level level, int sizeX, int sizeY, int spawnX, int spawnY) {
         this.level = level;
@@ -97,7 +96,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Kopiert das Spielfeld.
-     *
      * @return Spielfeld
      */
 
@@ -122,9 +120,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Laesst einen Entity verschwinden.
-     *
      * @param e
-     *            Entity
+     * Entity
      */
     public void deSpawn(Entity e) {
         if (e != null) {
@@ -134,11 +131,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Findet alle Entities an der gegebenen Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return gefundener Entity
      */
     public List<Entity> getEntitiesAt(int x, int y) {
@@ -149,15 +145,14 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Findet alle Entities in einem gegebenen Rechteck.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @return gefundene Entities
      */
     public ArrayList<Entity> getEntitiesInRect(int posX, int posY, int sizeX, int sizeY) {
@@ -174,7 +169,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Alle Entities auf dieser Map.
-     *
      * @return alle Entities
      */
     public List<Entity> getEntityList() {
@@ -183,11 +177,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Findet die ExtraInformation an der gegebenen Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return gefundene ExtraInformation
      */
     public ExtraInformation getExtraInformationAt(int x, int y) {
@@ -203,7 +196,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Alle ExtraInformationen auf dieser Map.
-     *
      * @return alle ExtraInformationen
      */
     public List<ExtraInformation> getExtraInformationList() {
@@ -216,7 +208,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Breite der Map.
-     *
      * @return Breite
      */
     public int getMapSizeX() {
@@ -225,7 +216,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Hoehe der Map.
-     *
      * @return Hoehe
      */
     public int getMapSizeY() {
@@ -234,11 +224,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Findet das Raster an der gegebenen Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return gefundenes Raster
      */
     public AbstractRaster getRasterAt(int x, int y) {
@@ -250,7 +239,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * X-Koordinate des Spieler-Erscheinungsortes.
-     *
      * @return X-Koordinate
      */
     public int getSpawnX() {
@@ -259,7 +247,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Y-Koordinate des Spieler-Erscheinungsortes.
-     *
      * @return Y-Koordinate
      */
     public int getSpawnY() {
@@ -268,7 +255,6 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Der StoryManager dieser Map.
-     *
      * @return StoryManager
      */
     public StoryManager getStoryManager() {
@@ -277,11 +263,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Ist ein Entity an der gegebenen Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isEntityAtPos(int x, int y) {
@@ -290,11 +275,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Prueft ob die gegebene Koordinate innerhalb dieser Map ist.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return true, wenn ja; false, wenn nicht
      */
     public boolean isInMap(int x, int y) {
@@ -303,11 +287,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Ist ein Raster an der gegebenen Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isRasterAt(int x, int y) {
@@ -352,9 +335,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Entfernt eine ExtraInformation von dieser Map.
-     *
      * @param extra
-     *            die zu entfernende ExtraInformation
+     * die zu entfernende ExtraInformation
      */
     public void removeExtraInformation(ExtraInformation extra) {
         getExtraInformationList().remove(extra);
@@ -362,9 +344,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Rendert das Spielfeld.
-     *
      * @param s
-     *            Screen
+     * Screen
      */
     public void render(Screen s) {
         for (int y = Main.getRenderHelper().getSightY(); y < Main.getRenderHelper().getSightY() + Integers.sightY; y++) {
@@ -386,13 +367,12 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Setzt ein Raster und seine ExtraInformation an die gegebene Position.
-     *
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param r
-     *            zu setzendes Raster
+     * zu setzendes Raster
      */
     public void setRasterAt(int x, int y, AbstractRaster r) {
         if (isInMap(x, y)) {
@@ -415,11 +395,10 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Setzt die Koordinaten des Spielererscheinungsortes.
-     *
      * @param spawnX
-     *            X-Koordinate
+     * X-Koordinate
      * @param spawnY
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public void setSpawn(int spawnX, int spawnY) {
         this.spawnX = spawnX;
@@ -428,9 +407,8 @@ public class Spielfeld implements IUpdatable, ISaveable {
 
     /**
      * Laesst einen Entity erscheinen.
-     *
      * @param e
-     *            Entity
+     * Entity
      */
     public void spawn(Entity e) {
         if (e != null) {

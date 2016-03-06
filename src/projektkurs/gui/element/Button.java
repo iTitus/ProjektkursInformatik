@@ -29,17 +29,16 @@ public class Button extends Element {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param name
-     *            Name
+     * Name
      */
     public Button(int posX, int posY, int id, IButtonListener listener, String name) {
         this(posX, posY, id, listener, name, true);
@@ -60,7 +59,6 @@ public class Button extends Element {
 
     /**
      * Der name dieses Knopfes.
-     *
      * @return Name
      */
     public String getName() {
@@ -73,7 +71,6 @@ public class Button extends Element {
 
     /**
      * Ist dieser Knopf aktiviert.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isEnabled() {
@@ -114,9 +111,8 @@ public class Button extends Element {
 
     /**
      * Aktiviert diesen Knopf.
-     *
      * @param enabled
-     *            true, wenn er aktiviert werden soll; false, wenn er deaktiviert werden soll
+     * true, wenn er aktiviert werden soll; false, wenn er deaktiviert werden soll
      */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
@@ -128,9 +124,8 @@ public class Button extends Element {
 
     /**
      * Setzt den Namen dieses Knopfes.
-     *
      * @param name
-     *            Name
+     * Name
      */
     public void setName(String name) {
         this.name = name;

@@ -24,13 +24,13 @@ public class ConditionedMoveAction extends Action {
 
     /**
      * @param condition
-     *            Ausfuehrbedingung
+     * Ausfuehrbedingung
      * @param object
-     *            Das CutSceneObject, das bewegt werden soll
+     * Das CutSceneObject, das bewegt werden soll
      * @param dx
-     *            Bewegung in x-Richtung
+     * Bewegung in x-Richtung
      * @param dy
-     *            Bewegung in y-Richtung
+     * Bewegung in y-Richtung
      */
     public ConditionedMoveAction(Condition condition, CutSceneObject object, int dx, int dy) {
         super(condition);
@@ -46,7 +46,6 @@ public class ConditionedMoveAction extends Action {
 
     /**
      * Das CutSceneObject, das bewegt werden soll.
-     *
      * @return CutSceneObject
      */
     public CutSceneObject getCutSceneObject() {

@@ -7,9 +7,8 @@ public class EntityFisherboat extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityFisherboat(Spielfeld map) {
         super(map);
@@ -17,13 +16,12 @@ public class EntityFisherboat extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      */
 
     public EntityFisherboat(Spielfeld map, int posX, int posY) {

@@ -16,11 +16,10 @@ public class ConditionedDeSpawnAction extends Action {
 
     /**
      * Konstruktor.
-     *
      * @param condition
-     *            Bedingung
+     * Bedingung
      * @param cutSceneObject
-     *            CutSceneObject
+     * CutSceneObject
      */
     public ConditionedDeSpawnAction(Condition condition, CutSceneObject cutSceneObject) {
         super(condition);

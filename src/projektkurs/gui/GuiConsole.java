@@ -29,7 +29,6 @@ public class GuiConsole extends Gui implements ITextFieldListener {
 
     /**
      * Das TextField in diesem Gui.
-     *
      * @return TextField
      */
     public TextField getTextField() {
@@ -91,9 +90,8 @@ public class GuiConsole extends Gui implements ITextFieldListener {
 
     /**
      * Wird ausgefuehrt, wenn die Enter-Taste gedrueckt wird.
-     *
      * @param text
-     *            Text im TextField
+     * Text im TextField
      */
     private void onSent(String text) {
 

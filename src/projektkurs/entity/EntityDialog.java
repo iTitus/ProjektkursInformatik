@@ -11,9 +11,8 @@ public abstract class EntityDialog extends Entity implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityDialog(Spielfeld map) {
         super(map);
@@ -21,19 +20,18 @@ public abstract class EntityDialog extends Entity implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param sprites
-     *            Sprite
+     * Sprite
      */
     public EntityDialog(Spielfeld map, int posX, int posY, int sizeX, int sizeY, Sprite... sprites) {
         super(map, posX, posY, sizeX, sizeY, sprites);
@@ -41,15 +39,14 @@ public abstract class EntityDialog extends Entity implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sprites
-     *            Sprite
+     * Sprite
      */
     public EntityDialog(Spielfeld map, int posX, int posY, Sprite... sprites) {
         this(map, posX, posY, 1, 1, sprites);

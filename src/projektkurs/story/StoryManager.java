@@ -64,13 +64,12 @@ public class StoryManager implements IUpdatable, ISaveable {
 
     /**
      * Registriert einen neuen Trigger hinzu.
-     *
      * @param trigger
-     *            hinzuzufuegender Trigger
+     * hinzuzufuegender Trigger
      * @param m
-     *            auszufuehrende Methode
+     * auszufuehrende Methode
      * @param objects
-     *            eventuelle Parameter
+     * eventuelle Parameter
      */
     public void registerTrigger(AbstractTrigger trigger, Method m, Object... objects) {
         if (triggerMap.containsKey(trigger)) {
@@ -82,9 +81,8 @@ public class StoryManager implements IUpdatable, ISaveable {
 
     /**
      * Entfernt einen Trigger.
-     *
      * @param trigger
-     *            zu entfernender Trigger.
+     * zu entfernender Trigger.
      */
     public void removeTrigger(AbstractTrigger trigger) {
         triggerToRemove.add(trigger);

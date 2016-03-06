@@ -16,9 +16,8 @@ public class GuiInfo extends Gui {
 
     /**
      * Konstruktor.
-     *
      * @param parent
-     *            Eltern-Gui
+     * Eltern-Gui
      */
     public GuiInfo(Gui parent, Pair<String, List<String>> pair) {
         super(parent);

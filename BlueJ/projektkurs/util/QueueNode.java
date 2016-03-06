@@ -2,9 +2,8 @@ package projektkurs.util;
 
 /**
  * Eine Node.
- *
  * @param <T>
- *            Inhaltstyp
+ * Inhaltstyp
  */
 public class QueueNode<T> {
 
@@ -19,9 +18,8 @@ public class QueueNode<T> {
 
     /**
      * Konstruktor.
-     *
      * @param content
-     *            ist der Inhalt
+     * ist der Inhalt
      */
     public QueueNode(T content) {
         this.content = content;
@@ -30,7 +28,6 @@ public class QueueNode<T> {
 
     /**
      * Inhalt der Node.
-     *
      * @return Inhalt
      */
     public T get() {
@@ -39,7 +36,6 @@ public class QueueNode<T> {
 
     /**
      * Die naechste Node.
-     *
      * @return naechste Node
      */
     public QueueNode<T> getNext() {
@@ -48,9 +44,8 @@ public class QueueNode<T> {
 
     /**
      * Setzt die naechste Node.
-     *
      * @param next
-     *            ist die neue naechste Node
+     * ist die neue naechste Node
      */
     public void setNext(QueueNode<T> next) {
         this.next = next;

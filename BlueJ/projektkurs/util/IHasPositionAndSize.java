@@ -7,25 +7,22 @@ public interface IHasPositionAndSize<P extends Number, S extends Number> extends
 
     /**
      * Die Breite.
-     *
      * @return Breite
      */
     S getSizeX();
 
     /**
      * Die Hoehe.
-     *
      * @return Hoehe
      */
     S getSizeY();
 
     /**
      * Setzt die Groesse.
-     *
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      */
     void setSize(S sizeX, S sizeY);
 

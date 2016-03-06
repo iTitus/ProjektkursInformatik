@@ -9,21 +9,19 @@ public interface IButtonListener extends IElementListener {
 
     /**
      * Wird ausgefuehrt, wenn mit der linken Maustaste auf einen Knopf geklickt wird.
-     *
      * @param button
-     *            der gedrueckte Knopf
+     * der gedrueckte Knopf
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     void onButtonLeftClick(Button button, MouseEvent e);
 
     /**
      * Wird ausgefuehrt, wenn mit der rechten Maustaste auf einen Knopf geklickt wird.
-     *
      * @param button
-     *            der gedrueckte Knopf
+     * der gedrueckte Knopf
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     void onButtonRightClick(Button button, MouseEvent e);
 

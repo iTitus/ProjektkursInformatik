@@ -52,7 +52,6 @@ public class GameThread extends Thread {
 
     /**
      * Delta dieses Threads.
-     *
      * @return Delta
      */
     public double getDelta() {
@@ -61,7 +60,6 @@ public class GameThread extends Thread {
 
     /**
      * Frames pro Sekunde dieses Threads.
-     *
      * @return FPS
      */
     public int getFPS() {
@@ -70,7 +68,6 @@ public class GameThread extends Thread {
 
     /**
      * Updates pro Sekunde dieses Threads.
-     *
      * @return UPS
      */
     public int getUPS() {
@@ -79,9 +76,8 @@ public class GameThread extends Thread {
 
     /**
      * Veraendert den Pausenstatus.
-     *
      * @param pause
-     *            true, wenn er pausieren soll; false, wenn er laufen soll
+     * true, wenn er pausieren soll; false, wenn er laufen soll
      */
     public void pause(boolean pause) {
         pausing = pause;

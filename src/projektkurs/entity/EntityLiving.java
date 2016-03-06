@@ -23,9 +23,8 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityLiving(Spielfeld map) {
         super(map);
@@ -33,21 +32,20 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param maxHealth
-     *            maximale Gesundheit
+     * maximale Gesundheit
      * @param sprites
-     *            Bilder
+     * Bilder
      */
     public EntityLiving(Spielfeld map, int posX, int posY, int sizeX, int sizeY, int maxHealth, Sprite... sprites) {
         super(map, posX, posY, sizeX, sizeY, sprites);
@@ -57,17 +55,16 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param maxHealth
-     *            maximale Gesundheit
+     * maximale Gesundheit
      * @param sprites
-     *            Bilder
+     * Bilder
      */
     public EntityLiving(Spielfeld map, int posX, int posY, int maxHealth, Sprite... sprites) {
         this(map, posX, posY, 1, 1, maxHealth, sprites);
@@ -80,9 +77,8 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Schadet um die gegebene Menge an Gesundheit.
-     *
      * @param by
-     *            Menge an Gesundheit
+     * Menge an Gesundheit
      */
     public void damage(int by) {
         health -= by;
@@ -97,7 +93,6 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Die aktuelle Gesundheit.
-     *
      * @return Gsundheit
      */
     public int getHealth() {
@@ -106,7 +101,6 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Die maximale Gesundheit.
-     *
      * @return maximale Gesundheit
      */
     public int getMaxHealth() {
@@ -115,9 +109,8 @@ public abstract class EntityLiving extends Entity {
 
     /**
      * Heilt um die gegebene Menge an Gesundheit.
-     *
      * @param by
-     *            Menge an Gesundheit
+     * Menge an Gesundheit
      */
     public void heal(int by) {
         damage(-by);

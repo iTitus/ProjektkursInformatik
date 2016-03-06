@@ -9,21 +9,20 @@ public class TextView extends TextField {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param text
-     *            Anfangstext
+     * Anfangstext
      * @param objects
-     *            eventuelle Objekte
+     * eventuelle Objekte
      */
     public TextView(int posX, int posY, int sizeX, int sizeY, int id, String text, Object... objects) {
         super(posX, posY, sizeX, sizeY, id, null, "");

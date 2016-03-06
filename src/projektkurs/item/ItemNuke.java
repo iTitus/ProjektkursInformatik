@@ -20,9 +20,8 @@ public class ItemNuke extends BaseItem {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      */
     public ItemNuke(int id) {
         super(id, "nuke", Sprites.nuke);

@@ -59,12 +59,11 @@ public enum Direction {
 
     /**
      * Direction die zu dem gegebenen Index gehoert.
-     *
      * @param index
-     *            Index
+     * Index
      * @return Direction
      */
-    public static Direction getDirectionForIndex(int index) {
+            public static Direction getDirectionForIndex(int index) {
         if (MathUtil.isInArray(index, VALID_DIRECTIONS.length)) {
             return VALID_DIRECTIONS[index];
         }
@@ -73,11 +72,10 @@ public enum Direction {
 
     /**
      * Richtung fuer die gegebenen Offset-Werte.
-     *
      * @param offsetX
-     *            X-Offset
+     * X-Offset
      * @param offsetY
-     *            Y-Offset
+     * Y-Offset
      * @return Richtung fuer die gegebenen Offset-Werte
      */
     public static Direction getDirectionForOffset(int offsetX, int offsetY) {
@@ -104,11 +102,10 @@ public enum Direction {
 
     /**
      * Privater Konstruktor.
-     *
      * @param offsetX
-     *            X-Offset
+     * X-Offset
      * @param offsetY
-     *            Y-Offset
+     * Y-Offset
      */
     private Direction(int index, int offsetX, int offsetY) {
         this.index = index;
@@ -118,7 +115,6 @@ public enum Direction {
 
     /**
      * Index.
-     *
      * @return Index
      */
     public int getIndex() {
@@ -127,7 +123,6 @@ public enum Direction {
 
     /**
      * X-Offset.
-     *
      * @return X-Offset
      */
     public int getOffsetX() {
@@ -136,7 +131,6 @@ public enum Direction {
 
     /**
      * Y-Offset.
-     *
      * @return Y-Offset
      */
     public int getOffsetY() {
@@ -145,7 +139,6 @@ public enum Direction {
 
     /**
      * Die entgegengesetzte Richtung.
-     *
      * @return die entgegengesetzte Richtung
      */
     public Direction getOpposite() {

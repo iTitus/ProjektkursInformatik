@@ -12,9 +12,8 @@ public class EntityRedNPC extends EntityNPC {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityRedNPC(Spielfeld map) {
         super(map);
@@ -23,13 +22,12 @@ public class EntityRedNPC extends EntityNPC {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public EntityRedNPC(Spielfeld map, int posX, int posY) {
         super(map, posX, posY, Integers.PLAYER_HEALTH, Sprites.redNPC);

@@ -38,11 +38,10 @@ public final class Sounds {
 
         /**
          * Konstruktor.
-         *
          * @param name
-         *            Name
+         * Name
          * @param fileName
-         *            Dateiname
+         * Dateiname
          */
         public Sound(String name, String fileName) {
             this.name = name;
@@ -75,7 +74,6 @@ public final class Sounds {
 
         /**
          * Name.
-         *
          * @return Name
          */
         public String getName() {
@@ -84,7 +82,6 @@ public final class Sounds {
 
         /**
          * Ist der Sound am pausieren.
-         *
          * @return true, wenn ja; false, wenn nein
          */
         public boolean isPausing() {
@@ -100,9 +97,8 @@ public final class Sounds {
 
         /**
          * Spielt den Sound sooft ab wie angegeben.
-         *
          * @param count
-         *            Wiederholungszahl
+         * Wiederholungszahl
          */
         public void loop(int count) {
             if (clip != null && !Configs.soundsMuted.getValue()) {
@@ -142,9 +138,8 @@ public final class Sounds {
 
         /**
          * Spielt den Sound von einer gegebenen Frame-Zahl ab.
-         *
          * @param frames
-         *            Frame-Zahl
+         * Frame-Zahl
          */
         public void play(int frames) {
             if (clip != null && !Configs.soundsMuted.getValue()) {
@@ -206,7 +201,6 @@ public final class Sounds {
 
     /**
      * Das Pair, das alle Sounds enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -226,9 +220,8 @@ public final class Sounds {
 
     /**
      * Setzt den Pausenstatus jedes Sounds.
-     *
      * @param pause
-     *            true, wenn pausiert werden soll; false, wenn nicht.
+     * true, wenn pausiert werden soll; false, wenn nicht.
      */
     public static void pause(boolean pause) {
         for (Sound s : MAPPINGS.values()) {
@@ -242,9 +235,8 @@ public final class Sounds {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param s
-     *            Sound
+     * Sound
      */
     public static void registerSound(Sound s) {
         if (s != null && !MAPPINGS.containsKey(s.getName())) {

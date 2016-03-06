@@ -9,11 +9,10 @@ public class MethodInvoker extends MethodInvokerWithReturn<Void> {
 
     /**
      * Konstruktor.
-     *
      * @param m
-     *            Methode
+     * Methode
      * @param objects
-     *            eventuelle Parameter
+     * eventuelle Parameter
      */
     public MethodInvoker(Method m, Object... objects) {
         super(m, objects);

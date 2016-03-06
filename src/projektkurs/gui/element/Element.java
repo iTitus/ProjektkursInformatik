@@ -44,19 +44,18 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      */
     public Element(int posX, int posY, int sizeX, int sizeY, int id, IElementListener listener) {
         this.posX = posX;
@@ -79,7 +78,6 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Die Nummer dieses Elements.
-     *
      * @return Nummmer
      */
     public int getID() {
@@ -88,7 +86,6 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Der Listener dieses Elements.
-     *
      * @return Listener.
      */
     public IElementListener getListener() {
@@ -117,9 +114,8 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Ist ein anderes Element innerhalb von diesem Element.
-     *
      * @param e
-     *            anderes Element
+     * anderes Element
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(Element e) {
@@ -128,11 +124,10 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Ist der gegebene Punkt innerhalb von diesem Element.
-     *
      * @param posX
-     *            X-Koordinate des Punkts
+     * X-Koordinate des Punkts
      * @param posY
-     *            Y-Koordinate des Punkts
+     * Y-Koordinate des Punkts
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY) {
@@ -141,15 +136,14 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Ist das gegebene Rechteck innerhalb von diesem Element.
-     *
      * @param posX
-     *            X-Koordinate der oberen linken Ecke des Rechtecks
+     * X-Koordinate der oberen linken Ecke des Rechtecks
      * @param posY
-     *            Y-Koordinate der oberen linken Ecke des Rechtecks
+     * Y-Koordinate der oberen linken Ecke des Rechtecks
      * @param sizeX
-     *            Breite des Rechtecks
+     * Breite des Rechtecks
      * @param sizeY
-     *            Hoehe des Rechtecks
+     * Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
@@ -158,11 +152,10 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Wird aufgerufen, wenn eine Taste gedrueckt wird.
-     *
      * @param keyChar
-     *            gedrueckter Buchstabe
+     * gedrueckter Buchstabe
      * @param e
-     *            KeyEvent
+     * KeyEvent
      */
     public void onKeyTyped(char keyChar, KeyEvent e) {
         // NO-OP
@@ -170,13 +163,12 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param x
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param y
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onLeftClick(int x, int y, MouseEvent e) {
         // NO-OP
@@ -184,11 +176,10 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Wird ausgefuehrt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
-     *
      * @param by
-     *            Bewegung des Mausrads
+     * Bewegung des Mausrads
      * @param e
-     *            MouseWheelEvent
+     * MouseWheelEvent
      */
     public void onMouseWheelMoved(int by, MouseWheelEvent e) {
         // NO-OP
@@ -196,13 +187,12 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param x
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param y
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onRightClick(int x, int y, MouseEvent e) {
         // NO-OP
@@ -210,9 +200,8 @@ public abstract class Element implements IHasPositionAndSize<Integer, Integer>, 
 
     /**
      * Rendert dieses Element.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public abstract void render(Screen screen);
 

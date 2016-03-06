@@ -28,9 +28,8 @@ public final class RenderUtil {
 
     /**
      * Malt den Rand.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public static void drawBorder(Screen screen) {
         for (int y = 0; y < Integers.WINDOW_HUD_Y; y++) {
@@ -69,15 +68,14 @@ public final class RenderUtil {
 
     /**
      * Malt ein Rasterbild in eine CutScene.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param sprite
-     *            Sprite
+     * Sprite
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      */
     public static void drawCutSceneRaster(Screen screen, Sprite sprite, int x, int y) {
         drawSprite(screen, sprite, (x - CutSceneManager.getCutSceneRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - CutSceneManager.getCutSceneRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
@@ -85,9 +83,8 @@ public final class RenderUtil {
 
     /**
      * Rendert den Standardhintergrund.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public static void drawDefaultBackground(Screen screen) {
         screen.setColor(DEFAULT_BACKGROUND_COLOR);
@@ -95,11 +92,10 @@ public final class RenderUtil {
 
     /**
      * Malt einen Entity aufs Spielfeld.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param e
-     *            Entity
+     * Entity
      */
     public static void drawDefaultEntity(Screen screen, Entity e) {
         drawSprite(screen, e.getSprite(), e.getRenderX(), e.getRenderY());
@@ -107,15 +103,14 @@ public final class RenderUtil {
 
     /**
      * Malt ein Rasterbild aufs Spielfeld.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param sprite
-     *            Sprite
+     * Sprite
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      */
     public static void drawDefaultRaster(Screen screen, Sprite sprite, int x, int y) {
         drawSprite(screen, sprite, (x - Main.getRenderHelper().getSightX()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_X, (y - Main.getRenderHelper().getSightY()) * Integers.RASTER_SIZE + Integers.WINDOW_HUD_Y);
@@ -139,17 +134,16 @@ public final class RenderUtil {
 
     /**
      * Malt ein gefuelltes Rechteck in schwarz.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param x
-     *            X-Koordinate der linken oberen Ecke
+     * X-Koordinate der linken oberen Ecke
      * @param y
-     *            Y-Koordinate der linken oberen Ecke
+     * Y-Koordinate der linken oberen Ecke
      * @param width
-     *            Breite
+     * Breite
      * @param height
-     *            Hoehe
+     * Hoehe
      */
     public static void drawFilledRectangle(Screen screen, int x, int y, int width, int height) {
         drawFilledRectangle(screen, x, y, width, height, 0);
@@ -157,19 +151,18 @@ public final class RenderUtil {
 
     /**
      * Malt ein gefuelltes Rechteck.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param x
-     *            X-Koordinate der linken oberen Ecke
+     * X-Koordinate der linken oberen Ecke
      * @param y
-     *            Y-Koordinate der linken oberen Ecke
+     * Y-Koordinate der linken oberen Ecke
      * @param width
-     *            Breite
+     * Breite
      * @param height
-     *            Hoehe
+     * Hoehe
      * @param color
-     *            Farbe
+     * Farbe
      */
     public static void drawFilledRectangle(Screen screen, int x, int y, int width, int height, int color) {
         if (!isTransparent(color)) {
@@ -183,15 +176,14 @@ public final class RenderUtil {
 
     /**
      * Malt ein BufferedImage auf ein Graphics2D-Objekt.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param image
-     *            BufferedImage
+     * BufferedImage
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public static void drawImage(Graphics2D g, BufferedImage image, int x, int y) {
         g.drawImage(image, x, y, null);
@@ -199,19 +191,18 @@ public final class RenderUtil {
 
     /**
      * Malt ein BufferedImage auf ein Graphics2D-Objekt.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param image
-     *            BufferedImage
+     * BufferedImage
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param width
-     *            Breite
+     * Breite
      * @param height
-     *            Hoehe
+     * Hoehe
      */
     public static void drawImage(Graphics2D g, BufferedImage image, int x, int y, int width, int height) {
         g.drawImage(image, x, y, width, height, null);
@@ -219,17 +210,16 @@ public final class RenderUtil {
 
     /**
      * Malt eine schwarze Linie von Punkt A bis Punkt B.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param startX
-     *            X-Koordinate
+     * X-Koordinate
      * @param startY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param endX
-     *            X-Koordinate
+     * X-Koordinate
      * @param endY
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public static void drawLine(Screen screen, int startX, int startY, int endX, int endY) {
         drawLine(screen, startX, startY, endX, endY, 0);
@@ -237,19 +227,18 @@ public final class RenderUtil {
 
     /**
      * Malt eine Linie in der gegebenen Farbe von Punkt A bis Punkt B.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param startX
-     *            X-Koordinate A
+     * X-Koordinate A
      * @param startY
-     *            Y-Koordinate A
+     * Y-Koordinate A
      * @param endX
-     *            X-Koordinate B
+     * X-Koordinate B
      * @param endY
-     *            Y-Koordinate B
+     * Y-Koordinate B
      * @param color
-     *            Farbe
+     * Farbe
      */
     public static void drawLine(Screen screen, int startX, int startY, int endX, int endY, int color) {
         if (!isTransparent(color)) {
@@ -281,17 +270,16 @@ public final class RenderUtil {
 
     /**
      * Malt ein schwarzes Rechteck an die gegebene Koordinate.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param width
-     *            Breite
+     * Breite
      * @param height
-     *            Hoehe
+     * Hoehe
      */
     public static void drawRectangle(Screen screen, int x, int y, int width, int height) {
         drawRectangle(screen, x, y, width, height, 0);
@@ -299,19 +287,18 @@ public final class RenderUtil {
 
     /**
      * Malt ein Rechteck mit der gegebenen Farbe an die gegebene Koordinate.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param width
-     *            Breite
+     * Breite
      * @param height
-     *            Hoehe
+     * Hoehe
      * @param color
-     *            Farbe
+     * Farbe
      */
     public static void drawRectangle(Screen screen, int x, int y, int width, int height, int color) {
         if (!isTransparent(color)) {
@@ -324,15 +311,14 @@ public final class RenderUtil {
 
     /**
      * Malt einen Sprite an die gegebenen Koordinaten.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param sprite
-     *            Sprite
+     * Sprite
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public static void drawSprite(Screen screen, Sprite sprite, int x, int y) {
         int pixel;
@@ -348,15 +334,14 @@ public final class RenderUtil {
 
     /**
      * Rendert einen Tooltip an die gegebene Position.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param str
-     *            Tooltip
+     * Tooltip
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public static void drawTooltip(Screen screen, List<String> tooltip, int x, int y) {
         int height = 0;

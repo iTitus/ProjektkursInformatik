@@ -185,32 +185,32 @@ public final class Raster {
     public static AbstractRaster tree_9se_water;
     public static AbstractRaster tree_9sw;
     public static AbstractRaster tree_9sw_water;
-    
-	public static SimpleRaster street_m_e1_1;
-	public static SimpleRaster street_m_e1_2;
-	public static SimpleRaster street_m_e1_3;
-	public static SimpleRaster street_m_e1_4;
-	public static SimpleRaster street_m_e2_1;
-	public static SimpleRaster street_m_e2_2;
-	public static SimpleRaster street_m_e2_3;
-	public static SimpleRaster street_m_e2_4;
-	public static SimpleRaster street_m_e3_1;
-	public static SimpleRaster street_m_e3_2;
-	public static SimpleRaster street_m_e3_3;
-	public static SimpleRaster street_m_e3_4;
-	public static SimpleRaster street_m_e4_1;
-	public static SimpleRaster street_m_e4_2;
-	public static SimpleRaster street_m_e4_3;
-	public static SimpleRaster street_m_e4_4;
-	public static SolidRaster sonnenschirm02_2;
-	public static SimpleRaster street_m_wage_e1_1;
-	public static SimpleRaster street_m_wage_e2_1;
-	public static SimpleRaster street_m_wage_e3_1;
-	public static SimpleRaster street_m_wage_e4_1;
-	public static SimpleRaster street_m_wage_e1_2;
-	public static SimpleRaster street_m_wage_e2_2;
-	public static SimpleRaster street_m_wage_e3_2;
-	public static SimpleRaster street_m_wage_e4_2;
+
+    public static SimpleRaster street_m_e1_1;
+    public static SimpleRaster street_m_e1_2;
+    public static SimpleRaster street_m_e1_3;
+    public static SimpleRaster street_m_e1_4;
+    public static SimpleRaster street_m_e2_1;
+    public static SimpleRaster street_m_e2_2;
+    public static SimpleRaster street_m_e2_3;
+    public static SimpleRaster street_m_e2_4;
+    public static SimpleRaster street_m_e3_1;
+    public static SimpleRaster street_m_e3_2;
+    public static SimpleRaster street_m_e3_3;
+    public static SimpleRaster street_m_e3_4;
+    public static SimpleRaster street_m_e4_1;
+    public static SimpleRaster street_m_e4_2;
+    public static SimpleRaster street_m_e4_3;
+    public static SimpleRaster street_m_e4_4;
+    public static SolidRaster sonnenschirm02_2;
+    public static SimpleRaster street_m_wage_e1_1;
+    public static SimpleRaster street_m_wage_e2_1;
+    public static SimpleRaster street_m_wage_e3_1;
+    public static SimpleRaster street_m_wage_e4_1;
+    public static SimpleRaster street_m_wage_e1_2;
+    public static SimpleRaster street_m_wage_e2_2;
+    public static SimpleRaster street_m_wage_e3_2;
+    public static SimpleRaster street_m_wage_e4_2;
 
     /**
      * Wand.
@@ -226,7 +226,6 @@ public final class Raster {
 
     /**
      * Das Pair, das alle Raster enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -636,98 +635,94 @@ public final class Raster {
 
         ferryhouse_ecke_ne = new SolidRaster(133, "ferryhouse_ecke_ne", Sprites.ferryhouse_ecke_ne);
         registerRaster(ferryhouse_ecke_ne);
-        
-       street_m_e1_1 = new SimpleRaster(134, "street_m_e1_1 ", Sprites.street_m_e1_1 );
-        registerRaster(street_m_e1_1 );
 
-        street_m_e1_2 = new SimpleRaster(135, "street_m_e1_2 ", Sprites.street_m_e1_2 );
-        registerRaster(street_m_e1_2 );
+        street_m_e1_1 = new SimpleRaster(134, "street_m_e1_1 ", Sprites.street_m_e1_1);
+        registerRaster(street_m_e1_1);
 
-        street_m_e1_3 = new SimpleRaster(136, "street_m_e1_3 ", Sprites.street_m_e1_3 );
-        registerRaster(street_m_e1_3 );
+        street_m_e1_2 = new SimpleRaster(135, "street_m_e1_2 ", Sprites.street_m_e1_2);
+        registerRaster(street_m_e1_2);
 
-        street_m_e1_4 = new SimpleRaster(137, "street_m_e1_4 ", Sprites.street_m_e1_4 );
-        registerRaster(street_m_e1_4 );
+        street_m_e1_3 = new SimpleRaster(136, "street_m_e1_3 ", Sprites.street_m_e1_3);
+        registerRaster(street_m_e1_3);
 
-        street_m_e2_1 = new SimpleRaster(138, "street_m_e2_1 ", Sprites.street_m_e2_1 );
-        registerRaster(street_m_e2_1 );
+        street_m_e1_4 = new SimpleRaster(137, "street_m_e1_4 ", Sprites.street_m_e1_4);
+        registerRaster(street_m_e1_4);
 
-        street_m_e2_2 = new SimpleRaster(139, "street_m_e2_2 ", Sprites.street_m_e2_2 );
-        registerRaster(street_m_e2_2 );
+        street_m_e2_1 = new SimpleRaster(138, "street_m_e2_1 ", Sprites.street_m_e2_1);
+        registerRaster(street_m_e2_1);
 
-        street_m_e2_3 = new SimpleRaster(140, "street_m_e2_3 ", Sprites.street_m_e2_3 );
-        registerRaster(street_m_e2_3 );
+        street_m_e2_2 = new SimpleRaster(139, "street_m_e2_2 ", Sprites.street_m_e2_2);
+        registerRaster(street_m_e2_2);
 
-        street_m_e2_4 = new SimpleRaster(141, "street_m_e2_4 ", Sprites.street_m_e2_4 );
-        registerRaster(street_m_e2_4 );
+        street_m_e2_3 = new SimpleRaster(140, "street_m_e2_3 ", Sprites.street_m_e2_3);
+        registerRaster(street_m_e2_3);
 
-        street_m_e3_1 = new SimpleRaster(142, "street_m_e3_1 ", Sprites.street_m_e3_1 );
-        registerRaster(street_m_e3_1 );
+        street_m_e2_4 = new SimpleRaster(141, "street_m_e2_4 ", Sprites.street_m_e2_4);
+        registerRaster(street_m_e2_4);
 
-        street_m_e3_2 = new SimpleRaster(143, "street_m_e3_2 ", Sprites.street_m_e3_2 );
-        registerRaster(street_m_e3_2 );
+        street_m_e3_1 = new SimpleRaster(142, "street_m_e3_1 ", Sprites.street_m_e3_1);
+        registerRaster(street_m_e3_1);
 
-        street_m_e3_3 = new SimpleRaster(144, "street_m_e3_3 ", Sprites.street_m_e3_3 );
-        registerRaster(street_m_e3_3 );
+        street_m_e3_2 = new SimpleRaster(143, "street_m_e3_2 ", Sprites.street_m_e3_2);
+        registerRaster(street_m_e3_2);
 
-        street_m_e3_4 = new SimpleRaster(145, "street_m_e3_4 ", Sprites.street_m_e3_4 );
-        registerRaster(street_m_e3_4 );
+        street_m_e3_3 = new SimpleRaster(144, "street_m_e3_3 ", Sprites.street_m_e3_3);
+        registerRaster(street_m_e3_3);
 
-        street_m_e4_1 = new SimpleRaster(146, "street_m_e4_1 ", Sprites.street_m_e4_1 );
-        registerRaster(street_m_e4_1 );
+        street_m_e3_4 = new SimpleRaster(145, "street_m_e3_4 ", Sprites.street_m_e3_4);
+        registerRaster(street_m_e3_4);
 
-        street_m_e4_2 = new SimpleRaster(147, "street_m_e4_2 ", Sprites.street_m_e4_2 );
-        registerRaster(street_m_e4_2 );
+        street_m_e4_1 = new SimpleRaster(146, "street_m_e4_1 ", Sprites.street_m_e4_1);
+        registerRaster(street_m_e4_1);
 
-        street_m_e4_3 = new SimpleRaster(148, "street_m_e4_3 ", Sprites.street_m_e4_3 );
-        registerRaster(street_m_e4_3 );
+        street_m_e4_2 = new SimpleRaster(147, "street_m_e4_2 ", Sprites.street_m_e4_2);
+        registerRaster(street_m_e4_2);
 
-        street_m_e4_4 = new SimpleRaster(149, "street_m_e4_4 ", Sprites.street_m_e4_4 );
-        registerRaster(street_m_e4_4 );
+        street_m_e4_3 = new SimpleRaster(148, "street_m_e4_3 ", Sprites.street_m_e4_3);
+        registerRaster(street_m_e4_3);
 
-        street_m_wage_e1_1 = new SimpleRaster(150, "street_m_wage_e1_1 ", Sprites.street_m_wage_e1_1 );
-        registerRaster(street_m_wage_e1_1 );
+        street_m_e4_4 = new SimpleRaster(149, "street_m_e4_4 ", Sprites.street_m_e4_4);
+        registerRaster(street_m_e4_4);
 
-        street_m_wage_e2_1 = new SimpleRaster(151, "street_m_wage_e2_1 ", Sprites.street_m_wage_e2_1 );
-        registerRaster(street_m_wage_e2_1 );
-        
-        street_m_wage_e3_1 = new SimpleRaster(152, "street_m_wage_e3_1 ", Sprites.street_m_wage_e3_1 );
-        registerRaster(street_m_wage_e3_1 );
-        
-        street_m_wage_e4_1 = new SimpleRaster(153, "street_m_wage_e4_1 ", Sprites.street_m_wage_e4_1 );
-        registerRaster(street_m_wage_e4_1 );
-        
-        street_m_wage_e1_2 = new SimpleRaster(154, "street_m_wage_e1_2 ", Sprites.street_m_wage_e1_2 );
-        registerRaster(street_m_wage_e1_2 );
+        street_m_wage_e1_1 = new SimpleRaster(150, "street_m_wage_e1_1 ", Sprites.street_m_wage_e1_1);
+        registerRaster(street_m_wage_e1_1);
 
-        street_m_wage_e2_2 = new SimpleRaster(155, "street_m_wage_e2_2 ", Sprites.street_m_wage_e2_2 );
-        registerRaster(street_m_wage_e2_2 );
-        
-        street_m_wage_e3_2 = new SimpleRaster(156, "street_m_wage_e3_2 ", Sprites.street_m_wage_e3_2 );
-        registerRaster(street_m_wage_e3_2 );
-        
-        street_m_wage_e4_2 = new SimpleRaster(157, "street_m_wage_e4_2 ", Sprites.street_m_wage_e4_2 );
-        registerRaster(street_m_wage_e4_2 );
-     
-        table_01 = new SolidRaster(158, "table_01 ", Sprites.table_01 );
-        registerRaster(table_01 );
-        
-        table_02 = new SolidRaster(159, "table_02 ", Sprites.table_02 );
-        registerRaster(table_02 );
-        
-        table_03 = new SolidRaster(160, "table_03 ", Sprites.table_03 );
-        registerRaster(table_03 );
-        
-        
-        
-        
+        street_m_wage_e2_1 = new SimpleRaster(151, "street_m_wage_e2_1 ", Sprites.street_m_wage_e2_1);
+        registerRaster(street_m_wage_e2_1);
+
+        street_m_wage_e3_1 = new SimpleRaster(152, "street_m_wage_e3_1 ", Sprites.street_m_wage_e3_1);
+        registerRaster(street_m_wage_e3_1);
+
+        street_m_wage_e4_1 = new SimpleRaster(153, "street_m_wage_e4_1 ", Sprites.street_m_wage_e4_1);
+        registerRaster(street_m_wage_e4_1);
+
+        street_m_wage_e1_2 = new SimpleRaster(154, "street_m_wage_e1_2 ", Sprites.street_m_wage_e1_2);
+        registerRaster(street_m_wage_e1_2);
+
+        street_m_wage_e2_2 = new SimpleRaster(155, "street_m_wage_e2_2 ", Sprites.street_m_wage_e2_2);
+        registerRaster(street_m_wage_e2_2);
+
+        street_m_wage_e3_2 = new SimpleRaster(156, "street_m_wage_e3_2 ", Sprites.street_m_wage_e3_2);
+        registerRaster(street_m_wage_e3_2);
+
+        street_m_wage_e4_2 = new SimpleRaster(157, "street_m_wage_e4_2 ", Sprites.street_m_wage_e4_2);
+        registerRaster(street_m_wage_e4_2);
+
+        table_01 = new SolidRaster(158, "table_01 ", Sprites.table_01);
+        registerRaster(table_01);
+
+        table_02 = new SolidRaster(159, "table_02 ", Sprites.table_02);
+        registerRaster(table_02);
+
+        table_03 = new SolidRaster(160, "table_03 ", Sprites.table_03);
+        registerRaster(table_03);
+
     }
 
     /**
      * Registriert ein Mapping.
-     *
      * @param r
-     *            Raster
+     * Raster
      */
     private static void registerRaster(AbstractRaster r) {
         if (r != null && !MAPPINGS.containsKey(r.getName()) && r.getID() > 0 && r.getID() < RASTER.length && RASTER[r.getID()] == null) {

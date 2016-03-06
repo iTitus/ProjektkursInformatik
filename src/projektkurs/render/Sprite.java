@@ -150,9 +150,10 @@ public class Sprite {
                 boolean yy_t = RenderUtil.isTransparent(yy);
                 int all = (xx_t ? 0b0001 : 0b0000) | (xy_t ? 0b0010 : 0b0000) | (yx_t ? 0b0100 : 0b0000) | (yy_t ? 0b1000 : 0b0000);
 
-                pixels[x + y * newSizeX] = all != 0 ? Integers.TRANSPARENCY : RenderUtil.getColor(linEx(r[MORE_MAGIC_NUMBERS[all][0]], r[MORE_MAGIC_NUMBERS[all][1]], r[MORE_MAGIC_NUMBERS[all][2]], r[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
-                        linEx(g[MORE_MAGIC_NUMBERS[all][0]], g[MORE_MAGIC_NUMBERS[all][1]], g[MORE_MAGIC_NUMBERS[all][2]], g[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
-                        linEx(b[MORE_MAGIC_NUMBERS[all][0]], b[MORE_MAGIC_NUMBERS[all][1]], b[MORE_MAGIC_NUMBERS[all][2]], b[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
+                pixels[x + y * newSizeX] = all != 0 ? Integers.TRANSPARENCY
+                        : RenderUtil.getColor(linEx(r[MORE_MAGIC_NUMBERS[all][0]], r[MORE_MAGIC_NUMBERS[all][1]], r[MORE_MAGIC_NUMBERS[all][2]], r[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                                linEx(g[MORE_MAGIC_NUMBERS[all][0]], g[MORE_MAGIC_NUMBERS[all][1]], g[MORE_MAGIC_NUMBERS[all][2]], g[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)),
+                                linEx(b[MORE_MAGIC_NUMBERS[all][0]], b[MORE_MAGIC_NUMBERS[all][1]], b[MORE_MAGIC_NUMBERS[all][2]], b[MORE_MAGIC_NUMBERS[all][3]], x / factorX - MathUtil.floor(x / factorX), y / factorY - MathUtil.floor(y / factorY)));
             }
         }
         return pixels;

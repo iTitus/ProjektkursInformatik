@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Eine Queue.
- *
  * @param <T>
- *            Inhaltstyp
+ * Inhaltstyp
  */
 public class Queue<T> {
 
@@ -49,7 +48,6 @@ public class Queue<T> {
 
     /**
      * Ist die Queue leer.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean empty() {
@@ -58,9 +56,8 @@ public class Queue<T> {
 
     /**
      * Stellt ein neues Objekt hinten an.
-     *
      * @param toEnq
-     *            neues Objekt
+     * neues Objekt
      */
     public void enQueue(T toEnq) {
         QueueNode<T> node = new QueueNode<T>(toEnq);
@@ -74,7 +71,6 @@ public class Queue<T> {
 
     /**
      * Vorderstes Objekt.
-     *
      * @return vorderstes Objekt.
      */
     public T front() {
@@ -86,7 +82,6 @@ public class Queue<T> {
 
     /**
      * Vorderstes Objekt & Loesen des ersten Objektes von der Queue.
-     *
      * @return vorderstes Objekt
      */
     public T frontDeQueue() {

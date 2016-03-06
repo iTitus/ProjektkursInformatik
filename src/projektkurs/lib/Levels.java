@@ -33,7 +33,7 @@ public final class Levels {
      * Die Mappings.
      */
     public static Level level2;
-    
+
     public static final HashMap<String, Level> MAPPINGS = new HashMap<String, Level>();
 
     /**
@@ -47,7 +47,6 @@ public final class Levels {
 
     /**
      * Das Pair, das alle Levels enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -78,14 +77,13 @@ public final class Levels {
         // 50 98
         level2.addMap(new Spielfeld(level2, 100, 100, 18, 79));
         registerMapping(level2);
-       
+
     }
 
     /**
      * Registriert ein Mapping.
-     *
      * @param l
-     *            Level
+     * Level
      */
     private static void registerMapping(Level l) {
         if (l != null && !MAPPINGS.containsKey(l.getName())) {

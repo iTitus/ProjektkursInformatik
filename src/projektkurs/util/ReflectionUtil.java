@@ -16,9 +16,8 @@ public final class ReflectionUtil {
 
     /**
      * Gibt alle Klassen im Classpath zurueck, die im gegebenen Package sind.
-     *
      * @param packageName
-     *            Name des Packages
+     * Name des Packages
      * @return alle Klassen
      */
     public static ArrayList<Class<?>> getClasses(String packageName) {
@@ -40,11 +39,10 @@ public final class ReflectionUtil {
 
     /**
      * Gibt alle Klassen aus einem Ordner zurueck, die im gegebenen Package sind.
-     *
      * @param dir
-     *            zu durchsuchender Ordner
+     * zu durchsuchender Ordner
      * @param packageName
-     *            Name des Packages
+     * Name des Packages
      * @return alle Klassen
      */
     public static ArrayList<Class<?>> getClassesFromDir(File dir, String packageName) {
@@ -61,11 +59,10 @@ public final class ReflectionUtil {
 
     /**
      * Liest eine kompressierte Datei (ZIP oder JAR) und findet alle Klassen im gegebenen Package.
-     *
      * @param jarOrZipFile
-     *            JAR oder ZIP Datei
+     * JAR oder ZIP Datei
      * @param packageName
-     *            Name des Packages
+     * Name des Packages
      * @return alle Klassen
      */
     public static ArrayList<Class<?>> getClassesFromJarOrZip(File jarOrZipFile, String packageName) {
@@ -99,13 +96,12 @@ public final class ReflectionUtil {
 
     /**
      * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen und den gegebenen Argumenten zurueck.
-     *
      * @param cls
-     *            Klasse
+     * Klasse
      * @param methodName
-     *            Name der Methode
+     * Name der Methode
      * @param args
-     *            Argumente
+     * Argumente
      * @return Methode
      */
     public static Method getMethod(Class<?> cls, String methodName, Class<?>... args) {
@@ -119,13 +115,12 @@ public final class ReflectionUtil {
 
     /**
      * Gibt die Methode aus der gegebenen Klasse mit dem gegebenen Namen, den gegebenen Argumenten zurueck und den gegebenenen Modifiern zurueck.
-     *
      * @param cls
-     *            Klasse
+     * Klasse
      * @param annotationClass
-     *            Annotations-Klasse
+     * Annotations-Klasse
      * @param modifiers
-     *            Modifier
+     * Modifier
      * @return Methode
      */
     public static ArrayList<Method> getMethodInClassWithAnnotation(Class<?> cls, Class<? extends Annotation> annotationClass, int... modifiers) {
@@ -140,13 +135,12 @@ public final class ReflectionUtil {
 
     /**
      * Gibt alle Methoden aus den gegebenen Klassen zurueck, die die gegebenen Annotationen besitzen und alle gegebenen Modifier haben.
-     *
      * @param classes
-     *            zu durchsuchende Klassen
+     * zu durchsuchende Klassen
      * @param annotationClass
-     *            Annotations-Klasse
+     * Annotations-Klasse
      * @param modifiers
-     *            alle Modifiers
+     * alle Modifiers
      * @return Methoden
      */
     public static ArrayList<Method> getMethodsInClassesWithAnnotation(ArrayList<Class<?>> classes, Class<? extends Annotation> annotationClass, int... modifiers) {
@@ -159,7 +153,6 @@ public final class ReflectionUtil {
 
     /**
      * Gibt alle Pfade zurueck, die im Classpath stehen.
-     *
      * @return alle Pfade
      */
     public static ArrayList<String> getPathesFromClasspath() {
@@ -173,11 +166,10 @@ public final class ReflectionUtil {
 
     /**
      * Sind alle gegebenen Modifier an der gegebenen Methode praesent.
-     *
      * @param m
-     *            Methode
+     * Methode
      * @param modifiers
-     *            Modifier
+     * Modifier
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean hasAllModifiers(Method m, int... modifiers) {
@@ -192,13 +184,12 @@ public final class ReflectionUtil {
 
     /**
      * Fuehrt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus. Ignoriert de Rueckgabewert.
-     *
      * @param o
-     *            Objekt
+     * Objekt
      * @param m
-     *            Methode
+     * Methode
      * @param args
-     *            Parameter
+     * Parameter
      * @return Void
      */
     public static Void invoke(Object o, Method m, Object... args) {
@@ -207,11 +198,10 @@ public final class ReflectionUtil {
 
     /**
      * Fuehrt die gegebene statische Methode mit den gegegebenen Parametern aus. Ignoriert de Rueckgabewert.
-     *
      * @param m
-     *            Methode
+     * Methode
      * @param args
-     *            Parameter
+     * Parameter
      * @return Void
      */
     public static void invokeStatic(Method m, Object... args) {
@@ -220,13 +210,12 @@ public final class ReflectionUtil {
 
     /**
      * Fuehrt die gegebene statische Methode mit den gegegebenen Parametern aus.
-     *
      * @param <T>
-     *            der erwartete Rueckgabetyp
+     * der erwartete Rueckgabetyp
      * @param m
-     *            Methode
+     * Methode
      * @param args
-     *            Parameter
+     * Parameter
      * @return Rueckgabewert
      */
     @SuppressWarnings("unchecked")
@@ -241,15 +230,14 @@ public final class ReflectionUtil {
 
     /**
      * Fuehrt die gegebene Methode in dem gegebenen Objekt mit den gegegebenen Parametern aus.
-     *
      * @param <T>
-     *            der erwartete Rueckgabetyp
+     * der erwartete Rueckgabetyp
      * @param o
-     *            Objekt
+     * Objekt
      * @param m
-     *            Methode
+     * Methode
      * @param args
-     *            Parameter
+     * Parameter
      * @return Rueckgabewert
      */
     @SuppressWarnings("unchecked")
@@ -264,11 +252,10 @@ public final class ReflectionUtil {
 
     /**
      * Legt eine neue Instanz der gegebenen Klasse an.
-     *
      * @param <T>
-     *            Typ der Klasse
+     * Typ der Klasse
      * @param cls
-     *            Klasse
+     * Klasse
      * @return Instanz
      */
     public static <T> T newInstance(Class<T> cls) {
@@ -282,13 +269,12 @@ public final class ReflectionUtil {
 
     /**
      * Legt eine neue Instanz der gegebenen Klasse an.
-     *
      * @param <T>
-     *            Typ der Klasse
+     * Typ der Klasse
      * @param cls
-     *            Klasse
+     * Klasse
      * @param args
-     *            Konstruktorargumente
+     * Konstruktorargumente
      * @return Instanz
      */
     public static <T> T newInstance(Class<T> cls, Object... args) {
@@ -306,15 +292,14 @@ public final class ReflectionUtil {
 
     /**
      * Fuellt die gegebene Liste mit allen Klassen im gegebenem Ordner aus dem gegebenen Package.
-     *
      * @param first
-     *            ob dies der erste Methoden-Aufruf ist - sollte true sein
+     * ob dies der erste Methoden-Aufruf ist - sollte true sein
      * @param fileOrDir
-     *            zu duchsuchender Ordner oder Datei
+     * zu duchsuchender Ordner oder Datei
      * @param packageName
-     *            Name des Packages
+     * Name des Packages
      * @param classes
-     *            alle Klassen
+     * alle Klassen
      */
     private static void getClassesFromFileOrDirIntern(boolean first, File fileOrDir, String packageName, ArrayList<Class<?>> classes) {
         if (fileOrDir.isDirectory()) {

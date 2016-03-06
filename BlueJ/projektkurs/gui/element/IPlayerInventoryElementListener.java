@@ -9,11 +9,10 @@ public interface IPlayerInventoryElementListener extends IInventoryElementListen
 
     /**
      * Wird ausgefuehrt, wenn der ausgewaehlte Slot veraendert wird.
-     *
      * @param invE
-     *            PlayerInventoryElement
+     * PlayerInventoryElement
      * @param e
-     *            MouseWheelEvent
+     * MouseWheelEvent
      */
     void onSlotChanged(PlayerInventoryElement invE, MouseWheelEvent e);
 

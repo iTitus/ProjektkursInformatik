@@ -12,13 +12,12 @@ public class RelativeWindowPositionCondition extends PositionCondition {
 
     /**
      * Konstruktor.
-     *
      * @param object
-     *            CutSceneObject, dessen Position ueberprueft werden sollo
+     * CutSceneObject, dessen Position ueberprueft werden sollo
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public RelativeWindowPositionCondition(CutSceneObject object, int x, int y) {
         super(object, x, y);

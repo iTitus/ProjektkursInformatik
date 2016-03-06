@@ -24,13 +24,12 @@ public class ExtraInformationFire extends ExtraInformation {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public ExtraInformationFire(Spielfeld map, int x, int y) {
         super(map, x, y);
@@ -44,7 +43,6 @@ public class ExtraInformationFire extends ExtraInformation {
 
     /**
      * Das Hintergrundraster.
-     *
      * @return Hintergrundraster
      */
     public AbstractRaster getBackground() {
@@ -59,9 +57,8 @@ public class ExtraInformationFire extends ExtraInformation {
 
     /**
      * Setzt das Hintergrundraster.
-     *
      * @param background
-     *            Hintergrundraster
+     * Hintergrundraster
      */
     public void setBackground(AbstractRaster background) {
         this.background = background;

@@ -9,13 +9,12 @@ public interface IHasExtraInformation {
 
     /**
      * Erstellt eine Standard-ExtraInfomation.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @return ExtraInfomation
      */
     ExtraInformation createExtraInformation(Spielfeld map, int x, int y);

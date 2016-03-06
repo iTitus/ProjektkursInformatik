@@ -23,36 +23,36 @@ public final class Images {
 
     public static BufferedImage auto_dc_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_dc_NS;
     public static BufferedImage auto_dc_SN;
     public static BufferedImage auto_dc_WE;
     public static BufferedImage auto_di_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_di_NS;
     public static BufferedImage auto_di_SN;
     public static BufferedImage auto_di_WE;
     public static BufferedImage auto_di2_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_di2_NS;
     public static BufferedImage auto_di2_SN;
     public static BufferedImage auto_di2_WE;
     public static BufferedImage auto_di3_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_di3_NS;
     public static BufferedImage auto_di3_SN;
     public static BufferedImage auto_di3_WE;
     public static BufferedImage auto_di4_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_di4_NS;
     public static BufferedImage auto_di4_SN;
     public static BufferedImage auto_di4_WE;
@@ -65,67 +65,67 @@ public final class Images {
     public static BufferedImage auto_do_WE;
     public static BufferedImage auto_do2_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_do2_NS;
     public static BufferedImage auto_do2_SN;
     public static BufferedImage auto_do2_WE;
     public static BufferedImage auto_do3_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_do3_NS;
     public static BufferedImage auto_do3_SN;
     public static BufferedImage auto_do3_WE;
     public static BufferedImage auto_do4_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_do4_NS;
     public static BufferedImage auto_do4_SN;
     public static BufferedImage auto_do4_WE;
     public static BufferedImage auto_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_NS;
     public static BufferedImage auto_SN;
     public static BufferedImage auto_w_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_w_NS;
     public static BufferedImage auto_w_SN;
     public static BufferedImage auto_w_WE;
     public static BufferedImage auto_w2_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto_w2_NS;
     public static BufferedImage auto_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto2vOnO;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto2vOnW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage auto2vV;
     public static BufferedImage autogelbvO_EW;
     public static BufferedImage autogelbvO_NS;
     public static BufferedImage autogelbvO_SN;
     public static BufferedImage autogelbvO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage autogelbvOnO;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage autogelbvOnW;
     public static BufferedImage autopolizeivdS_EW;
     public static BufferedImage autopolizeivdS_WE;
@@ -143,56 +143,56 @@ public final class Images {
      */
     public static BufferedImage baum;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum1;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum10;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum11;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum12;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum13;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum2;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum3;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum4;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum5;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum6;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum7;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum8;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage baum9;
     public static BufferedImage bodenbeige;
     public static BufferedImage bodenblau;
@@ -207,16 +207,16 @@ public final class Images {
     public static BufferedImage bodenstein;
     public static BufferedImage bodensteinkacheln;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage busviolettvOnO;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage busviolettvSnW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage busviolettvV;
     /**
      * Gui-Knopf-Bild.
@@ -279,56 +279,56 @@ public final class Images {
     public static BufferedImage grammophonvO_SN;
     public static BufferedImage grammophonvO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage gras;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus1;
     public static BufferedImage haus1_EW;
     public static BufferedImage haus1_NS;
     public static BufferedImage haus1_SN;
     public static BufferedImage haus1_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus2;
     public static BufferedImage haus2_EW;
     public static BufferedImage haus2_NS;
     public static BufferedImage haus2_SN;
     public static BufferedImage haus2_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus3;
     public static BufferedImage haus3_EW;
     public static BufferedImage haus3_NS;
     public static BufferedImage haus3_SN;
     public static BufferedImage haus3_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus4;
     public static BufferedImage haus4_EW;
     public static BufferedImage haus4_NS;
     public static BufferedImage haus4_SN;
     public static BufferedImage haus4_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus5;
     public static BufferedImage haus5ecke_ES;
     public static BufferedImage haus5ecke_NE;
     public static BufferedImage haus5ecke_SW;
     public static BufferedImage haus5ecke_WN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus6;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage haus7;
     public static BufferedImage haus7ecke_ES;
     public static BufferedImage haus7ecke_NE;
@@ -338,8 +338,8 @@ public final class Images {
     public static BufferedImage hauswelldach_NS;
     public static BufferedImage hauswelldach_SN;
     /**
-	 *
-	 */
+     *
+     */
     // public static BufferedImage haus8;
     public static BufferedImage hauswelldach_WE;
 
@@ -369,192 +369,192 @@ public final class Images {
     public static BufferedImage klavier_SN;
     public static BufferedImage klavier_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzung;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzungT;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzungT_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzungT_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzungT_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage kreuzungT_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvO_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvO_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvO_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvObAho_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvObAho_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvObAho_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvObAho_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAho_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAho_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAho_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAho_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAo_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAo_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAo_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvOrAo_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvVbAho;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvVbAho2;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvVbAo;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvVlAqurAo;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage ladyvVrS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzmitAnhaengervO_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzmitAnhaengervO_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzmitAnhaengervO_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzmitAnhaengervO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzvO_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzvO_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzvO_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzvO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterschwarzvV;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterweissvO_EW;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterweissvO_NS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterweissvO_SN;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterweissvO_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lasterweissvV;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lordH;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lordS;
     public static BufferedImage lordS_EW;
     public static BufferedImage lordS_NS;
     public static BufferedImage lordS_SN;
     public static BufferedImage lordS_WE;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lordvdS;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lordvdS2;
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage lordvdS3;
     public static BufferedImage lordvO_EW;
     public static BufferedImage lordvO_NS;
@@ -606,15 +606,15 @@ public final class Images {
     public static BufferedImage rasen;
 
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage rasen2;
 
     public static BufferedImage rasen3;
 
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage redNPC;
 
     public static BufferedImage schranke_EW;
@@ -698,8 +698,8 @@ public final class Images {
     public static BufferedImage sesselschwarzbeige_WE;
 
     /**
-	 *
-	 */
+     *
+     */
     public static BufferedImage slot;
 
     /**
@@ -842,7 +842,6 @@ public final class Images {
 
     /**
      * Das Pair, das alle Images enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -1501,9 +1500,8 @@ public final class Images {
 
     /**
      * Laedt ein Bild.
-     *
      * @param name
-     *            Name des Bildes
+     * Name des Bildes
      * @return BufferedImage
      */
     public static BufferedImage loadImage(String name, String fileName) {
@@ -1531,11 +1529,10 @@ public final class Images {
 
     /**
      * Laedt ein Array aus Bildern.
-     *
      * @param name
-     *            Name des Bildes
+     * Name des Bildes
      * @param length
-     *            Anzahl der Bilder
+     * Anzahl der Bilder
      * @return BufferedImage[]
      */
     public static BufferedImage[] loadImageArray(String name, String fileName, int length) {
@@ -1548,9 +1545,8 @@ public final class Images {
 
     /**
      * Laedt ein um 180Â° gedrehtes Bild.
-     *
      * @param name
-     *            Name des Bildes.
+     * Name des Bildes.
      * @return BufferedImage
      */
     public static BufferedImage loadImageRotate180(String name, String fileName) {
@@ -1563,9 +1559,8 @@ public final class Images {
 
     /**
      * Laedt ein um 270Â° gedrehtes Bild.
-     *
      * @param name
-     *            Name des Bildes.
+     * Name des Bildes.
      * @return BufferedImage
      */
     public static BufferedImage loadImageRotate270(String name, String fileName) {
@@ -1578,9 +1573,8 @@ public final class Images {
 
     /**
      * Laedt ein um 90Â° gedrehtes Bild.
-     *
      * @param name
-     *            Name des Bildes.
+     * Name des Bildes.
      * @return BufferedImage
      */
     public static BufferedImage loadImageRotate90(String name, String fileName) {
@@ -1593,11 +1587,10 @@ public final class Images {
 
     /**
      * Rotiert ein gegebenes Bild um den gegebenen Winkel.
-     *
      * @param image
-     *            Bild
+     * Bild
      * @param angle
-     *            Winkel im Bogenmass
+     * Winkel im Bogenmass
      * @return gedrehtes Bild
      */
     public static BufferedImage rotate(BufferedImage img, double angle) {
@@ -1618,11 +1611,10 @@ public final class Images {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param name
-     *            Name
+     * Name
      * @param image
-     *            Bild
+     * Bild
      */
     private static void registerImage(String name, BufferedImage image) {
         if (image != null && !MAPPINGS.containsKey(name) && !BACK_MAPPINGS.containsKey(image)) {

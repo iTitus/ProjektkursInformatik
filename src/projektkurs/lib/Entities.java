@@ -15,7 +15,7 @@ import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
-import projektkurs.entity.EntityGrammophonganz;
+import projektkurs.entity.EntityFollowPather;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityMarkise01;
@@ -61,9 +61,8 @@ public final class Entities {
 
     /**
      * Erstellt einen Entity mithilfe seiner ID.
-     *
      * @param id
-     *            Entity-ID
+     * Entity-ID
      * @return Entity
      */
     public static Entity createEntity(Spielfeld map, String id) {
@@ -77,7 +76,6 @@ public final class Entities {
 
     /**
      * Das Pair, das alle Entities enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -114,28 +112,27 @@ public final class Entities {
         registerEntity(Entityhouse_4b_3x4.class, "house_4b_4x4");
         registerEntity(Entityhouse_2b_3x4.class, "house_2b_3x4");
         registerEntity(EntityWindmill.class, "windmill");
-        registerEntity(EntityDoor.class, "Door");
-        registerEntity(EntitySonnenschirm01.class, "EntitySonnenschirm01");
-        registerEntity(EntitySonnenschirm02.class, "EntitySonnenschirm02");
-        registerEntity(EntitySonnenschirm03.class, "EntitySonnenschirm03");
-        registerEntity(EntitySonnenschirm04.class, "EntitySonnenschirm04");
-        registerEntity(EntityMarkise01.class, "EntityMarkise01");
-        registerEntity(EntityMarkise02.class, "EntityMarkise02");
-        registerEntity(EntityMarkise03.class, "EntityMarkise03");
-        registerEntity(EntityDoor2.class, "EntityDoor2");
+        registerEntity(EntityDoor.class, "door");
+        registerEntity(EntitySonnenschirm01.class, "sonnenschirm01");
+        registerEntity(EntitySonnenschirm02.class, "sonnenschirm02");
+        registerEntity(EntitySonnenschirm03.class, "sonnenschirm03");
+        registerEntity(EntitySonnenschirm04.class, "sonnenschirm04");
+        registerEntity(EntityMarkise01.class, "markise01");
+        registerEntity(EntityMarkise02.class, "markise02");
+        registerEntity(EntityMarkise03.class, "markise03");
+        registerEntity(EntityDoor2.class, "door2");
+        registerEntity(EntityFollowPather.class, "pathFollower");
 
+    }
 
-
-
-
-
+    public static boolean isRegistered(Entity e) {
+        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
     }
 
     /**
      * Laedt einen Entity aus einem SaveData-Objekt.
-     *
      * @param data
-     *            SaveData
+     * SaveData
      * @return Entity
      */
     public static Entity loadEntity(Spielfeld map, SaveData data) {
@@ -151,9 +148,8 @@ public final class Entities {
 
     /**
      * Speichert einen Entity in einer SaveData.
-     *
      * @param e
-     *            Entity
+     * Entity
      * @return SaveData
      */
     public static SaveData writeEntity(Entity e) {
@@ -166,16 +162,11 @@ public final class Entities {
         }
         return data;
     }
-    
-    public static boolean isRegistered(Entity e) {
-        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
-    }
 
     /**
      * Registriert ein Mapping.
-     *
      * @param cls
-     *            Entity-Klasse
+     * Entity-Klasse
      */
     private static void registerEntity(Class<? extends Entity> cls, String id) {
         if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {

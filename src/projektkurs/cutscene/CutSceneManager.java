@@ -53,7 +53,6 @@ public final class CutSceneManager {
 
     /**
      * Die aktuelle CutScene.
-     *
      * @return RenderHelper
      */
     public static CutScene getCutScene() {
@@ -62,7 +61,6 @@ public final class CutSceneManager {
 
     /**
      * Der aktuelle CutsceneRender der CutScene.
-     *
      * @return CutsceneRender
      */
     public static CutsceneRender getCutSceneRender() {
@@ -71,7 +69,6 @@ public final class CutSceneManager {
 
     /**
      * Der aktuelle RenderHelper der CutScene.
-     *
      * @return RenderHelper
      */
     public static RenderHelper getCutSceneRenderHelper() {
@@ -80,7 +77,6 @@ public final class CutSceneManager {
 
     /**
      * Die partiellen Ticks.
-     *
      * @return delta
      */
     public static double getDelta() {
@@ -89,7 +85,6 @@ public final class CutSceneManager {
 
     /**
      * Die aktuelle FPS (frames per second).
-     *
      * @return FPS
      */
     public static int getFPS() {
@@ -98,7 +93,6 @@ public final class CutSceneManager {
 
     /**
      * Das aktuelle Spielfeld der CutScene.
-     *
      * @return Spielfeld
      */
     public static Spielfeld getMap() {
@@ -107,7 +101,6 @@ public final class CutSceneManager {
 
     /**
      * Die aktuelle UPS (updates per second).
-     *
      * @return UPS
      */
     public static int getUPS() {
@@ -116,7 +109,6 @@ public final class CutSceneManager {
 
     /**
      * Laeuft gerade eine CutScene.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isRunning() {
@@ -125,9 +117,8 @@ public final class CutSceneManager {
 
     /**
      * Fuehrt eine CutScene aus.
-     *
      * @param cutSceneToStart
-     *            CutScene
+     * CutScene
      */
     public static void startCutScene(CutScene cutSceneToStart) {
 

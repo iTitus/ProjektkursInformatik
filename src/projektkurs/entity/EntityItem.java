@@ -20,9 +20,8 @@ public class EntityItem extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityItem(Spielfeld map) {
         super(map);
@@ -30,13 +29,12 @@ public class EntityItem extends Entity {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param stack
-     *            der enthaltene ItemStack
+     * der enthaltene ItemStack
      */
     public EntityItem(Spielfeld map, int posX, int posY, ItemStack stack) {
         super(map, posX, posY, stack.getItem().getSprite(stack));
@@ -55,7 +53,6 @@ public class EntityItem extends Entity {
 
     /**
      * Der entahltene ItemStack.
-     *
      * @return ItemStack
      */
     public ItemStack getStack() {

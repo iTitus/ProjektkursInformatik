@@ -63,9 +63,8 @@ public final class MapBuilder {
 
     /**
      * Level 0 - Spielfeld 0.
-     * 
      * @param map
-     *         Spielfeld
+     * Spielfeld
      */
     public static void generateAndPopulateLevel2Map3(Spielfeld map) {
         int inttemp1;
@@ -858,9 +857,8 @@ public final class MapBuilder {
 
     /**
      * Level 0 - Spielfeld 1.
-     * 
      * @param map
-     *          Spielfeld
+     * Spielfeld
      */
     public static void generateAndPopulateLevel0Map1(Spielfeld map) {
 
@@ -888,9 +886,8 @@ public final class MapBuilder {
 
     /**
      * Level 1 - Spielfeld 0.
-     * 
      * @param map
-     *          Spielfeld
+     * Spielfeld
      */
     public static void generateAndPopulateLevel1Map0(Spielfeld map) {
 
@@ -1334,9 +1331,8 @@ public final class MapBuilder {
 
     /**
      * Level 1 - Spielfeld 1.
-     * 
      * @param map
-     *         Spielfeld
+     * Spielfeld
      */
     public static void generateAndPopulateLevel1Map1(Spielfeld map) {
 
@@ -1911,7 +1907,6 @@ public final class MapBuilder {
     }
 
     private static void setTree(int x, int y, AbstractRaster one, AbstractRaster two, AbstractRaster three, AbstractRaster four, Spielfeld map) {
-
         map.setRasterAt(x, y, one);
         map.setRasterAt(x + 1, y, two);
         map.setRasterAt(x + 1, y + 1, three);

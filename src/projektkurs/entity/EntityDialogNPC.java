@@ -11,9 +11,8 @@ public abstract class EntityDialogNPC extends EntityNPC implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityDialogNPC(Spielfeld map) {
         super(map);
@@ -21,21 +20,20 @@ public abstract class EntityDialogNPC extends EntityNPC implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param maxHealth
-     *            maximale Gesundheit
+     * maximale Gesundheit
      * @param sprites
-     *            Bilder
+     * Bilder
      */
     public EntityDialogNPC(Spielfeld map, int posX, int posY, int sizeX, int sizeY, int maxHealth, Sprite... sprites) {
         super(map, posX, posY, sizeX, sizeY, maxHealth, sprites);
@@ -43,17 +41,16 @@ public abstract class EntityDialogNPC extends EntityNPC implements ITalkable {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param maxHealth
-     *            maximale Gesundheit
+     * maximale Gesundheit
      * @param sprites
-     *            Bilder
+     * Bilder
      */
     public EntityDialogNPC(Spielfeld map, int posX, int posY, int maxHealth, Sprite... sprites) {
         this(map, posX, posY, 1, 1, maxHealth, sprites);

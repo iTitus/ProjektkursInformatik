@@ -14,7 +14,12 @@ public class ElementSudokuBoard extends Element {
 
     public ElementSudokuBoard(int posX, int posY, int id) {
         super(posX, posY, SudokuBoard.SIZE * CELL_SIZE, SudokuBoard.SIZE * CELL_SIZE, id, null);
-        this.board = new SudokuBoard();
+        board = new SudokuBoard();
+    }
+
+    @Override
+    public boolean canUpdate() {
+        return true;
     }
 
     @Override
@@ -22,11 +27,6 @@ public class ElementSudokuBoard extends Element {
         if (keyChar == 'c') {
             board.calculate();
         }
-    }
-
-    @Override
-    public boolean canUpdate() {
-        return true;
     }
 
     @Override

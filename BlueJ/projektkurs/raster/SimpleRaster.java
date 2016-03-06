@@ -17,13 +17,12 @@ public class SimpleRaster extends AbstractRaster {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      * @param sprite
-     *            Sprite
+     * Sprite
      */
     public SimpleRaster(int id, String name, Sprite sprite) {
         super(id, name);

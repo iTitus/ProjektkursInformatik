@@ -33,13 +33,12 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public ExtraInformationDoor(Spielfeld map, int x, int y) {
         super(map, x, y);
@@ -48,7 +47,6 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Die Richtung/Orientierung.
-     *
      * @return Richtung/Orientierung
      */
     public Direction getDirection() {
@@ -57,7 +55,6 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Das Bild.
-     *
      * @return Bild.
      */
     public Sprite getSprite() {
@@ -73,9 +70,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Ist die Tuer von der gegebenen Richtung aus offen und damit begehbar.
-     *
      * @param dir
-     *            Richtung
+     * Richtung
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isOpenFromDirection(Direction dir) {
@@ -92,9 +88,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Setzt die Richtung/Orientierung.
-     *
      * @param direction
-     *            Setzt die Richtung/Orientierung
+     * Setzt die Richtung/Orientierung
      */
     public void setDirection(Direction direction) {
         this.direction = direction;
@@ -102,9 +97,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Setzt den Oeffnungscode.
-     *
      * @param openingKey
-     *            Oeffnungscode
+     * Oeffnungscode
      */
     public void setOpeningKey(int openingKey) {
         this.openingKey = openingKey;
@@ -112,9 +106,8 @@ public class ExtraInformationDoor extends ExtraInformation {
 
     /**
      * Versucht die Tuer mit dem gegebenen Schluessel zu oeffnen.
-     *
      * @param key
-     *            ItemStack
+     * ItemStack
      */
     public void tryOpen(ItemStack key) {
         if (key != null && key.itemEquals(Items.key) && key.getDamage() == openingKey) {

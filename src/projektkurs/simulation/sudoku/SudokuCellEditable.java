@@ -19,8 +19,23 @@ public class SudokuCellEditable extends SudokuCell {
     }
 
     @Override
-    public void update() {
+    public Number getNumber() {
+        return number;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return true;
+    }
+
+    @Override
+    public void markSet(Number number) {
         // NO-OP
+    }
+
+    @Override
+    public void onNumberInput(Number number) {
+        this.number = number;
     }
 
     @Override
@@ -33,22 +48,7 @@ public class SudokuCellEditable extends SudokuCell {
     }
 
     @Override
-    public boolean isSelectable() {
-        return true;
-    }
-
-    @Override
-    public void onNumberInput(Number number) {
-        this.number = number;
-    }
-
-    @Override
-    public Number getNumber() {
-        return number;
-    }
-
-    @Override
-    public void markSet(Number number) {
+    public void update() {
         // NO-OP
     }
 

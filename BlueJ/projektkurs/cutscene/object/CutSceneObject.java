@@ -40,17 +40,16 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Konstruktor.
-     *
      * @param image
-     *            BufferedImage
+     * BufferedImage
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      */
     @Deprecated
     public CutSceneObject(BufferedImage image, int posX, int posY, int sizeX, int sizeY) {
@@ -62,15 +61,15 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * @param sprite
-     *            Sprite
+     * Sprite
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      */
     public CutSceneObject(Sprite sprite, int posX, int posY, int sizeX, int sizeY) {
         this.sprite = sprite;
@@ -101,7 +100,6 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Bild.
-     *
      * @return Sprite
      */
     public Sprite getSprite() {
@@ -110,9 +108,8 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Ist ein anderes CutSceneObject innerhalb von diesem CutSceneObject.
-     *
      * @param object
-     *            anderes CutSceneObject
+     * anderes CutSceneObject
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(CutSceneObject object) {
@@ -122,15 +119,14 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Ist das gegebene Rechteck innerhalb von diesem CutSceneObject.
-     *
      * @param posX
-     *            X-Koordinate der oberen linken Ecke des Rechtecks
+     * X-Koordinate der oberen linken Ecke des Rechtecks
      * @param posY
-     *            Y-Koordinate der oberen linken Ecke des Rechtecks
+     * Y-Koordinate der oberen linken Ecke des Rechtecks
      * @param sizeX
-     *            Breite des Rechtecks
+     * Breite des Rechtecks
      * @param sizeY
-     *            Hoehe des Rechtecks
+     * Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
@@ -139,11 +135,10 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Bewegt das CutSceneObject.
-     *
      * @param deltaX
-     *            Bewegung in X-Richtung
+     * Bewegung in X-Richtung
      * @param deltaY
-     *            Bewegung in Y-Richtung
+     * Bewegung in Y-Richtung
      */
     public void moveBy(int deltaX, int deltaY) {
         posX += deltaX;
@@ -152,9 +147,8 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Rendert das CutSceneObject.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public void render(Screen screen) {
         RenderUtil.drawSprite(screen, sprite, getRenderX(), getRenderY());
@@ -174,7 +168,6 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * X-Koordinate umgerechnet in Bildschirmkoordinaten.
-     *
      * @return X-Koordinate auf dem Bildschirm
      */
     private int getRenderX() {
@@ -183,7 +176,6 @@ public class CutSceneObject implements IHasPositionAndSize<Integer, Integer> {
 
     /**
      * Y-Koordinate umgerechnet in Bildschirmkoordinaten.
-     *
      * @return Y-Koordinate auf dem Bildschirm
      */
     private int getRenderY() {

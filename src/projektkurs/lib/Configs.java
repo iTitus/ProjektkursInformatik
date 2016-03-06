@@ -27,7 +27,6 @@ public final class Configs {
 
     /**
      * Das Pair, das alle Konfigs enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -73,9 +72,8 @@ public final class Configs {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param c
-     *            Config
+     * Config
      */
     private static void registerMapping(Config c) {
         if (c != null && !MAPPINGS.containsKey(c.getConfigName())) {

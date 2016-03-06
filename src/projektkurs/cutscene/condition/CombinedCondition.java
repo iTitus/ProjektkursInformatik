@@ -12,9 +12,8 @@ public abstract class CombinedCondition extends Condition {
 
     /**
      * Konstruktor.
-     *
      * @param conditions
-     *            Zu pruefende Conditions.
+     * Zu pruefende Conditions.
      */
     public CombinedCondition(Condition... conditions) {
         this.conditions = conditions;

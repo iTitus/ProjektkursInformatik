@@ -30,7 +30,6 @@ public final class ExtraInformationen {
 
     /**
      * Das Pair, das alle ExtraInformationen enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -49,11 +48,10 @@ public final class ExtraInformationen {
 
     /**
      * Laedt einen ExtraInformation aus einem SaveData-Objekt.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param data
-     *            SaveData
+     * SaveData
      * @return ExtraInformation
      */
     public static ExtraInformation loadExtraInformation(Spielfeld map, SaveData data) {
@@ -69,9 +67,8 @@ public final class ExtraInformationen {
 
     /**
      * Speichert eine ExtraInformation in einer SaveData.
-     *
      * @param extra
-     *            ExtraInformation
+     * ExtraInformation
      * @return SaveData
      */
     public static SaveData writeExtraInformation(ExtraInformation extra) {
@@ -87,9 +84,8 @@ public final class ExtraInformationen {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param cls
-     *            ExtraInformations-Klasse
+     * ExtraInformations-Klasse
      */
     private static void registerExtraInformation(Class<? extends ExtraInformation> cls, String id) {
         if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {

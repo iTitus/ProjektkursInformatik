@@ -17,9 +17,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Laedt einen ItemStack aus der gegebenen SaveData.
-     *
      * @param data
-     *            SaveData
+     * SaveData
      * @return ItemStack
      */
     public static ItemStack load(SaveData data) {
@@ -48,9 +47,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Konstruktor.
-     *
      * @param item
-     *            Itemtyp
+     * Itemtyp
      */
     public ItemStack(Item item) {
         this(item, 1);
@@ -58,11 +56,10 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Konstruktor.
-     *
      * @param item
-     *            Itemtyp
+     * Itemtyp
      * @param stackSize
-     *            Groesse
+     * Groesse
      */
     public ItemStack(Item item, int stackSize) {
         this(item, stackSize, 0);
@@ -70,13 +67,12 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Konstruktor.
-     *
      * @param item
-     *            Itemtyp
+     * Itemtyp
      * @param stackSize
-     *            Groesse
+     * Groesse
      * @param damage
-     *            Schaden
+     * Schaden
      */
     public ItemStack(Item item, int stackSize, int damage) {
         if (stackSize < 0) {
@@ -94,7 +90,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Kopiert den ItemStack.
-     *
      * @return neuer ItemStack mit gleichen Feldern
      */
     public ItemStack copy() {
@@ -103,9 +98,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Beschaedigt dieses ItemStack um den gegebenen Wert.
-     *
      * @param by
-     *            Wert
+     * Wert
      */
     public void damage(int by) {
         damage += by;
@@ -113,9 +107,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Verringert die Groesse dieses ItemStack um den gegebenen Wert.
-     *
      * @param by
-     *            Wert
+     * Wert
      */
     public void decrStackSize(int by) {
         stackSize -= by;
@@ -123,7 +116,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Der Schaden dieses ItemStacks.
-     *
      * @return Schaden
      */
     public int getDamage() {
@@ -132,7 +124,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Der Itemtyp dieses ItemStacks.
-     *
      * @return Itemtyp
      */
     public Item getItem() {
@@ -145,7 +136,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Das Bild dieses ItemStacks.
-     *
      * @return Bild
      */
     public Sprite getSprite() {
@@ -154,7 +144,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Die Groesse dieses ItemStacks.
-     *
      * @return Groesse
      */
     public int getStackSize() {
@@ -163,9 +152,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Erhoeht die Groesse dieses ItemStacks um den gegebenen Wert.
-     *
      * @param by
-     *            Wert
+     * Wert
      */
     public void incrStackSize(int by) {
         stackSize += by;
@@ -173,9 +161,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Ist der Itemtyp und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Groesse des ItemStacks
-     *
      * @param other
-     *            ItemStack
+     * ItemStack
      * @return true, wenn ja; false, wenn nein
      */
     public boolean itemAndDamageEquals(ItemStack other) {
@@ -184,9 +171,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Ist der Itemtyp und die Groesse des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert den Schaden des ItemStacks
-     *
      * @param other
-     *            ItemStack
+     * ItemStack
      * @return true, wenn ja; false, wenn nein
      */
     public boolean itemAndStackSizeEquals(ItemStack other) {
@@ -195,9 +181,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Ist der gegebene Itemtyp identisch mit diesem Itemstack. Ignoriert die Groesse und den Schaden des ItemStacks
-     *
      * @param other
-     *            AbstractItem
+     * AbstractItem
      * @return true, wenn ja; false, wenn nein
      */
     public boolean itemEquals(Item other) {
@@ -206,9 +191,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Ist der Itemtyp des gegebenen ItemStacks identisch mit diesem Itemstack. Ignoriert die Groesse und den Schaden des ItemStacks
-     *
      * @param other
-     *            ItemStack
+     * ItemStack
      * @return true, wenn ja; false, wenn nein
      */
     public boolean itemEquals(ItemStack other) {
@@ -217,9 +201,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Setzt den Schaden.
-     *
      * @param damage
-     *            Schaden
+     * Schaden
      */
     public void setDamage(int damage) {
         this.damage = damage;
@@ -227,9 +210,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Setzt die Groesse dieses ItemStacks.
-     *
      * @param stackSize
-     *            Groesse
+     * Groesse
      */
     public void setStackSize(int stackSize) {
         this.stackSize = stackSize;
@@ -237,9 +219,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Erstellt einen neuen ItemStack mit dem Itemtyp und dem dem Schaden dieses ItemStacks, aber mit der gegebenen Groesse.
-     *
      * @param stackSize
-     *            Groesse
+     * Groesse
      * @return ItemStack
      */
     public ItemStack split(int stackSize) {
@@ -250,9 +231,8 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Ist der Itemtyp und die Groesse und der Schaden des gegebenen ItemStacks identisch mit diesem Itemstack.
-     *
      * @param other
-     *            ItemStack
+     * ItemStack
      * @return true, wenn ja; false, wenn nein
      */
     public boolean stackEquals(ItemStack other) {
@@ -266,7 +246,6 @@ public class ItemStack implements IGuiTooltipProvider {
 
     /**
      * Speichert diesen ItemStack in einem SaveData-Objekt.
-     *
      * @return SaveData
      */
     public SaveData write() {

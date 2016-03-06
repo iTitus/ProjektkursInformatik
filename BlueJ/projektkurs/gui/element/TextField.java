@@ -57,19 +57,18 @@ public class TextField extends Element {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param gui
-     *            Gui/Listener
+     * Gui/Listener
      */
     public TextField(int posX, int posY, int sizeX, int sizeY, int id, ITextFieldListener gui) {
         this(posX, posY, sizeX, sizeY, id, gui, "");
@@ -77,21 +76,20 @@ public class TextField extends Element {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param text
-     *            Anfangstext
+     * Anfangstext
      */
     public TextField(int posX, int posY, int sizeX, int sizeY, int id, ITextFieldListener listener, String text) {
         super(posX, posY, sizeX, sizeY, id, listener != null ? listener : EMPTY_LISTENER);
@@ -113,7 +111,6 @@ public class TextField extends Element {
 
     /**
      * Der Text in diesem Textfeld.
-     *
      * @return Text
      */
     public String getText() {
@@ -126,7 +123,6 @@ public class TextField extends Element {
 
     /**
      * Ist dieses Textfeld aktiviert.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isEnabled() {
@@ -135,7 +131,6 @@ public class TextField extends Element {
 
     /**
      * Ist dieses Textfeld fokussiert.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isFocussed() {
@@ -215,9 +210,8 @@ public class TextField extends Element {
 
     /**
      * Aktiviert dieses Textfeld.
-     *
      * @param enabled
-     *            true, wenn es aktiviert werden soll; false, wenn es deaktiviert werden soll
+     * true, wenn es aktiviert werden soll; false, wenn es deaktiviert werden soll
      */
     public void setEnabled(boolean enabled) {
         if (this.enabled != enabled) {
@@ -231,9 +225,8 @@ public class TextField extends Element {
 
     /**
      * Fokussiert dieses Textfeld.
-     *
      * @param focussed
-     *            true, wenn es fokussiert werden soll; false, wenn es fokussiert werden soll
+     * true, wenn es fokussiert werden soll; false, wenn es fokussiert werden soll
      */
     public void setFocused(boolean focussed) {
         if (enabled && this.focussed != focussed) {
@@ -248,9 +241,8 @@ public class TextField extends Element {
 
     /**
      * Setzt den Text in diesem Textfeld.
-     *
      * @param text
-     *            Text
+     * Text
      */
     public void setText(String text) {
         this.text = text;

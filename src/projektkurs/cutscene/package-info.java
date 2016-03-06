@@ -2,4 +2,3 @@
  * CutScenes.
  */
 package projektkurs.cutscene;
-

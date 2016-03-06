@@ -14,9 +14,8 @@ public class FinishRaster extends SimpleRaster {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      */
     public FinishRaster(int id) {
         super(id, "finish", Sprites.finish);

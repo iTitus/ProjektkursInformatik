@@ -12,9 +12,8 @@ public class Inventory {
 
     /**
      * Laedt ein Inventory aus der gegebenen SaveData.
-     *
      * @param data
-     *            SaveData
+     * SaveData
      * @return Inventory
      */
     public static Inventory load(SaveData data) {
@@ -36,9 +35,8 @@ public class Inventory {
 
     /**
      * Konstruktor.
-     *
      * @param size
-     *            Groesse
+     * Groesse
      */
     public Inventory(int size) {
         stacks = new ItemStack[size];
@@ -52,9 +50,8 @@ public class Inventory {
 
     /**
      * Fuegt diesem Inventory einen neuen ItemStack hinzu.
-     *
      * @param newStack
-     *            ist der neue ItemStack
+     * ist der neue ItemStack
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean addItemStack(ItemStack newStack) {
@@ -89,9 +86,8 @@ public class Inventory {
 
     /**
      * Ist der gegebene ItemStack im Inventar enthalten? - Streng.
-     *
      * @param stack
-     *            zu suchender ItemStack
+     * zu suchender ItemStack
      * @return true, wenn ja; false, wenn nicht
      */
     public boolean contains(ItemStack stack) {
@@ -109,9 +105,8 @@ public class Inventory {
 
     /**
      * Ist der gegebene ItemStack im Inventar enthalten? - Ignoriert die StackSize.
-     *
      * @param stack
-     *            zu suchender ItemStack
+     * zu suchender ItemStack
      * @return true, wenn ja; false, wenn nicht
      */
     public boolean containsIgnoreStackSize(ItemStack stack) {
@@ -129,11 +124,10 @@ public class Inventory {
 
     /**
      * Verringert die StackSize eines ItemStacks an der gegebenen Stelle um die gegebene Anzahl und entfernt ihn, wenn die StackSize dann negativ ist.
-     *
      * @param index
-     *            Index, an dem verringert werden soll
+     * Index, an dem verringert werden soll
      * @param stackSize
-     *            StackSize, um die verringert werden soll.
+     * StackSize, um die verringert werden soll.
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean decrStackSize(int index, int stackSize) {
@@ -154,7 +148,6 @@ public class Inventory {
 
     /**
      * Alle ItemStacks in diesem Inventar.
-     *
      * @return ItemStacks
      */
     public ItemStack[] getItems() {
@@ -163,9 +156,8 @@ public class Inventory {
 
     /**
      * Returnt den ItemStack am gegebenen Index.
-     *
      * @param index
-     *            Index
+     * Index
      * @return ItemStack an der Stelle Index
      */
     public ItemStack getItemStackAt(int index) {
@@ -177,7 +169,6 @@ public class Inventory {
 
     /**
      * Zahl aller Items im Inventar.
-     *
      * @return Zahl.
      */
     public int getNumberOfItemsInInventory() {
@@ -192,9 +183,8 @@ public class Inventory {
 
     /**
      * Zahl aller Items im Inventar.
-     *
      * @param stack
-     *            ItemStack
+     * ItemStack
      * @return Zahl.
      */
     public int getNumberOfItemsInInventory(ItemStack stack) {
@@ -211,7 +201,6 @@ public class Inventory {
 
     /**
      * Zahl aller ItemStacks im Inventar.
-     *
      * @return Zahl.
      */
     public int getNumberOfItemStacksInInventory() {
@@ -226,7 +215,6 @@ public class Inventory {
 
     /**
      * Groesse dieses Inventars.
-     *
      * @return Groesse
      */
     public int getSize() {
@@ -235,11 +223,10 @@ public class Inventory {
 
     /**
      * Erhoeht die StackSize eines ItemStacks am gegebenen Index um die gegebene Anzahl.
-     *
      * @param index
-     *            Index, an dem erhoeht werden soll
+     * Index, an dem erhoeht werden soll
      * @param stackSize
-     *            StackSize, um die erhoeht werden soll
+     * StackSize, um die erhoeht werden soll
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean incrStackSize(int index, int stackSize) {
@@ -257,7 +244,6 @@ public class Inventory {
 
     /**
      * Ist das Inventar leer.
-     *
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean isInventoryEmpty() {
@@ -272,7 +258,6 @@ public class Inventory {
 
     /**
      * Ist das Inventar voll mit ItemStacks.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInventoryFull() {
@@ -287,9 +272,8 @@ public class Inventory {
 
     /**
      * Entfernt einen ItemStack am gegebenen Index aus dem Inventar.
-     *
      * @param index
-     *            Index
+     * Index
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean removeItemStack(int index) {
@@ -303,9 +287,8 @@ public class Inventory {
 
     /**
      * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht - Streng.
-     *
      * @param stackToRemove
-     *            zu entfernender ItemStack
+     * zu entfernender ItemStack
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean removeItemStack(ItemStack stackToRemove) {
@@ -324,9 +307,8 @@ public class Inventory {
 
     /**
      * Entfernt den ItemStack, der an dem gegebenen ItemStack entspricht - Ignoriert StackSize.
-     *
      * @param stackToRemove
-     *            zu entfernender ItemStack.
+     * zu entfernender ItemStack.
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean removeItemStackIgnoreStackSize(ItemStack stackToRemove) {
@@ -345,11 +327,10 @@ public class Inventory {
 
     /**
      * Setzt den gegebenen ItemStack am gegebenen Index in dieses Inventar.
-     *
      * @param index
-     *            Index
+     * Index
      * @param stack
-     *            ItemStack
+     * ItemStack
      * @return true, wenn es geklappt hat; false, wenn nicht.
      */
     public boolean setItemStackInSlot(int index, ItemStack stack) {
@@ -390,7 +371,6 @@ public class Inventory {
 
     /**
      * Speichert dieses Inventar.
-     *
      * @return SaveData
      */
     public SaveData write() {

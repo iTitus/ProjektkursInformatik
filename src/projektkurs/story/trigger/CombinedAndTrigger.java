@@ -7,9 +7,8 @@ public class CombinedAndTrigger extends CombinedTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param trigger
-     *            die Trigger
+     * die Trigger
      */
     public CombinedAndTrigger(AbstractTrigger... trigger) {
         super(trigger);

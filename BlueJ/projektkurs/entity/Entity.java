@@ -89,19 +89,18 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param sprites
-     *            Sprite
+     * Sprite
      */
     public Entity(Spielfeld map, int posX, int posY, int sizeX, int sizeY, Sprite... sprites) {
         this(map);
@@ -122,15 +121,14 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Position
+     * X-Position
      * @param posY
-     *            Y-Position
+     * Y-Position
      * @param sprites
-     *            Sprite
+     * Sprite
      */
     public Entity(Spielfeld map, int posX, int posY, Sprite... sprites) {
         this(map, posX, posY, 1, 1, sprites);
@@ -143,11 +141,10 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Kann sich der Entity an die gegebene Stelle bewegen.
-     *
      * @param x
-     *            X-Position
+     * X-Position
      * @param y
-     *            Y-Position
+     * Y-Position
      * @return true, wenn ja; false, wenn nein
      */
     public boolean canMoveTo(int x, int y) {
@@ -188,7 +185,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Alle Behaviours.
-     *
      * @return Behaviours
      */
     public List<Behaviour> getBehaviours() {
@@ -197,7 +193,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Rectangle dieses Entities.
-     *
      * @return Rectangle
      */
     public Rectangle getBounds() {
@@ -206,7 +201,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Richtung, in die dieser Entity guckt.
-     *
      * @return Direction
      */
     public Direction getFacing() {
@@ -215,7 +209,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Der Interne Name dieses Entity-Typs.
-     *
      * @return Interner Name
      */
     public final String getInternalName() {
@@ -224,7 +217,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Das Spielfeld.
-     *
      * @return Spielfeld
      */
     public Spielfeld getMap() {
@@ -247,7 +239,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * X-Koordinate umgerechnet in Bildschirmkoordinaten.
-     *
      * @return X-Koordinate auf dem Bildschirm
      */
     public int getRenderX() {
@@ -256,7 +247,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Y-Koordinate umgerechnet in Bildschirmkoordinaten.
-     *
      * @return Y-Koordinate auf dem Bildschirm
      */
     public int getRenderY() {
@@ -275,7 +265,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Bild.
-     *
      * @return Sprite
      */
     public Sprite getSprite() {
@@ -287,7 +276,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Alle Bilder.
-     *
      * @return Bilder
      */
     public Sprite[] getSprites() {
@@ -296,9 +284,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Ist ein anderer Entity innerhalb von diesem Entity.
-     *
      * @param e
-     *            anderer Entity
+     * anderer Entity
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(Entity e) {
@@ -307,15 +294,14 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Ist das gegebene Rechteck innerhalb von diesem Entity.
-     *
      * @param posX
-     *            X-Koordinate der oberen linken Ecke des Rechtecks
+     * X-Koordinate der oberen linken Ecke des Rechtecks
      * @param posY
-     *            Y-Koordinate der oberen linken Ecke des Rechtecks
+     * Y-Koordinate der oberen linken Ecke des Rechtecks
      * @param sizeX
-     *            Breite des Rechtecks
+     * Breite des Rechtecks
      * @param sizeY
-     *            Hoehe des Rechtecks
+     * Hoehe des Rechtecks
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInside(int posX, int posY, int sizeX, int sizeY) {
@@ -345,9 +331,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Bewegt diesen Entity in die gegebene Richtung.
-     *
      * @param dir
-     *            Direction
+     * Direction
      */
     public void moveBy(Direction dir) {
         moveBy(dir.getOffsetX(), dir.getOffsetY());
@@ -355,11 +340,10 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Bewegt diesen Entity.
-     *
      * @param dx
-     *            Bewegung in X-Richtung
+     * Bewegung in X-Richtung
      * @param dy
-     *            Bewegung in Y-Richtung
+     * Bewegung in Y-Richtung
      */
     public void moveBy(int dx, int dy) {
         if ((dx != 0 || dy != 0) && canMoveTo(posX + dx, posY + dy)) {
@@ -370,9 +354,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Wird aufgerufen wenn dieser Entity einen anderen (Entity e) anstoesst.
-     *
      * @param e
-     *            anderer Entity
+     * anderer Entity
      */
     public void onCollideWith(Entity e) {
         // NO-OP
@@ -380,9 +363,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Rendert den Entity.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public void render(Screen screen) {
         RenderUtil.drawDefaultEntity(screen, this);
@@ -397,9 +379,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Setzt das Spielfeld.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public void setMap(Spielfeld map) {
         this.map = map;
@@ -418,9 +399,8 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Setzt das Bild dieses Entities.
-     *
      * @param sprite
-     *            Bild
+     * Bild
      */
     public void setSprite(Sprite sprite, int i) {
         sprites[i] = sprite;
@@ -428,7 +408,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Aendert dieser Entity sein Bild mit sich aendernder Richtung.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldChangeImageWithFacing() {
@@ -437,7 +416,6 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Soll dieser Entity naechsten Tick verschwinden.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldDeSpawn() {
@@ -469,14 +447,14 @@ public abstract class Entity implements IUpdatable, ISaveable, IHasPositionAndSi
 
     /**
      * Fuegt eine Behaviour hinzu.
-     *
      * @param behaviour
-     *            Behaviour
+     * Behaviour
      */
     protected final void addBehaviour(Behaviour behaviour) {
         if (behaviour != null) {
             for (Behaviour bhvr : behaviours) {
                 if (!bhvr.isCompatibleWith(behaviour) || !behaviour.isCompatibleWith(bhvr)) {
+                    Logger.warn("Tried to add " + behaviour.getClass() + " to " + getClass() + ", but it was NOT compatible with " + behaviour.getClass());
                     return;
                 }
             }

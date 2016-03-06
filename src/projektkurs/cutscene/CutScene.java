@@ -42,9 +42,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Konstruktor fuer eine CutScene.
-     *
      * @param name
-     *            Name
+     * Name
      */
     public CutScene(String name) {
         actionQueue = new Queue<Action>();
@@ -64,9 +63,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Entfernt ein CutSceneObject aus der CutScene.
-     *
      * @param object
-     *            CutSceneObject
+     * CutSceneObject
      */
     public void deSpawn(CutSceneObject object) {
         if (object != null) {
@@ -76,7 +74,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Das Hintergrundbild.
-     *
      * @return BufferedImage
      */
     public Sprite getBackground() {
@@ -89,7 +86,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Alle CutSceneObjects in der CutScene.
-     *
      * @return ArrayList<CutSceneObject>
      */
     public List<CutSceneObject> getCutSceneObjectList() {
@@ -98,7 +94,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Seit dem Start der CutScene vergangene Ticks.
-     *
      * @return vergangene Ticks
      */
     public int getElapsedTicks() {
@@ -107,7 +102,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Der Name der CutScene.
-     *
      * @return Name
      */
     public String getName() {
@@ -116,7 +110,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Ist die CutScene beendet.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isFinished() {
@@ -125,7 +118,6 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Braucht die CutScene einen Raster-Hintergrund.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean needsRasterBackground() {
@@ -134,9 +126,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Registriert eine einmalige Action.
-     *
      * @param action
-     *            Action
+     * Action
      */
     public void registerStartupAction(Action action) {
         startupQueue.enQueue(action);
@@ -144,9 +135,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Registriert eine Action, die jeden Tick ausgefuehrt werden kann.
-     *
      * @param action
-     *            Action
+     * Action
      */
     public void registerTickAction(Action action) {
         actionQueue.enQueue(action);
@@ -160,9 +150,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Setzt das Hintergrundbild.
-     *
      * @param background
-     *            Hintergrundbild
+     * Hintergrundbild
      */
     public void setBackground(Sprite background) {
         this.background = background;
@@ -181,9 +170,8 @@ public final class CutScene implements IUpdatable {
 
     /**
      * Laesst ein CutSceneObject in der CutScene erscheinen.
-     *
      * @param object
-     *            CutSceneObject
+     * CutSceneObject
      */
     public void spawn(CutSceneObject object) {
         if (object != null) {

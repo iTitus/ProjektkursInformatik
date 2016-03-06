@@ -27,11 +27,10 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      */
     public AbstractRaster(int id, String name) {
         this.id = id;
@@ -45,17 +44,16 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Kann ein Entity aus der gegebenen Richtung auf dieses Raster laufen.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      * @param entity
-     *            Entity
+     * Entity
      * @param dir
-     *            Richtung, aus der der Entity kommt
+     * Richtung, aus der der Entity kommt
      * @return true, wenn ja; false, wenn nein
      */
     public boolean canWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction dir) {
@@ -64,7 +62,6 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * ID.
-     *
      * @return ID
      */
     public int getID() {
@@ -73,7 +70,6 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Name.
-     *
      * @return Name
      */
     public String getName() {
@@ -82,15 +78,14 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Wird ausgefuehrt, wenn ein Entity mit diesem Raster kollidiert - bevor canWalkOnFromDirection ausgefuehrt wird.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      * @param entity
-     *            Entity.
+     * Entity.
      */
     public void onCollideWith(Spielfeld map, int x, int y, Entity entity) {
         // NO-OP
@@ -98,15 +93,14 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Wird ausgefuehrt, wenn auf dieses Raster mit der linken Maustaste geklickt wird.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onLeftClick(Spielfeld map, int x, int y, MouseEvent e) {
         Logger.info("Left-Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
@@ -114,15 +108,14 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Wird ausgefuehrt, wenn auf dieses Raster mit der rechten Maustaste geklickt wird.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onRightClick(Spielfeld map, int x, int y, MouseEvent e) {
         Logger.info("Right-Clicked on Raster @{x=" + x + ", y=" + y + "}: " + this);
@@ -130,17 +123,16 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Wird ausgefuehrt, wenn ein Entity auf dieses Raster drauflaeuft.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      * @param entity
-     *            Entity
+     * Entity
      * @param d
-     *            Richtung, aus der der Entity kommt
+     * Richtung, aus der der Entity kommt
      */
     public void onWalkOnFromDirection(Spielfeld map, int x, int y, Entity entity, Direction d) {
         // NO-OP
@@ -148,27 +140,25 @@ public abstract class AbstractRaster implements IWorldTooltipProvider {
 
     /**
      * Rendert das Raster.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      */
     public abstract void render(Screen screen, Spielfeld map, int x, int y);
 
     /**
      * Rendert das Raster in CutScenes.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param x
-     *            X-Koordinate des Rasters
+     * X-Koordinate des Rasters
      * @param y
-     *            Y-Koordinate des Rasters
+     * Y-Koordinate des Rasters
      */
     public abstract void renderCutScene(Screen screen, int x, int y);
 

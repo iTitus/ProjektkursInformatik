@@ -8,25 +8,38 @@ import projektkurs.entity.Entity;
 import projektkurs.entity.EntityBoomBarrier;
 import projektkurs.entity.EntityBoomBarrierOpen;
 import projektkurs.entity.EntityBoy;
+import projektkurs.entity.EntityDoor;
+import projektkurs.entity.EntityDoor2;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
+import projektkurs.entity.EntityFollowPather;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
+import projektkurs.entity.EntityMarkise01;
+import projektkurs.entity.EntityMarkise02;
+import projektkurs.entity.EntityMarkise03;
 import projektkurs.entity.EntityNest;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.entity.EntitySonnenschirm01;
+import projektkurs.entity.EntitySonnenschirm02;
+import projektkurs.entity.EntitySonnenschirm03;
+import projektkurs.entity.EntitySonnenschirm04;
 import projektkurs.entity.EntityTest;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
+import projektkurs.entity.EntityWindmill;
 import projektkurs.entity.EntityWitchCauldron;
 import projektkurs.entity.Entityhouse_1_4x3;
 import projektkurs.entity.Entityhouse_2_4x3;
+import projektkurs.entity.Entityhouse_2b_3x4;
 import projektkurs.entity.Entityhouse_3_4x3;
 import projektkurs.entity.Entityhouse_3b_3x4;
-import projektkurs.entity.Entityhouse_4_4x4;
+import projektkurs.entity.Entityhouse_4_4x3;
+import projektkurs.entity.Entityhouse_4b_3x4;
 import projektkurs.io.storage.SaveData;
 import projektkurs.util.Init;
 import projektkurs.util.Logger;
@@ -48,9 +61,8 @@ public final class Entities {
 
     /**
      * Erstellt einen Entity mithilfe seiner ID.
-     *
      * @param id
-     *            Entity-ID
+     * Entity-ID
      * @return Entity
      */
     public static Entity createEntity(Spielfeld map, String id) {
@@ -64,7 +76,6 @@ public final class Entities {
 
     /**
      * Das Pair, das alle Entities enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -97,16 +108,31 @@ public final class Entities {
         registerEntity(Entityhouse_2_4x3.class, "house_2_4x3");
         registerEntity(Entityhouse_3_4x3.class, "house_3_4x3");
         registerEntity(Entityhouse_3b_3x4.class, "house_3b_3x4");
-        registerEntity(Entityhouse_4_4x4.class, "house_4_4x4");
+        registerEntity(Entityhouse_4_4x3.class, "house_4_4x4");
+        registerEntity(Entityhouse_4b_3x4.class, "house_4b_4x4");
+        registerEntity(Entityhouse_2b_3x4.class, "house_2b_3x4");
+        registerEntity(EntityWindmill.class, "windmill");
+        registerEntity(EntityDoor.class, "door");
+        registerEntity(EntitySonnenschirm01.class, "sonnenschirm01");
+        registerEntity(EntitySonnenschirm02.class, "sonnenschirm02");
+        registerEntity(EntitySonnenschirm03.class, "sonnenschirm03");
+        registerEntity(EntitySonnenschirm04.class, "sonnenschirm04");
+        registerEntity(EntityMarkise01.class, "markise01");
+        registerEntity(EntityMarkise02.class, "markise02");
+        registerEntity(EntityMarkise03.class, "markise03");
+        registerEntity(EntityDoor2.class, "door2");
+        registerEntity(EntityFollowPather.class, "pathFollower");
 
+    }
 
+    public static boolean isRegistered(Entity e) {
+        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
     }
 
     /**
      * Laedt einen Entity aus einem SaveData-Objekt.
-     *
      * @param data
-     *            SaveData
+     * SaveData
      * @return Entity
      */
     public static Entity loadEntity(Spielfeld map, SaveData data) {
@@ -122,9 +148,8 @@ public final class Entities {
 
     /**
      * Speichert einen Entity in einer SaveData.
-     *
      * @param e
-     *            Entity
+     * Entity
      * @return SaveData
      */
     public static SaveData writeEntity(Entity e) {
@@ -137,16 +162,11 @@ public final class Entities {
         }
         return data;
     }
-    
-    public static boolean isRegistered(Entity e) {
-        return e != null && BACK_MAPPINGS.containsKey(e.getClass());
-    }
 
     /**
      * Registriert ein Mapping.
-     *
      * @param cls
-     *            Entity-Klasse
+     * Entity-Klasse
      */
     private static void registerEntity(Class<? extends Entity> cls, String id) {
         if (cls != null && StringUtil.isNotNullOrEmpty(id) && !MAPPINGS.containsKey(id)) {

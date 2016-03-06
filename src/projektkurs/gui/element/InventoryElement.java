@@ -25,13 +25,12 @@ public class InventoryElement extends Element {
 
     /**
      * Konstruktor fuer ein InventoryElement in der Mitte des Guis.
-     *
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param inv
-     *            zu repraesentierendes Inventory
+     * zu repraesentierendes Inventory
      */
     public InventoryElement(int id, IInventoryElementListener listener, Inventory inv) {
         this(MathUtil.floorDiv(Integers.windowX, 2), MathUtil.floorDiv(Integers.windowY, 2), id, listener, inv);
@@ -39,17 +38,16 @@ public class InventoryElement extends Element {
 
     /**
      * Konstruktor.
-     *
      * @param centerX
-     *            X-Koordinate des Mittelpunkts
+     * X-Koordinate des Mittelpunkts
      * @param centerY
-     *            Y-Koordinate des Mittelpunkts
+     * Y-Koordinate des Mittelpunkts
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param inv
-     *            zu repraesentierendes Inventory
+     * zu repraesentierendes Inventory
      */
     public InventoryElement(int centerX, int centerY, int id, IInventoryElementListener listener, Inventory inv) {
         this(centerX - MathUtil.floorDiv(Integers.SLOT_SIZE * inv.getSize(), 2), centerY - MathUtil.floorDiv(Integers.SLOT_SIZE, 2), Integers.SLOT_SIZE * inv.getSize(), Integers.SLOT_SIZE, id, listener, inv);
@@ -57,21 +55,20 @@ public class InventoryElement extends Element {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param inv
-     *            zu repraesentierendes Inventory
+     * zu repraesentierendes Inventory
      */
     public InventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IInventoryElementListener listener, Inventory inv) {
         super(posX, posY, sizeX, sizeY, id, listener);
@@ -88,7 +85,6 @@ public class InventoryElement extends Element {
 
     /**
      * Das Inventory.
-     *
      * @return Inventory
      */
     public Inventory getInventory() {

@@ -27,15 +27,14 @@ public class AreaTrigger extends AbstractTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      */
     public AreaTrigger(int posX, int posY, int sizeX, int sizeY) {
         this.posX = posX;

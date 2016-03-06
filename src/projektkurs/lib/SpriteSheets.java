@@ -26,7 +26,6 @@ public final class SpriteSheets {
 
     /**
      * Das Pair, das alle SpriteSheets enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -54,9 +53,8 @@ public final class SpriteSheets {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param s
-     *            SpriteSheet
+     * SpriteSheet
      */
     public static void registerSpriteSheet(SpriteSheet s) {
         if (s != null && !MAPPINGS.containsKey(s.getName())) {

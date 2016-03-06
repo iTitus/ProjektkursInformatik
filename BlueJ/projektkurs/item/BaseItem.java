@@ -9,13 +9,12 @@ public class BaseItem extends Item {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      * @param sprite
-     *            Sprite
+     * Sprite
      */
     public BaseItem(int id, String name, Sprite sprite) {
         super(id, name, sprite);

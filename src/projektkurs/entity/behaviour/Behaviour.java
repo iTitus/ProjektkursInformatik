@@ -15,9 +15,8 @@ public abstract class Behaviour implements IUpdatable {
 
     /**
      * Konstruktor.
-     *
      * @param entity
-     *            Entity
+     * Entity
      */
     public Behaviour(Entity entity) {
         this.entity = entity;
@@ -30,9 +29,8 @@ public abstract class Behaviour implements IUpdatable {
 
     /**
      * Ist diese Behaviour kompatibel mit der gegebenen Behaviour.
-     *
      * @param behaviour
-     *            Behaviour
+     * Behaviour
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isCompatibleWith(Behaviour behaviour) {

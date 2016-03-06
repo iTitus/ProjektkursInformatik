@@ -50,11 +50,10 @@ public class TickCondition extends Condition {
 
     /**
      * Konstruktor.
-     *
      * @param type
-     *            Der TickConditionType, mit dem verglichen werden soll
+     * Der TickConditionType, mit dem verglichen werden soll
      * @param ticks
-     *            Die gegebene Tickzahl
+     * Die gegebene Tickzahl
      */
     public TickCondition(TickConditionType type, int ticks) {
         this.type = type;

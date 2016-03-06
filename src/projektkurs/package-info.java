@@ -2,4 +2,3 @@
  * Haupt-Package.
  */
 package projektkurs;
-

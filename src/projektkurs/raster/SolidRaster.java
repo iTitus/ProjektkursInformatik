@@ -12,13 +12,12 @@ public class SolidRaster extends SimpleRaster {
 
     /**
      * Konstrukor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      * @param sprite
-     *            Sprite
+     * Sprite
      */
     public SolidRaster(int id, String name, Sprite sprite) {
         super(id, name, sprite);

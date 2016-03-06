@@ -21,7 +21,6 @@ public abstract class AbstractTrigger implements ISaveable {
 
     /**
      * Ist dieser Trigger aktiv.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public abstract boolean isTriggerActive();
@@ -43,7 +42,6 @@ public abstract class AbstractTrigger implements ISaveable {
 
     /**
      * Soll dieser Trigger entfernt werden.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldRemove() {

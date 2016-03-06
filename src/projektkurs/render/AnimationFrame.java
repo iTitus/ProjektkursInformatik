@@ -7,11 +7,10 @@ public class AnimationFrame {
 
     /**
      * Statische Hilsfmethode, die aus einem gegebenen Sprite[] und einer gegebenen frameTime eine gleichmaessige Animation macht.
-     *
      * @param images
-     *            Sprite[]
+     * Sprite[]
      * @param frameTime
-     *            Zei, die ein Sprite angezeigt wird, in Renderticks
+     * Zei, die ein Sprite angezeigt wird, in Renderticks
      * @return AnimationFrame[]
      */
     public static AnimationFrame[] getSynchronousAnimation(Sprite[] images, int frameTime) {
@@ -34,11 +33,10 @@ public class AnimationFrame {
 
     /**
      * Konstruktor.
-     *
      * @param image
-     *            Sprite
+     * Sprite
      * @param animationFrameDuration
-     *            Zeitspanne, die dieser AnimationFrame angezeigt werden soll
+     * Zeitspanne, die dieser AnimationFrame angezeigt werden soll
      */
     public AnimationFrame(Sprite image, int animationFrameDuration) {
         this.image = image;
@@ -47,7 +45,6 @@ public class AnimationFrame {
 
     /**
      * Zeit, die dieser AnimationFrame angezeigt wird, in Renderticks.
-     *
      * @return Animationszeit.
      */
     public int getAnimationFrameDuration() {
@@ -56,7 +53,6 @@ public class AnimationFrame {
 
     /**
      * Sprite.
-     *
      * @return Sprite
      */
     public Sprite getSprite() {

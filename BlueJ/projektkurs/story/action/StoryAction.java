@@ -33,9 +33,8 @@ public abstract class StoryAction implements ISaveable {
 
     /**
      * Setzt die nächste StoryAction
-     *
      * @param nextAction
-     *            die nächste StoryAction
+     * die nächste StoryAction
      * @return die nächste StoryAction
      */
     public StoryAction setNext(StoryAction nextAction) {

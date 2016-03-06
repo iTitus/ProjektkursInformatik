@@ -25,11 +25,10 @@ public class Vector2d {
 
     /**
      * Konstruktor.
-     *
      * @param x
-     *            X-Komponente
+     * X-Komponente
      * @param y
-     *            Y-Komponente
+     * Y-Komponente
      */
     public Vector2d(double x, double y) {
         this.x = x;
@@ -38,9 +37,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem der gegebene Wert jeweils zu den beiden Komponenten addiert wurde.
-     *
      * @param d
-     *            Summand
+     * Summand
      * @return Vektor
      */
     public Vector2d add(double d) {
@@ -49,9 +47,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem die Komponenten des gegebenen Vektors jeweils zu beiden Komponenten dieses Vektors addiert wurden.
-     *
      * @param v
-     *            Summand-Vektor
+     * Summand-Vektor
      * @return Vektor
      */
     public Vector2d add(Vector2d v) {
@@ -60,9 +57,8 @@ public class Vector2d {
 
     /**
      * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Gradmass.
-     *
      * @param v
-     *            Vektor
+     * Vektor
      * @return Winkel im Gradmass
      */
     public double angleBetweenDeg(Vector2d v) {
@@ -71,9 +67,8 @@ public class Vector2d {
 
     /**
      * Der Winkel zwischen diesem Vektor und dem gebenen Vektor im Bogenmass.
-     *
      * @param v
-     *            Vektor
+     * Vektor
      * @return Winkel im Bogenmass
      */
     public double angleBetweenRad(Vector2d v) {
@@ -82,7 +77,6 @@ public class Vector2d {
 
     /**
      * Kopiert diesen Vektor.
-     *
      * @return kopierter Vektor
      */
     public Vector2d copy() {
@@ -91,9 +85,8 @@ public class Vector2d {
 
     /**
      * Das Kreuzprodukt dieses Vektors mit dem gegegeben Vektor. Da dieser Vektor 2-dimensional ist, ist das Ergebnis eine Zahl.
-     *
      * @param v
-     *            Vektor
+     * Vektor
      * @return Kreuz-Vektor
      */
     public double cross(Vector2d v) {
@@ -102,9 +95,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem beide Komponenten jeweils durch den gegebenen Wert dividiert wurden.
-     *
      * @param d
-     *            Divisor
+     * Divisor
      * @return Vektor
      */
     public Vector2d div(double d) {
@@ -113,9 +105,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem beide Komponenten dieses Vektors jeweils durch die Komponenten des gegebenen Vektors dividiert wurden.
-     *
      * @param v
-     *            Divisor-Vektor
+     * Divisor-Vektor
      * @return Vektor
      */
     public Vector2d div(Vector2d v) {
@@ -124,9 +115,8 @@ public class Vector2d {
 
     /**
      * Das Skalarprodukt (Punktprodukt) dieses Vektors mit dem gegegeben Vektor.
-     *
      * @param v
-     *            Vektor
+     * Vektor
      * @return Skalar
      */
     public double dot(Vector2d v) {
@@ -145,7 +135,6 @@ public class Vector2d {
 
     /**
      * Die gerundete X-Komponente.
-     *
      * @return X-Komponente
      */
     public int getIntX() {
@@ -154,7 +143,6 @@ public class Vector2d {
 
     /**
      * Die gerundete Y-Komponente.
-     *
      * @return Y-Komponente
      */
     public int getIntY() {
@@ -163,7 +151,6 @@ public class Vector2d {
 
     /**
      * Der Betrag/Die Laenge des Vektors.
-     *
      * @return Betrag/Laenge
      */
     public double getLength() {
@@ -172,7 +159,6 @@ public class Vector2d {
 
     /**
      * Die X-Komponente.
-     *
      * @return X-Komponente
      */
     public double getX() {
@@ -181,7 +167,6 @@ public class Vector2d {
 
     /**
      * Die Y-Komponente.
-     *
      * @return Y-Komponente
      */
     public double getY() {
@@ -197,11 +182,10 @@ public class Vector2d {
 
     /**
      * Die Lineare Interpolation dieses Vektors mit dem gegebenen Vektor und dem gegebenen Faktor.
-     *
      * @param dest
-     *            Vektor
+     * Vektor
      * @param lerpFactor
-     *            Faktor
+     * Faktor
      * @return lineare Interpolation
      */
     public Vector2d lerp(Vector2d dest, double lerpFactor) {
@@ -210,9 +194,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem beide Komponenten jeweils mit dem gegebenen Wert multipliziert wurden.
-     *
      * @param d
-     *            Produkt
+     * Produkt
      * @return Vektor
      */
     public Vector2d mul(double d) {
@@ -221,9 +204,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem beide Komponenten dieses Vektors jeweils mit den Komponenten des gegebenen Vektors multipliziert wurden.
-     *
      * @param v
-     *            Produkt-Vektor
+     * Produkt-Vektor
      * @return Vektor
      */
     public Vector2d mul(Vector2d v) {
@@ -232,7 +214,6 @@ public class Vector2d {
 
     /**
      * Gibt den normalisierten Vektor mit der Laenge 1 zurueck.
-     *
      * @return normalisierter Vektor
      */
     public Vector2d normalize() {
@@ -241,9 +222,8 @@ public class Vector2d {
 
     /**
      * Rotiert diesen Vektor um die gegebene Gradzahl im Gradmass.
-     *
      * @param angleDeg
-     *            Winkel im Gradmass
+     * Winkel im Gradmass
      * @return rotierter Vektor
      */
     public Vector2d rotateDeg(double angleDeg) {
@@ -252,9 +232,8 @@ public class Vector2d {
 
     /**
      * Rotiert diesen Vektor um die gegebene Gradzahl im Bogenmass.
-     *
      * @param angleRad
-     *            Winkel im Bogenmass
+     * Winkel im Bogenmass
      * @return rotierter Vektor
      */
     public Vector2d rotateRad(double angleRad) {
@@ -265,9 +244,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem der gegebene Wert von beiden Komponenten jeweils subtrahiert wurde.
-     *
      * @param d
-     *            Subtrahend
+     * Subtrahend
      * @return Vektor
      */
     public Vector2d sub(double d) {
@@ -276,9 +254,8 @@ public class Vector2d {
 
     /**
      * Gibt einen Vektor zurueck, bei dem die Komponenten des gegebenen Vektors jeweils von beiden Komponenten dieses Vektors subtrahiert wurden.
-     *
      * @param v
-     *            Subtrahend-Vektor
+     * Subtrahend-Vektor
      * @return Vektor
      */
     public Vector2d sub(Vector2d v) {
@@ -287,7 +264,6 @@ public class Vector2d {
 
     /**
      * Der Winkel der Polarkoordinate im Gradmass.
-     *
      * @return Winkel im Gradmass
      */
     public double thetaDeg() {
@@ -296,7 +272,6 @@ public class Vector2d {
 
     /**
      * Der Winkel der Polarkoordinate im Bogenmass.
-     *
      * @return Winkel im Bogenmass
      */
     public double thetaRad() {

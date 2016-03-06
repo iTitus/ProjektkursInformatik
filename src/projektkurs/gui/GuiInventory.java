@@ -22,9 +22,8 @@ public class GuiInventory extends Gui implements IInventoryElementListener {
 
     /**
      * Konstruktor.
-     *
      * @param inv
-     *            anzuzeigendes Inventar
+     * anzuzeigendes Inventar
      */
     public GuiInventory(Inventory inv) {
         this.inv = inv;

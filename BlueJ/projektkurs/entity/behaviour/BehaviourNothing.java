@@ -9,9 +9,8 @@ public class BehaviourNothing extends Behaviour {
 
     /**
      * Konstruktor.
-     *
      * @param entity
-     *            Entity
+     * Entity
      */
     public BehaviourNothing(Entity entity) {
         super(entity);

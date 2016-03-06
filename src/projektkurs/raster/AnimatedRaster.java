@@ -22,13 +22,12 @@ public class AnimatedRaster extends AbstractRaster {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      * @param animationFrames
-     *            alle AnimationFrames
+     * alle AnimationFrames
      */
     public AnimatedRaster(int id, String name, AnimationFrame... animationFrames) {
         super(id, name);

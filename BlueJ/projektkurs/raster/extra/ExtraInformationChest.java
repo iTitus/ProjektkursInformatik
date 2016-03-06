@@ -22,13 +22,12 @@ public class ExtraInformationChest extends ExtraInformation {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public ExtraInformationChest(Spielfeld map, int x, int y) {
         super(map, x, y);
@@ -37,7 +36,6 @@ public class ExtraInformationChest extends ExtraInformation {
 
     /**
      * Das Inventar der Kiste.
-     *
      * @return Inventar.
      */
     public Inventory getInventory() {
@@ -52,9 +50,8 @@ public class ExtraInformationChest extends ExtraInformation {
 
     /**
      * Setzt das Inventar der Kiste.
-     *
      * @param inventory
-     *            Inventar
+     * Inventar
      */
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;

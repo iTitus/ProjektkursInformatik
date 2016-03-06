@@ -38,9 +38,8 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Konstruktor.
-     *
      * @param parent
-     *            Eltern-Gui
+     * Eltern-Gui
      */
     public Gui(Gui parent) {
         guiElements = new ArrayList<Element>();
@@ -64,7 +63,6 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Alle Elemente in diesem Gui.
-     *
      * @return alle Elemente
      */
     public List<Element> getGuiElements() {
@@ -73,7 +71,6 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Das Eltern-Gui
-     *
      * @return Eltern-Gui
      */
     public Gui getParent() {
@@ -93,11 +90,10 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Wird aufgerufen, wenn eine Taste gedrueckt wird.
-     *
      * @param keyChar
-     *            gedrueckter Buchstabe
+     * gedrueckter Buchstabe
      * @param e
-     *            KeyEvent
+     * KeyEvent
      */
     public void onKeyTyped(char keyChar, KeyEvent e) {
         for (Element el : guiElements) {
@@ -110,13 +106,12 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onLeftClick(int screenX, int screenY, MouseEvent e) {
         for (Element el : guiElements) {
@@ -126,11 +121,10 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Wird ausgefuehrt, wenn das Mausrad bewegt im Bildschirm bewegt wird.
-     *
      * @param by
-     *            Bewegung des Mausrads
+     * Bewegung des Mausrads
      * @param e
-     *            MouseWheelEvent
+     * MouseWheelEvent
      */
     public void onMouseWheelMoved(int by, MouseWheelEvent e) {
         for (Element el : guiElements) {
@@ -140,13 +134,12 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onRightClick(int screenX, int screenY, MouseEvent e) {
         for (Element el : guiElements) {
@@ -156,9 +149,8 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Rendert das Gui.
-     *
      * @param screen
-     *            Screen
+     * Screen
      */
     public void render(Screen screen) {
         if (shouldDrawDefaultBackground()) {
@@ -193,9 +185,8 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Fuegt dem Gui ein Element hinzu.
-     *
      * @param e
-     *            Element
+     * Element
      */
     protected final void addElement(Element e) {
         if (e != null) {
@@ -210,9 +201,8 @@ public abstract class Gui implements IUpdatable {
 
     /**
      * Entfernt ein Element aus dem Gui.
-     *
      * @param e
-     *            Element
+     * Element
      */
     protected final void removeElement(Element e) {
         guiElements.remove(e);

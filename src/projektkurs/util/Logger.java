@@ -49,9 +49,8 @@ public final class Logger {
 
     /**
      * Loggt auf DEBUG.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      */
     public static void debug(String msg) {
         log(LogLevel.DEBUG, msg);
@@ -59,11 +58,10 @@ public final class Logger {
 
     /**
      * Loggt auf DEBUG.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      * @param objs
-     *            eventuelle zusaetzliche Objekte
+     * eventuelle zusaetzliche Objekte
      */
     public static void debug(String msg, Object... objs) {
         log(LogLevel.DEBUG, msg, objs);
@@ -71,9 +69,8 @@ public final class Logger {
 
     /**
      * Loggt auf INFO.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      */
     public static void info(String msg) {
         log(LogLevel.INFO, msg);
@@ -81,11 +78,10 @@ public final class Logger {
 
     /**
      * Loggt auf INFO.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      * @param objs
-     *            eventuelle zusaetzliche Objekte
+     * eventuelle zusaetzliche Objekte
      */
     public static void info(String msg, Object... objs) {
         log(LogLevel.INFO, msg, objs);
@@ -93,13 +89,12 @@ public final class Logger {
 
     /**
      * Loggt eine Nachricht auf einem Level.
-     *
      * @param level
-     *            LogLevel
+     * LogLevel
      * @param msg
-     *            Nachricht
+     * Nachricht
      * @param objs
-     *            eventuelle zusaetzliche Objekte
+     * eventuelle zusaetzliche Objekte
      */
     public static void log(LogLevel level, String msg, Object... objs) {
         if (level != null && msg != null && !msg.equalsIgnoreCase("")) {
@@ -131,11 +126,10 @@ public final class Logger {
 
     /**
      * Loggt ein Throwable.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      * @param t
-     *            Throwable
+     * Throwable
      */
     public static void logThrowable(String msg, Throwable t) {
         if (t != null) {
@@ -180,9 +174,8 @@ public final class Logger {
 
     /**
      * Loggt auf WARN.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      */
     public static void warn(String msg) {
         log(LogLevel.WARN, msg);
@@ -190,11 +183,10 @@ public final class Logger {
 
     /**
      * Loggt auf WARN.
-     *
      * @param msg
-     *            Nachricht
+     * Nachricht
      * @param objs
-     *            eventuelle zusaetzliche Objekte
+     * eventuelle zusaetzliche Objekte
      */
     public static void warn(String msg, Object... objs) {
         log(LogLevel.WARN, msg, objs);

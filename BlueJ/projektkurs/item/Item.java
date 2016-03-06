@@ -30,13 +30,12 @@ public abstract class Item {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      * @param name
-     *            Name
+     * Name
      * @param sprite
-     *            Sprite
+     * Sprite
      */
     public Item(int id, String name, Sprite sprite) {
         this.id = id;
@@ -53,7 +52,6 @@ public abstract class Item {
 
     /**
      * ID.
-     *
      * @return ID
      */
     public int getID() {
@@ -62,7 +60,6 @@ public abstract class Item {
 
     /**
      * Interner Name.
-     *
      * @return Name
      */
     public String getInternalName() {
@@ -71,7 +68,6 @@ public abstract class Item {
 
     /**
      * Uebersetzter Name.
-     *
      * @return Name
      */
     public String getName() {
@@ -80,9 +76,8 @@ public abstract class Item {
 
     /**
      * Uebersetzter Name - ItemStack sensitiv.
-     *
      * @param stack
-     *            ItemStack
+     * ItemStack
      * @return Name
      */
     public String getName(ItemStack stack) {
@@ -91,7 +86,6 @@ public abstract class Item {
 
     /**
      * Das Bild.
-     *
      * @return Bild
      */
     public Sprite getSprite() {
@@ -100,9 +94,8 @@ public abstract class Item {
 
     /**
      * Das Bild des gegebenen ItemStacks.
-     *
      * @param stack
-     *            ItemStack
+     * ItemStack
      * @return Bild
      */
     public Sprite getSprite(ItemStack stack) {
@@ -111,19 +104,18 @@ public abstract class Item {
 
     /**
      * Wird ausgefuehrt, wenn mit der linken Maustaster mit diesem Item auf das Fenster geklickt wird.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param e
-     *            Entity der klickt
+     * Entity der klickt
      * @param stack
-     *            ItemStack, mit dem geklickt wird
+     * ItemStack, mit dem geklickt wird
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param event
-     *            MouseEvent
+     * MouseEvent
      */
     public void onLeftClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
         // NO-OP
@@ -131,19 +123,18 @@ public abstract class Item {
 
     /**
      * Wird ausgefuehrt, wenn mit der rechten Maustaster mit diesem Item auf das Fenster geklickt wird.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param e
-     *            Entity der klickt
+     * Entity der klickt
      * @param stack
-     *            ItemStack, mit dem geklickt wird
+     * ItemStack, mit dem geklickt wird
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param event
-     *            MouseEvent
+     * MouseEvent
      */
     public void onRightClick(Spielfeld map, Entity e, ItemStack stack, int screenX, int screenY, MouseEvent event) {
         // NO-OP

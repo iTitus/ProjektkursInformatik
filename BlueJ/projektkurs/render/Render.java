@@ -76,14 +76,11 @@ public class Render extends Canvas implements IUpdatable {
         Main.getGui().render(screen);
 
         if (Configs.showFPSUPS.getValue() || Configs.debugMode.getValue()) {
-            Font.drawString(
-                    screen,
-                    "FPS: "
-                            + Main.getFPS()
-                            + " - UPS: "
-                            + Main.getUPS()
-                            + (Main.getLevel() != null && Main.getPlayer() != null ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() + " | Facing: " + Main.getPlayer().getFacing() + " ("
-                                    + MathUtil.floorDiv(Main.getPlayer().getFacing().getIndex(), 2) + ")" : ""), Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
+            Font.drawString(screen,
+                    "FPS: " + Main.getFPS() + " - UPS: " + Main.getUPS() + (Main.getLevel() != null && Main.getPlayer() != null
+                            ? " | X: " + Main.getPlayer().getPosX() + " - Y: " + Main.getPlayer().getPosY() + " | Health: " + Main.getPlayer().getHealth() + " / " + Main.getPlayer().getMaxHealth() + " | Facing: " + Main.getPlayer().getFacing() + " (" + MathUtil.floorDiv(Main.getPlayer().getFacing().getIndex(), 2) + ")"
+                            : ""),
+                    Integers.INFO_X, Integers.INFO_Y, 0x0000FF);
         }
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.getPixel(i);

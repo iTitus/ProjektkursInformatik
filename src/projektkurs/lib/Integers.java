@@ -119,11 +119,10 @@ public final class Integers {
 
     /**
      * Veraendert die Sichtfeldgroesse.
-     *
      * @param newSightX
-     *            x
+     * x
      * @param newSightY
-     *            y
+     * y
      */
     public static void changeSight(int newSightX, int newSightY) {
         sightX = newSightX;

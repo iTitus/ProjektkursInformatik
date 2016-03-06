@@ -17,21 +17,20 @@ public class PlayerInventoryElement extends InventoryElement {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param inv
-     *            zu repraesentierendes PlayerInventory
+     * zu repraesentierendes PlayerInventory
      */
     public PlayerInventoryElement(int posX, int posY, int sizeX, int sizeY, int id, IPlayerInventoryElementListener listener, PlayerInventory inv) {
         super(posX, posY, sizeX, sizeY, id, listener, inv);
@@ -39,17 +38,16 @@ public class PlayerInventoryElement extends InventoryElement {
 
     /**
      * Konstruktor.
-     *
      * @param centerX
-     *            X-Koordinate des Mittelpunkts
+     * X-Koordinate des Mittelpunkts
      * @param centerY
-     *            Y-Koordinate des Mittelpunkts
+     * Y-Koordinate des Mittelpunkts
      * @param id
-     *            Nummer
+     * Nummer
      * @param gui
-     *            Gui/Listener
+     * Gui/Listener
      * @param inv
-     *            zu repraesentierendes PlayerInventory
+     * zu repraesentierendes PlayerInventory
      */
     public PlayerInventoryElement(int centerX, int centerY, int id, IPlayerInventoryElementListener gui, PlayerInventory inv) {
         super(centerX, centerY, id, gui, inv);
@@ -57,7 +55,6 @@ public class PlayerInventoryElement extends InventoryElement {
 
     /**
      * Das PlayerInventory.
-     *
      * @return PlayerInventory
      */
     @Override

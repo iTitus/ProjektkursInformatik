@@ -16,11 +16,10 @@ public class ConditionedSpawnAction extends Action {
 
     /**
      * Konstruktor.
-     *
      * @param condition
-     *            Ausfuehrbedingung
+     * Ausfuehrbedingung
      * @param object
-     *            CutSceneObject, das gespawnt werden soll
+     * CutSceneObject, das gespawnt werden soll
      */
     public ConditionedSpawnAction(Condition condition, CutSceneObject object) {
         super(condition);
@@ -34,7 +33,6 @@ public class ConditionedSpawnAction extends Action {
 
     /**
      * Das zu spawnende CutSceneObject.
-     *
      * @return CutSceneObject
      */
     public CutSceneObject getCutSceneObject() {

@@ -47,7 +47,6 @@ public final class Dialoge {
     public static Dialog DiaZimmerNull;
     public static Dialog DiaZimmerEins;
 
-
     /*
      * public static Dialog LVmKaugummi; public static Dialog LVmMesser; public static Dialog LVmNetz; public static Dialog LVmStein; public static Dialog LVmTeddy; public static Dialog LVmYoyo;
      */
@@ -63,7 +62,6 @@ public final class Dialoge {
 
     /**
      * Das Pair, das alle Dialoge enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -96,12 +94,12 @@ public final class Dialoge {
         registerMapping(LVmFaehrmannOne);
 
         LVmFischerNull = new Dialog("LVmFischerNull", new DialogPart("LVmFischerNullnull", 1 << 6, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 6), new DialogPart("LVmFischerNullEins", 1 << 7, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5), new DialogPart("LVmFischerNullZwei", 1 << 8, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 5),
-                new DialogPart("LVmFischerNullDrei", 1 << 9, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullVier", 1 << 10, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullFuenf", 1 << 11, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 1).setEndAction(ReflectionUtil.getMethod(
-                        Scripts.class, "scriptFisher")));
+                new DialogPart("LVmFischerNullDrei", 1 << 9, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2), new DialogPart("LVmFischerNullVier", 1 << 10, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 2),
+                new DialogPart("LVmFischerNullFuenf", 1 << 11, 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5, 1).setEndAction(ReflectionUtil.getMethod(Scripts.class, "scriptFisher")));
         registerMapping(LVmFischerNull);
 
-        LVmHexerzirkelNull = new Dialog("LVmHexerzirkelNull", new DialogPart("LVmHexerzirkelNullnull", 1 << 12, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 2), new DialogPart("LVmHexerzirkelNullEins", 1 << 13, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 4), new DialogPart(
-                "LVmHexerzirkelNullZwei", 1 << 14, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 7));
+        LVmHexerzirkelNull = new Dialog("LVmHexerzirkelNull", new DialogPart("LVmHexerzirkelNullnull", 1 << 12, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 2), new DialogPart("LVmHexerzirkelNullEins", 1 << 13, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 4),
+                new DialogPart("LVmHexerzirkelNullZwei", 1 << 14, 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 7));
         registerMapping(LVmHexerzirkelNull);
 
         LVmNestNull = new Dialog("LVmNestNull", new DialogPart("LVmNestNullnull", 1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11, 1));
@@ -154,25 +152,24 @@ public final class Dialoge {
 
         DiaFaehrmann = new Dialog("DiaFaehrmann", new DialogPart("FaehrmannNull", 2));
         registerMapping(DiaFaehrmann);
-        
-        DiaBarkeeperNull = new Dialog("DiaBarkeeperNull", new DialogPart("BarkeeperNull",1 << 0, 0 << 0, 9));
+
+        DiaBarkeeperNull = new Dialog("DiaBarkeeperNull", new DialogPart("BarkeeperNull", 1 << 0, 0 << 0, 9));
         registerMapping(DiaBarkeeperNull);
-        
+
         DiaBarkeeperEins = new Dialog("DiaBarkeeperEins", new DialogPart("BarkeeperEins", 2));
         registerMapping(DiaBarkeeperEins);
-        
+
         DiaZimmerNull = new Dialog("DiaZimmerNull", new DialogPart("ZimmerNull", 3).setEndAction(ReflectionUtil.getMethod(Scripts.class, "zimmertrigger")));
         registerMapping(DiaZimmerNull);
 
-        DiaZimmerEins = new Dialog("DiaZimmerEins", new DialogPart("ZimmerEins",1 << 2, 1 << 0, 4));
+        DiaZimmerEins = new Dialog("DiaZimmerEins", new DialogPart("ZimmerEins", 1 << 2, 1 << 0, 4));
         registerMapping(DiaZimmerEins);
     }
 
     /**
      * Registriert ein Mapping.
-     *
      * @param d
-     *            Dialog
+     * Dialog
      */
     private static void registerMapping(Dialog d) {
         if (d != null && !MAPPINGS.containsKey(d.getName())) {

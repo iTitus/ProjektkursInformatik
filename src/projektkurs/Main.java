@@ -124,7 +124,6 @@ public final class Main {
 
     /**
      * Den aktuellen Delta-Wert.
-     *
      * @return Delta
      */
     public static double getDelta() {
@@ -133,7 +132,6 @@ public final class Main {
 
     /**
      * Die aktuelle FPS (frames per second).
-     *
      * @return FPS
      */
     public static int getFPS() {
@@ -149,7 +147,6 @@ public final class Main {
 
     /**
      * Gibt den aktuellen InputManager aus.
-     *
      * @return InputManager
      */
     public static InputManager getInputManager() {
@@ -158,7 +155,6 @@ public final class Main {
 
     /**
      * Das aktuelle Level.
-     *
      * @return Level
      */
     public static Level getLevel() {
@@ -167,7 +163,6 @@ public final class Main {
 
     /**
      * Gibt die aktuelle Figur zurueck.
-     *
      * @return Figur
      */
     public static EntityPlayer getPlayer() {
@@ -176,7 +171,6 @@ public final class Main {
 
     /**
      * Gibt den aktuellen Render zurueck.
-     *
      * @return Render
      */
     public static Render getRender() {
@@ -185,7 +179,6 @@ public final class Main {
 
     /**
      * Gibt den aktuellen Renderhelper zurueck.
-     *
      * @return Renderhelper
      */
     public static RenderHelper getRenderHelper() {
@@ -201,7 +194,6 @@ public final class Main {
 
     /**
      * Die aktuellen Ticks.
-     *
      * @return Ticks
      */
     public static int getTicks() {
@@ -210,7 +202,6 @@ public final class Main {
 
     /**
      * Die aktuelle UPS (updates per second).
-     *
      * @return UPS
      */
     public static int getUPS() {
@@ -255,9 +246,8 @@ public final class Main {
 
     /**
      * Einstiegspunkt in das Spiel.
-     *
      * @param args
-     *            Konsolenargumente
+     * Konsolenargumente
      */
     public static void main(String[] args) {
         try {
@@ -271,7 +261,7 @@ public final class Main {
 
     /**
      * @param gui
-     *            the gui to open
+     * the gui to open
      */
     public static void openGui(Gui gui) {
         if (gui != null) {
@@ -306,15 +296,14 @@ public final class Main {
     }
 
     /**
-	 *
-	 */
+     *
+     */
     public static void show() {
         mainFrame.setVisible(true);
     }
 
     /**
      * Startet das gegebene Level und resettet es dabei.
-     *
      * @param l
      */
     public static void startLevel(Level l) {
@@ -330,9 +319,8 @@ public final class Main {
 
     /**
      * Fuehrt alle init-Methoden aus, die im gegebenen State ausgefuehrt werden sollen.
-     *
      * @param state
-     *            der State
+     * der State
      */
     private static void init(State state) {
 

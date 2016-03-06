@@ -10,9 +10,8 @@ public class ConditionedTalkAction extends Action {
 
     /**
      * Konstruktor.
-     *
      * @param condition
-     *            Ausfuehrbedingung
+     * Ausfuehrbedingung
      */
     public ConditionedTalkAction(Condition condition) {
         super(condition);

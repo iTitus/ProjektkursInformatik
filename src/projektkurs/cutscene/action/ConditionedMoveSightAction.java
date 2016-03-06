@@ -20,13 +20,12 @@ public class ConditionedMoveSightAction extends Action {
 
     /**
      * Konstruktor.
-     *
      * @param condition
-     *            Ausfuehrbedingung
+     * Ausfuehrbedingung
      * @param dx
-     *            Sichtfeldbewegung in x-Richtung
+     * Sichtfeldbewegung in x-Richtung
      * @param dy
-     *            Sichtfeldbewegung in y-Richtung
+     * Sichtfeldbewegung in y-Richtung
      */
     public ConditionedMoveSightAction(Condition condition, int dx, int dy) {
         super(condition);

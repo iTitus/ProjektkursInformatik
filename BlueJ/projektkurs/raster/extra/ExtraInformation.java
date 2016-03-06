@@ -32,9 +32,8 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public ExtraInformation(Spielfeld map, int x, int y) {
         this.map = map;
@@ -49,7 +48,6 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
 
     /**
      * Der Interne Name dieses ExtraInformation-Typs.
-     *
      * @return Interner Name
      */
     public final String getInternalName() {
@@ -58,7 +56,6 @@ public abstract class ExtraInformation implements IUpdatable, ISaveable, IHasPos
 
     /**
      * Das Spielfeld.
-     *
      * @return Spielfeld
      */
     public Spielfeld getMap() {

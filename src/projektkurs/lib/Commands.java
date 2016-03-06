@@ -56,7 +56,6 @@ public final class Commands {
 
     /**
      * Das Pair, das alle Kommandos enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -94,9 +93,8 @@ public final class Commands {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param c
-     *            Command
+     * Command
      */
     private static void registerMapping(Command c) {
         if (c != null && !MAPPINGS.containsKey(c.getCommand())) {

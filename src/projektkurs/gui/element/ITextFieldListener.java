@@ -7,25 +7,22 @@ public interface ITextFieldListener extends IElementListener {
 
     /**
      * Wird ausgefuehrt, wenn das Textfeld fokussiert wird.
-     *
      * @param field
-     *            TextField
+     * TextField
      */
     void onFocusGained(TextField field);
 
     /**
      * Wird ausgefuehrt, wenn das Textfeld den Fokus verliert.
-     *
      * @param field
-     *            TextField
+     * TextField
      */
     void onFocusLost(TextField field);
 
     /**
      * Wird ausgefuehrt, wenn sich der Text im Textfeld veraendert.
-     *
      * @param field
-     *            TextField
+     * TextField
      */
     void onTextChanged(TextField field);
 

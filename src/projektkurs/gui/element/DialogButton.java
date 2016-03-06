@@ -14,17 +14,16 @@ public class DialogButton extends Button {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param dialogPart
-     *            folgende DialogPart
+     * folgende DialogPart
      */
     public DialogButton(int posX, int posY, int id, IButtonListener listener, DialogPart dialogPart) {
         super(posX, posY, id, listener, dialogPart.getName());
@@ -33,7 +32,6 @@ public class DialogButton extends Button {
 
     /**
      * Der hierauf folgende DialogPart.
-     *
      * @return DialogPart
      */
     public DialogPart getDialogPart() {

@@ -9,9 +9,8 @@ public class SpawnAction extends ConditionedSpawnAction {
 
     /**
      * Konstruktor.
-     *
      * @param object
-     *            CutSceneObject, das erscheinen soll
+     * CutSceneObject, das erscheinen soll
      */
     public SpawnAction(CutSceneObject object) {
         super(null, object);

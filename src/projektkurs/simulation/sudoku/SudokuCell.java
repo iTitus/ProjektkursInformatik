@@ -14,17 +14,11 @@ public abstract class SudokuCell implements IUpdatable {
         this.y = y;
     }
 
-    public abstract void render(Screen screen, int posX, int posY);
-
-    public abstract boolean isSelectable();
-
-    public abstract void onNumberInput(Number number);
-
-    public abstract Number getNumber();
-
     public SudokuBoard getBoard() {
         return board;
     }
+
+    public abstract Number getNumber();
 
     public int getX() {
         return x;
@@ -34,6 +28,12 @@ public abstract class SudokuCell implements IUpdatable {
         return y;
     }
 
+    public abstract boolean isSelectable();
+
     public abstract void markSet(Number number);
+
+    public abstract void onNumberInput(Number number);
+
+    public abstract void render(Screen screen, int posX, int posY);
 
 }

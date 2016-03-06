@@ -7,9 +7,8 @@ public final class LevelEditor {
 
     /**
      * Die main-Methode.
-     *
      * @param args
-     *            Konsolenargumente
+     * Konsolenargumente
      */
     public static void main(String[] args) {
         // NO-OP

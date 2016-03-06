@@ -32,11 +32,10 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
 
     /**
      * Konstruktor.
-     *
      * @param dialog
-     *            Dialog
+     * Dialog
      * @param entity
-     *            anderer Entity
+     * anderer Entity
      */
     public GuiDialogChooser(Dialog dialog, Entity entity) {
         this(dialog, Main.getPlayer(), entity);
@@ -44,13 +43,12 @@ public class GuiDialogChooser extends Gui implements IButtonListener {
 
     /**
      * Konstruktor.
-     *
      * @param dialog
-     *            Dialog
+     * Dialog
      * @param entity1
-     *            ein Entity
+     * ein Entity
      * @param entity2
-     *            anderer Entity
+     * anderer Entity
      */
     public GuiDialogChooser(Dialog dialog, Entity entity1, Entity entity2) {
         this.dialog = dialog;

@@ -18,17 +18,16 @@ public class ToggleButton extends Button {
 
     /**
      * Konstruktor.
-     *
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param id
-     *            Nummer
+     * Nummer
      * @param listener
-     *            Listener
+     * Listener
      * @param names
-     *            alle Namen
+     * alle Namen
      */
     public ToggleButton(int posX, int posY, int id, IButtonListener listener, String... names) {
         super(posX, posY, id, listener, names[0]);
@@ -38,7 +37,6 @@ public class ToggleButton extends Button {
 
     /**
      * Der aktuelle Namensindex.
-     *
      * @return Namensindex
      */
     public int getIndex() {
@@ -47,7 +45,6 @@ public class ToggleButton extends Button {
 
     /**
      * Alle Namen.
-     *
      * @return Namen.
      */
     public String[] getNames() {
@@ -80,9 +77,8 @@ public class ToggleButton extends Button {
 
     /**
      * Setzt den Namensindex fest.
-     *
      * @param index
-     *            Namensindex
+     * Namensindex
      */
     public void setIndex(int index) {
         if (index >= names.length) {
@@ -97,9 +93,8 @@ public class ToggleButton extends Button {
 
     /**
      * Setzt alle Namen fest.
-     *
      * @param names
-     *            Namen.
+     * Namen.
      */
     public void setNames(String[] names) {
         this.names = names;

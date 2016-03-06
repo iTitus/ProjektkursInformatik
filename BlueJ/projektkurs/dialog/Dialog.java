@@ -19,11 +19,10 @@ public class Dialog {
 
     /**
      * Konstruktor.
-     *
      * @param name
-     *            Name
+     * Name
      * @param parts
-     *            alle DialogParts
+     * alle DialogParts
      */
     public Dialog(String name, DialogPart... parts) {
         this.name = name;
@@ -36,7 +35,6 @@ public class Dialog {
 
     /**
      * Der Name des Dialogs.
-     *
      * @return Name
      */
     public String getName() {
@@ -45,7 +43,6 @@ public class Dialog {
 
     /**
      * Alle DialogParts die sich zeigen koennen.
-     *
      * @return alle DialogParts
      */
     public List<DialogPart> getShownParts() {

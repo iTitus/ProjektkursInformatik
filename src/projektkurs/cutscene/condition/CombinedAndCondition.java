@@ -10,9 +10,8 @@ public class CombinedAndCondition extends CombinedCondition {
 
     /**
      * Konstruktor.
-     *
      * @param conditions
-     *            Zu pruefende Conditions.
+     * Zu pruefende Conditions.
      */
     public CombinedAndCondition(Condition... conditions) {
         super(conditions);

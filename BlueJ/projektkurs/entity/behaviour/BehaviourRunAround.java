@@ -11,9 +11,8 @@ public class BehaviourRunAround extends Behaviour {
 
     /**
      * Konstruktor.
-     *
      * @param entity
-     *            Entity
+     * Entity
      */
     public BehaviourRunAround(Entity entity) {
         super(entity);

@@ -18,9 +18,8 @@ public class ChestRaster extends SolidRaster implements IHasExtraInformation {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      */
     public ChestRaster(int id) {
         super(id, "chest", Sprites.chest);

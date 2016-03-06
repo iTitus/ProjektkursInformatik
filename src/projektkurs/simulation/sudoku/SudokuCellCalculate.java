@@ -14,12 +14,40 @@ public class SudokuCellCalculate extends SudokuCell {
 
     public SudokuCellCalculate(SudokuBoard board, int x, int y) {
         super(board, x, y);
-        this.possibleNumbers = Number.getAll();
+        possibleNumbers = Number.getAll();
     }
 
     @Override
     public boolean canUpdate() {
         return number == null;
+    }
+
+    @Override
+    public Number getNumber() {
+        return number;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
+
+    @Override
+    public void markSet(Number number) {
+        possibleNumbers.remove(number);
+    }
+
+    @Override
+    public void onNumberInput(Number number) {
+        // NO-OP
+    }
+
+    @Override
+    public void render(Screen screen, int posX, int posY) {
+        RenderUtil.drawRectangle(screen, posX + x * ElementSudokuBoard.CELL_SIZE, posY + y * ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE);
+        if (number != null) {
+            Font.drawCenteredStringInRect(screen, number.getNumberString(), posX + x * ElementSudokuBoard.CELL_SIZE, posY + y * ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE);
+        }
     }
 
     @Override
@@ -80,34 +108,6 @@ public class SudokuCellCalculate extends SudokuCell {
                 }
             }
         }
-    }
-
-    @Override
-    public void render(Screen screen, int posX, int posY) {
-        RenderUtil.drawRectangle(screen, posX + x * ElementSudokuBoard.CELL_SIZE, posY + y * ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE);
-        if (number != null) {
-            Font.drawCenteredStringInRect(screen, number.getNumberString(), posX + x * ElementSudokuBoard.CELL_SIZE, posY + y * ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE, ElementSudokuBoard.CELL_SIZE);
-        }
-    }
-
-    @Override
-    public boolean isSelectable() {
-        return false;
-    }
-
-    @Override
-    public void onNumberInput(Number number) {
-        // NO-OP
-    }
-
-    @Override
-    public Number getNumber() {
-        return number;
-    }
-
-    @Override
-    public void markSet(Number number) {
-        possibleNumbers.remove(number);
     }
 
 }

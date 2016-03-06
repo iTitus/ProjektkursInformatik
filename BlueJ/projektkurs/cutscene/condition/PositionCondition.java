@@ -24,13 +24,12 @@ public class PositionCondition extends Condition {
 
     /**
      * Konstruktor.
-     *
      * @param object
-     *            CutSceneObject, dessen Position ueberprueft wird
+     * CutSceneObject, dessen Position ueberprueft wird
      * @param x
-     *            X-Koordinate
+     * X-Koordinate
      * @param y
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public PositionCondition(CutSceneObject object, int x, int y) {
         this.object = object;
@@ -40,7 +39,6 @@ public class PositionCondition extends Condition {
 
     /**
      * Das CutSceneObject, dessen Postion ueberprueft wird.
-     *
      * @return CutSceneObject
      */
     public CutSceneObject getCutSceneObject() {
@@ -49,7 +47,6 @@ public class PositionCondition extends Condition {
 
     /**
      * Die X-Koordinate.
-     *
      * @return X-Koordinate
      */
     public int getX() {
@@ -58,7 +55,6 @@ public class PositionCondition extends Condition {
 
     /**
      * Die Y-Koordinate.
-     *
      * @return Y-Koordinate
      */
     public int getY() {

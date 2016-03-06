@@ -15,9 +15,8 @@ public class GuiLangChooser extends Gui implements IButtonListener {
 
     /**
      * Konstruktor.
-     *
      * @param parent
-     *            Eltern-Gui
+     * Eltern-Gui
      */
     public GuiLangChooser(Gui parent) {
         super(parent);

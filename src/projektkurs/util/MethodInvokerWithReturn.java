@@ -4,9 +4,8 @@ import java.lang.reflect.Method;
 
 /**
  * Ein MethodInvoker. Fuehrt eine Methode mit Rueckgabewerte aus.
- *
  * @param <T>
- *            erwarteter Rueckgabewert.
+ * erwarteter Rueckgabewert.
  */
 public class MethodInvokerWithReturn<T> {
 
@@ -21,11 +20,10 @@ public class MethodInvokerWithReturn<T> {
 
     /**
      * Konstruktor.
-     *
      * @param m
-     *            Methode
+     * Methode
      * @param objects
-     *            eventuelle Parameter
+     * eventuelle Parameter
      */
     public MethodInvokerWithReturn(Method m, Object... objects) {
         this.m = m;
@@ -34,7 +32,6 @@ public class MethodInvokerWithReturn<T> {
 
     /**
      * Fuehrt die Methode aus.
-     *
      * @return Rueckgabewert
      */
     public T invoke() {

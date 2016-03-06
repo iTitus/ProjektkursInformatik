@@ -13,7 +13,6 @@ import projektkurs.entity.Entity;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
-import projektkurs.entity.EntityGrammophonganz;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.item.ItemStack;
@@ -34,13 +33,6 @@ public final class Scripts {
 
     public static boolean thrashCan = false, woman = false, junge = false, fisher = false, cutsceneTwo = false;
 
-    public static void zimmertrigger(){
-        Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "removeGrammophon"));
-    }
-    public static void removeGrammophon(){
-    	 Main.getLevel().getMap().deSpawn(Main.getLevel().getMap().getEntitiesAt(21, 6).get(0));
-    	 Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "dialogstart", Dialog.class, Entity.class), Dialoge.DiaBarkeeperEins);
-    }
     public static void cutsceneOne() {
         CutSceneManager.startCutScene(CutScenes.one);
     }
@@ -82,18 +74,20 @@ public final class Scripts {
         map.getStoryManager().registerTrigger(invtrig, SPAWN_ENTITY, e, map);
     }
 
+    public static void removeGrammophon() {
+        Main.getLevel().getMap().deSpawn(Main.getLevel().getMap().getEntitiesAt(21, 6).get(0));
+        Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "dialogstart", Dialog.class, Entity.class), Dialoge.DiaBarkeeperEins);
+    }
+
     /**
      * Entfernt ein Item aus dem Inventar des Spielers
-     *
      * @param r
-     *            Der Index des zu enfernenden Items
+     * Der Index des zu enfernenden Items
      */
     public static void removeItem(ItemStack r) {
         Main.getPlayer().getInventory().removeItemStack(r);
     }
-    public static void spawnGrammophon( int x, int y){
-    	Main.getLevel().getMap().spawn(new EntityGramophone(Main.getLevel().getMap(), x, y));
-    }
+
     public static void scriptFisher() {
         if (fisher == false) {
 
@@ -152,18 +146,19 @@ public final class Scripts {
         Main.getLevel().getMap().getStoryManager().registerTrigger(t, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE), i);
     }
 
+    public static void setSwitchMapTrigger(int i, AbstractTrigger t1, AbstractTrigger t2, int x, int y) {
+        Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE), i, t1, t2, x, y);
+    }
+
     /**
      * Trigger ab wo die Map geaendert wird
-     *
      * @param i
-     *            map
+     * map
      * @param t1
-     *            Stelle des SwitchMapTrigger
+     * Stelle des SwitchMapTrigger
      * @param t2
-     *            Stelle von SwitchMap
+     * Stelle von SwitchMap
      */
-
-    
 
     public static void spawnFerryHouse(EntityFerryhouse e, Spielfeld map) {
         map.spawn(e);
@@ -171,15 +166,18 @@ public final class Scripts {
         map.getStoryManager().registerTrigger(area, REMOVE_ENTITY, e, map);
     }
 
+    public static void spawnGrammophon(int x, int y) {
+        Main.getLevel().getMap().spawn(new EntityGramophone(Main.getLevel().getMap(), x, y));
+    }
+
     /**
      * Spawnt ein Item an einer Positon
-     *
      * @param posx
-     *            x-Position des Items
+     * x-Position des Items
      * @param posy
-     *            y-Position des Items
+     * y-Position des Items
      * @param i
-     *            Zu spawnender ItemStack
+     * Zu spawnender ItemStack
      */
     public static void spawnItem(int posx, int posy, ItemStack i) {
         Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), posx, posy, i));
@@ -187,13 +185,12 @@ public final class Scripts {
 
     /**
      * Nimmt einen Gegenstand aus dem Inventar und spawnt einen anderen
-     *
      * @param posx
      * @param posy
      * @param i
-     *            zu spawnendes Item
+     * zu spawnendes Item
      * @param r
-     *            zu entfernendes Item
+     * zu entfernendes Item
      */
     public static void spawnItemRemoveItem(int posx, int posy, ItemStack i, ItemStack r) {
         Main.getLevel().getMap().spawn(new EntityItem(Main.getLevel().getMap(), posx, posy, i));
@@ -206,13 +203,12 @@ public final class Scripts {
 
     /**
      * Aendert das Spielfeld.
-     *
      * @param i
-     *            Spielfeld
+     * Spielfeld
      * @param t1
-     *            Uebergangstrigger
+     * Uebergangstrigger
      * @param t2
-     *            Trigger fuer Ubergangstrigger
+     * Trigger fuer Ubergangstrigger
      * @param x X-Koordinate des Spawnpoints
      * @param y Y-Koordinate des Spawnpoints
      */
@@ -222,9 +218,6 @@ public final class Scripts {
         Main.getLevel().setMap(i);
     }
 
-    public static void setSwitchMapTrigger(int i, AbstractTrigger t1, AbstractTrigger t2, int x, int y) {
-        Main.getLevel().getMap().getStoryManager().registerTrigger(t2, ReflectionUtil.getMethod(Scripts.class, "switchMap", Integer.TYPE, AbstractTrigger.class, AbstractTrigger.class, Integer.TYPE, Integer.TYPE), i, t1, t2, x, y);
-    }    
     /**
      * Gewinnt das Spiel.
      */
@@ -232,6 +225,10 @@ public final class Scripts {
         Main.pause();
         JOptionPane.showOptionDialog(null, I18n.getString("description.win"), I18n.getString("description.win"), 0, JOptionPane.ERROR_MESSAGE, new ImageIcon(Sprites.finish.toBufferedImage()), new Object[] { I18n.getString("button.exit") }, null);
         Main.exit();
+    }
+
+    public static void zimmertrigger() {
+        Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "removeGrammophon"));
     }
 
     /**

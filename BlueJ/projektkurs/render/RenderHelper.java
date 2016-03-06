@@ -19,7 +19,6 @@ public class RenderHelper {
 
     /**
      * X-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
-     *
      * @return X-Koordinate
      */
     public int getSightX() {
@@ -28,7 +27,6 @@ public class RenderHelper {
 
     /**
      * Y-Koordinate der oberen linken Ecke des Sichtfeldes in der Map.
-     *
      * @return Y-Koordinate
      */
     public int getSightY() {
@@ -37,9 +35,8 @@ public class RenderHelper {
 
     /**
      * Ist das gegebene Objekt im Sichtfeld.
-     *
      * @param iHasPosition
-     *            IHasPosition
+     * IHasPosition
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInSight(IHasPosition<Integer> iHasPosition) {
@@ -48,11 +45,10 @@ public class RenderHelper {
 
     /**
      * Ist der gegebene Punkt im Sichtfeld.
-     *
      * @param x
-     *            x
+     * x
      * @param y
-     *            y
+     * y
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isInSight(int x, int y) {
@@ -61,11 +57,10 @@ public class RenderHelper {
 
     /**
      * Bewegt das Spielfeld um dx und dy.
-     *
      * @param dx
-     *            Bewegung in x-Richtung
+     * Bewegung in x-Richtung
      * @param dy
-     *            Bewegung in y-Richtung
+     * Bewegung in y-Richtung
      */
     public void moveSight(int dx, int dy) {
         sightX += dx;
@@ -74,11 +69,10 @@ public class RenderHelper {
 
     /**
      * Aktualisiert das Sichtfeld.
-     *
      * @param sightX
-     *            X-Koordinate der oberen linken Ecke des Sichtfeldes
+     * X-Koordinate der oberen linken Ecke des Sichtfeldes
      * @param sightY
-     *            Y-Koordinate der oberen linken Ecke des Sichtfeldes
+     * Y-Koordinate der oberen linken Ecke des Sichtfeldes
      */
     public void setSight(int sightX, int sightY) {
         this.sightX = sightX;

@@ -7,23 +7,20 @@ public abstract class Command {
 
     /**
      * Fuehrt das Kommando aus.
-     *
      * @param args
-     *            Argumente
+     * Argumente
      * @return Ergebnis
      */
     public abstract EnumCommandResult execute(String[] args);
 
     /**
      * Alle moeglichen Kommandonamen.
-     *
      * @return Kommandonamen
      */
     public abstract String[] getAliases();
 
     /**
      * Kommandoname.
-     *
      * @return Kommandoname
      */
     public abstract String getCommand();

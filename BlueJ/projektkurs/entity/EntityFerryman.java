@@ -1,9 +1,11 @@
 package projektkurs.entity;
 
+import projektkurs.dialog.Dialog;
+import projektkurs.lib.Dialoge;
 import projektkurs.lib.Sprites;
 import projektkurs.world.Spielfeld;
 
-public class EntityFerryman extends Entity {
+public class EntityFerryman extends EntityDialog {
 
     public EntityFerryman(Spielfeld map) {
         super(map);
@@ -13,4 +15,15 @@ public class EntityFerryman extends Entity {
         super(map, posX, posY, 1, 1, Sprites.boy);
     }
 
+    @Override
+    public Dialog getDialog() {
+        // if ((1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11) == (map.getLevel().getDialogManager().getValue() & (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10 | 1 << 11))) {
+        // return Dialoge.LVmFischerStd;
+        // } else if ((1 << 2 | 1 << 3 | 1 << 4 | 1 << 5) == (map.getLevel().getDialogManager().getValue() & (1 << 2 | 1 << 3 | 1 << 4 | 1 << 5))) {
+        // return Dialoge.LVmFischerNull;
+        // } else {
+        // return Dialoge.LVmFischerNull;
+        // }
+        return Dialoge.DiaFaehrmann;
+    }
 }

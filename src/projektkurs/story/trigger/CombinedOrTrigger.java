@@ -7,9 +7,8 @@ public class CombinedOrTrigger extends CombinedTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param trigger
-     *            die Trigger
+     * die Trigger
      */
     public CombinedOrTrigger(AbstractTrigger... trigger) {
         super(trigger);

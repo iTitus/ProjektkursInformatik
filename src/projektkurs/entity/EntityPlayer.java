@@ -25,9 +25,8 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      */
     public EntityPlayer(Spielfeld map) {
         super(map);
@@ -35,15 +34,14 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Konstruktor.
-     *
      * @param map
-     *            Spielfeld
+     * Spielfeld
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sprites
-     *            Bilder
+     * Bilder
      */
     public EntityPlayer(Spielfeld map, int posX, int posY, Sprite... sprites) {
         super(map, posX, posY, Integers.PLAYER_HEALTH, sprites);
@@ -52,7 +50,6 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Das Inventar des Spielers.
-     *
      * @return PlayerInventory
      */
     public PlayerInventory getInventory() {
@@ -93,13 +90,12 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Wird ausgefuehrt, wenn mit der linken Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onLeftClick(int screenX, int screenY, MouseEvent e) {
         ItemStack stack = inventar.getSelectedItemStack();
@@ -113,13 +109,12 @@ public class EntityPlayer extends EntityLiving {
 
     /**
      * Wird ausgefuehrt, wenn mit der rechten Maustaste auf den Bildschirm geklickt wird.
-     *
      * @param screenX
-     *            X-Bildschirmkoordinate
+     * X-Bildschirmkoordinate
      * @param screenY
-     *            Y-Bildschirmkoordinate
+     * Y-Bildschirmkoordinate
      * @param e
-     *            MouseEvent
+     * MouseEvent
      */
     public void onRightClick(int screenX, int screenY, MouseEvent e) {
         ItemStack stack = inventar.getSelectedItemStack();

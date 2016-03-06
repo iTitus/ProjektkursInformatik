@@ -99,7 +99,6 @@ public final class Items {
 
     /**
      * Das Pair, das alle Items enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -178,9 +177,8 @@ public final class Items {
 
     /**
      * Registriert ein Mapping.
-     *
      * @param i
-     *            Item
+     * Item
      */
     private static void registerItem(Item i) {
         if (i != null && !MAPPINGS.containsKey(i.getInternalName()) && i.getID() > 0 && i.getID() < ITEMS.length && ITEMS[i.getID()] == null) {

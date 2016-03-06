@@ -42,11 +42,10 @@ public final class I18n {
 
         /**
          * Konstruktor.
-         *
          * @param locale
-         *            die Java-Sprache
+         * die Java-Sprache
          * @param name
-         *            der Name
+         * der Name
          */
         private SupportedLocales(Locale locale, String name) {
             this.locale = locale;
@@ -55,7 +54,6 @@ public final class I18n {
 
         /**
          * Die Standard-Java-Sprache.
-         *
          * @return die Standard-Java-Sprache
          */
         public Locale getLocale() {
@@ -64,7 +62,6 @@ public final class I18n {
 
         /**
          * Der Name der Sprache.
-         *
          * @return der Name
          */
         public String getName() {
@@ -73,7 +70,6 @@ public final class I18n {
 
         /**
          * Der unlokalisierte Name der Sprache.
-         *
          * @return unlokalisierter Name der Sprache.
          */
         public String getUnlocalizedName() {
@@ -102,9 +98,8 @@ public final class I18n {
 
     /**
      * Aendert die Sprache.
-     *
      * @param locale
-     *            neue Sprache
+     * neue Sprache
      */
     public static void changeLocale(SupportedLocales locale) {
         if (locale != null) {
@@ -117,7 +112,6 @@ public final class I18n {
 
     /**
      * Die aktuelle Sprache.
-     *
      * @return aktuelle Sprache.
      */
     public static SupportedLocales getLocale() {
@@ -126,9 +120,8 @@ public final class I18n {
 
     /**
      * Gibt den uebersetzten String zurueck.
-     *
      * @param key
-     *            Der Schluessel fuer den String (zB. "item.nuke.name")
+     * Der Schluessel fuer den String (zB. "item.nuke.name")
      * @return der passende formatierte String in der aktuellen Sprache oder !key! falls es keine oder nur eine falsche Uebersetzung gibt
      */
     public static String getString(String key) {
@@ -147,11 +140,10 @@ public final class I18n {
 
     /**
      * Gibt den formatierten uebersetzten String zurueck.
-     *
      * @param key
-     *            Der Schluessel fuer den String (zB. "item.nuke.name")
+     * Der Schluessel fuer den String (zB. "item.nuke.name")
      * @param args
-     *            Formatierungsargumente
+     * Formatierungsargumente
      * @return der passende String in der aktuellen Sprache oder !key! falls es keine Uebersetzung gibt
      */
     public static String getStringFormatted(String key, Object... args) {
@@ -170,7 +162,6 @@ public final class I18n {
 
     /**
      * Alle unterstuetzten Sprachen.
-     *
      * @return alle unterstuetzten Sprachen
      */
     public static SupportedLocales[] getSupportedLocales() {

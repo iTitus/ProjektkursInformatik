@@ -38,15 +38,14 @@ public class GuiDialog extends Gui implements IButtonListener {
 
     /**
      * Konstruktor.
-     *
      * @param parent
-     *            Eltern-Gui
+     * Eltern-Gui
      * @param dialogPart
-     *            anzuzeigender DialogPart
+     * anzuzeigender DialogPart
      * @param entity1
-     *            ein Entity
+     * ein Entity
      * @param entity2
-     *            anderer Entity
+     * anderer Entity
      */
     public GuiDialog(Gui parent, DialogPart dialogPart, Entity entity1, Entity entity2) {
         super(parent);

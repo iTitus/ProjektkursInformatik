@@ -13,9 +13,8 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Laedt ein PlayerInventory aus der gegebenen SaveData.
-     *
      * @param data
-     *            SaveData
+     * SaveData
      * @return PlayerInventory
      */
     public static PlayerInventory load(SaveData data) {
@@ -39,9 +38,8 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Konstruktor.
-     *
      * @param size
-     *            Groesse
+     * Groesse
      */
     public PlayerInventory(int size) {
         this(size, -1);
@@ -49,11 +47,10 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Konstruktor.
-     *
      * @param size
-     *            Groesse
+     * Groesse
      * @param selectedItemStack
-     *            auszuwaehlender Index
+     * auszuwaehlender Index
      */
     public PlayerInventory(int size, int selectedItemStack) {
         super(size);
@@ -69,7 +66,6 @@ public class PlayerInventory extends Inventory {
 
     /**
      * X-Koordinate auf dem Bildschirmkoordinaten.
-     *
      * @return X-Koordinate auf dem Bildschirm
      */
     public int getRenderX() {
@@ -78,7 +74,6 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Y-Koordinate auf dem Bildschirmkoordinaten.
-     *
      * @return Y-Koordinate auf dem Bildschirm
      */
     public int getRenderY() {
@@ -87,7 +82,6 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Ausgewaehlter Index.
-     *
      * @return Index
      */
     public int getSelectedIndex() {
@@ -96,7 +90,6 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Ausgewaehlter ItemStack.
-     *
      * @return ItemStack
      */
     public ItemStack getSelectedItemStack() {
@@ -105,7 +98,6 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Ist ein ItemStack ausgewaehlt.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean hasItemStackSelected() {
@@ -114,9 +106,8 @@ public class PlayerInventory extends Inventory {
 
     /**
      * Waehlt den ItemStack am Index aus.
-     *
      * @param index
-     *            Index; -1, um keinen ItemStack auszuwaehlen
+     * Index; -1, um keinen ItemStack auszuwaehlen
      */
     public void setSelectedItemStack(int index) {
         if (MathUtil.isInArray(index, stacks.length)) {

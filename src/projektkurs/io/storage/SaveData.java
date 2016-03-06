@@ -32,9 +32,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Gibt den Boolean zurueck, der mit dem gegebenen Key verbunden ist.
-     *
      * @param key
-     *            Key
+     * Key
      * @return boolean
      */
     public boolean getBoolean(String key) {
@@ -51,9 +50,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Gibt den Integer zurueck, der mit dem gegebenen Key verbunden ist.
-     *
      * @param key
-     *            Key
+     * Key
      * @return int
      */
     public int getInteger(String key) {
@@ -66,9 +64,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Gibt die SaveData zurueck, die mit dem gegebenen Key verbunden ist.
-     *
      * @param key
-     *            Key
+     * Key
      * @return SaveData
      */
     public SaveData getSaveData(String key) {
@@ -81,9 +78,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Gibt den String zurueck, der mit dem gegebenen Key verbunden ist.
-     *
      * @param key
-     *            Key
+     * Key
      * @return String
      */
     public String getString(String key) {
@@ -96,9 +92,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Ist der Key vorhanden.
-     *
      * @param key
-     *            Key
+     * Key
      * @return true, wenn ja; false, wenn nein
      */
     public boolean hasKey(String key) {
@@ -107,9 +102,8 @@ public final class SaveData implements Serializable {
 
     /**
      * Entfernt einen Key zusammen mit seinem Objekt.
-     *
      * @param key
-     *            Key
+     * Key
      */
     public void remove(String key) {
         dataMap.remove(key);
@@ -117,11 +111,10 @@ public final class SaveData implements Serializable {
 
     /**
      * Setzt einen Key mit einem Objekt.
-     *
      * @param key
-     *            Key
+     * Key
      * @param o
-     *            Objekt
+     * Objekt
      */
     public void set(String key, Object o) {
         if (key != null && o != null && o != this) {

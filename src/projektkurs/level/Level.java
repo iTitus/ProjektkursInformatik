@@ -46,11 +46,10 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Konstruktor.
-     *
      * @param name
-     *            Name
+     * Name
      * @param maps
-     *            alle Spielfelder
+     * alle Spielfelder
      */
     public Level(String name) {
         maps = new ArrayList<Spielfeld>();
@@ -95,7 +94,6 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Das aktuelle Spielfeld.
-     *
      * @return Spielfeld
      */
     public Spielfeld getMap() {
@@ -104,9 +102,8 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Das Spielfeld am gegebenen Index.
-     *
      * @param i
-     *            Index
+     * Index
      * @return Spielfeld
      */
     public Spielfeld getMapAt(int i) {
@@ -119,7 +116,6 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Anzahl der Maps.
-     *
      * @return Anzahl
      */
     public int getMapCount() {
@@ -128,7 +124,6 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Name.
-     *
      * @return Name
      */
     public String getName() {
@@ -157,9 +152,8 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Rendert das Level.
-     *
      * @param s
-     *            Screen
+     * Screen
      */
     public void render(Screen s) {
         if (getMap() != null) {
@@ -169,9 +163,8 @@ public class Level implements IUpdatable, ISaveable {
 
     /**
      * Waehlt das Spielfeld am Index aus und setzt den Spieler an die Spawn-Koordinaten.
-     *
      * @param i
-     *            Index
+     * Index
      */
     public void setMap(int i) {
         if (MathUtil.isInArray(i, maps.size())) {

@@ -40,42 +40,46 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Konstruktor
-     *
      * @param name
-     *            Anzeigename
+     * Anzeigename
      * @param talkLength
-     *            Laenge des weiterfuehrenden Gespraechs
+     * Laenge des weiterfuehrenden Gespraechs
      */
 
     public DialogPart(String name, int talkLength) {
-        this(name, 0, talkLength);
+        this(name, 0, 0, talkLength);
     }
 
     /**
      * Konstruktor.
-     *
      * @param name
-     *            Anzeigename
+     * Anzeigename
      * @param necessaryValue
-     *            benoetigter Wert
+     * benoetigter Wert
      * @param talkLength
-     *            Laenge des weiterfuehrenden Gespraechs
+     * Laenge des weiterfuehrenden Gespraechs
      */
     public DialogPart(String name, int necessaryValue, int talkLength) {
-        this(name, 0, necessaryValue, talkLength);
+        this.name = name;
+        this.necessaryValue = necessaryValue;
+        talk = new String[talkLength];
+        for (int i = 0; i < talk.length; i++) {
+            talk[i] = "dialog.part." + name + "." + i;
+        }
+        index = 0;
+        activated = true;
     }
 
     /**
      * Konstruktor.
-     *
      * @param name
-     *            Anzeigename
+     * Anzeigename
      * @param valueChange
-     *            Wertaenderung
+     * Wertaenderung
      * @param necessaryValue
-     *            benoetigter Wert
+     * benoetigter Wert
      * @param talkLength
-     *            Laenge des weiterfuehrenden Gespraechs
+     * Laenge des weiterfuehrenden Gespraechs
      */
     public DialogPart(String name, int valueChange, int necessaryValue, int talkLength) {
         this.name = name;
@@ -91,7 +95,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Anzeigename.
-     *
      * @return Anzeigename
      */
     public String getName() {
@@ -100,7 +103,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Der benoetigte Wert.
-     *
      * @return benoetigter Wert
      */
     public long getNecessaryValue() {
@@ -109,7 +111,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Naechster Sprechpart.
-     *
      * @return naechster Sprechpart
      */
     public String getNextString() {
@@ -118,7 +119,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Aenderung des Wertes.
-     *
      * @return Wertaenderung
      */
     public int getValueChange() {
@@ -127,7 +127,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Gibt es einen naechsten Sprechpart.
-     *
      * @return true, wenn ja; false wenn nein
      */
     public boolean hasNextString() {
@@ -136,7 +135,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Ist dieser DialogPart aktiviert.
-     *
      * @return true, wenn ja; false, wenn nein.
      */
     public boolean isActivated() {
@@ -145,7 +143,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Soll der aktuelle Sprechpart vom NPC gesprochen werden. Muss nach getNextString() ausgefuehrt werden.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean isNPCSpeaking() {
@@ -188,9 +185,8 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Setzt den Anzeigenstatus.
-     *
      * @param activated
-     *            true, wenn er aktivert werden soll; false, wenn er deaktiviert werden soll
+     * true, wenn er aktivert werden soll; false, wenn er deaktiviert werden soll
      */
     public void setActivated(boolean activated) {
         this.activated = activated;
@@ -203,7 +199,6 @@ public class DialogPart implements Iterable<String> {
 
     /**
      * Ist dieser DialogPart gut genug um angezeigt zu werden.
-     *
      * @return true, wenn ja; false, wenn nein
      */
     public boolean shouldShowUp() {

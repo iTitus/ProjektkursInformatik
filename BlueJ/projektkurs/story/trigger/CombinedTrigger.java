@@ -15,9 +15,8 @@ public abstract class CombinedTrigger extends AbstractTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param triggers
-     *            die Trigger
+     * die Trigger
      */
     public CombinedTrigger(AbstractTrigger... triggers) {
         this.triggers = triggers;

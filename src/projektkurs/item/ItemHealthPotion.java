@@ -14,9 +14,8 @@ public class ItemHealthPotion extends BaseItem {
 
     /**
      * Konstruktor.
-     *
      * @param id
-     *            ID
+     * ID
      */
     public ItemHealthPotion(int id) {
         super(id, "potion.health", Sprites.healthPotion);

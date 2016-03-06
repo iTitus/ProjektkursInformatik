@@ -43,12 +43,11 @@ public final class CutScenes {
      * CutScene No. 2
      */
     public static CutScene two;
-    
+
     public static CutScene four;
 
     /**
      * Das Pair, das alle CutScenes enthaelt.
-     *
      * @return Pair
      */
     public static Pair<String, List<String>> getPair() {
@@ -235,39 +234,30 @@ public final class CutScenes {
         three.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.GREATER, 10), new TickCondition(TickConditionType.MODULO_0, 10)), auto2, 0, -1));
         three.registerTickAction(new ConditionedExitAction(new TickCondition(TickConditionType.GREATER, 300)));
         registerMapping(three);
-   
-        
-        
-        
-        four = new CutScene("four");
-        
-    	CutSceneObject faehre3 = new CutSceneObject(Sprites.ferry, 81, 93, 4, 8);
-    	CutSceneObject auto3 = new CutSceneObject(Sprites.car_lord_frauV_N, 82, 94, 2, 4);
 
-    	
-    	four.registerStartupAction(new SpawnAction(faehre3));
-    	four.registerStartupAction(new SpawnAction(auto3));
-    	
-    	four.registerStartupAction(new EntityToCutSceneObjectAction());
-    	four.registerStartupAction(new SetSightAction(50, 80));
-    	four.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(100, 350)), 0, -1));
+        four = new CutScene("four");
+
+        CutSceneObject faehre3 = new CutSceneObject(Sprites.ferry, 81, 93, 4, 8);
+        CutSceneObject auto3 = new CutSceneObject(Sprites.car_lord_frauV_N, 82, 94, 2, 4);
+
+        four.registerStartupAction(new SpawnAction(faehre3));
+        four.registerStartupAction(new SpawnAction(auto3));
+
+        four.registerStartupAction(new EntityToCutSceneObjectAction());
+        four.registerStartupAction(new SetSightAction(50, 80));
+        four.registerTickAction(new ConditionedMoveSightAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new TickIntervalCondition(100, 350)), 0, -1));
         four.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(faehre3, 20, 79, 70, 31)), faehre3, 0, -1));
         four.registerTickAction(new ConditionedMoveAction(new CombinedAndCondition(new TickCondition(TickConditionType.MODULO_0, 10), new AreaCondition(auto3, 20, 60, 70, 41)), auto3, 0, -1));
         four.registerTickAction(new ConditionedExitAction(new TickCondition(TickConditionType.GREATER, 400)));
 
-    	registerMapping(four);
-        
+        registerMapping(four);
+
     }
-    
-    
-    
-    	
 
     /**
      * Registriert ein Mapping.
-     *
      * @param c
-     *            CutScene
+     * CutScene
      */
     private static void registerMapping(CutScene c) {
         if (c != null && !MAPPINGS.containsKey(c.getName())) {

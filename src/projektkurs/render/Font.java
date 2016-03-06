@@ -20,15 +20,14 @@ public class Font {
 
     /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param s
-     *            String
+     * String
      * @param centerX
-     *            X-Koordinate des Mittelpunktes
+     * X-Koordinate des Mittelpunktes
      * @param centerY
-     *            Y-Koordinate des Mittelpunktes
+     * Y-Koordinate des Mittelpunktes
      */
     public static void drawCenteredString(Screen screen, String s, int centerX, int centerY) {
         drawCenteredString(screen, s, centerX, centerY, 0);
@@ -36,17 +35,16 @@ public class Font {
 
     /**
      * Schreibt einen zentrierten String an die gegebenen Koordinaten.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param s
-     *            String
+     * String
      * @param centerX
-     *            X-Koordinate des Mittelpunktes
+     * X-Koordinate des Mittelpunktes
      * @param centerY
-     *            Y-Koordinate des Mittelpunktes
+     * Y-Koordinate des Mittelpunktes
      * @param color
-     *            die Farbe der Schrift
+     * die Farbe der Schrift
      */
     public static void drawCenteredString(Screen screen, String s, int centerX, int centerY, int color) {
         drawString(screen, s, centerX - MathUtil.floorDiv(getStringWidth(s), 2), centerY - MathUtil.floorDiv(getStringHeight(s), 2) - 3, color);
@@ -54,19 +52,18 @@ public class Font {
 
     /**
      * Schreibt einen zentrierten String in ein gegebenes Rechteck.
-     *
      * @param screen
-     *            Screen
+     * Screen
      * @param s
-     *            String
+     * String
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      */
     public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY) {
         drawCenteredStringInRect(screen, s, posX, posY, sizeX, sizeY, 0);
@@ -74,21 +71,20 @@ public class Font {
 
     /**
      * Schreibt einen zentrierten String in ein gegebenes Rechteck.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param s
-     *            String
+     * String
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param sizeX
-     *            Breite
+     * Breite
      * @param sizeY
-     *            Hoehe
+     * Hoehe
      * @param color
-     *            Schriftfarbe
+     * Schriftfarbe
      */
     public static void drawCenteredStringInRect(Screen screen, String s, int posX, int posY, int sizeX, int sizeY, int color) {
         drawCenteredString(screen, s, posX + MathUtil.floorDiv(sizeX, 2), posY + MathUtil.floorDiv(sizeY, 2), color);
@@ -96,15 +92,14 @@ public class Font {
 
     /**
      * Schreibt einen String an die gegebenen Koordinaten.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param string
-     *            String
+     * String
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      */
     public static void drawString(Screen screen, String string, int posX, int posY) {
         drawString(screen, string, posX, posY, 0);
@@ -112,17 +107,16 @@ public class Font {
 
     /**
      * Schreibt einen String an die gegebenen Koordinaten.
-     *
      * @param g
-     *            Graphics2D
+     * Graphics2D
      * @param string
-     *            String
+     * String
      * @param posX
-     *            X-Koordinate
+     * X-Koordinate
      * @param posY
-     *            Y-Koordinate
+     * Y-Koordinate
      * @param color
-     *            Farbe
+     * Farbe
      */
     public static void drawString(Screen screen, String string, int posX, int posY, int color) {
         if (!RenderUtil.isTransparent(color) && string != null && string.length() > 0) {
@@ -145,9 +139,8 @@ public class Font {
 
     /**
      * Die Hoehe des Strings.
-     *
      * @param s
-     *            String
+     * String
      * @return Hoehe des Strings
      */
     public static int getStringHeight(String s) {
@@ -156,9 +149,8 @@ public class Font {
 
     /**
      * Die Breite des Strings.
-     *
      * @param s
-     *            String
+     * String
      * @return Breite des Strings
      */
     public static int getStringWidth(String s) {

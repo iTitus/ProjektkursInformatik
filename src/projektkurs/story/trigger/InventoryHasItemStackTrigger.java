@@ -16,9 +16,8 @@ public class InventoryHasItemStackTrigger extends AbstractTrigger {
 
     /**
      * Konstruktor.
-     *
      * @param stack
-     *            zu pruefender ItemStack.
+     * zu pruefender ItemStack.
      */
     public InventoryHasItemStackTrigger(ItemStack stack) {
         this.stack = stack;

@@ -20,9 +20,8 @@ public class GuiOption extends Gui implements IButtonListener {
 
     /**
      * Konstruktor.
-     *
      * @param parent
-     *            Eltern-Gui
+     * Eltern-Gui
      */
     public GuiOption(Gui parent) {
         super(parent);

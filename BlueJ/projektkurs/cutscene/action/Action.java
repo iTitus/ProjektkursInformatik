@@ -23,9 +23,8 @@ public abstract class Action {
 
     /**
      * Konstruktor.
-     *
      * @param condition
-     *            Ausfuehrbedingung
+     * Ausfuehrbedingung
      */
     public Action(Condition condition) {
         if (condition != null) {
@@ -37,15 +36,13 @@ public abstract class Action {
 
     /**
      * Fuehrt die Action aus.
-     *
      * @param cutScene
-     *            Aktuelle CutScene
+     * Aktuelle CutScene
      */
     public abstract void doAction(CutScene cutScene);
 
     /**
      * Die Bedingung, um diese Action auszufuehren.
-     *
      * @return Condition
      */
     public final Condition getCondition() {
@@ -54,9 +51,8 @@ public abstract class Action {
 
     /**
      * Soll diese Action ausgefuehrt werden.
-     *
      * @param cutScene
-     *            Aktuelle CutScene
+     * Aktuelle CutScene
      * @return true, wenn ja; false, wenn nein
      */
     public final boolean shouldDoAction(CutScene cutScene) {
