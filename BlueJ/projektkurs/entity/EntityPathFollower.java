@@ -10,15 +10,15 @@ import projektkurs.render.Sprite;
 import projektkurs.util.Pair;
 import projektkurs.world.Spielfeld;
 
-public class EntityFollowPather extends Entity {
+public class EntityPathFollower extends Entity {
 
     private int spriteIndex;
 
-    public EntityFollowPather(Spielfeld map) {
+    public EntityPathFollower(Spielfeld map) {
         super(map);
     }
 
-    public EntityFollowPather(Spielfeld map, int posX, int posY, int spriteIndex, int ticksPerMove, int... is) {
+    public EntityPathFollower(Spielfeld map, int posX, int posY, int spriteIndex, int ticksPerMove, int... is) {
         super(map, posX, posY, new Sprite[1]);
         if (is == null || is.length % 2 != 0) {
             throw new IllegalArgumentException();

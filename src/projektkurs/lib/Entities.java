@@ -15,13 +15,13 @@ import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
-import projektkurs.entity.EntityFollowPather;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.entity.EntityMarkise01;
 import projektkurs.entity.EntityMarkise02;
 import projektkurs.entity.EntityMarkise03;
 import projektkurs.entity.EntityNest;
+import projektkurs.entity.EntityPathFollower;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
 import projektkurs.entity.EntitySonnenschirm01;
@@ -121,7 +121,7 @@ public final class Entities {
         registerEntity(EntityMarkise02.class, "markise02");
         registerEntity(EntityMarkise03.class, "markise03");
         registerEntity(EntityDoor2.class, "door2");
-        registerEntity(EntityFollowPather.class, "pathFollower");
+        registerEntity(EntityPathFollower.class, "pathFollower");
 
     }
 
