@@ -8,16 +8,26 @@ import projektkurs.entity.Entity;
 import projektkurs.entity.EntityBoomBarrier;
 import projektkurs.entity.EntityBoomBarrierOpen;
 import projektkurs.entity.EntityBoy;
+import projektkurs.entity.EntityDoor;
+import projektkurs.entity.EntityDoor2;
 import projektkurs.entity.EntityFerry;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFerryman;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
+import projektkurs.entity.EntityGrammophonganz;
 import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
+import projektkurs.entity.EntityMarkise01;
+import projektkurs.entity.EntityMarkise02;
+import projektkurs.entity.EntityMarkise03;
 import projektkurs.entity.EntityNest;
 import projektkurs.entity.EntityPlayer;
 import projektkurs.entity.EntityRedNPC;
+import projektkurs.entity.EntitySonnenschirm01;
+import projektkurs.entity.EntitySonnenschirm02;
+import projektkurs.entity.EntitySonnenschirm03;
+import projektkurs.entity.EntitySonnenschirm04;
 import projektkurs.entity.EntityTest;
 import projektkurs.entity.EntityTrashCan;
 import projektkurs.entity.EntityVilleCar;
@@ -104,6 +114,18 @@ public final class Entities {
         registerEntity(Entityhouse_4b_3x4.class, "house_4b_4x4");
         registerEntity(Entityhouse_2b_3x4.class, "house_2b_3x4");
         registerEntity(EntityWindmill.class, "windmill");
+        registerEntity(EntityDoor.class, "Door");
+        registerEntity(EntitySonnenschirm01.class, "EntitySonnenschirm01");
+        registerEntity(EntitySonnenschirm02.class, "EntitySonnenschirm02");
+        registerEntity(EntitySonnenschirm03.class, "EntitySonnenschirm03");
+        registerEntity(EntitySonnenschirm04.class, "EntitySonnenschirm04");
+        registerEntity(EntityMarkise01.class, "EntityMarkise01");
+        registerEntity(EntityMarkise02.class, "EntityMarkise02");
+        registerEntity(EntityMarkise03.class, "EntityMarkise03");
+        registerEntity(EntityDoor2.class, "EntityDoor2");
+
+
+
 
 
 

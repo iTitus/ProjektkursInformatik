@@ -185,28 +185,7 @@ public final class Raster {
     public static AbstractRaster tree_9se_water;
     public static AbstractRaster tree_9sw;
     public static AbstractRaster tree_9sw_water;
-    public static AbstractRaster markise01_1;
-    public static AbstractRaster markise01_2;
     
-    public static SolidRaster markise02_1;
-	public static SolidRaster markise02_2;
-	public static SolidRaster markise03_1;
-	public static SolidRaster markise03_2;
-	public static SolidRaster sonnenschirm01_1;
-	public static SolidRaster sonnenschirm01_2;
-	public static SolidRaster sonnenschirm01_3;
-	public static SolidRaster sonnenschirm01_4;
-	public static SolidRaster sonnenschirm02_1;
-	public static SolidRaster sonnenschirm02_3;
-	public static SolidRaster sonnenschirm02_4;
-	public static SolidRaster sonnenschirm03_1;
-	public static SolidRaster sonnenschirm03_2;
-	public static SolidRaster sonnenschirm03_3;
-	public static SolidRaster sonnenschirm03_4;
-	public static SolidRaster sonnenschirm04_1;
-	public static SolidRaster sonnenschirm04_2;
-	public static SolidRaster sonnenschirm04_3;
-	public static SolidRaster sonnenschirm04_4;
 	public static SimpleRaster street_m_e1_1;
 	public static SimpleRaster street_m_e1_2;
 	public static SimpleRaster street_m_e1_3;
@@ -658,147 +637,90 @@ public final class Raster {
         ferryhouse_ecke_ne = new SolidRaster(133, "ferryhouse_ecke_ne", Sprites.ferryhouse_ecke_ne);
         registerRaster(ferryhouse_ecke_ne);
         
-        markise01_1 = new SolidRaster(134, "markise01_1", Sprites.markise01_1);
-        registerRaster(markise01_1); 
-        
-        markise01_2 = new SolidRaster(135, "markise01_2", Sprites.markise01_2);
-        registerRaster(markise01_2);
-    
-        markise03_1 = new SolidRaster(138, "markise03_1", Sprites.markise03_1);
-        registerRaster(markise03_1);
-
-        markise03_2 = new SolidRaster(139, "markise03_2", Sprites.markise01_2);
-        registerRaster(markise03_2);
-
-        sonnenschirm01_1 = new SolidRaster(140, "sonnenschirm01_1 ", Sprites.sonnenschirm01_1 );
-        registerRaster(sonnenschirm01_1 );
-
-        sonnenschirm01_2 = new SolidRaster(141, "sonnenschirm01_2 ", Sprites.sonnenschirm01_2 );
-        registerRaster(sonnenschirm01_2 );
-
-        sonnenschirm01_3 = new SolidRaster(142, "sonnenschirm01_3 ", Sprites.sonnenschirm01_3 );
-        registerRaster(sonnenschirm01_3 );
-
-        sonnenschirm01_4 = new SolidRaster(143, "sonnenschirm01_4 ", Sprites.sonnenschirm01_4 );
-        registerRaster(sonnenschirm01_4 );
-
-
-        sonnenschirm02_1 = new SolidRaster(144, "sonnenschirm02_1 ", Sprites.sonnenschirm02_1);
-        registerRaster(sonnenschirm02_1 );
-
-        sonnenschirm02_2 = new SolidRaster(145, "sonnenschirm02_2 ", Sprites.sonnenschirm02_2 );
-        registerRaster(sonnenschirm02_2 );
-
-        sonnenschirm02_3 = new SolidRaster(146, "sonnenschirm02_3 ", Sprites.sonnenschirm02_3 );
-        registerRaster(sonnenschirm02_3 );
-
-        sonnenschirm02_4 = new SolidRaster(147, "sonnenschirm02_4 ", Sprites.sonnenschirm02_4 );
-        registerRaster(sonnenschirm02_4 );
-
-        sonnenschirm03_1 = new SolidRaster(148, "sonnenschirm03_1 ", Sprites.sonnenschirm03_1 );
-        registerRaster(sonnenschirm03_1 );
-
-        sonnenschirm03_2 = new SolidRaster(149, "sonnenschirm03_2 ", Sprites.sonnenschirm03_2 );
-        registerRaster(sonnenschirm03_2 );
-
-        sonnenschirm03_3 = new SolidRaster(150, "sonnenschirm03_3 ", Sprites.sonnenschirm03_3 );
-        registerRaster(sonnenschirm03_3 );
-
-        sonnenschirm03_4 = new SolidRaster(151, "sonnenschirm03_4 ", Sprites.sonnenschirm03_4);
-        registerRaster(sonnenschirm03_4 );
-
-        sonnenschirm04_1 = new SolidRaster(152, "sonnenschirm04_1 ", Sprites.sonnenschirm04_1 );
-        registerRaster(sonnenschirm04_1 );
-
-        sonnenschirm04_2 = new SolidRaster(153, "sonnenschirm04_2 ", Sprites.sonnenschirm04_2 );
-        registerRaster(sonnenschirm04_2 );
-
-        sonnenschirm04_3 = new SolidRaster(154, "sonnenschirm04_3 ", Sprites.sonnenschirm04_3 );
-        registerRaster(sonnenschirm04_3 );
-
-        sonnenschirm04_4 = new SolidRaster(155, "sonnenschirm04_4 ", Sprites.sonnenschirm04_4 );
-        registerRaster(sonnenschirm04_4 );
-
-        street_m_e1_1 = new SimpleRaster(156, "street_m_e1_1 ", Sprites.street_m_e1_1 );
+       street_m_e1_1 = new SimpleRaster(134, "street_m_e1_1 ", Sprites.street_m_e1_1 );
         registerRaster(street_m_e1_1 );
 
-        street_m_e1_2 = new SimpleRaster(157, "street_m_e1_2 ", Sprites.street_m_e1_2 );
+        street_m_e1_2 = new SimpleRaster(135, "street_m_e1_2 ", Sprites.street_m_e1_2 );
         registerRaster(street_m_e1_2 );
 
-        street_m_e1_3 = new SimpleRaster(158, "street_m_e1_3 ", Sprites.street_m_e1_3 );
+        street_m_e1_3 = new SimpleRaster(136, "street_m_e1_3 ", Sprites.street_m_e1_3 );
         registerRaster(street_m_e1_3 );
 
-        street_m_e1_4 = new SimpleRaster(159, "street_m_e1_4 ", Sprites.street_m_e1_4 );
+        street_m_e1_4 = new SimpleRaster(137, "street_m_e1_4 ", Sprites.street_m_e1_4 );
         registerRaster(street_m_e1_4 );
 
-        street_m_e2_1 = new SimpleRaster(160, "street_m_e2_1 ", Sprites.street_m_e2_1 );
+        street_m_e2_1 = new SimpleRaster(138, "street_m_e2_1 ", Sprites.street_m_e2_1 );
         registerRaster(street_m_e2_1 );
 
-        street_m_e2_2 = new SimpleRaster(161, "street_m_e2_2 ", Sprites.street_m_e2_2 );
+        street_m_e2_2 = new SimpleRaster(139, "street_m_e2_2 ", Sprites.street_m_e2_2 );
         registerRaster(street_m_e2_2 );
 
-        street_m_e2_3 = new SimpleRaster(162, "street_m_e2_3 ", Sprites.street_m_e2_3 );
+        street_m_e2_3 = new SimpleRaster(140, "street_m_e2_3 ", Sprites.street_m_e2_3 );
         registerRaster(street_m_e2_3 );
 
-        street_m_e2_4 = new SimpleRaster(163, "street_m_e2_4 ", Sprites.street_m_e2_4 );
+        street_m_e2_4 = new SimpleRaster(141, "street_m_e2_4 ", Sprites.street_m_e2_4 );
         registerRaster(street_m_e2_4 );
 
-        street_m_e3_1 = new SimpleRaster(164, "street_m_e3_1 ", Sprites.street_m_e3_1 );
+        street_m_e3_1 = new SimpleRaster(142, "street_m_e3_1 ", Sprites.street_m_e3_1 );
         registerRaster(street_m_e3_1 );
 
-        street_m_e3_2 = new SimpleRaster(165, "street_m_e3_2 ", Sprites.street_m_e3_2 );
+        street_m_e3_2 = new SimpleRaster(143, "street_m_e3_2 ", Sprites.street_m_e3_2 );
         registerRaster(street_m_e3_2 );
 
-        street_m_e3_3 = new SimpleRaster(166, "street_m_e3_3 ", Sprites.street_m_e3_3 );
+        street_m_e3_3 = new SimpleRaster(144, "street_m_e3_3 ", Sprites.street_m_e3_3 );
         registerRaster(street_m_e3_3 );
 
-        street_m_e3_4 = new SimpleRaster(167, "street_m_e3_4 ", Sprites.street_m_e3_4 );
+        street_m_e3_4 = new SimpleRaster(145, "street_m_e3_4 ", Sprites.street_m_e3_4 );
         registerRaster(street_m_e3_4 );
 
-        street_m_e4_1 = new SimpleRaster(168, "street_m_e4_1 ", Sprites.street_m_e4_1 );
+        street_m_e4_1 = new SimpleRaster(146, "street_m_e4_1 ", Sprites.street_m_e4_1 );
         registerRaster(street_m_e4_1 );
 
-        street_m_e4_2 = new SimpleRaster(169, "street_m_e4_2 ", Sprites.street_m_e4_2 );
+        street_m_e4_2 = new SimpleRaster(147, "street_m_e4_2 ", Sprites.street_m_e4_2 );
         registerRaster(street_m_e4_2 );
 
-        street_m_e4_3 = new SimpleRaster(170, "street_m_e4_3 ", Sprites.street_m_e4_3 );
+        street_m_e4_3 = new SimpleRaster(148, "street_m_e4_3 ", Sprites.street_m_e4_3 );
         registerRaster(street_m_e4_3 );
 
-        street_m_e4_4 = new SimpleRaster(171, "street_m_e4_4 ", Sprites.street_m_e4_4 );
+        street_m_e4_4 = new SimpleRaster(149, "street_m_e4_4 ", Sprites.street_m_e4_4 );
         registerRaster(street_m_e4_4 );
 
-        street_m_wage_e1_1 = new SimpleRaster(172, "street_m_wage_e1_1 ", Sprites.street_m_wage_e1_1 );
+        street_m_wage_e1_1 = new SimpleRaster(150, "street_m_wage_e1_1 ", Sprites.street_m_wage_e1_1 );
         registerRaster(street_m_wage_e1_1 );
 
-        street_m_wage_e2_1 = new SimpleRaster(173, "street_m_wage_e2_1 ", Sprites.street_m_wage_e2_1 );
+        street_m_wage_e2_1 = new SimpleRaster(151, "street_m_wage_e2_1 ", Sprites.street_m_wage_e2_1 );
         registerRaster(street_m_wage_e2_1 );
         
-        street_m_wage_e3_1 = new SimpleRaster(174, "street_m_wage_e3_1 ", Sprites.street_m_wage_e3_1 );
+        street_m_wage_e3_1 = new SimpleRaster(152, "street_m_wage_e3_1 ", Sprites.street_m_wage_e3_1 );
         registerRaster(street_m_wage_e3_1 );
         
-        street_m_wage_e4_1 = new SimpleRaster(175, "street_m_wage_e4_1 ", Sprites.street_m_wage_e4_1 );
+        street_m_wage_e4_1 = new SimpleRaster(153, "street_m_wage_e4_1 ", Sprites.street_m_wage_e4_1 );
         registerRaster(street_m_wage_e4_1 );
         
-        street_m_wage_e1_2 = new SimpleRaster(176, "street_m_wage_e1_2 ", Sprites.street_m_wage_e1_2 );
+        street_m_wage_e1_2 = new SimpleRaster(154, "street_m_wage_e1_2 ", Sprites.street_m_wage_e1_2 );
         registerRaster(street_m_wage_e1_2 );
 
-        street_m_wage_e2_2 = new SimpleRaster(177, "street_m_wage_e2_2 ", Sprites.street_m_wage_e2_2 );
+        street_m_wage_e2_2 = new SimpleRaster(155, "street_m_wage_e2_2 ", Sprites.street_m_wage_e2_2 );
         registerRaster(street_m_wage_e2_2 );
         
-        street_m_wage_e3_2 = new SimpleRaster(178, "street_m_wage_e3_2 ", Sprites.street_m_wage_e3_2 );
+        street_m_wage_e3_2 = new SimpleRaster(156, "street_m_wage_e3_2 ", Sprites.street_m_wage_e3_2 );
         registerRaster(street_m_wage_e3_2 );
         
-        street_m_wage_e4_2 = new SimpleRaster(179, "street_m_wage_e4_2 ", Sprites.street_m_wage_e4_2 );
+        street_m_wage_e4_2 = new SimpleRaster(157, "street_m_wage_e4_2 ", Sprites.street_m_wage_e4_2 );
         registerRaster(street_m_wage_e4_2 );
-
-        table_01 = new SolidRaster(180, "table_01 ", Sprites.table_01 );
+     
+        table_01 = new SolidRaster(158, "table_01 ", Sprites.table_01 );
         registerRaster(table_01 );
         
-        table_02 = new SolidRaster(181, "table_02 ", Sprites.table_02 );
+        table_02 = new SolidRaster(159, "table_02 ", Sprites.table_02 );
         registerRaster(table_02 );
         
-        table_03 = new SolidRaster(182, "table_03 ", Sprites.table_03 );
+        table_03 = new SolidRaster(160, "table_03 ", Sprites.table_03 );
         registerRaster(table_03 );
+        
+        
+        
+        
     }
 
     /**

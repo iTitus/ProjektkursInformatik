@@ -13,6 +13,8 @@ import projektkurs.entity.Entity;
 import projektkurs.entity.EntityFerryhouse;
 import projektkurs.entity.EntityFisher;
 import projektkurs.entity.EntityFisherboat;
+import projektkurs.entity.EntityGrammophonganz;
+import projektkurs.entity.EntityGramophone;
 import projektkurs.entity.EntityItem;
 import projektkurs.item.ItemStack;
 import projektkurs.story.trigger.AbstractTrigger;
@@ -32,6 +34,13 @@ public final class Scripts {
 
     public static boolean thrashCan = false, woman = false, junge = false, fisher = false, cutsceneTwo = false;
 
+    public static void zimmertrigger(){
+        Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "removeGrammophon"));
+    }
+    public static void removeGrammophon(){
+    	 Main.getLevel().getMap().deSpawn(Main.getLevel().getMap().getEntitiesAt(21, 6).get(0));
+    	 Main.getLevel().getMap().getStoryManager().registerTrigger(new AreaTrigger(0, 10, 1, 2), ReflectionUtil.getMethod(Scripts.class, "dialogstart", Dialog.class, Entity.class), Dialoge.DiaBarkeeperEins);
+    }
     public static void cutsceneOne() {
         CutSceneManager.startCutScene(CutScenes.one);
     }
@@ -82,7 +91,9 @@ public final class Scripts {
     public static void removeItem(ItemStack r) {
         Main.getPlayer().getInventory().removeItemStack(r);
     }
-
+    public static void spawnGrammophon( int x, int y){
+    	Main.getLevel().getMap().spawn(new EntityGramophone(Main.getLevel().getMap(), x, y));
+    }
     public static void scriptFisher() {
         if (fisher == false) {
 

@@ -42,7 +42,10 @@ public final class Dialoge {
     public static Dialog LVmSchranke;
     public static Dialog LVmTrashCan;
     public static Dialog DiaFaehrmann;
-    public static Dialog DiaBarkeeper;
+    public static Dialog DiaBarkeeperNull;
+    public static Dialog DiaBarkeeperEins;
+    public static Dialog DiaZimmerNull;
+    public static Dialog DiaZimmerEins;
 
 
     /*
@@ -152,8 +155,17 @@ public final class Dialoge {
         DiaFaehrmann = new Dialog("DiaFaehrmann", new DialogPart("FaehrmannNull", 2));
         registerMapping(DiaFaehrmann);
         
-        DiaBarkeeper = new Dialog("DiaBarkeeper", new DialogPart("DiaBarkeeperNull", 2));
-        registerMapping(DiaBarkeeper);
+        DiaBarkeeperNull = new Dialog("DiaBarkeeperNull", new DialogPart("BarkeeperNull",1 << 0, 0 << 0, 9));
+        registerMapping(DiaBarkeeperNull);
+        
+        DiaBarkeeperEins = new Dialog("DiaBarkeeperEins", new DialogPart("BarkeeperEins", 2));
+        registerMapping(DiaBarkeeperEins);
+        
+        DiaZimmerNull = new Dialog("DiaZimmerNull", new DialogPart("ZimmerNull", 3).setEndAction(ReflectionUtil.getMethod(Scripts.class, "zimmertrigger")));
+        registerMapping(DiaZimmerNull);
+
+        DiaZimmerEins = new Dialog("DiaZimmerEins", new DialogPart("ZimmerEins",1 << 2, 1 << 0, 4));
+        registerMapping(DiaZimmerEins);
     }
 
     /**
