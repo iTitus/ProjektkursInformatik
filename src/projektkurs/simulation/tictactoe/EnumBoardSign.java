@@ -20,6 +20,8 @@ public enum EnumBoardSign {
         }
     };
 
+    public static final EnumBoardSign[] VALUES = { CROSS, CIRCLE };
+
     public abstract void render(Screen screen, TicTacToeBoard board, int x, int y, int offsetX, int offsetY);
 
 }

@@ -67,8 +67,9 @@ public final class MathUtil {
 
     /**
      * Betrag der gegebenen Zahl.
+     * 
      * @param d
-     * Zahl
+     *            Zahl
      * @return Betrag
      */
     public static double abs(double d) {
@@ -77,8 +78,9 @@ public final class MathUtil {
 
     /**
      * Betrag der gegebenen Zahl.
+     * 
      * @param i
-     * Zahl
+     *            Zahl
      * @return Betrag
      */
     public static int abs(int i) {
@@ -119,8 +121,9 @@ public final class MathUtil {
 
     /**
      * Aufrunden.
+     * 
      * @param d
-     * Zahl, die aufgerundet werden soll.
+     *            Zahl, die aufgerundet werden soll.
      * @return aufgerundete Zahl
      */
     public static int ceil(double d) {
@@ -133,10 +136,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int ceilAdd(double a, double b) {
@@ -145,10 +149,11 @@ public final class MathUtil {
 
     /**
      * Dividieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int ceilDiv(double a, double b) {
@@ -157,10 +162,11 @@ public final class MathUtil {
 
     /**
      * Multiplizieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int ceilMul(double a, double b) {
@@ -169,10 +175,11 @@ public final class MathUtil {
 
     /**
      * Subtrahieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int ceilSub(double a, double b) {
@@ -181,12 +188,13 @@ public final class MathUtil {
 
     /**
      * Gibt eine Zahl zurueck, die im gegebenen Intervall liegt: [min; max].
+     * 
      * @param d
-     * Zahl
+     *            Zahl
      * @param min
-     * Minimum
+     *            Minimum
      * @param max
-     * Maximum
+     *            Maximum
      * @return eingegrenzte Zahl
      */
     public static double clamp(double d, double min, double max) {
@@ -195,12 +203,13 @@ public final class MathUtil {
 
     /**
      * Gibt eine Zahl zurueck, die im gegebenen Intervall liegt: [min; max].
+     * 
      * @param i
-     * Zahl
+     *            Zahl
      * @param min
-     * Minimum
+     *            Minimum
      * @param max
-     * Maximum
+     *            Maximum
      * @return eingegrenzte Zahl
      */
     public static int clamp(int i, int min, int max) {
@@ -209,10 +218,11 @@ public final class MathUtil {
 
     /**
      * Gibt eine Zahl zurueck, die in einem Array der gegebenen Laenge liegt: [0; length[.
+     * 
      * @param i
-     * Zahl
+     *            Zahl
      * @param length
-     * Laenge des Arrays
+     *            Laenge des Arrays
      * @return eingegrenzte Zahl
      */
     public static int clampToArray(int i, int length) {
@@ -229,8 +239,9 @@ public final class MathUtil {
 
     /**
      * Abrunden.
+     * 
      * @param d
-     * Zahl
+     *            Zahl
      * @return aufgerundetes Ergebnis
      */
     public static int floor(double d) {
@@ -239,10 +250,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int floorAdd(double a, double b) {
@@ -251,10 +263,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int floorDiv(double a, double b) {
@@ -263,10 +276,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int floorMul(double a, double b) {
@@ -275,10 +289,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis abrunden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return abgerundetes Ergebnis
      */
     public static int floorSub(double a, double b) {
@@ -309,10 +324,11 @@ public final class MathUtil {
 
     /**
      * Prueft, ob der gegebenen Index innerhalb der Grenzen des gegebenen Arrays ist.
+     * 
      * @param i
-     * Index
+     *            Index
      * @param length
-     * Array-Laenge
+     *            Array-Laenge
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isInArray(int i, int length) {
@@ -329,10 +345,11 @@ public final class MathUtil {
 
     /**
      * Prueft, ob der gegebenen Index ausserhalb der Grenzen des gegebenen Arrays ist.
+     * 
      * @param i
-     * Index
+     *            Index
      * @param length
-     * Array-Laenge
+     *            Array-Laenge
      * @return true, wenn ja; false, wenn nein
      */
     public static boolean isNotInArray(int i, int length) {
@@ -353,8 +370,9 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (exklusiv).
+     * 
      * @param max
-     * Zahl
+     *            Zahl
      * @return Zufallszahl
      */
     public static int nextInt(int max) {
@@ -367,10 +385,11 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
+     * 
      * @param min
-     * Minimum
+     *            Minimum
      * @param max
-     * Maximum
+     *            Maximum
      * @return Zufallszahl
      */
     public static double randomDouble(double min, double max) {
@@ -379,8 +398,9 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
+     * 
      * @param max
-     * Zahl
+     *            Zahl
      * @return Zufallszahl
      */
     public static int randomInt(int max) {
@@ -389,10 +409,11 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (exklusiv).
+     * 
      * @param min
-     * Minimum
+     *            Minimum
      * @param max
-     * Maximum
+     *            Maximum
      * @return Zufallszahl
      */
     public static int randomInt(int min, int max) {
@@ -401,8 +422,9 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen 0 (inklusiv) und der gegebenen Zahl (inklusiv).
+     * 
      * @param max
-     * Zahl
+     *            Zahl
      * @return Zufallszahl
      */
     public static int randomIntInc(int max) {
@@ -411,10 +433,11 @@ public final class MathUtil {
 
     /**
      * Zufaellige Zahl zwischen dem gegebenen Minimum (inklusiv) und dem gegebenen Maximum (inklusiv).
+     * 
      * @param min
-     * Minimum
+     *            Minimum
      * @param max
-     * Maximum
+     *            Maximum
      * @return Zufallszahl
      */
     public static int randomIntInc(int min, int max) {
@@ -431,8 +454,9 @@ public final class MathUtil {
 
     /**
      * Runden.
+     * 
      * @param d
-     * Zahl
+     *            Zahl
      * @return gerundetes Ergebnis
      */
     public static int round(double d) {
@@ -441,10 +465,11 @@ public final class MathUtil {
 
     /**
      * Addieren und dann das Ergebnis runden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return gerundetes Ergebnis
      */
     public static int roundAdd(double a, double b) {
@@ -453,10 +478,11 @@ public final class MathUtil {
 
     /**
      * Dividieren und dann das Ergebnis runden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return gerundetes Ergebnis
      */
     public static int roundDiv(double a, double b) {
@@ -465,10 +491,11 @@ public final class MathUtil {
 
     /**
      * Multiplizieren und dann das Ergebnis runden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return gerundetes Ergebnis
      */
     public static int roundMul(double a, double b) {
@@ -477,10 +504,11 @@ public final class MathUtil {
 
     /**
      * Subtrahieren und dann das Ergebnis runden.
+     * 
      * @param a
-     * Zahl 1
+     *            Zahl 1
      * @param b
-     * Zahl 2
+     *            Zahl 2
      * @return gerundetes Ergebnis
      */
     public static int roundSub(double a, double b) {
@@ -493,8 +521,9 @@ public final class MathUtil {
 
     /**
      * Vorzeichen der gegebenen Zahl.
+     * 
      * @param i
-     * Zahl
+     *            Zahl
      * @return -1, 0 oder 1 - je nach Vorzeichen
      */
     public static int signum(int i) {
@@ -515,6 +544,14 @@ public final class MathUtil {
 
     public static double toRad(double angle) {
         return angle * DEG_TO_RAD;
+    }
+
+    @SafeVarargs
+    public static <T> T chooseRandom(T... objects) {
+        if (objects != null && objects.length > 0) {
+            return objects[nextInt(objects.length)];
+        }
+        return null;
     }
 
     /**

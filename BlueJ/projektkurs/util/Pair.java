@@ -2,12 +2,17 @@ package projektkurs.util;
 
 /**
  * Ein gleichwertiges Paar aus zwei Elementen.
+ * 
  * @param <A>
- * Wert 1
+ *            Wert 1
  * @param <B>
- * Wert 2
+ *            Wert 2
  */
 public class Pair<A, B> {
+
+    public static <A, B> Pair<A, B> of(A a, B b) {
+        return new Pair<>(a, b);
+    }
 
     /**
      * Wert 1.
@@ -20,10 +25,11 @@ public class Pair<A, B> {
 
     /**
      * Konstruktor.
+     * 
      * @param valueA
-     * Wert 1
+     *            Wert 1
      * @param valueB
-     * Wert 2
+     *            Wert 2
      */
     public Pair(A valueA, B valueB) {
         this.valueA = valueA;
@@ -32,6 +38,7 @@ public class Pair<A, B> {
 
     /**
      * Der 1. Wert.
+     * 
      * @return Wert 1
      */
     public A getValueA() {
@@ -40,6 +47,7 @@ public class Pair<A, B> {
 
     /**
      * Der 2. Wert.
+     * 
      * @return Wert 2
      */
     public B getValueB() {

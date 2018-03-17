@@ -46,10 +46,14 @@ public enum Direction {
      * Die Kardinalen-Richtungen: Nach oben, nach rechts, nach unten und nach links.
      */
     public static final Direction[] CARDINAL_DIRECTIONS = { UP, RIGHT, DOWN, LEFT };
+    public static final Direction[] EDGES = { UP, RIGHT, DOWN, LEFT };
+    public static final Direction[] CORNERS = { UP_LEFT, UP_RIGHT, DOWN_RIGHT, DOWN_LEFT };
+    public static final Direction CENTER = UNKNOWN;
     /**
      * Alle Richtungen, ausser der ungueltigen Richtung.
      */
     public static final Direction[] VALID_DIRECTIONS = { UP, UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT };
+    public static final Direction[] VALUES = { UP_LEFT, UP, UP_RIGHT, LEFT, UNKNOWN, RIGHT, DOWN_LEFT, DOWN, DOWN_RIGHT };
     /**
      * Matrix - wird benutzt um die Offset-Werte zu dekodieren.
      */
@@ -59,11 +63,12 @@ public enum Direction {
 
     /**
      * Direction die zu dem gegebenen Index gehoert.
+     * 
      * @param index
-     * Index
+     *            Index
      * @return Direction
      */
-            public static Direction getDirectionForIndex(int index) {
+    public static Direction getDirectionForIndex(int index) {
         if (MathUtil.isInArray(index, VALID_DIRECTIONS.length)) {
             return VALID_DIRECTIONS[index];
         }
@@ -72,10 +77,11 @@ public enum Direction {
 
     /**
      * Richtung fuer die gegebenen Offset-Werte.
+     * 
      * @param offsetX
-     * X-Offset
+     *            X-Offset
      * @param offsetY
-     * Y-Offset
+     *            Y-Offset
      * @return Richtung fuer die gegebenen Offset-Werte
      */
     public static Direction getDirectionForOffset(int offsetX, int offsetY) {
@@ -102,10 +108,11 @@ public enum Direction {
 
     /**
      * Privater Konstruktor.
+     * 
      * @param offsetX
-     * X-Offset
+     *            X-Offset
      * @param offsetY
-     * Y-Offset
+     *            Y-Offset
      */
     private Direction(int index, int offsetX, int offsetY) {
         this.index = index;
@@ -115,6 +122,7 @@ public enum Direction {
 
     /**
      * Index.
+     * 
      * @return Index
      */
     public int getIndex() {
@@ -123,6 +131,7 @@ public enum Direction {
 
     /**
      * X-Offset.
+     * 
      * @return X-Offset
      */
     public int getOffsetX() {
@@ -131,6 +140,7 @@ public enum Direction {
 
     /**
      * Y-Offset.
+     * 
      * @return Y-Offset
      */
     public int getOffsetY() {
@@ -139,6 +149,7 @@ public enum Direction {
 
     /**
      * Die entgegengesetzte Richtung.
+     * 
      * @return die entgegengesetzte Richtung
      */
     public Direction getOpposite() {
@@ -150,5 +161,17 @@ public enum Direction {
             return this;
         }
         return ROTATION_MATRIX[index][cardinal ? 1 : 0][clockwise ? 1 : 0];
+    }
+
+    public boolean isCenter() {
+        return offsetX == 0 && offsetY == 0;
+    }
+
+    public boolean isCorner() {
+        return MathUtil.abs(offsetX) == 1 && MathUtil.abs(offsetY) == 1;
+    }
+
+    public boolean isEdge() {
+        return MathUtil.abs(offsetX) == 1 ^ MathUtil.abs(offsetY) == 1;
     }
 }
